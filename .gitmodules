@@ -1,0 +1,3 @@
+[submodule "01-plantsimulation-knowledge"]
+	path = 01-plantsimulation-knowledge
+	url = https://github.com/CrazyCarlG/knowledge_of_plant_simulation.git
