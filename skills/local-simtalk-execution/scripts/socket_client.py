@@ -36,6 +36,7 @@ TCP socket 客户端脚本：通过 socket 向本机指定端口发送数据，�
 """
 
 import argparse
+import os
 import socket
 import sys
 
@@ -129,7 +130,18 @@ def main():
         sock.connect((args.host, args.port))
     except (socket.timeout, ConnectionRefusedError, OSError) as e:
         # 连接失败：目标端口未监听（拒绝）或网络不可达等情况
-        print(f"ERR: cannot connect to {args.host}:{args.port} -> {e}", file=sys.stderr)
+        msg = f"ERR: cannot connect to {args.host}:{args.port} -> {e}"
+        # 容器内常见陷阱：127.0.0.1 指向容器自身，宿主机需用 host.docker.internal
+        if (
+            args.host in ("127.0.0.1", "localhost")
+            and isinstance(e, ConnectionRefusedError)
+            and os.path.exists("/.dockerenv")
+        ):
+            msg += (
+                "\nHINT: running in a container? 127.0.0.1 points to the container itself;"
+                " use --host host.docker.internal to reach the host machine."
+            )
+        print(msg, file=sys.stderr)
         return 2
 
     try:
