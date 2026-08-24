@@ -42,6 +42,8 @@ Plant Simulation 服务端的输出长度不定，`--resp-mode` 决定"一条完
 4. **`fixed`** ——严格读 `--resp-fixed` 字节。适合二进制 / 定长协议。
 
 > 用 `line` / `delimiter` 时**必须**给 `--resp-delimiter`，用 `fixed` 时**必须**给 `--resp-fixed > 0`，否则脚本会直接报参数错误退出（退出码 2）。
+>
+> ⚠️ **当前 Plant Simulation 服务端不会主动关闭 socket**（v2 T4 验证）。**`eof` 模式一定超时**——所有调用必须显式 `--resp-mode delimiter --resp-delimiter '||END||'`。
 
 ## 发送分隔符 / Sending Delimiter
 
@@ -49,8 +51,8 @@ Plant Simulation 服务端的输出长度不定，`--resp-mode` 决定"一条完
 
 ```bash
 python3 skills/local-simtalk-execution/scripts/socket_client.py \
-  --port 9000 \
-  --data '{"type":"simtalk_syntax","action_id":"x","simtalk":"->boolean"}' \
+  --host host.docker.internal --port 50007 \
+  --data '{"type":"simtalk_syntax","action_id":"x","simtalk_code":"->boolean"}' \
   --send-delimiter $'\n' \
   --resp-mode line --resp-delimiter $'\n'
 ```
@@ -58,23 +60,31 @@ python3 skills/local-simtalk-execution/scripts/socket_client.py \
 ## 典型用法 / Usage
 
 ```bash
-# 服务端每次回复后关闭连接（默认 eof）
+# WSL2 容器 → Plant Simulation 主机（默认目标）
 python3 skills/local-simtalk-execution/scripts/socket_client.py \
-  --host 127.0.0.1 --port 9000 \
-  --data '{"type":"simtalk_syntax","action_id":"x","simtalk":"->boolean"}'
+  --host host.docker.internal --port 50007 \
+  --data '{"type":"simtalk_syntax","action_id":"x","simtalk_code":"->boolean"}||END||' \
+  --resp-mode delimiter --resp-delimiter '||END||'
 
-# 执行表达式（自定义分隔符 ||END||）
+# 执行表达式（同上）
 python3 skills/local-simtalk-execution/scripts/socket_client.py \
-  --host 127.0.0.1 --port 9000 \
-  --data '{"type":"simtalk_run","action_id":"y","expression":"print(1)"}||END||' \
+  --host host.docker.internal --port 50007 \
+  --data '{"type":"simtalk_run","action_id":"y","simtalk_code":"print(1)"}||END||' \
   --resp-mode delimiter --resp-delimiter '||END||'
 ```
+
+> ⚠️ **当前 Plant Simulation 服务端不会主动关闭连接**——`--resp-mode eof`（默认）**一定超时**（v2 T4 验证）。所有调用**必须**显式 `--resp-mode delimiter --resp-delimiter '||END||'`。
+>
+> ⚠️ **WSL2 容器场景**：`--host` 在容器内不能写 `127.0.0.1` 或 `localhost`——会落到容器自身、连接被拒（v1 T0）。用 `host.docker.internal` 指向 Windows 主机。
 
 由于每次都是新连接，一个工作会话里的多次调用之间没有共享状态——每次都要重新传 `--host` / `--port` / 分帧参数。
 
 ## 调试技巧 / Debugging
 
 - 先看脚本自身用法：`python3 skills/local-simtalk-execution/scripts/socket_client.py --help`
-- 手动验证服务端可达性：`python3 -c "import socket;s=socket.socket();s.settimeout(3);s.connect(('127.0.0.1',9000))"`
-- 反复出现 `2`/`cannot connect`：服务端未监听或端口被防火墙拦截，检查 Plant Simulation 是否还在运行。
-- 反复出现 `1`/`TIMEOUT`：分帧方式不匹配或服务端卡住，先用 `eof` 或 `line` 配正确分隔符确认能拿到完整回包。
+- 手动验证服务端可达性（WSL2 容器 → 主机）：
+  ```bash
+  python3 -c "import socket;s=socket.socket();s.settimeout(3);s.connect(('host.docker.internal',50007))"
+  ```
+- 反复出现 `2`/`cannot connect`：服务端未监听或端口被防火墙拦截，检查 Plant Simulation 是否还在运行（默认 TCP 50007）。
+- 反复出现 `1`/`TIMEOUT`：分帧方式不匹配或服务端卡住。先确认加了 `--resp-mode delimiter --resp-delimiter '||END||'`；若仍超时，看 stderr/服务端日志里是否有 `simtalk_code was not found` / `Error in JSON data: Syntax error`——字段名错了或 JSON 字面量坏了，不是网络问题（Quirk #3）。

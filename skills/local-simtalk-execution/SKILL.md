@@ -30,7 +30,7 @@ description: 在本机通过 TCP 连接执行 Plant Simulation 的 SimTalk 代�
    ```bash
    python3 skills/local-simtalk-execution/scripts/socket_client.py \
      --host <host> --port <port> \
-     --data '{"type":"simtalk_syntax","action_id":"<id>","simtalk":"<code>"}||END||' \
+     --data '{"type":"simtalk_syntax","action_id":"<id>","simtalk_code":"<code>"}||END||' \
      --timeout 30
    ```
    退出码决定后续：0=成功、1=超时、2=无法连接、3=连接中途断开。
@@ -46,7 +46,7 @@ description: 在本机通过 TCP 连接执行 Plant Simulation 的 SimTalk 代�
 
 - `scripts/socket_client.py`：一次性 TCP 客户端，发送 `--data` 并按 `--resp-mode` 读取回复（`eof`/`line`/`fixed`/`delimiter`）。
 - `references/socket_client.md`：socket_client.py 参数、回复分帧模式、退出码详解。
-- `references/message-schema.md`：服务端/客户端所有 JSON 消息类型（`ping`、`simtalk_syntax`、`simtalk_run`、`action_result`、`result`）字段定义。
+- `references/message-schema.md`：服务端/客户端所有 JSON 消息类型（`ping`、`simtalk_syntax`、`simtalk_run`、`action_result`）字段定义；`ping` 回包在 `type` 字段回显请求类型。
 - `references/workflow.md`：完整端到端工作流，包括错误重试与故障排查。
 - `references/code-templates.md`：常见载荷模板，可直接复制后填充。
 
