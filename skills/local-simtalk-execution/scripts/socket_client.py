@@ -98,10 +98,17 @@ def main():
                         choices=["eof", "line", "fixed", "delimiter"], default="eof",
                         help="How to know the reply is complete")
     parser.add_argument("--resp-delimiter", default="",
-                        help="Delimiter used when --resp-mode=delimiter")
+                        help="Delimiter used when --resp-mode=line or delimiter")
     parser.add_argument("--resp-fixed", type=int, default=0,
                         help="Exact reply size in bytes when --resp-mode=fixed")
     args = parser.parse_args()
+
+    # 回复读取方式的一致性校验：line/delimiter 必须给分隔符，fixed 必须给正数长度。
+    # 否则 recv_until 会在空分隔符下立即返回空串，或 fixed 模式读到 0 字节。
+    if args.resp_mode in ("line", "delimiter") and not args.resp_delimiter:
+        parser.error("--resp-mode line/delimiter requires --resp-delimiter")
+    if args.resp_mode == "fixed" and args.resp_fixed <= 0:
+        parser.error("--resp-mode fixed requires --resp-fixed > 0")
 
     # ------------------------------------------------------------------
     # 2. 构造待发送的负载（payload）
