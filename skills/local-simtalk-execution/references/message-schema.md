@@ -1,7 +1,7 @@
 # 消息协议 / Message Schema
 
-本文件定义 Claude 通过 `connector.py` 与 Plant Simulation TCP 服务端交互的所有 JSON 消息。
-所有载荷都以 UTF-8 编码，行尾追加 `\n`（connector 默认开启，可通过 `--no-newline` 关闭）。
+本文件定义 Claude 通过 `socket_client.py` 与 Plant Simulation TCP 服务端交互的所有 JSON 消息。
+所有载荷都以 UTF-8 编码，并以 `||END||` 作为帧分隔符：请求末尾追加 `||END||`，回复以 `||END||` 结尾（读取时用 `--resp-mode delimiter --resp-delimiter '||END||'`）。若服务端按行分帧，改用 `--send-delimiter $'\n'` 追加换行（脚本不会自动加换行）。
 
 > Note: 服务器/客户端方向仅是约定视角——实际传输在客户端 socket ↔ 服务端 socket 之间。
 
@@ -15,13 +15,29 @@
 
 | 消息类型 | 方向 | 用途 |
 |---|---|---|
+| `ping` | client → server | 连通性检查（可选时间戳），确认链路可用 |
 | `simtalk_syntax` | client → server | 仅做编译/语法检查，不真正执行 |
 | `simtalk_run` | client → server | 在 `.current` 上执行一段 SimTalk 表达式并返回结果 |
-| `execute_method` | client → server | 调用某个对象的某个方法 |
-| `query_object` | client → server | 读取对象属性 |
-| `pull_log` | client → server | 拉取服务器最近日志（按字节/行数） |
-| `ping` | client → server | 心跳 |
-| `action_result` | server → client | 对以上任一请求的统一回包 |
+| `action_result` | server → client | 对 `simtalk_syntax` / `simtalk_run` 的统一回包 |
+| `result` | server → client | 对 `ping` 的简单回包 |
+
+---
+
+## `ping` — 连通性检查
+
+请求（client → server）：
+```json
+{
+  "type": "ping",
+  "timestamp": "20260824170056"
+}
+```
+
+| 字段 | 必填 | 说明 |
+|---|---|---|
+| `timestamp` | 否 | 客户端时间戳（可选） |
+
+回包为 `{"type":"result","result":"success"}`；网络不通则收不到回复。
 
 ---
 
@@ -73,81 +89,14 @@
 {
   "type": "simtalk_run",
   "action_id": "f1c0...",
-  "expression": "print('hello from SimTalk')",
-  "return_value": true
+  "expression": "print('hello from SimTalk')"
 }
 ```
 
 | 字段 | 必填 | 说明 |
 |---|---|---|
 | `expression` | 是 | 单条 SimTalk 表达式或语句 |
-| `return_value` | 否 | 是否要求返回表达式结果（默认 `false`） |
 | `context_path` | 否 | `.current` 之外的执行上下文，例如 `path.to.Machine` |
 
 回包仍是 `action_result`；`data` 字段承载表达式的返回值（`return_value: true` 时存在）。
 
-## `execute_method` — 调用方法
-
-请求：
-```json
-{
-  "type": "execute_method",
-  "action_id": "...",
-  "object_path": ".Models.Model.M",
-  "method": "doSomething",
-  "args": [1, "abc", true]
-}
-```
-
-| 字段 | 必填 | 说明 |
-|---|---|---|
-| `object_path` | 是 | Plant Simulation 中对象的相对/绝对路径 |
-| `method` | 是 | 方法名 |
-| `args` | 否 | 位置参数数组，按顺序匹配方法签名 |
-
-## `query_object` — 查询属性
-
-请求：
-```json
-{
-  "type": "query_object",
-  "action_id": "...",
-  "object_path": ".Models.Model.Source",
-  "attributes": ["name", "length", "statMeanThroughput"]
-}
-```
-
-| 字段 | 必填 | 说明 |
-|---|---|---|
-| `object_path` | 是 | 目标对象路径 |
-| `attributes` | 否 | 要读取的属性列表；省略或 `["*"]` 表示全部可读属性 |
-
-回包 `data` 字段是属性名 → 值的映射。
-
-## `pull_log` — 拉取日志
-
-请求：
-```json
-{
-  "type": "pull_log",
-  "action_id": "...",
-  "since_timestamp": "2026-08-06T14:00:00Z",
-  "max_lines": 200
-}
-```
-
-| 字段 | 必填 | 说明 |
-|---|---|---|
-| `since_timestamp` | 否 | 仅返回该时刻之后的日志；省略则取最近一次之后的 |
-| `max_lines` | 否 | 最多返回多少行 |
-
-回包 `data` 字段为字符串数组（按行拆分）。
-
-## `ping` — 心跳
-
-请求：
-```json
-{ "type": "ping", "action_id": "..." }
-```
-
-回包 `result == "success"`、`data == "pong"`。用于在长任务前后确认连接还活着。

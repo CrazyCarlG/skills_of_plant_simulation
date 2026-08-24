@@ -2,27 +2,53 @@
 
 下列模板可以直接复制后填充变量。**所有模板都需要替换 `<action_id>`**——用 uuid4/hex 等唯一字符串即可。
 
+当前协议消息：`ping`（连通性检查）、`simtalk_syntax`（仅语法检查）、`simtalk_run`（执行表达式）；后两者回包统一为 `action_result`。字段定义见 `message-schema.md`。
+
+消息以 `||END||` 作为帧分隔符：请求末尾追加 `||END||`，回复以 `||END||` 结尾（见 `example/example.md`）。统一发送命令（`<json>` 换成下面的具体载荷）：
+
+```bash
+python3 skills/local-simtalk-execution/scripts/socket_client.py \
+  --host <host> --port <port> \
+  --data '<json>||END||' \
+  --resp-mode delimiter --resp-delimiter '||END||' \
+  [--timeout <秒>]
+```
+
+> 若服务端按行分帧，则改用 `--send-delimiter $'\n' --resp-mode line --resp-delimiter $'\n'`（见 `socket_client.md`）。
+
+## 模板 0：连通性检查（ping）
+
+```bash
+python3 skills/local-simtalk-execution/scripts/socket_client.py \
+  --host 127.0.0.1 --port 9000 \
+  --data '{"type":"ping","timestamp":"20260824170056"}||END||'
+```
+
+回包 `{"type":"result","result":"success"}` 表示链路正常；网络不通则收不到回复。
+
 ## 模板 A：语法检查
 
 ```bash
-python3 scripts/connector.py send "$(cat <<'EOF'
-{"type":"simtalk_syntax","action_id":"<id>","simtalk":"<simtalk code>"}
-EOF
-)"
+python3 skills/local-simtalk-execution/scripts/socket_client.py \
+  --host 127.0.0.1 --port 9000 \
+  --data '{"type":"simtalk_syntax","action_id":"<id>","simtalk":"<simtalk code>"}||END||'
 ```
 
-如果 SimTalk 跨多行，用 `$'...\n...'` 或外部 here-doc 写文件再发送：
+可选字段 `target_path` 把解析限定到某个对象上（例如 `.Models.Model.m`）。
+
+如果 SimTalk 跨多行，用 Python 拼 JSON 最稳妥（避免 shell 转义）：
 
 ```bash
-cat > /tmp/payload.json <<'EOF'
-{"type":"simtalk_syntax","action_id":"abc123","simtalk":"print('hello from SimTalk')\nreturn 1"}
-EOF
-python3 scripts/connector.py send "$(cat /tmp/payload.json)"
+python3 skills/local-simtalk-execution/scripts/socket_client.py \
+  --host 127.0.0.1 --port 9000 \
+  --data "$(python3 -c 'import json; print(json.dumps({"type":"simtalk_syntax","action_id":"abc123","simtalk":"print(\"hi\")\nreturn 1"}))')||END||"
 ```
 
-> 注意：JSON 内换行必须写成 `\n`，不能直接放真换行；否则会被 connector 当成两行发送。
+> 注意：JSON 内的换行必须写成 `\n`，不能直接放真换行。
 
 ## 模板 B：执行表达式
+
+载荷：
 
 ```json
 {
@@ -33,123 +59,51 @@ python3 scripts/connector.py send "$(cat /tmp/payload.json)"
 }
 ```
 
-如果 `return_value: true`，回包 `data` 字段为表达式求值结果；类型由 SimTalk 自动 JSON 化（数字/字符串/布尔/数组）。
-
-## 模板 C：调用方法
-
-```json
-{
-  "type": "execute_method",
-  "action_id": "<id>",
-  "object_path": ".Models.Model.M",
-  "method": "doSomething",
-  "args": [1, "abc", true]
-}
-```
-
-`args` 是位置参数数组，按方法签名顺序传入。无参方法可省略 `args`。
-
-## 模板 D：查询属性
-
-读取单个属性：
-
-```json
-{
-  "type": "query_object",
-  "action_id": "<id>",
-  "object_path": ".Models.Model.Source",
-  "attributes": ["name"]
-}
-```
-
-读取多个属性：
-
-```json
-{
-  "type": "query_object",
-  "action_id": "<id>",
-  "object_path": ".Models.Model.Source",
-  "attributes": ["name", "length", "statMeanThroughput"]
-}
-```
-
-读取全部属性：
-
-```json
-{
-  "type": "query_object",
-  "action_id": "<id>",
-  "object_path": ".Models.Model.Source"
-}
-```
-
-回包 `data` 为对象：
-
-```json
-{
-  "name": "Source",
-  "length": 17,
-  "statMeanThroughput": 12.34
-}
-```
-
-## 模板 E：拉取日志
-
-```json
-{
-  "type": "pull_log",
-  "action_id": "<id>",
-  "since_timestamp": "2026-08-06T14:00:00Z",
-  "max_lines": 200
-}
-```
-
-`since_timestamp` 缺省时表示从最近一次 `pull_log` 之后继续；`max_lines` 缺省时由服务端默认（通常 100）。
-
-## 模板 F：心跳
-
-```json
-{"type":"ping","action_id":"<id>"}
-```
-
-`result == "success"` + `data == "pong"`。
+- `expression`（必填）：单条 SimTalk 表达式或语句。
+- `context_path`（可选）：`.current` 之外的执行上下文，例如 `path.to.Machine`。
+- `return_value: true` 时，回包 `data` 字段承载表达式求值结果；类型由 SimTalk 自动 JSON 化（数字/字符串/布尔/数组）。
 
 ## 实用 Bash 助手 / Helper Snippets
 
-把 JSON 单行化再交给 `send`：
+用 Python 生成单行 JSON 再交给 `--data`（自动生成唯一 `action_id`）：
 
 ```bash
-python3 - <<'PY' | python3 scripts/connector.py send --timeout 30
-import json, sys, uuid
+python3 skills/local-simtalk-execution/scripts/socket_client.py \
+  --host 127.0.0.1 --port 9000 --timeout 30 \
+  --data "$(python3 - <<'PY'
+import json, uuid
 payload = {
     "type": "simtalk_syntax",
     "action_id": uuid.uuid4().hex,
     "simtalk": "print('hello from SimTalk')",
 }
-sys.stdout.write(json.dumps(payload))
+print(json.dumps(payload))
 PY
+)||END||"
 ```
 
-> 上面例子把 Python 的 stdout 直接喂给 `connector.py send`——后者会自动从 stdin 读取，无需 `--data`。
+> `$(...)` 命令替换会把 Python 输出的单行 JSON 作为 `--data` 参数传入，避免手工转义。
 
 ---
 
 ## 字段命名备忘 / Field Naming Cheatsheet
 
-- `type`：snake_case 字符串
+- `type`：snake_case 字符串，当前为 `ping` / `simtalk_syntax` / `simtalk_run`
 - `action_id`：32 字符 hex 推荐（`uuid.uuid4().hex`）
-- `simtalk` / `expression`：使用真实换行需转义为 `\n`
-- `object_path`：以 `.` 开头表示相对 `.current`；以 `~` 开头表示绝对根路径（按 Plant Simulation 约定）
-- `args`：JSON 数组，按位置
-- `attributes`：JSON 数组，元素为字符串属性名
+- `timestamp`（`ping` 可选）：时间戳，例如 `20260824170056`
+- `simtalk`（`simtalk_syntax`）/ `expression`（`simtalk_run`）：使用真实换行需转义为 `\n`
+- `target_path`（`simtalk_syntax` 可选）：限定到某个对象上做解析，例如 `.Models.Model.m`
+- `context_path`（`simtalk_run` 可选）：`.current` 之外的执行上下文，例如 `path.to.Machine`
 
 ## 常见反模式 / Common Anti-patterns
 
-1. **❌** 在 shell heredoc 里写未转义的真换行——connector 会当作多条消息发送。
+1. **❌** 在 shell 里直接写未转义的真换行——JSON 会被拆成多段。
    **✅** 全部使用 `\n` 转义或 Python 拼 JSON。
 2. **❌** 同一 `action_id` 复用多次——服务端无法区分请求。
-   **✅** 每次 send 都生成新 id。
+   **✅** 每次发送都生成新 id。
 3. **❌** 默认 10 秒 `--timeout` 用于运行仿真。
    **✅** 长任务显式 `--timeout 600` 之类。
 4. **❌** 失败后立刻把同一 payload 再发一遍。
    **✅** 看 `log` 字段、定位行号、改代码再发。
+5. **❌** 请求末尾漏掉 `||END||`，或读回包时未指定 `--resp-delimiter '||END||'`。
+   **✅** 请求末尾追加 `||END||`，并用 `--resp-mode delimiter --resp-delimiter '||END||'` 读取回包。
