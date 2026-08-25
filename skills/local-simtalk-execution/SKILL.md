@@ -23,6 +23,7 @@ description: 在本机通过 TCP 连接执行 Plant Simulation 的 SimTalk 代�
    - 仅确认链路连通：`type: "ping"`
    - 仅做语法/编译检查：`type: "simtalk_syntax"`
    - 真正执行一段代码或读取状态：`type: "simtalk_run"`
+   - 拉取 GUI Console 的 `print(...)` 输出（v13+）：`type: "readlog"`——socket 端**第一次**能拿到 `print(...)` 的实际值；readlog 使用独立缓冲，**可以**在轮询循环里调用，每次只返回"上次 readlog 之后"的增量
 
    完整的载荷模板见 `references/code-templates.md`。
 
@@ -46,7 +47,7 @@ description: 在本机通过 TCP 连接执行 Plant Simulation 的 SimTalk 代�
 
 - `scripts/socket_client.py`：一次性 TCP 客户端，发送 `--data` 并按 `--resp-mode` 读取回复（`eof`/`line`/`fixed`/`delimiter`）。
 - `references/socket_client.md`：socket_client.py 参数、回复分帧模式、退出码详解。
-- `references/message-schema.md`：服务端/客户端所有 JSON 消息类型（`ping`、`simtalk_syntax`、`simtalk_run`、`action_result`）字段定义；`ping` 回包在 `type` 字段回显请求类型。
+- `references/message-schema.md`：服务端/客户端所有 JSON 消息类型（`ping`、`simtalk_syntax`、`simtalk_run`、`readlog`、`action_result`）字段定义；`ping` 回包在 `type` 字段回显请求类型。
 - `references/workflow.md`：完整端到端工作流，包括错误重试与故障排查。
 - `references/code-templates.md`：常见载荷模板，可直接复制后填充。
 
@@ -58,6 +59,9 @@ description: 在本机通过 TCP 连接执行 Plant Simulation 的 SimTalk 代�
 | `TIMEOUT: no reply within ...s` | 服务端卡住或操作过慢 | 提高 `--timeout`；检查服务端进程是否在跑 |
 | `ERR: connection closed before reply` | 服务端提前断开 | 检查服务端日志；确认分帧方式与回复结束条件一致 |
 | 拿不到完整回复 | 分帧模式不匹配 | 显式指定 `--resp-mode` 与 `--resp-delimiter` / `--resp-fixed` |
+| `readlog` 看不到 `print(...)` 输出 | 旧 bug（Quirk #11）已修复；v13 起 readlog 直接拉回 GUI Console 输出 | 不适用（v13+ readlog 包含 GUI Console 输出）；如仍看不到，确认服务端是新版本 |
+| `readlog` 体积爆炸 / 服务端 hang | 旧 bug（Quirk #12）已修复；v13 起 readlog 用独立缓冲+重置 | 不适用（v13+ 可以放心在循环里调用） |
+| `readlog` 里只能看到部分历史 | v13+ 的预期行为——每次 readlog 返回"上次 readlog 之后"的增量，buffer 在回包后清空 | 不要把 readlog 当"完整历史"用；要拿全部历史就在同一轮里只调一次 |
 
 ## 知识库路径 / Knowledge Paths
 

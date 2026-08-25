@@ -2,7 +2,7 @@
 
 下列模板可以直接复制后填充变量。**所有模板都需要替换 `<action_id>`**——用 uuid4/hex 等唯一字符串即可。
 
-当前协议消息：`ping`（连通性检查）、`simtalk_syntax`（仅语法检查）、`simtalk_run`（执行表达式）；后两者回包统一为 `action_result`。字段定义见 `message-schema.md`。
+当前协议消息：`ping`（连通性检查）、`simtalk_syntax`（仅语法检查）、`simtalk_run`（执行表达式）、`readlog`（拉取服务端应用日志，**人工调试专用**）；后三者回包统一为 `action_result`。字段定义见 `message-schema.md`。
 
 消息以 `||END||` 作为帧分隔符：请求末尾追加 `||END||`，回复以 `||END||` 结尾（见 `example/example.md`）。统一发送命令（`<json>` 换成下面的具体载荷）：
 
@@ -119,6 +119,45 @@ python3 skills/local-simtalk-execution/scripts/socket_client.py \
 >
 > ⚠️ **模态陷阱**：`prompt` / `promptList1` / `promptListN` / `infoBox` 在 `simtalk_run` 里**禁止使用**——它们会弹出 GUI 对话框直到用户点击 OK，服务端阻塞，socket 永远拿不到回包（表现跟 v3-v5 的"卡死 60s"完全一致）。
 
+## 模板 C：拉取 GUI Console 输出（readlog，v13+）
+
+> **v13 起 readlog 是 socket 端拿 `print(...)` 实际值的唯一通道**。反馈循环 bug（Quirk #12）和"不返回 GUI Console 输出"bug（Quirk #11）都已修复，可以放心在自动化/轮询循环里调用。
+>
+> **新行为——缓冲重置**：每次 readlog 返回"上次 readlog 之后"的新 Console 输出，回包后 buffer 被清空。**不要**把 readlog 当"完整历史"用，要拿全部历史就在同一轮只调一次 readlog。
+
+```bash
+python3 skills/local-simtalk-execution/scripts/socket_client.py \
+  --host host.docker.internal --port 50007 --timeout 10 \
+  --data '{"type":"readlog","action_id":"<id>"}||END||' \
+  --resp-mode delimiter --resp-delimiter '||END||'
+```
+
+请求字段：
+- `type`: `"readlog"`（必填）
+- `action_id`: 32 字符 hex 推荐（必填）
+
+响应字段：
+- `result`: 字面量 `"success"` / `"failed"` / `"timeout"`
+- `log`: 自上次 readlog 之后的新 GUI Console 输出 + `Log file opened! Application Version: ...` 起始标记。每条日志行格式：`YYYY-MM-DD HH:MM:SS: <text>`
+- 其它字段（`data` / `retsult`）一律忽略
+
+**取 print 值的标准流程**（socket 端**第一次**能拿 `print` 实际值）：
+```bash
+# 第 1 步：触发 print
+python3 socket_client.py ... --data '{"type":"simtalk_run","action_id":"a","simtalk_code":"print UNIQUE_MARKER_QQ\nreturn 1+1"}||END||' ...
+
+# 第 2 步：拉 readlog（buffer 包含 UNIQUE_MARKER_QQ 行）
+python3 socket_client.py ... --data '{"type":"readlog","action_id":"b"}||END||' ...
+# 回包 log: "2026-08-25 10:30:01: Log file opened! ...\n2026-08-25 10:30:05: UNIQUE_MARKER_QQ\n"
+#                                                              ^^^^^^^^
+#                                                              用唯一标记定位行号最稳
+
+# 注意：simtalk_run 的 data 字段依然永远为空（Quirk #6 不变）；print 表达式
+# 的实际结果（如 42+41=83）会作为单独一行出现在 readlog 的 log 里
+```
+
+**轮询场景**：每次 readlog 只返回增量，可以放心在循环里调用——v13 R5 连续 4 次 readlog 体积稳定在 203 字节（vs v12 的指数级膨胀）。
+
 ## 实用 Bash 助手 / Helper Snippets
 
 用 Python 生成单行 JSON 再交给 `--data`（自动生成唯一 `action_id`）：
@@ -145,7 +184,7 @@ PY
 
 ## 字段命名备忘 / Field Naming Cheatsheet
 
-- `type`：snake_case 字符串，当前为 `ping` / `simtalk_syntax` / `simtalk_run`
+- `type`：snake_case 字符串，当前为 `ping` / `simtalk_syntax` / `simtalk_run` / `readlog`
 - `action_id`：32 字符 hex 推荐（`uuid.uuid4().hex`）
 - `timestamp`（`ping` 可选）：时间戳，例如 `20260824170056`
 - `simtalk_code`（`simtalk_syntax` / `simtalk_run` 共用）：使用真实换行需转义为 `\n`；**不要**写 `simtalk` 或 `expression`（服务端只认 `simtalk_code`）
@@ -172,3 +211,6 @@ PY
 8. **❌** 在 `simtalk_run` 里写**当前模型尚未声明的全局 attribute**——例如 `MyAttr := 12345`（`MyAttr` 还没建）——Plant Simulation 会弹出"是否创建 MyAttr？"模态对话框等用户点 OK（v9 R5 验证）。表现与 `prompt(...)` 卡死完全一样。
    **✅** 写到局部 `var`（如 `var x: integer := 12345`）；或先在 GUI 里手工建好 attribute，再在 `simtalk_run` 里写；或干脆只读不写。
    注意：`simtalk_syntax` 不需要 namespace 上下文，所以写不存在的 attr 也能语法通过——陷阱只在执行时触发。
+9. ~~**❌** 把 `readlog` 写进自动化 / 监控 / 测试循环里~~——v13 起已修复（独立缓冲 + 重置），可以放心在循环里调用。
+10. ~~**❌** 期望从 `readlog` 拿到 Plant Simulation GUI Console 的 `print(...)` 输出~~——v13 起 readlog 直接包含 GUI Console 输出；socket 端**第一次**能拿到 print 实际值。`simtalk_run` 的 `data` 字段依然永远为空（Quirk #6 不变），但 `simtalk_run "print X"` → `readlog` 能拉到 `X`。
+11. **❌** 把 `readlog` 当"完整历史"用——v13+ 每次 readlog 返回"上次 readlog 之后"的增量，buffer 在回包后清空。**不要**期望连续两次 readlog 能拿到完整历史；要拿完整历史就在同一轮只调一次 readlog。

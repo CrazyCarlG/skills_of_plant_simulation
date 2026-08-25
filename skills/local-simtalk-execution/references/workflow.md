@@ -2,7 +2,9 @@
 
 本页给出一份完整的"写 SimTalk → 送到服务端 → 拿到真实结果"的剧本。把它当成 checklist：当用户提出"我要让这段 SimTalk 在 Plant Simulation 里跑一遍"时，按这套流程走。
 
-> 本技能没有守护进程：每一步都是 `socket_client.py` 的一次独立调用。当前协议有 `ping`（连通性检查）、`simtalk_syntax`（仅语法检查）、`simtalk_run`（执行表达式）三种请求；后两者回包统一为 `action_result`，`ping` 回包为 `{"type":"ping","result":"success"}`（服务端在 `type` 字段回显请求类型）。
+> 本技能没有守护进程：每一步都是 `socket_client.py` 的一次独立调用。当前协议有 `ping`（连通性检查）、`simtalk_syntax`（仅语法检查）、`simtalk_run`（执行表达式）、`readlog`（拉取 GUI Console 输出 + 服务端日志起始标记，v13+ 可在循环里调用）四种请求；后三者回包统一为 `action_result`，`ping` 回包为 `{"type":"ping","result":"success"}`（服务端在 `type` 字段回显请求类型）。
+>
+> **`readlog` 是 socket 端拿 `print(...)` 实际值的唯一通道**（v13+，Quirk #11 旧 bug 已修复）：`simtalk_run` 的 `data` 字段始终为空（Quirk #6 不变），但 `simtalk_run "print X"` → `readlog` 可以从 `log` 里抽到 `X`。`readlog` 用独立缓冲，每次调用只返回"上次 readlog 之后"的增量（Quirk #12 旧 bug 已修复），**可以**放心在自动化/轮询循环里调用。
 >
 > **默认目标**（WSL2 容器 ↔ Plant Simulation 主机）：`host.docker.internal:50007`。`127.0.0.1` / `localhost` 在容器内会指向容器自身、连不上服务端（v1 T0 验证）。其它环境按实际部署改 host，端口固定 `50007`。
 >
@@ -33,6 +35,7 @@
 | 确认链路连通 | `ping` | 最轻量，仅测网络 |
 | 只查语法，不真跑 | `simtalk_syntax` | 推荐作为首选；便宜、可重复 |
 | 真跑一段代码 | `simtalk_run` | 会改变模型状态；可能触发模态对话框 |
+| 拉取 GUI Console 输出 | `readlog`（v13+） | socket 端拿 `print(...)` 实际值的唯一通道；buffer 在每次 readlog 后重置，只返回增量 |
 
 > 每条消息都生成独立 `action_id`（如 `uuid4().hex`），方便与服务端日志对齐。
 
@@ -87,6 +90,8 @@ python3 skills/local-simtalk-execution/scripts/socket_client.py \
 - 一边改代码一边改其它字段（`target_path` / `context_path`），否则定位问题会变难。
 - 同一份 payload 失败后立即反复重试——先看日志再决定。
 - 把 `prompt(...)` / `infoBox(...)` / 写未声明的全局 attr 塞进 `simtalk_run`——这些会卡 GUI，**永远没回包**（Quirk #8 + `code-templates.md` 常见反模式 #6/#8）。
+- 把 `readlog` 当"完整历史"用——v13+ 每次 readlog 只返回"上次 readlog 之后"的增量（buffer 重置）。
+- 在 `simtalk_run` 的 `data` 字段里期望拿到 print 实际值——`data` 永远为空（Quirk #6 不变），要拿 print 值请走 `simtalk_run "print X"` → `readlog` → 从 `log` 抽 X。
 
 ## 4. 错误重试策略 / Error Retry Policy
 
@@ -97,6 +102,8 @@ python3 skills/local-simtalk-execution/scripts/socket_client.py \
 | `result == "success"` 但 `log.startswith("code execute failed")` | **不**重试同一 payload | 运行时异常，看 `log` 改代码 |
 | 连接错（退出码 2） | 1 次 | 检查服务端后重发；WSL2 内用 `host.docker.internal` 而不是 `127.0.0.1` |
 | 连接中途断开（退出码 3） | 1 次 | 确认分帧方式后重发 |
+| 想拿 GUI Console 的 `print(...)` 输出 | **用** `readlog`（v13+） | `simtalk_run "print X"` → `readlog`，从 `log` 抽 `X` 所在行；socket 端**第一次**能拿到 print 实际值。buffer 重置语义见 `message-schema.md` `readlog` 章节 |
+| 把 `readlog` 当"完整历史"用 | **不**用 `readlog` 一次拉全部 | v13+ 每次 readlog 只返回增量；想看完整历史就在同一轮只调一次 readlog |
 
 ## 5. 收尾 / Cleanup
 

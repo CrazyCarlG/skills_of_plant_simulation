@@ -20,7 +20,8 @@
 | `ping` | client → server | 连通性检查（可选时间戳），确认链路可用 |
 | `simtalk_syntax` | client → server | 仅做编译/语法检查，不真正执行 |
 | `simtalk_run` | client → server | 在 `.current` 上执行一段 SimTalk 表达式并返回结果 |
-| `action_result` | server → client | 对 `simtalk_syntax` / `simtalk_run` 的统一回包 |
+| `readlog` | client → server | 拉取服务端应用日志（socket I/O / Log file opened 等）——注意：**不是 Plant Simulation GUI Console 的 `print()` 输出** |
+| `action_result` | server → client | 对 `simtalk_syntax` / `simtalk_run` / `readlog` 的统一回包 |
 | `ping` | server → client | 对 `ping` 的回包；当前服务端在 `type` 字段回显请求类型 |
 
 ---
@@ -115,6 +116,73 @@
 
 ---
 
+## `readlog` — 拉取服务端日志（含 GUI Console 输出）
+
+> **v13 更新**：用户修复后，readlog 现在**返回 Plant Simulation GUI Console 的 `print(...)` 输出**（原始意图已实现），同时**修复了反馈循环 bug**——服务端每次 readlog 调用之间维护独立的日志缓冲，readlog 仅返回"上次 readlog 之后"的新内容，buffer 在回包后被重置。这两点修复让 readlog 从"v12 几乎不可用"变成"v13 可以放心在自动化循环里调用"的稳定通道。
+>
+> **详细测试过程见 `log/test-session-20260825-v13.md`**。
+
+请求：
+```json
+{
+  "type": "readlog",
+  "action_id": "644c86747baa465b8e67b7457a4529f4"
+}
+```
+
+| 字段 | 必填 | 说明 |
+|---|---|---|
+| `action_id` | 是 | 客户端生成的 UUID/字符串，用于把请求与响应配对 |
+
+回包（`action_result`）：
+```json
+{
+  "type": "action_result",
+  "action_id": "644c86747baa465b8e67b7457a4529f4",
+  "result": "success",
+  "log": "2026-08-25 10:21:08: Log file opened! Application Version: 2606.0002, UTC: 2026-08-25 02:21:08\n2026-08-25 10:21:34: BUF_TEST_X\n2026-08-25 10:21:34: BUF_TEST_Y\n"
+}
+```
+
+每条日志行的格式：`YYYY-MM-DD HH:MM:SS: <text>`。
+
+> **v13 起 readlog 能返回的东西**（按 v13 R3 / R4 验证）：
+>
+> | 来源 | 是否出现在 readlog | 备注 |
+> |---|---|---|
+> | Plant Simulation GUI Console 的 `print(...)` 输出 | ✅ **是** | `print "X"` → `2026-08-25 10:21:34: X` |
+> | `print` 表达式的实际值（如 `print 42+41`） | ✅ **是** | 表达式求值后写入 Console，readlog 同样拉到 |
+> | `Log file opened! Application Version: ...` | ✅ 是 | 每次 readlog 缓冲重置时打一条标记 |
+> | 服务端 socket I/O 通讯 trace（`Copilot -->> Local: ...` / `Local -->> Copilot: ...`） | ❌ **否** | v13 已修复——readlog 不再记录服务端自己的 I/O trace |
+> | `Sent successfully` 收发确认 | ❌ **否** | 同上 |
+> | `simtalk_syntax` / `simtalk_run` 的 `log` 诊断文本 | ❌ **否**（在 action_result 的 `log` 字段里；readlog 不重复） | 通过 `simtalk_syntax` / `simtalk_run` 的回包直接读 |
+>
+> **简单说**：v13 起 `readlog` = GUI Console 拉取通道 + 服务端日志起始标记（`Log file opened`）。**Socket 端第一次能拿到 `print(...)` 的实际值**——`simtalk_run` 的 `data` 字段依然永远为空（Quirk #6 不变），但 readlog 可以拿到 print 写进 Console 的内容。
+>
+> **重要新行为——缓冲重置（v13 R4 验证）**：
+>
+> 服务端 readlog 内部维护一个独立日志缓冲。每次 readlog 调用：
+> 1. 打开/重置缓冲，写一条 `Log file opened! Application Version: ...` 标记
+> 2. 把"上次 readlog 之后"的新 Console 输出追加进缓冲
+> 3. 把缓冲内容作为 `log` 字段返回
+> 4. 清空缓冲
+>
+> 实测序列（v13 R4）：
+> ```
+> print "X"        # 服务端缓冲记下 X
+> print "Y"        # 服务端缓冲记下 Y
+> readlog #1       # log: "...Log file opened...\n... X\n... Y"
+> print "Z"        # 服务端缓冲记下 Z
+> readlog #2       # log: "...Log file opened...\n... Z"   ← X / Y 不再出现
+> ```
+>
+> **使用建议**：
+> - **轮询场景**：每次 readlog 拿到的是"自上次 readlog 之后"的增量，**不会重复**，**不会膨胀**——可以放心在监控/测试循环里调用
+> - **拿 print 值的标准流程**：`simtalk_run "print <expr>"` → `readlog`，从 `log` 里抽 `<expr>` 所在的那一行（用唯一标记字符串定位行号最稳）
+> - **跨 readlog 的状态**：readlog 缓冲不跨调用保留，所以**不要**期望"连续两次 readlog 能拿到完整历史"
+
+---
+
 ## 已知服务端行为差异 / Known Server Quirks
 
 > 以下行为已在 2026-08-24 测试会话中由服务端日志确认，记录在这里避免后续踩坑。
@@ -169,4 +237,16 @@
     - 多参签名 `param i:integer,str:string; body`、默认值参数 `param str:string := "x"; body`、`byref` 修饰符都语法合法 + run 成功
     - 服务端对**无调用者**的情况静默放过（未绑定的形参当成局部 var 看待）
     - **不要**依赖此行为做"真引用语义"——只是服务器宽松，不是形参被正确求值
+
+11. ~~**`readlog` 返回服务端应用日志，**不是** Plant Simulation GUI Console 的 `print()` 输出**~~ （v12 旧 bug，**v13 已修复**）
+    - v12 实测：readlog 只返回服务端 socket wrapper 自己的应用日志，**不**返回 GUI Console 输出
+    - **v13 修复**：服务端现在把 GUI Console 的 `print(...)` 输出也写进 readlog 缓冲，可以正常拿到 print 值
+    - 验证：v13 R3 中 `print "V13_CLEAN_TEST_ALPHA"` 后 readlog 立刻出现 `2026-08-25 10:20:54: V13_CLEAN_TEST_ALPHA`
+    - 验证：v13 R3 中 `print 42+41` 后 readlog 出现 `2026-08-25 10:20:57: 83`（表达式结果也被捕获）
+
+12. ~~**`readlog` 存在反馈循环 / 递归膨胀 bug**~~（v12 旧 bug，**v13 已修复**）
+    - v12 实测：服务端把 readlog 自己的响应写进日志，下次 readlog 再把它塞进 `log` 字段，回包体积指数级膨胀
+    - **v13 修复**：readlog 现在使用独立缓冲，每次调用重置——v13 R5 连续 4 次 readlog 体积稳定 203 字节
+    - **新行为**：readlog 返回"上次 readlog 之后"的新 Console 输出，buffer 在回包后清空——可以放心在自动化循环里调用
+    - 详见 v13 测试日志 §4 缓冲重置验证
 
