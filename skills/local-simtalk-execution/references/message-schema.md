@@ -1,9 +1,10 @@
 # 消息协议 / Message Schema
 
 本文件定义 Claude 通过 `socket_client.py` 与 Plant Simulation TCP 服务端交互的所有 JSON 消息。
-所有载荷都以 UTF-8 编码，并以 `||END||` 作为帧分隔符：请求末尾追加 `||END||`，回复以 `||END||` 结尾（读取时用 `--resp-mode delimiter --resp-delimiter '||END||'`）。**服务端不会主动关闭连接**——`--resp-mode eof`（默认）一定超时，**必须**显式指定 delimiter 模式（v2 T4 验证）。
 
-> **客户端连接目标**（WSL2 容器场景）：`host.docker.internal:50007`。`127.0.0.1:50007` / `localhost:50007` 会落到容器自身、连接被拒（v1 T0）。其它环境按实际部署改 host，端口固定 `50007`。
+> **硬规则（连接目标 / 分帧方式 / `type` 白名单 / 模态陷阱 / 当前 readlog 状态）全部集中维护在 `references/lifelines.md`，本文件不再重复展开。**
+
+所有载荷都以 UTF-8 编码，并以 `||END||` 作为帧分隔符。**服务端不会主动关闭连接**——必须显式指定 delimiter 模式读取回包（详见 `lifelines.md` §2）。
 
 > Note: 服务器/客户端方向仅是约定视角——实际传输在客户端 socket ↔ 服务端 socket 之间。
 
@@ -118,9 +119,14 @@
 
 ## `readlog` — 拉取服务端日志（含 GUI Console 输出）
 
-> **v13 更新**：用户修复后，readlog 现在**返回 Plant Simulation GUI Console 的 `print(...)` 输出**（原始意图已实现），同时**修复了反馈循环 bug**——服务端每次 readlog 调用之间维护独立的日志缓冲，readlog 仅返回"上次 readlog 之后"的新内容，buffer 在回包后被重置。这两点修复让 readlog 从"v12 几乎不可用"变成"v13 可以放心在自动化循环里调用"的稳定通道。
+> ⚠️ **v15+ 当前服务端构建下 readlog 已回归 v12 状态**：
+> - **不再**捕获 Plant Simulation GUI Console 的 `print(...)` 输出
+> - **存在**反馈循环 bug——buffer 体积指数膨胀到 65536 字节被截断
+> - **不要**把 readlog 写进自动化/监控循环；仅供一次性调试使用
+> - 取 `print(...)` 实际值请去 Plant Simulation GUI Console（Window ribbon → Console 按钮）肉眼读
+> - 详见 `lifelines.md` §5 和 v15 测试日志 §6
 >
-> **详细测试过程见 `log/test-session-20260825-v13.md`**。
+> 历史背景——v13 短暂修复：readlog 当时能返回 GUI Console 输出 + 使用独立缓冲 + 每次调用重置，详见 `log/test-session-20260825-v13.md`。
 
 请求：
 ```json
@@ -146,11 +152,11 @@
 
 每条日志行的格式：`YYYY-MM-DD HH:MM:SS: <text>`。
 
-> **v13 起 readlog 能返回的东西**（按 v13 R3 / R4 验证）：
+> **v13 短暂修复时 readlog 能返回的东西**（仅历史记录，**v15+ 已回归**）：
 >
-> | 来源 | 是否出现在 readlog | 备注 |
-> |---|---|---|
-> | Plant Simulation GUI Console 的 `print(...)` 输出 | ✅ **是** | `print "X"` → `2026-08-25 10:21:34: X` |
+> | 来源 | v13 是否出现 | v15+ 状态 | 备注 |
+> |---|---|---|---|
+> | Plant Simulation GUI Console 的 `print(...)` 输出 | ✅ **是** | ❌ **否**（已回归） | `print "X"` → `2026-08-25 10:21:34: X` |
 > | `print` 表达式的实际值（如 `print 42+41`） | ✅ **是** | 表达式求值后写入 Console，readlog 同样拉到 |
 > | `Log file opened! Application Version: ...` | ✅ 是 | 每次 readlog 缓冲重置时打一条标记 |
 > | 服务端 socket I/O 通讯 trace（`Copilot -->> Local: ...` / `Local -->> Copilot: ...`） | ❌ **否** | v13 已修复——readlog 不再记录服务端自己的 I/O trace |
@@ -238,15 +244,44 @@
     - 服务端对**无调用者**的情况静默放过（未绑定的形参当成局部 var 看待）
     - **不要**依赖此行为做"真引用语义"——只是服务器宽松，不是形参被正确求值
 
-11. ~~**`readlog` 返回服务端应用日志，**不是** Plant Simulation GUI Console 的 `print()` 输出**~~ （v12 旧 bug，**v13 已修复**）
-    - v12 实测：readlog 只返回服务端 socket wrapper 自己的应用日志，**不**返回 GUI Console 输出
-    - **v13 修复**：服务端现在把 GUI Console 的 `print(...)` 输出也写进 readlog 缓冲，可以正常拿到 print 值
-    - 验证：v13 R3 中 `print "V13_CLEAN_TEST_ALPHA"` 后 readlog 立刻出现 `2026-08-25 10:20:54: V13_CLEAN_TEST_ALPHA`
-    - 验证：v13 R3 中 `print 42+41` 后 readlog 出现 `2026-08-25 10:20:57: 83`（表达式结果也被捕获）
+11. **`readlog` 返回服务端应用日志，**不是** Plant Simulation GUI Console 的 `print()` 输出**（v13 短暂修复，**v15+ 当前服务端构建下已回归**）
+    - v12 旧 bug：readlog 只返回服务端 socket wrapper 自己的应用日志，**不**返回 GUI Console 输出
+    - **v13 短暂修复**：服务端把 GUI Console 的 `print(...)` 输出也写进 readlog 缓冲；v13 R3 中 `print "V13_CLEAN_TEST_ALPHA"` 后 readlog 立刻出现 `2026-08-25 10:20:54: V13_CLEAN_TEST_ALPHA`
+    - ⚠️ **v15 回归（2606.0002 构建）**：readlog 回到 v12 的反馈循环模式——`print(...)` 输出**捕获不到**，buffer 体积指数膨胀到 65536 字节被截断。**当前 readlog 不可信**，取 `print(...)` 实际值请去 Plant Simulation GUI Console 肉眼读。详见 v15 测试日志 §6
 
-12. ~~**`readlog` 存在反馈循环 / 递归膨胀 bug**~~（v12 旧 bug，**v13 已修复**）
-    - v12 实测：服务端把 readlog 自己的响应写进日志，下次 readlog 再把它塞进 `log` 字段，回包体积指数级膨胀
-    - **v13 修复**：readlog 现在使用独立缓冲，每次调用重置——v13 R5 连续 4 次 readlog 体积稳定 203 字节
-    - **新行为**：readlog 返回"上次 readlog 之后"的新 Console 输出，buffer 在回包后清空——可以放心在自动化循环里调用
-    - 详见 v13 测试日志 §4 缓冲重置验证
+12. **`readlog` 存在反馈循环 / 递归膨胀 bug**（v13 短暂修复，**v15+ 当前服务端构建下已回归**）
+    - v12 旧 bug：服务端把 readlog 自己的响应写进日志，下次 readlog 再把它塞进 `log` 字段，回包体积指数级膨胀
+    - **v13 短暂修复**：readlog 使用独立缓冲 + 每次调用重置，v13 R5 连续 4 次 readlog 体积稳定 ≈200 字节
+    - ⚠️ **v15 回归**：反馈循环 + 体积爆炸重新出现——v15-rl-01 实测被截断到 65536 字节
+    - **当前使用建议**：readlog 仅供一次性调试；**不要**写进自动化循环。详细见 `references/lifelines.md` §5
+
+13. **`type` 字段取值不在白名单内会让 socket 静默挂死**（v16 验证）
+    - 白名单：`ping` / `simtalk_syntax` / `simtalk_run` / `readlog`
+    - 发送 `{"type":"unknown_xxx",...}` 时服务端**不写回包**，socket 必须靠 `--timeout` 兜底
+    - **消费规则**：客户端必须对 `type` 做白名单校验，不要直接发送外部传入的 `type`
+
+---
+
+## 异常抛出行为总览 / Exception Throwing Matrix（v16）
+
+> 服务端在三类异常下的回包形态**不统一**——客户端必须按异常类别分别解析。
+
+| 异常类别 | 触发示例 | 回包信封 | `result` | `log` 前缀 | 挂死？ |
+|---|---|---|---|---|---|
+| **JSON 解析错** | `this is not json` / `{"x"` / 空载荷 | **裸字符串**（非 action_result） | —— | `Error in JSON data: Syntax error...` / `Unexpected end of string` | ❌ |
+| **Schema 字段缺失** | `{}` / `{"action_id":"x"}` / `null` | 裸字符串 | —— | `An item with the identifier 'X' was not found.` | ❌ |
+| **Schema 字段类型错** | `{"type":123,...}` | 裸字符串 | —— | `Illegal data type: 'string' or compatible type expected.` | ❌ |
+| **未知 `type` 值** | `{"type":"unknown_xxx",...}` | **不回包** | —— | —— | ✅ **挂死到 timeout**（Quirk #13） |
+| **SimTalk 编译错** | `var x:integer := 1/0`（常量折叠） | action_result | `failed` | ` hasError ： ...` | ❌ |
+| **SimTalk 运行时异常**（用户主动设计的"软失败"） | `print nonExistentSymbol` / `simtalk_run` 无 `simtalk_code` | action_result | `success` | `code execute failed. error msg:...` 或 `There is no calling method in which the thrown runtime error can be raised.` | ❌ |
+
+**客户端应对策略**：
+
+1. **JSON 解析错 / Schema 字段错 / 类型错**：服务端返回**裸字符串**（不是 JSON），客户端要做非 JSON fallback——例如先尝试 `json.loads`，失败则直接显示原始文本。
+2. **未知 type 值**：客户端必须**在发送前**做白名单校验，不要让请求离开客户端。
+3. **SimTalk 编译错**：服务端正常返回 `action_result` + `result:"failed"`，按 §"通用成功判据" 的 simtalk_syntax 路径处理。
+4. **SimTalk 运行时异常**：服务端**软失败**——`result:"success"` + `log` 含 `"code execute failed"`。客户端必须用 §6 双判据检查。这是用户主动设计（v9 R11 验证），**不要建议服务端"修复"**。
+5. **服务端进程稳定性**：v16 验证——16 次坏 JSON 风暴后服务端进程健在（ping 和合法 simtalk_run 均正常）。**唯一会让服务端无法响应新请求**的场景是 Quirk #13（未知 type）。
+
+> 完整测试矩阵见 `log/test-session-20260825-v16.md` §7。
 

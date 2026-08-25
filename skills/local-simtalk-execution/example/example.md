@@ -6,13 +6,13 @@
 
 ## 2. Setup (must read first)
 
-| Item | Value | Source |
-|---|---|---|
-| Server | Plant Simulation host, TCP **50007** | v1 |
-| Address from WSL2 container | **`host.docker.internal:50007`** — `127.0.0.1` / `localhost` fail with `ConnectionRefusedError` (they reach the container itself) | v1 T0 |
-| Request terminator | append `\|\|END\|\|` | v2 |
-| **Response framing** | **must** use `--resp-mode delimiter --resp-delimiter '\|\|END\|\|'` | v2 T4 |
-| `eof` mode | **never works** — server doesn't close, so `eof` always times out | v2 T4 |
+> **所有"必须 / 禁止 / 会挂死"的铁律集中在 `references/lifelines.md`**，包括：
+> - WSL2 容器连接目标（`host.docker.internal:50007`，详见 `lifelines.md` §1）
+> - 回复分帧必须用 `--resp-mode delimiter --resp-delimiter '||END||'`（详见 `lifelines.md` §2）
+> - `type` 字段白名单（未知 type 静默挂死——Quirk #13，详见 `lifelines.md` §3）
+> - 模态陷阱（`prompt` / `infoBox` / 写未声明 attr，详见 `lifelines.md` §4）
+> - 当前 readlog 状态（v15+ 已回归 v12，详见 `lifelines.md` §5）
+> - 成功判据（Quirk #6 / #7，详见 `lifelines.md` §6）
 
 All examples below use delimiter framing.
 
@@ -192,7 +192,7 @@ These produce **no reply** (modal dialog blocks the GUI thread). Confirmed by v3
 |---|---|---|
 | `prompt("...")` or `infoBox("...")` inside `simtalk_run` | Pops modal dialog waiting for click | Use `print` instead |
 | `MyAttr := X` for a global attribute that **doesn't exist yet** | Plant Simulation asks "create this attribute?" in a modal | Use local `var`, or pre-create the attribute in the GUI |
-| Forgetting `--resp-mode delimiter --resp-delimiter '\|\|END\|\|'` | `eof` mode never returns (server doesn't close) | Always pass delimiter framing |
+| Forgetting `--resp-mode delimiter --resp-delimiter '\|\|END\|\|'` | `eof` mode never returns (server doesn't close) | Always pass delimiter framing — see `references/lifelines.md` §2 |
 
 `simtalk_syntax` will accept `prompt(...)` / `infoBox(...)` / `NewAttr := X` happily — the trap only fires when the code is **run**.
 
