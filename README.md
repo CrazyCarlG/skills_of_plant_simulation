@@ -1,33 +1,33 @@
 # skills_of_plant_simulation
 
-Plant Simulation（Siemens Tecnomatix）的 **Claude Code / OpenClaude 技能集**。以技能（Skill）形式封装仿真建模、模型逆向解析、SimTalk 编程、对象查询等能力，并复用 [knowledge_of_plant_simulation](https://github.com/CrazyCarlG/knowledge_of_plant_simulation) 知识库作为权威数据源。
+Plant Simulation（Siemens Tecnomatix）的 **Claude Code / OpenClaude 技能集**。以技能（Skill）形式封装「本地 SimTalk 执行、OS 函数速查、模型结构抽取」等能力，通过 TCP 驱动一台正在运行的 Plant Simulation 进程拿到真实执行结果，并复用 [knowledge_of_plant_simulation](https://github.com/CrazyCarlG/knowledge_of_plant_simulation) 知识库作为权威数据源。
 
-> A collection of **Claude Code / OpenClaude skills** for Siemens Tecnomatix Plant Simulation.
+> A collection of **Claude Code / OpenClaude skills** for Siemens Tecnomatix Plant Simulation — local SimTalk execution, OS-function reference, and model-structure extraction.
 
 ## 目录结构 / Directory Structure
 
 ```
 skills_of_plant_simulation/
-├── 01-plantsimulation-knowledge/   # [子模块] 知识库（帮助文档 Markdown + PDF→MD 工具链）
-├── skills/                         # 技能集（每个技能一个目录）
-│   ├── psfm-reverse-engineering/   # PSFM 模型逆向解析
-│   ├── simtalk-programming/        # SimTalk 编程助手
-│   ├── ps-object-reference/        # 对象/API 速查
-│   └── ps-modeling-guide/          # 建模实操指南
+├── 01-plantsimulation-knowledge/      # [子模块] 知识库（帮助文档 Markdown + PDF→MD 工具链）
+├── skills/                            # 技能集（每个技能一个目录）
+│   ├── local-simtalk-execution/       # 本地 SimTalk 执行（TCP 客户端）
+│   ├── local-simtalk-os-functions/    # SimTalk OS 函数参考与实测
+│   └── local-simtall-get-folder-tree/ # 模型对象层级抽取为 JSON 树
 ├── docs/
-│   └── skill-authoring.md          # 技能编写规范
+│   └── skill-authoring.md             # 技能编写规范
 └── scripts/
-    └── link-skills.sh              # 将技能软链到 ~/.claude/skills/
+    └── link-skills.sh                 # 将技能软链到 ~/.claude/skills/
 ```
 
 ## 技能清单 / Skills
 
 | 技能 Skill | 用途 Description |
 |---|---|
-| `psfm-reverse-engineering` | 解析 `.psfm`/`.spp` 模型，提取结构、类层次、建模思路、SimTalk 代码，生成解析报告 |
-| `simtalk-programming` | 编写、修改、调试 SimTalk 代码 |
-| `ps-object-reference` | 查询对象属性、方法、用法 |
-| `ps-modeling-guide` | 从零搭建仿真模型的实操指南 |
+| `local-simtalk-execution` | 通过 TCP 连接在本机/局域网 Plant Simulation 进程中执行 SimTalk 代码（语法检查、方法调用、对象查询、模型运行、异常诊断），拿回真实执行结果 |
+| `local-simtalk-os-functions` | 20 个 SimTalk 预定义操作系统函数（内存 / 进程 / 目录 / 环境变量 / 注册表 / 文件 / 剪贴板 / 外部进程 / 系统命令等）的参考与本地实测助手 |
+| `local-simtall-get-folder-tree` | 把当前加载到 Plant Simulation 的模型（`.current`）对象层级（Frame / Folder / 物料流 / Method / Variable）抽取为结构化 JSON 树 |
+
+> 三个技能相互配合：`local-simtalk-os-functions` 与 `local-simtall-get-folder-tree` 都复用 `local-simtalk-execution` 的 TCP 通道；所有「会挂死」的硬规则统一维护在 `local-simtalk-execution/references/lifelines.md`。
 
 ## 安装与使用 / Install & Use
 
