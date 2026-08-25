@@ -9,6 +9,14 @@
 | v14 | 2026-08-25 | 20 个 OS 函数全量实测（借助 v13 readlog 修复拿 print 实际值） | 16 PASS + 1 FAIL（sleep Method-only）+ 3 SKIP（模态）= 20/20 覆盖 | `local-simtalk-execution/log/test-session-20260825-v14.md` |
 | v15 | 2026-08-25 | **本 skill 自身测试**：抽样 7 个 recipe 验证文档与实测一致 | 7/7 一致（100%） | `local-simtalk-os-functions/log/test-session-20260825-v15-skill-test.md` |
 | v16 | 2026-08-25 | **v17 高层封装下全量重测 20 函数** + 3 项新发现（`.dim` vs `.length`、list 字面量赋、sleep 行数无关） | 16 PASS + 1 FAIL + 3 SKIP 不变；20/20 与 v14 一致 | `local-simtalk-os-functions/log/test-session-20260825-v16.md` |
+| v17 | 2026-08-25 | **v16 三大发现回归 + 4 项新探测**（simtalk_syntax 不抓 runtime symbol / list literal / sleep；getFilesOfFolder 空匹配 fail-soft） | v16 三发现全回归通过；新发现影响工作流文档 | `local-simtalk-os-functions/log/test-session-20260825-v17.md` |
+
+### v17 关键发现 / v17 Highlights
+
+1. **`simtalk_syntax` 阶段覆盖范围比预想更窄** —— 它只挡 parse-level / 编译期常量表达式错误（`1/0`、括号不匹配、关键字错），**不挡** runtime symbol resolution 类的错误：`.length` / list 字面量赋值 / `sleep` 在 formula 上下文全部以 `result=has no Error` 通过 syntax，必须 `simtalk_run` 的双重判据抓。
+2. **`getFilesOfFolder` 在无匹配时 fail-soft** —— `getFilesOfFolder("C:\\__NOSUCH__\\*.zzz")` 返回 success（推测 `l.dim = 0`），不抛错。脚本取索引前要自查 `l.dim > 0`。
+
+详见 `test-session-20260825-v17.md`。
 
 ### v16 关键发现 / v16 Highlights
 
@@ -60,6 +68,7 @@ test-session-YYYYMMDD-v<N>-<description>.md
 ## 引用日志 / Cross-references
 
 - v15（本 skill 测试）：`local-simtalk-os-functions/log/test-session-20260825-v15-skill-test.md`
+- v17（回归 v16 三大发现 + 4 新探测）：`local-simtalk-os-functions/log/test-session-20260825-v17.md`
 - v13 readlog 修复：`local-simtalk-execution/log/test-session-20260825-v13.md`
 - v12 readlog bug 发现：`local-simtalk-execution/log/test-session-20260825-v12.md`（已废弃，保留作历史快照）
 - 协议基础：`local-simtalk-execution/references/message-schema.md` / `code-templates.md`
