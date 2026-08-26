@@ -136,7 +136,7 @@ Simulation — see Quirk #1 below.
    fails — the path is wrong or not loaded.
 2. **Read current `program`** — store in `before`. This is your rollback
    target.
-3. **Backup** — write `before` to `log/<path-sanitized>_original.txt`.
+3. **Backup** — write `before` to `code_log/<path-sanitized>_original.txt`.
    Mandatory before any write.
 4. **Compose the new program** — concatenate `before` with the new
    comment lines using `chr(10)` separators.
@@ -214,7 +214,7 @@ python3 scripts/add_note.py \
 
 # Restore the original program (un-do a previous edit)
 python3 scripts/add_note.py --restore \
-    --backup log/ctu_frame_program_original.txt \
+    --backup code_log/ctu_frame_program_original.txt \
     --path .CTU.Frame.Program
 ```
 
@@ -224,7 +224,7 @@ python3 scripts/add_note.py --restore \
 |---|---|---|
 | 1 | Use `chr(10)` for real newlines, not `"\n"` | Plant Simulation string literals interpret `"\n"` as two chars (`\` + `n`); only `chr(10)` produces a real line break |
 | 2 | Always read `program` before writing — store in `before` | Without `before`, you cannot roll back |
-| 3 | Write `before` to `log/<sanitized-path>_original.txt` before any mutation | Disk backup survives process restarts; in-memory only is not enough |
+| 3 | Write `before` to `code_log/<sanitized-path>_original.txt` before any mutation | Disk backup survives process restarts; in-memory only is not enough |
 | 4 | `internalclasstype` must equal `"Method"` | Other object types may not have a writable `program` attribute |
 | 5 | `simtalk_run` `result:"success"` with `log:"code execute failed..."` = soft failure | Double-check both fields (Quirk #7 from `local-simtalk-execution`) |
 | 6 | After every write, read `obj.program` back | Socket never carries the value — `print + readlog` is the only feedback path |

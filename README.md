@@ -13,6 +13,8 @@ skills_of_plant_simulation/
 │   ├── local-simtalk-execution/       # 本地 SimTalk 执行（TCP 客户端）
 │   ├── local-simtalk-os-functions/    # SimTalk OS 函数参考与实测
 │   └── local-simtall-get-folder-tree/ # 模型对象层级抽取为 JSON 树
+├── agents/                            # Agent 定义（由 Agent 工具以 subagent_type 调用）
+│   └── plant-simulation-expert.md     #  Plant Simulation 专家 agent —— 选技能 + 用知识库 + 写 usage_log
 ├── docs/
 │   └── skill-authoring.md             # 技能编写规范
 └── scripts/
@@ -29,17 +31,70 @@ skills_of_plant_simulation/
 
 > 三个技能相互配合：`local-simtalk-os-functions` 与 `local-simtall-get-folder-tree` 都复用 `local-simtalk-execution` 的 TCP 通道；所有「会挂死」的硬规则统一维护在 `local-simtalk-execution/references/lifelines.md`。
 
+## Agent / Agent 列表
+
+| Agent `subagent_type` | 用途 Description | 文件 |
+|---|---|---|
+| `plant-simulation-expert` | Plant Simulation / SimTalk / 模型操作领域专家：根据请求挑技能、调用 `skills/` 下的对应能力、对接 `01-plantsimulation-knowledge/` 知识库，并在每次技能调用后把全过程记入 `skills/<skill>/usage_log/` | [`agents/plant-simulation-expert.md`](agents/plant-simulation-expert.md) |
+
+调用示例：
+
+```text
+Agent(
+  subagent_type: "plant-simulation-expert",
+  description: "<任务简述>",
+  prompt: "<具体任务>"
+)
+```
+
 ## 安装与使用 / Install & Use
+
+### 一键安装 / One-shot Install
 
 ```bash
 # 克隆（含子模块）/ Clone with submodule
 git clone --recurse-submodules <repo-url>
 # 已有仓库补拉子模块 / For an existing clone, fetch the submodule
 git submodule update --init --recursive
+cd skills_of_plant_simulation
 
-# 把技能软链到用户技能目录（可选）/ Optionally symlink skills into the user skills dir
-bash scripts/link-skills.sh
+# 一键把 skills + agents 软链到用户级目录（推荐）
+# Symlink everything (skills + agents) into user-level dirs (recommended)
+bash scripts/install.sh
+
+# 仅装 skills / skills only
+bash scripts/install.sh --skills-only
+
+# 仅装 agents / agents only
+bash scripts/install.sh --agents-only
+
+# 卸载（只删除本脚本创建的符号链接，不会删真实文件）
+# Uninstall (removes symlinks only, never touches real files)
+bash scripts/install.sh --unlink
 ```
+
+### 分步安装 / Manual Install
+
+```bash
+# 只软链 skills
+bash scripts/link-skills.sh
+
+# 只软链 agents
+bash scripts/link-agents.sh
+
+# 卸载对应链接
+bash scripts/link-skills.sh --unlink
+bash scripts/link-agents.sh --unlink
+```
+
+### 目标目录 / Target Dirs
+
+| 资源 | 默认目标 | 覆盖环境变量 |
+|---|---|---|
+| skills | `~/.claude/skills/` | `OPENCLAUDE_SKILLS_DIR` |
+| agents | `~/.openclaude/agents/`（若 `~/.openclaude` 不存在则退到 `~/.claude/agents/`） | `OPENCLAUDE_AGENTS_DIR` |
+
+> 安装器**只创建符号链接**，不会复制 / 移动任何源文件——仓库更新后下次 `Skill` / `Agent` 调用自动看到最新内容。但请保持仓库目录结构不被移动，否则相对路径（`01-plantsimulation-knowledge/...`）会断裂。
 
 ## 路径约定 / Path Convention
 

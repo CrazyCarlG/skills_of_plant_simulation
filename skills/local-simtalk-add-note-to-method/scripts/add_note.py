@@ -36,7 +36,7 @@ Usage:
 
   # Restore from a backup file
   python3 scripts/add_note.py --path .CTU.Frame.Program \\
-      --backup log/ctu_frame_program_original.txt
+      --backup code_log/ctu_frame_program_original.txt
 """
 
 import argparse
@@ -159,7 +159,7 @@ def main():
                          "or space-separated after the flag)")
     ap.add_argument("--backup", default=None,
                     help="Path to a backup file. Used by --restore. "
-                         "Defaults to log/<sanitized-path>_program_original.txt")
+                         "Defaults to code_log/<sanitized-path>_program_original.txt")
     ap.add_argument("--confirm", action="store_true",
                     help="Required for --mode replace (otherwise refuses)")
     ap.add_argument("--restore", action="store_true",
@@ -176,7 +176,7 @@ def main():
 
     # Resolve default backup path
     if args.backup is None:
-        log_dir = os.path.join(SKILL_DIR, "log")
+        log_dir = os.path.join(SKILL_DIR, "code_log")
         os.makedirs(log_dir, exist_ok=True)
         args.backup = os.path.join(log_dir, path_to_backup_name(args.path))
 

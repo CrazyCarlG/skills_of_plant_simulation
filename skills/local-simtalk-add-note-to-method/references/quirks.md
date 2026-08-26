@@ -214,9 +214,9 @@ but the on-disk source lives elsewhere).
 implicitly save the pre-edit `program` anywhere.
 
 **Workaround.** Always run the `read` step first and save its output to
-a timestamped file under `log/`. The skill's CLI helper does this
+a timestamped file under `code_log/`. The skill's CLI helper does this
 automatically (`--backup` defaults to
-`log/<sanitized-path>_program_original.txt`).
+`code_log/<sanitized-path>_program_original.txt`).
 
 ## Q11 — Decoration lines in a NOTE block trip the SimTalk lexer
 

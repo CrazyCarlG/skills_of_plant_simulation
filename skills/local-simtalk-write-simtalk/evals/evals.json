@@ -1,0 +1,26 @@
+{
+  "skill_name": "local-simtalk-write-simtalk",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "write-into-existing-method-cn",
+      "prompt": "我想在 .CTU.Frame.Program 这个 method 里加一段 simtalk，要求：每次调用时打印字符串 \"frame entered\"，然后把 self.i 自增 1。写好后告诉我写入了多少行，路径是什么。",
+      "expected_output": "Skill应：(1) 读Plant Simulation知识库(Method对象/SimTalk语法) (2) 确认目标Frame=.CTU.Frame (3) 因为是已有方法,跳过创建,直接调用scripts/write_simtalk.py --path .CTU.Frame.Program --code-file <tmp>. 输出应包含'Method path : .CTU.Frame.Program (existing)'和'N lines'。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "create-new-method-then-write-en",
+      "prompt": "Add a brand-new Method named `count_parts` under `.Models.Model`. Default parent class `.InformationFlow.Method`. The code should count current MUs in the system and print the total. Verify it actually got created and the code compiles.",
+      "expected_output": "Skill应：(1) 读知识库(getMUs, list.length, print) (2) 确认Frame=.Models.Model (3) 走Step 5创建+Step 7写代码 (4) 调用scripts/write_simtalk.py --frame .Models.Model --new-method count_parts --code-file <tmp>。输出应含'creating new Method instance'、'new Method resolves; internalclasstype OK'、'writing N lines'和'verify method executes OK after edit'。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "eval_name": "custom-parent-class-cn",
+      "prompt": "我有个自定义 Method 父类 `.UserObjects.LoggingMethod`，它继承自 InformationFlow.Method，带一个 LogLevel 用户属性。现在请在 `.Models.Model` 下新建一个 method 叫 `log_warn`，父类指定为 `.UserObjects.LoggingMethod`，代码内容是：检查 @.LogLevel >= 2 时打印 \"[WARN] \" + 传入的字符串参数。注意 param 写法。",
+      "expected_output": "Skill应：(1) 读知识库 (2) 确认Frame=.Models.Model (3) 走Step 5创建（自定义父类）+Step 7写代码 (4) 调用scripts/write_simtalk.py --frame .Models.Model --new-method log_warn --parent-class .UserObjects.LoggingMethod --code-file <tmp>。源代码中应有'param msg: string'、'if @.LogLevel < 2 then return'、'print \"[WARN] \" + msg'等关键逻辑。",
+      "files": []
+    }
+  ]
+}
