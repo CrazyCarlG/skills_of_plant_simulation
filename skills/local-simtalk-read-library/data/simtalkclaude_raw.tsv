@@ -1,0 +1,500 @@
+.SimtalkClaude.Objects.Method	Method	Method	false	false	0	0	
+.SimtalkClaude.connection.SocketClient.m_authback	m_authback	Method	false	false	0	207	param j:json
+--{\"type\":\"auth\",\"status\": \"ok\", \"session_id\": state.session_id}
+var status :=j[\"status\"]
+if status = \"ok\
+\tsession_id := j[\"session_id\"]
+\treturn
+else
+\tMySocket.On := false
+end
+.SimtalkClaude.connection.SocketClient.m_disconnect	m_disconnect	Method	false	false	0	40	MySocket.On := false
+print \"Disconnect\
+.SimtalkClaude.connection.SocketClient.m_openconnection	m_openconnection	Method	false	false	0	426	
+
+if  MySocket.On  = false
+\t-- 激活Socket连接
+\tauth_success := false
+\tsession_id:=\"\
+\tMySocket.TCP := true
+
+
+\tvar client: object := MySocket
+\t-- 1. 作为客户端：取消 ServerSocket
+\tclient.ServerSocket := false
+\tclient.TCP := true
+\tclient.Host := \"8.137.98.145\"   -- 替换为目标服务器 IP
+\tclient.ClientPort := 50001        -- 本地未被占用的端口（1025–32025）
+\tprint \"Connecting Server\
+\tMySocket.On := true
+\tprint \"Authrizing\
+\tm_sendauth
+end
+.SimtalkClaude.connection.SocketClient.m_recieve	m_recieve	Method	false	false	0	295	param channelNo: integer, message: string -- TCP
+-- param ip: string, message: string -- UDP
+print(message)
+var j: json
+j.parse(message)
+var type := j[\"type\"]
+switch type
+case \"auth\
+\tm_authback(j)
+case \"action\
+\tcurrent.~.simtalkaction.get_simtalk_hasError(j)
+case \"response\
+\tdebug
+end
+.SimtalkClaude.connection.SocketClient.m_send	m_send	Method	false	false	0	248	param jsondata:json
+-- 转换为字符串（无换行格式）
+var msgStr: string := jsondata.asString(false) + \"||END||\
+
+var success: boolean := MySocket.write(1,msgStr)
+if success
+    print msgStr ,\" Sent successfully\
+else
+    print msgStr ,\" Failed to send JSON\
+end
+.SimtalkClaude.connection.SocketClient.m_sendauth	m_sendauth	Method	false	false	0	424	-- 获取当前Unix时间戳（毫秒级精度）
+-- Unix epoch: 1970-01-01 00:00:00
+var epoch: dateTime := str_to_dateTime(\"01.01.1970 00:00:00\")
+var now: dateTime := sysDate
+
+-- dateTime相减得到real类型的秒数
+var diffSeconds: real := now - epoch
+
+-- 转换为整数（毫秒）
+var tsMillis: integer := round(diffSeconds * 1000)
+
+
+-- 转换为整数（秒）
+var tsSeconds: integer := round(diffSeconds)
+
+
+auth[\"token\"] := token
+auth[\"ts\"] :=  tsSeconds
+auth[\"sig\"] := sig
+m_send(auth)
+.SimtalkClaude.connection.SocketServer.m_callback	m_callback	Method	false	false	0	513	param channelNo: integer, message: string -- TCP
+-- param ip: string, message: string -- UDP
+message := regex_replace(message, \"\\|\\|END\\|\\|\", \"\");
+var j: json
+j.parse(message)
+var type := j[\"type\"]
+
+switch type
+case \"ping\
+\tm_send(ping_reply)
+case \"simtalk_syntax\
+\tcurrent.~.simtalkaction.&get_simtalk_hasError.executenewcallchain(j)
+case \"simtalk_run\
+\tcurrent.~.simtalkaction.&Run_Simutalk.executenewcallchain(j)
+case \"readlog\
+\tcurrent.~.simtalkaction.&ReadLogFile.executenewcallchain(j)
+end
+.SimtalkClaude.connection.SocketServer.m_send	m_send	Method	false	false	0	129	param jsondata:json
+
+var msgStr: string := jsondata.asString(false) + \"||END||\
+var success: boolean := MySocket.write(0,msgStr)
+.SimtalkClaude.connection.SocketServer.m_str_send	m_str_send	Method	false	false	0	99	param msgStr:string
+
+ msgStr := msgStr+ \"||END||\
+var success: boolean := MySocket.write(0,msgStr)
+.SimtalkClaude.connection.socketcallback	socketcallback	Method	false	false	0	0	
+.SimtalkClaude.main.SimtalkAction.ErrorHandler	ErrorHandler	Method	false	false	0	335	-- 这个方法挂在 Method 对象的 ErrorHandler 属性上
+param byref error: string, method_path: string, line_number: integer -> any
+if error = \"Division by zero.\
+\terror := \"\"            // 把 error 置为空字符串 = \"已捕获该错误\
+\treturn 1e300            // 给调用方返回一个合理值
+end
+-- 其它未预期的错误：改写错误信息后继续向上抛
+error := \"error in \" + method_path + \": \" + error
+return 0
+.SimtalkClaude.main.SimtalkAction.Method	Method	Method	false	false	0	11	print basis
+.SimtalkClaude.main.SimtalkAction.ReadLogFile	ReadLogFile	Method	false	false	0	431	param action:json
+//构造回复\"action_id\
+if not action.contains(\"action_id\") then throwRuntimeError(\"invalid json,mission action_id\") end
+action_result[\"type\"] \t\t:= action[\"type\"]
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+action_result[\"log\"] \t\t:= a_readlog
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+.SimtalkClaude.main.SimtalkAction.Run_Simutalk	Run_Simutalk	Method	false	false	1	764	param action:json
+//构造回复\"action_id\
+
+action_result[\"type\"] \t\t:= action[\"type\"]
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+var simtalk\t\t\t\t\t:= action[\"simtalk_code\"]
+print \"execute sim-code: '\" + strCopy(simtalk, 1, 20) +\"......'\
+action_result[\"log\"] \t\t:= simtalk_hasError(simtalk)
+var syntax_result := action_result[\"result\"]
+if syntax_result = \"success\
+
+\taction_result[\"log\"] := simtalk_execute
+\tvar run_result := action_result[\"result\"]
+\tif run_result = \"success\
+\t\taction_result[\"result\"] := \"success\
+\telse
+\t\taction_result[\"result\"] := \"failed\
+\tend
+end
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+.SimtalkClaude.main.SimtalkAction.a_readlog	a_readlog	Method	false	false	0	505	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+
+-- 1) 清空 Console 窗口显示
+clearConsole
+
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
+
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole
+.SimtalkClaude.main.SimtalkAction.get_simtalk_hasError	get_simtalk_hasError	Method	false	false	0	562	param action:json
+//构造回复\"action_id\
+
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+var simtalk\t\t\t\t\t:= action[\"simtalk_code\"]
+var code_synax \t\t\t\t:= simtalk_hasError(simtalk)
+action_result[\"result\"] := code_synax
+action_result[\"type\"] \t\t:= action[\"type\"]
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+action_result[\"type\"] := \"\
+action_result[\"action_id\"] := \"\
+action_result[\"result\"] := \"\
+action_result[\"log\"] := \"\
+.SimtalkClaude.main.SimtalkAction.m_getlog	m_getlog	Method	false	false	0	378	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+.SimtalkClaude.main.SimtalkAction.simtalk_execute	simtalk_execute	Method	false	false	1	281	->string
+// execute code and get result
+executeSilent(&simtalkcode.program)
+var errMsg := getExecuteSilentError
+var code := &simtalkcode.program
+if errMsg /= \"\
+
+
+\treturn  \"code execute failed. error msg:\"+errMsg+\", in code '\"+Code+\"'\
+else
+
+\treturn  \"execute success\
+end
+.SimtalkClaude.main.SimtalkAction.simtalk_hasError	simtalk_hasError	Method	false	false	0	384	param code:string -> string
+//check if any error in code
+&simtalkcode.program := code
+var errMsg : string
+var errLine : integer
+var hasError := &simtalkcode.hasSyntaxError(errMsg, errLine)
+if hasError
+\taction_result[\"result\"] := \"failed\
+    return \" hasError ： \"+ errMsg+ \" (in row :\"+errLine+\")\
+
+else
+\taction_result[\"result\"] := \"success\
+\treturn  \"has no Error\
+end
+.SimtalkClaude.main.SimtalkAction.simtalkcode	simtalkcode	Method	false	false	0	561	var o: object := str_to_obj(\".SimtalkClaude.main.SimtalkAction.simtalkcode\")
+print \"###PROBE_BEGIN###\
+if o = void
+  print \"VOID=true\
+  print \"PATH=.SimtalkClaude.main.SimtalkAction.simtalkcode\
+else
+  print \"NAME=\" + o.Name
+  print \"TYPE=\" + o.InternalClassType
+  print \"ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###PROBE_BODY###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###PROBE_END###\
+end
+.SimtalkClaude.main.SocketClient.m_authback	m_authback	Method	false	false	0	207	param j:json
+--{\"type\":\"auth\",\"status\": \"ok\", \"session_id\": state.session_id}
+var status :=j[\"status\"]
+if status = \"ok\
+\tsession_id := j[\"session_id\"]
+\treturn
+else
+\tMySocket.On := false
+end
+.SimtalkClaude.main.SocketClient.m_disconnect	m_disconnect	Method	false	false	0	40	MySocket.On := false
+print \"Disconnect\
+.SimtalkClaude.main.SocketClient.m_openconnection	m_openconnection	Method	false	false	0	426	
+
+if  MySocket.On  = false
+\t-- 激活Socket连接
+\tauth_success := false
+\tsession_id:=\"\
+\tMySocket.TCP := true
+
+
+\tvar client: object := MySocket
+\t-- 1. 作为客户端：取消 ServerSocket
+\tclient.ServerSocket := false
+\tclient.TCP := true
+\tclient.Host := \"8.137.98.145\"   -- 替换为目标服务器 IP
+\tclient.ClientPort := 50001        -- 本地未被占用的端口（1025–32025）
+\tprint \"Connecting Server\
+\tMySocket.On := true
+\tprint \"Authrizing\
+\tm_sendauth
+end
+.SimtalkClaude.main.SocketClient.m_recieve	m_recieve	Method	false	false	0	295	param channelNo: integer, message: string -- TCP
+-- param ip: string, message: string -- UDP
+print(message)
+var j: json
+j.parse(message)
+var type := j[\"type\"]
+switch type
+case \"auth\
+\tm_authback(j)
+case \"action\
+\tcurrent.~.simtalkaction.get_simtalk_hasError(j)
+case \"response\
+\tdebug
+end
+.SimtalkClaude.main.SocketClient.m_send	m_send	Method	false	false	0	248	param jsondata:json
+-- 转换为字符串（无换行格式）
+var msgStr: string := jsondata.asString(false) + \"||END||\
+
+var success: boolean := MySocket.write(1,msgStr)
+if success
+    print msgStr ,\" Sent successfully\
+else
+    print msgStr ,\" Failed to send JSON\
+end
+.SimtalkClaude.main.SocketClient.m_sendauth	m_sendauth	Method	false	false	0	424	-- 获取当前Unix时间戳（毫秒级精度）
+-- Unix epoch: 1970-01-01 00:00:00
+var epoch: dateTime := str_to_dateTime(\"01.01.1970 00:00:00\")
+var now: dateTime := sysDate
+
+-- dateTime相减得到real类型的秒数
+var diffSeconds: real := now - epoch
+
+-- 转换为整数（毫秒）
+var tsMillis: integer := round(diffSeconds * 1000)
+
+
+-- 转换为整数（秒）
+var tsSeconds: integer := round(diffSeconds)
+
+
+auth[\"token\"] := token
+auth[\"ts\"] :=  tsSeconds
+auth[\"sig\"] := sig
+m_send(auth)
+.SimtalkClaude.main.SocketServer.m_callback	m_callback	Method	false	false	0	513	param channelNo: integer, message: string -- TCP
+-- param ip: string, message: string -- UDP
+message := regex_replace(message, \"\\|\\|END\\|\\|\", \"\");
+var j: json
+j.parse(message)
+var type := j[\"type\"]
+
+switch type
+case \"ping\
+\tm_send(ping_reply)
+case \"simtalk_syntax\
+\tcurrent.~.simtalkaction.&get_simtalk_hasError.executenewcallchain(j)
+case \"simtalk_run\
+\tcurrent.~.simtalkaction.&Run_Simutalk.executenewcallchain(j)
+case \"readlog\
+\tcurrent.~.simtalkaction.&ReadLogFile.executenewcallchain(j)
+end
+.SimtalkClaude.main.SocketServer.m_send	m_send	Method	false	false	0	129	param jsondata:json
+
+var msgStr: string := jsondata.asString(false) + \"||END||\
+var success: boolean := MySocket.write(0,msgStr)
+.SimtalkClaude.main.SocketServer.m_str_send	m_str_send	Method	false	false	0	99	param msgStr:string
+
+ msgStr := msgStr+ \"||END||\
+var success: boolean := MySocket.write(0,msgStr)
+.SimtalkClaude.src.ErrorHandler	ErrorHandler	Method	false	false	0	335	-- 这个方法挂在 Method 对象的 ErrorHandler 属性上
+param byref error: string, method_path: string, line_number: integer -> any
+if error = \"Division by zero.\
+\terror := \"\"            // 把 error 置为空字符串 = \"已捕获该错误\
+\treturn 1e300            // 给调用方返回一个合理值
+end
+-- 其它未预期的错误：改写错误信息后继续向上抛
+error := \"error in \" + method_path + \": \" + error
+return 0
+.SimtalkClaude.src.SimtalkAction.ErrorHandler	ErrorHandler	Method	false	false	0	335	-- 这个方法挂在 Method 对象的 ErrorHandler 属性上
+param byref error: string, method_path: string, line_number: integer -> any
+if error = \"Division by zero.\
+\terror := \"\"            // 把 error 置为空字符串 = \"已捕获该错误\
+\treturn 1e300            // 给调用方返回一个合理值
+end
+-- 其它未预期的错误：改写错误信息后继续向上抛
+error := \"error in \" + method_path + \": \" + error
+return 0
+.SimtalkClaude.src.SimtalkAction.Method	Method	Method	false	false	0	11	print basis
+.SimtalkClaude.src.SimtalkAction.ReadLogFile	ReadLogFile	Method	false	false	0	431	param action:json
+//构造回复\"action_id\
+if not action.contains(\"action_id\") then throwRuntimeError(\"invalid json,mission action_id\") end
+action_result[\"type\"] \t\t:= action[\"type\"]
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+action_result[\"log\"] \t\t:= a_readlog
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+.SimtalkClaude.src.SimtalkAction.Run_Simutalk	Run_Simutalk	Method	false	false	0	764	param action:json
+//构造回复\"action_id\
+
+action_result[\"type\"] \t\t:= action[\"type\"]
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+var simtalk\t\t\t\t\t:= action[\"simtalk_code\"]
+print \"execute sim-code: '\" + strCopy(simtalk, 1, 20) +\"......'\
+action_result[\"log\"] \t\t:= simtalk_hasError(simtalk)
+var syntax_result := action_result[\"result\"]
+if syntax_result = \"success\
+
+\taction_result[\"log\"] := simtalk_execute
+\tvar run_result := action_result[\"result\"]
+\tif run_result = \"success\
+\t\taction_result[\"result\"] := \"success\
+\telse
+\t\taction_result[\"result\"] := \"failed\
+\tend
+end
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+.SimtalkClaude.src.SimtalkAction.a_readlog	a_readlog	Method	false	false	0	505	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+
+-- 1) 清空 Console 窗口显示
+clearConsole
+
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
+
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole
+.SimtalkClaude.src.SimtalkAction.get_simtalk_hasError	get_simtalk_hasError	Method	false	false	0	562	param action:json
+//构造回复\"action_id\
+
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+var simtalk\t\t\t\t\t:= action[\"simtalk_code\"]
+var code_synax \t\t\t\t:= simtalk_hasError(simtalk)
+action_result[\"result\"] := code_synax
+action_result[\"type\"] \t\t:= action[\"type\"]
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+action_result[\"type\"] := \"\
+action_result[\"action_id\"] := \"\
+action_result[\"result\"] := \"\
+action_result[\"log\"] := \"\
+.SimtalkClaude.src.SimtalkAction.m_getlog	m_getlog	Method	false	false	0	378	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+.SimtalkClaude.src.SimtalkAction.simtalk_execute	simtalk_execute	Method	false	false	0	281	->string
+// execute code and get result
+executeSilent(&simtalkcode.program)
+var errMsg := getExecuteSilentError
+var code := &simtalkcode.program
+if errMsg /= \"\
+
+
+\treturn  \"code execute failed. error msg:\"+errMsg+\", in code '\"+Code+\"'\
+else
+
+\treturn  \"execute success\
+end
+.SimtalkClaude.src.SimtalkAction.simtalk_hasError	simtalk_hasError	Method	false	false	0	384	param code:string -> string
+//check if any error in code
+&simtalkcode.program := code
+var errMsg : string
+var errLine : integer
+var hasError := &simtalkcode.hasSyntaxError(errMsg, errLine)
+if hasError
+\taction_result[\"result\"] := \"failed\
+    return \" hasError ： \"+ errMsg+ \" (in row :\"+errLine+\")\
+
+else
+\taction_result[\"result\"] := \"success\
+\treturn  \"has no Error\
+end
+.SimtalkClaude.src.SimtalkAction.simtalkcode	simtalkcode	Method	false	false	0	22	var obj:=.createfodler
+.SimtalkClaude.src.autoexec	autoexec	Method	false	false	0	179	-- autoexec 方法体（必须放在 Class Library 中）
+-- 模型一打开就会自动执行
+
+-- 1) 清空 Console 窗口显示
+clearConsole
+
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
+
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole

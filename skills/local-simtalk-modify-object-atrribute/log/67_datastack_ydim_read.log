@@ -1,0 +1,3 @@
+  EXEC FAIL: result='success' log='code execute failed. error msg:Unknown identifier \'YDim\', in code \'var obj: object := str_to_obj(".InformationFlow.DataStack")\nif obj = void\n  print "###MARKER###"\n  print "ERR: str_to_obj returned void for path=.InformationFlow.DataStack"\n  print "###END###"\n  return\nend\nprint "###MARKER###"\nprint "YDim: " + to_str(obj.YDim)\nprint "###END###"\n\''
+
+=== .InformationFlow.DataStack.YDim (None) ===

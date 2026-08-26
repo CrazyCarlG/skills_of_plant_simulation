@@ -1,0 +1,12 @@
+.MaterialFlow.Station
+.MaterialFlow.Conveyor
+.MaterialFlow.Connector
+.MaterialFlow.Source
+.MaterialFlow.Buffer
+.Fluids.Tank
+.Fluids.Pipe
+.Resources.Worker
+.Resources.Workplace
+.InformationFlow.FileInterface
+.MUs.Part
+.UserObjects.MyFrame.Station

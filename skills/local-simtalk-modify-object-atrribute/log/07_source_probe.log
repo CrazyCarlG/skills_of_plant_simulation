@@ -1,0 +1,15 @@
+=== Probe Source.CreationTableActive:boolean ===
+  EXEC FAIL: result='failed' log=" hasError ： Syntax error near line 9 at 'boolean'. (in row :9)"
+
+=== .MaterialFlow.Source.CreationTableActive:boolean (None) ===
+
+=== Probe Source.Number:integer ===
+  EXEC FAIL: result='failed' log=" hasError ： Syntax error near line 9 at 'integer'. (in row :9)"
+
+=== .MaterialFlow.Source.Number:integer (None) ===
+
+=== Probe Source.GenerateAsBatch:boolean ===
+  EXEC FAIL: result='failed' log=" hasError ： Syntax error near line 9 at 'boolean'. (in row :9)"
+
+=== .MaterialFlow.Source.GenerateAsBatch:boolean (None) ===
+

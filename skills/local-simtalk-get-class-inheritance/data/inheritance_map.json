@@ -1,0 +1,633 @@
+{
+  "captured_at": "2026-08-26",
+  "total_classes": 65,
+  "root_classes": [
+    ".Fluids.ContinuousMixer",
+    ".Fluids.DePortioner",
+    ".Fluids.FluidDrain",
+    ".Fluids.FluidSource",
+    ".Fluids.Mixer",
+    ".Fluids.PatchMatrix",
+    ".Fluids.Pipe",
+    ".Fluids.Portioner",
+    ".Fluids.Tank",
+    ".InformationFlow.AttributeExplorer",
+    ".InformationFlow.DataQueue",
+    ".InformationFlow.DataStack",
+    ".InformationFlow.FileInterface",
+    ".InformationFlow.Generator",
+    ".InformationFlow.MQTT",
+    ".InformationFlow.TimeSequence",
+    ".InformationFlow.Trigger",
+    ".MUs.Container",
+    ".MUs.Part",
+    ".MUs.Transporter",
+    ".MaterialFlow.AngularConverter",
+    ".MaterialFlow.AssemblyStation",
+    ".MaterialFlow.Buffer",
+    ".MaterialFlow.Connector",
+    ".MaterialFlow.Converter",
+    ".MaterialFlow.Conveyor",
+    ".MaterialFlow.Cycle",
+    ".MaterialFlow.DismantleStation",
+    ".MaterialFlow.Drain",
+    ".MaterialFlow.EventController",
+    ".MaterialFlow.FlowControl",
+    ".MaterialFlow.Interface",
+    ".MaterialFlow.ParallelStation",
+    ".MaterialFlow.PickAndPlace",
+    ".MaterialFlow.Sorter",
+    ".MaterialFlow.Source",
+    ".MaterialFlow.Station",
+    ".MaterialFlow.Store",
+    ".MaterialFlow.Track",
+    ".MaterialFlow.Turnplate",
+    ".MaterialFlow.Turntable",
+    ".MaterialFlow.TwoLaneTrack",
+    ".Resources.AGVPool",
+    ".Resources.Broker",
+    ".Resources.Exporter",
+    ".Resources.FootPath",
+    ".Resources.LockoutZone",
+    ".Resources.Marker",
+    ".Resources.ShiftCalendar",
+    ".Resources.Worker",
+    ".Resources.WorkerPool",
+    ".Resources.Workplace",
+    ".Tools.ExperimentManager.BasicObjects.InformationFlow.FileInterface",
+    ".UserInterface.Checkbox",
+    ".UserInterface.CostAnalyzer",
+    ".UserInterface.Display",
+    ".UserInterface.DropDownList",
+    ".UserInterface.SankeyDiagram",
+    ".UserObjects.Box",
+    ".UserObjects.PartA",
+    ".UserObjects.PartB"
+  ],
+  "derived_classes": [
+    {
+      "path": ".Models.Model.EventController",
+      "name": "EventController",
+      "type": "EventController",
+      "origin": ".MaterialFlow.EventController",
+      "originroot": ".MaterialFlow.EventController",
+      "class": ".MaterialFlow.EventController"
+    },
+    {
+      "path": ".UserObjects.MyFrame.Connector",
+      "name": "Connector",
+      "type": "Connector",
+      "origin": ".MaterialFlow.Connector",
+      "originroot": ".MaterialFlow.Connector",
+      "class": ".MaterialFlow.Connector"
+    },
+    {
+      "path": ".UserObjects.MyFrame.Conveyor",
+      "name": "Conveyor",
+      "type": "Conveyor",
+      "origin": ".MaterialFlow.Conveyor",
+      "originroot": ".MaterialFlow.Conveyor",
+      "class": ".MaterialFlow.Conveyor"
+    },
+    {
+      "path": ".UserObjects.MyFrame.Station",
+      "name": "Station",
+      "type": "Station",
+      "origin": ".MaterialFlow.Station",
+      "originroot": ".MaterialFlow.Station",
+      "class": ".MaterialFlow.Station"
+    }
+  ],
+  "tree": {
+    ".MaterialFlow.Connector": [
+      {
+        "path": ".UserObjects.MyFrame.Connector",
+        "name": "Connector",
+        "type": "Connector",
+        "origin": ".MaterialFlow.Connector",
+        "originroot": ".MaterialFlow.Connector",
+        "class": ".MaterialFlow.Connector"
+      }
+    ],
+    ".MaterialFlow.Conveyor": [
+      {
+        "path": ".UserObjects.MyFrame.Conveyor",
+        "name": "Conveyor",
+        "type": "Conveyor",
+        "origin": ".MaterialFlow.Conveyor",
+        "originroot": ".MaterialFlow.Conveyor",
+        "class": ".MaterialFlow.Conveyor"
+      }
+    ],
+    ".MaterialFlow.EventController": [
+      {
+        "path": ".Models.Model.EventController",
+        "name": "EventController",
+        "type": "EventController",
+        "origin": ".MaterialFlow.EventController",
+        "originroot": ".MaterialFlow.EventController",
+        "class": ".MaterialFlow.EventController"
+      }
+    ],
+    ".MaterialFlow.Station": [
+      {
+        "path": ".UserObjects.MyFrame.Station",
+        "name": "Station",
+        "type": "Station",
+        "origin": ".MaterialFlow.Station",
+        "originroot": ".MaterialFlow.Station",
+        "class": ".MaterialFlow.Station"
+      }
+    ],
+    "VOID": [
+      {
+        "path": ".Fluids.ContinuousMixer",
+        "name": "ContinuousMixer",
+        "type": "ContinuousMixer",
+        "origin": "VOID",
+        "originroot": ".Fluids.ContinuousMixer",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.DePortioner",
+        "name": "DePortioner",
+        "type": "DePortioner",
+        "origin": "VOID",
+        "originroot": ".Fluids.DePortioner",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.FluidDrain",
+        "name": "FluidDrain",
+        "type": "FluidDrain",
+        "origin": "VOID",
+        "originroot": ".Fluids.FluidDrain",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.FluidSource",
+        "name": "FluidSource",
+        "type": "FluidSource",
+        "origin": "VOID",
+        "originroot": ".Fluids.FluidSource",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.Mixer",
+        "name": "Mixer",
+        "type": "Mixer",
+        "origin": "VOID",
+        "originroot": ".Fluids.Mixer",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.PatchMatrix",
+        "name": "PatchMatrix",
+        "type": "PatchMatrix",
+        "origin": "VOID",
+        "originroot": ".Fluids.PatchMatrix",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.Pipe",
+        "name": "Pipe",
+        "type": "Pipe",
+        "origin": "VOID",
+        "originroot": ".Fluids.Pipe",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.Portioner",
+        "name": "Portioner",
+        "type": "Portioner",
+        "origin": "VOID",
+        "originroot": ".Fluids.Portioner",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.Tank",
+        "name": "Tank",
+        "type": "Tank",
+        "origin": "VOID",
+        "originroot": ".Fluids.Tank",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.AttributeExplorer",
+        "name": "AttributeExplorer",
+        "type": "AttributeExplorer",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.AttributeExplorer",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.DataQueue",
+        "name": "DataQueue",
+        "type": "DataQueue",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.DataQueue",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.DataStack",
+        "name": "DataStack",
+        "type": "DataStack",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.DataStack",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.FileInterface",
+        "name": "FileInterface",
+        "type": "FileInterface",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.FileInterface",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.Generator",
+        "name": "Generator",
+        "type": "Generator",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.Generator",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.MQTT",
+        "name": "MQTT",
+        "type": "MQTT",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.MQTT",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.TimeSequence",
+        "name": "TimeSequence",
+        "type": "TimeSequence",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.TimeSequence",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.Trigger",
+        "name": "Trigger",
+        "type": "Trigger",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.Trigger",
+        "class": "VOID"
+      },
+      {
+        "path": ".MUs.Container",
+        "name": "Container",
+        "type": "Container",
+        "origin": "VOID",
+        "originroot": ".MUs.Container",
+        "class": "VOID"
+      },
+      {
+        "path": ".MUs.Part",
+        "name": "Part",
+        "type": "Part",
+        "origin": "VOID",
+        "originroot": ".MUs.Part",
+        "class": "VOID"
+      },
+      {
+        "path": ".MUs.Transporter",
+        "name": "Transporter",
+        "type": "Transporter",
+        "origin": "VOID",
+        "originroot": ".MUs.Transporter",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.AngularConverter",
+        "name": "AngularConverter",
+        "type": "AngularConverter",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.AngularConverter",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.AssemblyStation",
+        "name": "AssemblyStation",
+        "type": "AssemblyStation",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.AssemblyStation",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Buffer",
+        "name": "Buffer",
+        "type": "Buffer",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Buffer",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Connector",
+        "name": "Connector",
+        "type": "Connector",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Connector",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Converter",
+        "name": "Converter",
+        "type": "Converter",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Converter",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Conveyor",
+        "name": "Conveyor",
+        "type": "Conveyor",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Conveyor",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Cycle",
+        "name": "Cycle",
+        "type": "Cycle",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Cycle",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.DismantleStation",
+        "name": "DismantleStation",
+        "type": "DismantleStation",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.DismantleStation",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Drain",
+        "name": "Drain",
+        "type": "Drain",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Drain",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.EventController",
+        "name": "EventController",
+        "type": "EventController",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.EventController",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.FlowControl",
+        "name": "FlowControl",
+        "type": "FlowControl",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.FlowControl",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Interface",
+        "name": "Interface",
+        "type": "Interface",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Interface",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.ParallelStation",
+        "name": "ParallelStation",
+        "type": "ParallelStation",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.ParallelStation",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.PickAndPlace",
+        "name": "PickAndPlace",
+        "type": "PickAndPlace",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.PickAndPlace",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Sorter",
+        "name": "Sorter",
+        "type": "Sorter",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Sorter",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Source",
+        "name": "Source",
+        "type": "Source",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Source",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Station",
+        "name": "Station",
+        "type": "Station",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Station",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Store",
+        "name": "Store",
+        "type": "Store",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Store",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Track",
+        "name": "Track",
+        "type": "Track",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Track",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Turnplate",
+        "name": "Turnplate",
+        "type": "Turnplate",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Turnplate",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Turntable",
+        "name": "Turntable",
+        "type": "Turntable",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Turntable",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.TwoLaneTrack",
+        "name": "TwoLaneTrack",
+        "type": "TwoLaneTrack",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.TwoLaneTrack",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.AGVPool",
+        "name": "AGVPool",
+        "type": "AGVPool",
+        "origin": "VOID",
+        "originroot": ".Resources.AGVPool",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.Broker",
+        "name": "Broker",
+        "type": "Broker",
+        "origin": "VOID",
+        "originroot": ".Resources.Broker",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.Exporter",
+        "name": "Exporter",
+        "type": "Exporter",
+        "origin": "VOID",
+        "originroot": ".Resources.Exporter",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.FootPath",
+        "name": "FootPath",
+        "type": "FootPath",
+        "origin": "VOID",
+        "originroot": ".Resources.FootPath",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.LockoutZone",
+        "name": "LockoutZone",
+        "type": "LockoutZone",
+        "origin": "VOID",
+        "originroot": ".Resources.LockoutZone",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.Marker",
+        "name": "Marker",
+        "type": "Marker",
+        "origin": "VOID",
+        "originroot": ".Resources.Marker",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.ShiftCalendar",
+        "name": "ShiftCalendar",
+        "type": "ShiftCalendar",
+        "origin": "VOID",
+        "originroot": ".Resources.ShiftCalendar",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.Worker",
+        "name": "Worker",
+        "type": "Worker",
+        "origin": "VOID",
+        "originroot": ".Resources.Worker",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.WorkerPool",
+        "name": "WorkerPool",
+        "type": "WorkerPool",
+        "origin": "VOID",
+        "originroot": ".Resources.WorkerPool",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.Workplace",
+        "name": "Workplace",
+        "type": "Workplace",
+        "origin": "VOID",
+        "originroot": ".Resources.Workplace",
+        "class": "VOID"
+      },
+      {
+        "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.FileInterface",
+        "name": "FileInterface",
+        "type": "FileInterface",
+        "origin": "VOID",
+        "originroot": ".Tools.ExperimentManager.BasicObjects.InformationFlow.FileInterface",
+        "class": "VOID"
+      },
+      {
+        "path": ".UserInterface.Checkbox",
+        "name": "Checkbox",
+        "type": "Checkbox",
+        "origin": "VOID",
+        "originroot": ".UserInterface.Checkbox",
+        "class": "VOID"
+      },
+      {
+        "path": ".UserInterface.CostAnalyzer",
+        "name": "CostAnalyzer",
+        "type": "CostAnalyzer",
+        "origin": "VOID",
+        "originroot": ".UserInterface.CostAnalyzer",
+        "class": "VOID"
+      },
+      {
+        "path": ".UserInterface.Display",
+        "name": "Display",
+        "type": "Display",
+        "origin": "VOID",
+        "originroot": ".UserInterface.Display",
+        "class": "VOID"
+      },
+      {
+        "path": ".UserInterface.DropDownList",
+        "name": "DropDownList",
+        "type": "DropDownList",
+        "origin": "VOID",
+        "originroot": ".UserInterface.DropDownList",
+        "class": "VOID"
+      },
+      {
+        "path": ".UserInterface.SankeyDiagram",
+        "name": "SankeyDiagram",
+        "type": "SankeyDiagram",
+        "origin": "VOID",
+        "originroot": ".UserInterface.SankeyDiagram",
+        "class": "VOID"
+      },
+      {
+        "path": ".UserObjects.Box",
+        "name": "Box",
+        "type": "Box",
+        "origin": "VOID",
+        "originroot": ".UserObjects.Box",
+        "class": "VOID"
+      },
+      {
+        "path": ".UserObjects.PartA",
+        "name": "PartA",
+        "type": "PartA",
+        "origin": "VOID",
+        "originroot": ".UserObjects.PartA",
+        "class": "VOID"
+      },
+      {
+        "path": ".UserObjects.PartB",
+        "name": "PartB",
+        "type": "PartB",
+        "origin": "VOID",
+        "originroot": ".UserObjects.PartB",
+        "class": "VOID"
+      }
+    ]
+  }
+}

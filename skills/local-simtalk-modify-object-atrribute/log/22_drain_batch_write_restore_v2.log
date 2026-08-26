@@ -1,0 +1,11 @@
+
+=== .MaterialFlow.Drain.Pause (boolean) ===
+  2026-08-26 13:18:53: Pause: false -> true
+  2026-08-26 13:18:53:
+
+=== .MaterialFlow.Drain.TypeStatOn (boolean) ===
+  2026-08-26 13:18:54: TypeStatOn: true -> false
+  2026-08-26 13:18:54:
+
+=== restoring ===
+  restore OK

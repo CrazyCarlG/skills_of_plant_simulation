@@ -1,0 +1,129 @@
+{
+  "captured_at": "2026-08-26",
+  "total_classes": 12,
+  "root_classes": [
+    ".Fluids.Pipe",
+    ".Fluids.Tank",
+    ".InformationFlow.FileInterface",
+    ".MUs.Part",
+    ".MaterialFlow.Buffer",
+    ".MaterialFlow.Connector",
+    ".MaterialFlow.Conveyor",
+    ".MaterialFlow.Source",
+    ".MaterialFlow.Station",
+    ".Resources.Worker",
+    ".Resources.Workplace"
+  ],
+  "derived_classes": [
+    {
+      "path": ".UserObjects.MyFrame.Station",
+      "name": "Station",
+      "type": "Station",
+      "origin": ".MaterialFlow.Station",
+      "originroot": ".MaterialFlow.Station",
+      "class": ".MaterialFlow.Station"
+    }
+  ],
+  "tree": {
+    ".MaterialFlow.Station": [
+      {
+        "path": ".UserObjects.MyFrame.Station",
+        "name": "Station",
+        "type": "Station",
+        "origin": ".MaterialFlow.Station",
+        "originroot": ".MaterialFlow.Station",
+        "class": ".MaterialFlow.Station"
+      }
+    ],
+    "VOID": [
+      {
+        "path": ".Fluids.Pipe",
+        "name": "Pipe",
+        "type": "Pipe",
+        "origin": "VOID",
+        "originroot": ".Fluids.Pipe",
+        "class": "VOID"
+      },
+      {
+        "path": ".Fluids.Tank",
+        "name": "Tank",
+        "type": "Tank",
+        "origin": "VOID",
+        "originroot": ".Fluids.Tank",
+        "class": "VOID"
+      },
+      {
+        "path": ".InformationFlow.FileInterface",
+        "name": "FileInterface",
+        "type": "FileInterface",
+        "origin": "VOID",
+        "originroot": ".InformationFlow.FileInterface",
+        "class": "VOID"
+      },
+      {
+        "path": ".MUs.Part",
+        "name": "Part",
+        "type": "Part",
+        "origin": "VOID",
+        "originroot": ".MUs.Part",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Buffer",
+        "name": "Buffer",
+        "type": "Buffer",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Buffer",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Connector",
+        "name": "Connector",
+        "type": "Connector",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Connector",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Conveyor",
+        "name": "Conveyor",
+        "type": "Conveyor",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Conveyor",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Source",
+        "name": "Source",
+        "type": "Source",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Source",
+        "class": "VOID"
+      },
+      {
+        "path": ".MaterialFlow.Station",
+        "name": "Station",
+        "type": "Station",
+        "origin": "VOID",
+        "originroot": ".MaterialFlow.Station",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.Worker",
+        "name": "Worker",
+        "type": "Worker",
+        "origin": "VOID",
+        "originroot": ".Resources.Worker",
+        "class": "VOID"
+      },
+      {
+        "path": ".Resources.Workplace",
+        "name": "Workplace",
+        "type": "Workplace",
+        "origin": "VOID",
+        "originroot": ".Resources.Workplace",
+        "class": "VOID"
+      }
+    ]
+  }
+}

@@ -1,0 +1,12 @@
+.MaterialFlow.Station	Station	Station	VOID	.MaterialFlow.Station	VOID
+.MaterialFlow.Conveyor	Conveyor	Conveyor	VOID	.MaterialFlow.Conveyor	VOID
+.MaterialFlow.Connector	Connector	Connector	VOID	.MaterialFlow.Connector	VOID
+.MaterialFlow.Source	Source	Source	VOID	.MaterialFlow.Source	VOID
+.MaterialFlow.Buffer	Buffer	Buffer	VOID	.MaterialFlow.Buffer	VOID
+.Fluids.Tank	Tank	Tank	VOID	.Fluids.Tank	VOID
+.Fluids.Pipe	Pipe	Pipe	VOID	.Fluids.Pipe	VOID
+.Resources.Worker	Worker	Worker	VOID	.Resources.Worker	VOID
+.Resources.Workplace	Workplace	Workplace	VOID	.Resources.Workplace	VOID
+.InformationFlow.FileInterface	FileInterface	FileInterface	VOID	.InformationFlow.FileInterface	VOID
+.MUs.Part	Part	Part	VOID	.MUs.Part	VOID
+.UserObjects.MyFrame.Station	Station	Station	.MaterialFlow.Station	.MaterialFlow.Station	.MaterialFlow.Station

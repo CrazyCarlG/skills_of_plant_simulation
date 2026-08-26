@@ -1,0 +1,3 @@
+  EXEC FAIL: result='success' log='code execute failed. error msg:Unknown identifier \'XDim\', in code \'var obj: object := str_to_obj(".MaterialFlow.Sorter")\nif obj = void\n  print "###MARKER###"\n  print "ERR: str_to_obj returned void for path=.MaterialFlow.Sorter"\n  print "###END###"\n  return\nend\nprint "###MARKER###"\nprint "XDim: " + to_str(obj.XDim)\nprint "###END###"\n\''
+
+=== .MaterialFlow.Sorter.XDim (None) ===
