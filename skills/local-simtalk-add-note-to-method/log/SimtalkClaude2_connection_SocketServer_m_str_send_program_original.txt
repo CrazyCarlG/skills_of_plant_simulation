@@ -1,0 +1,4 @@
+param msgStr:string
+
+ msgStr := msgStr+ "||END||"
+var success: boolean := MySocket.write(0,msgStr)

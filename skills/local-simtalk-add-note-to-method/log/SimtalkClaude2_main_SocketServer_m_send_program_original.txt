@@ -1,0 +1,1 @@
+\n2026-08-26 14:33:08: param jsondata:json\n\nvar msgStr: string := jsondata.asString(false) + \"||END||\"\nvar success: boolean := MySocket.write(0,msgStr)\n2026-08-26 14:33:08: 

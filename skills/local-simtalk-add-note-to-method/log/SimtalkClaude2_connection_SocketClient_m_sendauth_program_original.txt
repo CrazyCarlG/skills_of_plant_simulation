@@ -1,0 +1,20 @@
+-- 获取当前Unix时间戳（毫秒级精度）
+-- Unix epoch: 1970-01-01 00:00:00
+var epoch: dateTime := str_to_dateTime("01.01.1970 00:00:00")
+var now: dateTime := sysDate
+
+-- dateTime相减得到real类型的秒数
+var diffSeconds: real := now - epoch
+
+-- 转换为整数（毫秒）
+var tsMillis: integer := round(diffSeconds * 1000)
+
+
+-- 转换为整数（秒）
+var tsSeconds: integer := round(diffSeconds)
+
+
+auth["token"] := token
+auth["ts"] :=  tsSeconds
+auth["sig"] := sig
+m_send(auth)

@@ -1,0 +1,9 @@
+-- 这个方法挂在 Method 对象的 ErrorHandler 属性上
+param byref error: string, method_path: string, line_number: integer -> any
+if error = "Division by zero."
+	error := ""            // 把 error 置为空字符串 = "已捕获该错误"
+	return 1e300            // 给调用方返回一个合理值
+end
+-- 其它未预期的错误：改写错误信息后继续向上抛
+error := "error in " + method_path + ": " + error
+return 0

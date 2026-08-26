@@ -1,0 +1,1 @@
+\n2026-08-26 14:33:18: param jsondata:json\n-- 转换为字符串（无换行格式）\nvar msgStr: string := jsondata.asString(false) + \"||END||\"\n\nvar success: boolean := MySocket.write(1,msgStr)\nif success\n    print msgStr ,\" Sent successfully\"\nelse\n    print msgStr ,\" Failed to send JSON\"\nend\n2026-08-26 14:33:18: 

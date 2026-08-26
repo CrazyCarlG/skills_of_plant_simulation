@@ -1,0 +1,13 @@
+->string
+// execute code and get result
+executeSilent(&simtalkcode.program)
+var errMsg := getExecuteSilentError
+var code := &simtalkcode.program
+if errMsg /= \"\"
+
+
+\treturn  \"code execute failed. error msg:\"+errMsg+\", in code '\"+Code+\"'\"
+else
+
+\treturn  \"execute success\"
+end

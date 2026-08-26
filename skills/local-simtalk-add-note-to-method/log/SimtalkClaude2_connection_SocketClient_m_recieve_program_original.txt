@@ -1,0 +1,14 @@
+param channelNo: integer, message: string -- TCP
+-- param ip: string, message: string -- UDP
+print(message)
+var j: json
+j.parse(message)
+var type := j["type"]
+switch type
+case "auth"
+	m_authback(j)
+case "action"
+	current.~.simtalkaction.get_simtalk_hasError(j)
+case "response"
+	debug
+end

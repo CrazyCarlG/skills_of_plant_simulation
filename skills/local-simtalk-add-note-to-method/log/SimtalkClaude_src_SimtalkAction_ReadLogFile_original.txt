@@ -1,0 +1,13 @@
+param action:json
+//构造回复\"action_id\"
+if not action.contains(\"action_id\") then throwRuntimeError(\"invalid json,mission action_id\") end
+action_result[\"type\"] \t\t:= action[\"type\"]
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+action_result[\"log\"] \t\t:= a_readlog
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end

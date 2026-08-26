@@ -1,0 +1,1 @@
+\n2026-08-26 14:33:19: param channelNo: integer, message: string -- TCP\n-- param ip: string, message: string -- UDP\nprint(message)\nvar j: json\nj.parse(message)\nvar type := j[\"type\"]\nswitch type\ncase \"auth\"\n\tm_authback(j)\ncase \"action\"\n\tcurrent.~.simtalkaction.get_simtalk_hasError(j)\ncase \"response\"\n\tdebug\nend\n2026-08-26 14:33:19: 

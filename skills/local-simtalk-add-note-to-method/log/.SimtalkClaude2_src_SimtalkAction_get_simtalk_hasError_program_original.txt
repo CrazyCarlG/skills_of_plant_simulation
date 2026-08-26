@@ -1,0 +1,20 @@
+-- SimtalkAction.get_simtalk_hasError: 远程语法检查入口
+param action:json
+//构造回复"action_id"
+
+action_result["action_id"] 	:= action["action_id"]
+var simtalk					:= action["simtalk_code"]
+var code_synax 				:= simtalk_hasError(simtalk)
+action_result["result"] := code_synax
+action_result["type"] 		:= action["type"]
+
+//simtalk action feedback
+if current.~.server
+	current.~.SocketServer.m_send(action_result)
+else
+	current.~.SocketClient.m_send(action_result)
+end
+action_result["type"] := ""
+action_result["action_id"] := ""
+action_result["result"] := ""
+action_result["log"] := ""

@@ -1,0 +1,14 @@
+param code:string -> string
+//check if any error in code
+&simtalkcode.program := code
+var errMsg : string
+var errLine : integer
+var hasError := &simtalkcode.hasSyntaxError(errMsg, errLine)
+if hasError
+\taction_result[\"result\"] := \"failed\"
+    return \" hasError ： \"+ errMsg+ \" (in row :\"+errLine+\")\"
+
+else
+\taction_result[\"result\"] := \"success\"
+\treturn  \"has no Error\"
+end

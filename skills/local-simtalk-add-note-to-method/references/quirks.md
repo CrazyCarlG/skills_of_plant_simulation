@@ -217,3 +217,60 @@ implicitly save the pre-edit `program` anywhere.
 a timestamped file under `log/`. The skill's CLI helper does this
 automatically (`--backup` defaults to
 `log/<sanitized-path>_program_original.txt`).
+
+## Q11 — Decoration lines in a NOTE block trip the SimTalk lexer
+
+**Symptom.** A NOTE that mixes `-- ...` lines with bare decoration
+lines like `=====`, `-----`, `*****` (no comment prefix) fails to
+parse. `simtalk_hasError(obj.program)` returns:
+
+```
+Syntax error near line 1 at '=='. (in row :1)
+```
+
+— even though every other line is a valid `--` comment. The "line 1"
+in the error is off-by-N: it really means "the first line my lexer
+got stuck on," which is the bare `==` decoration.
+
+**Why.** SimTalk's lexer tokenizes a bare `==` as the equality
+operator **before** deciding whether the line is a comment. So a NOTE
+that looks like:
+
+```
+================================================================
+-- Method path : ...
+-- Purpose
+================================================================
+```
+
+fails because the first line's `==` is parsed as an operator, even
+though the very next line is a valid `--` comment.
+
+**Workaround.** Wrap the **entire** NOTE block in a `/* ... */`
+block comment. Block-comment scanners don't tokenize, so `==`, `--`,
+`//`, `{`, `"` are all safe inside:
+
+```simtalk
+/*
+================================================================
+-- Method path : .CTU.Frame.Program
+-- Method type : Method
+----------------------------------------------------------------
+-- Purpose
+--   one-line description
+================================================================
+*/
+-- (original executable code starts here, byte-for-byte preserved)
+var i := 1
+```
+
+This is the recommended pattern for any multi-line header NOTE that
+contains decoration lines. It also dodges Quirk #12 (argparse `--note`
+chokes on tokens starting with `--`).
+
+**Reproducer (this skill, 2026-08-26):** annotating
+`.SimtalkClaude2.src.SimtalkAction.get_simtalk_hasError` with a
+mixed `--` + bare `===` decoration → `simtalk_hasError` returned
+`Syntax error near line 1 at '=='. (in row :1)`. Switching to
+`/* ... */` wrapping fixed it; `simtalk_hasError` then returned
+`has no Error`.

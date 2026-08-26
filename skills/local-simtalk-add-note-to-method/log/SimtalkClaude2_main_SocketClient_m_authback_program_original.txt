@@ -1,0 +1,1 @@
+\n2026-08-26 14:33:22: param j:json\n--{\"type\":\"auth\",\"status\": \"ok\", \"session_id\": state.session_id}\nvar status :=j[\"status\"]\nif status = \"ok\"\n\tsession_id := j[\"session_id\"]\n\treturn\nelse\n\tMySocket.On := false\nend\n2026-08-26 14:33:22: 

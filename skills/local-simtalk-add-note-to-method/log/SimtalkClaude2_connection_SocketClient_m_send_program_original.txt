@@ -1,0 +1,10 @@
+param jsondata:json
+-- 转换为字符串（无换行格式）
+var msgStr: string := jsondata.asString(false) + "||END||"
+
+var success: boolean := MySocket.write(1,msgStr)
+if success
+    print msgStr ," Sent successfully"
+else
+    print msgStr ," Failed to send JSON"
+end

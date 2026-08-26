@@ -1,0 +1,11 @@
+-- autoexec 方法体（必须放在 Class Library 中）
+-- 模型一打开就会自动执行
+
+-- 1) 清空 Console 窗口显示
+clearConsole
+
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
+
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole

@@ -1,6 +1,1 @@
--- ============================================
--- Program method of .CTU.Frame
--- Modified on 2026-08-26 via simtalk_run
--- Purpose: declare a local counter variable
--- ============================================
-var i := 1  -- local counter, starting at 1
+\n2026-08-26 13:59:42: -- ============================================\n-- Program method of .CTU.Frame\n-- Modified on 2026-08-26 via simtalk_run\n-- Purpose: declare a local counter variable\n-- ============================================\nvar i := 1  -- local counter, starting at 1\n2026-08-26 13:59:42: 

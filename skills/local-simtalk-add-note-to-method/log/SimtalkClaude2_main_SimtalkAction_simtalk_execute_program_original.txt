@@ -1,0 +1,1 @@
+\n2026-08-26 14:33:13: ->string\n// execute code and get result\nexecuteSilent(&simtalkcode.program)\nvar errMsg := getExecuteSilentError\nvar code := &simtalkcode.program\nif errMsg /= \"\"\n\n\n\treturn  \"code execute failed. error msg:\"+errMsg+\", in code '\"+Code+\"'\"\nelse\n\n\treturn  \"execute success\"\nend\n2026-08-26 14:33:13: 

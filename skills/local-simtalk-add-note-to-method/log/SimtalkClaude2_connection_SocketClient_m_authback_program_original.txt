@@ -1,0 +1,9 @@
+param j:json
+--{"type":"auth","status": "ok", "session_id": state.session_id}
+var status :=j["status"]
+if status = "ok"
+	session_id := j["session_id"]
+	return
+else
+	MySocket.On := false
+end

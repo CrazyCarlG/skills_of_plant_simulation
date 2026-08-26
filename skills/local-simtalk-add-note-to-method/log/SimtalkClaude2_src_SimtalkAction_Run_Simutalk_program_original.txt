@@ -1,0 +1,25 @@
+param action:json
+//构造回复"action_id"
+
+action_result["type"] 		:= action["type"]
+action_result["action_id"] 	:= action["action_id"]
+var simtalk					:= action["simtalk_code"]
+print "execute sim-code: '" + strCopy(simtalk, 1, 20) +"......'"
+action_result["log"] 		:= simtalk_hasError(simtalk)
+var syntax_result := action_result["result"]
+if syntax_result = "success"
+
+	action_result["log"] := simtalk_execute
+	var run_result := action_result["result"]
+	if run_result = "success"
+		action_result["result"] := "success"
+	else
+		action_result["result"] := "failed"
+	end
+end
+//simtalk action feedback
+if current.~.server
+	current.~.SocketServer.m_send(action_result)
+else
+	current.~.SocketClient.m_send(action_result)
+end

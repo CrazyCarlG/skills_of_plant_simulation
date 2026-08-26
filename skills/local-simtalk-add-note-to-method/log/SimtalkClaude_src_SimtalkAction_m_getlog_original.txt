@@ -1,0 +1,13 @@
+->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\"
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\"
+end
+
+deletefile(copyPath)

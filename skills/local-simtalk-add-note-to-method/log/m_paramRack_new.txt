@@ -1,0 +1,17 @@
+-- ============================================
+-- Method: m_paramRack of .CTU.Frame
+-- Modified on 2026-08-26 via simtalk_run
+-- Purpose: register 4 racks via p_obj_paramRack()
+--          and position Left_rack_2 / Right_rack_1
+--          in 3D using rack geometry
+-- ============================================
+p_obj_paramRack(Left_rack_1)
+p_obj_paramRack(Left_rack_2)
+p_obj_paramRack(Right_rack_1)
+p_obj_paramRack(Right_rack_2)
+
+
+var len_y := v_l_CTU_Width/2 + v_r_bin_length/2
+var len_x := v_i_rack_col*v_r_bin_width +(v_i_rack_col-1)*v_r_Gap
+Left_rack_2._3d.position := [len_x/2,len_y,0]
+Right_rack_1._3d.position := [len_x/2,-len_y,0]

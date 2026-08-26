@@ -1,0 +1,18 @@
+if  MySocket.On  = false
+	-- 激活Socket连接
+	auth_success := false
+	session_id:=""
+	MySocket.TCP := true
+
+
+	var client: object := MySocket
+	-- 1. 作为客户端：取消 ServerSocket
+	client.ServerSocket := false
+	client.TCP := true
+	client.Host := "8.137.98.145"   -- 替换为目标服务器 IP
+	client.ClientPort := 50001        -- 本地未被占用的端口（1025–32025）
+	print "Connecting Server"
+	MySocket.On := true
+	print "Authrizing"
+	m_sendauth
+end

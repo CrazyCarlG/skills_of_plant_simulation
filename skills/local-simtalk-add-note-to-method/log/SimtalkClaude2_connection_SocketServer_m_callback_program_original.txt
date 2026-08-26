@@ -1,0 +1,17 @@
+param channelNo: integer, message: string -- TCP
+-- param ip: string, message: string -- UDP
+message := regex_replace(message, "\|\|END\|\|", "");
+var j: json
+j.parse(message)
+var type := j["type"]
+
+switch type
+case "ping"
+	m_send(ping_reply)
+case "simtalk_syntax"
+	current.~.simtalkaction.&get_simtalk_hasError.executenewcallchain(j)
+case "simtalk_run"
+	current.~.simtalkaction.&Run_Simutalk.executenewcallchain(j)
+case "readlog"
+	current.~.simtalkaction.&ReadLogFile.executenewcallchain(j)
+end
