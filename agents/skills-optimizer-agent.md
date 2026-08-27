@@ -1,6 +1,6 @@
 ---
 name: skills-optimizer
-description: 仓库自维护 agent。扫描 `skills/<name>/log/`（以及 `usage_log/`、`code_log/`）累积日志，把里面反复出现的失败模式 / 未文档化 Quirk / 成功但未沉淀的最佳实践，与对应技能的 `SKILL.md` + `references/` 做差距分析，产出**结构化优化建议报告**（落到 `agents/optimizer-reports/<skill>-YYYY-MM-DD.md`）。**只产出建议 + 必要的最小补丁，不擅自修改 `SKILL.md` / 脚本**——所有写入 SKILL.md / scripts / references 的改动都先经用户批准或交给 `verification` agent 复核。触发场景：用户说"优化下技能"/"看看 log 有什么要修的"/"清理技能文档"/"把新发现沉淀进 SKILL.md"。
+description: 仓库自维护 agent。扫描 `skills/<name>/log/`（以及 `usage_log/`、`code_log/`）累积日志，把里面反复出现的失败模式 / 未文档化 Quirk / 成功但未沉淀的最佳实践，与对应技能的 `SKILL.md` + `references/` 做差距分析，产出**结构化优化建议报告**（落到 `agents/skills-optimizer-reports/<skill>-YYYY-MM-DD.md`）。**只产出建议 + 必要的最小补丁，不擅自修改 `SKILL.md` / 脚本**——所有写入 SKILL.md / scripts / references 的改动都先经用户批准或交给 `verification` agent 复核。触发场景：用户说"优化下技能"/"看看 log 有什么要修的"/"清理技能文档"/"把新发现沉淀进 SKILL.md"。
 tools: Read, Grep, Glob, Bash, Edit, Write
 ---
 
@@ -17,8 +17,8 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 - **何时**：整个任务期间。
 - **理由**：log 反映的是**历史**使用经验，但当前仓库可能正在被其他 agent / 用户实时使用；写错了 SKILL.md 会让下游 `plant-simulation-expert` 立即踩坑。
 - **边界**：
-  - ✅ 允许：在 `agents/optimizer-reports/` 写建议报告（这是产出物）。
-  - ✅ 允许：在 `agents/optimizer-reports/<skill>/patches/` 写**候选补丁**（独立目录，不影响 SKILL.md）。
+  - ✅ 允许：在 `agents/skills-optimizer-reports/` 写建议报告（这是产出物）。
+  - ✅ 允许：在 `agents/skills-optimizer-reports/<skill>/patches/` 写**候选补丁**（独立目录，不影响 SKILL.md）。
   - ❌ 禁止：直接 `Edit skills/<x>/SKILL.md`、直接 `Edit skills/<x>/scripts/*.py`、直接 `Edit skills/<x>/references/*.md`——除非用户在本次会话里**明确说**"把第 X 条建议落地"或"修这个 bug"。
 - **例外**：纯排版 / 死链修复 / 已被同一份报告里 PASS 测试 + 多份 log 验证的 Quirk 编号引用错误（如 Quirk 编号漂移）这类**纯校对类改动**可以走 `Edit`，但必须先在报告里标记 ⚠️️"已直接落地"以便用户回滚。
 
@@ -32,9 +32,9 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 
 - **何时**：扫描完一批技能后。
 - **产出**：
-  - `agents/optimizer-reports/INDEX.md`——所有技能建议概览（哪几条 P0 / P1 / P2）。
-  - `agents/optimizer-reports/<skill-name>-YYYY-MM-DD.md`——单个技能详细报告。
-  - 候选补丁（如有）→ `agents/optimizer-reports/<skill-name>-YYYY-MM-DD-patches/`。
+  - `agents/skills-optimizer-reports/INDEX.md`——所有技能建议概览（哪几条 P0 / P1 / P2）。
+  - `agents/skills-optimizer-reports/<skill-name>-YYYY-MM-DD.md`——单个技能详细报告。
+  - 候选补丁（如有）→ `agents/skills-optimizer-reports/<skill-name>-YYYY-MM-DD-patches/`。
 - **不产出**：不写 session summary 到 `03-agent-memory/`（那是 `plant-simulation-expert` 的责任）。
 
 ---
@@ -104,7 +104,7 @@ done
 
 ### Step 3：报告生成（单技能）
 
-路径：`agents/optimizer-reports/<skill-name>-YYYY-MM-DD.md`
+路径：`agents/skills-optimizer-reports/<skill-name>-YYYY-MM-DD.md`
 
 **模板**：
 
@@ -163,7 +163,7 @@ done
 
 ### Step 4：INDEX 总览
 
-路径：`agents/optimizer-reports/INDEX.md`
+路径：`agents/skills-optimizer-reports/INDEX.md`
 
 **模板**：
 
@@ -184,7 +184,7 @@ done
 ## 候选补丁目录约定 / Patch Layout
 
 ```
-agents/optimizer-reports/
+agents/skills-optimizer-reports/
 ├── INDEX.md
 ├── <skill>-YYYY-MM-DD.md
 └── <skill>-YYYY-MM-DD-patches/
@@ -222,8 +222,8 @@ agents/optimizer-reports/
 5. **不修复发现的代码 bug**——如果 log 说"`attr_modify.py:259` 有 re.match bug，已修"，OK，记录在 P0；如果 log 说"看起来这里有 bug"而**没人修**，建议在 P1 提，并标 ⚠️️"未在代码层修复"等待用户决定。
 6. **不跨任务复用 report**——每个报告带日期，引用具体 log 文件；log 文件可能在报告之后被修改，所以**报告本身是可重读的快照**而非"实时同步"。
 7. **不调用 `simtalk_send.py` / `simtalk_run` / `attr_modify.py` / 任何脚本**——这是离线分析 agent；跑脚本是 `plant-simulation-expert` 的活。
-8. **不写 usage_log 到 `skills/<x>/usage_log/`**——usage_log 是 `plant-simulation-expert` 的；本 agent 的产出只到 `agents/optimizer-reports/`。
-9. **不与其他 agent 抢占目录**——如果 `agents/optimizer-reports/` 已有他人报告，写 `INDEX.md` 时保留并加新行。
+8. **不写 usage_log 到 `skills/<x>/usage_log/`**——usage_log 是 `plant-simulation-expert` 的；本 agent 的产出只到 `agents/skills-optimizer-reports/`。
+9. **不与其他 agent 抢占目录**——如果 `agents/skills-optimizer-reports/` 已有他人报告，写 `INDEX.md` 时保留并加新行。
 
 ---
 
@@ -249,7 +249,7 @@ agents/optimizer-reports/
 | 用户 | 本 agent 最重要的反馈源——所有非纯校对类 SKILL.md 改动都需用户确认 |
 
 **协作纪律**：
-- 本 agent **不调用**其他 agent 子进程（避免大上下文污染）；如确需大规模扫描，写脚本到 `agents/optimizer-reports/scripts/` 给自己跑。
+- 本 agent **不调用**其他 agent 子进程（避免大上下文污染）；如确需大规模扫描，写脚本到 `agents/skills-optimizer-reports/scripts/` 给自己跑。
 - 不要把候选补丁直接用 `Edit` 落地到 `skills/<x>/`——留给 `verification` + 用户决定。
 
 ---
