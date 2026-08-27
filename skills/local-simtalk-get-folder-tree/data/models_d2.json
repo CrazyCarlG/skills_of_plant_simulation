@@ -1,0 +1,2910 @@
+{
+  "root_path": ".Models",
+  "root_name": "Models",
+  "root_type": "Folder",
+  "root_numNodes": 2,
+  "children": [
+    {
+      "i": 1,
+      "name": "Assembly1",
+      "type": "Frame",
+      "path": ".Models.Assembly1",
+      "children": [
+        {
+          "i": 1,
+          "name": "CrossTransferToTest",
+          "type": "Track",
+          "path": ".Models.Assembly1.CrossTransferToTest",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "CrossTransferFromTest",
+          "type": "Track",
+          "path": ".Models.Assembly1.CrossTransferFromTest",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Source",
+          "type": "Source",
+          "path": ".Models.Assembly1.Source",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "F0",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F0",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "F1",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F1",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "F2",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F2",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "F3",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F3",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "F4",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F4",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "F5",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F5",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "F7",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F7",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "F8",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F8",
+          "children": []
+        },
+        {
+          "i": 12,
+          "name": "F9",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F9",
+          "children": []
+        },
+        {
+          "i": 13,
+          "name": "F11",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F11",
+          "children": []
+        },
+        {
+          "i": 14,
+          "name": "LoadStation",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly1.LoadStation",
+          "children": []
+        },
+        {
+          "i": 15,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".Models.Assembly1.Drain",
+          "children": []
+        },
+        {
+          "i": 16,
+          "name": "Buffer",
+          "type": "Buffer",
+          "path": ".Models.Assembly1.Buffer",
+          "children": []
+        },
+        {
+          "i": 17,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".Models.Assembly1.EventController",
+          "children": []
+        },
+        {
+          "i": 18,
+          "name": "Source_Paletts",
+          "type": "Source",
+          "path": ".Models.Assembly1.Source_Paletts",
+          "children": []
+        },
+        {
+          "i": 19,
+          "name": "Comment2",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comment2",
+          "children": []
+        },
+        {
+          "i": 20,
+          "name": "Comment1",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comment1",
+          "children": []
+        },
+        {
+          "i": 21,
+          "name": "Comment4",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comment4",
+          "children": []
+        },
+        {
+          "i": 22,
+          "name": "Comm_F8",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F8",
+          "children": []
+        },
+        {
+          "i": 23,
+          "name": "WorkerPool",
+          "type": "WorkerPool",
+          "path": ".Models.Assembly1.WorkerPool",
+          "children": []
+        },
+        {
+          "i": 24,
+          "name": "ShiftCalendar",
+          "type": "ShiftCalendar",
+          "path": ".Models.Assembly1.ShiftCalendar",
+          "children": []
+        },
+        {
+          "i": 25,
+          "name": "Workplace_1",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_1",
+          "children": []
+        },
+        {
+          "i": 26,
+          "name": "Workplace_2",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_2",
+          "children": []
+        },
+        {
+          "i": 27,
+          "name": "Workplace_3",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_3",
+          "children": []
+        },
+        {
+          "i": 28,
+          "name": "Workplace_4",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_4",
+          "children": []
+        },
+        {
+          "i": 29,
+          "name": "Workplace_5",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_5",
+          "children": []
+        },
+        {
+          "i": 30,
+          "name": "Broker",
+          "type": "Broker",
+          "path": ".Models.Assembly1.Broker",
+          "children": []
+        },
+        {
+          "i": 31,
+          "name": "Histogram",
+          "type": "Chart",
+          "path": ".Models.Assembly1.Histogram",
+          "children": []
+        },
+        {
+          "i": 32,
+          "name": "Quantity",
+          "type": "Variable",
+          "path": ".Models.Assembly1.Quantity",
+          "children": []
+        },
+        {
+          "i": 33,
+          "name": "MS5",
+          "type": "Station",
+          "path": ".Models.Assembly1.MS5",
+          "children": []
+        },
+        {
+          "i": 34,
+          "name": "MS2",
+          "type": "Station",
+          "path": ".Models.Assembly1.MS2",
+          "children": []
+        },
+        {
+          "i": 35,
+          "name": "MS1",
+          "type": "Station",
+          "path": ".Models.Assembly1.MS1",
+          "children": []
+        },
+        {
+          "i": 36,
+          "name": "MS4",
+          "type": "Station",
+          "path": ".Models.Assembly1.MS4",
+          "children": []
+        },
+        {
+          "i": 37,
+          "name": "AS5",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS5",
+          "children": []
+        },
+        {
+          "i": 38,
+          "name": "AS1",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS1",
+          "children": []
+        },
+        {
+          "i": 39,
+          "name": "AS2",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS2",
+          "children": []
+        },
+        {
+          "i": 40,
+          "name": "AS3",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS3",
+          "children": []
+        },
+        {
+          "i": 41,
+          "name": "AS4",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS4",
+          "children": []
+        },
+        {
+          "i": 42,
+          "name": "Comm_F10",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F10",
+          "children": []
+        },
+        {
+          "i": 43,
+          "name": "Comm_F9",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F9",
+          "children": []
+        },
+        {
+          "i": 44,
+          "name": "PalletOptimization",
+          "type": "Frame",
+          "path": ".Models.Assembly1.PalletOptimization",
+          "error": "Unterminated string starting at: line 1 column 11972 (char 11971)"
+        },
+        {
+          "i": 45,
+          "name": "Orders",
+          "type": "DataTable",
+          "path": ".Models.Assembly1.Orders",
+          "children": []
+        },
+        {
+          "i": 46,
+          "name": "F10",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F10",
+          "children": []
+        },
+        {
+          "i": 47,
+          "name": "ParallelProc",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly1.ParallelProc",
+          "children": []
+        },
+        {
+          "i": 48,
+          "name": "MS3",
+          "type": "AssemblyStation",
+          "path": ".Models.Assembly1.MS3",
+          "children": []
+        },
+        {
+          "i": 49,
+          "name": "PreProduction",
+          "type": "Frame",
+          "path": ".Models.Assembly1.PreProduction",
+          "children": [
+            {
+              "i": 1,
+              "name": "Source_Parts",
+              "type": "Source",
+              "path": ".Models.Assembly1.PreProduction.Source_Parts"
+            },
+            {
+              "i": 2,
+              "name": "MS6",
+              "type": "Station",
+              "path": ".Models.Assembly1.PreProduction.MS6"
+            },
+            {
+              "i": 3,
+              "name": "AS7",
+              "type": "Station",
+              "path": ".Models.Assembly1.PreProduction.AS7"
+            },
+            {
+              "i": 4,
+              "name": "AS8",
+              "type": "Station",
+              "path": ".Models.Assembly1.PreProduction.AS8"
+            },
+            {
+              "i": 5,
+              "name": "F0",
+              "type": "Conveyor",
+              "path": ".Models.Assembly1.PreProduction.F0"
+            },
+            {
+              "i": 6,
+              "name": "Workplace",
+              "type": "Workplace",
+              "path": ".Models.Assembly1.PreProduction.Workplace"
+            },
+            {
+              "i": 7,
+              "name": "F1",
+              "type": "Conveyor",
+              "path": ".Models.Assembly1.PreProduction.F1"
+            },
+            {
+              "i": 8,
+              "name": "F2",
+              "type": "Conveyor",
+              "path": ".Models.Assembly1.PreProduction.F2"
+            },
+            {
+              "i": 9,
+              "name": "Exit",
+              "type": "Interface",
+              "path": ".Models.Assembly1.PreProduction.Exit"
+            },
+            {
+              "i": 10,
+              "name": "AS9",
+              "type": "AssemblyStation",
+              "path": ".Models.Assembly1.PreProduction.AS9"
+            },
+            {
+              "i": 11,
+              "name": "F3",
+              "type": "Conveyor",
+              "path": ".Models.Assembly1.PreProduction.F3"
+            },
+            {
+              "i": 12,
+              "name": "Entry",
+              "type": "Interface",
+              "path": ".Models.Assembly1.PreProduction.Entry"
+            },
+            {
+              "i": 13,
+              "name": "Source_Paletts",
+              "type": "Source",
+              "path": ".Models.Assembly1.PreProduction.Source_Paletts"
+            },
+            {
+              "i": 14,
+              "name": "Comment",
+              "type": "Comment",
+              "path": ".Models.Assembly1.PreProduction.Comment"
+            },
+            {
+              "i": 15,
+              "name": "Quantity",
+              "type": "Variable",
+              "path": ".Models.Assembly1.PreProduction.Quantity"
+            },
+            {
+              "i": 16,
+              "name": "Comm_F0",
+              "type": "Comment",
+              "path": ".Models.Assembly1.PreProduction.Comm_F0"
+            },
+            {
+              "i": 17,
+              "name": "Comm_F1",
+              "type": "Comment",
+              "path": ".Models.Assembly1.PreProduction.Comm_F1"
+            },
+            {
+              "i": 18,
+              "name": "Comm_F2",
+              "type": "Comment",
+              "path": ".Models.Assembly1.PreProduction.Comm_F2"
+            },
+            {
+              "i": 19,
+              "name": "Comm_F3",
+              "type": "Comment",
+              "path": ".Models.Assembly1.PreProduction.Comm_F3"
+            },
+            {
+              "i": 20,
+              "name": "Robot",
+              "type": "PickAndPlace",
+              "path": ".Models.Assembly1.PreProduction.Robot"
+            },
+            {
+              "i": 21,
+              "name": "AS6",
+              "type": "Station",
+              "path": ".Models.Assembly1.PreProduction.AS6"
+            },
+            {
+              "i": 22,
+              "name": "Connector10",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector10"
+            },
+            {
+              "i": 23,
+              "name": "Connector9",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector9"
+            },
+            {
+              "i": 24,
+              "name": "Connector8",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector8"
+            },
+            {
+              "i": 25,
+              "name": "Connector5",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector5"
+            },
+            {
+              "i": 26,
+              "name": "Connector13",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector13"
+            },
+            {
+              "i": 27,
+              "name": "Connector4",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector4"
+            },
+            {
+              "i": 28,
+              "name": "Connector11",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector11"
+            },
+            {
+              "i": 29,
+              "name": "Connector14",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector14"
+            },
+            {
+              "i": 30,
+              "name": "Connector12",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector12"
+            },
+            {
+              "i": 31,
+              "name": "Connector",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector"
+            },
+            {
+              "i": 32,
+              "name": "Connector1",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector1"
+            },
+            {
+              "i": 33,
+              "name": "Connector2",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector2"
+            },
+            {
+              "i": 34,
+              "name": "Connector3",
+              "type": "Connector",
+              "path": ".Models.Assembly1.PreProduction.Connector3"
+            }
+          ]
+        },
+        {
+          "i": 50,
+          "name": "Unload",
+          "type": "DismantleStation",
+          "path": ".Models.Assembly1.Unload",
+          "children": []
+        },
+        {
+          "i": 51,
+          "name": "Line1",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.Line1",
+          "children": []
+        },
+        {
+          "i": 52,
+          "name": "Line2",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.Line2",
+          "children": []
+        },
+        {
+          "i": 53,
+          "name": "DisplayThroughput",
+          "type": "Display",
+          "path": ".Models.Assembly1.DisplayThroughput",
+          "children": []
+        },
+        {
+          "i": 54,
+          "name": "Comment3",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comment3",
+          "children": []
+        },
+        {
+          "i": 55,
+          "name": "Button",
+          "type": "Button",
+          "path": ".Models.Assembly1.Button",
+          "children": []
+        },
+        {
+          "i": 56,
+          "name": "Button1",
+          "type": "Button",
+          "path": ".Models.Assembly1.Button1",
+          "children": []
+        },
+        {
+          "i": 57,
+          "name": "Button2",
+          "type": "Button",
+          "path": ".Models.Assembly1.Button2",
+          "children": []
+        },
+        {
+          "i": 58,
+          "name": "AttributExplorer2",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly1.AttributExplorer2",
+          "children": []
+        },
+        {
+          "i": 59,
+          "name": "AttributExplorer3",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly1.AttributExplorer3",
+          "children": []
+        },
+        {
+          "i": 60,
+          "name": "Comm_F5",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F5",
+          "children": []
+        },
+        {
+          "i": 61,
+          "name": "Comm_F4",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F4",
+          "children": []
+        },
+        {
+          "i": 62,
+          "name": "Comm_F11",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F11",
+          "children": []
+        },
+        {
+          "i": 63,
+          "name": "Comm_F0",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F0",
+          "children": []
+        },
+        {
+          "i": 64,
+          "name": "Comm_F1",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F1",
+          "children": []
+        },
+        {
+          "i": 65,
+          "name": "Comm_F2",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F2",
+          "children": []
+        },
+        {
+          "i": 66,
+          "name": "Comm_F3",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F3",
+          "children": []
+        },
+        {
+          "i": 67,
+          "name": "Comm_F7",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F7",
+          "children": []
+        },
+        {
+          "i": 68,
+          "name": "TransferStation",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly1.TransferStation",
+          "children": []
+        },
+        {
+          "i": 69,
+          "name": "Chart",
+          "type": "Chart",
+          "path": ".Models.Assembly1.Chart",
+          "children": []
+        },
+        {
+          "i": 70,
+          "name": "Logo",
+          "type": "Frame",
+          "path": ".Models.Assembly1.Logo",
+          "children": []
+        },
+        {
+          "i": 71,
+          "name": "F6",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F6",
+          "children": []
+        },
+        {
+          "i": 72,
+          "name": "Comm_F6",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F6",
+          "children": []
+        },
+        {
+          "i": 73,
+          "name": "WorkerChart",
+          "type": "Frame",
+          "path": ".Models.Assembly1.WorkerChart",
+          "children": [
+            {
+              "i": 1,
+              "name": "init",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.init"
+            },
+            {
+              "i": 2,
+              "name": "DragAndDrop",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.DragAndDrop"
+            },
+            {
+              "i": 3,
+              "name": "Open",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.Open"
+            },
+            {
+              "i": 4,
+              "name": "CallBack",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.CallBack"
+            },
+            {
+              "i": 5,
+              "name": "Refresh",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.Refresh"
+            },
+            {
+              "i": 6,
+              "name": "VarObj",
+              "type": "Variable",
+              "path": ".Models.Assembly1.WorkerChart.VarObj"
+            },
+            {
+              "i": 7,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".Models.Assembly1.WorkerChart.Dialog"
+            },
+            {
+              "i": 8,
+              "name": "myWorkerTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.myWorkerTable"
+            },
+            {
+              "i": 9,
+              "name": "myInputChannelsTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.myInputChannelsTable"
+            },
+            {
+              "i": 10,
+              "name": "VarStatisticGroup",
+              "type": "Variable",
+              "path": ".Models.Assembly1.WorkerChart.VarStatisticGroup"
+            },
+            {
+              "i": 11,
+              "name": "GetWorkersFromPool",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.GetWorkersFromPool"
+            },
+            {
+              "i": 12,
+              "name": "ChartTypeRefresh",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.ChartTypeRefresh"
+            },
+            {
+              "i": 13,
+              "name": "VarChartType",
+              "type": "Variable",
+              "path": ".Models.Assembly1.WorkerChart.VarChartType"
+            },
+            {
+              "i": 14,
+              "name": "VarPointOfView",
+              "type": "Variable",
+              "path": ".Models.Assembly1.WorkerChart.VarPointOfView"
+            },
+            {
+              "i": 15,
+              "name": "VarInterval",
+              "type": "Variable",
+              "path": ".Models.Assembly1.WorkerChart.VarInterval"
+            },
+            {
+              "i": 16,
+              "name": "Reset",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.Reset"
+            },
+            {
+              "i": 17,
+              "name": "myBufferTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.myBufferTable"
+            },
+            {
+              "i": 18,
+              "name": "Transpose",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.Transpose"
+            },
+            {
+              "i": 19,
+              "name": "MakeString",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.MakeString"
+            },
+            {
+              "i": 20,
+              "name": "myStatisticTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.myStatisticTable"
+            },
+            {
+              "i": 21,
+              "name": "myOverallTimeStatisticTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.myOverallTimeStatisticTable"
+            },
+            {
+              "i": 22,
+              "name": "myWorkingTimeStatisticTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.myWorkingTimeStatisticTable"
+            },
+            {
+              "i": 23,
+              "name": "myWorkerClasses",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.myWorkerClasses"
+            },
+            {
+              "i": 24,
+              "name": "VarOccupancyRel",
+              "type": "Variable",
+              "path": ".Models.Assembly1.WorkerChart.VarOccupancyRel"
+            },
+            {
+              "i": 25,
+              "name": "Chart",
+              "type": "Chart",
+              "path": ".Models.Assembly1.WorkerChart.Chart"
+            },
+            {
+              "i": 26,
+              "name": "myWorkerClassCount",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.myWorkerClassCount"
+            },
+            {
+              "i": 27,
+              "name": "DialogElements",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.WorkerChart.DialogElements"
+            },
+            {
+              "i": 28,
+              "name": "switchRadioButton",
+              "type": "Method",
+              "path": ".Models.Assembly1.WorkerChart.switchRadioButton"
+            }
+          ]
+        },
+        {
+          "i": 74,
+          "name": "AttributeExplorer",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly1.AttributeExplorer",
+          "children": []
+        },
+        {
+          "i": 75,
+          "name": "EnergySavingMeasures",
+          "type": "Checkbox",
+          "path": ".Models.Assembly1.EnergySavingMeasures",
+          "children": []
+        },
+        {
+          "i": 76,
+          "name": "DisplayEnergy",
+          "type": "Display",
+          "path": ".Models.Assembly1.DisplayEnergy",
+          "children": []
+        },
+        {
+          "i": 77,
+          "name": "BottleneckAnalyzer",
+          "type": "Frame",
+          "path": ".Models.Assembly1.BottleneckAnalyzer",
+          "children": [
+            {
+              "i": 1,
+              "name": "analyzeFrame",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.analyzeFrame"
+            },
+            {
+              "i": 2,
+              "name": "analyzeObject",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.analyzeObject"
+            },
+            {
+              "i": 3,
+              "name": "analyzeModel",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.analyzeModel"
+            },
+            {
+              "i": 4,
+              "name": "removeStats",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.removeStats"
+            },
+            {
+              "i": 5,
+              "name": "removeCharts",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.removeCharts"
+            },
+            {
+              "i": 6,
+              "name": "dialog",
+              "type": "Frame",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.dialog"
+            },
+            {
+              "i": 7,
+              "name": "Production",
+              "type": "Variable",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.Production"
+            },
+            {
+              "i": 8,
+              "name": "Transport",
+              "type": "Variable",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.Transport"
+            },
+            {
+              "i": 9,
+              "name": "Storage",
+              "type": "Variable",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.Storage"
+            },
+            {
+              "i": 10,
+              "name": "ResourceStats",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.ResourceStats"
+            },
+            {
+              "i": 11,
+              "name": "sortStats",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.sortStats"
+            },
+            {
+              "i": 12,
+              "name": "reset",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.reset"
+            },
+            {
+              "i": 13,
+              "name": "scale_icon",
+              "type": "Variable",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.scale_icon"
+            },
+            {
+              "i": 14,
+              "name": "Layer_of_chart",
+              "type": "Variable",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.Layer_of_chart"
+            },
+            {
+              "i": 15,
+              "name": "draw_Scale",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.draw_Scale"
+            },
+            {
+              "i": 16,
+              "name": "Analyzed",
+              "type": "Variable",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.Analyzed"
+            },
+            {
+              "i": 17,
+              "name": "drawBar",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.drawBar"
+            },
+            {
+              "i": 18,
+              "name": "insRootStr",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.insRootStr"
+            },
+            {
+              "i": 19,
+              "name": "colors",
+              "type": "Variable",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.colors"
+            },
+            {
+              "i": 20,
+              "name": "fill4Report",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.fill4Report"
+            },
+            {
+              "i": 21,
+              "name": "markBottleneckObject",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.markBottleneckObject"
+            },
+            {
+              "i": 22,
+              "name": "isTool",
+              "type": "Method",
+              "path": ".Models.Assembly1.BottleneckAnalyzer.isTool"
+            }
+          ]
+        },
+        {
+          "i": 78,
+          "name": "EnergyAnalyzer",
+          "type": "Frame",
+          "path": ".Models.Assembly1.EnergyAnalyzer",
+          "children": [
+            {
+              "i": 1,
+              "name": "EnergyConsumers",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.EnergyAnalyzer.EnergyConsumers"
+            },
+            {
+              "i": 2,
+              "name": "init",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.init"
+            },
+            {
+              "i": 3,
+              "name": "findConsumers",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.findConsumers"
+            },
+            {
+              "i": 4,
+              "name": "reset",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.reset"
+            },
+            {
+              "i": 5,
+              "name": "observeEnergyState",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.observeEnergyState"
+            },
+            {
+              "i": 6,
+              "name": "detectEnergyobjects",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.detectEnergyobjects"
+            },
+            {
+              "i": 7,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".Models.Assembly1.EnergyAnalyzer.Dialog"
+            },
+            {
+              "i": 8,
+              "name": "Plotter",
+              "type": "Chart",
+              "path": ".Models.Assembly1.EnergyAnalyzer.Plotter"
+            },
+            {
+              "i": 9,
+              "name": "visualize",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.visualize"
+            },
+            {
+              "i": 10,
+              "name": "delVisualize",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.delVisualize"
+            },
+            {
+              "i": 11,
+              "name": "ConsumersSelection",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.EnergyAnalyzer.ConsumersSelection"
+            },
+            {
+              "i": 12,
+              "name": "endSim",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.endSim"
+            },
+            {
+              "i": 13,
+              "name": "UsageProfile",
+              "type": "Chart",
+              "path": ".Models.Assembly1.EnergyAnalyzer.UsageProfile"
+            },
+            {
+              "i": 14,
+              "name": "VisObject",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.VisObject"
+            },
+            {
+              "i": 15,
+              "name": "ConsumersDragDrop",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.EnergyAnalyzer.ConsumersDragDrop"
+            },
+            {
+              "i": 16,
+              "name": "Colors",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.EnergyAnalyzer.Colors"
+            },
+            {
+              "i": 17,
+              "name": "Objects",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.EnergyAnalyzer.Objects"
+            },
+            {
+              "i": 18,
+              "name": "prepareObserver",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.prepareObserver"
+            },
+            {
+              "i": 19,
+              "name": "updateConsumption",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.updateConsumption"
+            },
+            {
+              "i": 20,
+              "name": "GrGroupName",
+              "type": "Variable",
+              "path": ".Models.Assembly1.EnergyAnalyzer.GrGroupName"
+            },
+            {
+              "i": 21,
+              "name": "ReportObject",
+              "type": "HtmlReport",
+              "path": ".Models.Assembly1.EnergyAnalyzer.ReportObject"
+            },
+            {
+              "i": 22,
+              "name": "Frames",
+              "type": "DataTable",
+              "path": ".Models.Assembly1.EnergyAnalyzer.Frames"
+            },
+            {
+              "i": 23,
+              "name": "isNameUniqueEverywhere",
+              "type": "Method",
+              "path": ".Models.Assembly1.EnergyAnalyzer.isNameUniqueEverywhere"
+            },
+            {
+              "i": 24,
+              "name": "Energy",
+              "type": "Variable",
+              "path": ".Models.Assembly1.EnergyAnalyzer.Energy"
+            }
+          ]
+        },
+        {
+          "i": 79,
+          "name": "ReadMe1",
+          "type": "FileLink",
+          "path": ".Models.Assembly1.ReadMe1",
+          "children": []
+        },
+        {
+          "i": 80,
+          "name": "LiesMich",
+          "type": "FileLink",
+          "path": ".Models.Assembly1.LiesMich",
+          "children": []
+        },
+        {
+          "i": 81,
+          "name": "Connector15",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector15",
+          "children": []
+        },
+        {
+          "i": 82,
+          "name": "Connector22",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector22",
+          "children": []
+        },
+        {
+          "i": 83,
+          "name": "Connector23",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector23",
+          "children": []
+        },
+        {
+          "i": 84,
+          "name": "Connector24",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector24",
+          "children": []
+        },
+        {
+          "i": 85,
+          "name": "Connector10",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector10",
+          "children": []
+        },
+        {
+          "i": 86,
+          "name": "Connector11",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector11",
+          "children": []
+        },
+        {
+          "i": 87,
+          "name": "Connector7",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector7",
+          "children": []
+        },
+        {
+          "i": 88,
+          "name": "Connector8",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector8",
+          "children": []
+        },
+        {
+          "i": 89,
+          "name": "Connector18",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector18",
+          "children": []
+        },
+        {
+          "i": 90,
+          "name": "Connector12",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector12",
+          "children": []
+        },
+        {
+          "i": 91,
+          "name": "Connector17",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector17",
+          "children": []
+        },
+        {
+          "i": 92,
+          "name": "Connector19",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector19",
+          "children": []
+        },
+        {
+          "i": 93,
+          "name": "Connector30",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector30",
+          "children": []
+        },
+        {
+          "i": 94,
+          "name": "Connector13",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector13",
+          "children": []
+        },
+        {
+          "i": 95,
+          "name": "Connector14",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector14",
+          "children": []
+        },
+        {
+          "i": 96,
+          "name": "Connector16",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector16",
+          "children": []
+        },
+        {
+          "i": 97,
+          "name": "Connector25",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector25",
+          "children": []
+        },
+        {
+          "i": 98,
+          "name": "Connector26",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector26",
+          "children": []
+        },
+        {
+          "i": 99,
+          "name": "Connector9",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector9",
+          "children": []
+        },
+        {
+          "i": 100,
+          "name": "Connector27",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector27",
+          "children": []
+        },
+        {
+          "i": 101,
+          "name": "Connector28",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector28",
+          "children": []
+        },
+        {
+          "i": 102,
+          "name": "Connector20",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector20",
+          "children": []
+        },
+        {
+          "i": 103,
+          "name": "Connector21",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector21",
+          "children": []
+        },
+        {
+          "i": 104,
+          "name": "Connector32",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector32",
+          "children": []
+        },
+        {
+          "i": 105,
+          "name": "Connector33",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector33",
+          "children": []
+        },
+        {
+          "i": 106,
+          "name": "Connector31",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector31",
+          "children": []
+        },
+        {
+          "i": 107,
+          "name": "Connector29",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector29",
+          "children": []
+        },
+        {
+          "i": 108,
+          "name": "Connector1",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector1",
+          "children": []
+        },
+        {
+          "i": 109,
+          "name": "Connector2",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector2",
+          "children": []
+        },
+        {
+          "i": 110,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector",
+          "children": []
+        },
+        {
+          "i": 111,
+          "name": "Connector3",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector3",
+          "children": []
+        },
+        {
+          "i": 112,
+          "name": "Connector4",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector4",
+          "children": []
+        },
+        {
+          "i": 113,
+          "name": "Connector5",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector5",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "Assembly2",
+      "type": "Frame",
+      "path": ".Models.Assembly2",
+      "children": [
+        {
+          "i": 1,
+          "name": "CrossTransferToTest",
+          "type": "Track",
+          "path": ".Models.Assembly2.CrossTransferToTest",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "CrossTransferFromTest",
+          "type": "Track",
+          "path": ".Models.Assembly2.CrossTransferFromTest",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Source",
+          "type": "Source",
+          "path": ".Models.Assembly2.Source",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "F0",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F0",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "F1",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F1",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "F2",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F2",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "F3",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F3",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "F4",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F4",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "F5",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F5",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "F7",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F7",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "F8",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F8",
+          "children": []
+        },
+        {
+          "i": 12,
+          "name": "F9",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F9",
+          "children": []
+        },
+        {
+          "i": 13,
+          "name": "F11",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F11",
+          "children": []
+        },
+        {
+          "i": 14,
+          "name": "LoadStation",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly2.LoadStation",
+          "children": []
+        },
+        {
+          "i": 15,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".Models.Assembly2.Drain",
+          "children": []
+        },
+        {
+          "i": 16,
+          "name": "Buffer",
+          "type": "Buffer",
+          "path": ".Models.Assembly2.Buffer",
+          "children": []
+        },
+        {
+          "i": 17,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".Models.Assembly2.EventController",
+          "children": []
+        },
+        {
+          "i": 18,
+          "name": "Source_Paletts",
+          "type": "Source",
+          "path": ".Models.Assembly2.Source_Paletts",
+          "children": []
+        },
+        {
+          "i": 19,
+          "name": "Comment2",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comment2",
+          "children": []
+        },
+        {
+          "i": 20,
+          "name": "Comment1",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comment1",
+          "children": []
+        },
+        {
+          "i": 21,
+          "name": "Comment4",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comment4",
+          "children": []
+        },
+        {
+          "i": 22,
+          "name": "Comm_F8",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F8",
+          "children": []
+        },
+        {
+          "i": 23,
+          "name": "WorkerPool",
+          "type": "WorkerPool",
+          "path": ".Models.Assembly2.WorkerPool",
+          "children": []
+        },
+        {
+          "i": 24,
+          "name": "ShiftCalendar",
+          "type": "ShiftCalendar",
+          "path": ".Models.Assembly2.ShiftCalendar",
+          "children": []
+        },
+        {
+          "i": 25,
+          "name": "Workplace_1",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_1",
+          "children": []
+        },
+        {
+          "i": 26,
+          "name": "Workplace_2",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_2",
+          "children": []
+        },
+        {
+          "i": 27,
+          "name": "Workplace_3",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_3",
+          "children": []
+        },
+        {
+          "i": 28,
+          "name": "Workplace_4",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_4",
+          "children": []
+        },
+        {
+          "i": 29,
+          "name": "Workplace_5",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_5",
+          "children": []
+        },
+        {
+          "i": 30,
+          "name": "Broker",
+          "type": "Broker",
+          "path": ".Models.Assembly2.Broker",
+          "children": []
+        },
+        {
+          "i": 31,
+          "name": "Quantity",
+          "type": "Variable",
+          "path": ".Models.Assembly2.Quantity",
+          "children": []
+        },
+        {
+          "i": 32,
+          "name": "MS5",
+          "type": "Station",
+          "path": ".Models.Assembly2.MS5",
+          "children": []
+        },
+        {
+          "i": 33,
+          "name": "MS2",
+          "type": "Station",
+          "path": ".Models.Assembly2.MS2",
+          "children": []
+        },
+        {
+          "i": 34,
+          "name": "MS1",
+          "type": "Station",
+          "path": ".Models.Assembly2.MS1",
+          "children": []
+        },
+        {
+          "i": 35,
+          "name": "MS4",
+          "type": "Station",
+          "path": ".Models.Assembly2.MS4",
+          "children": []
+        },
+        {
+          "i": 36,
+          "name": "AS5",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS5",
+          "children": []
+        },
+        {
+          "i": 37,
+          "name": "AS1",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS1",
+          "children": []
+        },
+        {
+          "i": 38,
+          "name": "AS2",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS2",
+          "children": []
+        },
+        {
+          "i": 39,
+          "name": "AS3",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS3",
+          "children": []
+        },
+        {
+          "i": 40,
+          "name": "AS4",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS4",
+          "children": []
+        },
+        {
+          "i": 41,
+          "name": "Comm_F10",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F10",
+          "children": []
+        },
+        {
+          "i": 42,
+          "name": "Comm_F9",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F9",
+          "children": []
+        },
+        {
+          "i": 43,
+          "name": "PalletOptimization",
+          "type": "Frame",
+          "path": ".Models.Assembly2.PalletOptimization",
+          "error": "Unterminated string starting at: line 1 column 11972 (char 11971)"
+        },
+        {
+          "i": 44,
+          "name": "Orders",
+          "type": "DataTable",
+          "path": ".Models.Assembly2.Orders",
+          "children": []
+        },
+        {
+          "i": 45,
+          "name": "F10",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F10",
+          "children": []
+        },
+        {
+          "i": 46,
+          "name": "ParallelProc",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly2.ParallelProc",
+          "children": []
+        },
+        {
+          "i": 47,
+          "name": "MS3",
+          "type": "AssemblyStation",
+          "path": ".Models.Assembly2.MS3",
+          "children": []
+        },
+        {
+          "i": 48,
+          "name": "PreProduction",
+          "type": "Frame",
+          "path": ".Models.Assembly2.PreProduction",
+          "children": [
+            {
+              "i": 1,
+              "name": "Source_Parts",
+              "type": "Source",
+              "path": ".Models.Assembly2.PreProduction.Source_Parts"
+            },
+            {
+              "i": 2,
+              "name": "MS6",
+              "type": "Station",
+              "path": ".Models.Assembly2.PreProduction.MS6"
+            },
+            {
+              "i": 3,
+              "name": "AS7",
+              "type": "Station",
+              "path": ".Models.Assembly2.PreProduction.AS7"
+            },
+            {
+              "i": 4,
+              "name": "AS8",
+              "type": "Station",
+              "path": ".Models.Assembly2.PreProduction.AS8"
+            },
+            {
+              "i": 5,
+              "name": "F0",
+              "type": "Conveyor",
+              "path": ".Models.Assembly2.PreProduction.F0"
+            },
+            {
+              "i": 6,
+              "name": "Workplace",
+              "type": "Workplace",
+              "path": ".Models.Assembly2.PreProduction.Workplace"
+            },
+            {
+              "i": 7,
+              "name": "F1",
+              "type": "Conveyor",
+              "path": ".Models.Assembly2.PreProduction.F1"
+            },
+            {
+              "i": 8,
+              "name": "F2",
+              "type": "Conveyor",
+              "path": ".Models.Assembly2.PreProduction.F2"
+            },
+            {
+              "i": 9,
+              "name": "Exit",
+              "type": "Interface",
+              "path": ".Models.Assembly2.PreProduction.Exit"
+            },
+            {
+              "i": 10,
+              "name": "AS9",
+              "type": "AssemblyStation",
+              "path": ".Models.Assembly2.PreProduction.AS9"
+            },
+            {
+              "i": 11,
+              "name": "F3",
+              "type": "Conveyor",
+              "path": ".Models.Assembly2.PreProduction.F3"
+            },
+            {
+              "i": 12,
+              "name": "Entry",
+              "type": "Interface",
+              "path": ".Models.Assembly2.PreProduction.Entry"
+            },
+            {
+              "i": 13,
+              "name": "Source_Paletts",
+              "type": "Source",
+              "path": ".Models.Assembly2.PreProduction.Source_Paletts"
+            },
+            {
+              "i": 14,
+              "name": "Comment",
+              "type": "Comment",
+              "path": ".Models.Assembly2.PreProduction.Comment"
+            },
+            {
+              "i": 15,
+              "name": "Quantity",
+              "type": "Variable",
+              "path": ".Models.Assembly2.PreProduction.Quantity"
+            },
+            {
+              "i": 16,
+              "name": "Comm_F0",
+              "type": "Comment",
+              "path": ".Models.Assembly2.PreProduction.Comm_F0"
+            },
+            {
+              "i": 17,
+              "name": "Comm_F1",
+              "type": "Comment",
+              "path": ".Models.Assembly2.PreProduction.Comm_F1"
+            },
+            {
+              "i": 18,
+              "name": "Comm_F2",
+              "type": "Comment",
+              "path": ".Models.Assembly2.PreProduction.Comm_F2"
+            },
+            {
+              "i": 19,
+              "name": "Comm_F3",
+              "type": "Comment",
+              "path": ".Models.Assembly2.PreProduction.Comm_F3"
+            },
+            {
+              "i": 20,
+              "name": "Robot",
+              "type": "PickAndPlace",
+              "path": ".Models.Assembly2.PreProduction.Robot"
+            },
+            {
+              "i": 21,
+              "name": "AS6",
+              "type": "Station",
+              "path": ".Models.Assembly2.PreProduction.AS6"
+            },
+            {
+              "i": 22,
+              "name": "Connector10",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector10"
+            },
+            {
+              "i": 23,
+              "name": "Connector9",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector9"
+            },
+            {
+              "i": 24,
+              "name": "Connector8",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector8"
+            },
+            {
+              "i": 25,
+              "name": "Connector5",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector5"
+            },
+            {
+              "i": 26,
+              "name": "Connector13",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector13"
+            },
+            {
+              "i": 27,
+              "name": "Connector4",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector4"
+            },
+            {
+              "i": 28,
+              "name": "Connector11",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector11"
+            },
+            {
+              "i": 29,
+              "name": "Connector14",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector14"
+            },
+            {
+              "i": 30,
+              "name": "Connector12",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector12"
+            },
+            {
+              "i": 31,
+              "name": "Connector",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector"
+            },
+            {
+              "i": 32,
+              "name": "Connector1",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector1"
+            },
+            {
+              "i": 33,
+              "name": "Connector2",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector2"
+            },
+            {
+              "i": 34,
+              "name": "Connector3",
+              "type": "Connector",
+              "path": ".Models.Assembly2.PreProduction.Connector3"
+            }
+          ]
+        },
+        {
+          "i": 49,
+          "name": "Unload",
+          "type": "DismantleStation",
+          "path": ".Models.Assembly2.Unload",
+          "children": []
+        },
+        {
+          "i": 50,
+          "name": "Line1",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.Line1",
+          "children": []
+        },
+        {
+          "i": 51,
+          "name": "Line2",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.Line2",
+          "children": []
+        },
+        {
+          "i": 52,
+          "name": "DisplayThroughput",
+          "type": "Display",
+          "path": ".Models.Assembly2.DisplayThroughput",
+          "children": []
+        },
+        {
+          "i": 53,
+          "name": "Comment3",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comment3",
+          "children": []
+        },
+        {
+          "i": 54,
+          "name": "Button",
+          "type": "Button",
+          "path": ".Models.Assembly2.Button",
+          "children": []
+        },
+        {
+          "i": 55,
+          "name": "Button1",
+          "type": "Button",
+          "path": ".Models.Assembly2.Button1",
+          "children": []
+        },
+        {
+          "i": 56,
+          "name": "Button2",
+          "type": "Button",
+          "path": ".Models.Assembly2.Button2",
+          "children": []
+        },
+        {
+          "i": 57,
+          "name": "AttributExplorer2",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly2.AttributExplorer2",
+          "children": []
+        },
+        {
+          "i": 58,
+          "name": "AttributExplorer3",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly2.AttributExplorer3",
+          "children": []
+        },
+        {
+          "i": 59,
+          "name": "Comm_F5",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F5",
+          "children": []
+        },
+        {
+          "i": 60,
+          "name": "Comm_F4",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F4",
+          "children": []
+        },
+        {
+          "i": 61,
+          "name": "Comm_F11",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F11",
+          "children": []
+        },
+        {
+          "i": 62,
+          "name": "Comm_F0",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F0",
+          "children": []
+        },
+        {
+          "i": 63,
+          "name": "Comm_F1",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F1",
+          "children": []
+        },
+        {
+          "i": 64,
+          "name": "Comm_F2",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F2",
+          "children": []
+        },
+        {
+          "i": 65,
+          "name": "Comm_F3",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F3",
+          "children": []
+        },
+        {
+          "i": 66,
+          "name": "Comm_F7",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F7",
+          "children": []
+        },
+        {
+          "i": 67,
+          "name": "TransferStation",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly2.TransferStation",
+          "children": []
+        },
+        {
+          "i": 68,
+          "name": "Chart",
+          "type": "Chart",
+          "path": ".Models.Assembly2.Chart",
+          "children": []
+        },
+        {
+          "i": 69,
+          "name": "Logo",
+          "type": "Frame",
+          "path": ".Models.Assembly2.Logo",
+          "children": []
+        },
+        {
+          "i": 70,
+          "name": "AttributeExplorer",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly2.AttributeExplorer",
+          "children": []
+        },
+        {
+          "i": 71,
+          "name": "EnergySavingMeasures",
+          "type": "Checkbox",
+          "path": ".Models.Assembly2.EnergySavingMeasures",
+          "children": []
+        },
+        {
+          "i": 72,
+          "name": "DisplayEnergy",
+          "type": "Display",
+          "path": ".Models.Assembly2.DisplayEnergy",
+          "children": []
+        },
+        {
+          "i": 73,
+          "name": "BottleneckAnalyzer",
+          "type": "Frame",
+          "path": ".Models.Assembly2.BottleneckAnalyzer",
+          "children": [
+            {
+              "i": 1,
+              "name": "analyzeFrame",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.analyzeFrame"
+            },
+            {
+              "i": 2,
+              "name": "analyzeObject",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.analyzeObject"
+            },
+            {
+              "i": 3,
+              "name": "analyzeModel",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.analyzeModel"
+            },
+            {
+              "i": 4,
+              "name": "removeStats",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.removeStats"
+            },
+            {
+              "i": 5,
+              "name": "removeCharts",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.removeCharts"
+            },
+            {
+              "i": 6,
+              "name": "dialog",
+              "type": "Frame",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.dialog"
+            },
+            {
+              "i": 7,
+              "name": "Production",
+              "type": "Variable",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.Production"
+            },
+            {
+              "i": 8,
+              "name": "Transport",
+              "type": "Variable",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.Transport"
+            },
+            {
+              "i": 9,
+              "name": "Storage",
+              "type": "Variable",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.Storage"
+            },
+            {
+              "i": 10,
+              "name": "ResourceStats",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.ResourceStats"
+            },
+            {
+              "i": 11,
+              "name": "sortStats",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.sortStats"
+            },
+            {
+              "i": 12,
+              "name": "reset",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.reset"
+            },
+            {
+              "i": 13,
+              "name": "scale_icon",
+              "type": "Variable",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.scale_icon"
+            },
+            {
+              "i": 14,
+              "name": "Layer_of_chart",
+              "type": "Variable",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.Layer_of_chart"
+            },
+            {
+              "i": 15,
+              "name": "draw_Scale",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.draw_Scale"
+            },
+            {
+              "i": 16,
+              "name": "Analyzed",
+              "type": "Variable",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.Analyzed"
+            },
+            {
+              "i": 17,
+              "name": "drawBar",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.drawBar"
+            },
+            {
+              "i": 18,
+              "name": "insRootStr",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.insRootStr"
+            },
+            {
+              "i": 19,
+              "name": "colors",
+              "type": "Variable",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.colors"
+            },
+            {
+              "i": 20,
+              "name": "fill4Report",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.fill4Report"
+            },
+            {
+              "i": 21,
+              "name": "markBottleneckObject",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.markBottleneckObject"
+            },
+            {
+              "i": 22,
+              "name": "isTool",
+              "type": "Method",
+              "path": ".Models.Assembly2.BottleneckAnalyzer.isTool"
+            }
+          ]
+        },
+        {
+          "i": 74,
+          "name": "BufferOptimization",
+          "type": "Frame",
+          "path": ".Models.Assembly2.BufferOptimization",
+          "error": "Unterminated string starting at: line 1 column 11972 (char 11971)"
+        },
+        {
+          "i": 75,
+          "name": "Buffer1",
+          "type": "Buffer",
+          "path": ".Models.Assembly2.Buffer1",
+          "children": []
+        },
+        {
+          "i": 76,
+          "name": "EnergyAnalyzer",
+          "type": "Frame",
+          "path": ".Models.Assembly2.EnergyAnalyzer",
+          "children": [
+            {
+              "i": 1,
+              "name": "EnergyConsumers",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.EnergyAnalyzer.EnergyConsumers"
+            },
+            {
+              "i": 2,
+              "name": "init",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.init"
+            },
+            {
+              "i": 3,
+              "name": "findConsumers",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.findConsumers"
+            },
+            {
+              "i": 4,
+              "name": "reset",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.reset"
+            },
+            {
+              "i": 5,
+              "name": "observeEnergyState",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.observeEnergyState"
+            },
+            {
+              "i": 6,
+              "name": "detectEnergyobjects",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.detectEnergyobjects"
+            },
+            {
+              "i": 7,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".Models.Assembly2.EnergyAnalyzer.Dialog"
+            },
+            {
+              "i": 8,
+              "name": "Plotter",
+              "type": "Chart",
+              "path": ".Models.Assembly2.EnergyAnalyzer.Plotter"
+            },
+            {
+              "i": 9,
+              "name": "visualize",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.visualize"
+            },
+            {
+              "i": 10,
+              "name": "delVisualize",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.delVisualize"
+            },
+            {
+              "i": 11,
+              "name": "ConsumersSelection",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.EnergyAnalyzer.ConsumersSelection"
+            },
+            {
+              "i": 12,
+              "name": "endSim",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.endSim"
+            },
+            {
+              "i": 13,
+              "name": "UsageProfile",
+              "type": "Chart",
+              "path": ".Models.Assembly2.EnergyAnalyzer.UsageProfile"
+            },
+            {
+              "i": 14,
+              "name": "VisObject",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.VisObject"
+            },
+            {
+              "i": 15,
+              "name": "ConsumersDragDrop",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.EnergyAnalyzer.ConsumersDragDrop"
+            },
+            {
+              "i": 16,
+              "name": "Colors",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.EnergyAnalyzer.Colors"
+            },
+            {
+              "i": 17,
+              "name": "Objects",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.EnergyAnalyzer.Objects"
+            },
+            {
+              "i": 18,
+              "name": "prepareObserver",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.prepareObserver"
+            },
+            {
+              "i": 19,
+              "name": "updateConsumption",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.updateConsumption"
+            },
+            {
+              "i": 20,
+              "name": "GrGroupName",
+              "type": "Variable",
+              "path": ".Models.Assembly2.EnergyAnalyzer.GrGroupName"
+            },
+            {
+              "i": 21,
+              "name": "ReportObject",
+              "type": "HtmlReport",
+              "path": ".Models.Assembly2.EnergyAnalyzer.ReportObject"
+            },
+            {
+              "i": 22,
+              "name": "Frames",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.EnergyAnalyzer.Frames"
+            },
+            {
+              "i": 23,
+              "name": "isNameUniqueEverywhere",
+              "type": "Method",
+              "path": ".Models.Assembly2.EnergyAnalyzer.isNameUniqueEverywhere"
+            },
+            {
+              "i": 24,
+              "name": "Energy",
+              "type": "Variable",
+              "path": ".Models.Assembly2.EnergyAnalyzer.Energy"
+            }
+          ]
+        },
+        {
+          "i": 77,
+          "name": "ReadMe1",
+          "type": "FileLink",
+          "path": ".Models.Assembly2.ReadMe1",
+          "children": []
+        },
+        {
+          "i": 78,
+          "name": "LiesMich",
+          "type": "FileLink",
+          "path": ".Models.Assembly2.LiesMich",
+          "children": []
+        },
+        {
+          "i": 79,
+          "name": "BufferUsage",
+          "type": "Chart",
+          "path": ".Models.Assembly2.BufferUsage",
+          "children": []
+        },
+        {
+          "i": 80,
+          "name": "WorkerUtilization",
+          "type": "Frame",
+          "path": ".Models.Assembly2.WorkerUtilization",
+          "children": [
+            {
+              "i": 1,
+              "name": "init",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.init"
+            },
+            {
+              "i": 2,
+              "name": "DragAndDrop",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.DragAndDrop"
+            },
+            {
+              "i": 3,
+              "name": "Open",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.Open"
+            },
+            {
+              "i": 4,
+              "name": "CallBack",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.CallBack"
+            },
+            {
+              "i": 5,
+              "name": "Refresh",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.Refresh"
+            },
+            {
+              "i": 6,
+              "name": "VarObj",
+              "type": "Variable",
+              "path": ".Models.Assembly2.WorkerUtilization.VarObj"
+            },
+            {
+              "i": 7,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".Models.Assembly2.WorkerUtilization.Dialog"
+            },
+            {
+              "i": 8,
+              "name": "myWorkerTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.myWorkerTable"
+            },
+            {
+              "i": 9,
+              "name": "myInputChannelsTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.myInputChannelsTable"
+            },
+            {
+              "i": 10,
+              "name": "VarStatisticGroup",
+              "type": "Variable",
+              "path": ".Models.Assembly2.WorkerUtilization.VarStatisticGroup"
+            },
+            {
+              "i": 11,
+              "name": "GetWorkersFromPool",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.GetWorkersFromPool"
+            },
+            {
+              "i": 12,
+              "name": "ChartTypeRefresh",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.ChartTypeRefresh"
+            },
+            {
+              "i": 13,
+              "name": "VarChartType",
+              "type": "Variable",
+              "path": ".Models.Assembly2.WorkerUtilization.VarChartType"
+            },
+            {
+              "i": 14,
+              "name": "VarPointOfView",
+              "type": "Variable",
+              "path": ".Models.Assembly2.WorkerUtilization.VarPointOfView"
+            },
+            {
+              "i": 15,
+              "name": "VarInterval",
+              "type": "Variable",
+              "path": ".Models.Assembly2.WorkerUtilization.VarInterval"
+            },
+            {
+              "i": 16,
+              "name": "Reset",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.Reset"
+            },
+            {
+              "i": 17,
+              "name": "myBufferTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.myBufferTable"
+            },
+            {
+              "i": 18,
+              "name": "Transpose",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.Transpose"
+            },
+            {
+              "i": 19,
+              "name": "MakeString",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.MakeString"
+            },
+            {
+              "i": 20,
+              "name": "myStatisticTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.myStatisticTable"
+            },
+            {
+              "i": 21,
+              "name": "myOverallTimeStatisticTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.myOverallTimeStatisticTable"
+            },
+            {
+              "i": 22,
+              "name": "myWorkingTimeStatisticTable",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.myWorkingTimeStatisticTable"
+            },
+            {
+              "i": 23,
+              "name": "myWorkerClasses",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.myWorkerClasses"
+            },
+            {
+              "i": 24,
+              "name": "VarOccupancyRel",
+              "type": "Variable",
+              "path": ".Models.Assembly2.WorkerUtilization.VarOccupancyRel"
+            },
+            {
+              "i": 25,
+              "name": "Chart",
+              "type": "Chart",
+              "path": ".Models.Assembly2.WorkerUtilization.Chart"
+            },
+            {
+              "i": 26,
+              "name": "myWorkerClassCount",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.myWorkerClassCount"
+            },
+            {
+              "i": 27,
+              "name": "switchRadioButton",
+              "type": "Method",
+              "path": ".Models.Assembly2.WorkerUtilization.switchRadioButton"
+            },
+            {
+              "i": 28,
+              "name": "DialogElements",
+              "type": "DataTable",
+              "path": ".Models.Assembly2.WorkerUtilization.DialogElements"
+            }
+          ]
+        },
+        {
+          "i": 81,
+          "name": "Connector15",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector15",
+          "children": []
+        },
+        {
+          "i": 82,
+          "name": "Connector22",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector22",
+          "children": []
+        },
+        {
+          "i": 83,
+          "name": "Connector23",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector23",
+          "children": []
+        },
+        {
+          "i": 84,
+          "name": "Connector24",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector24",
+          "children": []
+        },
+        {
+          "i": 85,
+          "name": "Connector10",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector10",
+          "children": []
+        },
+        {
+          "i": 86,
+          "name": "Connector11",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector11",
+          "children": []
+        },
+        {
+          "i": 87,
+          "name": "Connector7",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector7",
+          "children": []
+        },
+        {
+          "i": 88,
+          "name": "Connector8",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector8",
+          "children": []
+        },
+        {
+          "i": 89,
+          "name": "Connector18",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector18",
+          "children": []
+        },
+        {
+          "i": 90,
+          "name": "Connector12",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector12",
+          "children": []
+        },
+        {
+          "i": 91,
+          "name": "Connector17",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector17",
+          "children": []
+        },
+        {
+          "i": 92,
+          "name": "Connector19",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector19",
+          "children": []
+        },
+        {
+          "i": 93,
+          "name": "Connector30",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector30",
+          "children": []
+        },
+        {
+          "i": 94,
+          "name": "Connector13",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector13",
+          "children": []
+        },
+        {
+          "i": 95,
+          "name": "Connector14",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector14",
+          "children": []
+        },
+        {
+          "i": 96,
+          "name": "Connector16",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector16",
+          "children": []
+        },
+        {
+          "i": 97,
+          "name": "Connector25",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector25",
+          "children": []
+        },
+        {
+          "i": 98,
+          "name": "Connector26",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector26",
+          "children": []
+        },
+        {
+          "i": 99,
+          "name": "Connector9",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector9",
+          "children": []
+        },
+        {
+          "i": 100,
+          "name": "Connector27",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector27",
+          "children": []
+        },
+        {
+          "i": 101,
+          "name": "Connector28",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector28",
+          "children": []
+        },
+        {
+          "i": 102,
+          "name": "Connector20",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector20",
+          "children": []
+        },
+        {
+          "i": 103,
+          "name": "Connector21",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector21",
+          "children": []
+        },
+        {
+          "i": 104,
+          "name": "Connector32",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector32",
+          "children": []
+        },
+        {
+          "i": 105,
+          "name": "Connector33",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector33",
+          "children": []
+        },
+        {
+          "i": 106,
+          "name": "Connector31",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector31",
+          "children": []
+        },
+        {
+          "i": 107,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector",
+          "children": []
+        },
+        {
+          "i": 108,
+          "name": "Connector3",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector3",
+          "children": []
+        },
+        {
+          "i": 109,
+          "name": "Connector4",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector4",
+          "children": []
+        },
+        {
+          "i": 110,
+          "name": "Connector5",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector5",
+          "children": []
+        },
+        {
+          "i": 111,
+          "name": "Connector1",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector1",
+          "children": []
+        },
+        {
+          "i": 112,
+          "name": "Connector2",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector2",
+          "children": []
+        },
+        {
+          "i": 113,
+          "name": "Connector6",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector6",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

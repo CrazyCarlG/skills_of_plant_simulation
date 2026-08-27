@@ -1,0 +1,160 @@
+{
+  "root_path": ".SimtalkClaude",
+  "root_name": "SimtalkClaude",
+  "root_type": "Folder",
+  "root_numNodes": 4,
+  "children": [
+    {
+      "i": 1,
+      "name": "main",
+      "type": "Frame",
+      "path": ".SimtalkClaude.main",
+      "children": [
+        {
+          "i": 1,
+          "name": "SocketServer",
+          "type": "Frame",
+          "path": ".SimtalkClaude.main.SocketServer"
+        },
+        {
+          "i": 2,
+          "name": "SimtalkAction",
+          "type": "Frame",
+          "path": ".SimtalkClaude.main.SimtalkAction"
+        },
+        {
+          "i": 3,
+          "name": "Server",
+          "type": "Variable",
+          "path": ".SimtalkClaude.main.Server"
+        },
+        {
+          "i": 4,
+          "name": "SocketClient",
+          "type": "Frame",
+          "path": ".SimtalkClaude.main.SocketClient"
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "src",
+      "type": "Folder",
+      "path": ".SimtalkClaude.src",
+      "children": [
+        {
+          "i": 1,
+          "name": "SimtalkAction",
+          "type": "Frame",
+          "path": ".SimtalkClaude.src.SimtalkAction"
+        },
+        {
+          "i": 2,
+          "name": "autoexec",
+          "type": "Method",
+          "path": ".SimtalkClaude.src.autoexec"
+        },
+        {
+          "i": 3,
+          "name": "ErrorHandler",
+          "type": "Method",
+          "path": ".SimtalkClaude.src.ErrorHandler"
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "name": "connection",
+      "type": "Folder",
+      "path": ".SimtalkClaude.connection",
+      "children": [
+        {
+          "i": 1,
+          "name": "SocketClient",
+          "type": "Frame",
+          "path": ".SimtalkClaude.connection.SocketClient"
+        },
+        {
+          "i": 2,
+          "name": "SocketServer",
+          "type": "Frame",
+          "path": ".SimtalkClaude.connection.SocketServer"
+        },
+        {
+          "i": 3,
+          "name": "Logger",
+          "type": "Frame",
+          "path": ".SimtalkClaude.connection.Logger"
+        },
+        {
+          "i": 4,
+          "name": "Socket",
+          "type": "Socket",
+          "path": ".SimtalkClaude.connection.Socket"
+        },
+        {
+          "i": 5,
+          "name": "socketcallback",
+          "type": "Method",
+          "path": ".SimtalkClaude.connection.socketcallback"
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "name": "Objects",
+      "type": "Folder",
+      "path": ".SimtalkClaude.Objects",
+      "children": [
+        {
+          "i": 1,
+          "name": "Method",
+          "type": "Method",
+          "path": ".SimtalkClaude.Objects.Method"
+        },
+        {
+          "i": 2,
+          "name": "Socket",
+          "type": "Socket",
+          "path": ".SimtalkClaude.Objects.Socket"
+        },
+        {
+          "i": 3,
+          "name": "DataList",
+          "type": "DataList",
+          "path": ".SimtalkClaude.Objects.DataList"
+        },
+        {
+          "i": 4,
+          "name": "Dialog",
+          "type": "Dialog",
+          "path": ".SimtalkClaude.Objects.Dialog"
+        },
+        {
+          "i": 5,
+          "name": "HtmlReport",
+          "type": "HtmlReport",
+          "path": ".SimtalkClaude.Objects.HtmlReport"
+        },
+        {
+          "i": 6,
+          "name": "Variable",
+          "type": "Variable",
+          "path": ".SimtalkClaude.Objects.Variable"
+        },
+        {
+          "i": 7,
+          "name": "Button",
+          "type": "Button",
+          "path": ".SimtalkClaude.Objects.Button"
+        },
+        {
+          "i": 8,
+          "name": "DataTable",
+          "type": "DataTable",
+          "path": ".SimtalkClaude.Objects.DataTable"
+        }
+      ]
+    }
+  ]
+}

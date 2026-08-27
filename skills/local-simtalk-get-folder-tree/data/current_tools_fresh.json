@@ -1,0 +1,151 @@
+{
+  "root_path": ".Tools",
+  "root_name": "Tools",
+  "root_type": "Folder",
+  "root_numNodes": 6,
+  "children": [
+    {
+      "i": 1,
+      "name": "BottleneckAnalyzer",
+      "type": "Folder",
+      "path": ".Tools.BottleneckAnalyzer",
+      "children": [
+        {
+          "i": 1,
+          "name": "BottleneckAnalyzer",
+          "type": "Frame",
+          "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer"
+        },
+        {
+          "i": 2,
+          "name": "BasicObjects",
+          "type": "Folder",
+          "path": ".Tools.BottleneckAnalyzer.BasicObjects"
+        },
+        {
+          "i": 3,
+          "name": "Localization",
+          "type": "Folder",
+          "path": ".Tools.BottleneckAnalyzer.Localization"
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "EnergyAnalyzer",
+      "type": "Folder",
+      "path": ".Tools.EnergyAnalyzer",
+      "children": [
+        {
+          "i": 1,
+          "name": "EnergyAnalyzer",
+          "type": "Frame",
+          "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer"
+        },
+        {
+          "i": 2,
+          "name": "Localization",
+          "type": "Folder",
+          "path": ".Tools.EnergyAnalyzer.Localization"
+        },
+        {
+          "i": 3,
+          "name": "BasicObjects",
+          "type": "Folder",
+          "path": ".Tools.EnergyAnalyzer.BasicObjects"
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "name": "ExperimentManager",
+      "type": "Folder",
+      "path": ".Tools.ExperimentManager",
+      "children": [
+        {
+          "i": 1,
+          "name": "ExperimentManager",
+          "type": "Frame",
+          "path": ".Tools.ExperimentManager.ExperimentManager"
+        },
+        {
+          "i": 2,
+          "name": "BasicObjects",
+          "type": "Folder",
+          "path": ".Tools.ExperimentManager.BasicObjects"
+        },
+        {
+          "i": 3,
+          "name": "Internal",
+          "type": "Folder",
+          "path": ".Tools.ExperimentManager.Internal"
+        },
+        {
+          "i": 4,
+          "name": "Localization",
+          "type": "Folder",
+          "path": ".Tools.ExperimentManager.Localization"
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "name": "TransferStation",
+      "type": "Folder",
+      "path": ".Tools.TransferStation",
+      "children": [
+        {
+          "i": 1,
+          "name": "TransferStation",
+          "type": "ParallelStation",
+          "path": ".Tools.TransferStation.TransferStation"
+        },
+        {
+          "i": 2,
+          "name": "Internal",
+          "type": "Folder",
+          "path": ".Tools.TransferStation.Internal"
+        },
+        {
+          "i": 3,
+          "name": "Localization",
+          "type": "Folder",
+          "path": ".Tools.TransferStation.Localization"
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "name": "WorkerChart",
+      "type": "Folder",
+      "path": ".Tools.WorkerChart",
+      "children": [
+        {
+          "i": 1,
+          "name": "WorkerChart",
+          "type": "Frame",
+          "path": ".Tools.WorkerChart.WorkerChart"
+        },
+        {
+          "i": 2,
+          "name": "BasicObjects",
+          "type": "Folder",
+          "path": ".Tools.WorkerChart.BasicObjects"
+        },
+        {
+          "i": 3,
+          "name": "Localization",
+          "type": "Folder",
+          "path": ".Tools.WorkerChart.Localization"
+        }
+      ]
+    },
+    {
+      "i": 6,
+      "name": "Tools",
+      "type": "Toolbar",
+      "path": ".Tools.Tools",
+      "children": []
+    }
+  ]
+}

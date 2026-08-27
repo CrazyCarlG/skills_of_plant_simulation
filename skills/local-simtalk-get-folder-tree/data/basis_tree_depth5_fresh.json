@@ -1,0 +1,1629 @@
+{
+  "root_path": "",
+  "root_name": "Basis",
+  "root_type": "Folder",
+  "root_numNodes": 5,
+  "children": [
+    {
+      "i": 1,
+      "name": "Models",
+      "type": "Folder",
+      "path": ".Models",
+      "children": [
+        {
+          "i": 1,
+          "name": "internal",
+          "type": "Folder",
+          "path": ".Models.internal",
+          "children": [
+            {
+              "i": 1,
+              "name": "Localization",
+              "type": "Folder",
+              "path": ".Models.internal.Localization",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "MessageTab",
+                  "type": "DataTable",
+                  "path": ".Models.internal.Localization.MessageTab",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "getMessage",
+                  "type": "Method",
+                  "path": ".Models.internal.Localization.getMessage",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "getText",
+                  "type": "Method",
+                  "path": ".Models.internal.Localization.getText",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "Admin",
+              "type": "Frame",
+              "path": ".Models.internal.Admin",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Folder4Objects",
+                  "type": "Variable",
+                  "path": ".Models.internal.Admin.Folder4Objects",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "ExamNo",
+                  "type": "Variable",
+                  "path": ".Models.internal.Admin.ExamNo",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "removeUnwantedCharacter",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.removeUnwantedCharacter",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Workflow",
+                  "type": "Comment",
+                  "path": ".Models.internal.Admin.Workflow",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "GeneralTable2ExampleTab",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.GeneralTable2ExampleTab",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "partitionDescription",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.partitionDescription",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "searchStr",
+                  "type": "Variable",
+                  "path": ".Models.internal.Admin.searchStr",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "startSearch",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.startSearch",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "HTML",
+                  "type": "Comment",
+                  "path": ".Models.internal.Admin.HTML",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "displayResults",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.displayResults",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "dispatcher",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.dispatcher",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "setExamNo",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.setExamNo",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "showComment",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.showComment",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "DropDownList",
+                  "type": "DropDownList",
+                  "path": ".Models.internal.Admin.DropDownList",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "maxDescription",
+                  "type": "Variable",
+                  "path": ".Models.internal.Admin.maxDescription",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "prepareSave",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.prepareSave",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "Comment2GeneralTable",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.Comment2GeneralTable",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "saveObject",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.saveObject",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "OpenGeneralTable",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.OpenGeneralTable",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "move_AxesOrigin",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.move_AxesOrigin",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "ExampleTab",
+                  "type": "DataTable",
+                  "path": ".Models.internal.Admin.ExampleTab",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "greenRectangle",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.greenRectangle",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "CalcScore",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.CalcScore",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "CountOccur",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.CountOccur",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "MarkText",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.MarkText",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "ExportToExcel",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.ExportToExcel",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "ImportKeywords",
+                  "type": "Method",
+                  "path": ".Models.internal.Admin.ImportKeywords",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "KeyWords",
+                  "type": "DataTable",
+                  "path": ".Models.internal.Admin.KeyWords",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "SelDlg",
+              "type": "Dialog",
+              "path": ".Models.internal.SelDlg",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "autoexec",
+              "type": "Method",
+              "path": ".Models.internal.autoexec",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "Method",
+              "type": "Method",
+              "path": ".Models.internal.Method",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "Variable",
+              "type": "Variable",
+              "path": ".Models.internal.Variable",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "HtmlReport",
+              "type": "HtmlReport",
+              "path": ".Models.internal.HtmlReport",
+              "children": []
+            },
+            {
+              "i": 8,
+              "name": "ReadMe",
+              "type": "Comment",
+              "path": ".Models.internal.ReadMe",
+              "children": []
+            },
+            {
+              "i": 9,
+              "name": "LiesMich",
+              "type": "Comment",
+              "path": ".Models.internal.LiesMich",
+              "children": []
+            },
+            {
+              "i": 10,
+              "name": "DropDownList",
+              "type": "DropDownList",
+              "path": ".Models.internal.DropDownList",
+              "children": []
+            },
+            {
+              "i": 11,
+              "name": "Comment",
+              "type": "Comment",
+              "path": ".Models.internal.Comment",
+              "children": []
+            },
+            {
+              "i": 12,
+              "name": "DataTable",
+              "type": "DataTable",
+              "path": ".Models.internal.DataTable",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "SourceTrigger",
+          "type": "Folder",
+          "path": ".Models.SourceTrigger",
+          "children": [
+            {
+              "i": 1,
+              "name": "SourceNumberAdjustable",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourceNumberAdjustable",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Readme",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Readme",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Liesmich",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Liesmich",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "EventController",
+                  "type": "EventController",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.EventController",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "init",
+                  "type": "Method",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.init",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Source",
+                  "type": "Source",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Source",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Drain",
+                  "type": "Drain",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Drain",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "endsim",
+                  "type": "Method",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.endsim",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "GeneratedParts",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "MUselection",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.MUselection",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "Source_AsBatch",
+                  "type": "Source",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Drain1",
+                  "type": "Drain",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Drain1",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "GeneratedParts_AsBatch",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts_AsBatch",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Line",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Line1",
+                  "type": "Conveyor",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Line1",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Connector",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceNumberAdjustable.Connector3",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "SourceIntervalAdjustable",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourceIntervalAdjustable",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Readme",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Readme",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Liesmich",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Liesmich",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "EventController",
+                  "type": "EventController",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.EventController",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Source",
+                  "type": "Source",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Source",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Drain",
+                  "type": "Drain",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Drain",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "endsim",
+                  "type": "Method",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.endsim",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "GeneratedParts_noBatch",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_noBatch",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "MUselection",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.MUselection",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "Source_Batches",
+                  "type": "Source",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "Drain1",
+                  "type": "Drain",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Drain1",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "GeneratedParts_Batches",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Batches",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "Source_Stop",
+                  "type": "Source",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "Drain2",
+                  "type": "Drain",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Drain2",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "GeneratedParts_Stop",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Stop",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Line",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "Line1",
+                  "type": "Conveyor",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Line1",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "Line2",
+                  "type": "Conveyor",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Line2",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Connector",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Connector3",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Connector4",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Connector4",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Connector5",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceIntervalAdjustable.Connector5",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "SourceRandom",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourceRandom",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Source",
+                  "type": "Source",
+                  "path": ".Models.SourceTrigger.SourceRandom.Source",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".Models.SourceTrigger.SourceRandom.Line",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Readme",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourceRandom.Readme",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Liesmich",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourceRandom.Liesmich",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Drain",
+                  "type": "Drain",
+                  "path": ".Models.SourceTrigger.SourceRandom.Drain",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Frequencies",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceRandom.Frequencies",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "endsim",
+                  "type": "Method",
+                  "path": ".Models.SourceTrigger.SourceRandom.endsim",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "GeneratedParts",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceRandom.GeneratedParts",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "EventController",
+                  "type": "EventController",
+                  "path": ".Models.SourceTrigger.SourceRandom.EventController",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "Kante7",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceRandom.Kante7",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceRandom.Connector",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 4,
+              "name": "SourcePercentage",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourcePercentage",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Source",
+                  "type": "Source",
+                  "path": ".Models.SourceTrigger.SourcePercentage.Source",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".Models.SourceTrigger.SourcePercentage.Line",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Readme",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourcePercentage.Readme",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Liesmich",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourcePercentage.Liesmich",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Drain",
+                  "type": "Drain",
+                  "path": ".Models.SourceTrigger.SourcePercentage.Drain",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Frequencies",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourcePercentage.Frequencies",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "endsim",
+                  "type": "Method",
+                  "path": ".Models.SourceTrigger.SourcePercentage.endsim",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "GeneratedParts",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourcePercentage.GeneratedParts",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "EventController",
+                  "type": "EventController",
+                  "path": ".Models.SourceTrigger.SourcePercentage.EventController",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "Kante7",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourcePercentage.Kante7",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourcePercentage.Connector",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 5,
+              "name": "SourceTrigger",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourceTrigger",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Source",
+                  "type": "Source",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Source",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Line",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Readme",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Readme",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Liesmich",
+                  "type": "Comment",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Liesmich",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Trigger2",
+                  "type": "Trigger",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Trigger2",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Trigger1",
+                  "type": "Trigger",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Trigger1",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Drain",
+                  "type": "Drain",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Drain",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "init",
+                  "type": "Method",
+                  "path": ".Models.SourceTrigger.SourceTrigger.init",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "endsim",
+                  "type": "Method",
+                  "path": ".Models.SourceTrigger.SourceTrigger.endsim",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "GeneratedParts",
+                  "type": "DataTable",
+                  "path": ".Models.SourceTrigger.SourceTrigger.GeneratedParts",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "EventController",
+                  "type": "EventController",
+                  "path": ".Models.SourceTrigger.SourceTrigger.EventController",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "Kante7",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Kante7",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".Models.SourceTrigger.SourceTrigger.Connector",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 6,
+              "name": "A",
+              "type": "Part",
+              "path": ".Models.SourceTrigger.A",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "B",
+              "type": "Part",
+              "path": ".Models.SourceTrigger.B",
+              "children": []
+            },
+            {
+              "i": 8,
+              "name": "C",
+              "type": "Part",
+              "path": ".Models.SourceTrigger.C",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "MaterialFlow",
+      "type": "Folder",
+      "path": ".MaterialFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".MaterialFlow.EventController",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Source",
+          "type": "Source",
+          "path": ".MaterialFlow.Source",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".MaterialFlow.Drain",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".MaterialFlow.Connector",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Line",
+          "type": "Conveyor",
+          "path": ".MaterialFlow.Line",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "name": "InformationFlow",
+      "type": "Folder",
+      "path": ".InformationFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "Method",
+          "type": "Method",
+          "path": ".InformationFlow.Method",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "DataTable",
+          "type": "DataTable",
+          "path": ".InformationFlow.DataTable",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Trigger",
+          "type": "Trigger",
+          "path": ".InformationFlow.Trigger",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "name": "UserInterface",
+      "type": "Folder",
+      "path": ".UserInterface",
+      "children": [
+        {
+          "i": 1,
+          "name": "Comment",
+          "type": "Comment",
+          "path": ".UserInterface.Comment",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "name": "SimtalkClaude",
+      "type": "Folder",
+      "path": ".SimtalkClaude",
+      "children": [
+        {
+          "i": 1,
+          "name": "main",
+          "type": "Frame",
+          "path": ".SimtalkClaude.main",
+          "children": [
+            {
+              "i": 1,
+              "name": "SocketServer",
+              "type": "Frame",
+              "path": ".SimtalkClaude.main.SocketServer",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "m_callback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketServer.m_callback",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.main.SocketServer.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketServer.m_send",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "ping_reply",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketServer.ping_reply",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "m_str_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketServer.m_str_send",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "SimtalkAction",
+              "type": "Frame",
+              "path": ".SimtalkClaude.main.SimtalkAction",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "simtalkcode",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.simtalkcode",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_getlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.m_getlog",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "get_simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.get_simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "action_result",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SimtalkAction.action_result",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "simtalk_execute",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.simtalk_execute",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "a_readlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.a_readlog",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Run_Simutalk",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.Run_Simutalk",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "ReadLogFile",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.ReadLogFile",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "ErrorHandler",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.ErrorHandler",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "Server",
+              "type": "Variable",
+              "path": ".SimtalkClaude.main.Server",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "SocketClient",
+              "type": "Frame",
+              "path": ".SimtalkClaude.main.SocketClient",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "auth",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.auth",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "request",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.request",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "token",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.token",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "sig",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.sig",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "session_id",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.session_id",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.main.SocketClient.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "auth_success",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.auth_success",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_send",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "m_recieve",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_recieve",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "m_openconnection",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_openconnection",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Button",
+                  "type": "Button",
+                  "path": ".SimtalkClaude.main.SocketClient.Button",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "m_sendauth",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_sendauth",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "m_authback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_authback",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Button2",
+                  "type": "Button",
+                  "path": ".SimtalkClaude.main.SocketClient.Button2",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "m_disconnect",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_disconnect",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "src",
+          "type": "Folder",
+          "path": ".SimtalkClaude.src",
+          "children": [
+            {
+              "i": 1,
+              "name": "SimtalkAction",
+              "type": "Frame",
+              "path": ".SimtalkClaude.src.SimtalkAction",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "simtalkcode",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalkcode",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_getlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.m_getlog",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "get_simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.get_simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "action_result",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.src.SimtalkAction.action_result",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "simtalk_execute",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalk_execute",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "a_readlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.a_readlog",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Run_Simutalk",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.Run_Simutalk",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "ReadLogFile",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.ReadLogFile",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "ErrorHandler",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.ErrorHandler",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "autoexec",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.autoexec",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "ErrorHandler",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.ErrorHandler",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "name": "connection",
+          "type": "Folder",
+          "path": ".SimtalkClaude.connection",
+          "children": [
+            {
+              "i": 1,
+              "name": "SocketClient",
+              "type": "Frame",
+              "path": ".SimtalkClaude.connection.SocketClient",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "auth",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.auth",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "request",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.request",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "token",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.token",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "sig",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.sig",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "session_id",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.session_id",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.connection.SocketClient.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "auth_success",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.auth_success",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_send",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "m_recieve",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_recieve",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "m_openconnection",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_openconnection",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Button",
+                  "type": "Button",
+                  "path": ".SimtalkClaude.connection.SocketClient.Button",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "m_sendauth",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_sendauth",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "m_authback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_authback",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Button2",
+                  "type": "Button",
+                  "path": ".SimtalkClaude.connection.SocketClient.Button2",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "m_disconnect",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_disconnect",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "SocketServer",
+              "type": "Frame",
+              "path": ".SimtalkClaude.connection.SocketServer",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.connection.SocketServer.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_callback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_callback",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_send",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "ping_reply",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketServer.ping_reply",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "m_str_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_str_send",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "Logger",
+              "type": "Frame",
+              "path": ".SimtalkClaude.connection.Logger",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "logdata",
+                  "type": "DataTable",
+                  "path": ".SimtalkClaude.connection.Logger.logdata",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 4,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".SimtalkClaude.connection.Socket",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "socketcallback",
+              "type": "Method",
+              "path": ".SimtalkClaude.connection.socketcallback",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 4,
+          "name": "Objects",
+          "type": "Folder",
+          "path": ".SimtalkClaude.Objects",
+          "children": [
+            {
+              "i": 1,
+              "name": "Method",
+              "type": "Method",
+              "path": ".SimtalkClaude.Objects.Method",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".SimtalkClaude.Objects.Socket",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "DataList",
+              "type": "DataList",
+              "path": ".SimtalkClaude.Objects.DataList",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".SimtalkClaude.Objects.Dialog",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "HtmlReport",
+              "type": "HtmlReport",
+              "path": ".SimtalkClaude.Objects.HtmlReport",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "Variable",
+              "type": "Variable",
+              "path": ".SimtalkClaude.Objects.Variable",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "Button",
+              "type": "Button",
+              "path": ".SimtalkClaude.Objects.Button",
+              "children": []
+            },
+            {
+              "i": 8,
+              "name": "DataTable",
+              "type": "DataTable",
+              "path": ".SimtalkClaude.Objects.DataTable",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

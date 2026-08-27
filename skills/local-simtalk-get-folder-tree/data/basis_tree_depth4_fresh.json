@@ -1,0 +1,5380 @@
+{
+  "root_path": "",
+  "root_name": "Basis",
+  "root_type": "Folder",
+  "root_numNodes": 9,
+  "children": [
+    {
+      "i": 1,
+      "name": "MaterialFlow",
+      "type": "Folder",
+      "path": ".MaterialFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".MaterialFlow.Connector",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".MaterialFlow.EventController",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Interface",
+          "type": "Interface",
+          "path": ".MaterialFlow.Interface",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Source",
+          "type": "Source",
+          "path": ".MaterialFlow.Source",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".MaterialFlow.Drain",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Station",
+          "type": "Station",
+          "path": ".MaterialFlow.Station",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "PickAndPlace",
+          "type": "PickAndPlace",
+          "path": ".MaterialFlow.PickAndPlace",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "Store",
+          "type": "Store",
+          "path": ".MaterialFlow.Store",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "Buffer",
+          "type": "Buffer",
+          "path": ".MaterialFlow.Buffer",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "AngularConverter",
+          "type": "AngularConverter",
+          "path": ".MaterialFlow.AngularConverter",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "Converter",
+          "type": "Converter",
+          "path": ".MaterialFlow.Converter",
+          "children": []
+        },
+        {
+          "i": 12,
+          "name": "Track",
+          "type": "Track",
+          "path": ".MaterialFlow.Track",
+          "children": []
+        },
+        {
+          "i": 13,
+          "name": "TwoLaneTrack",
+          "type": "TwoLaneTrack",
+          "path": ".MaterialFlow.TwoLaneTrack",
+          "children": []
+        },
+        {
+          "i": 14,
+          "name": "Toolbar",
+          "type": "Toolbar",
+          "path": ".MaterialFlow.Toolbar",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "Resources",
+      "type": "Folder",
+      "path": ".Resources",
+      "children": [
+        {
+          "i": 1,
+          "name": "Workplace",
+          "type": "Workplace",
+          "path": ".Resources.Workplace",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "FootPath",
+          "type": "FootPath",
+          "path": ".Resources.FootPath",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "WorkerPool",
+          "type": "WorkerPool",
+          "path": ".Resources.WorkerPool",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Worker",
+          "type": "Worker",
+          "path": ".Resources.Worker",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Broker",
+          "type": "Broker",
+          "path": ".Resources.Broker",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "AGVPool",
+          "type": "AGVPool",
+          "path": ".Resources.AGVPool",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Marker",
+          "type": "Marker",
+          "path": ".Resources.Marker",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "LockoutZone",
+          "type": "LockoutZone",
+          "path": ".Resources.LockoutZone",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "Toolbar",
+          "type": "Toolbar",
+          "path": ".Resources.Toolbar",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "name": "InformationFlow",
+      "type": "Folder",
+      "path": ".InformationFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "Method",
+          "type": "Method",
+          "path": ".InformationFlow.Method",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Variable",
+          "type": "Variable",
+          "path": ".InformationFlow.Variable",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Toolbar",
+          "type": "Toolbar",
+          "path": ".InformationFlow.Toolbar",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "name": "UserInterface",
+      "type": "Folder",
+      "path": ".UserInterface",
+      "children": [
+        {
+          "i": 1,
+          "name": "Comment",
+          "type": "Comment",
+          "path": ".UserInterface.Comment",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Display",
+          "type": "Display",
+          "path": ".UserInterface.Display",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Chart",
+          "type": "Chart",
+          "path": ".UserInterface.Chart",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "CostAnalyzer",
+          "type": "CostAnalyzer",
+          "path": ".UserInterface.CostAnalyzer",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "HtmlReport",
+          "type": "HtmlReport",
+          "path": ".UserInterface.HtmlReport",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Checkbox",
+          "type": "Checkbox",
+          "path": ".UserInterface.Checkbox",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Button",
+          "type": "Button",
+          "path": ".UserInterface.Button",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "WorkerSankeyDiagram",
+          "type": "SankeyDiagram",
+          "path": ".UserInterface.WorkerSankeyDiagram",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "Toolbar",
+          "type": "Toolbar",
+          "path": ".UserInterface.Toolbar",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "name": "MUs",
+      "type": "Folder",
+      "path": ".MUs",
+      "children": [
+        {
+          "i": 1,
+          "name": "Part",
+          "type": "Part",
+          "path": ".MUs.Part",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Container",
+          "type": "Container",
+          "path": ".MUs.Container",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Transporter",
+          "type": "Transporter",
+          "path": ".MUs.Transporter",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Toolbar",
+          "type": "Toolbar",
+          "path": ".MUs.Toolbar",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 6,
+      "name": "ApplicationObjects",
+      "type": "Folder",
+      "path": ".ApplicationObjects",
+      "children": [
+        {
+          "i": 1,
+          "name": "HBW3D",
+          "type": "Folder",
+          "path": ".ApplicationObjects.HBW3D",
+          "children": [
+            {
+              "i": 1,
+              "name": "HBW_Documentation",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.HBW3D.HBW_Documentation",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "WMS",
+              "type": "Frame",
+              "path": ".ApplicationObjects.HBW3D.WMS",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "activateAutoRemove",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.activateAutoRemove",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "addPallet",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.addPallet",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "addProduct",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.addProduct",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "addRacklane",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.addRacklane",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "autoRemove",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.autoRemove",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "checkBoxIsFree",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.checkBoxIsFree",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Comment1",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment1",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "Comment11",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment11",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "Comment2",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment2",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Comment3",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment3",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "Comment31",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment31",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "Comment311",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment311",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Comment3111",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment3111",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "Comment4",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment4",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "Comment5",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment5",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "Comment6",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Comment6",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "Content",
+                  "type": "DataTable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Content",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "deleteRacklane",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.deleteRacklane",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "freeBox",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.freeBox",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "getFreePlace",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.getFreePlace",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "getPalletLocation",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.getPalletLocation",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "getPredefinedRack",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.getPredefinedRack",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "getProductRanges",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.getProductRanges",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "getRackLane",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.getRackLane",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "getStock",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.getStock",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "INIT",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.INIT",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "Inventory",
+                  "type": "DataTable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Inventory",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "LastIndex",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.LastIndex",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "MaxAmount",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.MaxAmount",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "NumFreePlaces",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.NumFreePlaces",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "NumOccupiedPlaces",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.NumOccupiedPlaces",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "OneByOne",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.OneByOne",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "placeIntoStock",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.placeIntoStock",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "Predefined",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Predefined",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "PredefinedRacks",
+                  "type": "DataTable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.PredefinedRacks",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "ProductRanges",
+                  "type": "DataTable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.ProductRanges",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "RackLanes",
+                  "type": "DataList",
+                  "path": ".ApplicationObjects.HBW3D.WMS.RackLanes",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "Random",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.Random",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "RemoveInterval",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.RemoveInterval",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "RemovePart",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.RemovePart",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "removeProduct",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.removeProduct",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "removeProducts",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.removeProducts",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "reserveBox",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.reserveBox",
+                  "children": []
+                },
+                {
+                  "i": 46,
+                  "name": "RESET",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.RESET",
+                  "children": []
+                },
+                {
+                  "i": 47,
+                  "name": "setAttributes",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.setAttributes",
+                  "children": []
+                },
+                {
+                  "i": 48,
+                  "name": "ShowMUsAsCuboids",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.ShowMUsAsCuboids",
+                  "children": []
+                },
+                {
+                  "i": 49,
+                  "name": "startRemoveTime",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.startRemoveTime",
+                  "children": []
+                },
+                {
+                  "i": 50,
+                  "name": "StrategyIndex",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.WMS.StrategyIndex",
+                  "children": []
+                },
+                {
+                  "i": 51,
+                  "name": "TransportFinished",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.TransportFinished",
+                  "children": []
+                },
+                {
+                  "i": 52,
+                  "name": "WMS_Init",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.WMS_Init",
+                  "children": []
+                },
+                {
+                  "i": 53,
+                  "name": "XYZ",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.WMS.XYZ",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "RackLane",
+              "type": "Frame",
+              "path": ".ApplicationObjects.HBW3D.RackLane",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "adoptParametrization",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.adoptParametrization",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "appendOrder",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.appendOrder",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "BaseHeight",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.BaseHeight",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "BoxDepth",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.BoxDepth",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "BoxHeight",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.BoxHeight",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "BoxWidth",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.BoxWidth",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Carrier_speed",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Carrier_speed",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Comment",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "Comment1",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Comment1",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "Comment2",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Comment2",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "contructorControl",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.contructorControl",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "Converter1",
+                  "type": "Converter",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Converter1",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "Converter2",
+                  "type": "Converter",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Converter2",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "Connector5",
+                  "type": "Connector",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Connector5",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "ConveyorLength",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.ConveyorLength",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "ConveyorSpeed",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.ConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "ConveyorWidth",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.ConveyorWidth",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "CreatePart",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.CreatePart",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "createRack",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.createRack",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Exit",
+                  "type": "Interface",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Exit",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "FloorThickness",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.FloorThickness",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "Gap",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Gap",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "GroundClearance",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.GroundClearance",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "IN",
+                  "type": "Conveyor",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.IN",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "Init",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Init",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "InitRackLane",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.InitRackLane",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Line",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Connector3",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "LoadHandler_speed",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.LoadHandler_speed",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "MainEntrance",
+                  "type": "Interface",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.MainEntrance",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Connector",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "NumberOfColumns",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.NumberOfColumns",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "NumberOfRows",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.NumberOfRows",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "OccupancyLeft",
+                  "type": "DataTable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.OccupancyLeft",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "OccupancyRight",
+                  "type": "DataTable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.OccupancyRight",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "onChanges",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.onChanges",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "onDrop",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.onDrop",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "OUT",
+                  "type": "Conveyor",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.OUT",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "Connector4",
+                  "type": "Connector",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Connector4",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "ParameterChanges",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.ParameterChanges",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "RackLeft",
+                  "type": "Store",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RackLeft",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "RackRight",
+                  "type": "Store",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RackRight",
+                  "children": []
+                },
+                {
+                  "i": 46,
+                  "name": "RackYOffset",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RackYOffset",
+                  "children": []
+                },
+                {
+                  "i": 47,
+                  "name": "Reset",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Reset",
+                  "children": []
+                },
+                {
+                  "i": 48,
+                  "name": "RSU",
+                  "type": "Station",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RSU",
+                  "children": []
+                },
+                {
+                  "i": 49,
+                  "name": "RSU_acceleration",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RSU_acceleration",
+                  "children": []
+                },
+                {
+                  "i": 50,
+                  "name": "RSU_Availability",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RSU_Availability",
+                  "children": []
+                },
+                {
+                  "i": 51,
+                  "name": "RSU_deceleration",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RSU_deceleration",
+                  "children": []
+                },
+                {
+                  "i": 52,
+                  "name": "RSU_Height",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RSU_Height",
+                  "children": []
+                },
+                {
+                  "i": 53,
+                  "name": "RSU_MTTR",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RSU_MTTR",
+                  "children": []
+                },
+                {
+                  "i": 54,
+                  "name": "RSU_speed",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.RSU_speed",
+                  "children": []
+                },
+                {
+                  "i": 55,
+                  "name": "SafetyDistance",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.SafetyDistance",
+                  "children": []
+                },
+                {
+                  "i": 56,
+                  "name": "setConveyorSpeed",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.setConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 57,
+                  "name": "ShowRackContent",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.ShowRackContent",
+                  "children": []
+                },
+                {
+                  "i": 58,
+                  "name": "SideEntrance",
+                  "type": "Interface",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.SideEntrance",
+                  "children": []
+                },
+                {
+                  "i": 59,
+                  "name": "Connector6",
+                  "type": "Connector",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.Connector6",
+                  "children": []
+                },
+                {
+                  "i": 60,
+                  "name": "statistic",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.statistic",
+                  "children": []
+                },
+                {
+                  "i": 61,
+                  "name": "TrackWidth",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.TrackWidth",
+                  "children": []
+                },
+                {
+                  "i": 62,
+                  "name": "WMS",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.WMS",
+                  "children": []
+                },
+                {
+                  "i": 63,
+                  "name": "WMS_new",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.RackLane.WMS_new",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 4,
+              "name": "RSU",
+              "type": "Station",
+              "path": ".ApplicationObjects.HBW3D.RSU",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "userSetTarget",
+              "type": "Method",
+              "path": ".ApplicationObjects.HBW3D.userSetTarget",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "HBW",
+              "type": "Toolbar",
+              "path": ".ApplicationObjects.HBW3D.HBW",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "internal",
+              "type": "Folder",
+              "path": ".ApplicationObjects.HBW3D.internal",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "autoexecLoadObj",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.internal.autoexecLoadObj",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "CorrectParameters",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.internal.CorrectParameters",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 8,
+              "name": "BasicObjects",
+              "type": "Folder",
+              "path": ".ApplicationObjects.HBW3D.BasicObjects",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Method",
+                  "type": "Method",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Method",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Variable",
+                  "type": "Variable",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Variable",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Comment",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Line",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "TableFile",
+                  "type": "DataTable",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.TableFile",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "DataList",
+                  "type": "DataList",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.DataList",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Converter",
+                  "type": "Converter",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Converter",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "Rack",
+                  "type": "Store",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Rack",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "Interface",
+                  "type": "Interface",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Interface",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".ApplicationObjects.HBW3D.BasicObjects.Connector",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "CranesAndMore",
+          "type": "Folder",
+          "path": ".ApplicationObjects.CranesAndMore",
+          "children": [
+            {
+              "i": 1,
+              "name": "MultiPortalCrane",
+              "type": "Track",
+              "path": ".ApplicationObjects.CranesAndMore.MultiPortalCrane",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "ReleaseNotes_MultiPortalCrane",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.CranesAndMore.ReleaseNotes_MultiPortalCrane",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "SevenAxisRobot",
+              "type": "Station",
+              "path": ".ApplicationObjects.CranesAndMore.SevenAxisRobot",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "SevenAxisRobot_Documentation",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.CranesAndMore.SevenAxisRobot_Documentation",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "GantryLoader",
+              "type": "Track",
+              "path": ".ApplicationObjects.CranesAndMore.GantryLoader",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "StorageArea",
+              "type": "Store",
+              "path": ".ApplicationObjects.CranesAndMore.StorageArea",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "CrossSlidingCar",
+              "type": "Conveyor",
+              "path": ".ApplicationObjects.CranesAndMore.CrossSlidingCar",
+              "children": []
+            },
+            {
+              "i": 8,
+              "name": "Lift",
+              "type": "Conveyor",
+              "path": ".ApplicationObjects.CranesAndMore.Lift",
+              "children": []
+            },
+            {
+              "i": 9,
+              "name": "VehicleLiftDocumentation",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.CranesAndMore.VehicleLiftDocumentation",
+              "children": []
+            },
+            {
+              "i": 10,
+              "name": "JibCrane",
+              "type": "Station",
+              "path": ".ApplicationObjects.CranesAndMore.JibCrane",
+              "children": []
+            },
+            {
+              "i": 11,
+              "name": "CranesAndMore",
+              "type": "Toolbar",
+              "path": ".ApplicationObjects.CranesAndMore.CranesAndMore",
+              "children": []
+            },
+            {
+              "i": 12,
+              "name": "Internal",
+              "type": "Folder",
+              "path": ".ApplicationObjects.CranesAndMore.Internal",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Dialog",
+                  "type": "Folder",
+                  "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "GenDialog",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.GenDialog"
+                    },
+                    {
+                      "i": 2,
+                      "name": "MultiPortalcrane",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.MultiPortalcrane"
+                    },
+                    {
+                      "i": 3,
+                      "name": "GantryLoader",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.GantryLoader"
+                    },
+                    {
+                      "i": 4,
+                      "name": "EntranceExit",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.EntranceExit"
+                    },
+                    {
+                      "i": 5,
+                      "name": "StorageArea",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.StorageArea"
+                    },
+                    {
+                      "i": 6,
+                      "name": "CrossSlidingCar",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.CrossSlidingCar"
+                    },
+                    {
+                      "i": 7,
+                      "name": "SevenAxisRobot",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.SevenAxisRobot"
+                    },
+                    {
+                      "i": 8,
+                      "name": "Lift",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.Lift"
+                    },
+                    {
+                      "i": 9,
+                      "name": "VehicleLift",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.VehicleLift"
+                    },
+                    {
+                      "i": 10,
+                      "name": "DialogActive",
+                      "type": "Variable",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.DialogActive"
+                    },
+                    {
+                      "i": 11,
+                      "name": "isEntrance",
+                      "type": "Variable",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Dialog.isEntrance"
+                    }
+                  ]
+                },
+                {
+                  "i": 2,
+                  "name": "Methods",
+                  "type": "Folder",
+                  "path": ".ApplicationObjects.CranesAndMore.Internal.Methods",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "cuboid",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Methods.cuboid"
+                    },
+                    {
+                      "i": 2,
+                      "name": "getTargetPosition",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Methods.getTargetPosition"
+                    },
+                    {
+                      "i": 3,
+                      "name": "Wheel",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Methods.Wheel"
+                    },
+                    {
+                      "i": 4,
+                      "name": "calculateDistance",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Methods.calculateDistance"
+                    },
+                    {
+                      "i": 5,
+                      "name": "checkGantryParameter",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Methods.checkGantryParameter"
+                    },
+                    {
+                      "i": 6,
+                      "name": "getGantryPosition",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Methods.getGantryPosition"
+                    },
+                    {
+                      "i": 7,
+                      "name": "checkObject",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Methods.checkObject"
+                    },
+                    {
+                      "i": 8,
+                      "name": "checkStore",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.Internal.Methods.checkStore"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "i": 13,
+              "name": "BasicObjects",
+              "type": "Folder",
+              "path": ".ApplicationObjects.CranesAndMore.BasicObjects",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "MaterialFlow",
+                  "type": "Folder",
+                  "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "Connector",
+                      "type": "Connector",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.Connector"
+                    },
+                    {
+                      "i": 2,
+                      "name": "Interface",
+                      "type": "Interface",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.Interface"
+                    },
+                    {
+                      "i": 3,
+                      "name": "SingleProc",
+                      "type": "Station",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.SingleProc"
+                    },
+                    {
+                      "i": 4,
+                      "name": "Store",
+                      "type": "Store",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.Store"
+                    },
+                    {
+                      "i": 5,
+                      "name": "Track",
+                      "type": "Track",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.Track"
+                    },
+                    {
+                      "i": 6,
+                      "name": "portal",
+                      "type": "Transporter",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.portal"
+                    },
+                    {
+                      "i": 7,
+                      "name": "Barred",
+                      "type": "Part",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.Barred"
+                    },
+                    {
+                      "i": 8,
+                      "name": "Conveyor",
+                      "type": "Conveyor",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.Conveyor"
+                    },
+                    {
+                      "i": 9,
+                      "name": "GantryHook_2",
+                      "type": "Transporter",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.GantryHook_2"
+                    },
+                    {
+                      "i": 10,
+                      "name": "GantryLoader",
+                      "type": "Transporter",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.GantryLoader"
+                    },
+                    {
+                      "i": 11,
+                      "name": "GantryHook",
+                      "type": "Transporter",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.MaterialFlow.GantryHook"
+                    }
+                  ]
+                },
+                {
+                  "i": 2,
+                  "name": "InformationFlow",
+                  "type": "Folder",
+                  "path": ".ApplicationObjects.CranesAndMore.BasicObjects.InformationFlow",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "Method",
+                      "type": "Method",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.InformationFlow.Method"
+                    },
+                    {
+                      "i": 2,
+                      "name": "Variable",
+                      "type": "Variable",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.InformationFlow.Variable"
+                    },
+                    {
+                      "i": 3,
+                      "name": "TableFile",
+                      "type": "DataTable",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.InformationFlow.TableFile"
+                    },
+                    {
+                      "i": 4,
+                      "name": "Comment",
+                      "type": "Comment",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.InformationFlow.Comment"
+                    }
+                  ]
+                },
+                {
+                  "i": 3,
+                  "name": "UserInterface",
+                  "type": "Folder",
+                  "path": ".ApplicationObjects.CranesAndMore.BasicObjects.UserInterface",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "Dialog",
+                      "type": "Dialog",
+                      "path": ".ApplicationObjects.CranesAndMore.BasicObjects.UserInterface.Dialog"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "i": 14,
+              "name": "MultiPortalCraneDocumentation",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.CranesAndMore.MultiPortalCraneDocumentation",
+              "children": []
+            },
+            {
+              "i": 15,
+              "name": "GantryLoaderDocumentation",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.CranesAndMore.GantryLoaderDocumentation",
+              "children": []
+            },
+            {
+              "i": 16,
+              "name": "StorageAreaDocumentation",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.CranesAndMore.StorageAreaDocumentation",
+              "children": []
+            },
+            {
+              "i": 17,
+              "name": "VehicleLift",
+              "type": "Track",
+              "path": ".ApplicationObjects.CranesAndMore.VehicleLift",
+              "children": []
+            },
+            {
+              "i": 18,
+              "name": "CrossSlidingCarDocumentation",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.CranesAndMore.CrossSlidingCarDocumentation",
+              "children": []
+            },
+            {
+              "i": 19,
+              "name": "LiftDocumentation",
+              "type": "HtmlReport",
+              "path": ".ApplicationObjects.CranesAndMore.LiftDocumentation",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 7,
+      "name": "UserObjects",
+      "type": "Folder",
+      "path": ".UserObjects",
+      "children": [
+        {
+          "i": 1,
+          "name": "MUs",
+          "type": "Folder",
+          "path": ".UserObjects.MUs",
+          "children": [
+            {
+              "i": 1,
+              "name": "Part",
+              "type": "Part",
+              "path": ".UserObjects.MUs.Part",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "DummyPart",
+              "type": "Part",
+              "path": ".UserObjects.MUs.DummyPart",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "Pallet",
+              "type": "Container",
+              "path": ".UserObjects.MUs.Pallet",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "PalletSmall",
+              "type": "Container",
+              "path": ".UserObjects.MUs.PalletSmall",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "Box",
+              "type": "Container",
+              "path": ".UserObjects.MUs.Box",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "AGV",
+              "type": "Transporter",
+              "path": ".UserObjects.MUs.AGV",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "Truck",
+              "type": "Transporter",
+              "path": ".UserObjects.MUs.Truck",
+              "children": []
+            },
+            {
+              "i": 8,
+              "name": "Forklift",
+              "type": "Transporter",
+              "path": ".UserObjects.MUs.Forklift",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "Service",
+          "type": "Worker",
+          "path": ".UserObjects.Service",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Polishing",
+          "type": "Station",
+          "path": ".UserObjects.Polishing",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "PolishingCell",
+          "type": "Frame",
+          "path": ".UserObjects.PolishingCell",
+          "children": [
+            {
+              "i": 1,
+              "name": "Buffer",
+              "type": "Buffer",
+              "path": ".UserObjects.PolishingCell.Buffer",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Workplace",
+              "type": "Workplace",
+              "path": ".UserObjects.PolishingCell.Workplace",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "DisplayBuffer",
+              "type": "Display",
+              "path": ".UserObjects.PolishingCell.DisplayBuffer",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "Display",
+              "type": "Display",
+              "path": ".UserObjects.PolishingCell.Display",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "Polishing",
+              "type": "Station",
+              "path": ".UserObjects.PolishingCell.Polishing",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "Connector",
+              "type": "Connector",
+              "path": ".UserObjects.PolishingCell.Connector",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 5,
+          "name": "Milling",
+          "type": "Station",
+          "path": ".UserObjects.Milling",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Shipment",
+          "type": "Drain",
+          "path": ".UserObjects.Shipment",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Painting",
+          "type": "Frame",
+          "path": ".UserObjects.Painting",
+          "children": [
+            {
+              "i": 1,
+              "name": "Line",
+              "type": "Conveyor",
+              "path": ".UserObjects.Painting.Line",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "PaintColor",
+              "type": "Variable",
+              "path": ".UserObjects.Painting.PaintColor",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "Station",
+              "type": "Station",
+              "path": ".UserObjects.Painting.Station",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "LockoutZone",
+              "type": "LockoutZone",
+              "path": ".UserObjects.Painting.LockoutZone",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "Workplace",
+              "type": "Workplace",
+              "path": ".UserObjects.Painting.Workplace",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "Comment",
+              "type": "Comment",
+              "path": ".UserObjects.Painting.Comment",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 8,
+          "name": "Drying",
+          "type": "Frame",
+          "path": ".UserObjects.Drying",
+          "children": [
+            {
+              "i": 1,
+              "name": "Line",
+              "type": "Conveyor",
+              "path": ".UserObjects.Drying.Line",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 9,
+          "name": "PostProcessStation",
+          "type": "Station",
+          "path": ".UserObjects.PostProcessStation",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "PostProcess",
+          "type": "Frame",
+          "path": ".UserObjects.PostProcess",
+          "children": [
+            {
+              "i": 1,
+              "name": "Line",
+              "type": "Conveyor",
+              "path": ".UserObjects.PostProcess.Line",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Workplace",
+              "type": "Workplace",
+              "path": ".UserObjects.PostProcess.Workplace",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "Line1",
+              "type": "Conveyor",
+              "path": ".UserObjects.PostProcess.Line1",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "Workplace1",
+              "type": "Workplace",
+              "path": ".UserObjects.PostProcess.Workplace1",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "Line2",
+              "type": "Conveyor",
+              "path": ".UserObjects.PostProcess.Line2",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "Workplace2",
+              "type": "Workplace",
+              "path": ".UserObjects.PostProcess.Workplace2",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "Line3",
+              "type": "Conveyor",
+              "path": ".UserObjects.PostProcess.Line3",
+              "children": []
+            },
+            {
+              "i": 8,
+              "name": "Display",
+              "type": "Display",
+              "path": ".UserObjects.PostProcess.Display",
+              "children": []
+            },
+            {
+              "i": 9,
+              "name": "Step1",
+              "type": "Station",
+              "path": ".UserObjects.PostProcess.Step1",
+              "children": []
+            },
+            {
+              "i": 10,
+              "name": "Step2",
+              "type": "Station",
+              "path": ".UserObjects.PostProcess.Step2",
+              "children": []
+            },
+            {
+              "i": 11,
+              "name": "Step3",
+              "type": "Station",
+              "path": ".UserObjects.PostProcess.Step3",
+              "children": []
+            },
+            {
+              "i": 12,
+              "name": "Connector4",
+              "type": "Connector",
+              "path": ".UserObjects.PostProcess.Connector4",
+              "children": []
+            },
+            {
+              "i": 13,
+              "name": "Connector2",
+              "type": "Connector",
+              "path": ".UserObjects.PostProcess.Connector2",
+              "children": []
+            },
+            {
+              "i": 14,
+              "name": "Connector5",
+              "type": "Connector",
+              "path": ".UserObjects.PostProcess.Connector5",
+              "children": []
+            },
+            {
+              "i": 15,
+              "name": "Connector1",
+              "type": "Connector",
+              "path": ".UserObjects.PostProcess.Connector1",
+              "children": []
+            },
+            {
+              "i": 16,
+              "name": "Connector3",
+              "type": "Connector",
+              "path": ".UserObjects.PostProcess.Connector3",
+              "children": []
+            },
+            {
+              "i": 17,
+              "name": "Connector6",
+              "type": "Connector",
+              "path": ".UserObjects.PostProcess.Connector6",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 11,
+          "name": "Production",
+          "type": "Frame",
+          "path": ".UserObjects.Production",
+          "error": "Expecting ':' delimiter: line 1 column 12000 (char 11999)"
+        },
+        {
+          "i": 12,
+          "name": "Warehouse",
+          "type": "Frame",
+          "path": ".UserObjects.Warehouse",
+          "children": [
+            {
+              "i": 1,
+              "name": "Entry",
+              "type": "Interface",
+              "path": ".UserObjects.Warehouse.Entry",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Exit",
+              "type": "Interface",
+              "path": ".UserObjects.Warehouse.Exit",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "WMS",
+              "type": "Frame",
+              "path": ".UserObjects.Warehouse.WMS",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "PredefinedRacks",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.WMS.PredefinedRacks",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "getPredefinedRack",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.getPredefinedRack",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "RESET",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.RESET",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "TransportFinished",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.TransportFinished",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "placeIntoStock",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.placeIntoStock",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Inventory",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.WMS.Inventory",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "activateAutoRemove",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.activateAutoRemove",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "startRemoveTime",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.startRemoveTime",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "RemoveInterval",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.RemoveInterval",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "removeProducts",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.removeProducts",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "INIT",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.INIT",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "autoRemove",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.autoRemove",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "LastIndex",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.LastIndex",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Content",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.WMS.Content",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "checkBoxIsFree",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.checkBoxIsFree",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "reserveBox",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.reserveBox",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "freeBox",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.freeBox",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "addProduct",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.addProduct",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "removeProduct",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.removeProduct",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "addPallet",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.addPallet",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "getPalletLocation",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.getPalletLocation",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "StrategyIndex",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.StrategyIndex",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "OneByOne",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.OneByOne",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "getFreePlace",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.getFreePlace",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "Random",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.Random",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "Predefined",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.Predefined",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "getProductRanges",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.getProductRanges",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "ProductRanges",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.WMS.ProductRanges",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".UserObjects.Warehouse.WMS.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "XYZ",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.XYZ",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "Comment1",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment1",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "Comment11",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment11",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "Comment2",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment2",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "Comment3",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment3",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "Comment4",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment4",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "Comment5",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment5",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "deleteRacklane",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.deleteRacklane",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "addRacklane",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.addRacklane",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "WMS_Init",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.WMS_Init",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "RackLanes",
+                  "type": "DataList",
+                  "path": ".UserObjects.Warehouse.WMS.RackLanes",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "getRackLane",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.getRackLane",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "getStock",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.getStock",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "Comment31",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment31",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "Comment311",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment311",
+                  "children": []
+                },
+                {
+                  "i": 46,
+                  "name": "Comment3111",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment3111",
+                  "children": []
+                },
+                {
+                  "i": 47,
+                  "name": "MaxAmount",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.MaxAmount",
+                  "children": []
+                },
+                {
+                  "i": 48,
+                  "name": "Comment6",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.WMS.Comment6",
+                  "children": []
+                },
+                {
+                  "i": 49,
+                  "name": "NumFreePlaces",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.NumFreePlaces",
+                  "children": []
+                },
+                {
+                  "i": 50,
+                  "name": "setAttributes",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.setAttributes",
+                  "children": []
+                },
+                {
+                  "i": 51,
+                  "name": "RemovePart",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.WMS.RemovePart",
+                  "children": []
+                },
+                {
+                  "i": 52,
+                  "name": "ShowMUsAsCuboids",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.ShowMUsAsCuboids",
+                  "children": []
+                },
+                {
+                  "i": 53,
+                  "name": "NumOccupiedPlaces",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.WMS.NumOccupiedPlaces",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 4,
+              "name": "RackLane1",
+              "type": "Frame",
+              "path": ".UserObjects.Warehouse.RackLane1",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "SideEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane1.SideEntrance",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "ConveyorWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.ConveyorWidth",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "INIT",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.INIT",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "BoxWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.BoxWidth",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "BoxHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.BoxHeight",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "BoxDepth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.BoxDepth",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "NumberOfColumns",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.NumberOfColumns",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "NumberOfRows",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.NumberOfRows",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "TrackWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.TrackWidth",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "MainEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane1.MainEntrance",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Exit",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane1.Exit",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "appendOrder",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.appendOrder",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "RSU_Height",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.RSU_Height",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "RSU_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.RSU_speed",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "LoadHandler_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.LoadHandler_speed",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "createRack",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.createRack",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "ConveyorLength",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.ConveyorLength",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "RackLeft",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane1.RackLeft",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "RackRight",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane1.RackRight",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "Converter1",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane1.Converter1",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "Converter2",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane1.Converter2",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane1.Line",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Carrier_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.Carrier_speed",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "ConveyorSpeed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.ConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "WMS",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.WMS",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "InitRackLane",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.InitRackLane",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "statistic",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.statistic",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "IN",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane1.IN",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "OUT",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane1.OUT",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "ShowRackContent",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.ShowRackContent",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "SafetyDistance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.SafetyDistance",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "RSU_Availability",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.RSU_Availability",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "RSU_MTTR",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.RSU_MTTR",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "onChanges",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.onChanges",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "ParameterChanges",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.ParameterChanges",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "setConveyorSpeed",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.setConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "onDrop",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.onDrop",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "WMS_new",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.WMS_new",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "OccupancyLeft",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane1.OccupancyLeft",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "OccupancyRight",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane1.OccupancyRight",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "adoptParametrization",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.adoptParametrization",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "contructorControl",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.contructorControl",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "RSU",
+                  "type": "Station",
+                  "path": ".UserObjects.Warehouse.RackLane1.RSU",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".UserObjects.Warehouse.RackLane1.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "Gap",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.Gap",
+                  "children": []
+                },
+                {
+                  "i": 46,
+                  "name": "FloorThickness",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.FloorThickness",
+                  "children": []
+                },
+                {
+                  "i": 47,
+                  "name": "GroundClearance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.GroundClearance",
+                  "children": []
+                },
+                {
+                  "i": 48,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane1.Comment",
+                  "children": []
+                },
+                {
+                  "i": 49,
+                  "name": "Comment1",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane1.Comment1",
+                  "children": []
+                },
+                {
+                  "i": 50,
+                  "name": "Comment2",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane1.Comment2",
+                  "children": []
+                },
+                {
+                  "i": 51,
+                  "name": "RackYOffset",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.RackYOffset",
+                  "children": []
+                },
+                {
+                  "i": 52,
+                  "name": "BaseHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.BaseHeight",
+                  "children": []
+                },
+                {
+                  "i": 53,
+                  "name": "RSU_acceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.RSU_acceleration",
+                  "children": []
+                },
+                {
+                  "i": 54,
+                  "name": "RSU_deceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane1.RSU_deceleration",
+                  "children": []
+                },
+                {
+                  "i": 55,
+                  "name": "CreatePart",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.CreatePart",
+                  "children": []
+                },
+                {
+                  "i": 56,
+                  "name": "Reset",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane1.Reset",
+                  "children": []
+                },
+                {
+                  "i": 57,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane1.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 58,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane1.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 59,
+                  "name": "Connector5",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane1.Connector5",
+                  "children": []
+                },
+                {
+                  "i": 60,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane1.Connector3",
+                  "children": []
+                },
+                {
+                  "i": 61,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane1.Connector",
+                  "children": []
+                },
+                {
+                  "i": 62,
+                  "name": "Connector4",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane1.Connector4",
+                  "children": []
+                },
+                {
+                  "i": 63,
+                  "name": "Connector6",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane1.Connector6",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 5,
+              "name": "RackLane2",
+              "type": "Frame",
+              "path": ".UserObjects.Warehouse.RackLane2",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "SideEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane2.SideEntrance",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "ConveyorWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.ConveyorWidth",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "INIT",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.INIT",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "BoxWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.BoxWidth",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "BoxHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.BoxHeight",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "BoxDepth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.BoxDepth",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "NumberOfColumns",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.NumberOfColumns",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "NumberOfRows",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.NumberOfRows",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "TrackWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.TrackWidth",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "MainEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane2.MainEntrance",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Exit",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane2.Exit",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "appendOrder",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.appendOrder",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "RSU_Height",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.RSU_Height",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "RSU_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.RSU_speed",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "LoadHandler_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.LoadHandler_speed",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "createRack",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.createRack",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "ConveyorLength",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.ConveyorLength",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "RackLeft",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane2.RackLeft",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "RackRight",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane2.RackRight",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "Converter1",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane2.Converter1",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "Converter2",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane2.Converter2",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane2.Line",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Carrier_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.Carrier_speed",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "ConveyorSpeed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.ConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "WMS",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.WMS",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "InitRackLane",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.InitRackLane",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "statistic",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.statistic",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "IN",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane2.IN",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "OUT",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane2.OUT",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "ShowRackContent",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.ShowRackContent",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "SafetyDistance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.SafetyDistance",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "RSU_Availability",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.RSU_Availability",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "RSU_MTTR",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.RSU_MTTR",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "onChanges",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.onChanges",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "ParameterChanges",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.ParameterChanges",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "setConveyorSpeed",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.setConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "onDrop",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.onDrop",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "WMS_new",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.WMS_new",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "OccupancyLeft",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane2.OccupancyLeft",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "OccupancyRight",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane2.OccupancyRight",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "adoptParametrization",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.adoptParametrization",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "contructorControl",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.contructorControl",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "RSU",
+                  "type": "Station",
+                  "path": ".UserObjects.Warehouse.RackLane2.RSU",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".UserObjects.Warehouse.RackLane2.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "Gap",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.Gap",
+                  "children": []
+                },
+                {
+                  "i": 46,
+                  "name": "FloorThickness",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.FloorThickness",
+                  "children": []
+                },
+                {
+                  "i": 47,
+                  "name": "GroundClearance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.GroundClearance",
+                  "children": []
+                },
+                {
+                  "i": 48,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane2.Comment",
+                  "children": []
+                },
+                {
+                  "i": 49,
+                  "name": "Comment1",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane2.Comment1",
+                  "children": []
+                },
+                {
+                  "i": 50,
+                  "name": "Comment2",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane2.Comment2",
+                  "children": []
+                },
+                {
+                  "i": 51,
+                  "name": "RackYOffset",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.RackYOffset",
+                  "children": []
+                },
+                {
+                  "i": 52,
+                  "name": "BaseHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.BaseHeight",
+                  "children": []
+                },
+                {
+                  "i": 53,
+                  "name": "RSU_acceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.RSU_acceleration",
+                  "children": []
+                },
+                {
+                  "i": 54,
+                  "name": "RSU_deceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane2.RSU_deceleration",
+                  "children": []
+                },
+                {
+                  "i": 55,
+                  "name": "CreatePart",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.CreatePart",
+                  "children": []
+                },
+                {
+                  "i": 56,
+                  "name": "Reset",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane2.Reset",
+                  "children": []
+                },
+                {
+                  "i": 57,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane2.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 58,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane2.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 59,
+                  "name": "Connector5",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane2.Connector5",
+                  "children": []
+                },
+                {
+                  "i": 60,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane2.Connector3",
+                  "children": []
+                },
+                {
+                  "i": 61,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane2.Connector",
+                  "children": []
+                },
+                {
+                  "i": 62,
+                  "name": "Connector4",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane2.Connector4",
+                  "children": []
+                },
+                {
+                  "i": 63,
+                  "name": "Connector6",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane2.Connector6",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 6,
+              "name": "RackLane3",
+              "type": "Frame",
+              "path": ".UserObjects.Warehouse.RackLane3",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "SideEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane3.SideEntrance",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "ConveyorWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.ConveyorWidth",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "INIT",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.INIT",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "BoxWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.BoxWidth",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "BoxHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.BoxHeight",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "BoxDepth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.BoxDepth",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "NumberOfColumns",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.NumberOfColumns",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "NumberOfRows",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.NumberOfRows",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "TrackWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.TrackWidth",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "MainEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane3.MainEntrance",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Exit",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane3.Exit",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "appendOrder",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.appendOrder",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "RSU_Height",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.RSU_Height",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "RSU_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.RSU_speed",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "LoadHandler_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.LoadHandler_speed",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "createRack",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.createRack",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "ConveyorLength",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.ConveyorLength",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "RackLeft",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane3.RackLeft",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "RackRight",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane3.RackRight",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "Converter1",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane3.Converter1",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "Converter2",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane3.Converter2",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane3.Line",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Carrier_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.Carrier_speed",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "ConveyorSpeed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.ConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "WMS",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.WMS",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "InitRackLane",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.InitRackLane",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "statistic",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.statistic",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "IN",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane3.IN",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "OUT",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane3.OUT",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "ShowRackContent",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.ShowRackContent",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "SafetyDistance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.SafetyDistance",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "RSU_Availability",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.RSU_Availability",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "RSU_MTTR",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.RSU_MTTR",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "onChanges",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.onChanges",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "ParameterChanges",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.ParameterChanges",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "setConveyorSpeed",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.setConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "onDrop",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.onDrop",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "WMS_new",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.WMS_new",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "OccupancyLeft",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane3.OccupancyLeft",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "OccupancyRight",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane3.OccupancyRight",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "adoptParametrization",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.adoptParametrization",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "contructorControl",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.contructorControl",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "RSU",
+                  "type": "Station",
+                  "path": ".UserObjects.Warehouse.RackLane3.RSU",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".UserObjects.Warehouse.RackLane3.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "Gap",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.Gap",
+                  "children": []
+                },
+                {
+                  "i": 46,
+                  "name": "FloorThickness",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.FloorThickness",
+                  "children": []
+                },
+                {
+                  "i": 47,
+                  "name": "GroundClearance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.GroundClearance",
+                  "children": []
+                },
+                {
+                  "i": 48,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane3.Comment",
+                  "children": []
+                },
+                {
+                  "i": 49,
+                  "name": "Comment1",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane3.Comment1",
+                  "children": []
+                },
+                {
+                  "i": 50,
+                  "name": "Comment2",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane3.Comment2",
+                  "children": []
+                },
+                {
+                  "i": 51,
+                  "name": "RackYOffset",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.RackYOffset",
+                  "children": []
+                },
+                {
+                  "i": 52,
+                  "name": "BaseHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.BaseHeight",
+                  "children": []
+                },
+                {
+                  "i": 53,
+                  "name": "RSU_acceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.RSU_acceleration",
+                  "children": []
+                },
+                {
+                  "i": 54,
+                  "name": "RSU_deceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane3.RSU_deceleration",
+                  "children": []
+                },
+                {
+                  "i": 55,
+                  "name": "CreatePart",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.CreatePart",
+                  "children": []
+                },
+                {
+                  "i": 56,
+                  "name": "Reset",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane3.Reset",
+                  "children": []
+                },
+                {
+                  "i": 57,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane3.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 58,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane3.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 59,
+                  "name": "Connector5",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane3.Connector5",
+                  "children": []
+                },
+                {
+                  "i": 60,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane3.Connector3",
+                  "children": []
+                },
+                {
+                  "i": 61,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane3.Connector",
+                  "children": []
+                },
+                {
+                  "i": 62,
+                  "name": "Connector4",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane3.Connector4",
+                  "children": []
+                },
+                {
+                  "i": 63,
+                  "name": "Connector6",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane3.Connector6",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 7,
+              "name": "RackLane4",
+              "type": "Frame",
+              "path": ".UserObjects.Warehouse.RackLane4",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "SideEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane4.SideEntrance",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "ConveyorWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.ConveyorWidth",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "INIT",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.INIT",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "BoxWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.BoxWidth",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "BoxHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.BoxHeight",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "BoxDepth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.BoxDepth",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "NumberOfColumns",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.NumberOfColumns",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "NumberOfRows",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.NumberOfRows",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "TrackWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.TrackWidth",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "MainEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane4.MainEntrance",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Exit",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane4.Exit",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "appendOrder",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.appendOrder",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "RSU_Height",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.RSU_Height",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "RSU_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.RSU_speed",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "LoadHandler_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.LoadHandler_speed",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "createRack",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.createRack",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "ConveyorLength",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.ConveyorLength",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "RackLeft",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane4.RackLeft",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "RackRight",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane4.RackRight",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "Converter1",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane4.Converter1",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "Converter2",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane4.Converter2",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane4.Line",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Carrier_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.Carrier_speed",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "ConveyorSpeed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.ConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "WMS",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.WMS",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "InitRackLane",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.InitRackLane",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "statistic",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.statistic",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "IN",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane4.IN",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "OUT",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane4.OUT",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "ShowRackContent",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.ShowRackContent",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "SafetyDistance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.SafetyDistance",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "RSU_Availability",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.RSU_Availability",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "RSU_MTTR",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.RSU_MTTR",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "onChanges",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.onChanges",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "ParameterChanges",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.ParameterChanges",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "setConveyorSpeed",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.setConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "onDrop",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.onDrop",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "WMS_new",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.WMS_new",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "OccupancyLeft",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane4.OccupancyLeft",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "OccupancyRight",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane4.OccupancyRight",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "adoptParametrization",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.adoptParametrization",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "contructorControl",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.contructorControl",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "RSU",
+                  "type": "Station",
+                  "path": ".UserObjects.Warehouse.RackLane4.RSU",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".UserObjects.Warehouse.RackLane4.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "Gap",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.Gap",
+                  "children": []
+                },
+                {
+                  "i": 46,
+                  "name": "FloorThickness",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.FloorThickness",
+                  "children": []
+                },
+                {
+                  "i": 47,
+                  "name": "GroundClearance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.GroundClearance",
+                  "children": []
+                },
+                {
+                  "i": 48,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane4.Comment",
+                  "children": []
+                },
+                {
+                  "i": 49,
+                  "name": "Comment1",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane4.Comment1",
+                  "children": []
+                },
+                {
+                  "i": 50,
+                  "name": "Comment2",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane4.Comment2",
+                  "children": []
+                },
+                {
+                  "i": 51,
+                  "name": "RackYOffset",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.RackYOffset",
+                  "children": []
+                },
+                {
+                  "i": 52,
+                  "name": "BaseHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.BaseHeight",
+                  "children": []
+                },
+                {
+                  "i": 53,
+                  "name": "RSU_acceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.RSU_acceleration",
+                  "children": []
+                },
+                {
+                  "i": 54,
+                  "name": "RSU_deceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane4.RSU_deceleration",
+                  "children": []
+                },
+                {
+                  "i": 55,
+                  "name": "CreatePart",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.CreatePart",
+                  "children": []
+                },
+                {
+                  "i": 56,
+                  "name": "Reset",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane4.Reset",
+                  "children": []
+                },
+                {
+                  "i": 57,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane4.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 58,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane4.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 59,
+                  "name": "Connector5",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane4.Connector5",
+                  "children": []
+                },
+                {
+                  "i": 60,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane4.Connector3",
+                  "children": []
+                },
+                {
+                  "i": 61,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane4.Connector",
+                  "children": []
+                },
+                {
+                  "i": 62,
+                  "name": "Connector4",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane4.Connector4",
+                  "children": []
+                },
+                {
+                  "i": 63,
+                  "name": "Connector6",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane4.Connector6",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 8,
+              "name": "RackLane5",
+              "type": "Frame",
+              "path": ".UserObjects.Warehouse.RackLane5",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "SideEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane5.SideEntrance",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "ConveyorWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.ConveyorWidth",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "INIT",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.INIT",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "BoxWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.BoxWidth",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "BoxHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.BoxHeight",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "BoxDepth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.BoxDepth",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "NumberOfColumns",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.NumberOfColumns",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "NumberOfRows",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.NumberOfRows",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "TrackWidth",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.TrackWidth",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "MainEntrance",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane5.MainEntrance",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Exit",
+                  "type": "Interface",
+                  "path": ".UserObjects.Warehouse.RackLane5.Exit",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "appendOrder",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.appendOrder",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "RSU_Height",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.RSU_Height",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "RSU_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.RSU_speed",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "LoadHandler_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.LoadHandler_speed",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "createRack",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.createRack",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "ConveyorLength",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.ConveyorLength",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "RackLeft",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane5.RackLeft",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "RackRight",
+                  "type": "Store",
+                  "path": ".UserObjects.Warehouse.RackLane5.RackRight",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "Converter1",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane5.Converter1",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "Converter2",
+                  "type": "Converter",
+                  "path": ".UserObjects.Warehouse.RackLane5.Converter2",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Line",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane5.Line",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Carrier_speed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.Carrier_speed",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "ConveyorSpeed",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.ConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "WMS",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.WMS",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "InitRackLane",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.InitRackLane",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "statistic",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.statistic",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "IN",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane5.IN",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "OUT",
+                  "type": "Conveyor",
+                  "path": ".UserObjects.Warehouse.RackLane5.OUT",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "ShowRackContent",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.ShowRackContent",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "SafetyDistance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.SafetyDistance",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "RSU_Availability",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.RSU_Availability",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "RSU_MTTR",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.RSU_MTTR",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "onChanges",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.onChanges",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "ParameterChanges",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.ParameterChanges",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "setConveyorSpeed",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.setConveyorSpeed",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "onDrop",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.onDrop",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "WMS_new",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.WMS_new",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "OccupancyLeft",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane5.OccupancyLeft",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "OccupancyRight",
+                  "type": "DataTable",
+                  "path": ".UserObjects.Warehouse.RackLane5.OccupancyRight",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "adoptParametrization",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.adoptParametrization",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "contructorControl",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.contructorControl",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "RSU",
+                  "type": "Station",
+                  "path": ".UserObjects.Warehouse.RackLane5.RSU",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".UserObjects.Warehouse.RackLane5.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "Gap",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.Gap",
+                  "children": []
+                },
+                {
+                  "i": 46,
+                  "name": "FloorThickness",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.FloorThickness",
+                  "children": []
+                },
+                {
+                  "i": 47,
+                  "name": "GroundClearance",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.GroundClearance",
+                  "children": []
+                },
+                {
+                  "i": 48,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane5.Comment",
+                  "children": []
+                },
+                {
+                  "i": 49,
+                  "name": "Comment1",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane5.Comment1",
+                  "children": []
+                },
+                {
+                  "i": 50,
+                  "name": "Comment2",
+                  "type": "Comment",
+                  "path": ".UserObjects.Warehouse.RackLane5.Comment2",
+                  "children": []
+                },
+                {
+                  "i": 51,
+                  "name": "RackYOffset",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.RackYOffset",
+                  "children": []
+                },
+                {
+                  "i": 52,
+                  "name": "BaseHeight",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.BaseHeight",
+                  "children": []
+                },
+                {
+                  "i": 53,
+                  "name": "RSU_acceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.RSU_acceleration",
+                  "children": []
+                },
+                {
+                  "i": 54,
+                  "name": "RSU_deceleration",
+                  "type": "Variable",
+                  "path": ".UserObjects.Warehouse.RackLane5.RSU_deceleration",
+                  "children": []
+                },
+                {
+                  "i": 55,
+                  "name": "CreatePart",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.CreatePart",
+                  "children": []
+                },
+                {
+                  "i": 56,
+                  "name": "Reset",
+                  "type": "Method",
+                  "path": ".UserObjects.Warehouse.RackLane5.Reset",
+                  "children": []
+                },
+                {
+                  "i": 57,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane5.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 58,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane5.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 59,
+                  "name": "Connector5",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane5.Connector5",
+                  "children": []
+                },
+                {
+                  "i": 60,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane5.Connector3",
+                  "children": []
+                },
+                {
+                  "i": 61,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane5.Connector",
+                  "children": []
+                },
+                {
+                  "i": 62,
+                  "name": "Connector4",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane5.Connector4",
+                  "children": []
+                },
+                {
+                  "i": 63,
+                  "name": "Connector6",
+                  "type": "Connector",
+                  "path": ".UserObjects.Warehouse.RackLane5.Connector6",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 9,
+              "name": "Checkbox",
+              "type": "Checkbox",
+              "path": ".UserObjects.Warehouse.Checkbox",
+              "children": []
+            },
+            {
+              "i": 10,
+              "name": "Connector",
+              "type": "Connector",
+              "path": ".UserObjects.Warehouse.Connector",
+              "children": []
+            },
+            {
+              "i": 11,
+              "name": "Connector1",
+              "type": "Connector",
+              "path": ".UserObjects.Warehouse.Connector1",
+              "children": []
+            },
+            {
+              "i": 12,
+              "name": "Connector2",
+              "type": "Connector",
+              "path": ".UserObjects.Warehouse.Connector2",
+              "children": []
+            },
+            {
+              "i": 13,
+              "name": "Connector3",
+              "type": "Connector",
+              "path": ".UserObjects.Warehouse.Connector3",
+              "children": []
+            },
+            {
+              "i": 14,
+              "name": "Connector4",
+              "type": "Connector",
+              "path": ".UserObjects.Warehouse.Connector4",
+              "children": []
+            },
+            {
+              "i": 15,
+              "name": "Connector5",
+              "type": "Connector",
+              "path": ".UserObjects.Warehouse.Connector5",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 13,
+          "name": "Line",
+          "type": "Conveyor",
+          "path": ".UserObjects.Line",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 8,
+      "name": "Models",
+      "type": "Folder",
+      "path": ".Models",
+      "children": [
+        {
+          "i": 1,
+          "name": "Factory51",
+          "type": "Frame",
+          "path": ".Models.Factory51",
+          "error": "Unterminated string starting at: line 1 column 11989 (char 11988)"
+        }
+      ]
+    },
+    {
+      "i": 9,
+      "name": "SimtalkClaude",
+      "type": "Folder",
+      "path": ".SimtalkClaude",
+      "children": [
+        {
+          "i": 1,
+          "name": "main",
+          "type": "Frame",
+          "path": ".SimtalkClaude.main",
+          "children": [
+            {
+              "i": 1,
+              "name": "SocketServer",
+              "type": "Frame",
+              "path": ".SimtalkClaude.main.SocketServer",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "m_callback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketServer.m_callback",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.main.SocketServer.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketServer.m_send",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "ping_reply",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketServer.ping_reply",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "m_str_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketServer.m_str_send",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "SimtalkAction",
+              "type": "Frame",
+              "path": ".SimtalkClaude.main.SimtalkAction",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "simtalkcode",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.simtalkcode",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_getlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.m_getlog",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "get_simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.get_simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "action_result",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SimtalkAction.action_result",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "simtalk_execute",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.simtalk_execute",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "a_readlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.a_readlog",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Run_Simutalk",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.Run_Simutalk",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "ReadLogFile",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.ReadLogFile",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "ErrorHandler",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SimtalkAction.ErrorHandler",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "Server",
+              "type": "Variable",
+              "path": ".SimtalkClaude.main.Server",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "SocketClient",
+              "type": "Frame",
+              "path": ".SimtalkClaude.main.SocketClient",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "auth",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.auth",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "request",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.request",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "token",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.token",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "sig",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.sig",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "session_id",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.session_id",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.main.SocketClient.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "auth_success",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.main.SocketClient.auth_success",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_send",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "m_recieve",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_recieve",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "m_openconnection",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_openconnection",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Button",
+                  "type": "Button",
+                  "path": ".SimtalkClaude.main.SocketClient.Button",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "m_sendauth",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_sendauth",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "m_authback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_authback",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Button2",
+                  "type": "Button",
+                  "path": ".SimtalkClaude.main.SocketClient.Button2",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "m_disconnect",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.main.SocketClient.m_disconnect",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "src",
+          "type": "Folder",
+          "path": ".SimtalkClaude.src",
+          "children": [
+            {
+              "i": 1,
+              "name": "SimtalkAction",
+              "type": "Frame",
+              "path": ".SimtalkClaude.src.SimtalkAction",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "simtalkcode",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalkcode",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_getlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.m_getlog",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "get_simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.get_simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "action_result",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.src.SimtalkAction.action_result",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "simtalk_execute",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalk_execute",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "a_readlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.a_readlog",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Run_Simutalk",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.Run_Simutalk",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "ReadLogFile",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.ReadLogFile",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "ErrorHandler",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.ErrorHandler",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "autoexec",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.autoexec",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "ErrorHandler",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.ErrorHandler",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "name": "connection",
+          "type": "Folder",
+          "path": ".SimtalkClaude.connection",
+          "children": [
+            {
+              "i": 1,
+              "name": "SocketClient",
+              "type": "Frame",
+              "path": ".SimtalkClaude.connection.SocketClient",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "auth",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.auth",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "request",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.request",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "token",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.token",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "sig",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.sig",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "session_id",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.session_id",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.connection.SocketClient.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "auth_success",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketClient.auth_success",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_send",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "m_recieve",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_recieve",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "m_openconnection",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_openconnection",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Button",
+                  "type": "Button",
+                  "path": ".SimtalkClaude.connection.SocketClient.Button",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "m_sendauth",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_sendauth",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "m_authback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_authback",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Button2",
+                  "type": "Button",
+                  "path": ".SimtalkClaude.connection.SocketClient.Button2",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "m_disconnect",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketClient.m_disconnect",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "SocketServer",
+              "type": "Frame",
+              "path": ".SimtalkClaude.connection.SocketServer",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.connection.SocketServer.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_callback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_callback",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_send",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "ping_reply",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketServer.ping_reply",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "m_str_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_str_send",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "Logger",
+              "type": "Frame",
+              "path": ".SimtalkClaude.connection.Logger",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "logdata",
+                  "type": "DataTable",
+                  "path": ".SimtalkClaude.connection.Logger.logdata",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 4,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".SimtalkClaude.connection.Socket",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "socketcallback",
+              "type": "Method",
+              "path": ".SimtalkClaude.connection.socketcallback",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 4,
+          "name": "Objects",
+          "type": "Folder",
+          "path": ".SimtalkClaude.Objects",
+          "children": [
+            {
+              "i": 1,
+              "name": "Method",
+              "type": "Method",
+              "path": ".SimtalkClaude.Objects.Method",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".SimtalkClaude.Objects.Socket",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "DataList",
+              "type": "DataList",
+              "path": ".SimtalkClaude.Objects.DataList",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".SimtalkClaude.Objects.Dialog",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "HtmlReport",
+              "type": "HtmlReport",
+              "path": ".SimtalkClaude.Objects.HtmlReport",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "Variable",
+              "type": "Variable",
+              "path": ".SimtalkClaude.Objects.Variable",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "Button",
+              "type": "Button",
+              "path": ".SimtalkClaude.Objects.Button",
+              "children": []
+            },
+            {
+              "i": 8,
+              "name": "DataTable",
+              "type": "DataTable",
+              "path": ".SimtalkClaude.Objects.DataTable",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

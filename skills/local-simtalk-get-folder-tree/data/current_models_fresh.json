@@ -1,0 +1,1380 @@
+{
+  "root_path": ".Models",
+  "root_name": "Models",
+  "root_type": "Folder",
+  "root_numNodes": 2,
+  "children": [
+    {
+      "i": 1,
+      "name": "Assembly1",
+      "type": "Frame",
+      "path": ".Models.Assembly1",
+      "children": [
+        {
+          "i": 1,
+          "name": "CrossTransferToTest",
+          "type": "Track",
+          "path": ".Models.Assembly1.CrossTransferToTest"
+        },
+        {
+          "i": 2,
+          "name": "CrossTransferFromTest",
+          "type": "Track",
+          "path": ".Models.Assembly1.CrossTransferFromTest"
+        },
+        {
+          "i": 3,
+          "name": "Source",
+          "type": "Source",
+          "path": ".Models.Assembly1.Source"
+        },
+        {
+          "i": 4,
+          "name": "F0",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F0"
+        },
+        {
+          "i": 5,
+          "name": "F1",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F1"
+        },
+        {
+          "i": 6,
+          "name": "F2",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F2"
+        },
+        {
+          "i": 7,
+          "name": "F3",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F3"
+        },
+        {
+          "i": 8,
+          "name": "F4",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F4"
+        },
+        {
+          "i": 9,
+          "name": "F5",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F5"
+        },
+        {
+          "i": 10,
+          "name": "F7",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F7"
+        },
+        {
+          "i": 11,
+          "name": "F8",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F8"
+        },
+        {
+          "i": 12,
+          "name": "F9",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F9"
+        },
+        {
+          "i": 13,
+          "name": "F11",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F11"
+        },
+        {
+          "i": 14,
+          "name": "LoadStation",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly1.LoadStation"
+        },
+        {
+          "i": 15,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".Models.Assembly1.Drain"
+        },
+        {
+          "i": 16,
+          "name": "Buffer",
+          "type": "Buffer",
+          "path": ".Models.Assembly1.Buffer"
+        },
+        {
+          "i": 17,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".Models.Assembly1.EventController"
+        },
+        {
+          "i": 18,
+          "name": "Source_Paletts",
+          "type": "Source",
+          "path": ".Models.Assembly1.Source_Paletts"
+        },
+        {
+          "i": 19,
+          "name": "Comment2",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comment2"
+        },
+        {
+          "i": 20,
+          "name": "Comment1",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comment1"
+        },
+        {
+          "i": 21,
+          "name": "Comment4",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comment4"
+        },
+        {
+          "i": 22,
+          "name": "Comm_F8",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F8"
+        },
+        {
+          "i": 23,
+          "name": "WorkerPool",
+          "type": "WorkerPool",
+          "path": ".Models.Assembly1.WorkerPool"
+        },
+        {
+          "i": 24,
+          "name": "ShiftCalendar",
+          "type": "ShiftCalendar",
+          "path": ".Models.Assembly1.ShiftCalendar"
+        },
+        {
+          "i": 25,
+          "name": "Workplace_1",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_1"
+        },
+        {
+          "i": 26,
+          "name": "Workplace_2",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_2"
+        },
+        {
+          "i": 27,
+          "name": "Workplace_3",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_3"
+        },
+        {
+          "i": 28,
+          "name": "Workplace_4",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_4"
+        },
+        {
+          "i": 29,
+          "name": "Workplace_5",
+          "type": "Workplace",
+          "path": ".Models.Assembly1.Workplace_5"
+        },
+        {
+          "i": 30,
+          "name": "Broker",
+          "type": "Broker",
+          "path": ".Models.Assembly1.Broker"
+        },
+        {
+          "i": 31,
+          "name": "Histogram",
+          "type": "Chart",
+          "path": ".Models.Assembly1.Histogram"
+        },
+        {
+          "i": 32,
+          "name": "Quantity",
+          "type": "Variable",
+          "path": ".Models.Assembly1.Quantity"
+        },
+        {
+          "i": 33,
+          "name": "MS5",
+          "type": "Station",
+          "path": ".Models.Assembly1.MS5"
+        },
+        {
+          "i": 34,
+          "name": "MS2",
+          "type": "Station",
+          "path": ".Models.Assembly1.MS2"
+        },
+        {
+          "i": 35,
+          "name": "MS1",
+          "type": "Station",
+          "path": ".Models.Assembly1.MS1"
+        },
+        {
+          "i": 36,
+          "name": "MS4",
+          "type": "Station",
+          "path": ".Models.Assembly1.MS4"
+        },
+        {
+          "i": 37,
+          "name": "AS5",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS5"
+        },
+        {
+          "i": 38,
+          "name": "AS1",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS1"
+        },
+        {
+          "i": 39,
+          "name": "AS2",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS2"
+        },
+        {
+          "i": 40,
+          "name": "AS3",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS3"
+        },
+        {
+          "i": 41,
+          "name": "AS4",
+          "type": "Station",
+          "path": ".Models.Assembly1.AS4"
+        },
+        {
+          "i": 42,
+          "name": "Comm_F10",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F10"
+        },
+        {
+          "i": 43,
+          "name": "Comm_F9",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F9"
+        },
+        {
+          "i": 44,
+          "name": "PalletOptimization",
+          "type": "Frame",
+          "path": ".Models.Assembly1.PalletOptimization"
+        },
+        {
+          "i": 45,
+          "name": "Orders",
+          "type": "DataTable",
+          "path": ".Models.Assembly1.Orders"
+        },
+        {
+          "i": 46,
+          "name": "F10",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F10"
+        },
+        {
+          "i": 47,
+          "name": "ParallelProc",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly1.ParallelProc"
+        },
+        {
+          "i": 48,
+          "name": "MS3",
+          "type": "AssemblyStation",
+          "path": ".Models.Assembly1.MS3"
+        },
+        {
+          "i": 49,
+          "name": "PreProduction",
+          "type": "Frame",
+          "path": ".Models.Assembly1.PreProduction"
+        },
+        {
+          "i": 50,
+          "name": "Unload",
+          "type": "DismantleStation",
+          "path": ".Models.Assembly1.Unload"
+        },
+        {
+          "i": 51,
+          "name": "Line1",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.Line1"
+        },
+        {
+          "i": 52,
+          "name": "Line2",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.Line2"
+        },
+        {
+          "i": 53,
+          "name": "DisplayThroughput",
+          "type": "Display",
+          "path": ".Models.Assembly1.DisplayThroughput"
+        },
+        {
+          "i": 54,
+          "name": "Comment3",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comment3"
+        },
+        {
+          "i": 55,
+          "name": "Button",
+          "type": "Button",
+          "path": ".Models.Assembly1.Button"
+        },
+        {
+          "i": 56,
+          "name": "Button1",
+          "type": "Button",
+          "path": ".Models.Assembly1.Button1"
+        },
+        {
+          "i": 57,
+          "name": "Button2",
+          "type": "Button",
+          "path": ".Models.Assembly1.Button2"
+        },
+        {
+          "i": 58,
+          "name": "AttributExplorer2",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly1.AttributExplorer2"
+        },
+        {
+          "i": 59,
+          "name": "AttributExplorer3",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly1.AttributExplorer3"
+        },
+        {
+          "i": 60,
+          "name": "Comm_F5",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F5"
+        },
+        {
+          "i": 61,
+          "name": "Comm_F4",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F4"
+        },
+        {
+          "i": 62,
+          "name": "Comm_F11",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F11"
+        },
+        {
+          "i": 63,
+          "name": "Comm_F0",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F0"
+        },
+        {
+          "i": 64,
+          "name": "Comm_F1",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F1"
+        },
+        {
+          "i": 65,
+          "name": "Comm_F2",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F2"
+        },
+        {
+          "i": 66,
+          "name": "Comm_F3",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F3"
+        },
+        {
+          "i": 67,
+          "name": "Comm_F7",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F7"
+        },
+        {
+          "i": 68,
+          "name": "TransferStation",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly1.TransferStation"
+        },
+        {
+          "i": 69,
+          "name": "Chart",
+          "type": "Chart",
+          "path": ".Models.Assembly1.Chart"
+        },
+        {
+          "i": 70,
+          "name": "Logo",
+          "type": "Frame",
+          "path": ".Models.Assembly1.Logo"
+        },
+        {
+          "i": 71,
+          "name": "F6",
+          "type": "Conveyor",
+          "path": ".Models.Assembly1.F6"
+        },
+        {
+          "i": 72,
+          "name": "Comm_F6",
+          "type": "Comment",
+          "path": ".Models.Assembly1.Comm_F6"
+        },
+        {
+          "i": 73,
+          "name": "WorkerChart",
+          "type": "Frame",
+          "path": ".Models.Assembly1.WorkerChart"
+        },
+        {
+          "i": 74,
+          "name": "AttributeExplorer",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly1.AttributeExplorer"
+        },
+        {
+          "i": 75,
+          "name": "EnergySavingMeasures",
+          "type": "Checkbox",
+          "path": ".Models.Assembly1.EnergySavingMeasures"
+        },
+        {
+          "i": 76,
+          "name": "DisplayEnergy",
+          "type": "Display",
+          "path": ".Models.Assembly1.DisplayEnergy"
+        },
+        {
+          "i": 77,
+          "name": "BottleneckAnalyzer",
+          "type": "Frame",
+          "path": ".Models.Assembly1.BottleneckAnalyzer"
+        },
+        {
+          "i": 78,
+          "name": "EnergyAnalyzer",
+          "type": "Frame",
+          "path": ".Models.Assembly1.EnergyAnalyzer"
+        },
+        {
+          "i": 79,
+          "name": "ReadMe1",
+          "type": "FileLink",
+          "path": ".Models.Assembly1.ReadMe1"
+        },
+        {
+          "i": 80,
+          "name": "LiesMich",
+          "type": "FileLink",
+          "path": ".Models.Assembly1.LiesMich"
+        },
+        {
+          "i": 81,
+          "name": "Connector15",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector15"
+        },
+        {
+          "i": 82,
+          "name": "Connector22",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector22"
+        },
+        {
+          "i": 83,
+          "name": "Connector23",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector23"
+        },
+        {
+          "i": 84,
+          "name": "Connector24",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector24"
+        },
+        {
+          "i": 85,
+          "name": "Connector10",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector10"
+        },
+        {
+          "i": 86,
+          "name": "Connector11",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector11"
+        },
+        {
+          "i": 87,
+          "name": "Connector7",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector7"
+        },
+        {
+          "i": 88,
+          "name": "Connector8",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector8"
+        },
+        {
+          "i": 89,
+          "name": "Connector18",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector18"
+        },
+        {
+          "i": 90,
+          "name": "Connector12",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector12"
+        },
+        {
+          "i": 91,
+          "name": "Connector17",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector17"
+        },
+        {
+          "i": 92,
+          "name": "Connector19",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector19"
+        },
+        {
+          "i": 93,
+          "name": "Connector30",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector30"
+        },
+        {
+          "i": 94,
+          "name": "Connector13",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector13"
+        },
+        {
+          "i": 95,
+          "name": "Connector14",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector14"
+        },
+        {
+          "i": 96,
+          "name": "Connector16",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector16"
+        },
+        {
+          "i": 97,
+          "name": "Connector25",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector25"
+        },
+        {
+          "i": 98,
+          "name": "Connector26",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector26"
+        },
+        {
+          "i": 99,
+          "name": "Connector9",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector9"
+        },
+        {
+          "i": 100,
+          "name": "Connector27",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector27"
+        },
+        {
+          "i": 101,
+          "name": "Connector28",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector28"
+        },
+        {
+          "i": 102,
+          "name": "Connector20",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector20"
+        },
+        {
+          "i": 103,
+          "name": "Connector21",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector21"
+        },
+        {
+          "i": 104,
+          "name": "Connector32",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector32"
+        },
+        {
+          "i": 105,
+          "name": "Connector33",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector33"
+        },
+        {
+          "i": 106,
+          "name": "Connector31",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector31"
+        },
+        {
+          "i": 107,
+          "name": "Connector29",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector29"
+        },
+        {
+          "i": 108,
+          "name": "Connector1",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector1"
+        },
+        {
+          "i": 109,
+          "name": "Connector2",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector2"
+        },
+        {
+          "i": 110,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector"
+        },
+        {
+          "i": 111,
+          "name": "Connector3",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector3"
+        },
+        {
+          "i": 112,
+          "name": "Connector4",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector4"
+        },
+        {
+          "i": 113,
+          "name": "Connector5",
+          "type": "Connector",
+          "path": ".Models.Assembly1.Connector5"
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "Assembly2",
+      "type": "Frame",
+      "path": ".Models.Assembly2",
+      "children": [
+        {
+          "i": 1,
+          "name": "CrossTransferToTest",
+          "type": "Track",
+          "path": ".Models.Assembly2.CrossTransferToTest"
+        },
+        {
+          "i": 2,
+          "name": "CrossTransferFromTest",
+          "type": "Track",
+          "path": ".Models.Assembly2.CrossTransferFromTest"
+        },
+        {
+          "i": 3,
+          "name": "Source",
+          "type": "Source",
+          "path": ".Models.Assembly2.Source"
+        },
+        {
+          "i": 4,
+          "name": "F0",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F0"
+        },
+        {
+          "i": 5,
+          "name": "F1",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F1"
+        },
+        {
+          "i": 6,
+          "name": "F2",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F2"
+        },
+        {
+          "i": 7,
+          "name": "F3",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F3"
+        },
+        {
+          "i": 8,
+          "name": "F4",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F4"
+        },
+        {
+          "i": 9,
+          "name": "F5",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F5"
+        },
+        {
+          "i": 10,
+          "name": "F7",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F7"
+        },
+        {
+          "i": 11,
+          "name": "F8",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F8"
+        },
+        {
+          "i": 12,
+          "name": "F9",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F9"
+        },
+        {
+          "i": 13,
+          "name": "F11",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F11"
+        },
+        {
+          "i": 14,
+          "name": "LoadStation",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly2.LoadStation"
+        },
+        {
+          "i": 15,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".Models.Assembly2.Drain"
+        },
+        {
+          "i": 16,
+          "name": "Buffer",
+          "type": "Buffer",
+          "path": ".Models.Assembly2.Buffer"
+        },
+        {
+          "i": 17,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".Models.Assembly2.EventController"
+        },
+        {
+          "i": 18,
+          "name": "Source_Paletts",
+          "type": "Source",
+          "path": ".Models.Assembly2.Source_Paletts"
+        },
+        {
+          "i": 19,
+          "name": "Comment2",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comment2"
+        },
+        {
+          "i": 20,
+          "name": "Comment1",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comment1"
+        },
+        {
+          "i": 21,
+          "name": "Comment4",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comment4"
+        },
+        {
+          "i": 22,
+          "name": "Comm_F8",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F8"
+        },
+        {
+          "i": 23,
+          "name": "WorkerPool",
+          "type": "WorkerPool",
+          "path": ".Models.Assembly2.WorkerPool"
+        },
+        {
+          "i": 24,
+          "name": "ShiftCalendar",
+          "type": "ShiftCalendar",
+          "path": ".Models.Assembly2.ShiftCalendar"
+        },
+        {
+          "i": 25,
+          "name": "Workplace_1",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_1"
+        },
+        {
+          "i": 26,
+          "name": "Workplace_2",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_2"
+        },
+        {
+          "i": 27,
+          "name": "Workplace_3",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_3"
+        },
+        {
+          "i": 28,
+          "name": "Workplace_4",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_4"
+        },
+        {
+          "i": 29,
+          "name": "Workplace_5",
+          "type": "Workplace",
+          "path": ".Models.Assembly2.Workplace_5"
+        },
+        {
+          "i": 30,
+          "name": "Broker",
+          "type": "Broker",
+          "path": ".Models.Assembly2.Broker"
+        },
+        {
+          "i": 31,
+          "name": "Quantity",
+          "type": "Variable",
+          "path": ".Models.Assembly2.Quantity"
+        },
+        {
+          "i": 32,
+          "name": "MS5",
+          "type": "Station",
+          "path": ".Models.Assembly2.MS5"
+        },
+        {
+          "i": 33,
+          "name": "MS2",
+          "type": "Station",
+          "path": ".Models.Assembly2.MS2"
+        },
+        {
+          "i": 34,
+          "name": "MS1",
+          "type": "Station",
+          "path": ".Models.Assembly2.MS1"
+        },
+        {
+          "i": 35,
+          "name": "MS4",
+          "type": "Station",
+          "path": ".Models.Assembly2.MS4"
+        },
+        {
+          "i": 36,
+          "name": "AS5",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS5"
+        },
+        {
+          "i": 37,
+          "name": "AS1",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS1"
+        },
+        {
+          "i": 38,
+          "name": "AS2",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS2"
+        },
+        {
+          "i": 39,
+          "name": "AS3",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS3"
+        },
+        {
+          "i": 40,
+          "name": "AS4",
+          "type": "Station",
+          "path": ".Models.Assembly2.AS4"
+        },
+        {
+          "i": 41,
+          "name": "Comm_F10",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F10"
+        },
+        {
+          "i": 42,
+          "name": "Comm_F9",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F9"
+        },
+        {
+          "i": 43,
+          "name": "PalletOptimization",
+          "type": "Frame",
+          "path": ".Models.Assembly2.PalletOptimization"
+        },
+        {
+          "i": 44,
+          "name": "Orders",
+          "type": "DataTable",
+          "path": ".Models.Assembly2.Orders"
+        },
+        {
+          "i": 45,
+          "name": "F10",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.F10"
+        },
+        {
+          "i": 46,
+          "name": "ParallelProc",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly2.ParallelProc"
+        },
+        {
+          "i": 47,
+          "name": "MS3",
+          "type": "AssemblyStation",
+          "path": ".Models.Assembly2.MS3"
+        },
+        {
+          "i": 48,
+          "name": "PreProduction",
+          "type": "Frame",
+          "path": ".Models.Assembly2.PreProduction"
+        },
+        {
+          "i": 49,
+          "name": "Unload",
+          "type": "DismantleStation",
+          "path": ".Models.Assembly2.Unload"
+        },
+        {
+          "i": 50,
+          "name": "Line1",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.Line1"
+        },
+        {
+          "i": 51,
+          "name": "Line2",
+          "type": "Conveyor",
+          "path": ".Models.Assembly2.Line2"
+        },
+        {
+          "i": 52,
+          "name": "DisplayThroughput",
+          "type": "Display",
+          "path": ".Models.Assembly2.DisplayThroughput"
+        },
+        {
+          "i": 53,
+          "name": "Comment3",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comment3"
+        },
+        {
+          "i": 54,
+          "name": "Button",
+          "type": "Button",
+          "path": ".Models.Assembly2.Button"
+        },
+        {
+          "i": 55,
+          "name": "Button1",
+          "type": "Button",
+          "path": ".Models.Assembly2.Button1"
+        },
+        {
+          "i": 56,
+          "name": "Button2",
+          "type": "Button",
+          "path": ".Models.Assembly2.Button2"
+        },
+        {
+          "i": 57,
+          "name": "AttributExplorer2",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly2.AttributExplorer2"
+        },
+        {
+          "i": 58,
+          "name": "AttributExplorer3",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly2.AttributExplorer3"
+        },
+        {
+          "i": 59,
+          "name": "Comm_F5",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F5"
+        },
+        {
+          "i": 60,
+          "name": "Comm_F4",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F4"
+        },
+        {
+          "i": 61,
+          "name": "Comm_F11",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F11"
+        },
+        {
+          "i": 62,
+          "name": "Comm_F0",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F0"
+        },
+        {
+          "i": 63,
+          "name": "Comm_F1",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F1"
+        },
+        {
+          "i": 64,
+          "name": "Comm_F2",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F2"
+        },
+        {
+          "i": 65,
+          "name": "Comm_F3",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F3"
+        },
+        {
+          "i": 66,
+          "name": "Comm_F7",
+          "type": "Comment",
+          "path": ".Models.Assembly2.Comm_F7"
+        },
+        {
+          "i": 67,
+          "name": "TransferStation",
+          "type": "ParallelStation",
+          "path": ".Models.Assembly2.TransferStation"
+        },
+        {
+          "i": 68,
+          "name": "Chart",
+          "type": "Chart",
+          "path": ".Models.Assembly2.Chart"
+        },
+        {
+          "i": 69,
+          "name": "Logo",
+          "type": "Frame",
+          "path": ".Models.Assembly2.Logo"
+        },
+        {
+          "i": 70,
+          "name": "AttributeExplorer",
+          "type": "AttributeExplorer",
+          "path": ".Models.Assembly2.AttributeExplorer"
+        },
+        {
+          "i": 71,
+          "name": "EnergySavingMeasures",
+          "type": "Checkbox",
+          "path": ".Models.Assembly2.EnergySavingMeasures"
+        },
+        {
+          "i": 72,
+          "name": "DisplayEnergy",
+          "type": "Display",
+          "path": ".Models.Assembly2.DisplayEnergy"
+        },
+        {
+          "i": 73,
+          "name": "BottleneckAnalyzer",
+          "type": "Frame",
+          "path": ".Models.Assembly2.BottleneckAnalyzer"
+        },
+        {
+          "i": 74,
+          "name": "BufferOptimization",
+          "type": "Frame",
+          "path": ".Models.Assembly2.BufferOptimization"
+        },
+        {
+          "i": 75,
+          "name": "Buffer1",
+          "type": "Buffer",
+          "path": ".Models.Assembly2.Buffer1"
+        },
+        {
+          "i": 76,
+          "name": "EnergyAnalyzer",
+          "type": "Frame",
+          "path": ".Models.Assembly2.EnergyAnalyzer"
+        },
+        {
+          "i": 77,
+          "name": "ReadMe1",
+          "type": "FileLink",
+          "path": ".Models.Assembly2.ReadMe1"
+        },
+        {
+          "i": 78,
+          "name": "LiesMich",
+          "type": "FileLink",
+          "path": ".Models.Assembly2.LiesMich"
+        },
+        {
+          "i": 79,
+          "name": "BufferUsage",
+          "type": "Chart",
+          "path": ".Models.Assembly2.BufferUsage"
+        },
+        {
+          "i": 80,
+          "name": "WorkerUtilization",
+          "type": "Frame",
+          "path": ".Models.Assembly2.WorkerUtilization"
+        },
+        {
+          "i": 81,
+          "name": "Connector15",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector15"
+        },
+        {
+          "i": 82,
+          "name": "Connector22",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector22"
+        },
+        {
+          "i": 83,
+          "name": "Connector23",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector23"
+        },
+        {
+          "i": 84,
+          "name": "Connector24",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector24"
+        },
+        {
+          "i": 85,
+          "name": "Connector10",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector10"
+        },
+        {
+          "i": 86,
+          "name": "Connector11",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector11"
+        },
+        {
+          "i": 87,
+          "name": "Connector7",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector7"
+        },
+        {
+          "i": 88,
+          "name": "Connector8",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector8"
+        },
+        {
+          "i": 89,
+          "name": "Connector18",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector18"
+        },
+        {
+          "i": 90,
+          "name": "Connector12",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector12"
+        },
+        {
+          "i": 91,
+          "name": "Connector17",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector17"
+        },
+        {
+          "i": 92,
+          "name": "Connector19",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector19"
+        },
+        {
+          "i": 93,
+          "name": "Connector30",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector30"
+        },
+        {
+          "i": 94,
+          "name": "Connector13",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector13"
+        },
+        {
+          "i": 95,
+          "name": "Connector14",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector14"
+        },
+        {
+          "i": 96,
+          "name": "Connector16",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector16"
+        },
+        {
+          "i": 97,
+          "name": "Connector25",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector25"
+        },
+        {
+          "i": 98,
+          "name": "Connector26",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector26"
+        },
+        {
+          "i": 99,
+          "name": "Connector9",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector9"
+        },
+        {
+          "i": 100,
+          "name": "Connector27",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector27"
+        },
+        {
+          "i": 101,
+          "name": "Connector28",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector28"
+        },
+        {
+          "i": 102,
+          "name": "Connector20",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector20"
+        },
+        {
+          "i": 103,
+          "name": "Connector21",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector21"
+        },
+        {
+          "i": 104,
+          "name": "Connector32",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector32"
+        },
+        {
+          "i": 105,
+          "name": "Connector33",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector33"
+        },
+        {
+          "i": 106,
+          "name": "Connector31",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector31"
+        },
+        {
+          "i": 107,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector"
+        },
+        {
+          "i": 108,
+          "name": "Connector3",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector3"
+        },
+        {
+          "i": 109,
+          "name": "Connector4",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector4"
+        },
+        {
+          "i": 110,
+          "name": "Connector5",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector5"
+        },
+        {
+          "i": 111,
+          "name": "Connector1",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector1"
+        },
+        {
+          "i": 112,
+          "name": "Connector2",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector2"
+        },
+        {
+          "i": 113,
+          "name": "Connector6",
+          "type": "Connector",
+          "path": ".Models.Assembly2.Connector6"
+        }
+      ]
+    }
+  ]
+}

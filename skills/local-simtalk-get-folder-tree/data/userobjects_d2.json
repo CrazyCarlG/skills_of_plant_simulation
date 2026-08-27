@@ -1,0 +1,275 @@
+{
+  "root_path": ".UserObjects",
+  "root_name": "UserObjects",
+  "root_type": "Folder",
+  "root_numNodes": 2,
+  "children": [
+    {
+      "i": 1,
+      "name": "Classes",
+      "type": "Folder",
+      "path": ".UserObjects.Classes",
+      "children": [
+        {
+          "i": 1,
+          "name": "Library",
+          "type": "Toolbar",
+          "path": ".UserObjects.Classes.Library",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "CrossTransfer",
+          "type": "Track",
+          "path": ".UserObjects.Classes.CrossTransfer",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "MS",
+          "type": "Station",
+          "path": ".UserObjects.Classes.MS",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "AS",
+          "type": "Station",
+          "path": ".UserObjects.Classes.AS",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Worker",
+          "type": "Worker",
+          "path": ".UserObjects.Classes.Worker",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Worker_Round",
+          "type": "Worker",
+          "path": ".UserObjects.Classes.Worker_Round",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Adjuster",
+          "type": "Worker",
+          "path": ".UserObjects.Classes.Adjuster",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "Robot",
+          "type": "PickAndPlace",
+          "path": ".UserObjects.Classes.Robot",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "Modules",
+      "type": "Folder",
+      "path": ".UserObjects.Modules",
+      "children": [
+        {
+          "i": 1,
+          "name": "PreProduction",
+          "type": "Frame",
+          "path": ".UserObjects.Modules.PreProduction",
+          "children": [
+            {
+              "i": 1,
+              "name": "Source_Parts",
+              "type": "Source",
+              "path": ".UserObjects.Modules.PreProduction.Source_Parts"
+            },
+            {
+              "i": 2,
+              "name": "AS6",
+              "type": "Station",
+              "path": ".UserObjects.Modules.PreProduction.AS6"
+            },
+            {
+              "i": 3,
+              "name": "MS",
+              "type": "Station",
+              "path": ".UserObjects.Modules.PreProduction.MS"
+            },
+            {
+              "i": 4,
+              "name": "AS7",
+              "type": "Station",
+              "path": ".UserObjects.Modules.PreProduction.AS7"
+            },
+            {
+              "i": 5,
+              "name": "AS8",
+              "type": "Station",
+              "path": ".UserObjects.Modules.PreProduction.AS8"
+            },
+            {
+              "i": 6,
+              "name": "F0",
+              "type": "Conveyor",
+              "path": ".UserObjects.Modules.PreProduction.F0"
+            },
+            {
+              "i": 7,
+              "name": "Workplace",
+              "type": "Workplace",
+              "path": ".UserObjects.Modules.PreProduction.Workplace"
+            },
+            {
+              "i": 8,
+              "name": "F1",
+              "type": "Conveyor",
+              "path": ".UserObjects.Modules.PreProduction.F1"
+            },
+            {
+              "i": 9,
+              "name": "F2",
+              "type": "Conveyor",
+              "path": ".UserObjects.Modules.PreProduction.F2"
+            },
+            {
+              "i": 10,
+              "name": "AS9",
+              "type": "AssemblyStation",
+              "path": ".UserObjects.Modules.PreProduction.AS9"
+            },
+            {
+              "i": 11,
+              "name": "F3",
+              "type": "Conveyor",
+              "path": ".UserObjects.Modules.PreProduction.F3"
+            },
+            {
+              "i": 12,
+              "name": "Source_Paletts",
+              "type": "Source",
+              "path": ".UserObjects.Modules.PreProduction.Source_Paletts"
+            },
+            {
+              "i": 13,
+              "name": "Comment",
+              "type": "Comment",
+              "path": ".UserObjects.Modules.PreProduction.Comment"
+            },
+            {
+              "i": 14,
+              "name": "Quantity",
+              "type": "Variable",
+              "path": ".UserObjects.Modules.PreProduction.Quantity"
+            },
+            {
+              "i": 15,
+              "name": "Comm_F0",
+              "type": "Comment",
+              "path": ".UserObjects.Modules.PreProduction.Comm_F0"
+            },
+            {
+              "i": 16,
+              "name": "Comm_F1",
+              "type": "Comment",
+              "path": ".UserObjects.Modules.PreProduction.Comm_F1"
+            },
+            {
+              "i": 17,
+              "name": "Comm_F2",
+              "type": "Comment",
+              "path": ".UserObjects.Modules.PreProduction.Comm_F2"
+            },
+            {
+              "i": 18,
+              "name": "Comm_F3",
+              "type": "Comment",
+              "path": ".UserObjects.Modules.PreProduction.Comm_F3"
+            },
+            {
+              "i": 19,
+              "name": "Robot",
+              "type": "PickAndPlace",
+              "path": ".UserObjects.Modules.PreProduction.Robot"
+            },
+            {
+              "i": 20,
+              "name": "Connector10",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector10"
+            },
+            {
+              "i": 21,
+              "name": "Connector9",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector9"
+            },
+            {
+              "i": 22,
+              "name": "Connector8",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector8"
+            },
+            {
+              "i": 23,
+              "name": "Connector7",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector7"
+            },
+            {
+              "i": 24,
+              "name": "Connector6",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector6"
+            },
+            {
+              "i": 25,
+              "name": "Connector5",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector5"
+            },
+            {
+              "i": 26,
+              "name": "Connector4",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector4"
+            },
+            {
+              "i": 27,
+              "name": "Connector11",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector11"
+            },
+            {
+              "i": 28,
+              "name": "Connector12",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector12"
+            },
+            {
+              "i": 29,
+              "name": "Connector",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector"
+            },
+            {
+              "i": 30,
+              "name": "Connector1",
+              "type": "Connector",
+              "path": ".UserObjects.Modules.PreProduction.Connector1"
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "Assembly_initialState",
+          "type": "Frame",
+          "path": ".UserObjects.Modules.Assembly_initialState",
+          "error": "Unterminated string starting at: line 1 column 11960 (char 11959)"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,579 @@
+{
+  "root_path": "",
+  "root_name": "Basis",
+  "root_type": "Folder",
+  "root_numNodes": 10,
+  "children": [
+    {
+      "i": 1,
+      "name": "MaterialFlow",
+      "type": "Folder",
+      "path": ".MaterialFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".MaterialFlow.Connector"
+        },
+        {
+          "i": 2,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".MaterialFlow.EventController"
+        },
+        {
+          "i": 3,
+          "name": "Frame",
+          "type": "Frame",
+          "path": ".MaterialFlow.Frame"
+        },
+        {
+          "i": 4,
+          "name": "Interface",
+          "type": "Interface",
+          "path": ".MaterialFlow.Interface"
+        },
+        {
+          "i": 5,
+          "name": "Source",
+          "type": "Source",
+          "path": ".MaterialFlow.Source"
+        },
+        {
+          "i": 6,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".MaterialFlow.Drain"
+        },
+        {
+          "i": 7,
+          "name": "Station",
+          "type": "Station",
+          "path": ".MaterialFlow.Station"
+        },
+        {
+          "i": 8,
+          "name": "ParallelStation",
+          "type": "ParallelStation",
+          "path": ".MaterialFlow.ParallelStation"
+        },
+        {
+          "i": 9,
+          "name": "AssemblyStation",
+          "type": "AssemblyStation",
+          "path": ".MaterialFlow.AssemblyStation"
+        },
+        {
+          "i": 10,
+          "name": "DismantleStation",
+          "type": "DismantleStation",
+          "path": ".MaterialFlow.DismantleStation"
+        },
+        {
+          "i": 11,
+          "name": "PickAndPlace",
+          "type": "PickAndPlace",
+          "path": ".MaterialFlow.PickAndPlace"
+        },
+        {
+          "i": 12,
+          "name": "Store",
+          "type": "Store",
+          "path": ".MaterialFlow.Store"
+        },
+        {
+          "i": 13,
+          "name": "Buffer",
+          "type": "Buffer",
+          "path": ".MaterialFlow.Buffer"
+        },
+        {
+          "i": 14,
+          "name": "Sorter",
+          "type": "Sorter",
+          "path": ".MaterialFlow.Sorter"
+        },
+        {
+          "i": 15,
+          "name": "Conveyor",
+          "type": "Conveyor",
+          "path": ".MaterialFlow.Conveyor"
+        },
+        {
+          "i": 16,
+          "name": "AngularConverter",
+          "type": "AngularConverter",
+          "path": ".MaterialFlow.AngularConverter"
+        },
+        {
+          "i": 17,
+          "name": "Converter",
+          "type": "Converter",
+          "path": ".MaterialFlow.Converter"
+        },
+        {
+          "i": 18,
+          "name": "Turntable",
+          "type": "Turntable",
+          "path": ".MaterialFlow.Turntable"
+        },
+        {
+          "i": 19,
+          "name": "Turnplate",
+          "type": "Turnplate",
+          "path": ".MaterialFlow.Turnplate"
+        },
+        {
+          "i": 20,
+          "name": "Track",
+          "type": "Track",
+          "path": ".MaterialFlow.Track"
+        },
+        {
+          "i": 21,
+          "name": "TwoLaneTrack",
+          "type": "TwoLaneTrack",
+          "path": ".MaterialFlow.TwoLaneTrack"
+        },
+        {
+          "i": 22,
+          "name": "FlowControl",
+          "type": "FlowControl",
+          "path": ".MaterialFlow.FlowControl"
+        },
+        {
+          "i": 23,
+          "name": "Cycle",
+          "type": "Cycle",
+          "path": ".MaterialFlow.Cycle"
+        },
+        {
+          "i": 24,
+          "name": "Material_Flow",
+          "type": "Toolbar",
+          "path": ".MaterialFlow.Material_Flow"
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "Resources",
+      "type": "Folder",
+      "path": ".Resources",
+      "children": [
+        {
+          "i": 1,
+          "name": "Workplace",
+          "type": "Workplace",
+          "path": ".Resources.Workplace"
+        },
+        {
+          "i": 2,
+          "name": "FootPath",
+          "type": "FootPath",
+          "path": ".Resources.FootPath"
+        },
+        {
+          "i": 3,
+          "name": "WorkerPool",
+          "type": "WorkerPool",
+          "path": ".Resources.WorkerPool"
+        },
+        {
+          "i": 4,
+          "name": "Worker",
+          "type": "Worker",
+          "path": ".Resources.Worker"
+        },
+        {
+          "i": 5,
+          "name": "Exporter",
+          "type": "Exporter",
+          "path": ".Resources.Exporter"
+        },
+        {
+          "i": 6,
+          "name": "Broker",
+          "type": "Broker",
+          "path": ".Resources.Broker"
+        },
+        {
+          "i": 7,
+          "name": "LockoutZone",
+          "type": "LockoutZone",
+          "path": ".Resources.LockoutZone"
+        },
+        {
+          "i": 8,
+          "name": "Resources",
+          "type": "Toolbar",
+          "path": ".Resources.Resources"
+        },
+        {
+          "i": 9,
+          "name": "ShiftCalendar",
+          "type": "ShiftCalendar",
+          "path": ".Resources.ShiftCalendar"
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "name": "InformationFlow",
+      "type": "Folder",
+      "path": ".InformationFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "Information_Flow",
+          "type": "Toolbar",
+          "path": ".InformationFlow.Information_Flow"
+        },
+        {
+          "i": 2,
+          "name": "Method",
+          "type": "Method",
+          "path": ".InformationFlow.Method"
+        },
+        {
+          "i": 3,
+          "name": "Variable",
+          "type": "Variable",
+          "path": ".InformationFlow.Variable"
+        },
+        {
+          "i": 4,
+          "name": "DataTable",
+          "type": "DataTable",
+          "path": ".InformationFlow.DataTable"
+        },
+        {
+          "i": 5,
+          "name": "DataList",
+          "type": "DataList",
+          "path": ".InformationFlow.DataList"
+        },
+        {
+          "i": 6,
+          "name": "DataStack",
+          "type": "DataStack",
+          "path": ".InformationFlow.DataStack"
+        },
+        {
+          "i": 7,
+          "name": "DataQueue",
+          "type": "DataQueue",
+          "path": ".InformationFlow.DataQueue"
+        },
+        {
+          "i": 8,
+          "name": "Trigger",
+          "type": "Trigger",
+          "path": ".InformationFlow.Trigger"
+        },
+        {
+          "i": 9,
+          "name": "AttributeExplorer",
+          "type": "AttributeExplorer",
+          "path": ".InformationFlow.AttributeExplorer"
+        },
+        {
+          "i": 10,
+          "name": "TimeSequence",
+          "type": "TimeSequence",
+          "path": ".InformationFlow.TimeSequence"
+        },
+        {
+          "i": 11,
+          "name": "Generator",
+          "type": "Generator",
+          "path": ".InformationFlow.Generator"
+        },
+        {
+          "i": 12,
+          "name": "Comment",
+          "type": "Comment",
+          "path": ".InformationFlow.Comment"
+        },
+        {
+          "i": 13,
+          "name": "XMLInterface",
+          "type": "XMLInterface",
+          "path": ".InformationFlow.XMLInterface"
+        },
+        {
+          "i": 14,
+          "name": "FileInterface",
+          "type": "FileInterface",
+          "path": ".InformationFlow.FileInterface"
+        },
+        {
+          "i": 15,
+          "name": "ReadMe",
+          "type": "FileLink",
+          "path": ".InformationFlow.ReadMe"
+        },
+        {
+          "i": 16,
+          "name": "LiesMich",
+          "type": "FileLink",
+          "path": ".InformationFlow.LiesMich"
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "name": "UserInterface",
+      "type": "Folder",
+      "path": ".UserInterface",
+      "children": [
+        {
+          "i": 1,
+          "name": "Comment",
+          "type": "Comment",
+          "path": ".UserInterface.Comment"
+        },
+        {
+          "i": 2,
+          "name": "Display",
+          "type": "Display",
+          "path": ".UserInterface.Display"
+        },
+        {
+          "i": 3,
+          "name": "Chart",
+          "type": "Chart",
+          "path": ".UserInterface.Chart"
+        },
+        {
+          "i": 4,
+          "name": "HtmlReport",
+          "type": "HtmlReport",
+          "path": ".UserInterface.HtmlReport"
+        },
+        {
+          "i": 5,
+          "name": "Checkbox",
+          "type": "Checkbox",
+          "path": ".UserInterface.Checkbox"
+        },
+        {
+          "i": 6,
+          "name": "Button",
+          "type": "Button",
+          "path": ".UserInterface.Button"
+        },
+        {
+          "i": 7,
+          "name": "DropDownList",
+          "type": "DropDownList",
+          "path": ".UserInterface.DropDownList"
+        },
+        {
+          "i": 8,
+          "name": "Dialog",
+          "type": "Dialog",
+          "path": ".UserInterface.Dialog"
+        },
+        {
+          "i": 9,
+          "name": "User_Interface",
+          "type": "Toolbar",
+          "path": ".UserInterface.User_Interface"
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "name": "MUs",
+      "type": "Folder",
+      "path": ".MUs",
+      "children": [
+        {
+          "i": 1,
+          "name": "Entity",
+          "type": "Part",
+          "path": ".MUs.Entity"
+        },
+        {
+          "i": 2,
+          "name": "Container",
+          "type": "Container",
+          "path": ".MUs.Container"
+        },
+        {
+          "i": 3,
+          "name": "Transporter",
+          "type": "Transporter",
+          "path": ".MUs.Transporter"
+        },
+        {
+          "i": 4,
+          "name": "EXA1A",
+          "type": "Part",
+          "path": ".MUs.EXA1A"
+        },
+        {
+          "i": 5,
+          "name": "EXA1B",
+          "type": "Part",
+          "path": ".MUs.EXA1B"
+        },
+        {
+          "i": 6,
+          "name": "EXA2A",
+          "type": "Part",
+          "path": ".MUs.EXA2A"
+        },
+        {
+          "i": 7,
+          "name": "EXA2B",
+          "type": "Part",
+          "path": ".MUs.EXA2B"
+        },
+        {
+          "i": 8,
+          "name": "Carrier",
+          "type": "Container",
+          "path": ".MUs.Carrier"
+        },
+        {
+          "i": 9,
+          "name": "Cap",
+          "type": "Part",
+          "path": ".MUs.Cap"
+        },
+        {
+          "i": 10,
+          "name": "Pallet",
+          "type": "Container",
+          "path": ".MUs.Pallet"
+        }
+      ]
+    },
+    {
+      "i": 6,
+      "name": "Tools",
+      "type": "Folder",
+      "path": ".Tools",
+      "children": [
+        {
+          "i": 1,
+          "name": "BottleneckAnalyzer",
+          "type": "Folder",
+          "path": ".Tools.BottleneckAnalyzer"
+        },
+        {
+          "i": 2,
+          "name": "EnergyAnalyzer",
+          "type": "Folder",
+          "path": ".Tools.EnergyAnalyzer"
+        },
+        {
+          "i": 3,
+          "name": "ExperimentManager",
+          "type": "Folder",
+          "path": ".Tools.ExperimentManager"
+        },
+        {
+          "i": 4,
+          "name": "TransferStation",
+          "type": "Folder",
+          "path": ".Tools.TransferStation"
+        },
+        {
+          "i": 5,
+          "name": "WorkerChart",
+          "type": "Folder",
+          "path": ".Tools.WorkerChart"
+        },
+        {
+          "i": 6,
+          "name": "Tools",
+          "type": "Toolbar",
+          "path": ".Tools.Tools"
+        }
+      ]
+    },
+    {
+      "i": 7,
+      "name": "UserObjects",
+      "type": "Folder",
+      "path": ".UserObjects",
+      "children": [
+        {
+          "i": 1,
+          "name": "Classes",
+          "type": "Folder",
+          "path": ".UserObjects.Classes"
+        },
+        {
+          "i": 2,
+          "name": "Modules",
+          "type": "Folder",
+          "path": ".UserObjects.Modules"
+        }
+      ]
+    },
+    {
+      "i": 8,
+      "name": "Models",
+      "type": "Folder",
+      "path": ".Models",
+      "children": [
+        {
+          "i": 1,
+          "name": "Assembly1",
+          "type": "Frame",
+          "path": ".Models.Assembly1"
+        },
+        {
+          "i": 2,
+          "name": "Assembly2",
+          "type": "Frame",
+          "path": ".Models.Assembly2"
+        }
+      ]
+    },
+    {
+      "i": 9,
+      "name": "ExperimentManager",
+      "type": "Variable",
+      "path": ".ExperimentManager",
+      "children": []
+    },
+    {
+      "i": 10,
+      "name": "SimtalkClaude",
+      "type": "Folder",
+      "path": ".SimtalkClaude",
+      "children": [
+        {
+          "i": 1,
+          "name": "main",
+          "type": "Frame",
+          "path": ".SimtalkClaude.main"
+        },
+        {
+          "i": 2,
+          "name": "src",
+          "type": "Folder",
+          "path": ".SimtalkClaude.src"
+        },
+        {
+          "i": 3,
+          "name": "connection",
+          "type": "Folder",
+          "path": ".SimtalkClaude.connection"
+        },
+        {
+          "i": 4,
+          "name": "Objects",
+          "type": "Folder",
+          "path": ".SimtalkClaude.Objects"
+        }
+      ]
+    }
+  ]
+}

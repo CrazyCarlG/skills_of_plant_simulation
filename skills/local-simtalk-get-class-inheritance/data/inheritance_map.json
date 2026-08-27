@@ -1,193 +1,29 @@
 {
   "captured_at": "2026-08-26",
-  "total_classes": 48,
+  "total_classes": 16,
   "root_classes": [
-    ".MUs",
-    ".MUs.Container",
-    ".MUs.Pallet",
-    ".MUs.Transporter",
-    ".MaterialFlow",
-    ".MaterialFlow.Station",
-    ".MaterialFlow.Store",
-    ".P4_CTU",
-    ".P4_CTU.AdvancedObject",
-    ".P4_CTU.AdvancedObject.Hardware",
-    ".P4_CTU.AdvancedObject.Hardware.CTU",
-    ".P4_CTU.AdvancedObject.Hardware.CTU.test",
-    ".P4_CTU.AdvancedObject.Hardware.Rack",
-    ".P4_CTU.AdvancedObject.Software",
-    ".P4_CTU.AdvancedObject.Software.MapGenerator",
-    ".P4_CTU.AdvancedObject.Software.MapGenerator.ChargingPlace",
-    ".P4_CTU.AdvancedObject.Software.MapGenerator.Home",
-    ".P4_CTU.AdvancedObject.Software.MapGenerator.StockInLoader",
-    ".P4_CTU.AdvancedObject.Software.MapGenerator.StockOutLoader",
-    ".P4_CTU.AdvancedObject.Software.RCS",
-    ".P4_CTU.BasicObjects",
-    ".P4_CTU.BasicObjects.InformationFlow",
-    ".P4_CTU.BasicObjects.InformationFlow.Attribute",
-    ".P4_CTU.BasicObjects.InformationFlow.EventController",
-    ".P4_CTU.BasicObjects.InformationFlow.Generator",
-    ".P4_CTU.BasicObjects.InformationFlow.TableFile",
-    ".P4_CTU.BasicObjects.MUs",
-    ".P4_CTU.BasicObjects.MUs.Connector",
-    ".P4_CTU.BasicObjects.MUs.Container",
-    ".P4_CTU.BasicObjects.MUs.Pallet",
-    ".P4_CTU.BasicObjects.MUs.Transporter",
-    ".P4_CTU.BasicObjects.MaterialFlow",
-    ".P4_CTU.BasicObjects.MaterialFlow.Station",
-    ".P4_CTU.BasicObjects.MaterialFlow.Store",
-    ".P4_CTU.BasicObjects.Resources",
-    ".P4_CTU.BasicObjects.Resources.AGVPool",
-    ".P4_CTU.BasicObjects.UserObjects",
-    ".P4_CTU.ctux1_agvx1",
-    ".P4_CTU.ctux1_agvx2",
-    ".Resources",
-    ".Resources.AGVPool"
+    ".Models.internal.HtmlReport|HtmlReport",
+    ".Models.internal.LiesMich|Comment",
+    ".Models.internal.ReadMe|Comment",
+    ".Models.internal.SelDlg|Dialog",
+    ".SimtalkClaude.Objects.DataList|DataList",
+    ".SimtalkClaude.Objects.Dialog|Dialog",
+    ".SimtalkClaude.Objects.HtmlReport|HtmlReport",
+    ".SimtalkClaude.connection.Logger|Frame",
+    ".SimtalkClaude.connection.SocketClient|Frame",
+    ".SimtalkClaude.connection.SocketServer|Frame",
+    ".SimtalkClaude.main.SimtalkAction|Frame",
+    ".SimtalkClaude.main.SocketClient|Frame",
+    ".SimtalkClaude.main.SocketServer|Frame",
+    ".SimtalkClaude.main|Frame",
+    ".SimtalkClaude.src.SimtalkAction|Frame",
+    ".UserInterface.Comment|Comment"
   ],
-  "derived_classes": [
-    {
-      "path": ".P4_CTU.AdvancedObject.Hardware.AGV",
-      "name": "AGV",
-      "type": "Transporter",
-      "origin": ".P4_CTU.BasicObjects.MUs.Transporter",
-      "originroot": ".P4_CTU.BasicObjects.MUs.Transporter",
-      "class": "VOID"
-    },
-    {
-      "path": ".P4_CTU.AdvancedObject.Hardware.AGVPool",
-      "name": "AGVPool",
-      "type": "AGVPool",
-      "origin": ".P4_CTU.BasicObjects.Resources.AGVPool",
-      "originroot": ".P4_CTU.BasicObjects.Resources.AGVPool",
-      "class": "VOID"
-    },
-    {
-      "path": ".P4_CTU.AdvancedObject.Hardware.CTU.CTU",
-      "name": "CTU",
-      "type": "Transporter",
-      "origin": ".P4_CTU.BasicObjects.MUs.Transporter",
-      "originroot": ".P4_CTU.BasicObjects.MUs.Transporter",
-      "class": "VOID"
-    },
-    {
-      "path": ".P4_CTU.AdvancedObject.Hardware.CTU.Carrier",
-      "name": "Carrier",
-      "type": "Container",
-      "origin": ".P4_CTU.BasicObjects.MUs.Container",
-      "originroot": ".P4_CTU.BasicObjects.MUs.Container",
-      "class": "VOID"
-    },
-    {
-      "path": ".P4_CTU.AdvancedObject.Hardware.CTU.Carrier_Box",
-      "name": "Carrier_Box",
-      "type": "Container",
-      "origin": ".P4_CTU.AdvancedObject.Hardware.CTU.Carrier",
-      "originroot": ".P4_CTU.BasicObjects.MUs.Container",
-      "class": "VOID"
-    },
-    {
-      "path": ".P4_CTU.AdvancedObject.Hardware.CTU.Lifttable",
-      "name": "Lifttable",
-      "type": "Container",
-      "origin": ".P4_CTU.BasicObjects.MUs.Container",
-      "originroot": ".P4_CTU.BasicObjects.MUs.Container",
-      "class": "VOID"
-    },
-    {
-      "path": ".P4_CTU.AdvancedObject.Hardware.Store",
-      "name": "Store",
-      "type": "Store",
-      "origin": ".P4_CTU.BasicObjects.MaterialFlow.Store",
-      "originroot": ".P4_CTU.BasicObjects.MaterialFlow.Store",
-      "class": "VOID"
-    }
-  ],
+  "derived_classes": [],
   "tree": {
-    ".P4_CTU.AdvancedObject.Hardware.CTU.Carrier": [
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.CTU.Carrier_Box",
-        "name": "Carrier_Box",
-        "type": "Container",
-        "origin": ".P4_CTU.AdvancedObject.Hardware.CTU.Carrier",
-        "originroot": ".P4_CTU.BasicObjects.MUs.Container",
-        "class": "VOID"
-      }
-    ],
-    ".P4_CTU.BasicObjects.MUs.Container": [
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.CTU.Carrier",
-        "name": "Carrier",
-        "type": "Container",
-        "origin": ".P4_CTU.BasicObjects.MUs.Container",
-        "originroot": ".P4_CTU.BasicObjects.MUs.Container",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.CTU.Lifttable",
-        "name": "Lifttable",
-        "type": "Container",
-        "origin": ".P4_CTU.BasicObjects.MUs.Container",
-        "originroot": ".P4_CTU.BasicObjects.MUs.Container",
-        "class": "VOID"
-      }
-    ],
-    ".P4_CTU.BasicObjects.MUs.Transporter": [
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.AGV",
-        "name": "AGV",
-        "type": "Transporter",
-        "origin": ".P4_CTU.BasicObjects.MUs.Transporter",
-        "originroot": ".P4_CTU.BasicObjects.MUs.Transporter",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.CTU.CTU",
-        "name": "CTU",
-        "type": "Transporter",
-        "origin": ".P4_CTU.BasicObjects.MUs.Transporter",
-        "originroot": ".P4_CTU.BasicObjects.MUs.Transporter",
-        "class": "VOID"
-      }
-    ],
-    ".P4_CTU.BasicObjects.MaterialFlow.Store": [
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.Store",
-        "name": "Store",
-        "type": "Store",
-        "origin": ".P4_CTU.BasicObjects.MaterialFlow.Store",
-        "originroot": ".P4_CTU.BasicObjects.MaterialFlow.Store",
-        "class": "VOID"
-      }
-    ],
-    ".P4_CTU.BasicObjects.Resources.AGVPool": [
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.AGVPool",
-        "name": "AGVPool",
-        "type": "AGVPool",
-        "origin": ".P4_CTU.BasicObjects.Resources.AGVPool",
-        "originroot": ".P4_CTU.BasicObjects.Resources.AGVPool",
-        "class": "VOID"
-      }
-    ],
     "VOID": [
       {
-        "path": ".MUs",
-        "name": "MUs",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".MUs",
-        "class": "VOID"
-      },
-      {
-        "path": ".MUs.Container",
-        "name": "Container",
-        "type": "Container",
-        "origin": "VOID",
-        "originroot": ".MUs.Container",
-        "class": "VOID"
-      },
-      {
-        "path": ".MUs.Pallet",
+        "path": ".Models.internal.HtmlReport|HtmlReport",
         "name": "",
         "type": "",
         "origin": "VOID",
@@ -195,159 +31,7 @@
         "class": "VOID"
       },
       {
-        "path": ".MUs.Transporter",
-        "name": "Transporter",
-        "type": "Transporter",
-        "origin": "VOID",
-        "originroot": ".MUs.Transporter",
-        "class": "VOID"
-      },
-      {
-        "path": ".MaterialFlow",
-        "name": "MaterialFlow",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".MaterialFlow",
-        "class": "VOID"
-      },
-      {
-        "path": ".MaterialFlow.Station",
-        "name": "Station",
-        "type": "Station",
-        "origin": "VOID",
-        "originroot": ".MaterialFlow.Station",
-        "class": "VOID"
-      },
-      {
-        "path": ".MaterialFlow.Store",
-        "name": "Store",
-        "type": "Store",
-        "origin": "VOID",
-        "originroot": ".MaterialFlow.Store",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU",
-        "name": "P4_CTU",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject",
-        "name": "AdvancedObject",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware",
-        "name": "Hardware",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Hardware",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.CTU",
-        "name": "CTU",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Hardware.CTU",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.CTU.test",
-        "name": "test",
-        "type": "Frame",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Hardware.CTU.test",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Hardware.Rack",
-        "name": "Rack",
-        "type": "Frame",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Hardware.Rack",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Software",
-        "name": "Software",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Software",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Software.MapGenerator",
-        "name": "MapGenerator",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Software.MapGenerator",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Software.MapGenerator.ChargingPlace",
-        "name": "ChargingPlace",
-        "type": "Frame",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Software.MapGenerator.ChargingPlace",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Software.MapGenerator.Home",
-        "name": "Home",
-        "type": "Frame",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Software.MapGenerator.Home",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Software.MapGenerator.StockInLoader",
-        "name": "StockInLoader",
-        "type": "Frame",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Software.MapGenerator.StockInLoader",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Software.MapGenerator.StockOutLoader",
-        "name": "StockOutLoader",
-        "type": "Frame",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Software.MapGenerator.StockOutLoader",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.AdvancedObject.Software.RCS",
-        "name": "RCS",
-        "type": "Frame",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.AdvancedObject.Software.RCS",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.BasicObjects",
-        "name": "BasicObjects",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.BasicObjects.InformationFlow",
-        "name": "InformationFlow",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.InformationFlow",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.BasicObjects.InformationFlow.Attribute",
+        "path": ".Models.internal.LiesMich|Comment",
         "name": "",
         "type": "",
         "origin": "VOID",
@@ -355,7 +39,7 @@
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.InformationFlow.EventController",
+        "path": ".Models.internal.ReadMe|Comment",
         "name": "",
         "type": "",
         "origin": "VOID",
@@ -363,15 +47,7 @@
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.InformationFlow.Generator",
-        "name": "Generator",
-        "type": "Generator",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.InformationFlow.Generator",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.BasicObjects.InformationFlow.TableFile",
+        "path": ".Models.internal.SelDlg|Dialog",
         "name": "",
         "type": "",
         "origin": "VOID",
@@ -379,15 +55,7 @@
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.MUs",
-        "name": "MUs",
-        "type": "Folder",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.MUs",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.BasicObjects.MUs.Connector",
+        "path": ".SimtalkClaude.Objects.DataList|DataList",
         "name": "",
         "type": "",
         "origin": "VOID",
@@ -395,15 +63,7 @@
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.MUs.Container",
-        "name": "Container",
-        "type": "Container",
-        "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.MUs.Container",
-        "class": "VOID"
-      },
-      {
-        "path": ".P4_CTU.BasicObjects.MUs.Pallet",
+        "path": ".SimtalkClaude.Objects.Dialog|Dialog",
         "name": "",
         "type": "",
         "origin": "VOID",
@@ -411,91 +71,83 @@
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.MUs.Transporter",
-        "name": "Transporter",
-        "type": "Transporter",
+        "path": ".SimtalkClaude.Objects.HtmlReport|HtmlReport",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.MUs.Transporter",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.MaterialFlow",
-        "name": "MaterialFlow",
-        "type": "Folder",
+        "path": ".SimtalkClaude.connection.Logger|Frame",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.MaterialFlow",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.MaterialFlow.Station",
-        "name": "Station",
-        "type": "Station",
+        "path": ".SimtalkClaude.connection.SocketClient|Frame",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.MaterialFlow.Station",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.MaterialFlow.Store",
-        "name": "Store",
-        "type": "Store",
+        "path": ".SimtalkClaude.connection.SocketServer|Frame",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.MaterialFlow.Store",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.Resources",
-        "name": "Resources",
-        "type": "Folder",
+        "path": ".SimtalkClaude.main.SimtalkAction|Frame",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.Resources",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.Resources.AGVPool",
-        "name": "AGVPool",
-        "type": "AGVPool",
+        "path": ".SimtalkClaude.main.SocketClient|Frame",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.Resources.AGVPool",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.BasicObjects.UserObjects",
-        "name": "UserObjects",
-        "type": "Folder",
+        "path": ".SimtalkClaude.main.SocketServer|Frame",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.BasicObjects.UserObjects",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.ctux1_agvx1",
-        "name": "ctux1_agvx1",
-        "type": "Frame",
+        "path": ".SimtalkClaude.main|Frame",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.ctux1_agvx1",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".P4_CTU.ctux1_agvx2",
-        "name": "ctux1_agvx2",
-        "type": "Frame",
+        "path": ".SimtalkClaude.src.SimtalkAction|Frame",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".P4_CTU.ctux1_agvx2",
+        "originroot": "VOID",
         "class": "VOID"
       },
       {
-        "path": ".Resources",
-        "name": "Resources",
-        "type": "Folder",
+        "path": ".UserInterface.Comment|Comment",
+        "name": "",
+        "type": "",
         "origin": "VOID",
-        "originroot": ".Resources",
-        "class": "VOID"
-      },
-      {
-        "path": ".Resources.AGVPool",
-        "name": "AGVPool",
-        "type": "AGVPool",
-        "origin": "VOID",
-        "originroot": ".Resources.AGVPool",
+        "originroot": "VOID",
         "class": "VOID"
       }
     ]

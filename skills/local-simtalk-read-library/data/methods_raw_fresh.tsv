@@ -1,0 +1,580 @@
+.InformationFlow.Method	Method	Method	false	false	0	0	
+.Models.SourceTrigger.SourceIntervalAdjustable.endsim	endsim	Method	false	false	0	144	Source.creationTable(GeneratedParts_noBatch)
+Source_Batches.creationTable(GeneratedParts_Batches)
+Source_Stop.creationTable(GeneratedParts_Stop)
+.Models.SourceTrigger.SourceNumberAdjustable.endsim	endsim	Method	false	false	0	89	source.creationTable(GeneratedParts)
+source_AsBatch.creationTable(GeneratedParts_AsBatch)
+.Models.SourceTrigger.SourceNumberAdjustable.init	init	Method	false	false	0	181	   var assignedTriggers:object[2]
+
+  for var j := 1 to 2
+     assignedTriggers[j] := to_str(\"Trigger\",j) -- string to object conversion
+  next
+  Source.trigger := assignedTriggers
+.Models.SourceTrigger.SourcePercentage.endsim	endsim	Method	false	false	0	36	source.creationTable(GeneratedParts)
+.Models.SourceTrigger.SourceRandom.endsim	endsim	Method	false	false	0	36	source.creationTable(GeneratedParts)
+.Models.SourceTrigger.SourceTrigger.endsim	endsim	Method	false	false	0	36	source.creationTable(GeneratedParts)
+.Models.SourceTrigger.SourceTrigger.init	init	Method	false	false	0	169	var assignedTriggers:object[2]
+
+for var j := 1 to 2
+\tassignedTriggers[j] := to_str(\"Trigger\",j) -- string to object conversion
+next
+Source.trigger := assignedTriggers
+.Models.internal.Admin.CalcScore						0	
+.Models.internal.Admin.Comment2GeneralTable						0	
+.Models.internal.Admin.CountOccur						0	
+.Models.internal.Admin.ExportToExcel						0	
+.Models.internal.Admin.GeneralTable2ExampleTab						0	
+.Models.internal.Admin.ImportKeywords						0	
+.Models.internal.Admin.MarkText						0	
+.Models.internal.Admin.OpenGeneralTable						0	
+.Models.internal.Admin.dispatcher	dispatcher	Method	false	false	0	1323	-- This method receives the browser requests
+-- and decides either to return an user defined HTML
+-- document or to perform the Plant Simulation default action.
+param request : string -> string\t
+switch request
+case \"$\"
+\t-- HTML window was opened
+\tresult := HTML.cont
+else
+\tvar p := strLpos(\"+\", request)
+\tif p>0 then
+\t\tresult := HTML.cont
+\t\tvar Frame:string := strCopy(request, 1, p-1)
+\t\tvar FrameObj:object := Frame
+\t\trequest := strCopy(request, p+1, strLen(request))
+\t\tp := strLpos(\"+\", request)
+\t\tvar objFile:string := strCopy(request, 1, p-1)
+\t\tvar use3D := str_to_Bool(strCopy(request, p+1, strLen(request)))
+\t\tif use3D
+\t\t\tif NOT is3Dopen
+\t\t\t\topen3D
+\t\t\tend
+\t\telse
+\t\t\tclose3D(true)
+\t\tend
+\t\t
+\t\t.loadObjectAs(to_str(Folder4Objects,objFile),\"\",true,false)
+\t\tFrameObj.openDialog
+\t\tif use3D
+\t\t\tFrameObj._3D.openWindow
+\t\t\tif FrameObj.Eventcontroller /= void
+\t\t\t\tFrameObj.Eventcontroller.RealTime := true
+\t\t\tend
+\t\tend
+\t\t\tif existsObject(\".Models.internal.Admin\")
+\t\t\t   setExamNo(Frame) -- determine row 'ExamNo' in tablefile ExampleTab
+\t\t\tend
+\t\t\t
+\t\tExampleTab.setCursor(2,1)
+\t\tif ExamNo > 0
+\t\t\tvar code:string := ExampleTab[2,ExamNo]
+\t\t\tif strLen(code)>1
+\t\t\t\texecuteSilent(code)
+\t\t\tend
+\t\tend
+\t\t
+\telse
+\t\treturn
+\tend
+end
+.Models.internal.Admin.displayResults	displayResults	Method	false	false	0	3122	-- called by: startSearch (search button)
+param t : table
+
+t.openDialog
+HTML.cont := \"<HTML>\
+HTML.cont := to_str(HTML.cont, \"<html lang=\\\"en\\\"><head>\")
+HTML.cont := to_str(HTML.cont, \"<meta http-equiv=\\\"X-UA-Compatible\\\" content=\\\"IE=edge\\\">\")
+HTML.cont := to_str(HTML.cont, \"<meta charset=\\\"utf-8\\\">\")
+--HTML.cont := to_str(HTML.cont, \"<base target=\\\"_blank\\\">\") -- not needed in 13.2 and newer
+HTML.cont := to_str(HTML.cont, \"<title>.UserInterface.HtmlReport</title>\")
+
+HTML.cont := to_str(HTML.cont, \"<style id=\\\"defaultCSS\\\" type=\\\"text/css\\\">\")
+HTML.cont := to_str(HTML.cont, \"h1 {\")
+HTML.cont := to_str(HTML.cont, \"font-family:         Calibri, Tahoma, Arial, 'Arial Unicode', 'Segoe UI Symbol', sans-serif;\")
+HTML.cont := to_str(HTML.cont, \"font-size:           21px;}\")
+
+HTML.cont := to_str(HTML.cont, \"h3 {\")
+HTML.cont := to_str(HTML.cont, \"font-family:         Calibri, Tahoma, Arial, 'Arial Unicode', 'Segoe UI Symbol', sans-serif;\")
+HTML.cont := to_str(HTML.cont, \"font-size:           17px;}\")
+
+HTML.cont := to_str(HTML.cont, \"body {\")
+HTML.cont := to_str(HTML.cont, \"font-family:         Calibri, Tahoma, Arial, 'Arial Unicode', 'Segoe UI Symbol', sans-serif;\")
+HTML.cont := to_str(HTML.cont, \"font-size:           15px;}\")
+
+HTML.cont := to_str(HTML.cont, \"</style>\")
+HTML.cont := to_str(HTML.cont, \"</head>\")
+
+HTML.cont :=to_str(HTML.cont, \"<BODY>\")
+
+var str : string:= ~.Localization.getText(3)              -- results of searching for
+HTML.cont :=to_str(HTML.cont, \"<h1>\", str, \" \", searchStr, \"</h1>\")
+
+var numberOfCharacter : integer := maxDescription
+var text : string
+for var i := 1 to t.YDim loop
+\tif UserInterfaceLanguage=0 then
+\t\ttext := t[3,i]
+\t\tvar header := t[1,i]
+\telse
+\t\ttext := t[4,i]
+\t\theader := t[2,i]
+\tend
+\t\t\t\t
+\tstr :=strCopy(text, numberOfCharacter, strLen(text))
+\tvar p := strLpos(\" \", str)
+\tif p>0 then
+\t\tstr := to_str(strCopy(text, 1, numberOfCharacter+p-1), \" ...\")
+\telse
+\t\tstr := text -- not truncated
+\tend
+\t\t\t\t
+\tvar frame := t[7,i]
+\tvar objFile :=     t[6,i]
+\t\t\t\t
+\tHTML.cont := to_str(HTML.cont, \"<h3>\",MarkText(header,searchStr), \"</h3>\")
+\tHTML.cont := to_str(HTML.cont, MarkText(str,searchStr))
+\tHTML.cont := to_str(HTML.cont, \"<p>\")
+\t-- HTML.cont := to_str(HTML.cont, \"<A NAME=2 HREF=\\\"/SC_CallMethod:.Models.Frame1.Dispatcher|BEEP\\\" target=\\\"_top\\\">Tell Plant Simulation to start a simulation.</A>\")
+\t--  HTML.cont := to_str(HTML.cont, \"<A HREF=\\\"/SC_CallMethod:.Models.Frame1.Dispatcher|BEEP\\\" target=\\\"_top\\\">Tell Plant Simulation to start a simulation.</A>\")
+\tHTML.cont := to_str(HTML.cont, \"<a href=\\\"callMethod:.Models.Internal.Admin.Dispatcher|\",frame,\"+\",objFile,\"+\",t[5,i],\"\\\">\",~.Localization.getText(5),\"</a>\")
+\tHTML.cont := to_str(HTML.cont, \"</p>\")
+
+next
+
+str := ~.Localization.getText(4)              -- search results       WindowTitle, x-position on screen, y-position, width, height
+var HTML:string := Dispatcher(\"$\")
+openHTMLWindow(HTML,~.Localization.getText(14), 50,10,750,500) -- \"Search Results\
+.Models.internal.Admin.greenRectangle	greenRectangle	Method	false	false	0	109	-- instantiate this method and call it
+current.drawRectangle(555, 0,0, 250,100, makeRGBValue(170,255,213),-1)
+.Models.internal.Admin.move_AxesOrigin	move_AxesOrigin	Method	false	false	0	257	-- move_AxesOrigin
+for var j := 1 to numNodes
+\tvar obj:object := node(j)
+\tobj.Coordinate3D[1] += 15
+\tobj.Coordinate3D[2] -= 15
+next
+
+AxesOrigin := [0.0,0]
+return
+eraseLayer(0)
+drawRectangle(0, 0,0, 500,100, makeRGBValue(170,255,213),-1)
+self.deleteObject
+.Models.internal.Admin.partitionDescription	partitionDescription	Method	false	false	0	808	param richTxtDEU,richTxtENU :string, byref TitleENU, TitleDEU, DescriptionENU, DescriptionDEU:string
+var commentObj:object := ~.Comment
+
+commentObj.saveAsRichedit := true
+commentObj.cont := richTxtDEU
+commentObj.saveAsRichedit := false
+var str:string := commentObj.cont
+var cutPos:integer := strLpos(chr(10),str)
+TitleDEU  := removeUnwantedCharacter(strCopy(str,1,cutPos))
+DescriptionDEU := removeUnwantedCharacter(strTrim(strCopy(str,cutPos,strLen(str))))
+
+commentObj.saveAsRichedit := true
+commentObj.cont := richTxtENU
+commentObj.saveAsRichedit := false
+str := commentObj.cont -- Poor text (not rich text) is needed for searching.
+cutPos := strLpos(chr(10),str)
+TitleENU  := removeUnwantedCharacter(strCopy(str,1,cutPos))
+DescriptionENU := removeUnwantedCharacter(strTrim(strCopy(str,cutPos,strLen(str))))
+.Models.internal.Admin.prepareSave	prepareSave	Method	false	false	0	449	var spp:string := to_str(Folder4Objects,\"examples.spp\")
+~.SelDlg.close(false)
+~.SelDlg.setCaption(\"SearchString_inp\",\"\")
+
+~.SelDlg.label := ~.Localization.getText(21)
+searchStr := \"\
+~.Comment.Cont := \"\
+current.closeDialog
+close3D(false)
+~.SelDlg.closeDialog
+ExampleTab.delete
+if existsFile(spp) then
+\tsystem(to_str(\"del \",spp));
+\tmessageBox(to_str(\"The model file was deleted.\",strChr(10),\"Make sure to save the model.\"),1,4);
+end;
+.Models.internal.Admin.removeUnwantedCharacter	removeUnwantedCharacter	Method	false	false	0	234	param str:string -> string
+var charArray := makeArray(\"\\\"\", \"'\")
+var s:string
+for var charNo := 1 to charArray.dim
+\ts := charArray[charNo]
+\twhile strLpos(s,str) > 0
+\t\tstr:= strOmit(str,strLpos(s,str),1)
+\tend
+next
+return str
+.Models.internal.Admin.saveObject	saveObject	Method	false	false	0	1102	var FolderStr:string := Folder4Objects -- generated from modelFile (autoexec)
+if NOT existsFile(FolderStr)
+\tstr := modelFile
+\tFolderStr := strCopy(str,1,StrRpos(\"\\\\\",str))
+\tFolder4Objects := FolderStr
+end
+
+if setCurrentDirectory(FolderStr)
+\tprint \"The current Example Collection is: \",FolderStr
+else
+\tprint \"Unknown folder '\",FolderStr,\"'\
+\treturn
+end
+
+if .Models.numNodes > 2
+\tmessageBox(to_str(\"It is only allowed\",strChr(10),\"to save a single object.\"), 1, 1)
+\treturn
+end
+
+var GeneralTab:table := ~.SelDlg.GeneralTable
+
+for var j := 1 to .Models.numNodes
+\tvar FrameObj:object := .Models.node(j)
+\tif FrameObj.name /= \"internal\"
+\t\tvar str:string := FrameObj.name
+\t\t
+\t\tfor var cat := 1 to GeneralTab.yDim
+\t\t\tvar catTab:table := GeneralTab[1,cat]
+\t\t\tcatTab.setCursor(2,1)
+\t\t\tif catTab.find({2,1}..{2,*},str)
+\t\t\t\tstr := catTab[2,catTab.cursorY]
+\t\t\tend
+\t\tnext
+\t
+\t\tstr := to_str(str,\".obj\")
+\t\t--closeDialog
+\t\tif FrameObj.writeObject(str,false)  -- no library
+\t\t\tprint \"Save \",str
+\t\t\treturn
+\t\tend
+\tend
+next
+print \"No example was loaded.\
+.Models.internal.Admin.setExamNo	setExamNo	Method	false	false	0	223	-- called by: .Models.internal.Admin.dispatcher (The user clicked a ling to open a frame.)
+param frame:string
+ExamNo := 0;
+ExampleTab.setCursor(2,1)
+if ExampleTab.find({2,1}..{2,*}, frame)
+\tExamNo := ExampleTab.cursorY
+end
+.Models.internal.Admin.showComment	showComment	Method	false	false	0	69	-- Interaction open of the comments ReadMe and LiesMich
+@.openComment
+.Models.internal.Admin.startSearch	startSearch	Method	false	false	0	2469	-- called by Search button
+if ExampleTab.yDim = 0
+\t/*switch userInterfaceLanguage
+\tcase 0
+\t\tinfobox(\"Bitte warten Sie, bis die Ergebnisse der Suche angezeigt werden.\",false)
+\telse
+\t\tinfobox(\"Please wait until the results of your search are being shown.\",false)
+\tend*/
+\tGeneralTable2ExampleTab
+\t--infobox(\"\",false)
+end
+var t: table
+t.create
+t.setDataType(8,\"Integer\")
+searchStr := ~.SelDlg.getValue(\"SearchString_inp\") -- search strinf of the user
+if searchStr = \"\
+\treturn
+end
+
+var a:string[]
+ExampleTab.setCursor(2,1)
+if ExampleTab.find({2,1}..{2,*},searchStr) -- search e.g. \".Models.Robot.StackedParts\"; \".Models.worker.Manpower\
+\ta := splitString(searchStr,\".\") -- determine objName,frameName
+\tif ~.SelDlg.showExample(a[2],a[3]) -- set Drop-down list boxes of the dialog
+\t\treturn
+\tend
+end -- found e.g. \".Models.Robot.StackedParts\
+
+var str:string := strToLower(searchStr)
+var StrToBeSearched:string
+var curr:integer
+var found:boolean
+var score:integer
+
+for var row := 1 to ExampleTab.ydim
+\tscore:=0
+\tfor var col := 4 to 8 -- Col 1 is contained in col 2
+\tStrToBeSearched:=strToLower(to_str(ExampleTab[col,row]))
+/*\t\tif UserInterfaceLanguage=0 and (col=5 or col=7) -- When User Interface is german, skip english title and description
+\t\t\tcontinue
+\t\telseif UserInterfaceLanguage/=0 and (col=6 or col=8) -- When User Interface is not german, skip german title and description
+\t\t\tcontinue
+\t\t\tend
+*/\t\t\t
+\t\tif strLpos(str,StrToBeSearched) > 0 -- str = search string of the user, StrToBeSearched depends on the column of ExampleTab
+\t\t\tif not found
+\t\t\t\tfound := true
+\t\t\t\tcurr += 1 -- number of hits of the search
+\t\t\t\t--                 Deutscher Titel\t  Englischer Titel   Beschreibung DEU   Beschreibung ENG   3D aktiv ja/nein\t\t\t  Pfad zu Objekt\t Name des Netzwerks  Wertung
+\t\t\t\tt.writeRow(1,curr, ExampleTab[6,row], ExampleTab[5,row], ExampleTab[8,row], ExampleTab[7,row], to_str(ExampleTab[3,row]), ExampleTab[1,row], ExampleTab[2,row],  score)
+\t\t\tend
+\t\t\tscore += calcScore(col,StrToBeSearched,str) -- (score > 0) if and only if the search string occurs
+\t\t\tt[8,curr] := score -- t = cummulated table of all hits (together with informations of the single example)
+\t\tend
+\tnext -- col
+\tfound:=false
+\t
+next -- row of ExampleTab
+
+if t.yDim > 0
+\tt.sort(8,\"down\")
+\tstr := t[7,1]
+\ta := splitString(str,\".\") -- var a:string[]
+\t~.SelDlg.showExample(a[2],a[3])
+end
+
+displayResults(t)
+.Models.internal.Localization.getMessage	getMessage	Method	false	false	0	744	param MsgNumber : integer, p1,p2,p3 : any->string
+
+var mess, s1, s2, s3\t: string
+var pos1, pos2, pos3\t: integer
+
+if messageTab.YDIm<MsgNumber
+\tmess := getText( 1 )
+\ts1 := to_str( MsgNumber )
+else
+\tmess := messageTab[ UserInterfaceLanguage+1, MsgNumber ]
+\tif mess = \"\"
+\t\tmess := messageTab[ \"ENU\", MsgNumber ]
+\tend
+end
+
+s1 := to_str(p1)
+s2 := to_str(p2)
+s3 := to_str(p3)
+
+pos1 := strLpos(\"$1\", mess)
+pos2 := strLpos(\"$2\", mess)
+pos3 := strLpos(\"$3\", mess)
+
+if pos3 > 0
+\tmess := strIncl(s3, mess, pos3+2)
+\tmess := strOmit(mess, pos3, 2)
+end
+if pos2 > 0
+\tmess := strIncl(s2, mess, pos2+2)
+\tmess := strOmit(mess, pos2, 2)
+end
+if pos1 > 0
+\tmess := strIncl(s1, mess, pos1+2)
+\tmess := strOmit(mess, pos1, 2)
+end
+result := mess
+.Models.internal.Localization.getText	getText	Method	false	false	0	154	param  index : integer  -> string
+
+result := messageTab[UserInterfaceLanguage+1, index ]
+if strLen(result) < 1
+\tresult := messageTab[\"ENU\", index ]
+end
+.Models.internal.Method	Method	Method	false	false	0	0	
+.Models.internal.autoexec	autoexec	Method	false	false	0	3072	if licenseName = \"EMPLANT_VIEW\"
+\t-- The example models can not be managed with the Viewer License!
+\t-- The model will be closed.
+\tmessagebox(to_str(Localization.getText(34),strChr(10),strChr(13),Localization.getText(35)), 1,13)
+\tcloseModel -- return
+else
+\tvar s1:string := modelFile
+\tvar Folder4Objects:string := strCopy(s1,1,StrRpos(\"\\\\\",s1))
+\tAdmin.Folder4Objects  := Folder4Objects
+\tvar column4sort:integer
+\tswitch userInterfaceLanguage
+\tcase 0
+\t\tAdmin.DropDownList.Value := 2
+\t\tcolumn4sort := 3 -- German
+\telse
+\t\tAdmin.DropDownList.Value := 1
+\t\tcolumn4sort := 4 -- English
+\tend
+\t
+\tSelDlg.label := Localization.getText(21) -- Beispielmodellsammlung, Examples Collection
+\tanimation(true)
+\tcomment.saveAsRichedit := true
+\t
+\tAdmin.searchStr := \"\
+\tSelDlg.setCaption(\"SearchString_inp\",\"\")
+\t
+\tvar GenTable:table := SelDlg.GeneralTable
+\tvar numObjects,numExamples:integer
+\tfor var cat := 1 to GenTable.ydim
+\t\tvar modTable:table := GenTable[1,cat]
+\t\tmodTable.sort(column4sort,\"up\")
+\t\tfor var TopicNo := 1 to modTable.Ydim
+\t\t\tnumObjects += 1
+\t\t\tvar FrameTab:table := modTable[1,TopicNo]
+\t\t\tFrameTab.sort(column4sort,\"up\")
+\t\t\tnumExamples += FrameTab.Ydim
+\t\tnext
+\tnext
+\t
+\tSelDlg.open -- Eventcontroller.exampleStoppingTime > 0 =>> Eventcontroller.end := exampleStoppingTime
+\tclearConsole
+\t
+\treturn -- comment out this return statement to test the consistency and completeness of the collection
+\t
+\tprint \"Number objects: \",numObjects
+\tprint \"Number frames: \",numExamples\t
+\t
+\tvar ObjFiles:list := getFilesOfFolder(to_str(Folder4Objects,\"*.obj\"))\t
+\t
+\t
+\tvar gTab:table := SelDlg.GeneralTable
+\tvar fileName, FolderName:string
+\tvar n:integer
+\tfor var j := 1 to gTab.yDim
+\t\tvar t:table := gTab[1,j]
+\t\tfor var k := 1 to t.yDim
+\t\t\tFolderName := to_str(\".Models.\",t[2,k],\".\")
+\t\t\tfileName := to_str(t[2,k],\".obj\")
+\t\t\tif existsFile(to_str(Folder4Objects,fileName))
+\t\t\t\t.loadObjectAs(fileName ,\"\",true,false);
+\t\t\telse
+\t\t\t\tmessageBox(to_str(\"The file \",fileName,\" is not in your installation.\"),1,1)
+\t\t\tend
+
+\t\t\tObjFiles.cursor := 1
+\t\t\tif ObjFiles.find({1}..{*},fileName)
+\t\t\t\tObjFiles.cutRow(ObjFiles.cursor)\t\t\t\t\t\t\t\t\t
+\t\t\t\tn := n + 1
+\t\t\tend
+
+\t\t\tvar ObjTab:table := t[1,k]
+\t\t\tfor var FrameNo := 1 to ObjTab.yDim
+\t\t\t\tif NOT existsObject(to_str(FolderName,ObjTab[2,FrameNo]))
+\t\t\t\t\tmessageBox(to_str(fileName,\" does not in the frame \",ObjTab[2,FrameNo]),1,1)
+\t\t\t\tend
+\t\t\tnext
+\t\tnext -- k
+\tnext -- j
+\tprint n,\" objects are managed by the Example Collection.\
+\t\t
+\tif ObjFiles.dim>0
+\t\ts1 := \"\
+\t\tfor var j := 1 to ObjFiles.dim
+\t\t\tif strLen(s1) > 2
+\t\t\t\ts1 := to_str(s1,\", \",ObjFiles[j])\t
+\t\t\telse
+\t\t\t\ts1 := ObjFiles[j]
+\t\t\tend
+\t\tnext
+\t\tif strLpos(\",\", s1) > 0
+\t\t\tmessageBox(to_str(s1,\" are not managed by the Example Collection.\"),1,1)
+\t\telse
+\t\t\tmessageBox(to_str(s1,\" is not managed by the Example Collection.\"),1,1)
+\t\tend
+\tend
+
+end -- else licenseName = \"EMPLANT_VIEW\
+.SimtalkClaude.Objects.Method	Method	Method	false	false	0	0	
+.SimtalkClaude.connection.SocketClient.m_authback						0	
+.SimtalkClaude.connection.SocketClient.m_disconnect						0	
+.SimtalkClaude.connection.SocketClient.m_openconnection						0	
+.SimtalkClaude.connection.SocketClient.m_recieve						0	
+.SimtalkClaude.connection.SocketClient.m_send						0	
+.SimtalkClaude.connection.SocketClient.m_sendauth						0	
+.SimtalkClaude.connection.SocketServer.m_callback						0	
+.SimtalkClaude.connection.SocketServer.m_send						0	
+.SimtalkClaude.connection.SocketServer.m_str_send						0	
+.SimtalkClaude.connection.socketcallback						0	
+.SimtalkClaude.main.SimtalkAction.ErrorHandler						0	
+.SimtalkClaude.main.SimtalkAction.ReadLogFile						0	
+.SimtalkClaude.main.SimtalkAction.Run_Simutalk						0	
+.SimtalkClaude.main.SimtalkAction.a_readlog						0	
+.SimtalkClaude.main.SimtalkAction.get_simtalk_hasError						0	
+.SimtalkClaude.main.SimtalkAction.m_getlog						0	
+.SimtalkClaude.main.SocketClient.m_sendauth						0	
+.SimtalkClaude.main.SocketServer.m_callback						0	
+.SimtalkClaude.main.SocketServer.m_send						0	
+.SimtalkClaude.main.SocketServer.m_str_send						0	
+.SimtalkClaude.src.ErrorHandler						0	
+.SimtalkClaude.src.SimtalkAction.ErrorHandler						0	
+.SimtalkClaude.src.SimtalkAction.ReadLogFile						0	
+.SimtalkClaude.src.SimtalkAction.Run_Simutalk						0	
+.SimtalkClaude.src.SimtalkAction.a_readlog	a_readlog	Method	false	false	0	505	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+
+-- 1) 清空 Console 窗口显示
+clearConsole
+
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
+
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole
+.SimtalkClaude.src.SimtalkAction.get_simtalk_hasError	get_simtalk_hasError	Method	false	false	0	562	param action:json
+//构造回复\"action_id\
+
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+var simtalk\t\t\t\t\t:= action[\"simtalk_code\"]
+var code_synax \t\t\t\t:= simtalk_hasError(simtalk)
+action_result[\"result\"] := code_synax
+action_result[\"type\"] \t\t:= action[\"type\"]
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+action_result[\"type\"] := \"\
+action_result[\"action_id\"] := \"\
+action_result[\"result\"] := \"\
+action_result[\"log\"] := \"\
+.SimtalkClaude.src.SimtalkAction.m_getlog	m_getlog	Method	false	false	0	378	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+.SimtalkClaude.src.SimtalkAction.simtalk_execute	simtalk_execute	Method	false	false	0	281	->string
+// execute code and get result
+executeSilent(&simtalkcode.program)
+var errMsg := getExecuteSilentError
+var code := &simtalkcode.program
+if errMsg /= \"\
+
+
+\treturn  \"code execute failed. error msg:\"+errMsg+\", in code '\"+Code+\"'\
+else
+
+\treturn  \"execute success\
+end
+.SimtalkClaude.src.SimtalkAction.simtalk_hasError	simtalk_hasError	Method	false	false	0	384	param code:string -> string
+//check if any error in code
+&simtalkcode.program := code
+var errMsg : string
+var errLine : integer
+var hasError := &simtalkcode.hasSyntaxError(errMsg, errLine)
+if hasError
+\taction_result[\"result\"] := \"failed\
+    return \" hasError ： \"+ errMsg+ \" (in row :\"+errLine+\")\
+
+else
+\taction_result[\"result\"] := \"success\
+\treturn  \"has no Error\
+end
+.SimtalkClaude.src.SimtalkAction.simtalkcode	simtalkcode	Method	false	false	0	22	var obj:=.createfodler
+.SimtalkClaude.src.autoexec	autoexec	Method	false	false	0	179	-- autoexec 方法体（必须放在 Class Library 中）
+-- 模型一打开就会自动执行
+
+-- 1) 清空 Console 窗口显示
+clearConsole
+
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
+
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole

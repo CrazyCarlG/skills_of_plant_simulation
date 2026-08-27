@@ -1,0 +1,84 @@
+{
+  "root_path": ".UserObjects",
+  "root_name": "UserObjects",
+  "root_type": "Folder",
+  "root_numNodes": 2,
+  "children": [
+    {
+      "i": 1,
+      "name": "Classes",
+      "type": "Folder",
+      "path": ".UserObjects.Classes",
+      "children": [
+        {
+          "i": 1,
+          "name": "Library",
+          "type": "Toolbar",
+          "path": ".UserObjects.Classes.Library"
+        },
+        {
+          "i": 2,
+          "name": "CrossTransfer",
+          "type": "Track",
+          "path": ".UserObjects.Classes.CrossTransfer"
+        },
+        {
+          "i": 3,
+          "name": "MS",
+          "type": "Station",
+          "path": ".UserObjects.Classes.MS"
+        },
+        {
+          "i": 4,
+          "name": "AS",
+          "type": "Station",
+          "path": ".UserObjects.Classes.AS"
+        },
+        {
+          "i": 5,
+          "name": "Worker",
+          "type": "Worker",
+          "path": ".UserObjects.Classes.Worker"
+        },
+        {
+          "i": 6,
+          "name": "Worker_Round",
+          "type": "Worker",
+          "path": ".UserObjects.Classes.Worker_Round"
+        },
+        {
+          "i": 7,
+          "name": "Adjuster",
+          "type": "Worker",
+          "path": ".UserObjects.Classes.Adjuster"
+        },
+        {
+          "i": 8,
+          "name": "Robot",
+          "type": "PickAndPlace",
+          "path": ".UserObjects.Classes.Robot"
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "Modules",
+      "type": "Folder",
+      "path": ".UserObjects.Modules",
+      "children": [
+        {
+          "i": 1,
+          "name": "PreProduction",
+          "type": "Frame",
+          "path": ".UserObjects.Modules.PreProduction"
+        },
+        {
+          "i": 2,
+          "name": "Assembly_initialState",
+          "type": "Frame",
+          "path": ".UserObjects.Modules.Assembly_initialState"
+        }
+      ]
+    }
+  ]
+}
