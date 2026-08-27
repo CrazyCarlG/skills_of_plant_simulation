@@ -1,0 +1,48 @@
+.MUs	MUs	Folder	VOID	.MUs	VOID
+.MUs.Container	Container	Container	VOID	.MUs.Container	VOID
+.MUs.Pallet			VOID	VOID	VOID
+.MUs.Transporter	Transporter	Transporter	VOID	.MUs.Transporter	VOID
+.MaterialFlow	MaterialFlow	Folder	VOID	.MaterialFlow	VOID
+.MaterialFlow.Station	Station	Station	VOID	.MaterialFlow.Station	VOID
+.MaterialFlow.Store	Store	Store	VOID	.MaterialFlow.Store	VOID
+.P4_CTU	P4_CTU	Folder	VOID	.P4_CTU	VOID
+.P4_CTU.AdvancedObject	AdvancedObject	Folder	VOID	.P4_CTU.AdvancedObject	VOID
+.P4_CTU.AdvancedObject.Hardware	Hardware	Folder	VOID	.P4_CTU.AdvancedObject.Hardware	VOID
+.P4_CTU.AdvancedObject.Hardware.AGV	AGV	Transporter	.P4_CTU.BasicObjects.MUs.Transporter	.P4_CTU.BasicObjects.MUs.Transporter	VOID
+.P4_CTU.AdvancedObject.Hardware.AGVPool	AGVPool	AGVPool	.P4_CTU.BasicObjects.Resources.AGVPool	.P4_CTU.BasicObjects.Resources.AGVPool	VOID
+.P4_CTU.AdvancedObject.Hardware.CTU	CTU	Folder	VOID	.P4_CTU.AdvancedObject.Hardware.CTU	VOID
+.P4_CTU.AdvancedObject.Hardware.CTU.CTU	CTU	Transporter	.P4_CTU.BasicObjects.MUs.Transporter	.P4_CTU.BasicObjects.MUs.Transporter	VOID
+.P4_CTU.AdvancedObject.Hardware.CTU.Carrier	Carrier	Container	.P4_CTU.BasicObjects.MUs.Container	.P4_CTU.BasicObjects.MUs.Container	VOID
+.P4_CTU.AdvancedObject.Hardware.CTU.Carrier_Box	Carrier_Box	Container	.P4_CTU.AdvancedObject.Hardware.CTU.Carrier	.P4_CTU.BasicObjects.MUs.Container	VOID
+.P4_CTU.AdvancedObject.Hardware.CTU.Lifttable	Lifttable	Container	.P4_CTU.BasicObjects.MUs.Container	.P4_CTU.BasicObjects.MUs.Container	VOID
+.P4_CTU.AdvancedObject.Hardware.CTU.test	test	Frame	VOID	.P4_CTU.AdvancedObject.Hardware.CTU.test	VOID
+.P4_CTU.AdvancedObject.Hardware.Rack	Rack	Frame	VOID	.P4_CTU.AdvancedObject.Hardware.Rack	VOID
+.P4_CTU.AdvancedObject.Hardware.Store	Store	Store	.P4_CTU.BasicObjects.MaterialFlow.Store	.P4_CTU.BasicObjects.MaterialFlow.Store	VOID
+.P4_CTU.AdvancedObject.Software	Software	Folder	VOID	.P4_CTU.AdvancedObject.Software	VOID
+.P4_CTU.AdvancedObject.Software.MapGenerator	MapGenerator	Folder	VOID	.P4_CTU.AdvancedObject.Software.MapGenerator	VOID
+.P4_CTU.AdvancedObject.Software.MapGenerator.ChargingPlace	ChargingPlace	Frame	VOID	.P4_CTU.AdvancedObject.Software.MapGenerator.ChargingPlace	VOID
+.P4_CTU.AdvancedObject.Software.MapGenerator.Home	Home	Frame	VOID	.P4_CTU.AdvancedObject.Software.MapGenerator.Home	VOID
+.P4_CTU.AdvancedObject.Software.MapGenerator.StockInLoader	StockInLoader	Frame	VOID	.P4_CTU.AdvancedObject.Software.MapGenerator.StockInLoader	VOID
+.P4_CTU.AdvancedObject.Software.MapGenerator.StockOutLoader	StockOutLoader	Frame	VOID	.P4_CTU.AdvancedObject.Software.MapGenerator.StockOutLoader	VOID
+.P4_CTU.AdvancedObject.Software.RCS	RCS	Frame	VOID	.P4_CTU.AdvancedObject.Software.RCS	VOID
+.P4_CTU.BasicObjects	BasicObjects	Folder	VOID	.P4_CTU.BasicObjects	VOID
+.P4_CTU.BasicObjects.InformationFlow	InformationFlow	Folder	VOID	.P4_CTU.BasicObjects.InformationFlow	VOID
+.P4_CTU.BasicObjects.InformationFlow.Attribute			VOID	VOID	VOID
+.P4_CTU.BasicObjects.InformationFlow.EventController			VOID	VOID	VOID
+.P4_CTU.BasicObjects.InformationFlow.Generator	Generator	Generator	VOID	.P4_CTU.BasicObjects.InformationFlow.Generator	VOID
+.P4_CTU.BasicObjects.InformationFlow.TableFile			VOID	VOID	VOID
+.P4_CTU.BasicObjects.MUs	MUs	Folder	VOID	.P4_CTU.BasicObjects.MUs	VOID
+.P4_CTU.BasicObjects.MUs.Connector			VOID	VOID	VOID
+.P4_CTU.BasicObjects.MUs.Container	Container	Container	VOID	.P4_CTU.BasicObjects.MUs.Container	VOID
+.P4_CTU.BasicObjects.MUs.Pallet			VOID	VOID	VOID
+.P4_CTU.BasicObjects.MUs.Transporter	Transporter	Transporter	VOID	.P4_CTU.BasicObjects.MUs.Transporter	VOID
+.P4_CTU.BasicObjects.MaterialFlow	MaterialFlow	Folder	VOID	.P4_CTU.BasicObjects.MaterialFlow	VOID
+.P4_CTU.BasicObjects.MaterialFlow.Station	Station	Station	VOID	.P4_CTU.BasicObjects.MaterialFlow.Station	VOID
+.P4_CTU.BasicObjects.MaterialFlow.Store	Store	Store	VOID	.P4_CTU.BasicObjects.MaterialFlow.Store	VOID
+.P4_CTU.BasicObjects.Resources	Resources	Folder	VOID	.P4_CTU.BasicObjects.Resources	VOID
+.P4_CTU.BasicObjects.Resources.AGVPool	AGVPool	AGVPool	VOID	.P4_CTU.BasicObjects.Resources.AGVPool	VOID
+.P4_CTU.BasicObjects.UserObjects	UserObjects	Folder	VOID	.P4_CTU.BasicObjects.UserObjects	VOID
+.P4_CTU.ctux1_agvx1	ctux1_agvx1	Frame	VOID	.P4_CTU.ctux1_agvx1	VOID
+.P4_CTU.ctux1_agvx2	ctux1_agvx2	Frame	VOID	.P4_CTU.ctux1_agvx2	VOID
+.Resources	Resources	Folder	VOID	.Resources	VOID
+.Resources.AGVPool	AGVPool	AGVPool	VOID	.Resources.AGVPool	VOID
