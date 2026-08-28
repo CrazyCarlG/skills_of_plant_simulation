@@ -9,7 +9,7 @@
 - **Client host**: WSL2 容器 → `host.docker.internal:50007`
 - **回包读取**：统一 `--resp-mode delimiter --resp-delimiter '||END||'`
 - **辅助脚本**：`/tmp/os_v14_helper.py`——`simtalk_syntax` + `simtalk_run` + `readlog`（v13 起能从 readlog 拿到 print 实际值）
-- **辅助客户端**：`/root/skills_of_plant_simulation/skills/local-simtalk-execution/scripts/socket_client.py`
+- **辅助客户端**：`skills/local-simtalk-execution/scripts/socket_client.py`
 
 ## 2. 文档 / Doc Reference
 

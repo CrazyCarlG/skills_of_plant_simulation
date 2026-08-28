@@ -4,8 +4,8 @@
 
 承接用户原始诉求：
 
-1. "阅读 @/root/skills_of_plant_simulation/01-plantsimulation-knowledge/01-plant-simulation-help/objects/common-read-only-attributes ，利用技能 @/root/skills_of_plant_simulation/skills/local-simtalk-execution 和技能 @/root/skills_of_plant_simulation/skills/local-simtalk-get-folder-tree 获取模型的类的继承关系"
-2. "请把刚才的探索过程记录在 @/root/skills_of_plant_simulation/skills/local-simtalk-get-class-inheritance 里"
+1. "阅读 @01-plantsimulation-knowledge/01-plant-simulation-help/objects/common-read-only-attributes ，利用技能 @skills/local-simtalk-execution 和技能 @skills/local-simtalk-get-folder-tree 获取模型的类的继承关系"
+2. "请把刚才的探索过程记录在 @skills/local-simtalk-get-class-inheritance 里"
 
 > 关键约束（详见 `local-simtalk-execution/references/lifelines.md` 与本技能 `references/protocol-notes.md`）：
 > - `simtalk_run` 路径返回的 `data` 字段始终为空（Quirk #6）—— 所有取值靠 `print + readlog`

@@ -66,8 +66,16 @@ the operator what the skill is currently doing.
 | Exit (success or failure) | `infoBox("", false)` **twice** — defensive double-close |
 
 The second argument `false` is the modal flag — non-modal so it never
-freezes the GUI while batch round-trips are in flight. Pass `--no-infobox`
-to suppress for headless / CI runs.
+freezes the GUI while batch round-trips are in flight.
+
+> ⚠️ **`--no-infobox` is NOT supported.** Unlike `bfs_one_level.py` /
+> `probe_methods.py` / `attr_modify.py`, `probe_inheritance.py` is a
+> positional-args-only parser — passing `--no-infobox` errors out
+> (`unrecognized arguments: --no-infobox`). The script self-manages the
+> `infoBox` lifecycle; GUI is opened at entry and closed twice on exit
+> regardless. If you need a fully silent run, wrap the call in a
+> context that suppresses GUI focus (e.g., dedicated Plant Simulation
+> headless frame). See INH-7 below.
 
 ## Usage
 
@@ -77,9 +85,6 @@ python3 scripts/probe_inheritance.py paths.txt data/inheritance_raw.tsv
 
 # 2. Render the parent -> children map from the raw TSV
 python3 scripts/render_inheritance_map.py data/inheritance_raw.tsv
-
-# Headless / CI runs (suppress the infoBox calls):
-python3 scripts/probe_inheritance.py --no-infobox paths.txt data/inheritance_raw.tsv
 ```
 
 A typical pipeline (given the sibling folder-tree skill has produced a
@@ -217,6 +222,7 @@ the Plant Simulation Class Library (a built-in). Otherwise it's a
 | INH-4 | `array` is not a SimTalk type — must use `list` | `var l: list[string]` (or just build path literals into code) |
 | INH-5 | List literals can't be assigned to `var l: list` ("Left and right sides of the assignment are incompatible") | Generate code with hardcoded path literals (no runtime list construction) |
 | INH-6 | A SimTalk `var` declared inside a loop body collides on the second iteration ("'o' is already defined as a local variable") | Declare `var o: object` **once** before the loop; only `o :=` assign inside |
+| INH-7 | `probe_inheritance.py` does **NOT** accept `--no-infobox` (positional-args-only parser) | Don't pass the flag — script self-manages `infoBox`; for headless runs see SKILL §"Skill convention" note |
 
 ## Path resolution
 
@@ -234,8 +240,10 @@ resolution" for the full table.
   run `bfs_full.py` first.
 - **`infoBox` requires a GUI session.** The `infoBox(text, false)` call
   targets the Plant Simulation GUI window — if the server is running
-  headless, the call still returns success but no box appears. Use
-  `--no-infobox` in CI / headless contexts.
+  headless, the call still returns success but no box appears. There is
+  **no `--no-infobox` flag** on this script (see INH-7); to suppress
+  visual chatter in CI / headless contexts, run under a headless
+  Plant Simulation frame.
 - **Batch size 12 is empirical.** With the v15+ `readlog` regression, larger
   batches risk cumulative-buffer overflow; smaller batches mean more
   round-trips. 12 paths/batch balances speed and reliability.

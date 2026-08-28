@@ -14,7 +14,7 @@ There is no single canonical Quirk registry. Each skill has its own quirk table 
 | Skill | Local Quirk IDs | Cross-references |
 |---|---|---|
 | `local-simtalk-execution` | #1–#13 (canonical) | (self) |
-| `local-simtalk-modify-object-atrribute` | Q1–Q12 (Q1–Q12, all skill-specific) | #6, #7, #13 |
+| `local-simtalk-modify-object-attribute` | Q1–Q12 (Q1–Q12, all skill-specific) | #6, #7, #13 |
 | `local-simtalk-add-note-to-method` | #1–#13 (SKILL.md) / Q1–Q11 (quirks.md — drift!) | (none) |
 | `local-simtalk-write-simtalk` | #1–#16 | #6, #7, #13 |
 | `local-simtalk-read-library` | LIB-1..LIB-6 (+ LIB-7 latent) | #6, #7, #13 |
@@ -32,14 +32,14 @@ There is no single canonical Quirk registry. Each skill has its own quirk table 
 
 ## Theme 2 — `--no-infobox` positional rule is inconsistent
 
-**Affected skills:** 5 (class-management, get-class-inheritance, add-note-to-method, modify-object-atrribute, get-folder-tree, read-library — 6 if you count the write side).
+**Affected skills:** 5 (class-management, get-class-inheritance, add-note-to-method, modify-object-attribute, get-folder-tree, read-library — 6 if you count the write side).
 
 | Skill | Rule | Evidence |
 |---|---|---|
 | `local-simtalk-class-management` | **MUST be FIRST** (argparse subparsers) | `log/2026-08-27_list-inspect-derive-delete.md` line 178 |
 | `local-simtalk-get-class-inheritance` | **MUST be LAST** (argparse positional paths_file) | `log/2026-08-27_instances-and-root-classes.md` line 81 |
 | `local-simtalk-add-note-to-method` | documented as last (in usage examples) | SKILL.md line 219 |
-| `local-simtalk-modify-object-atrribute` | documented as positional, doesn't matter | SKILL.md line 115 |
+| `local-simtalk-modify-object-attribute` | documented as positional, doesn't matter | SKILL.md line 115 |
 | `local-simtalk-get-folder-tree` | either position works | `log/2026-08-27_basis-and-models-model-tree.md` line 88 |
 | `local-simtalk-read-library` | either position works | `log/2026-08-27_probe-methods-1path-and-3path.md` line 91 |
 
@@ -59,7 +59,7 @@ Per-skill workarounds documented:
 | `local-simtalk-read-library` | Re-probe single-method via `simtalk_send.py run` + readlog extraction (BATCH=1) |
 | `local-simtalk-get-folder-tree` | Cap at depth-4 + per-child `print TYPE=...` aggregation loop |
 | `local-simtalk-class-management` | Append a `readlog` recovery pass after every `simtalk_run` (treat exit 20 as success) |
-| `local-simtalk-modify-object-atrribute` | `attr_modify.py` is already marker-tagged (Q1 quirks) — works for short values; degrades for large JSON |
+| `local-simtalk-modify-object-attribute` | `attr_modify.py` is already marker-tagged (Q1 quirks) — works for short values; degrades for large JSON |
 | `local-simtalk-execution` | Documented in `lifelines.md` §5; no clean fix |
 | `local-simtalk-get-class-inheritance` | `INH-1` already references the v15 readlog regression; BATCH ≤ 12 mitigates |
 | `local-simtalk-write-simtalk` | Inherits from add-note's readlogic bug |
@@ -94,7 +94,7 @@ The 2026-08-27 logs demonstrate a session-scoped model state that doesn't surviv
 | Skill | Mentions `.SimtalkClaude.*` off-limits | Script enforces |
 |---|---|---|
 | `local-simtalk-execution` | ✓ (SKILL.md) | — |
-| `local-simtalk-modify-object-atrribute` | ✓ (SKILL.md + Q6) | ✓ exit 2 |
+| `local-simtalk-modify-object-attribute` | ✓ (SKILL.md + Q6) | ✓ exit 2 |
 | `local-simtalk-add-note-to-method` | ✓ (SKILL.md #8) | ✗ |
 | `local-simtalk-class-management` | ✓ (SKILL.md) | ✗ |
 | `local-simtalk-write-simtalk` | ✓ (SKILL.md Quirk #8) | ✗ |

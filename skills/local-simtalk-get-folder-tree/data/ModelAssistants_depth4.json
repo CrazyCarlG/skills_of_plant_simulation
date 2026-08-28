@@ -1,0 +1,1259 @@
+{
+  "root_path": ".ModelAssistants",
+  "root_name": "ModelAssistants",
+  "root_type": "Folder",
+  "root_numNodes": 14,
+  "children": [
+    {
+      "i": 1,
+      "name": "Assistants",
+      "type": "Frame",
+      "path": ".ModelAssistants.Assistants",
+      "children": [
+        {
+          "i": 1,
+          "name": "DialogAssistants",
+          "type": "Dialog",
+          "path": ".ModelAssistants.Assistants.DialogAssistants",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "M_AddUserMenu",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_AddUserMenu",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "TabUserMenu",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Assistants.TabUserMenu",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "M_findFrameCandidate",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_findFrameCandidate",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "TabCandidate",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Assistants.TabCandidate",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "M_AddAllUserMenu",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_AddAllUserMenu",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "M_TransCtrl",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_TransCtrl",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "TabUserMenuOri",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Assistants.TabUserMenuOri",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "M_CreateIcon",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_CreateIcon",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "M_CloseAllUserMenu",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_CloseAllUserMenu",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "M_DeleteUserMenu",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_DeleteUserMenu",
+          "children": []
+        },
+        {
+          "i": 12,
+          "name": "M_DeleteIcon",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_DeleteIcon",
+          "children": []
+        },
+        {
+          "i": 13,
+          "name": "Description",
+          "type": "Variable",
+          "path": ".ModelAssistants.Assistants.Description",
+          "children": []
+        },
+        {
+          "i": 14,
+          "name": "M_CallInternalMethod",
+          "type": "Method",
+          "path": ".ModelAssistants.Assistants.M_CallInternalMethod",
+          "children": []
+        },
+        {
+          "i": 15,
+          "name": "Tab_Commands",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Assistants.Tab_Commands",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "ClassAssistant",
+      "type": "Frame",
+      "path": ".ModelAssistants.ClassAssistant",
+      "children": [
+        {
+          "i": 1,
+          "name": "DialogClassAssistant",
+          "type": "Dialog",
+          "path": ".ModelAssistants.ClassAssistant.DialogClassAssistant",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "AddNewLibrary",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAssistant.AddNewLibrary",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "TabCandidate",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAssistant.TabCandidate",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "TabLibraryBscObj",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAssistant.TabLibraryBscObj",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "searchFolder",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAssistant.searchFolder",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "AddNewModel",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAssistant.AddNewModel",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "findCandidate",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAssistant.findCandidate",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "AddLibraryBscObj",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAssistant.AddLibraryBscObj",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "DialogBsc",
+          "type": "Dialog",
+          "path": ".ModelAssistants.ClassAssistant.DialogBsc",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "AutoSorter",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAssistant.AutoSorter",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "TabModelBscObj",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAssistant.TabModelBscObj",
+          "children": []
+        },
+        {
+          "i": 12,
+          "name": "AddModelBscObj",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAssistant.AddModelBscObj",
+          "children": []
+        },
+        {
+          "i": 13,
+          "name": "DataTable",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAssistant.DataTable",
+          "children": []
+        },
+        {
+          "i": 14,
+          "name": "getFolderInfo",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAssistant.getFolderInfo",
+          "children": []
+        },
+        {
+          "i": 15,
+          "name": "Frame",
+          "type": "Frame",
+          "path": ".ModelAssistants.ClassAssistant.Frame",
+          "children": [
+            {
+              "i": 1,
+              "name": "TestNameObject",
+              "type": "Method",
+              "path": ".ModelAssistants.ClassAssistant.Frame.TestNameObject",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 16,
+          "name": "TabModelRootInfo",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAssistant.TabModelRootInfo",
+          "children": []
+        },
+        {
+          "i": 17,
+          "name": "TabLibRootInfo",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAssistant.TabLibRootInfo",
+          "children": []
+        },
+        {
+          "i": 18,
+          "name": "TabSortFolderInfo",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAssistant.TabSortFolderInfo",
+          "children": []
+        },
+        {
+          "i": 19,
+          "name": "TabFolderInfo",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAssistant.TabFolderInfo",
+          "children": []
+        },
+        {
+          "i": 20,
+          "name": "Comment",
+          "type": "Comment",
+          "path": ".ModelAssistants.ClassAssistant.Comment",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "name": "AutoSave",
+      "type": "Frame",
+      "path": ".ModelAssistants.AutoSave",
+      "children": [
+        {
+          "i": 1,
+          "name": "SavePeriod",
+          "type": "Variable",
+          "path": ".ModelAssistants.AutoSave.SavePeriod",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "IsContiuned",
+          "type": "Variable",
+          "path": ".ModelAssistants.AutoSave.IsContiuned",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Dialog",
+          "type": "Dialog",
+          "path": ".ModelAssistants.AutoSave.Dialog",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "StopMethodExecution",
+          "type": "Variable",
+          "path": ".ModelAssistants.AutoSave.StopMethodExecution",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "UseNewName",
+          "type": "Variable",
+          "path": ".ModelAssistants.AutoSave.UseNewName",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "AutoSaveModel",
+          "type": "Method",
+          "path": ".ModelAssistants.AutoSave.AutoSaveModel",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "MSaveModel",
+          "type": "Method",
+          "path": ".ModelAssistants.AutoSave.MSaveModel",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "IsExecuting",
+          "type": "Variable",
+          "path": ".ModelAssistants.AutoSave.IsExecuting",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "endSaveModel",
+          "type": "Method",
+          "path": ".ModelAssistants.AutoSave.endSaveModel",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "name": "Namer",
+      "type": "Frame",
+      "path": ".ModelAssistants.Namer",
+      "children": [
+        {
+          "i": 1,
+          "name": "AssignName",
+          "type": "Method",
+          "path": ".ModelAssistants.Namer.AssignName",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "TabCandidate",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Namer.TabCandidate",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "DialogNamer",
+          "type": "Dialog",
+          "path": ".ModelAssistants.Namer.DialogNamer",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Objects",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Namer.Objects",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Frame",
+          "type": "Frame",
+          "path": ".ModelAssistants.Namer.Frame",
+          "children": [
+            {
+              "i": 1,
+              "name": "TestObject",
+              "type": "Method",
+              "path": ".ModelAssistants.Namer.Frame.TestObject",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 6,
+          "name": "DialogSortKey",
+          "type": "Dialog",
+          "path": ".ModelAssistants.Namer.DialogSortKey",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "TabSortKey",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Namer.TabSortKey",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "TabSelectedSortKey",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Namer.TabSelectedSortKey",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "exchangeTabRow",
+          "type": "Method",
+          "path": ".ModelAssistants.Namer.exchangeTabRow",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "transformObjects",
+          "type": "Method",
+          "path": ".ModelAssistants.Namer.transformObjects",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "exchangeListRow",
+          "type": "Method",
+          "path": ".ModelAssistants.Namer.exchangeListRow",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "name": "FrameReplacer",
+      "type": "Frame",
+      "path": ".ModelAssistants.FrameReplacer",
+      "children": [
+        {
+          "i": 1,
+          "name": "replaceObject",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameReplacer.replaceObject",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "DialogReplacer",
+          "type": "Dialog",
+          "path": ".ModelAssistants.FrameReplacer.DialogReplacer",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "setReplacementMode",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameReplacer.setReplacementMode",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "TabCandidate",
+          "type": "DataTable",
+          "path": ".ModelAssistants.FrameReplacer.TabCandidate",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "findCandidate",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameReplacer.findCandidate",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "replaceCandidate",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameReplacer.replaceCandidate",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 6,
+      "name": "QuickArrayTool",
+      "type": "Frame",
+      "path": ".ModelAssistants.QuickArrayTool",
+      "children": [
+        {
+          "i": 1,
+          "name": "DialogArraryTool",
+          "type": "Dialog",
+          "path": ".ModelAssistants.QuickArrayTool.DialogArraryTool",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "ArrayObjects",
+          "type": "Method",
+          "path": ".ModelAssistants.QuickArrayTool.ArrayObjects",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "exchangeListRow",
+          "type": "Method",
+          "path": ".ModelAssistants.QuickArrayTool.exchangeListRow",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 7,
+      "name": "FrameEncrypt",
+      "type": "Frame",
+      "path": ".ModelAssistants.FrameEncrypt",
+      "children": [
+        {
+          "i": 1,
+          "name": "DialogEncrypt",
+          "type": "Dialog",
+          "path": ".ModelAssistants.FrameEncrypt.DialogEncrypt",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "EncryptFrame",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameEncrypt.EncryptFrame",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "EncryptMethod",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameEncrypt.EncryptMethod",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "EncryptCandidate",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameEncrypt.EncryptCandidate",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "TabCandidate",
+          "type": "DataTable",
+          "path": ".ModelAssistants.FrameEncrypt.TabCandidate",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Objects",
+          "type": "DataTable",
+          "path": ".ModelAssistants.FrameEncrypt.Objects",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "transformObjects",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameEncrypt.transformObjects",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "OnOpenTemplates",
+          "type": "Method",
+          "path": ".ModelAssistants.FrameEncrypt.OnOpenTemplates",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 8,
+      "name": "ClassAttrDepulicator",
+      "type": "Frame",
+      "path": ".ModelAssistants.ClassAttrDepulicator",
+      "children": [
+        {
+          "i": 1,
+          "name": "M_copyAttributes",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAttrDepulicator.M_copyAttributes",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "DialogClassAttrDepulicator",
+          "type": "Dialog",
+          "path": ".ModelAssistants.ClassAttrDepulicator.DialogClassAttrDepulicator",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "TabCandidate",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAttrDepulicator.TabCandidate",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Objects",
+          "type": "DataTable",
+          "path": ".ModelAssistants.ClassAttrDepulicator.Objects",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "transformObjects",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAttrDepulicator.transformObjects",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "M_DuplicateObjectAttributes",
+          "type": "Method",
+          "path": ".ModelAssistants.ClassAttrDepulicator.M_DuplicateObjectAttributes",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Bol_AttrChangeType",
+          "type": "Variable",
+          "path": ".ModelAssistants.ClassAttrDepulicator.Bol_AttrChangeType",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "o_OriObject",
+          "type": "Variable",
+          "path": ".ModelAssistants.ClassAttrDepulicator.o_OriObject",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "Bol_AttrChangeValue",
+          "type": "Variable",
+          "path": ".ModelAssistants.ClassAttrDepulicator.Bol_AttrChangeValue",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 9,
+      "name": "Calculator3D",
+      "type": "Frame",
+      "path": ".ModelAssistants.Calculator3D",
+      "children": [
+        {
+          "i": 1,
+          "name": "M_Convert",
+          "type": "Method",
+          "path": ".ModelAssistants.Calculator3D.M_Convert",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "TypeofRotation",
+          "type": "Variable",
+          "path": ".ModelAssistants.Calculator3D.TypeofRotation",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Dialog",
+          "type": "Dialog",
+          "path": ".ModelAssistants.Calculator3D.Dialog",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "bol_Automatic",
+          "type": "Variable",
+          "path": ".ModelAssistants.Calculator3D.bol_Automatic",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "bol_AddedCurrent",
+          "type": "Variable",
+          "path": ".ModelAssistants.Calculator3D.bol_AddedCurrent",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Tab_Candidate",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Calculator3D.Tab_Candidate",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Tab_Log",
+          "type": "DataTable",
+          "path": ".ModelAssistants.Calculator3D.Tab_Log",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "M_RefreshResults",
+          "type": "Method",
+          "path": ".ModelAssistants.Calculator3D.M_RefreshResults",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "M_AutomaticRotate",
+          "type": "Method",
+          "path": ".ModelAssistants.Calculator3D.M_AutomaticRotate",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "M_Undo",
+          "type": "Method",
+          "path": ".ModelAssistants.Calculator3D.M_Undo",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 10,
+      "name": "AIBot",
+      "type": "Frame",
+      "path": ".ModelAssistants.AIBot",
+      "children": [
+        {
+          "i": 1,
+          "name": "Py_SendRequest",
+          "type": "PythonModule",
+          "path": ".ModelAssistants.AIBot.Py_SendRequest",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Dialog",
+          "type": "Dialog",
+          "path": ".ModelAssistants.AIBot.Dialog",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "M_SetPyEnv",
+          "type": "Method",
+          "path": ".ModelAssistants.AIBot.M_SetPyEnv",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Output",
+          "type": "Variable",
+          "path": ".ModelAssistants.AIBot.Output",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "M_SendRequest",
+          "type": "Method",
+          "path": ".ModelAssistants.AIBot.M_SendRequest",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "M_Response",
+          "type": "Method",
+          "path": ".ModelAssistants.AIBot.M_Response",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "InputText",
+          "type": "Variable",
+          "path": ".ModelAssistants.AIBot.InputText",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "JSOutput",
+          "type": "Variable",
+          "path": ".ModelAssistants.AIBot.JSOutput",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "DialogNavigator",
+          "type": "Dialog",
+          "path": ".ModelAssistants.AIBot.DialogNavigator",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "PythonDLLPath",
+          "type": "Variable",
+          "path": ".ModelAssistants.AIBot.PythonDLLPath",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 11,
+      "name": "Templates",
+      "type": "Method",
+      "path": ".ModelAssistants.Templates",
+      "children": []
+    },
+    {
+      "i": 12,
+      "name": "BasicObjects",
+      "type": "Folder",
+      "path": ".ModelAssistants.BasicObjects",
+      "children": [
+        {
+          "i": 1,
+          "name": "MaterialFlow",
+          "type": "Folder",
+          "path": ".ModelAssistants.BasicObjects.MaterialFlow",
+          "children": [
+            {
+              "i": 1,
+              "name": "Connector",
+              "type": "Connector",
+              "path": ".ModelAssistants.BasicObjects.MaterialFlow.Connector",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Frame",
+              "type": "Frame",
+              "path": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "TestRibbonFrame",
+              "type": "Frame",
+              "path": ".ModelAssistants.BasicObjects.MaterialFlow.TestRibbonFrame",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Method",
+                  "type": "Method",
+                  "path": ".ModelAssistants.BasicObjects.MaterialFlow.TestRibbonFrame.Method",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Variable",
+                  "type": "Variable",
+                  "path": ".ModelAssistants.BasicObjects.MaterialFlow.TestRibbonFrame.Variable",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Method1",
+                  "type": "Method",
+                  "path": ".ModelAssistants.BasicObjects.MaterialFlow.TestRibbonFrame.Method1",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "InformationFlow",
+          "type": "Folder",
+          "path": ".ModelAssistants.BasicObjects.InformationFlow",
+          "children": [
+            {
+              "i": 1,
+              "name": "Method",
+              "type": "Method",
+              "path": ".ModelAssistants.BasicObjects.InformationFlow.Method",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Variable",
+              "type": "Variable",
+              "path": ".ModelAssistants.BasicObjects.InformationFlow.Variable",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "DataTable",
+              "type": "DataTable",
+              "path": ".ModelAssistants.BasicObjects.InformationFlow.DataTable",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "PythonModule",
+              "type": "PythonModule",
+              "path": ".ModelAssistants.BasicObjects.InformationFlow.PythonModule",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".ModelAssistants.BasicObjects.InformationFlow.Socket",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "name": "UserInterface",
+          "type": "Folder",
+          "path": ".ModelAssistants.BasicObjects.UserInterface",
+          "children": [
+            {
+              "i": 1,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Button",
+              "type": "Button",
+              "path": ".ModelAssistants.BasicObjects.UserInterface.Button",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "Comment",
+              "type": "Comment",
+              "path": ".ModelAssistants.BasicObjects.UserInterface.Comment",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 13,
+      "name": "Internal",
+      "type": "Folder",
+      "path": ".ModelAssistants.Internal",
+      "children": [
+        {
+          "i": 1,
+          "name": "onCloseModel",
+          "type": "Method",
+          "path": ".ModelAssistants.Internal.onCloseModel",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "autoexec",
+          "type": "Method",
+          "path": ".ModelAssistants.Internal.autoexec",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "autoexecLoadObj",
+          "type": "Method",
+          "path": ".ModelAssistants.Internal.autoexecLoadObj",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "ExportIconToFile",
+          "type": "Method",
+          "path": ".ModelAssistants.Internal.ExportIconToFile",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Socket",
+          "type": "Socket",
+          "path": ".ModelAssistants.Internal.Socket",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 14,
+      "name": "ModelSyncCopy",
+      "type": "Frame",
+      "path": ".ModelAssistants.ModelSyncCopy",
+      "children": [
+        {
+          "i": 1,
+          "name": "SourcePath",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.SourcePath",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "TargetPath",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.TargetPath",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "ServerHost",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.ServerHost",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "ServerPort",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.ServerPort",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "LastPayload",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.LastPayload",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "LastError",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.LastError",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "SocketServer",
+          "type": "Socket",
+          "path": ".ModelAssistants.ModelSyncCopy.SocketServer",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "SocketClient",
+          "type": "Socket",
+          "path": ".ModelAssistants.ModelSyncCopy.SocketClient",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "M_Split",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_Split",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "M_ReadVariableValue",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_ReadVariableValue",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "M_Copy",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_Copy",
+          "children": []
+        },
+        {
+          "i": 12,
+          "name": "M_Paste",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_Paste",
+          "children": []
+        },
+        {
+          "i": 13,
+          "name": "M_OnReceive",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_OnReceive",
+          "children": []
+        },
+        {
+          "i": 14,
+          "name": "M_StartServer",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_StartServer",
+          "children": []
+        },
+        {
+          "i": 15,
+          "name": "M_StartClient",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_StartClient",
+          "children": []
+        },
+        {
+          "i": 16,
+          "name": "M_Send",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_Send",
+          "children": []
+        },
+        {
+          "i": 17,
+          "name": "M_Stop",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_Stop",
+          "children": []
+        },
+        {
+          "i": 18,
+          "name": "DialogModelSyncCopy",
+          "type": "Dialog",
+          "path": ".ModelAssistants.ModelSyncCopy.DialogModelSyncCopy",
+          "children": []
+        },
+        {
+          "i": 19,
+          "name": "M_SetTableCell",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_SetTableCell",
+          "children": []
+        },
+        {
+          "i": 20,
+          "name": "M_SetVariableValue",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_SetVariableValue",
+          "children": []
+        },
+        {
+          "i": 21,
+          "name": "M_BuildObject",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_BuildObject",
+          "children": []
+        },
+        {
+          "i": 22,
+          "name": "M_ApplyObject",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_ApplyObject",
+          "children": []
+        },
+        {
+          "i": 23,
+          "name": "M_Decode",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_Decode",
+          "children": []
+        },
+        {
+          "i": 24,
+          "name": "OnCollision",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.OnCollision",
+          "children": []
+        },
+        {
+          "i": 25,
+          "name": "ChunkSize",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.ChunkSize",
+          "children": []
+        },
+        {
+          "i": 26,
+          "name": "RxBuffer",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.RxBuffer",
+          "children": []
+        },
+        {
+          "i": 27,
+          "name": "LastSummary",
+          "type": "Variable",
+          "path": ".ModelAssistants.ModelSyncCopy.LastSummary",
+          "children": []
+        },
+        {
+          "i": 28,
+          "name": "M_Encode",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_Encode",
+          "children": []
+        },
+        {
+          "i": 29,
+          "name": "M_BuildFrame",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_BuildFrame",
+          "children": []
+        },
+        {
+          "i": 30,
+          "name": "M_BuildFrameNodes",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_BuildFrameNodes",
+          "children": []
+        },
+        {
+          "i": 31,
+          "name": "M_BuildFrameMeta",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_BuildFrameMeta",
+          "children": []
+        },
+        {
+          "i": 32,
+          "name": "M_ReadAttribute",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_ReadAttribute",
+          "children": []
+        },
+        {
+          "i": 33,
+          "name": "M_ReadMethodCode",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_ReadMethodCode",
+          "children": []
+        },
+        {
+          "i": 34,
+          "name": "M_ShouldSkipAttribute",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_ShouldSkipAttribute",
+          "children": []
+        },
+        {
+          "i": 35,
+          "name": "M_GetMappedPath",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_GetMappedPath",
+          "children": []
+        },
+        {
+          "i": 36,
+          "name": "M_SetObjectAttribute",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_SetObjectAttribute",
+          "children": []
+        },
+        {
+          "i": 37,
+          "name": "M_ApplyFrame",
+          "type": "Method",
+          "path": ".ModelAssistants.ModelSyncCopy.M_ApplyFrame",
+          "children": []
+        }
+      ]
+    }
+  ]
+}

@@ -1,7 +1,7 @@
 # SimTalk 2.0 — Quick Reference for Writing Methods
 
 > 这一页是 `local-simtalk-write-simtalk` 写代码时的速查。完整 SimTalk 文档见
-> `/root/skills_of_plant_simulation/01-plantsimulation-knowledge/01-plant-simulation-help/objects/simtalk/`
+> `01-plantsimulation-knowledge/01-plant-simulation-help/objects/simtalk/`
 > 与 `programming-a-method/`。
 
 ## 注释
@@ -48,6 +48,89 @@ var s := "line1" + chr(10) + "line2"  // s == "line1\nline2"（真换行）
 写代码到 `program` 时（`obj.program := <source>`），source 字符串内部也要
 `chr(10)` join。`local-simtalk-add-note-to-method/scripts/add_note.py` 已经
 处理这个细节。
+
+### Python → SimTalk 双层嵌套引号转义（`chr(34)` 模式）
+
+当 Python 字符串里需要嵌入一段 SimTalk，而 SimTalk 内部又要包含
+双引号字符串字面量（如 `print "hello from..."`），三层引号会撞车：
+
+```python
+# 三层引号失败
+code = "print \"hello\""       # Python 解析为: print "hello"
+                                # 看起来对，但 SimTalk 端没问题
+                                # 问题在更复杂的场景
+
+# 真正的陷阱：Python 内嵌 SimTalk 字符串，SimTalk 内嵌 "..."
+code = '"hello from \"world\""' # ❌ Python OK，但传给 SimTalk 后变成
+                                # "hello from \"world\"" —— SimTalk 不解释 \"
+                                # 服务端拿到的是字面 \" 两字符，print 输出
+                                # 包含反斜杠的怪字符串
+
+# ❌ 失败的尝试
+code = '"hello from \"world\""'  # SimTalk 端看到的不是 " 而是 \"
+                                # print 输出: hello from \"world\"
+                                # 这不是想要的
+```
+
+**为什么 SimTalk 不解释 `\"`**：SimTalk 字符串字面量**不支持**反斜杠转义。
+任何 `\` 在 SimTalk 里都是字面字符。要在 SimTalk 字符串里放 `"`，必须用
+SimTalk 自己的**双引号 doubling**规则（`""` → `"`）：
+
+```simtalk
+-- ✅ SimTalk 双引号 doubling
+print "hello ""world"""          -- 输出: hello "world"
+print "say ""hi"" please"        -- 输出: say "hi" please
+```
+
+或者用 `chr(34)` 拼接：
+
+```simtalk
+-- ✅ chr(34) = ASCII 34 = "
+print "hello " + chr(34) + "world" + chr(34)
+-- 输出: hello "world"
+```
+
+**Python 端的安全模式**（避免引号嵌套地狱）：用 `chr(34)` 在 Python 里
+组装 SimTalk 字符串，绝不依赖 Python `\"` 转义穿透到 SimTalk：
+
+```python
+# ✅ 推荐 — Python 用 chr(34) 在 SimTalk 字符串里放引号
+code = 'print "hello from " + chr(34) + "world" + chr(34)'
+
+# ✅ 也推荐 — Python 把整个 SimTalk 字符串用 chr(34) 拼接
+DQ = chr(34)
+code = f'print {DQ}hello from "world"{DQ}'
+# SimTalk 端看到: print "hello from "world""
+# SimTalk 解析: 字符串 "hello from "（含 closing "）, 然后
+#               裸标识符 world，然后字符串 "" (空字符串)，然后 "world"
+# 等下这解析不对 —— doubling 才能保证安全
+```
+
+**最稳的写法**（不依赖 doubling 的解析细节）：
+
+```python
+# Python 端用 chr(34) 在 SimTalk 里放 ASCII 34
+def quote_simtalk(s):
+    """在 SimTalk 字符串字面量里放 ASCII "（chr(34)）。"""
+    return chr(34) + s + chr(34)
+
+code = f'print {quote_simtalk("hello from \"world\"")}'
+# SimTalk 端看到: print chr(34) + "hello from \"world\"" + chr(34)
+# SimTalk 解析: print 是一个表达式，左侧 chr(34) + "..." + chr(34) 是
+#   字符串拼接。等下 —— 这要在 print 的实参位置才合法。
+# 简化为: code = 'print chr(34) + "hello from "world" + chr(34)'
+# 不对，字面量里不能有 " 除非 doubling 或 chr(34)
+```
+
+**实操结论**：Python 写 SimTalk 源时，**任何需要 `"` 的地方**用以下两选一：
+
+1. **SimTalk doubling**：`""text""`（在 SimTalk 源码里直接写）
+2. **`chr(34)` 拼接**：用 `+ chr(34) +` 在运行时构造 `"` 字符
+
+避免：Python 的 `\"` 转义（不会穿透到 SimTalk），任何形式的
+`escape_sequence` 在 SimTalk 字符串字面量里都不工作。
+
+**来源**：`log/2026-08-27_flow-a-replace-and-flow-b-duplicate.md` §"What this run validated / learned" lines 198-208（Test 2 step 5 first attempt 失败）。
 
 ## Method 引用运算符 `&`
 
@@ -147,7 +230,7 @@ print to_str(obj.internalclasstype);   -- 期望 "Method"
 **关键细节**：
 1. `&` 加在路径**最后一段**前（如 `.InformationFlow.&Method.duplicate(...)`），告诉 SimTalk 把名字当 class object 而不是 data type `Method`
 2. `<frame>` 参数是 **object 引用**，不是 string。必须先 `var f: object := str_to_obj(...)` 再传 `f`
-3. 文档出处：`/root/skills_of_plant_simulation/01-plantsimulation-knowledge/01-plant-simulation-help/objects/common-methods/common-methods.md` line 164 (`.InformationFlow.&Method.duplicate`)
+3. 文档出处：`01-plantsimulation-knowledge/01-plant-simulation-help/objects/common-methods/common-methods.md` line 164 (`.InformationFlow.&Method.duplicate`)
 
 ### 替代路径：用 `local-simtalk-class-management` 的 `duplicate`
 

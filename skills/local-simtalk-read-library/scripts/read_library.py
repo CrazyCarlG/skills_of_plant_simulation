@@ -29,7 +29,9 @@ import sys
 
 SELF_DIR = os.path.dirname(os.path.abspath(__file__))
 SKILL_ROOT = os.path.dirname(SELF_DIR)
-TREE_SKILL = "/root/skills_of_plant_simulation/skills/local-simtalk-get-folder-tree"
+REPO_ROOT = os.path.dirname(SKILL_ROOT)
+REPO_ROOT = os.path.dirname(REPO_ROOT)
+TREE_SKILL = os.path.join(REPO_ROOT, "skills", "local-simtalk-get-folder-tree")
 BFS_FULL = os.path.join(TREE_SKILL, "scripts", "bfs_full.py")
 PROBE = os.path.join(SELF_DIR, "probe_methods.py")
 RENDER = os.path.join(SELF_DIR, "render_library.py")

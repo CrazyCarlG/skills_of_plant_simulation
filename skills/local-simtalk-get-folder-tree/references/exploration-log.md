@@ -196,3 +196,93 @@ For deeper dives into the loaded model:
 python3 scripts/bfs_full.py .Models.Model 8 data/model_tree_depth8.json
 python3 scripts/bfs_full.py .SimtalkClaude 5 data/simtalkclaude_tree.json
 ```
+
+## Day 2 (2026-08-27) — large-subframe JSON-dump limit (GFT-1)
+
+When probing `.Models.Factory51` (142 children) the first probe hit
+`ERR: unbalanced braces after marker` from `bfs_one_level.py`. The
+single-shot JSON dump of `{i, name, type, path}` × 142 exceeded the
+one-shot log emission limit that the `###BFS_MARKER###` extraction
+relies on. The brace-walker in `bfs_one_level.py:140-163` sees the
+trailing JSON truncate mid-object and exits with the unbalanced-braces
+error.
+
+Workaround: route the dump through `bfs_full.py --no-infobox
+.Models.Factory51 1 data/factory51_children.json`. The depth-1
+recursive driver writes the result to disk and the per-node round-trips
+avoid the one-shot log emission limit.
+
+Reproduction:
+
+```bash
+python3 scripts/bfs_one_level.py .Models.Factory51
+# ERR: unbalanced braces after marker
+
+python3 scripts/bfs_full.py --no-infobox .Models.Factory51 1 \
+    data/factory51_children.json
+# Wrote data/factory51_children.json  calls=1
+```
+
+Empirical threshold: ~130 children is the upper bound where the
+one-shot JSON dump fits. Above that, the readlog payload (which is
+JSON-escaped with `\\n` markers per lifelines §5) hits a ~30 KB
+ceiling. Frame names at ~25 chars × 142 + per-entry JSON keys =
+~12–18 KB raw, which expands after JSON-escaping to ~30 KB — exactly
+the cutoff.
+
+This isn't a hard server-side limit; it's an emergent property of the
+readlog buffer cap combined with single-shot JSON-escape overhead.
+Future server versions that raise the readlog cap will raise this
+threshold proportionally.
+
+## Day 2 (2026-08-27) — empty-string root path rejected (GFT-2)
+
+The script's argument parser accepts `bfs_one_level.py ""` (passes the
+`len(args) != 1` check) but `str_to_obj("")` returns void, and the
+script's resolve-failure path exits with `ERR: cannot resolve path: ""`.
+
+The error message is unhelpful — it doesn't suggest `"."` as the
+alternative. New operators see this on their first call if they follow
+the implicit "empty string = root" convention from other systems (SQL
+table names, Python `os.listdir("")`, etc.).
+
+Fix: use `"."` for the basis root. The basis identifier is anonymous
+(`obj_to_str(basis)` returns the empty string), but the **string
+literal** `"."` is what `str_to_obj` expects — `"."` and `""` are
+different inputs to the parser.
+
+The current SKILL.md already shows `"."` in the Usage examples; this
+quirk entry documents the failure mode so future operators don't have
+to re-derive it from the error message.
+
+## Day 2 (2026-08-27) — `.SimtalkClaude.src.SimtalkAction.simtalkcode` is a likely-typo stub
+
+The method body at `.SimtalkClaude.src.SimtalkAction.simtalkcode`
+contains the literal text `var obj:=.createfodler` (22 bytes).
+`createfodler` is not a real Plant Simulation function — the correct
+function name is `createFolder`. The body looks like a template stub
+that was never updated.
+
+**Implications:**
+
+- Any workflow that accidentally calls this method will hit a
+  Quirk #7 soft failure (`code execute failed. error msg: Unknown
+  identifier 'createfodler'`).
+- The actual `simtalk_run` dispatch path goes through
+  `SimtalkAction.simtalk_execute` (281 bytes — verified in the same
+  dump), which is the working entry point.
+- This is **dead code**, not active runtime — but it's a latent
+  landmine if a future operator decides to use `simtalkcode` as the
+  Method name instead of `simtalk_execute`.
+
+**Do not call this method as part of any workflow.** Treat
+`.SimtalkClaude.src.SimtalkAction.simtalkcode` as reserved / read-only
+history. The actual API surface is `SimtalkAction.simtalk_execute` —
+referenced by `local-simtalk-execution/scripts/socket_client.py` and
+the `local-simtalk-execution/SKILL.md` protocol description.
+
+This is a separate concern from the `.SimtalkClaude2.*` namespace
+protection in `local-simtalk-execution/references/lifelines.md` §12:
+that protects against writes to the runtime, while this is a
+**read-only** observation that a stub method exists in the legacy
+namespace.

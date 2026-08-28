@@ -174,7 +174,7 @@ payload = json.dumps({"type":"simtalk_run",
                       "action_id":"x",
                       "simtalk_code":code}) + "||END||"
 subprocess.run(["python3",
-  "/root/skills_of_plant_simulation/skills/local-simtalk-execution/scripts/socket_client.py",
+  "skills/local-simtalk-execution/scripts/socket_client.py",
   "--host","host.docker.internal","--port","50007",
   "--data", payload,
   "--resp-mode","delimiter","--resp-delimiter","||END||",

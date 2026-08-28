@@ -51,7 +51,7 @@
 
 ## Cross-references
 
-- Related: `local-simtalk-modify-object-atrribute-2026-08-27.md` — reuses Quirk #6/7/13 interpretation
+- Related: `local-simtalk-modify-object-attribute-2026-08-27.md` — reuses Quirk #6/7/13 interpretation
 - Related: `local-simtalk-add-note-to-method-2026-08-27.md` — `add_note.py` is readlog-degraded (Quirk #6/§5)
 - Related: `local-simtalk-class-management-2026-08-27.md` — confirmed exit-code-20 behavior
 - Plant Simulation Help: `01-plantsimulation-knowledge/.../method/attributes/`

@@ -26,6 +26,21 @@ Do **not** use this skill for:
   is always empty, so use print + readlog)
 - Editing the model
 - Running a simulation experiment
+- **Re-running BFS when you already have a fresh snapshot on disk.** Before
+  calling `bfs_full.py`, check `data/` for `*_fresh.json` files
+  (e.g. `basis_tree_depth5_fresh.json`, `current_models_fresh.json`). If
+  one exists with a recent timestamp from this session and the same loaded
+  model, **read it instead of re-running BFS**. Re-running wastes 30–60
+  TCP round-trips and triggers GUI `infoBox` open/close churn.
+  
+  The `*_fresh.json` convention is **per-session and per-model** — the
+  cache becomes stale when:
+  - the operator swaps the loaded model (e.g. `.Models.Factory51` →
+    `.Models.Assembly1` → `.Models.internal.Admin` in one day), or
+  - the date in the filename is older than today.
+  
+  Verify before reuse: `stat data/basis_tree_depth*_fresh.json | grep
+  Modify` and confirm the mtime matches the current session.
 
 ## How it works
 
@@ -83,6 +98,14 @@ python3 scripts/bfs_full.py --no-infobox . 4 data/basis_tree_depth4.json
 python3 scripts/bfs_full.py . 4 data/basis_tree_depth4.json
 ```
 
+> ⚠️ **The path argument cannot be an empty string.** `bfs_one_level.py ""`
+> fails with `ERR: cannot resolve path: ""` — `str_to_obj("")` returns void,
+> and the script exits with the resolve-failure error. Use `"."` for the
+> basis root (the basis identifier is anonymous; `obj_to_str(basis)` returns
+> the empty string, but the **string literal** `"."` is what `str_to_obj`
+> expects). See [GFT-2 below](#gft-2-empty-string-root-path-rejected) for
+> the underlying reason.
+
 Both scripts run on the **WSL2 / Docker container** that hosts the bridge to
 Plant Simulation. Default target is `host.docker.internal:50007` (matches
 `local-simtalk-execution`'s default).
@@ -128,6 +151,13 @@ Their type may be anything Plant Simulation supports: `Method`, `Variable`,
 | Avoid `prompt` / `infoBox` / `promptList*` / writing undeclared global attrs | Modal trap — server blocks until GUI click (lifelines §4) |
 | `param` declarations are silently accepted but not bound by simtalk_run | We bake the path into the code instead (lifelines §A2) |
 | **Always `infoBox(text, false)` on entry, close twice on exit** | Skill convention from `local-simtalk-execution` v18→v19 — gives the GUI operator a visible signal that a BFS is in flight. Pass `--no-infobox` for batch runs |
+
+### Skill-specific quirks
+
+| # | Quirk | Workaround |
+|---|---|---|
+| GFT-1 | `bfs_one_level.py` truncates stdout for sub-frames with > ~130 children. A sub-frame with 142 children (`Factory51`) hits `ERR: unbalanced braces after marker` — the single-shot JSON dump exceeds the readlog buffer / one-shot log emission limit | Use `bfs_full.py --no-infobox .Models.<Subframe> 1 data/<subframe>_children.json` (depth-1 recursive, writes to disk) instead of stdout for large sub-frames. The `bfs_full.py` driver writes the JSON to a file and avoids stdout buffering constraints. See `references/exploration-log.md` §"Day 2 — large-subframe JSON-dump limit" |
+| GFT-2 | Empty-string root path is rejected: `bfs_one_level.py ""` fails with `ERR: cannot resolve path: ""`. `str_to_obj("")` returns void, and the script's resolve-failure path exits with that error | Use `"."` for the basis root. The basis identifier is anonymous (`obj_to_str(basis)` returns `""`), but the **string literal** `"."` is what `str_to_obj` expects — `"."` and `""` are different inputs to the parser |
 
 ## Path resolution
 

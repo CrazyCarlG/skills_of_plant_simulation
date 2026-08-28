@@ -1,0 +1,40 @@
+{
+  "skill_name": "local-simtalk-create-method-object",
+  "evals": [
+    {
+      "id": 1,
+      "eval_name": "create-empty-method-cn",
+      "prompt": "我想在 .Models.Model 下加一个空的 method,名字叫 count_parts,父类用默认的 .InformationFlow.Method。先别写代码,我只是想先把容器建出来。",
+      "expected_output": "Skill应：(1) 读 references/simtalk-reserved-words.md (count_parts 不撞) (2) 调 scripts/create_method_object.py --frame .Models.Model --method-name count_parts (3) 输出 JSON envelope 含 ok=true, method_path=.Models.Model.count_parts, parent_class=.InformationFlow.Method, internal_class_type=Method。验证该 Method 已存在且 program 为空。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "eval_name": "reject-simtalk-reserved-word",
+      "prompt": "Try to create a Method named `method` (lowercase) under `.Models.Model`. It should fail because `method` is a SimTalk reserved word (built-in data type).",
+      "expected_output": "Skill应：(1) 命中 SIMTALK_RESERVED_WORDS 集合 (2) 在调用 class_ops.py duplicate 之前就退出 (3) 输出 envelope {ok: false, error: name_is_simtalk_reserved_word, detail: 'method' collides with a SimTalk data type...} (4) 服务器上没有任何 Method 被创建。",
+      "files": []
+    },
+    {
+      "id": 3,
+      "eval_name": "custom-parent-class",
+      "prompt": "我有个自定义 Method 父类 `.UserObjects.LoggingMethod`,它继承自 InformationFlow.Method,带一个 LogLevel 用户属性。现在请在 `.Models.Model` 下新建一个 method 叫 `log_warn`,父类指定为 `.UserObjects.LoggingMethod`。",
+      "expected_output": "Skill应：(1) 调 scripts/create_method_object.py --frame .Models.Model --method-name log_warn --parent-class .UserObjects.LoggingMethod (2) 验证 .UserObjects.LoggingMethod 存在且 internalclasstype=Method (3) 输出 envelope 含 ok=true, origin=.UserObjects.LoggingMethod, class=.UserObjects.LoggingMethod (4) 服务器上 .Models.Model.log_warn 已建好,空 program,父类正确。",
+      "files": []
+    },
+    {
+      "id": 4,
+      "eval_name": "name-collision-rejection",
+      "prompt": "Try to create a Method named `Method` (the Frame's auto-generated default Method) under `.Models.Model`. It should fail with a name collision error.",
+      "expected_output": "Skill应：(1) 'Method' 在 SIMTALK_RESERVED_WORDS 里(case-insensitive 比较) (2) 在调 class_ops.py duplicate 之前退出 (3) 输出 envelope {ok: false, error: name_is_simtalk_reserved_word}。如果 reserved-word 检查绕过,则 inspect 会发现 .Models.Model.Method 已存在,返回 name_collision 错误。",
+      "files": []
+    },
+    {
+      "id": 5,
+      "eval_name": "orchestrate-write-simtalk-create-method-object",
+      "prompt": "写一个与 .P4_CTU.AdvancedObject.Software.RCS.m_CalculatePro 一样功能的代码,附上注释。注意:这次的目标 method 还没建好,需要先用 local-simtalk-create-method-object 创建一个名为 m_CalculatePro_claude 的容器,然后再用 write_simtalk 写代码。",
+      "expected_output": "Skill应：(1) 发现用户没指定目标 Method 路径,delegate 给 local-simtalk-create-method-object (2) create-method-object 创建 .P4_CTU.AdvancedObject.Software.RCS.m_CalculatePro_claude 容器 (3) write_simtalk 写带中文注释的 43 行代码到该 Method (4) probe_methods.py 验证 program_len=1827, has_syntax_error=false。",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+ var rack,framerack:object
+ var rackmarker:object
+ var maxrow,col:integer
+ var binid:string
+ for var i:=1 to Tab_RackMarker.YDim
+   rack := Tab_RackMarker["rack",i]
+   framerack := rack.~
+   rackmarker := Tab_RackMarker["Marker",i]
+   col := Tab_RackMarker["col",i]
+   maxrow := rack.YDim
+
+   for var j := 2 to maxrow
+      binid := framerack.name + "_" + num_to_str(col)+ "_" + num_to_str(j)
+      for var k := 1 to rackmarker.numpred
+         if rackmarker.pred(k).origin.name = "CTURackMarker"
+            tab_binstate["CTUMarker",binid] := rackmarker.pred(k)
+         end
+	  next
+
+    next
+ next

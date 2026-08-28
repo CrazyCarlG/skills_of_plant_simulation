@@ -1,0 +1,75 @@
+var ordertype:string
+m_logger("INFO","Excuter触发中")
+var bin:string
+while tab_taskPool.ydim > 0
+	tab_TransportationTask_AGV.sort("Priority","TaskTime",["down","up"])
+	m_logger("INFO","将订单根据TaskTime,Priority进行排序")
+	m_logger("INFO","当前订单池，有"+num_to_str(tab_taskPool.ydim)+"票订单")
+	for var i:=1 to tab_taskPool.ydim
+
+		if tab_taskPool["State",i] ="not start"
+			m_logger("INFO","在"+num_to_str(i)+"行找到not start订单")
+			ordertype:= tab_taskPool["TaskType",i]
+			switch ordertype
+			case "In"
+				m_logger("INFO",num_to_str(i)+"行订单为入库订单")
+				--获取空bin位
+				bin := m_getFreeBin(tab_taskPool["MU",i])
+				if bin = "" then
+					m_logger("INFO","在"+num_to_str(i)+"行订单无法找到bin")
+					continue --不执行了，等下一次循环再执行
+				end
+				tab_taskPool["BinID",i] := bin
+				m_logger("INFO","赋值给"+num_to_str(i)+"行订单binID"+bin)
+				--创建AGV运输订单
+				if m_CreateTransTask_AGV_In(tab_taskPool["MU",i],tab_taskPool["TaskTime",i],tab_taskPool["Priority",i])
+					m_logger("INFO",num_to_str(i)+"行订单，AGV 运输任务创建完成")
+					tab_taskPool["State",i] := "created AGV transported task"
+				else
+					continue
+				end
+
+				--创建CTU运输订单
+				if m_CreateTransportationTask_CTU_In(tab_taskPool["MU",i],bin,tab_taskPool["TaskTime",i],tab_taskPool["Priority",i])
+					m_logger("INFO",num_to_str(i)+"行订单，CTU运输任务创建完成")
+					tab_taskPool["State",i] := "created CTU transported task"
+				else
+					continue
+				end
+
+
+			case "Out"
+
+				m_logger("INFO",num_to_str(i)+"行订单为出库订单")
+
+				--创建CTU运输订单
+				if m_CreateTransportationTask_CTU_Out(tab_taskPool["MU",i],tab_taskPool["TaskTime",i],tab_taskPool["Priority",i])
+ 					m_logger("INFO",num_to_str(i)+"行订单，CTU运输任务创建完成")
+ 					tab_taskPool["State",i] := "created CTU transported task"
+ 				else
+ 					continue
+ 				end
+ 				--创建AGV运输订单
+				if m_CreateTransTask_AGV_Out(tab_taskPool["MU",i],tab_taskPool["TaskTime",i],tab_taskPool["Priority",i])
+					m_logger("INFO",num_to_str(i)+"行订单，AGV运输任务创建完成")
+					tab_taskPool["State",i] := "created AGV transported task"
+				else
+					continue
+				end
+
+ 			case "Move"
+ 				debug
+ 			else
+ 				debug
+
+ 			end
+
+ 		end
+ 	next
+ 	m_logger("INFO","Excuter完成一次轮询，等待下次轮询")
+ 	m_AGVExcuter_triggerpoint
+ 	m_CTUExcuter_triggerpoint
+ 	wait 60 --每一分钟更新下
+
+ end
+ TaskExcuter_Running := false

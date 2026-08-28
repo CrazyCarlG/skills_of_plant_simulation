@@ -101,3 +101,56 @@ rn_pass = (rn.get("result") == "success"
 ## 完整 Quirks 表参见
 
 `local-simtalk-execution/references/message-schema.md`（Quirks 列表） + `workflow.md`（避免清单 + 错误重试策略表）。
+
+---
+
+## Q-S1 — `s.length` / `s.numCharacters` are NOT SimTalk string methods
+
+**现象**：
+
+```simtalk
+var s: string := "hello"
+print s.length            -- ❌ 软失败: "A 'string' cannot accept the method 'Length'..."
+print s.numCharacters     -- ❌ 同上: "A 'string' cannot accept the method 'NumCharacters'..."
+print s.size              -- ❌ 同上: "Unknown identifier 'Size'"
+```
+
+`length` 在 Plant Simulation 是**带单位的距离度量类型**（mm / cm / m / ft），不是 string 的属性。`numCharacters` 是其他语言（Java / JS）的 string 属性名，SimTalk 没有这个名字。
+
+**正确的查字符串长度方式**：
+
+```simtalk
+var s: string := "hello"
+print strLen(s)           -- ✅ 5 (integer)
+```
+
+`strLen` 是 `predefined-functions-i-os-math-string-datetime/string-functions/string-functions.md`
+列出的 top-level 函数（不是 method-call 形式）。所有字符串长度场景统一走 `strLen(s)`。
+
+**来源**：`log/2026-08-27_misc-pid-env-path-cwd.md` §"Steps Test 2 first attempt" lines 51-59 + §"What this run validated / learned" lines 100-105.
+
+---
+
+## Q-S2 — String slicing uses `strCopy(s, pos, n)`, not `s.copy(...)` or `s.substring(...)`
+
+**现象**：
+
+```simtalk
+var s: string := "hello world"
+print s.copy(1, 5)          -- ❌ 软失败: "A 'string' cannot accept the method 'Copy'..."
+print s.substring(1, 5)     -- ❌ 同上: "A 'string' cannot accept the method 'Substring'..."
+```
+
+**正确的子串操作函数**（全部 top-level，不是 method-call 形式）：
+
+| 操作 | 函数 |
+|---|---|
+| 从 `pos` 取 `n` 个字符（正序） | `strCopy(s, pos, n)` |
+| 从 `pos` 取 `n` 个字符（反序） | `strRcopy(s, pos, n)` |
+| 找 `sub` 在 `s` 中是否出现 | `strIncl(s, sub)` |
+| 找 `sub` 在 `s` 中不出现的最早位置 | `strOmit(s, sub)` |
+| 替换 `old` 为 `new` | `strReplace(s, old, new)` |
+
+Plant Simulation 的 string-functions help 列出的全是 top-level 函数 — 没有 method-call 形式的 substring API。从其他语言移植代码时把所有 `s.copy(...)` / `s.substring(...)` / `s.slice(...)` 转成 `strCopy(...)` / `strRcopy(...)`。
+
+**来源**：`log/2026-08-27_misc-pid-env-path-cwd.md` §"What this run validated / learned" lines 107-109.

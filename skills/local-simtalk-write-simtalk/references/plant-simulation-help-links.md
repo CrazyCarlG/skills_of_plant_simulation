@@ -1,6 +1,6 @@
 # Plant Simulation Help — Knowledge Base Index
 
-按主题快速定位 `/root/skills_of_plant_simulation/01-plantsimulation-knowledge/
+按主题快速定位 `01-plantsimulation-knowledge/
 01-plant-simulation-help/` 下的对应文档。本 skill 写代码时随时查。
 
 ## 必读（每次写代码前）
@@ -64,6 +64,6 @@
 
 ## 完整索引
 
-最权威的入口：`/root/skills_of_plant_simulation/01-plantsimulation-knowledge/
+最权威的入口：`01-plantsimulation-knowledge/
 01-plant-simulation-help/objects/` 下的目录树。读不清楚时用本地 `find` 或
-`grep -r "your_keyword" /root/skills_of_plant_simulation/01-plantsimulation-knowledge/`。
+`grep -r "your_keyword" 01-plantsimulation-knowledge/`。

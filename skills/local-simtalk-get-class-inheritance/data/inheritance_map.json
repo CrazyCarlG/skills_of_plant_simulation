@@ -1,153 +1,403 @@
 {
   "captured_at": "2026-08-26",
-  "total_classes": 16,
+  "total_classes": 30,
   "root_classes": [
-    ".Models.internal.HtmlReport|HtmlReport",
-    ".Models.internal.LiesMich|Comment",
-    ".Models.internal.ReadMe|Comment",
-    ".Models.internal.SelDlg|Dialog",
-    ".SimtalkClaude.Objects.DataList|DataList",
-    ".SimtalkClaude.Objects.Dialog|Dialog",
-    ".SimtalkClaude.Objects.HtmlReport|HtmlReport",
-    ".SimtalkClaude.connection.Logger|Frame",
-    ".SimtalkClaude.connection.SocketClient|Frame",
-    ".SimtalkClaude.connection.SocketServer|Frame",
-    ".SimtalkClaude.main.SimtalkAction|Frame",
-    ".SimtalkClaude.main.SocketClient|Frame",
-    ".SimtalkClaude.main.SocketServer|Frame",
-    ".SimtalkClaude.main|Frame",
-    ".SimtalkClaude.src.SimtalkAction|Frame",
-    ".UserInterface.Comment|Comment"
+    ".ModelAssistants.AIBot",
+    ".ModelAssistants.Assistants",
+    ".ModelAssistants.AutoSave",
+    ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+    ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+    ".ModelAssistants.Calculator3D",
+    ".ModelAssistants.ClassAssistant",
+    ".ModelAssistants.ClassAttrDepulicator",
+    ".ModelAssistants.FrameEncrypt",
+    ".ModelAssistants.FrameReplacer",
+    ".ModelAssistants.ModelSyncCopy",
+    ".ModelAssistants.Namer",
+    ".ModelAssistants.QuickArrayTool"
   ],
-  "derived_classes": [],
+  "derived_classes": [
+    {
+      "path": ".ModelAssistants.AIBot.Dialog",
+      "name": "Dialog",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.AIBot.DialogNavigator",
+      "name": "DialogNavigator",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.Assistants.DialogAssistants",
+      "name": "DialogAssistants",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.AutoSave.Dialog",
+      "name": "Dialog",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.BasicObjects.MaterialFlow.TestRibbonFrame",
+      "name": "TestRibbonFrame",
+      "type": "Frame",
+      "origin": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+      "originroot": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+      "class": "VOID"
+    },
+    {
+      "path": ".ModelAssistants.Calculator3D.Dialog",
+      "name": "Dialog",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.ClassAssistant.DialogBsc",
+      "name": "DialogBsc",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.ClassAssistant.DialogClassAssistant",
+      "name": "DialogClassAssistant",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.ClassAssistant.Frame",
+      "name": "Frame",
+      "type": "Frame",
+      "origin": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+      "originroot": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+      "class": ".ModelAssistants.BasicObjects.MaterialFlow.Frame"
+    },
+    {
+      "path": ".ModelAssistants.ClassAttrDepulicator.DialogClassAttrDepulicator",
+      "name": "DialogClassAttrDepulicator",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.FrameEncrypt.DialogEncrypt",
+      "name": "DialogEncrypt",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.FrameReplacer.DialogReplacer",
+      "name": "DialogReplacer",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.ModelSyncCopy.DialogModelSyncCopy",
+      "name": "DialogModelSyncCopy",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.Namer.DialogNamer",
+      "name": "DialogNamer",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.Namer.DialogSortKey",
+      "name": "DialogSortKey",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    },
+    {
+      "path": ".ModelAssistants.Namer.Frame",
+      "name": "Frame",
+      "type": "Frame",
+      "origin": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+      "originroot": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+      "class": ".ModelAssistants.BasicObjects.MaterialFlow.Frame"
+    },
+    {
+      "path": ".ModelAssistants.QuickArrayTool.DialogArraryTool",
+      "name": "DialogArraryTool",
+      "type": "Dialog",
+      "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+      "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+    }
+  ],
   "tree": {
+    ".ModelAssistants.BasicObjects.MaterialFlow.Frame": [
+      {
+        "path": ".ModelAssistants.BasicObjects.MaterialFlow.TestRibbonFrame",
+        "name": "TestRibbonFrame",
+        "type": "Frame",
+        "origin": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+        "originroot": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+        "class": "VOID"
+      },
+      {
+        "path": ".ModelAssistants.ClassAssistant.Frame",
+        "name": "Frame",
+        "type": "Frame",
+        "origin": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+        "originroot": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+        "class": ".ModelAssistants.BasicObjects.MaterialFlow.Frame"
+      },
+      {
+        "path": ".ModelAssistants.Namer.Frame",
+        "name": "Frame",
+        "type": "Frame",
+        "origin": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+        "originroot": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+        "class": ".ModelAssistants.BasicObjects.MaterialFlow.Frame"
+      }
+    ],
+    ".ModelAssistants.BasicObjects.UserInterface.Dialog": [
+      {
+        "path": ".ModelAssistants.AIBot.Dialog",
+        "name": "Dialog",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.AIBot.DialogNavigator",
+        "name": "DialogNavigator",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.Assistants.DialogAssistants",
+        "name": "DialogAssistants",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.AutoSave.Dialog",
+        "name": "Dialog",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.Calculator3D.Dialog",
+        "name": "Dialog",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.ClassAssistant.DialogBsc",
+        "name": "DialogBsc",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.ClassAssistant.DialogClassAssistant",
+        "name": "DialogClassAssistant",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.ClassAttrDepulicator.DialogClassAttrDepulicator",
+        "name": "DialogClassAttrDepulicator",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.FrameEncrypt.DialogEncrypt",
+        "name": "DialogEncrypt",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.FrameReplacer.DialogReplacer",
+        "name": "DialogReplacer",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.ModelSyncCopy.DialogModelSyncCopy",
+        "name": "DialogModelSyncCopy",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.Namer.DialogNamer",
+        "name": "DialogNamer",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.Namer.DialogSortKey",
+        "name": "DialogSortKey",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      },
+      {
+        "path": ".ModelAssistants.QuickArrayTool.DialogArraryTool",
+        "name": "DialogArraryTool",
+        "type": "Dialog",
+        "origin": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "class": ".ModelAssistants.BasicObjects.UserInterface.Dialog"
+      }
+    ],
     "VOID": [
       {
-        "path": ".Models.internal.HtmlReport|HtmlReport",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.AIBot",
+        "name": "AIBot",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.AIBot",
         "class": "VOID"
       },
       {
-        "path": ".Models.internal.LiesMich|Comment",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.Assistants",
+        "name": "Assistants",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.Assistants",
         "class": "VOID"
       },
       {
-        "path": ".Models.internal.ReadMe|Comment",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.AutoSave",
+        "name": "AutoSave",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.AutoSave",
         "class": "VOID"
       },
       {
-        "path": ".Models.internal.SelDlg|Dialog",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
+        "name": "Frame",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.BasicObjects.MaterialFlow.Frame",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.Objects.DataList|DataList",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
+        "name": "Dialog",
+        "type": "Dialog",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.BasicObjects.UserInterface.Dialog",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.Objects.Dialog|Dialog",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.Calculator3D",
+        "name": "Calculator3D",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.Calculator3D",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.Objects.HtmlReport|HtmlReport",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.ClassAssistant",
+        "name": "ClassAssistant",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.ClassAssistant",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.connection.Logger|Frame",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.ClassAttrDepulicator",
+        "name": "ClassAttrDepulicator",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.ClassAttrDepulicator",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.connection.SocketClient|Frame",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.FrameEncrypt",
+        "name": "FrameEncrypt",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.FrameEncrypt",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.connection.SocketServer|Frame",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.FrameReplacer",
+        "name": "FrameReplacer",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.FrameReplacer",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.main.SimtalkAction|Frame",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.ModelSyncCopy",
+        "name": "ModelSyncCopy",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.ModelSyncCopy",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.main.SocketClient|Frame",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.Namer",
+        "name": "Namer",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.Namer",
         "class": "VOID"
       },
       {
-        "path": ".SimtalkClaude.main.SocketServer|Frame",
-        "name": "",
-        "type": "",
+        "path": ".ModelAssistants.QuickArrayTool",
+        "name": "QuickArrayTool",
+        "type": "Frame",
         "origin": "VOID",
-        "originroot": "VOID",
-        "class": "VOID"
-      },
-      {
-        "path": ".SimtalkClaude.main|Frame",
-        "name": "",
-        "type": "",
-        "origin": "VOID",
-        "originroot": "VOID",
-        "class": "VOID"
-      },
-      {
-        "path": ".SimtalkClaude.src.SimtalkAction|Frame",
-        "name": "",
-        "type": "",
-        "origin": "VOID",
-        "originroot": "VOID",
-        "class": "VOID"
-      },
-      {
-        "path": ".UserInterface.Comment|Comment",
-        "name": "",
-        "type": "",
-        "origin": "VOID",
-        "originroot": "VOID",
+        "originroot": ".ModelAssistants.QuickArrayTool",
         "class": "VOID"
       }
     ]

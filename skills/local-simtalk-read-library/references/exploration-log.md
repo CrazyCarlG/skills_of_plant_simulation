@@ -124,7 +124,54 @@ output is in `data/library_dump.json`.
   The current skill produces the input data; the search skill
   would be a separate add-on.
 
-## Artifacts produced
+### Day 2 (2026-08-27) — TSV post-parse broke under multi-line program bodies
+
+After the v15 readlog fix was stable, we ran `render_library.py`
+against the freshly-probed TSV and got back only **4 rows** for a
+4-method dump. Investigation showed that `parse_tsv` was using a
+naïve per-line `ln.split("\t")` — which works fine for the probe's
+metadata extraction layer (because the probe's `###LIB_BEGIN_<i>###`
+markers bracket each method) but breaks **downstream** of the probe,
+once those markers have been consumed.
+
+The probe writes the verbatim SimTalk source as TSV field 8
+(`program`). Multi-line Method bodies embed real `\n` characters in
+that field, so each method becomes 2+ physical TSV lines. The naïve
+parser split each body into phantom rows; methods appeared to have
+huge `program_len` and `program` fields containing the **metadata
+lines of the next method**.
+
+Fix (LIB-10 in `references/protocol-notes.md`): record-header
+detection. A real record starts at a line whose first field begins
+with `.` and has ≥ 8 tab fields. Subsequent lines until the next such
+header are accumulated into that record's `program` field. With this
+heuristic, the 4-method dump returns 4 rows with the correct bodies.
+
+### Day 2 (2026-08-27) — v15 readlog regression context for the 8-batch heuristic
+
+The `8 methods per batch` cap documented in §LIB-7 is specifically
+calibrated against the v15+ `readlog` regression, not against the v13
+fixed-buffer behaviour. Specifically:
+
+- With v13 (now deprecated), a single 20-method batch produced a
+  ~120 KB `readlog` response that round-tripped correctly (buffer
+  reset between calls, no inflation). We could batch ~20 with no
+  issues.
+- With v15+ (current production build), a 20-method batch's first
+  `readlog` returns the full content; the second `readlog` (called
+  for the next batch in a tight loop) inflates the buffer to ~250 KB
+  and truncates at 65536 bytes. JSON parse fails with
+  `Unterminated string`.
+
+So the 8-batch heuristic isn't "smaller is safer" — it's "small
+enough to fit in one readlog response **before** the buffer doubles"
+(v15 buffer inflation = ~2× per `readlog` call in a tight loop; 8 ×
+~5 KB = ~40 KB comfortably under 65536 with margin for inflation).
+
+If a future server version fixes the buffer inflation, this number
+can be raised. Re-tune empirically: bump from 8 → 12 → 16 → 20 and
+run 5 consecutive batches; if any readlog response truncates, drop
+back one step.
 
 | File | Contents |
 |---|---|
@@ -132,7 +179,7 @@ output is in `data/library_dump.json`.
 | `scripts/probe_methods.py` | Batch probe with marker extraction |
 | `scripts/render_library.py` | TSV → structured dump + summary |
 | `scripts/read_library.py` | End-to-end driver |
-| `references/protocol-notes.md` | §LIB-1 through §LIB-9 quirks + fixes |
+| `references/protocol-notes.md` | §LIB-1 through §LIB-10 quirks + fixes |
 | `references/exploration-log.md` | This file |
 | `example/example.md` | Worked example with observed outputs |
 | `data/library_dump.json` | Captured dump of the 2026-08-26 model |

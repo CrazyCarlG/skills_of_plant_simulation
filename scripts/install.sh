@@ -18,6 +18,19 @@ set -euo pipefail
 REPO_ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
 SCRIPT_DIR="$REPO_ROOT/scripts"
 
+# Initialize git submodules if any are declared but unpopulated.
+# This makes a plain `git clone` + `bash scripts/install.sh` workflow
+# work without requiring `git clone --recurse-submodules` up front.
+if [[ -f "$REPO_ROOT/.gitmodules" ]]; then
+  if ! git -C "$REPO_ROOT" submodule status --recursive >/dev/null 2>&1 \
+     || git -C "$REPO_ROOT" submodule status --recursive 2>/dev/null \
+        | grep -qE '^-'; then
+    echo "--- initializing git submodules ---"
+    git -C "$REPO_ROOT" submodule update --init --recursive
+    echo
+  fi
+fi
+
 do_skills=1
 do_agents=1
 mode="link"

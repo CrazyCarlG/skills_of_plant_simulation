@@ -4,11 +4,40 @@
 
 ## 目录约定 / Directory Convention
 
+### 最小骨架 / Minimum skeleton
+
 ```
 skills/<skill-name>/
 ├── SKILL.md              # 入口：name + description + 主流程（保持精简）
 └── references/           # 按需加载的详细提示词/模板（渐进式披露）
 ```
+
+### 可选子目录 / Optional subdirectories
+
+| 子目录 Subdir | 用途 Purpose | 是否推荐 Recommended |
+|---|---|---|
+| `references/` | 按需加载的提示词、模板、quirks 速查 | **强制 Required** |
+| `examples/` | 完整工作流示例（≥1 个完整用例） | **推荐 Recommended** |
+| `scripts/` | 可执行辅助脚本（Python / bash） | **推荐 Recommended** |
+| `data/` | 静态测试 fixture、参考模型 JSON | 可选 Optional |
+| `evals/` | 评分 / 回归测试用例 | 可选 Optional |
+| `log/` | per-session 运行日志（**不入库**） | 运行时产物 |
+| `usage_log/` | per-call 调用统计（**不入库**） | 运行时产物 |
+| `code_log/` | per-call 代码片段存档（**不入库**） | 运行时产物 |
+
+### 命名一致性 / Naming consistency
+
+- 用 **`examples/`**（复数），不用 `example/`。
+- 日志三类选一个最贴近语义的，**避免在同一个 skill 里同时存在 `log/`、`usage_log/`、`code_log/`**。一般约定：
+  - `log/` — 高层会话小结 / 经验沉淀（人读）
+  - `usage_log/` — 每次调用的元数据（机器读）
+  - `code_log/` — 每次调用的原始输入/输出（机器读、可能很大）
+
+### 反例 / Anti-patterns
+
+- 测试 fixture / path list / 临时输出文件不要放在 skill 根目录 —— 归到 `data/` 或 `examples/`。
+- 不要让 `references/` 超过 200 行单文件 —— 拆细，按子主题分文件。
+- `SKILL.md` 不要直接列 hard-coded 完整路径（绝对路径尤其禁止），用 `01-plantsimulation-knowledge/...` 这种仓库根相对形式。
 
 ## SKILL.md 格式 / SKILL.md Format
 

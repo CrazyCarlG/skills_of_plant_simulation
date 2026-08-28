@@ -1,0 +1,19 @@
+param rack:object
+
+var depth_rack,ex_rack:object
+switch rack.movementfrom_side
+case "left"
+	depth_rack:= rack.rack1
+	ex_rack:=rack.rack2
+case "right"
+	depth_rack:= rack.rack2
+	ex_rack:=rack.rack1
+end
+var binid:string
+var CTU_marker :object
+for var i:=1 to rack.v_x--col
+	for var j:=2 to rack.v_y--row
+		binid := rack.name + "_"+ num_to_str(i)+"_"+num_to_str(j)
+		Tab_binState.appendrow(binid,ex_rack,depth_rack,j,i,void,void,"Available",0)
+	next
+next

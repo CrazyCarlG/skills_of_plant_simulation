@@ -16,7 +16,7 @@
 
 | 步骤 | 工具 | 产出 |
 | --- | --- | --- |
-| 1 | `/root/skills_of_plant_simulation/01-plantsimulation-knowledge/01-plant-simulation-help/` | 读 SimTalk 注释语法 / Method 对象属性 / `obj.execute` 生命周期 |
+| 1 | `01-plantsimulation-knowledge/01-plant-simulation-help/` | 读 SimTalk 注释语法 / Method 对象属性 / `obj.execute` 生命周期 |
 | 2 | `local-simtalk-read-library/scripts/read_library.py --no-infobox --tree-depth 5` | 整个模型的 Method inventory + 源 |
 | 3 | `grep` 当前方法名跨库查 caller | 拿到所有 `executenewcallchain` / 直接调用的入口 |
 | 4 | 读 `data/library_dump.json` 里 target 的 `program` | 拿到原始 body 用于字节级对比 |
@@ -41,7 +41,7 @@
 ### 步骤 2 — 跑 `read_library.py` 抓 `.SimtalkClaude2` inventory
 
 ```bash
-python3 /root/skills_of_plant_simulation/skills/local-simtalk-read-library/scripts/read_library.py \
+python3 skills/local-simtalk-read-library/scripts/read_library.py \
     --no-infobox --tree-depth 5 --out /tmp/simtalkclaude2_prelude.json
 ```
 

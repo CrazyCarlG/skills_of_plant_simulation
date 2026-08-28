@@ -152,7 +152,7 @@ payload = json.dumps({"type":"simtalk_run",
                       "action_id":"x",
                       "simtalk_code":code}) + "||END||"
 subprocess.run(["python3",
-  "/root/skills_of_plant_simulation/skills/local-simtalk-execution/scripts/socket_client.py",
+  "skills/local-simtalk-execution/scripts/socket_client.py",
   "--host","host.docker.internal","--port","50007",
   "--data", payload,
   "--resp-mode","delimiter","--resp-delimiter","||END||",
@@ -246,6 +246,7 @@ see that doc for the full list; the most relevant subset:
 | LIB-4 | An encrypted Method's `Program` returns opaque bytes (the encryption is server-side) | Skip those rows: when `Encrypted == true`, replace `program` with the literal string `"<encrypted>"` so downstream tools can detect and ignore |
 | LIB-5 | Reading `&Method.Program` via `str_to_obj(p).Program` is the **same** as `&str_to_obj(p).Program` — both work because `str_to_obj` returns an `object` reference. But `Method` requires `&` for direct attribute access (`MyMethod.Program` won't compile because plain `MyMethod` is the source-code content, not the object) | Always go through `var o: object := str_to_obj(p); &o.Program` |
 | LIB-6 | `infoBox` requires a GUI session | Use `--no-infobox` in CI / headless contexts |
+| LIB-7 | The TSV field 8 (`program`) is **multi-line** — naïve per-line `ln.split("\t")` in `render_library.py` parses a 4-method dump into 7+ phantom rows, with each method's `program` containing the metadata lines of the next method | `render_library.py` `parse_tsv` detects record headers (first field starts with `.`, ≥ 8 tab fields) and accumulates continuation lines into field 8 until the next record starts. See `references/protocol-notes.md` §LIB-10 |
 
 ## Method-object facts (from the knowledge base)
 

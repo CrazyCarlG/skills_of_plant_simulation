@@ -5,21 +5,28 @@
       "id": 1,
       "eval_name": "write-into-existing-method-cn",
       "prompt": "我想在 .CTU.Frame.Program 这个 method 里加一段 simtalk，要求：每次调用时打印字符串 \"frame entered\"，然后把 self.i 自增 1。写好后告诉我写入了多少行，路径是什么。",
-      "expected_output": "Skill应：(1) 读Plant Simulation知识库(Method对象/SimTalk语法) (2) 确认目标Frame=.CTU.Frame (3) 因为是已有方法,跳过创建,直接调用scripts/write_simtalk.py --path .CTU.Frame.Program --code-file <tmp>. 输出应包含'Method path : .CTU.Frame.Program (existing)'和'N lines'。",
+      "expected_output": "Skill应：(1) 读Plant Simulation知识库(Method对象/SimTalk语法) (2) 确认目标Method=.CTU.Frame.Program (3) 因为是已有方法,直接调用scripts/write_simtalk.py --path .CTU.Frame.Program --code-file <tmp>。输出应包含'Method path : .CTU.Frame.Program (existing)'和'N lines'。",
       "files": []
     },
     {
       "id": 2,
-      "eval_name": "create-new-method-then-write-en",
-      "prompt": "Add a brand-new Method named `count_parts` under `.Models.Model`. Default parent class `.InformationFlow.Method`. The code should count current MUs in the system and print the total. Verify it actually got created and the code compiles.",
-      "expected_output": "Skill应：(1) 读知识库(getMUs, list.length, print) (2) 确认Frame=.Models.Model (3) 走Step 5创建+Step 7写代码 (4) 调用scripts/write_simtalk.py --frame .Models.Model --new-method count_parts --code-file <tmp>。输出应含'creating new Method instance'、'new Method resolves; internalclasstype OK'、'writing N lines'和'verify method executes OK after edit'。",
+      "eval_name": "reject-missing-method-with-create-method-object-hint",
+      "prompt": "用户说: \"在 .Models.Model.thputput_throughput_method 里写一段计算 throughput 的 simtalk 代码\", 但 .Models.Model.thputput_throughput_method 不存在。Skill 应该怎么处理?",
+      "expected_output": "Skill应：(1) 尝试探测 .Models.Model.thputput_throughput_method 是否存在 (用 probe_methods.py 或 class_ops.py inspect) (2) 发现不存在 → delegate 给 local-simtalk-create-method-object --frame .Models.Model --method-name thputput_throughput_method 创建空容器 (3) 拿到新 Method 路径后,调用 write_simtalk.py --path <new_path> --code-file <tmp> (4) 输出应含'method_path' from create-method-object + 'Method path : ... (existing)' from write_simtalk + 'N lines written'。",
       "files": []
     },
     {
       "id": 3,
-      "eval_name": "custom-parent-class-cn",
-      "prompt": "我有个自定义 Method 父类 `.UserObjects.LoggingMethod`，它继承自 InformationFlow.Method，带一个 LogLevel 用户属性。现在请在 `.Models.Model` 下新建一个 method 叫 `log_warn`，父类指定为 `.UserObjects.LoggingMethod`，代码内容是：检查 @.LogLevel >= 2 时打印 \"[WARN] \" + 传入的字符串参数。注意 param 写法。",
-      "expected_output": "Skill应：(1) 读知识库 (2) 确认Frame=.Models.Model (3) 走Step 5创建（自定义父类）+Step 7写代码 (4) 调用scripts/write_simtalk.py --frame .Models.Model --new-method log_warn --parent-class .UserObjects.LoggingMethod --code-file <tmp>。源代码中应有'param msg: string'、'if @.LogLevel < 2 then return'、'print \"[WARN] \" + msg'等关键逻辑。",
+      "eval_name": "reject-non-method-target",
+      "prompt": "用户说: \"在 .MaterialFlow.Station 里写 SimTalk\" (.MaterialFlow.Station 是 Class Library 里的 Station 类,不是 Frame 实例)。Skill 应该如何处理?",
+      "expected_output": "Skill应：(1) 探测 .MaterialFlow.Station 的 InternalClassType → 'Station' (不是 'Method') (2) 报错：'--path 必须是已存在的 Method, .MaterialFlow.Station 是 Station (Class Library),不是 Method 实例' (3) 不创建任何东西 (create-method-object 拒绝 Class Library 路径,因为它要求 frame 必须是 Frame 类型) (4) 建议用户确认是否应该写到 .Models.Model 下的某个 Method。",
+      "files": []
+    },
+    {
+      "id": 4,
+      "eval_name": "annotated-copy-with-chinese-comments",
+      "prompt": "写一个与 .P4_CTU.AdvancedObject.Software.RCS.m_CalculatePro 一样功能的代码,附上注释。",
+      "expected_output": "Skill应：(1) probe_methods.py 读源方法 (2) 加 14 行 `SimTalk --` 中文注释 (3) 调用 write_simtalk.py --path .P4_CTU.AdvancedObject.Software.RCS.m_CalculatePro_claude --code-file <tmp> (4) probe_methods.py 验证 program_len=1827, has_syntax_error=false, 中文注释 UTF-8 无损。",
       "files": []
     }
   ]

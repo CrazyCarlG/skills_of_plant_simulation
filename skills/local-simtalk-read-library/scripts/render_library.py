@@ -22,27 +22,54 @@ import time
 
 
 def parse_tsv(path):
-    """Yield row dicts from the 8-field TSV."""
+    """Yield row dicts from the 8-field TSV.
+
+    The `program` field (field 7) may span multiple physical lines because
+    `probe_methods.py` writes literal newlines inside multi-line Method
+    bodies. Naïve per-line parsing splits each such body into phantom rows.
+    Recovery heuristic (LIB-7): a real record starts at a line whose first
+    field begins with `.` (Plant Simulation path) and has >= 8 tab-separated
+    fields. Lines after a record start until the next record start are
+    appended to that record's `program`.
+    """
     rows = []
     with open(path, encoding="utf-8") as f:
-        for ln in f:
-            ln = ln.rstrip("\n")
-            if not ln:
-                continue
-            parts = ln.split("\t")
-            if len(parts) < 8:
-                continue
-            prog = "\t".join(parts[7:])  # re-join any tabs we collapsed
-            rows.append({
-                "path": parts[0],
-                "name": parts[1],
-                "type": parts[2],
-                "encrypted": parts[3].lower() == "true",
-                "has_syntax_error": parts[4].lower() == "true",
-                "num_in_execution": parts[5],
-                "program_len": int(parts[6]) if parts[6].isdigit() else 0,
-                "program": prog,
-            })
+        raw_lines = f.readlines()
+
+    i = 0
+    while i < len(raw_lines):
+        ln = raw_lines[i].rstrip("\n")
+        if not ln:
+            i += 1
+            continue
+        parts = ln.split("\t")
+        # A record header: first field starts with '.', >= 8 tab fields.
+        if not (parts and parts[0].startswith(".") and len(parts) >= 8):
+            # Stray continuation outside any record — skip.
+            i += 1
+            continue
+        prog_lines = ["\t".join(parts[7:])]
+        i += 1
+        # Accumulate continuation lines until next record header or EOF.
+        while i < len(raw_lines):
+            nxt = raw_lines[i].rstrip("\n")
+            if nxt:
+                nxt_parts = nxt.split("\t")
+                if nxt_parts and nxt_parts[0].startswith(".") and len(nxt_parts) >= 8:
+                    break  # next record starts here
+            prog_lines.append(nxt)
+            i += 1
+        prog = "\n".join(prog_lines)
+        rows.append({
+            "path": parts[0],
+            "name": parts[1],
+            "type": parts[2],
+            "encrypted": parts[3].lower() == "true",
+            "has_syntax_error": parts[4].lower() == "true",
+            "num_in_execution": parts[5],
+            "program_len": int(parts[6]) if parts[6].isdigit() else 0,
+            "program": prog,
+        })
     return rows
 
 

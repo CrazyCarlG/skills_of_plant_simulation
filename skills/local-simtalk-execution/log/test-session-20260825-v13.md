@@ -14,7 +14,7 @@
 - **Server**: Plant Simulation（宿主机），TCP **50007**
 - **Client host**: WSL2 容器 → `host.docker.internal:50007`
 - **回包读取**：统一 `--resp-mode delimiter --resp-delimiter '||END||'`
-- **辅助客户端**：`/root/skills_of_plant_simulation/skills/local-simtalk-execution/scripts/socket_client.py`
+- **辅助客户端**：`skills/local-simtalk-execution/scripts/socket_client.py`
 
 ---
 

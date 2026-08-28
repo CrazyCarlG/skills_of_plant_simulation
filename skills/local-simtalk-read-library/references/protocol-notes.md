@@ -336,3 +336,115 @@ This pattern generalizes to any batched extraction that needs to
 carry structured per-item data (metadata + body, header + rows,
 etc.). It's worth keeping in mind for future skills that need to
 read multi-section data from Plant Simulation.
+
+---
+
+## §LIB-10 — TSV rows can span multiple physical lines (the `program` field contains newlines)
+
+### What it is
+
+`probe_methods.py` writes the verbatim SimTalk source into TSV field
+8 (`program`). The source is multi-line by construction — a Method
+that uses `if / else / end` blocks, `for / next`, `while`, etc. will
+have its source span several physical lines. `probe_methods.py` writes
+those newlines as **literal `\n` characters** in the TSV file (real
+newlines, not the two-character `\\n` escape). Naïve line-by-line
+parsers like
+
+```python
+for ln in open(path):
+    parts = ln.split("\t")
+    row = dict(zip(HEADER, parts))   # 💥
+```
+
+then split each method body into N phantom "rows" — methods appear to
+have huge `program_len` and `program` fields containing the metadata
+lines of the **next** method.
+
+Symptom (2026-08-27 `delta-r2` finding, regression after the
+encryption-handling fix): a 4-method dump came back with
+`total_methods=4` but `methods[0].program_len = 412` (containing two
+phantom rows of metadata) and `methods[1].name = "META_NAME=..."` (the
+literal metadata line being interpreted as a column value).
+
+### Why it matters here
+
+The per-method `###LIB_BEGIN_<i>###` / `###LIB_BODY_<i>###` /
+`###LIB_END_<i>###` markers in the **probe** layer (see §LIB-2 above)
+protect against this at the **readlog** extraction stage — the probe
+parser uses `BEGIN` / `END` markers to bracket each method body.
+
+But `render_library.py`'s `parse_tsv` is **downstream** of the probe:
+it reads the final `methods_raw.tsv` file. By that point the markers
+have been consumed and only the 8-field TSV rows remain, with real
+newlines embedded in field 8. The probe layer's markers are no longer
+available — only the heuristic that "field 8 may be multi-line".
+
+### The fix — record-header detection in `parse_tsv`
+
+`render_library.py`'s parser detects record headers and accumulates
+continuation lines into field 8:
+
+```python
+i = 0
+while i < len(raw_lines):
+    ln = raw_lines[i].rstrip("\n")
+    if not ln:
+        i += 1; continue
+    parts = ln.split("\t")
+    # A record header: first field starts with '.', >= 8 tab fields.
+    if not (parts and parts[0].startswith(".") and len(parts) >= 8):
+        # Stray continuation outside any record — skip.
+        i += 1; continue
+    prog_lines = ["\t".join(parts[7:])]
+    i += 1
+    # Accumulate continuation lines until next record header or EOF.
+    while i < len(raw_lines):
+        nxt = raw_lines[i].rstrip("\n")
+        if nxt:
+            nxt_parts = nxt.split("\t")
+            if nxt_parts and nxt_parts[0].startswith(".") and len(nxt_parts) >= 8:
+                break  # next record starts here
+        prog_lines.append(nxt)
+        i += 1
+    prog = "\n".join(prog_lines)
+    rows.append({"path": parts[0], ...})
+return rows
+```
+
+Heuristic: a real record starts at a line whose first field begins
+with `.` (Plant Simulation path) and has ≥ 8 tab-separated fields.
+Lines until the next such line are appended to that record's `program`.
+
+### Why this heuristic is safe
+
+- Plant Simulation paths always start with `.` (or are empty for the
+  anonymous basis root — but `probe_methods.py` only writes Method
+  paths, never basis).
+- TSV fields are 0-indexed; field 7 is `program`. The header row in
+  `methods_raw.tsv` (when present) doesn't start with `.` and has 8
+  fields, but the heuristic naturally skips it because the header
+  parser doesn't claim it as a record (no row is built without a
+  field-0 starting with `.`).
+- The embedded `program` field of a record can't itself start with
+  a `.` followed by 8 tab fields unless the **literal source code**
+  of a Method happens to have that shape. That's astronomically
+  unlikely in practice — Method source code rarely opens with a path
+  string followed by 8 tab characters. If you encounter this in
+  practice, switch the row-key heuristic to also check that field 1
+  looks like a valid Method display name (alphanumeric + underscore).
+
+### When to re-test the heuristic
+
+If a future probe script (e.g., one that includes the Method's
+inheritance chain in the TSV) ever drops below 8 fields or changes
+the leading column, update the `len(parts) >= 8` and `parts[0]
+.startswith(".")` checks in `parse_tsv` accordingly.
+
+### Sanity check after rendering
+
+After parsing, the total number of rows should equal the number of
+methods in the probe input. If you see fewer rows than expected,
+or rows whose `program` field contains text starting with
+`META_NAME=` / `META_PATH=` / etc., the parser has dropped a method —
+revert to the LIB-10 fix above.

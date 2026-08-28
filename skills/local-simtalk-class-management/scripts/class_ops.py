@@ -39,9 +39,9 @@ import re
 import subprocess
 import sys
 
-SIMTALK_SEND = (
-    "/root/skills_of_plant_simulation/skills/local-simtalk-execution/"
-    "scripts/simtalk_send.py"
+SIMTALK_SEND = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))),
+    "skills", "local-simtalk-execution", "scripts", "simtalk_send.py",
 )
 
 MARKER_START = "###CLASS_OP###"

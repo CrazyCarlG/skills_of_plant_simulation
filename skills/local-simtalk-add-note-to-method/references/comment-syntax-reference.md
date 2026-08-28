@@ -6,21 +6,21 @@ local Plant Simulation help docs are the source of truth:
 
 ## 1. `--` and `//` — single-line comments
 
-`/root/skills_of_plant_simulation/01-plantsimulation-knowledge/01-plant-simulation-help/simtalk/language-fundamentals/values-variables-parameters/values-variables-parameters.md`
+`01-plantsimulation-knowledge/01-plant-simulation-help/simtalk/language-fundamentals/values-variables-parameters/values-variables-parameters.md`
 
 - `//` examples: lines 45, 59, 76, 87, 96, 97, 98, 201, 217, 227
 - `--` examples: lines 96, 97, 98, 239, 240, 241, 242, 267-298
 
 ## 2. `/* ... */` — multi-line block comment
 
-`/root/skills_of_plant_simulation/01-plantsimulation-knowledge/01-plant-simulation-help/simtalk/predefined-functions-ii-http-utilities/server-communication/server-communication.md`
+`01-plantsimulation-knowledge/01-plant-simulation-help/simtalk/predefined-functions-ii-http-utilities/server-communication/server-communication.md`
 
 - Multi-line `/* ... */` block comment: lines 497-502 (canonical
   example wrapping several lines of plain text)
 
 ## 3. `/* ... */` — inline block comment
 
-`/root/skills_of_plant_simulation/01-plantsimulation-knowledge/01-plant-simulation-help/simtalk/predefined-functions-iii-type-query-inputoutput-conversion-debug/for-any/for-any.md`
+`01-plantsimulation-knowledge/01-plant-simulation-help/simtalk/predefined-functions-iii-type-query-inputoutput-conversion-debug/for-any/for-any.md`
 
 - Inline `/* ... */`: line 41
   (`return when value then /*true*/4 else /*false*/5`)

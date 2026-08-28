@@ -1,0 +1,305 @@
+/*
+   A* (A-Star) pathfinding, 4-neighbor, Manhattan heuristic.
+   Inputs:
+     iGrid          : object (table of int cells)   - 0=open, nonzero=wall, 1-indexed
+     iStartR,iStartC: integer - start row/col (1-indexed)
+     iGoalR,iGoalC  : integer - goal  row/col (1-indexed)
+   Returns:
+     string - "r1,c1;r2,c2;...;rn,cn" (includes endpoints), or "" if unreachable
+   Implementation notes:
+     * 4-neighbor (N/S/E/W), unit step cost, Manhattan heuristic
+     * 1D-flat indexing: idx = (r-1)*nCols + c ; each 2D helper is a 1-column local table
+     * Open list = 6 parallel 1D local tables + a count (olCount)
+     * Avoids make_table (not globally available in v15+); uses local-var.create(total)
+     * Dynamic array syntax var dR: integer[4] avoided; uses 4 separate scalar constants
+*/
+
+param iGrid:object,iStartR:integer,iStartC:integer,iGoalR:integer,iGoalC:integer ->string
+
+-- 1) Boundary + endpoint validity checks
+var nRows: integer := iGrid.ydim
+var nCols: integer := iGrid.xdim
+if nRows <= 0 or nCols <= 0
+  return ""
+end
+if iStartR < 1 or iStartR > nRows or iStartC < 1 or iStartC > nCols
+  return ""
+end
+if iGoalR < 1 or iGoalR > nRows or iGoalC < 1 or iGoalC > nCols
+  return ""
+end
+if iGrid[iStartR, iStartC] ~= 0
+  return ""
+end
+if iGrid[iGoalR, iGoalC] ~= 0
+  return ""
+end
+if iStartR = iGoalR and iStartC = iGoalC
+  return to_str(iStartR) + "," + to_str(iStartC)
+end
+
+-- 2) 1D-flat storage total
+var total: integer := nRows * nCols
+
+-- 3) Neighbor deltas as 8 separate ints (avoid fixed-size local arrays)
+var dR1: integer := -1
+var dR2: integer := 1
+var dR3: integer := 0
+var dR4: integer := 0
+var dC1: integer := 0
+var dC2: integer := 0
+var dC3: integer := -1
+var dC4: integer := 1
+
+-- 4) Helper tables (1D-flat per logical 2D scalar)
+var closed:  table[integer]
+closed.create(total)
+var gScore:  table[integer]
+gScore.create(total)
+var parentR: table[integer]
+parentR.create(total)
+var parentC: table[integer]
+parentC.create(total)
+var INF: integer := 999999
+var ii: integer
+for ii := 1 to total
+  gScore[ii, 1] := INF
+next
+
+-- 5) Open list - 6 parallel 1D tables + a count
+var olR:  table[integer]
+olR.create(total)
+var olC:  table[integer]
+olC.create(total)
+var olG:  table[integer]
+olG.create(total)
+var olF:  table[integer]
+olF.create(total)
+var olPR: table[integer]
+olPR.create(total)
+var olPC: table[integer]
+olPC.create(total)
+var olCount: integer := 0
+
+-- 6) Pre-declared locals (SimTalk scoping)
+var found: boolean := false
+var curR: integer := 0
+var curC: integer := 0
+var curG: integer := 0
+var curIdx: integer := 0
+var nR: integer := 0
+var nC: integer := 0
+var nIdx: integer := 0
+var h: integer := 0
+var tentG: integer := 0
+var bestRow: integer := 0
+var bestF: integer := 0
+var rr: integer := 0
+var startIdx: integer := (iStartR - 1) * nCols + iStartC
+var okN: integer := 0
+var okW: integer := 0
+
+-- 7) Seed start into open list
+olCount := olCount + 1
+olR[olCount, 1]  := iStartR
+olC[olCount, 1]  := iStartC
+olG[olCount, 1]  := 0
+olF[olCount, 1]  := abs(iStartR - iGoalR) + abs(iStartC - iGoalC)
+olPR[olCount, 1] := 0
+olPC[olCount, 1] := 0
+gScore[startIdx, 1] := 0
+
+-- 8) Main loop
+while olCount > 0
+  bestRow := 1
+  bestF := olF[1, 1]
+  for rr := 2 to olCount
+    if olF[rr, 1] < bestF
+      bestF := olF[rr, 1]
+      bestRow := rr
+    end
+  next
+  curR := olR[bestRow, 1]
+  curC := olC[bestRow, 1]
+  curG := olG[bestRow, 1]
+  curIdx := (curR - 1) * nCols + curC
+  if bestRow ~= olCount
+    olR[bestRow, 1]  := olR[olCount, 1]
+    olC[bestRow, 1]  := olC[olCount, 1]
+    olG[bestRow, 1]  := olG[olCount, 1]
+    olF[bestRow, 1]  := olF[olCount, 1]
+    olPR[bestRow, 1] := olPR[olCount, 1]
+    olPC[bestRow, 1] := olPC[olCount, 1]
+  end
+  olCount := olCount - 1
+  if closed[curIdx, 1] = 1
+    continue
+  end
+  closed[curIdx, 1] := 1
+  if curR = iGoalR and curC = iGoalC
+    found := true
+    exit
+  end
+  -- Neighbor N: (curR-1, curC)
+  nR := curR + dR1
+  nC := curC + dC1
+  okN := 0
+  if nR >= 1 and nR <= nRows and nC >= 1 and nC <= nCols and iGrid[nR, nC] = 0
+    nIdx := (nR - 1) * nCols + nC
+    if closed[nIdx, 1] ~= 1
+      okN := 1
+    end
+  end
+  if okN = 1
+    tentG := curG + 1
+    if gScore[nIdx, 1] > tentG
+      gScore[nIdx, 1] := tentG
+      parentR[nIdx, 1] := curR
+      parentC[nIdx, 1] := curC
+      olCount := olCount + 1
+      olR[olCount, 1]  := nR
+      olC[olCount, 1]  := nC
+      olG[olCount, 1]  := tentG
+      h := abs(nR - iGoalR) + abs(nC - iGoalC)
+      olF[olCount, 1]  := tentG + h
+      olPR[olCount, 1] := curR
+      olPC[olCount, 1] := curC
+    end
+  end
+  -- Neighbor S
+  nR := curR + dR2
+  nC := curC + dC2
+  okN := 0
+  if nR >= 1 and nR <= nRows and nC >= 1 and nC <= nCols and iGrid[nR, nC] = 0
+    nIdx := (nR - 1) * nCols + nC
+    if closed[nIdx, 1] ~= 1
+      okN := 1
+    end
+  end
+  if okN = 1
+    tentG := curG + 1
+    if gScore[nIdx, 1] > tentG
+      gScore[nIdx, 1] := tentG
+      parentR[nIdx, 1] := curR
+      parentC[nIdx, 1] := curC
+      olCount := olCount + 1
+      olR[olCount, 1]  := nR
+      olC[olCount, 1]  := nC
+      olG[olCount, 1]  := tentG
+      h := abs(nR - iGoalR) + abs(nC - iGoalC)
+      olF[olCount, 1]  := tentG + h
+      olPR[olCount, 1] := curR
+      olPC[olCount, 1] := curC
+    end
+  end
+  -- Neighbor W
+  nR := curR + dR3
+  nC := curC + dC3
+  okN := 0
+  if nR >= 1 and nR <= nRows and nC >= 1 and nC <= nCols and iGrid[nR, nC] = 0
+    nIdx := (nR - 1) * nCols + nC
+    if closed[nIdx, 1] ~= 1
+      okN := 1
+    end
+  end
+  if okN = 1
+    tentG := curG + 1
+    if gScore[nIdx, 1] > tentG
+      gScore[nIdx, 1] := tentG
+      parentR[nIdx, 1] := curR
+      parentC[nIdx, 1] := curC
+      olCount := olCount + 1
+      olR[olCount, 1]  := nR
+      olC[olCount, 1]  := nC
+      olG[olCount, 1]  := tentG
+      h := abs(nR - iGoalR) + abs(nC - iGoalC)
+      olF[olCount, 1]  := tentG + h
+      olPR[olCount, 1] := curR
+      olPC[olCount, 1] := curC
+    end
+  end
+  -- Neighbor E
+  nR := curR + dR4
+  nC := curC + dC4
+  okN := 0
+  if nR >= 1 and nR <= nRows and nC >= 1 and nC <= nCols and iGrid[nR, nC] = 0
+    nIdx := (nR - 1) * nCols + nC
+    if closed[nIdx, 1] ~= 1
+      okN := 1
+    end
+  end
+  if okN = 1
+    tentG := curG + 1
+    if gScore[nIdx, 1] > tentG
+      gScore[nIdx, 1] := tentG
+      parentR[nIdx, 1] := curR
+      parentC[nIdx, 1] := curC
+      olCount := olCount + 1
+      olR[olCount, 1]  := nR
+      olC[olCount, 1]  := nC
+      olG[olCount, 1]  := tentG
+      h := abs(nR - iGoalR) + abs(nC - iGoalC)
+      olF[olCount, 1]  := tentG + h
+      olPR[olCount, 1] := curR
+      olPC[olCount, 1] := curC
+    end
+  end
+end
+
+if not found
+  return ""
+end
+
+-- 9) Path reconstruction (goal -> start)
+var pathR: table[integer]
+pathR.create(1)
+var pathC: table[integer]
+pathC.create(1)
+var walkR: integer := iGoalR
+var walkC: integer := iGoalC
+var walkIdx: integer := (walkR - 1) * nCols + walkC
+var nextR: integer := 0
+var nextC: integer := 0
+while true
+  var pn: integer := pathR.ydim + 1
+  pathR.create(pn)
+  pathR[pn, 1] := walkR
+  pathC.create(pn)
+  pathC[pn, 1] := walkC
+  if walkR = iStartR and walkC = iStartC
+    exit
+  end
+  nextR := parentR[walkIdx, 1]
+  nextC := parentC[walkIdx, 1]
+  if nextR = 0 and nextC = 0
+    return ""
+  end
+  walkR := nextR
+  walkC := nextC
+  walkIdx := (walkR - 1) * nCols + walkC
+end
+
+-- 10) Reverse in place (start -> goal)
+var lo: integer := 1
+var hi: integer := pathR.ydim
+while lo < hi
+  var tr: integer := pathR[lo, 1]
+  var tc: integer := pathC[lo, 1]
+  pathR[lo, 1] := pathR[hi, 1]
+  pathC[lo, 1] := pathC[hi, 1]
+  pathR[hi, 1] := tr
+  pathC[hi, 1] := tc
+  lo := lo + 1
+  hi := hi - 1
+end
+
+-- 11) Emit result string
+var outStr: string := ""
+var p: integer
+for p := 1 to pathR.ydim
+  if p > 1
+    outStr := outStr + ";"
+  end
+  outStr := outStr + to_str(pathR[p, 1]) + "," + to_str(pathC[p, 1])
+next
+return outStr

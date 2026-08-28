@@ -2,7 +2,7 @@
 
 测试目标：通过 `local-simtalk-execution` 技能驱动真实 Plant Simulation 进程（build 2606.0002，TCP 端口 50007），**递归枚举 `basis` 根目录下的 folder tree**，输出可结构化分析的 JSON 文件，并整理成 `local-simtalk-get-folder-tree` 技能的全部资产（`SKILL.md` + `scripts/` + `references/` + `data/` + `log/`）。
 
-承接用户原始诉求："在仿真模型中，关键字 basis 是模型的根目录，basis 下面有很多文件夹，我记得可以通过 simtalk 来获取到 basis 下面的文件夹内容，我需要你利用技能 @/root/skills_of_plant_simulation/skills/local-simtalk-execution 探索一下服务端模型的 basis 下面的 folder tree 是怎样的"。
+承接用户原始诉求："在仿真模型中，关键字 basis 是模型的根目录，basis 下面有很多文件夹，我记得可以通过 simtalk 来获取到 basis 下面的文件夹内容，我需要你利用技能 @skills/local-simtalk-execution 探索一下服务端模型的 basis 下面的 folder tree 是怎样的"。
 
 > 关键约束（详见 `local-simtalk-execution/references/lifelines.md`）：
 > - `simtalk_run` 路径返回的 `data` 字段始终为空（Quirk #6）—— 所有取值靠 `print + readlog`

@@ -254,3 +254,80 @@ recipe is:
 
 The `local-simtalk-get-folder-tree` skill uses a similar pattern
 (`###BFS_MARKER###`) — see its `scripts/bfs_one_level.py`.
+
+---
+
+## §8 — Pre-filtering candidate paths to avoid empty returns
+
+### What it is
+
+When a candidate path's target object is **not a class-defining type**
+(Frame / Dialog / Part / etc.), the probe's `print` block for that path
+returns nothing useful — `Origin` / `OriginRoot` / `Class` come back
+empty or VOID. Empirically, walking the full BFS tree and probing every
+node gives **40-60% empty rows**.
+
+Specifically (2026-08-27 `orientation-summary-from-fresh-data-2.md`):
+- 40 candidate paths from a teaching-model BFS walk
+- 24 returned nothing (`Comment`, `DataTable`, etc.)
+- 16 captured (all root classes with `Origin = VOID`)
+
+### Why it matters
+
+Each empty row still costs:
+- 1 TCP round-trip inside the batch
+- Buffer growth toward the v15+ 65536-byte cap (see §1)
+- A row entry that downstream renderers must skip
+
+Pre-filtering the BFS tree down to type classes that meaningfully expose
+`Origin` cuts round-trips by ~60% with no information loss.
+
+### The fix — filter by `type` before probing
+
+```python
+import json
+
+tree = json.load(open("data/basis_tree_depth5_fresh.json"))
+KEEP_TYPES = {"Frame", "Dialog", "TableFile", "Method", "Part"}
+
+paths = set()
+def walk(n):
+    if n.get("type") in KEEP_TYPES and n.get("type") not in {"Folder"}:
+        # Top-level Frame nodes usually hold the *class*, not the instance
+        # — keep them as candidates; the probe will VOID-mark the empty ones
+        paths.add(n["path"])
+    for c in n.get("children", []):
+        walk(c)
+walk(tree)
+with open("paths.txt", "w") as f:
+    for p in sorted(paths):
+        f.write(p + "\n")
+```
+
+The 5-type filter (`Frame` / `Dialog` / `TableFile` / `Method` / `Part`)
+captures every user-defined class that meaningfully carries an
+inheritance chain. `Comment` / `DataTable` / `Variable` / `Chart` /
+`Button` / `HtmlReport` / `DataList` / `FileLink` / `Socket` are
+**excluded** — they typically don't expose `Origin` at the
+inheritance-probe layer (they're leaves or single-instance templates,
+not class definitions).
+
+### When to relax the filter
+
+If a downstream skill needs to know "is this `Comment` template
+derived from a user-defined base?", add `Comment` to `KEEP_TYPES` and
+expect 30-50% empty rows. The empty rows are still safe to ignore in
+the rendered output (`render_inheritance_map.py` already drops rows
+with all three of `origin`/`originroot`/`cls` == `""`).
+
+### Sanity check
+
+After probing, the ratio of root-classes (`origin == "VOID"`) to
+derived-classes (`origin != "VOID"`) should match the model's design
+intent. For example, in a teaching model:
+- 13 root Frames in `.ModelAssistants.*` (top-level toolkit)
+- 17 derived Dialogs (all originating from
+  `.ModelAssistants.BasicObjects.UserInterface.Dialog`)
+
+If the ratio is wildly off (e.g., 0 derived when the model is supposed
+to have a dozen subclasses), the pre-filter probably over-pruned.

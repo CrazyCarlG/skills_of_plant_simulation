@@ -1,0 +1,792 @@
+[
+  {
+    "path": ".ModelAssistants.AIBot.M_Response",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.AIBot.M_SendRequest",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.AIBot.M_SetPyEnv",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_AddAllUserMenu",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_AddUserMenu",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_CallInternalMethod",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_CloseAllUserMenu",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_CreateIcon",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_DeleteIcon",
+    "name": "M_DeleteIcon",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "975",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.10.25\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam o_frame:object\n\nif o_frame = void then return; end\nif o_frame.InternalClassName /= \\\"Network\\\" then return; end\n\nfor var i := 1 to current.TabUserMenu.ydim\n\\tvar s_obj:string := current.TabUserMenu[3, i]\n\\tif s_obj = void or s_obj = \\\"\\\n\\t\\tcontinue\n\\telse\n\\t\\t-- delete icon\n\\t\\tvar s_icon:string := to_str(current.TabUserMenu[1, i], \\\"_32\\\")\n\\t\\tif o_frame.existsIcon(s_icon)\n\\t\\t\\tif o_frame.CurrIcon = s_icon\n\\t\\t\\t\\tfor var j := 1 to 10\n\\t\\t\\t\\t\\to_frame.CurrIconNo := j\n\\t\\t\\t\\t\\tif o_frame.CurrIcon /= s_icon\n\\t\\t\\t\\t\\t\\texitloop\n\\t\\t\\t\\t\\tend\n\\t\\t\\t\\tnext\n\\t\\t\\tend\n\\t\\t\\texecutesilent(\\\"param o_frame:object, s_icon:string; o_frame.deleteIcon(s_icon)\\\", o_frame, s_icon)\n\\t\\tend\n\n\\tend\nnext"
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_DeleteUserMenu",
+    "name": "M_DeleteUserMenu",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "553",
+    "program": "------------------------------------------------------------\n--| Function   : add User Menu into the AIBot\n--| Parameter  : o_frame:object\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.10.25\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam o_frame:object\n\nif o_frame = void then return; end\nif o_frame.InternalClassName /= \\\"Network\\\" then return; end\n\nvar tab_tmp:table; tab_tmp.create\no_frame.UserMenu := tab_tmp\no_frame.UserMenuTitle := \\\"\\\no_frame.ShowUserMenu := False"
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_TransCtrl",
+    "name": "M_TransCtrl",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "457",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.10.25\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nfor var i := 1 to current.TabUserMenuOri.ydim\n\\tif current.TabUserMenuOri[2, i] /= void\n\\t\\tcurrent.TabUserMenu[2, i] := to_str(rootFolder, \\\".\\\", current.TabUserMenuOri[2, i])\n\\tend\nnext"
+  },
+  {
+    "path": ".ModelAssistants.Assistants.M_findFrameCandidate",
+    "name": "M_findFrameCandidate",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "895",
+    "program": "------------------------------------------------------------\n--| Function   : find candidate\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.10.25\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam rootObj:object, bol_added:boolean := True\n\nif rootObj = void then return; end\nif rootObj = rootfolder then return; end\n\nswitch rootObj.InternalClassName\ncase \\\"NwObjFolder\\\n\\tfor var i := 1 to rootObj.NumNodes\n\\t\\tvar obj := rootObj.node(i)\n\\t\\tswitch obj.InternalClassName\n\\t\\tcase \\\"NwObjFolder\\\", \\\"Network\\\n\\t\\t\\tcurrent.M_findFrameCandidate(obj, bol_added)\n\\t\\telse\n\\t\\t\\tcontinue\n\\t\\tend\n\\tnext\n\ncase \\\"Network\\\n\\tif bol_added\n\\t\\tcurrent.M_AddUserMenu(rootObj)\n\\t\\tcurrent.M_CreateIcon(rootObj)\n\\telse\n\\t\\tcurrent.M_DeleteUserMenu(rootObj)\n\\t\\tcurrent.M_DeleteIcon(rootObj)\n\\tend\nelse\n\\treturn\nend"
+  },
+  {
+    "path": ".ModelAssistants.AutoSave.AutoSaveModel",
+    "name": "AutoSaveModel",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "812",
+    "program": "------------------------------------------------------------\n--| Function   : Save model automatically in period\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       : current.MSaveModel\n--| Date       : 2023.02.14\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\n\nif current.IsExecuting = True then return; end\n\n// set on icon\ncurrent.putIconToClipboard(\\\"On\\\")\ncurrent.setCurrIconFromClipboard(\\\"ClassLibrary\\\")\ncurrent.IsExecuting := True\n\n// save process\nwhile current.IsContiuned\n\\tif not current.MSaveModel(current.StopMethodExecution, current.UseNewName) then exitloop; end\n\\tsleep(current.SavePeriod, False)\nend\n\n// set Off icon\ncurrent.putIconToClipboard(\\\"Off\\\")\ncurrent.setCurrIconFromClipboard(\\\"ClassLibrary\\\")\ncurrent.IsExecuting := False"
+  },
+  {
+    "path": ".ModelAssistants.AutoSave.MSaveModel",
+    "name": "MSaveModel",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1024",
+    "program": "------------------------------------------------------------\n--| Function   : save model automatically\n--| Parameter  : SaveAs:boolean := False, StopMethodExecution:boolean := False, UseNewName:boolean := True\n--| Return     : isSaved:boolean[True: Saved Sucessfully; False: not]\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam StopMethodExecution:boolean := False, UseNewName:boolean := False -> boolean\n\n// get sys acess permitted\nif not isComputerAccessPermitted \\t\n\\tpromptMessage(\\\"Please activate access to computer! Cancel checkbox File> Model Setting> Prohibit access to the computer\\\")\n\\treturn False\nend\n\n-- get file path and name\nvar fn:string := modelfile\n\n// assign new name\nif not UseNewName\n\\t-- save with another file\n\\tvar i := pos(\\\".spp\\\", fn)\n\\tif i = -1\n\\t\\treturn False\n\\telse\n\\t\\tfn := incl(\\\"-AutoSave\\\", fn, i)\n\\tend\nend\n\n// Save\nreturn saveModel(fn, StopMethodExecution, UseNewName)"
+  },
+  {
+    "path": ".ModelAssistants.AutoSave.endSaveModel",
+    "name": "endSaveModel",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "440",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.22\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\n\n// set Off icon\ncurrent.&AutoSaveModel.deleteMethCall\ncurrent.putIconToClipboard(\\\"Off\\\")\ncurrent.setCurrIconFromClipboard(\\\"ClassLibrary\\\")\ncurrent.IsExecuting := False"
+  },
+  {
+    "path": ".ModelAssistants.BasicObjects.InformationFlow.Method",
+    "name": "Method",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "269",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2024.02.15\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------"
+  },
+  {
+    "path": ".ModelAssistants.BasicObjects.MaterialFlow.TestRibbonFrame.Method",
+    "name": "Method",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "269",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2024.12.31\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------"
+  },
+  {
+    "path": ".ModelAssistants.BasicObjects.MaterialFlow.TestRibbonFrame.Method1",
+    "name": "Method1",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "305",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2024.12.31\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\n\nprint \\\">>>>> I don`t know, buddy\\"
+  },
+  {
+    "path": ".ModelAssistants.Calculator3D.M_AutomaticRotate",
+    "name": "M_AutomaticRotate",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1608",
+    "program": "------------------------------------------------------------\n--| Function   : Rotate objects in Tab_Candidate\n--| Parameter  : Rotation:real[4]\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2024.02.15\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam Rotation:real[4]\n\nif current.Tab_Candidate.ydim = 0 then return; end\nif not current.bol_Automatic then return; end\n\nvar arr_rotated:object[]\nvar tab_tmproated:table[real, real, real, real]; tab_tmproated.create\ntab_tmproated.RowIndex := True\n\nfor var i := current.Tab_Candidate.ydim downto 1\n\\tvar o_candidate:object := current.Tab_Candidate[1,i]\n\\tvar s_candidate:string := current.Tab_Candidate[1,i]\n\n\\t-- candidate is void and skip\n\\tif o_candidate /= void and tab_tmproated.getrowNo(s_candidate) < 0\n\n\\t\\t-- record old angle\n\\t\\ttab_tmproated.appendRow(s_candidate, o_candidate._3D.Rotation[1], o_candidate._3D.Rotation[2], o_candidate._3D.Rotation[3], o_candidate._3D.Rotation[4])\n\n\\t\\t-- rotate\n\\t\\tif current.bol_AddedCurrent\n\\t\\t\\to_candidate._3D.Rotation := basis.~._3D.concatenateRotations(o_candidate._3D.Rotation, Rotation)\n\\t\\telse\n\\t\\t\\to_candidate._3D.Rotation := Rotation\n\\t\\tend\n\n\\telse\n\\t\\tcurrent.Tab_Candidate.cutRow(1)\n\\tend\n\nnext\n\n-- record\nif tab_tmproated.ydim > 0\n\\tcurrent.Tab_Log.appendRow(tab_tmproated)\n\\tcurrent.Dialog.setSensitive(\\\"Btn_Undo\\\", True)\nend\n\n-- refresh table in dialog\ncurrent.Dialog.setTable(\\\"TabCandidate\\\", to_str(current.Tab_Candidate))\n\n-- mention\nmessageBox(to_str(\\\"Have rotated \\\", tab_tmproated.ydim, \\\" objects sucessfully!\\\"))"
+  },
+  {
+    "path": ".ModelAssistants.Calculator3D.M_Convert",
+    "name": "M_Convert",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1941",
+    "program": "------------------------------------------------------------\n--| Function   : convert Eular angle into Axis-angle\n--| Parameter  : r_degree_x, r_degree_y, r_degree_z:real\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2025.02.15\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam r_degree_x, r_degree_y, r_degree_z:real, bol_applied:boolean := False\n\n\nvar r_ab_degree_x:real := abs(r_degree_x)\nvar r_ab_degree_y:real := abs(r_degree_y)\nvar r_ab_degree_z:real := abs(r_degree_z)\n\nvar r_minus_degree_x: real := when r_degree_x > 0 then 1 else -1\nvar r_minus_degree_y: real := when r_degree_y > 0 then 1 else -1\nvar r_minus_degree_z: real := when r_degree_z > 0 then 1 else -1\n\nvar arr_x:real[4] := [r_ab_degree_x, r_minus_degree_x, 0, 0]\nvar arr_y:real[4] := [r_ab_degree_y, 0, r_minus_degree_y, 0]\nvar arr_z:real[4] := [r_ab_degree_z, 0, 0, r_minus_degree_z]\n\nvar Rotation:any\nswitch current.TypeofRotation\ncase \\\"XYZ\\\n\\tRotation := basis.~._3D.concatenateRotations(arr_x, arr_y)\n\\tRotation := basis.~._3D.concatenateRotations(Rotation, arr_z)\ncase \\\"XZY\\\n\\tRotation := basis.~._3D.concatenateRotations(arr_x, arr_z)\n\\tRotation := basis.~._3D.concatenateRotations(Rotation, arr_y)\ncase \\\"YXZ\\\n\\tRotation := basis.~._3D.concatenateRotations(arr_y, arr_x)\n\\tRotation := basis.~._3D.concatenateRotations(Rotation, arr_z)\ncase \\\"YZX\\\n\\tRotation := basis.~._3D.concatenateRotations(arr_y, arr_z)\n\\tRotation := basis.~._3D.concatenateRotations(Rotation, arr_x)\ncase \\\"ZXY\\\n\\tRotation := basis.~._3D.concatenateRotations(arr_z, arr_x)\n\\tRotation := basis.~._3D.concatenateRotations(Rotation, arr_y)\ncase \\\"ZYX\\\n\\tRotation := basis.~._3D.concatenateRotations(arr_z, arr_y)\n\\tRotation := basis.~._3D.concatenateRotations(Rotation, arr_x)\nelse\n\\tdebug\nend\n\n-- Refresh results\ncurrent.M_RefreshResults(Rotation)\n\nif bol_applied\n\\t-- Rotate\n\\tcurrent.M_AutomaticRotate(Rotation)\nend"
+  },
+  {
+    "path": ".ModelAssistants.Calculator3D.M_RefreshResults",
+    "name": "M_RefreshResults",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "704",
+    "program": "------------------------------------------------------------\n--| Function   : Refresh converted results in Dialog\n--| Parameter  : Rotation:real[4]\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2024.02.15\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam Rotation:real[4], o_candidate:object := void\n\nif o_candidate /= void\n\nend\n\n-- refresh results in dialog\ncurrent.Dialog.setCaption(\\\"Angle\\\", to_str(round(Rotation[1], 2)))\ncurrent.Dialog.setCaption(\\\"AxisX\\\", to_str(round(Rotation[2], 6)))\ncurrent.Dialog.setCaption(\\\"AxisY\\\", to_str(round(Rotation[3], 6)))\ncurrent.Dialog.setCaption(\\\"AxisZ\\\", to_str(round(Rotation[4], 6)))"
+  },
+  {
+    "path": ".ModelAssistants.Calculator3D.M_Undo",
+    "name": "M_Undo",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "998",
+    "program": "------------------------------------------------------------\n--| Function   : Reback objects\n--| Parameter  :\n--| Return     :\n--| Called     : Dialog.Btn_Undo\n--| Call       :\n--| Date       : 2024.02.15\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\n\nif current.Tab_Log.ydim = 0 then current.Dialog.setSensitive(\\\"Btn_Undo\\\", False); return; end\n\nvar i_row:integer := current.Tab_Log.ydim\nvar i_count:integer := 0\n\nfor var i := 1 to current.Tab_Log[1, i_row].ydim\n\n\\tvar o_candidate:object := current.Tab_Log[1, i_row][0, i]\n\n\\tif o_candidate /= void\n\n\\t\\to_candidate._3D.Rotation :=  [current.Tab_Log[1, i_row][1, i], current.Tab_Log[1, i_row][2, i], current.Tab_Log[1, i_row][3, i], current.Tab_Log[1, i_row][4, i]]\n\\t\\ti_count += 1\n\n\\tend\n\nnext\n\ncurrent.Tab_Log.cutRow(i_row)\n\nif current.Tab_Log.ydim = 0\n\\tcurrent.Dialog.setSensitive(\\\"Btn_Undo\\\", False)\nend\n\n-- mention\nmessageBox(to_str(\\\"Have reback \\\", i_count, \\\" objects sucessfully!\\\"))"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.AddLibraryBscObj",
+    "name": "AddLibraryBscObj",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "912",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer :\n------------------------------------------------------------\nparam BscFolder:object\n\nvar BscArr:string[]; BscArr.copyFromTableColumn(current.TabCandidate, 0)\n\n//\nfor var i := 1 to current.TabLibraryBscObj.ydim\n\\tif BscArr.contains(current.TabLibraryBscObj[1, i])\n\\t\\tvar indx:string := current.TabLibraryBscObj[1, i]\n\\t\\t-- get the new folder\n\\t\\tvar folderObj:object := BscFolder.extendPath(current.TabCandidate[2, indx])\n\\t\\tif folderObj = void then folderObj := BscFolder.createFolder; folderObj.Name := current.TabCandidate[2, indx]; end\n\\t\\t-- create the object\n\\t\\tvar OriObj:object := str_to_Obj(current.TabCandidate[1, indx]).extendPath(indx)\n\\t\\tif OriObj /= void then OriObj.duplicate(folderObj); end\n\\tend\nnext"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.AddModelBscObj",
+    "name": "AddModelBscObj",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "906",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer :\n------------------------------------------------------------\nparam BscFolder:object\n\nvar BscArr:string[]; BscArr.copyFromTableColumn(current.TabCandidate, 0)\n\n//\nfor var i := 1 to current.TabModelBscObj.ydim\n\\tif BscArr.contains(current.TabModelBscObj[1, i])\n\\t\\tvar indx:string := current.TabModelBscObj[1, i]\n\\t\\t-- get the new folder\n\\t\\tvar folderObj:object := BscFolder.extendPath(current.TabCandidate[2, indx])\n\\t\\tif folderObj = void then folderObj := BscFolder.createFolder; folderObj.Name := current.TabCandidate[2, indx]; end\n\\t\\t-- create the object\n\\t\\tvar OriObj:object := str_to_Obj(current.TabCandidate[1, indx]).extendPath(indx)\n\\t\\tif OriObj /= void then OriObj.duplicate(folderObj); end\n\\tend\nnext"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.AddNewLibrary",
+    "name": "AddNewLibrary",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1546",
+    "program": "------------------------------------------------------------\n--| Function   : add new library in Basis\n--| Parameter  : rootObj:object := void, defaultName:string := \\\"DefaultLibrary\\\", isOnClose:boolean := False, isautoexec:boolean := False, isautoexecLoad:boolean := False\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer : ZY\n------------------------------------------------------------\nparam rootObj:object := void, defaultName:string := \\\"DefaultLibrary\\\", isOnClose:boolean := False, isautoexec:boolean := False, isautoexecLoad:boolean := False\n\n-- defence\nif rootObj = void then rootObj := Basis; end\nif rootObj.InternalClassName /= \\\"NwObjFolder\\\" then return; end\nif rootObj.getLibraryInfo then return; end\n\nvar libObj := rootObj.createFolder\n\n// Name\nvar libOriName:string := defaultName\nvar libName:string := libOriName\nvar i :integer := 1\nwhile not rootObj.isNameUnique(libName)\n\\tlibName := libOriName+to_str(i)\n\\ti+=1\nend\nlibObj.setName(libName)\n\n// basic\nvar obj:object := libObj.createFolder\nobj.setName(\\\"BasicObjects\\\")\ncurrent.AddLibraryBscObj(obj)\n\n// internal\nobj := libObj.createFolder\nobj.setName(\\\"Internal\\\")\nvar methodParent:object := current.Location.BasicObjects.InformationFlow.&M_SetPyEnv\nif isOnClose then methodParent.duplicate(obj, \\\"onCloseModel\\\"); end\nif isautoexec then methodParent.duplicate(obj, \\\"autoexec\\\"); end\nif isautoexecLoad then methodParent.duplicate(obj, \\\"autoexecLoadObj\\\"); end\n\n// set library information\nlibObj.setLibraryInfo(obj.Name, \\\"1.0.0\\\")"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.AddNewModel",
+    "name": "AddNewModel",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1602",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer :\n------------------------------------------------------------\nparam rootObj:object := void, defaultName:string := \\\"DefaultModel\\\", isWorkshop:boolean := True, isLayer:boolean := True, isLine:boolean := True\n\n-- defence\nif rootObj = void then rootObj := Basis; end\nif rootObj.InternalClassName /= \\\"NwObjFolder\\\" then return; end\nif rootObj.getLibraryInfo then return; end\n\nvar obj:object\n--\nvar modelObj:object := rootObj.createFolder\n// Name\nvar modelOriName:string := defaultName\nvar modelName:string := modelOriName\nvar i :integer := 1\nwhile not rootObj.isNameUnique(modelName)\n\\tmodelName := modelOriName+to_str(i)\n\\ti+=1\nend\nmodelObj.setName(modelName)\n\n// Workshop\nvar tmpObj:object := modelObj\nif isWorkshop\n\\tvar workshopsObj:object := tmpObj.createFolder\n\\tworkshopsObj.setName(\\\"WorkShops\\\")\n\\ttmpObj := workshopsObj\nend\n\n// Layer\nif isLayer\n\\tvar layersObj:object := tmpObj.createFolder\n\\tlayersObj.setName(\\\"Layers\\\")\n\\ttmpObj := layersObj\nend\n\n// Line\nif isLine\n\\tvar linesObj:object := tmpObj.createFolder\n\\tlinesObj.setName(\\\"ProductionLine\\\")\nend\n\n// Basic\nvar BscObj:object :=  modelObj.createFolder\nBscObj.setName(\\\"BasicObjects\\\")\ncurrent.AddModelBscObj(BscObj)\n\n// Improved\nvar ImpvObj:object :=  modelObj.createFolder\nImpvObj.setName(\\\"ImprovedObjects\\\")\nobj := ImpvObj.createFolder; obj.setName(\\\"Common\\\")\n\n// Tools\nvar ToolsObj:object := modelObj.createFolder\nToolsObj.setName(\\\"Tools\\\")"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.AutoSorter",
+    "name": "AutoSorter",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1640",
+    "program": "------------------------------------------------------------\n--| Function   : sort file in order automatically\n--| Parameter  : rootObj:object, nameSortOrder:string := \\\"up\\\", fileSortOrder:string := \\\"down\\\", IsAll:boolean := True\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.16\n--| Programmer :\n------------------------------------------------------------\nparam rootObj:object, nameSortOrder:string := \\\"up\\\", fileSortOrder:string := \\\"up\\\", IsAll:boolean := True\n\nif rootObj = void then return; end\nif rootObj.InternalClassName /= \\\"NwObjFolder\\\" then return; end\n--\nvar tab: table[string, string]; tab.create\nvar tabLib: table[string, string]; tabLib.create\nfor var i := 1 to rootObj.NumNodes\n\\tvar obj := rootObj.node(i)\n\\tif obj.InternalClassName /= \\\"NwObjFolder\\\n\\t\\ttab.appendRow(to_str(obj), obj.InternalClassName)\n\\telse\n\\t\\tif not obj.getLibraryInfo\n\\t\\t\\ttab.appendRow(to_str(obj), \\\"z\\\")\n\\t\\telse\n\\t\\t\\ttabLib.appendRow(to_str(obj), obj.InternalClassName)\n\\t\\tend\n\\tend\nnext\n--\ntab.sort(1, nameSortOrder); tab.sort(2, fileSortOrder)\ntab.insertList(1, tab.ydim+1, tabLib)\n--\nvar nwObj:object\nif rootObj = Basis\n\\tnwObj := rootObj\nelse\n\\tnwObj := rootObj.Location.createFolder\nend\n--\nfor var i := 1 to tab.ydim\n\\tobj := tab[1, i]\n\\tif obj.InternalClassName = \\\"NwObjFolder\\\" and (IsAll or rootObj = Basis)\n\\t\\tif not obj.getLibraryInfo\n\\t\\t\\tcurrent.AutoSorter(obj, nameSortOrder, fileSortOrder, IsAll)\n\\t\\tend\n\\tend\n\\t--\n\\tobj.moveToFolder(nwObj)\nnext\n--\nif rootObj /= Basis\n\\t-- delete odd\n\\tvar rootName:string := rootObj.Name; rootObj.deleteObject\n\\t-- create new\n\\tnwObj.setName(rootName)\nend"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.Frame.TestNameObject",
+    "name": "TestNameObject",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "304",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer :\n------------------------------------------------------------\ncurrent.DialogLibraryBsc.getItemsList(Tab_Candidate)"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.findCandidate",
+    "name": "findCandidate",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "333",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer :\n------------------------------------------------------------\n\ncurrent.TabCandidate.delete({0,0}..{*,*})\ncurrent.searchFolder(Basis, \\\"Basis\\\")"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.getFolderInfo",
+    "name": "getFolderInfo",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1009",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  : folderObj:object, byref infoTable: table\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer :\n------------------------------------------------------------\nparam folderObj:object, infoTable: object\n\nif folderObj = void then return; end\nif folderObj.InternalClassName /= \\\"NwObjFolder\\\" then return; end\nif infoTable = void then return; end\n\ninfoTable.deleteContents; current.TabFolderInfo.copyFormatTo(infoTable)\n\nfor var i := 1 to folderObj.NumNodes\n\\tvar obj := folderObj.node(i)\n\\t\n\\tswitch obj.InternalClassName\n\\tcase \\\"NwObjFolder\\\n\\t\\tinfoTable.appendRow(obj.Name, to_str(True), to_str(obj.getLibraryInfo), to_str(obj.NumNodes))\n\\tcase \\\"Network\\\n\\t\\tinfoTable.appendRow(obj.Name, to_str(False), to_str(False), to_str(obj.NumNodes), to_str(obj.Origin))\n\\telse\n\\t\\tinfoTable.appendRow(obj.Name, to_str(False), to_str(False), to_str(0), to_str(obj.Origin))\n\\tend\nnext"
+  },
+  {
+    "path": ".ModelAssistants.ClassAssistant.searchFolder",
+    "name": "searchFolder",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1027",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer :\n------------------------------------------------------------\nparam FolderObj:object, targetfolderName:string := \\\"UserDefined\\\n\n-- defence\nif FolderObj = void or FolderObj.InternalClassName /= \\\"NwObjFolder\\\" then return; end\n\n--\nfor var i := 1 to FolderObj.NumNodes\n\\tvar obj := FolderObj.node(i)\n\\tif obj.InternalClassName = \\\"NwObjFolder\\\"\n\\t\\t-- ignore Library\n\\t\\tif obj.getLibraryInfo then continue; end\n\\t\\t-- find\n\\t\\tswitch obj.Name\n\\t\\tcase \\\"MaterialFlow\\\", \\\"Fluids\\\", \\\"Resources\\\", \\\"InformationFlow\\\", \\\"UserInterface\\\", \\\"MUs\\\n\\t\\t\\tcurrent.searchFolder(obj, obj.Name)\n\\t\\telse\n\\t\\t\\tcurrent.searchFolder(obj)\n\\t\\tend\n\\telse\n\\t\\t-- ignore Toolbar\n\\t\\tif  obj.InternalClassName = \\\"NwToolbar\\\" then continue; end\n\\t\\t-- record\n\\t\\tcurrent.TabCandidate.appendRow(obj.Name, to_str(FolderObj), targetfolderName)\n\\tend\\t\nnext"
+  },
+  {
+    "path": ".ModelAssistants.ClassAttrDepulicator.M_DuplicateObjectAttributes",
+    "name": "M_DuplicateObjectAttributes",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "598",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.10.25\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam o_Ori:object:=void , bol_changeType:boolean := True, bol_changeValue:boolean := True\n\n\nif o_Ori = void then return; end\n\n\nfor var i := 1 to current.TabCandidate.ydim\n\n\\tvar o_des:object := current.TabCandidate[0, i]\n\n\\tif o_des /= void\n\\t\\tcurrent.M_copyAttributes(o_Ori, o_des, bol_changeType, bol_changeValue)\n\\tend\nnext"
+  },
+  {
+    "path": ".ModelAssistants.ClassAttrDepulicator.M_copyAttributes",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.ClassAttrDepulicator.transformObjects",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameEncrypt.EncryptCandidate",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameEncrypt.EncryptFrame",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameEncrypt.EncryptMethod",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameEncrypt.OnOpenTemplates",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameEncrypt.transformObjects",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameReplacer.findCandidate",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameReplacer.replaceCandidate",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameReplacer.replaceObject",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.FrameReplacer.setReplacementMode",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Internal.ExportIconToFile",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Internal.autoexec",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Internal.autoexecLoadObj",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.Internal.onCloseModel",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_ApplyFrame",
+    "name": "",
+    "type": "",
+    "encrypted": "",
+    "has_syntax_error": "",
+    "num_in_execution": "",
+    "program_len": "0",
+    "program": ""
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_ApplyObject",
+    "name": "M_ApplyObject",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "5369",
+    "program": "------------------------------------------------------------\n--| Function   : rebuild one supported information-flow object from MSCO v1\n--| Parameter  : payload:string, destParent:object\n--| Return     : object (created object, or void)\n--| Called     : M_Paste, M_OnReceive\n--| Call       : M_Split, M_Decode, M_SetTableCell, M_SetVariableValue\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam payload:string, destParent:object\n-> object\nvar FS:string := strChr(1)\nvar RS:string := strChr(2)\nvar recs:string[]\nvar h:string[]\nvar f:string[]\nvar objName:string\nvar objPath:string\nvar pol:string\nvar objType:string\nvar suffix:integer := 1\nvar i:integer\nvar col:integer\nvar row:integer\nvar classPath:string\nvar valueType:string\nvar valueText:string\nvar newObj:object\nvar cells:integer := 0\nvar skipped:integer := 0\nif destParent = void then return void end\nif destParent.InternalClassName /= \\\"Network\\\" then\n    current.LastSummary := \\\"target is not a Frame\\\n    return void\nend\nrecs := current.M_Split(payload, RS)\nif recs.Dim < 1 then return void end\nh := current.M_Split(recs[1], FS)\nif h.Dim < 8 or h[1] /= \\\"MSCO\\\" or h[2] /= \\\"v1\\\" then\n    current.LastSummary := \\\"invalid MSCO payload\\\n    return void\nend\nobjType := h[4]\nobjName := current.M_Decode(h[5])\nobjPath := to_str(destParent, \\\".\\\", objName)\npol := current.OnCollision\nif existsObject(objPath)\n    if pol = \\\"skip\\\n        current.LastSummary := \\\"skipped: target exists\\\n        return void\n    elseif pol = \\\"rename\\\n        while existsObject(to_str(objPath, \\\"_\\\", suffix)) and suffix < 999\n            suffix += 1\n        end\n        objName := to_str(objName, \\\"_\\\", suffix)\n    else\n        str_to_obj(objPath).deleteObject\n    end\nend\nswitch objType\ncase \\\"M\\\n    if h.Dim < 9 then return void end\n    newObj := .InformationFlow.&Method.derive(destParent, objName)\n    newObj.Coordinate3D := [str_to_num(h[6]), str_to_num(h[7]), str_to_num(h[8])]\n    newObj.Program := current.M_Decode(h[9])\n    current.LastSummary := to_str(\\\"type=Method name=\\\", objName, \\\" sourceVersion=\\\", h[3])\ncase \\\"P\\\n    if h.Dim < 10 then return void end\n    classPath := current.M_Decode(h[9])\n    if not existsObject(classPath)\n        current.LastSummary := to_str(\\\"PythonModule class not found: \\\", classPath)\n        return void\n    end\n    newObj := str_to_obj(classPath).derive(destParent, objName)\n    newObj.Coordinate3D := [str_to_num(h[6]), str_to_num(h[7]), str_to_num(h[8])]\n    newObj.PythonCode := current.M_Decode(h[10])\n    current.LastSummary := to_str(\\\"type=PythonModule name=\\\", objName,\n        \\\" codeChars=\\\", strLen(newObj.PythonCode), \\\" sourceVersion=\\\", h[3])\ncase \\\"V\\\n    if h.Dim < 10 then return void end\n    valueType := current.M_Decode(h[9])\n    valueText := current.M_Decode(h[10])\n    newObj := .InformationFlow.&Variable.derive(destParent, objName)\n    newObj.Coordinate3D := [str_to_num(h[6]), str_to_num(h[7]), str_to_num(h[8])]\n    newObj.DataType := valueType\n    if not current.M_SetVariableValue(newObj, valueType, valueText)\n        current.LastSummary := to_str(\\\"unsupported Variable value type: \\\", valueType)\n        newObj.deleteObject\n        return void\n    end\n    current.LastSummary := to_str(\\\"type=Variable name=\\\", objName, \\\" dataType=\\\",\n        valueType, \\\" sourceVersion=\\\", h[3])\ncase \\\"T\\\n    if h.Dim < 16 then return void end\n    newObj := .InformationFlow.DataTable.derive(destParent, objName)\n    newObj.Coordinate3D := [str_to_num(h[6]), str_to_num(h[7]), str_to_num(h[8])]\n    newObj.DataType := current.M_Decode(h[9])\n    newObj.DataTypeColumnIndex := current.M_Decode(h[10])\n    newObj.RowIndex := strToUpper(h[11]) = \\\"TRUE\\\n    newObj.ColumnIndex := strToUpper(h[12]) = \\\"TRUE\\\n    newObj.MaxXDim := round(str_to_num(h[13]))\n    newObj.setDataType(0, current.M_Decode(h[16]))\n    for i := 2 to recs.Dim\n        f := current.M_Split(recs[i], FS)\n        if f.Dim >= 3 and f[1] = \\\"D\\\n            newObj.setDataType(round(str_to_num(f[2])), current.M_Decode(f[3]))\n        end\n    next\n    for i := 2 to recs.Dim\n        f := current.M_Split(recs[i], FS)\n        if f.Dim < 3 then continue end\n        switch f[1]\n        case \\\"H\\\n            col := round(str_to_num(f[2]))\n            newObj[col,0] := current.M_Decode(f[3])\n            cells += 1\n        case \\\"R\\\n            if f.Dim >= 4\n                row := round(str_to_num(f[2]))\n                if current.M_SetTableCell(newObj, 0, row, current.M_Decode(f[3]), current.M_Decode(f[4]))\n                    cells += 1\n                else\n                    skipped += 1\n                end\n            end\n        case \\\"K\\\n            if f.Dim >= 5\n                col := round(str_to_num(f[2]))\n                row := round(str_to_num(f[3]))\n                if current.M_SetTableCell(newObj, col, row, current.M_Decode(f[4]), current.M_Decode(f[5]))\n                    cells += 1\n                else\n                    skipped += 1\n                end\n            end\n        end\n    next\n    current.LastSummary := to_str(\\\"type=DataTable name=\\\", objName, \\\" columns=\\\", h[14],\n        \\\" rows=\\\", h[15], \\\" cells=\\\", cells, \\\" skipped=\\\", skipped,\n        \\\" sourceVersion=\\\", h[3])\nelse\n    current.LastSummary := to_str(\\\"unsupported MSCO type: \\\", objType)\n    return void\nend\nreturn newObj"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_BuildFrame",
+    "name": "M_BuildFrame",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "865",
+    "program": "------------------------------------------------------------\n--| Function   : serialize a Frame's contents into MSCF v2\n--| Parameter  : sourceFrame:object\n--| Return     : string\n--| Called     : M_Copy, M_Send\n--| Call       : M_BuildFrameNodes, M_BuildFrameMeta, M_Encode\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam sourceFrame:object\n-> string\nvar FS:string := strChr(1)\nvar payload:string\nif sourceFrame = void or sourceFrame.InternalClassName /= \\\"Network\\\" then return \\\"\\\" end\npayload := to_str(\\\"MSCF\\\", FS, \\\"v2\\\", FS, version, FS,\n    current.M_Encode(sourceFrame.Name))\npayload := to_str(payload, current.M_BuildFrameNodes(sourceFrame, \\\"\\\", to_str(sourceFrame)))\npayload := to_str(payload, current.M_BuildFrameMeta(sourceFrame, \\\"\\\", to_str(sourceFrame)))\nreturn payload"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_BuildFrameMeta",
+    "name": "M_BuildFrameMeta",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1912",
+    "program": "------------------------------------------------------------\n--| Function   : serialize Frame custom attributes and controls\n--| Parameter  : sourceFrame:object, sourceRel:string, sourceBasePath:string\n--| Return     : string (RS-prefixed records)\n--| Called     : M_BuildFrame, M_BuildFrameNodes\n--| Call       : M_Encode, M_ReadAttribute, M_ReadMethodCode\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam sourceFrame:object, sourceRel:string, sourceBasePath:string\n-> string\nvar FS:string := strChr(1)\nvar RS:string := strChr(2)\nvar out:string := \\\"\\\nvar attrName:string\nvar attrType:string\nvar value:string\nvar i:integer\nvar ctrls := MakeArray(\\\"OpenCtrl\\\", \\\"CloseCtrl\\\", \\\"InitCtrl\\\", \\\"ConstructorCtrl\\\",\n    \\\"DestructorCtrl\\\", \\\"FailCtrl\\\", \\\"DragDropCtrl\\\", \\\"SelectCtrl\\\", \\\"RenameCtrl\\\",\n    \\\"RelabelCtrl\\\")\nfor i := 1 to sourceFrame.NumAttr\n    attrName := sourceFrame.getAttrName(i)\n    attrType := sourceFrame.getAttrType(i)\n    if attrType = \\\"method\\\n        value := current.M_ReadMethodCode(to_str(sourceFrame), attrName)\n        out := to_str(out, RS, \\\"A\\\", FS, current.M_Encode(sourceRel), FS,\n            current.M_Encode(attrName), FS, current.M_Encode(value))\n    elseif not current.M_ShouldSkipAttribute(attrName, attrType)\n        value := current.M_ReadAttribute(to_str(sourceFrame), attrName)\n        out := to_str(out, RS, \\\"P\\\", FS, current.M_Encode(sourceRel), FS,\n            current.M_Encode(attrName), FS, current.M_Encode(attrType), FS, \\\"1\\\", FS,\n            current.M_Encode(value))\n    end\nnext\nfor i := 1 to ctrls.Dim\n    value := current.M_ReadAttribute(to_str(sourceFrame), ctrls[i])\n    if value /= \\\"\\\" and value /= \\\"VOID\\\n        out := to_str(out, RS, \\\"G\\\", FS, current.M_Encode(sourceRel), FS,\n            current.M_Encode(ctrls[i]), FS, current.M_Encode(value))\n    end\nnext\nreturn out"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_BuildFrameNodes",
+    "name": "M_BuildFrameNodes",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "6396",
+    "program": "------------------------------------------------------------\n--| Function   : recursively serialize all supported Frame contents\n--| Parameter  : sourceFrame:object, parentRel:string, sourceBasePath:string\n--| Return     : string (RS-prefixed records)\n--| Called     : M_BuildFrame, M_BuildFrameNodes\n--| Call       : M_BuildObject, M_BuildFrameMeta, M_Encode,\n--|              M_ReadAttribute, M_ReadMethodCode, M_ShouldSkipAttribute\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam sourceFrame:object, parentRel:string, sourceBasePath:string\n-> string\nvar FS:string := strChr(1)\nvar RS:string := strChr(2)\nvar out:string := \\\"\\\nvar nodeObj:object\nvar succObj:object\nvar attrName:string\nvar attrType:string\nvar value:string\nvar classPath:string\nvar classRef:string\nvar classScope:string\nvar sourceRel:string\nvar targetRel:string\nvar payload:string\nvar isUser:string\nvar refScope:string\nvar attrTable:table\nvar k:integer\nvar attrRow:integer\nvar userAttrRow:integer\nvar succNo:integer\nvar succCount:integer\nvar coords := [0,0,0]\nfor k := 1 to sourceFrame.NumNodes\n    nodeObj := sourceFrame.node(k)\n    if nodeObj = void then continue end\n    sourceRel := nodeObj.Name\n    if parentRel /= \\\"\\\" then sourceRel := to_str(parentRel, \\\".\\\", nodeObj.Name) end\n    coords := nodeObj.Coordinate3D\n    switch nodeObj.InternalClassName\n    case \\\"Network\\\n        classPath := to_str(nodeObj.Class)\n        classScope := \\\"A\\\n        classRef := classPath\n        if strLPos(sourceBasePath, classPath) = 1\n            classScope := \\\"R\\\n            classRef := strCopy(classPath, strLen(sourceBasePath) + 2, 1000000000)\n        end\n        out := to_str(out, RS, \\\"F\\\", FS, current.M_Encode(parentRel), FS,\n            current.M_Encode(sourceRel), FS, classScope, FS,\n            current.M_Encode(classRef), FS, current.M_Encode(nodeObj.Name), FS,\n            to_str(coords[1]), FS, to_str(coords[2]), FS, to_str(coords[3]))\n        out := to_str(out, current.M_BuildFrameNodes(nodeObj, sourceRel, sourceBasePath))\n        out := to_str(out, current.M_BuildFrameMeta(nodeObj, sourceRel, sourceBasePath))\n    case \\\"Method\\\", \\\"NwData\\\", \\\"NwList2D\\\", \\\"PythonModule\\\n        payload := current.M_BuildObject(nodeObj)\n        out := to_str(out, RS, \\\"S\\\", FS, current.M_Encode(parentRel), FS,\n            current.M_Encode(sourceRel), FS, current.M_Encode(nodeObj.Name), FS,\n            current.M_Encode(payload))\n    case \\\"NwArc\\\n        -- rebuilt from C records\n    case \\\"NwDialog\\\n        out := to_str(out, RS, \\\"U\\\", FS, current.M_Encode(sourceRel), FS,\n            current.M_Encode(nodeObj.InternalClassName))\n    else\n        if nodeObj.Class = void\n            out := to_str(out, RS, \\\"U\\\", FS, current.M_Encode(sourceRel), FS,\n                current.M_Encode(nodeObj.InternalClassName))\n            continue\n        end\n        classPath := to_str(nodeObj.Class)\n        classScope := \\\"A\\\n        classRef := classPath\n        if strLPos(sourceBasePath, classPath) = 1\n            classScope := \\\"R\\\n            classRef := strCopy(classPath, strLen(sourceBasePath) + 2, 1000000000)\n        end\n        out := to_str(out, RS, \\\"O\\\", FS, current.M_Encode(parentRel), FS,\n            current.M_Encode(sourceRel), FS, classScope, FS,\n            current.M_Encode(classRef), FS, current.M_Encode(nodeObj.Name), FS,\n            to_str(coords[1]), FS, to_str(coords[2]), FS, to_str(coords[3]))\n        nodeObj.putAttributeNamesIntoTable(attrTable, true, false)\n        for attrRow := 1 to attrTable.YDim\n            attrName := attrTable[1,attrRow]\n            attrType := attrTable[2,attrRow]\n            if current.M_ShouldSkipAttribute(attrName, attrType) then continue end\n            isUser := \\\"0\\\n            for userAttrRow := 1 to nodeObj.NumAttr\n                if nodeObj.getAttrName(userAttrRow) = attrName\n                    isUser := \\\"1\\\n                    exitLoop\n                end\n            next\n            if attrType = \\\"method\\\" and isUser = \\\"1\\\n                value := current.M_ReadMethodCode(to_str(nodeObj), attrName)\n                out := to_str(out, RS, \\\"A\\\", FS, current.M_Encode(sourceRel), FS,\n                    current.M_Encode(attrName), FS, current.M_Encode(value))\n            elseif attrType = \\\"method\\\" or attrType = \\\"path\\\" or attrType = \\\"object\\\n                value := current.M_ReadAttribute(to_str(nodeObj), attrName)\n                if value = \\\"\\\" or value = \\\"VOID\\\" then continue end\n                refScope := \\\"A\\\n                targetRel := value\n                if strLPos(\\\"self.\\\", value) = 1\n                    refScope := \\\"S\\\n                elseif strLPos(sourceBasePath, value) = 1\n                    refScope := \\\"R\\\n                    targetRel := strCopy(value, strLen(sourceBasePath) + 2, 1000000000)\n                end\n                out := to_str(out, RS, \\\"W\\\", FS, current.M_Encode(sourceRel), FS,\n                    current.M_Encode(attrName), FS, current.M_Encode(attrType), FS,\n                    isUser, FS, refScope, FS, current.M_Encode(targetRel))\n            else\n                value := current.M_ReadAttribute(to_str(nodeObj), attrName)\n                out := to_str(out, RS, \\\"P\\\", FS, current.M_Encode(sourceRel), FS,\n                    current.M_Encode(attrName), FS, current.M_Encode(attrType), FS,\n                    isUser, FS, current.M_Encode(value))\n            end\n        next\n    end\nnext\nfor k := 1 to sourceFrame.NumNodes\n    nodeObj := sourceFrame.node(k)\n    if nodeObj = void then continue end\n    sourceRel := nodeObj.Name\n    if parentRel /= \\\"\\\" then sourceRel := to_str(parentRel, \\\".\\\", nodeObj.Name) end\n    current.LastSummary := strChr(7)\n    executeSilent(to_str(\\\".ModelAssistants.ModelSyncCopy.LastSummary := to_str(\\\",\n        to_str(nodeObj), \\\".NumSucc)\\\"))\n    if current.LastSummary = strChr(7) then continue end\n    succCount := round(str_to_num(current.LastSummary))\n    for succNo := 1 to succCount\n        succObj := nodeObj.succ(succNo)\n        if succObj = void then continue end\n        if strLPos(sourceBasePath, to_str(succObj)) /= 1 then continue end\n        targetRel := strCopy(to_str(succObj), strLen(sourceBasePath) + 2, 1000000000)\n        out := to_str(out, RS, \\\"C\\\", FS, current.M_Encode(sourceRel), FS,\n            current.M_Encode(targetRel))\n    next\nnext\nreturn out"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_BuildObject",
+    "name": "M_BuildObject",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "2788",
+    "program": "------------------------------------------------------------\n--| Function   : serialize one supported information-flow object into MSCO v1\n--| Parameter  : src:object\n--| Return     : string (empty when the type is unsupported)\n--| Called     : M_Copy, M_Send\n--| Call       : M_Encode, M_ReadVariableValue\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam src:object\n-> string\nvar FS:string := strChr(1)\nvar RS:string := strChr(2)\nvar out:string := \\\"\\\nvar icn:string\nvar col:integer\nvar row:integer\nvar tp:string\nvar p := [0,0,0]\nif src = void then return \\\"\\\" end\nicn := src.InternalClassName\np := src.Coordinate3D\nswitch icn\ncase \\\"Method\\\n    return to_str(\\\"MSCO\\\", FS, \\\"v1\\\", FS, version, FS, \\\"M\\\", FS,\n        current.M_Encode(src.Name), FS, to_str(p[1]), FS, to_str(p[2]), FS,\n        to_str(p[3]), FS, current.M_Encode(src.Program))\ncase \\\"PythonModule\\\n    return to_str(\\\"MSCO\\\", FS, \\\"v1\\\", FS, version, FS, \\\"P\\\", FS,\n        current.M_Encode(src.Name), FS, to_str(p[1]), FS, to_str(p[2]), FS,\n        to_str(p[3]), FS, current.M_Encode(to_str(src.Class)), FS,\n        current.M_Encode(src.PythonCode))\ncase \\\"NwData\\\n    return to_str(\\\"MSCO\\\", FS, \\\"v1\\\", FS, version, FS, \\\"V\\\", FS,\n        current.M_Encode(src.Name), FS, to_str(p[1]), FS, to_str(p[2]), FS,\n        to_str(p[3]), FS, current.M_Encode(src.DataType), FS,\n        current.M_Encode(current.M_ReadVariableValue(src)))\ncase \\\"NwList2D\\\n    out := to_str(\\\"MSCO\\\", FS, \\\"v1\\\", FS, version, FS, \\\"T\\\", FS,\n        current.M_Encode(src.Name), FS, to_str(p[1]), FS, to_str(p[2]), FS,\n        to_str(p[3]), FS, current.M_Encode(src.DataType), FS,\n        current.M_Encode(src.DataTypeColumnIndex), FS, to_str(src.RowIndex), FS,\n        to_str(src.ColumnIndex), FS, to_str(src.MaxXDim), FS, to_str(src.XDim), FS,\n        to_str(src.YDim), FS, current.M_Encode(src.getDataType(0)))\n    for col := 1 to src.XDim\n        tp := src.getDataType(col)\n        out := to_str(out, RS, \\\"D\\\", FS, col, FS, current.M_Encode(tp))\n    next\n    if src.ColumnIndex\n        for col := 1 to src.XDim\n            out := to_str(out, RS, \\\"H\\\", FS, col, FS, current.M_Encode(to_str(src[col,0])))\n        next\n    end\n    if src.RowIndex\n        tp := src.getDataType(0)\n        for row := 1 to src.YDim\n            out := to_str(out, RS, \\\"R\\\", FS, row, FS, current.M_Encode(tp), FS,\n                current.M_Encode(to_str(src[0,row])))\n        next\n    end\n    for row := 1 to src.YDim\n        for col := 1 to src.XDim\n            tp := src.getDataType(col)\n            out := to_str(out, RS, \\\"K\\\", FS, col, FS, row, FS,\n                current.M_Encode(tp), FS, current.M_Encode(to_str(src[col,row])))\n        next\n    next\n    return out\nend\nreturn \\\"\\"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_Copy",
+    "name": "M_Copy",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1137",
+    "program": "------------------------------------------------------------\n--| Function   : serialize one supported SourcePath object into LastPayload\n--| Parameter  : -\n--| Return     : boolean\n--| Call       : M_BuildObject, M_BuildFrame\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\n-> boolean\nvar src:object\nvar payload:string\nif not existsObject(current.SourcePath)\n    current.LastError := to_str(\\\"Source object not found: \\\", current.SourcePath)\n    return false\nend\nsrc := str_to_obj(current.SourcePath)\nif src.InternalClassName = \\\"Network\\\n    payload := current.M_BuildFrame(src)\nelse\n    payload := current.M_BuildObject(src)\nend\nif payload = \\\"\\\n    current.LastError := to_str(\\\"Unsupported source type: \\\", src.InternalClassName,\n        \\\" (supports Frame, Method, DataTable, Variable, PythonModule)\\\")\n    return false\nend\ncurrent.LastPayload := payload\ncurrent.LastSummary := to_str(\\\"copied=\\\", src.InternalClassName, \\\" name=\\\", src.Name,\n    \\\" chars=\\\", strLen(payload))\ncurrent.LastError := to_str(\\\"Copied \\\", src.Name, \\\" to LastPayload\\\")\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_Decode",
+    "name": "M_Decode",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "959",
+    "program": "------------------------------------------------------------\n--| Function   : restore text escaped by M_Encode\n--| Parameter  : value:string\n--| Return     : string\n--| Called     : M_ApplyObject\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam value:string\n-> string\nvar FS:string := strChr(1)\nvar RS:string := strChr(2)\nvar ESC:string := strChr(3)\nvar out:string := \\\"\\\nvar ch:string\nvar code:string\nvar i:integer := 1\nwhile i <= strLen(value)\n    ch := strCopy(value, i, 1)\n    if ch = ESC and i < strLen(value)\n        i += 1\n        code := strCopy(value, i, 1)\n        switch code\n        case \\\"E\\\n            out := to_str(out, ESC)\n        case \\\"F\\\n            out := to_str(out, FS)\n        case \\\"R\\\n            out := to_str(out, RS)\n        else\n            out := to_str(out, code)\n        end\n    else\n        out := to_str(out, ch)\n    end\n    i += 1\nend\nreturn out"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_Encode",
+    "name": "M_Encode",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "784",
+    "program": "------------------------------------------------------------\n--| Function   : escape MSCO field separators in arbitrary text\n--| Parameter  : value:string\n--| Return     : string\n--| Called     : M_BuildObject\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam value:string\n-> string\nvar FS:string := strChr(1)\nvar RS:string := strChr(2)\nvar ESC:string := strChr(3)\nvar out:string := \\\"\\\nvar ch:string\nvar i:integer\nfor i := 1 to strLen(value)\n    ch := strCopy(value, i, 1)\n    if ch = ESC\n        out := to_str(out, ESC, \\\"E\\\")\n    elseif ch = FS\n        out := to_str(out, ESC, \\\"F\\\")\n    elseif ch = RS\n        out := to_str(out, ESC, \\\"R\\\")\n    else\n        out := to_str(out, ch)\n    end\nnext\nreturn out"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_GetMappedPath",
+    "name": "M_GetMappedPath",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "563",
+    "program": "------------------------------------------------------------\n--| Function   : resolve a source-relative path in the apply map\n--| Parameter  : pathMap:object, sourceRel:string\n--| Return     : string\n--| Called     : M_ApplyFrame\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam pathMap:object, sourceRel:string\n-> string\nvar row:integer\nif pathMap = void then return \\\"\\\" end\nfor row := 1 to pathMap.YDim\n    if pathMap[1,row] = sourceRel then return pathMap[2,row] end\nnext\nreturn \\\"\\"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_OnReceive",
+    "name": "M_OnReceive",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "2283",
+    "program": "------------------------------------------------------------\n--| Function   : buffer and apply complete MSCO/MSCF payloads\n--| Parameter  : channelNo:integer, message:string\n--| Return     : -\n--| Called     : SocketServer.callback / SocketClient.callback\n--| Call       : M_ApplyObject, M_ApplyFrame\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam channelNo:integer, message:string\nvar FS:string := strChr(1)\nvar rest:string\nvar p:integer\nvar need:integer\nvar headerLen:integer\nvar payload:string\nvar dst:object\nvar newObj:object\ncurrent.RxBuffer := to_str(current.RxBuffer, message)\nwhile true\n    if strLen(current.RxBuffer) < 5 then return end\n    if strCopy(current.RxBuffer, 1, 4) /= \\\"MSCL\\\" or strCopy(current.RxBuffer, 5, 1) /= FS\n        current.LastError := \\\"Invalid socket stream header\\\n        current.RxBuffer := \\\"\\\n        return\n    end\n    rest := strCopy(current.RxBuffer, 6, 1000000000)\n    p := strLPos(FS, rest)\n    if p <= 0 then return end\n    need := round(str_to_num(strCopy(rest, 1, p - 1)))\n    if need <= 0\n        current.LastError := \\\"Invalid socket payload length\\\n        current.RxBuffer := \\\"\\\n        return\n    end\n    headerLen := 5 + p\n    if strLen(current.RxBuffer) < headerLen + need\n        current.LastError := to_str(\\\"Receiving \\\", strLen(current.RxBuffer) - headerLen,\n            \\\"/\\\", need, \\\" chars\\\")\n        return\n    end\n    payload := strCopy(current.RxBuffer, headerLen + 1, need)\n    current.RxBuffer := strCopy(current.RxBuffer, headerLen + need + 1, 1000000000)\n    current.LastPayload := payload\n    if not existsObject(current.TargetPath)\n        current.LastError := to_str(\\\"Target not found on receive: \\\", current.TargetPath)\n        return\n    end\n    dst := str_to_obj(current.TargetPath)\n    if strCopy(payload, 1, 4) = \\\"MSCF\\\n        newObj := current.M_ApplyFrame(payload, dst)\n    else\n        newObj := current.M_ApplyObject(payload, dst)\n    end\n    if newObj = void\n        current.LastError := to_str(\\\"Receive failed (\\\", current.LastSummary, \\\")\\\")\n        return\n    end\n    current.LastError := to_str(\\\"Received \\\", to_str(newObj), \\\" [\\\", current.LastSummary, \\\"]\\\")\n    if current.RxBuffer = \\\"\\\" then exitLoop end\nend"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_Paste",
+    "name": "M_Paste",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1091",
+    "program": "------------------------------------------------------------\n--| Function   : rebuild LastPayload object or Frame contents at TargetPath\n--| Parameter  : -\n--| Return     : boolean\n--| Call       : M_ApplyObject, M_ApplyFrame\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\n-> boolean\nvar dst:object\nvar newObj:object\nif not existsObject(current.TargetPath)\n    current.LastError := to_str(\\\"Target parent not found: \\\", current.TargetPath)\n    return false\nend\nif current.LastPayload = \\\"\\\n    current.LastError := \\\"Nothing to paste: LastPayload is empty\\\n    return false\nend\ndst := str_to_obj(current.TargetPath)\nif strCopy(current.LastPayload, 1, 4) = \\\"MSCF\\\n    newObj := current.M_ApplyFrame(current.LastPayload, dst)\nelse\n    newObj := current.M_ApplyObject(current.LastPayload, dst)\nend\nif newObj = void\n    current.LastError := to_str(\\\"Paste failed (\\\", current.LastSummary, \\\")\\\")\n    return false\nend\ncurrent.LastError := to_str(\\\"Pasted \\\", to_str(newObj), \\\" [\\\", current.LastSummary, \\\"]\\\")\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_ReadAttribute",
+    "name": "M_ReadAttribute",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "744",
+    "program": "------------------------------------------------------------\n--| Function   : safely read an attribute value as text\n--| Parameter  : objPath:string, attrName:string\n--| Return     : string\n--| Called     : M_BuildFrameNodes, M_BuildFrameMeta\n--| Call       : executeSilent\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam objPath:string, attrName:string\n-> string\nvar sentinel:string := strChr(7)\ncurrent.LastSummary := sentinel\nexecuteSilent(to_str(\\\".ModelAssistants.ModelSyncCopy.LastSummary := to_str(\\\",\n    objPath, \\\".getAttribute(\\\", strChr(34), attrName, strChr(34), \\\"))\\\"))\nif current.LastSummary = sentinel then return \\\"\\\" end\nreturn current.LastSummary"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_ReadMethodCode",
+    "name": "M_ReadMethodCode",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "715",
+    "program": "------------------------------------------------------------\n--| Function   : safely read a dynamic method-attribute Program\n--| Parameter  : objPath:string, attrName:string\n--| Return     : string\n--| Called     : M_BuildFrameNodes, M_BuildFrameMeta\n--| Call       : executeSilent\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam objPath:string, attrName:string\n-> string\nvar sentinel:string := strChr(7)\ncurrent.LastSummary := sentinel\nexecuteSilent(to_str(\\\".ModelAssistants.ModelSyncCopy.LastSummary := \\\", objPath,\n    \\\".&\\\", attrName, \\\".Program\\\"))\nif current.LastSummary = sentinel then return \\\"\\\" end\nreturn current.LastSummary"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_ReadVariableValue",
+    "name": "M_ReadVariableValue",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "827",
+    "program": "------------------------------------------------------------\n--| Function   : safely read a Variable value as text\n--| Parameter  : sourceVar:object\n--| Return     : string\n--| Called     : M_BuildObject\n--| Call       : executeSilent\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam sourceVar:object\n-> string\nvar sentinel:string := strChr(7)\nvar valuePath:string\nif sourceVar = void then return \\\"\\\" end\nvaluePath := to_str(sourceVar.Location, \\\".\\\", sourceVar.Name)\n.ModelAssistants.ModelSyncCopy.LastSummary := sentinel\nexecuteSilent(to_str(\\\".ModelAssistants.ModelSyncCopy.LastSummary := to_str(\\\", valuePath, \\\")\\\"))\nif .ModelAssistants.ModelSyncCopy.LastSummary = sentinel then return \\\"\\\" end\nreturn .ModelAssistants.ModelSyncCopy.LastSummary"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_Send",
+    "name": "M_Send",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1698",
+    "program": "------------------------------------------------------------\n--| Function   : serialize one supported object and send a length-prefixed stream\n--| Parameter  : -\n--| Return     : boolean\n--| Call       : M_BuildObject, M_BuildFrame\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\n-> boolean\nvar src:object\nvar payload:string\nvar FS:string := strChr(1)\nvar len:integer\nvar cs:integer\nvar total:integer\nvar k:integer\nvar full:string\nvar flen:integer\nif not existsObject(current.SourcePath)\n    current.LastError := to_str(\\\"Source object not found: \\\", current.SourcePath)\n    return false\nend\nif not current.SocketClient.On\n    current.LastError := \\\"Client socket is not connected\\\n    return false\nend\nsrc := str_to_obj(current.SourcePath)\nif src.InternalClassName = \\\"Network\\\n    payload := current.M_BuildFrame(src)\nelse\n    payload := current.M_BuildObject(src)\nend\nif payload = \\\"\\\n    current.LastError := to_str(\\\"Unsupported source type: \\\", src.InternalClassName,\n        \\\" (supports Frame, Method, DataTable, Variable, PythonModule)\\\")\n    return false\nend\ncurrent.LastPayload := payload\nlen := strLen(payload)\nfull := to_str(\\\"MSCL\\\", FS, len, FS, payload)\nflen := strLen(full)\ncs := current.ChunkSize\nif cs < 256 then cs := 256 end\ntotal := (flen + cs - 1) div cs\nfor k := 1 to total\n    current.SocketClient.write(0, strCopy(full, (k - 1) * cs + 1, cs))\nnext\ncurrent.LastSummary := to_str(\\\"sentType=\\\", src.InternalClassName, \\\" name=\\\", src.Name,\n    \\\" payloadChars=\\\", len, \\\" chunks=\\\", total)\ncurrent.LastError := to_str(\\\"Sent \\\", src.Name, \\\" in \\\", total, \\\" chunk(s) (\\\", len, \\\" chars)\\\")\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_SetObjectAttribute",
+    "name": "M_SetObjectAttribute",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1376",
+    "program": "------------------------------------------------------------\n--| Function   : create/apply one scalar object attribute\n--| Parameter  : owner:object, attrName:string, attrType:string,\n--|              isUser:string, value:string\n--| Return     : boolean\n--| Called     : M_ApplyFrame\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam owner:object, attrName:string, attrType:string, isUser:string, value:string\n-> boolean\nif owner = void then return false end\nif isUser = \\\"1\\\" and not owner.hasAttribute(attrName)\n    owner.createAttr(attrName, attrType)\nend\nswitch attrType\ncase \\\"string\\\n    owner.setAttribute(attrName, value)\ncase \\\"integer\\\n    owner.setAttribute(attrName, round(str_to_num(value)))\ncase \\\"real\\\n    owner.setAttribute(attrName, str_to_num(value))\ncase \\\"boolean\\\n    owner.setAttribute(attrName, strToUpper(value) = \\\"TRUE\\\")\ncase \\\"time\\\n    owner.setAttribute(attrName, str_to_time(value))\ncase \\\"length\\\n    owner.setAttribute(attrName, str_to_length(value))\ncase \\\"speed\\\n    owner.setAttribute(attrName, str_to_speed(value))\ncase \\\"weight\\\n    owner.setAttribute(attrName, str_to_weight(value))\ncase \\\"date\\\n    owner.setAttribute(attrName, str_to_date(value))\ncase \\\"datetime\\\n    owner.setAttribute(attrName, str_to_dateTime(value))\nelse\n    return false\nend\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_SetTableCell",
+    "name": "M_SetTableCell",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1292",
+    "program": "------------------------------------------------------------\n--| Function   : write one decoded DataTable cell with its declared type\n--| Parameter  : tab:object, col:integer, row:integer, tp:string, value:string\n--| Return     : boolean\n--| Called     : M_ApplyObject\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam tab:object, col:integer, row:integer, tp:string, value:string\n-> boolean\nif tab = void then return false end\nswitch tp\ncase \\\"string\\\n    tab[col,row] := value\ncase \\\"integer\\\n    tab[col,row] := round(str_to_num(value))\ncase \\\"real\\\n    tab[col,row] := str_to_num(value)\ncase \\\"boolean\\\n    tab[col,row] := strToUpper(value) = \\\"TRUE\\\ncase \\\"time\\\n    tab[col,row] := str_to_time(value)\ncase \\\"length\\\n    tab[col,row] := str_to_length(value)\ncase \\\"speed\\\n    tab[col,row] := str_to_speed(value)\ncase \\\"weight\\\n    tab[col,row] := str_to_weight(value)\ncase \\\"date\\\n    tab[col,row] := str_to_date(value)\ncase \\\"datetime\\\n    tab[col,row] := str_to_dateTime(value)\ncase \\\"object\\\n    if value = \\\"\\\" or value = \\\"VOID\\\n        tab[col,row] := void\n    elseif existsObject(value)\n        tab[col,row] := str_to_obj(value)\n    else\n        return false\n    end\nelse\n    return false\nend\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_SetVariableValue",
+    "name": "M_SetVariableValue",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1566",
+    "program": "------------------------------------------------------------\n--| Function   : set a reconstructed Variable with its declared data type\n--| Parameter  : targetVar:object, tp:string, value:string\n--| Return     : boolean\n--| Called     : M_ApplyObject\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam targetVar:object, tp:string, value:string\n-> boolean\nvar j:json\nif targetVar = void then return false end\nswitch tp\ncase \\\"string\\\n    targetVar.setAttribute(\\\"Value\\\", value)\ncase \\\"integer\\\n    targetVar.setAttribute(\\\"Value\\\", round(str_to_num(value)))\ncase \\\"real\\\n    targetVar.setAttribute(\\\"Value\\\", str_to_num(value))\ncase \\\"boolean\\\n    targetVar.setAttribute(\\\"Value\\\", strToUpper(value) = \\\"TRUE\\\")\ncase \\\"time\\\n    targetVar.setAttribute(\\\"Value\\\", str_to_time(value))\ncase \\\"length\\\n    targetVar.setAttribute(\\\"Value\\\", str_to_length(value))\ncase \\\"speed\\\n    targetVar.setAttribute(\\\"Value\\\", str_to_speed(value))\ncase \\\"weight\\\n    targetVar.setAttribute(\\\"Value\\\", str_to_weight(value))\ncase \\\"date\\\n    targetVar.setAttribute(\\\"Value\\\", str_to_date(value))\ncase \\\"datetime\\\n    targetVar.setAttribute(\\\"Value\\\", str_to_dateTime(value))\ncase \\\"object\\\n    if value = \\\"\\\" or value = \\\"VOID\\\n        targetVar.setAttribute(\\\"Value\\\", void)\n    elseif existsObject(value)\n        targetVar.setAttribute(\\\"Value\\\", str_to_obj(value))\n    else\n        return false\n    end\ncase \\\"json\\\n    targetVar.setAttribute(\\\"Value\\\", j.parse(value))\nelse\n    return false\nend\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_ShouldSkipAttribute",
+    "name": "M_ShouldSkipAttribute",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "933",
+    "program": "------------------------------------------------------------\n--| Function   : filter identity, runtime state, and unsupported attributes\n--| Parameter  : attrName:string, attrType:string\n--| Return     : boolean\n--| Called     : M_BuildFrameNodes, M_BuildFrameMeta\n--| Date       : 2026.07.20\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam attrName:string, attrType:string\n-> boolean\nswitch attrType\ncase \\\"string\\\", \\\"integer\\\", \\\"real\\\", \\\"boolean\\\", \\\"time\\\", \\\"length\\\", \\\"speed\\\", \\\"weight\\\", \\\"date\\\", \\\"datetime\\\", \\\"path\\\", \\\"object\\\", \\\"method\\\n    -- supported by P, W, or A records\nelse\n    return true\nend\nswitch attrName\ncase \\\"Name\\\", \\\"Selected\\\", \\\"XPos\\\", \\\"YPos\\\", \\\"Coordinate3D\\\", \\\"NumAnimationEvents\\\", \\\"Failed\\\", \\\"Stopped\\\", \\\"EnergyCurrentState\\\", \\\"EnergyTargetState\\\", \\\"CurrIcon\\\", \\\"CurrIconNo\\\", \\\"CurrIconTransparent\\\n    return true\nend\nreturn false"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_Split",
+    "name": "M_Split",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "638",
+    "program": "------------------------------------------------------------\n--| Function   : split a string by a single-char separator\n--| Parameter  : s:string, sep:string\n--| Return     : string[]\n--| Called     : M_ApplyObject\n--| Call       : strLPos, strCopy\n--| Date       : 2026.06.07\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\nparam s:string, sep:string\n-> string[]\nvar res:string[]\nvar rest:string := s\nvar p:integer := strLPos(sep, rest)\nwhile p > 0\n    res.append(strCopy(rest, 1, p - 1))\n    rest := strCopy(rest, p + 1, 1000000000)\n    p := strLPos(sep, rest)\nend\nres.append(rest)\nreturn res"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_StartClient",
+    "name": "M_StartClient",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "683",
+    "program": "------------------------------------------------------------\n--| Function   : configure and switch on the client socket (copy source side)\n--| Parameter  : -\n--| Return     : boolean\n--| Called     : dialog / console\n--| Call       : -\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\n-> boolean\ncurrent.SocketClient.On := false\ncurrent.SocketClient.ServerSocket := false\ncurrent.SocketClient.Host := current.ServerHost\ncurrent.SocketClient.Port := current.ServerPort\ncurrent.SocketClient.On := true\ncurrent.LastError := to_str(\\\"Client connected to \\\", current.ServerHost, \\\":\\\", current.ServerPort)\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_StartServer",
+    "name": "M_StartServer",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "707",
+    "program": "------------------------------------------------------------\n--| Function   : configure and switch on the server socket (paste target side)\n--| Parameter  : -\n--| Return     : boolean\n--| Called     : dialog / console\n--| Call       : -\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\n-> boolean\ncurrent.SocketServer.On := false\ncurrent.SocketServer.ServerSocket := true\ncurrent.SocketServer.Host := current.ServerHost\ncurrent.SocketServer.Port := current.ServerPort\ncurrent.RxBuffer := \\\"\\\ncurrent.SocketServer.On := true\ncurrent.LastError := to_str(\\\"Server listening on \\\", current.ServerHost, \\\":\\\", current.ServerPort)\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.ModelSyncCopy.M_Stop",
+    "name": "M_Stop",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "467",
+    "program": "------------------------------------------------------------\n--| Function   : switch off both sockets\n--| Parameter  : -\n--| Return     : boolean\n--| Called     : dialog / console\n--| Call       : -\n--| Date       : 2026.07.19\n--| Programmer : ModelSyncCopy\n------------------------------------------------------------\n-> boolean\ncurrent.SocketServer.On := false\ncurrent.SocketClient.On := false\ncurrent.RxBuffer := \\\"\\\ncurrent.LastError := \\\"Sockets off\\\nreturn true"
+  },
+  {
+    "path": ".ModelAssistants.Namer.AssignName",
+    "name": "AssignName",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1053",
+    "program": "------------------------------------------------------------\n--| Function   : assign name with current.TabCandidate\n--| Parameter  : namestr:string :=\\\"Station\\\", connectStr:string := \\\"\\\", noName:integer := 1\n--| Return     :\n--| Called     : Dialog.callback\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam namestr:string :=\\\"Station\\\", connectStr:string := \\\"\\\", noName:integer := 1\n\nvar objArr:string[]\n\nfor var i := 1 to current.TabCandidate.YdimIndex\n\\tvar obj :object := current.TabCandidate[0, i]\n\\tvar loc :object := obj.Location\n\\tvar str :string := to_str(namestr, connectStr, noName)\n\\t\n\\twhile not loc.isNameUnique(str)\n\\t\\tnoName += 1\n\\t\\tstr := to_str(namestr, connectStr, noName)\n\\tend\n\\tobj.setName(str)\n\\tobjArr.append(to_str(loc, \\\".\\\", str))\n\\t\\t\n\\tnoName += 1\nnext\n-- objects\ncurrent.Objects.deleteContents\nobjArr.copyToTableColumn(current.Objects, 1)\n-- refresh TabCandidate\ncurrent.TransformObjects\ncurrent.DialogNamer.m_refreshList"
+  },
+  {
+    "path": ".ModelAssistants.Namer.Frame.TestObject",
+    "name": "TestObject",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "269",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2024.02.15\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------"
+  },
+  {
+    "path": ".ModelAssistants.Namer.exchangeListRow",
+    "name": "exchangeListRow",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "893",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  : lstObj:object, changingRow:integer, exchangingRow:integer\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.20\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam lstObj:list, changingRow:integer, exchangingRow:integer -> boolean\n\n-- defence\nif lstObj = void then return False; end\nif changingRow<1 or exchangingRow<1 then return False; end\nif changingRow>lstObj.dim then return False; end\nif exchangingRow>lstObj.dim then return False; end\nif changingRow = exchangingRow then return True; end\n\n--\nvar minRow, maxRow:integer\nminRow := min(changingRow, exchangingRow); maxRow := max(changingRow, exchangingRow)\n--\nlstObj.insert(maxRow, lstObj[minRow])\nlstObj[minRow] := lstObj[maxRow+1]\nlstObj.remove(maxRow+1)\n\nreturn True"
+  },
+  {
+    "path": ".ModelAssistants.Namer.exchangeTabRow",
+    "name": "exchangeTabRow",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1320",
+    "program": "------------------------------------------------------------\n--| Function   : exchange the two rows in table\n--| Parameter  : tabObj:object, changingRow:integer, exchangingRow:integer\n--| Return     : boolean\n--| Called     : Dialog.callback\n--| Call       :\n--| Date       : 2023.02.20\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam tabObj:object, changingRow:integer, exchangingRow:integer -> boolean\n\n-- defence\nif tabObj = void then return False; end\nif tabObj.internalClassName /= \\\"NwList2D\\\" then return False; end\nif changingRow<1 or exchangingRow<1 then return False; end\nif changingRow>max(tabObj.ydim, tabObj.ydimIndex) then return False; end\nif exchangingRow>max(tabObj.ydim, tabObj.ydimIndex) then return False; end\nif changingRow = exchangingRow then return True; end\n\n--\nvar minRow, maxRow:integer\nminRow := min(changingRow, exchangingRow); maxRow := max(changingRow, exchangingRow)\n--\ntabObj.insertRow(maxRow)\nif tabObj.ColumnIndex\n\\ttabObj.copyRangeTo({0, minRow}..{*, minRow}, tabObj, 0, maxRow)\n\\ttabObj.copyRangeTo({0, maxRow+1}..{*, maxRow+1}, tabObj, 0, minRow)\nelse\n\\ttabObj.copyRangeTo({1, minRow}..{*, minRow}, tabObj, 1, maxRow)\n\\ttabObj.copyRangeTo({1, maxRow+1}..{*, maxRow+1}, tabObj, 1, minRow)\nend\ntabObj.cutRow(maxRow+1)\n\nreturn True"
+  },
+  {
+    "path": ".ModelAssistants.Namer.transformObjects",
+    "name": "transformObjects",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "1415",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.20\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\n\n// initialize TabCandidate by Objects\nvar objArr:string[]; objArr.copyFromTableColumn(current.Objects, 1)\nvar obj:object\nfor var i := current.TabCandidate.ydimIndex downto 1\n\\tobj := current.TabCandidate[0, i]\n\\tif obj = void then current.TabCandidate.cutRow(i) else\n\\t\\tif objArr.contains(to_str(obj))\n\\t\\t\\tobjArr.deleteValue(to_str(obj))\\t\n\\t\\telse\n\\t\\t\\tcurrent.TabCandidate.cutRow(i)\n\\t\\tend\n\\tend\nnext\n-- left and put them behind\nfor var i := 1 to objArr.Dim\n\\tcurrent.TabCandidate[0, current.TabCandidate.YDimIndex+1] := objArr[i]\nnext\n-- xdim index\ncurrent.TabCandidate.delete({1,0}..{*,0})\nfor var i := 1 to current.TabSelectedSortKey.ydim\n\\tcurrent.TabCandidate[i, 0] := current.TabSelectedSortKey[1, i]\nnext\n-- delete contents\ncurrent.TabCandidate.delete({1,1}..{*,*})\n\n// fill the table\nfor var i := 1 to current.TabCandidate.YDimIndex\n\\tobj := current.TabCandidate[0, i]; if obj = void then return; end\n\\tfor var j:= 1 to current.TabCandidate.XDimIndex\n\\t\\tvar attrName:string := current.TabCandidate[j, 0]\n\\t\\tif obj.hasAttribute(attrName)\n\\t\\t\\tcurrent.TabCandidate[j, i] := to_str(obj.getAttribute(attrName))\n\\t\\tend\n\\tnext\nnext"
+  },
+  {
+    "path": ".ModelAssistants.QuickArrayTool.ArrayObjects",
+    "name": "ArrayObjects",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "3375",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  : FrameObj:object, classObj:object, startArr:real[3], distanceArr:real[3], numberArr:real[3]\n--| Return     : boolean\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.21\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam FrameObj:object, classObj:object, startArr:real[3], distanceArr:real[3], numberArr:integer[3], seqList:list, bol_mention:boolean:=False -> boolean\n\n-- x y z\nif FrameObj = void then return False; end\nif FrameObj.internalClassName /= \\\"Network\\\" then return False; end\nif classObj = void then return False; end\nif classObj.Class /= void then return False; end\nif numberArr[1] = 0 and numberArr[2] = 0 and numberArr[3] = 0 then return False; end\nif seqList.dim /=3 then return False; end\nseqList.setCursor(1); if not seqList.find(\\\"X\\\") then return False; end\nseqList.setCursor(1); if not seqList.find(\\\"Y\\\") then return False; end\nseqList.setCursor(1); if not seqList.find(\\\"Z\\\") then return False; end\n\nvar tabNum:table[integer, integer]; tabNum.create\nfor var i := 1 to 3\n\\ttabNum.appendRow(i, numberArr[i])\nnext\ntabNum.sort(2, \\\"Down\\\")\n\nvar maxIndex, midIndex, minIndex:integer\nvar maxValue, midValue, minValue:real\nmaxValue := tabNum[2, 1]; maxIndex := tabNum[1, 1]\nmidValue := tabNum[2, 2]; midIndex := tabNum[1, 2]\nminValue := tabNum[2, 3]; minIndex := tabNum[1, 3]\n\nvar maxPos, minPos, midPos:real\nmaxPos := startArr[maxIndex]; midPos := startArr[midIndex]; minPos := startArr[minIndex]\n\n// sequence\nvar tabPos:table[integer, integer, real]; tabPos.create -- index, position value\nvar tabObj:table[length, length, length]; tabObj.create -- x, y, z\ntabObj.ColumnIndex := True; tabObj.writeRow(1, 0, \\\"X\\\", \\\"Y\\\", \\\"Z\\\")\nfor var i := 1 to numberArr[maxIndex]\n\\ttabPos.deleteContents\n\\tmidPos := startArr[midIndex]\n\\ttabPos.appendRow(1, maxIndex, maxPos); tabPos.appendRow(2, midIndex, midPos); tabPos.appendRow(3, minIndex, minPos)\n\\tif midValue = 0\n\\t\\ttabPos.sort(2, \\\"up\\\")\n\\t\\ttabObj.appendRow(tabPos[3,1], -tabPos[3,2], tabPos[3,3])\n\\t\\ttabPos.sort(1, \\\"up\\\")\n\\telse\n\\t\\tfor var j := 1 to numberArr[midIndex]\n\\t\\t\\ttabPos[3, 2] := midPos\n\\t\\t\\tminPos := startArr[minIndex]\n\\t\\t\\tif minValue = 0\n\\t\\t\\t\\ttabPos.sort(2, \\\"up\\\")\n\\t\\t\\t\\ttabObj.appendRow(tabPos[3,1], -tabPos[3,2], tabPos[3,3])\n\\t\\t\\t\\ttabPos.sort(1, \\\"up\\\")\n\\t\\t\\telse\n\\t\\t\\t\\tfor var k := 1 to numberArr[minIndex]\n\\t\\t\\t\\t\\ttabPos[3, 3] := minPos\n\\t\\t\\t\\t\\t\n\\t\\t\\t\\t\\ttabPos.sort(2, \\\"up\\\")\n\\t\\t\\t\\t\\ttabObj.appendRow(tabPos[3,1], -tabPos[3,2], tabPos[3,3])\n\\t\\t\\t\\t\\ttabPos.sort(1, \\\"up\\\")\n\\t\\t\\t\\t\\t\n\\t\\t\\t\\t\\tminPos += distanceArr[minIndex]\n\\t\\t\\t\\tnext\n\\t\\t\\tend\n\\t\\t\\tmidPos += distanceArr[midIndex]\n\\t\\tnext\n\\tend\n\\tmaxPos += distanceArr[maxIndex]\nnext\n\n// sort\nvar methodStr:string := \\\"tabObj.sort(\\\nfor var i := seqList.dim downto 1\n\\tmethodStr := methodStr + \\\"\\\\\\\"\\\" + to_str(seqList[i]) + \\\"\\\\\\\"\\\" + \\\",\\\nnext\nmethodStr := methodStr + \\\"\\\\\\\"\\\" + \\\"Up\\\" + \\\"\\\\\\\"\\\" + \\\")\\\nexecuteSilent(methodStr)\n\n// create objects\nfor var i:= 1 to tabObj.ydim\n\\tvar obj:object := ClassObj.derive(FrameObj)\n\\tobj.Coordinate3D := [tabObj[1, i], tabObj[2, i], tabObj[3, i]]\nnext\n\nif bol_mention\n messageBox(to_str(\\\"Geneate \\\", tabObj.ydim, \\\" children of \\\", classObj, \\\" in \\\", FrameObj, \\\" successfully\\\"),  1, 4)\nend\n\nreturn True"
+  },
+  {
+    "path": ".ModelAssistants.QuickArrayTool.exchangeListRow",
+    "name": "exchangeListRow",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "893",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  : lstObj:object, changingRow:integer, exchangingRow:integer\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.20\n--| Programmer : yizhu@siemens.com\n------------------------------------------------------------\nparam lstObj:list, changingRow:integer, exchangingRow:integer -> boolean\n\n-- defence\nif lstObj = void then return False; end\nif changingRow<1 or exchangingRow<1 then return False; end\nif changingRow>lstObj.dim then return False; end\nif exchangingRow>lstObj.dim then return False; end\nif changingRow = exchangingRow then return True; end\n\n--\nvar minRow, maxRow:integer\nminRow := min(changingRow, exchangingRow); maxRow := max(changingRow, exchangingRow)\n--\nlstObj.insert(maxRow, lstObj[minRow])\nlstObj[minRow] := lstObj[maxRow+1]\nlstObj.remove(maxRow+1)\n\nreturn True"
+  },
+  {
+    "path": ".ModelAssistants.Templates",
+    "name": "Templates",
+    "type": "Method",
+    "encrypted": "false",
+    "has_syntax_error": "false",
+    "num_in_execution": "0",
+    "program_len": "251",
+    "program": "------------------------------------------------------------\n--| Function   :\n--| Parameter  :\n--| Return     :\n--| Called     :\n--| Call       :\n--| Date       : 2023.02.14\n--| Programmer :\n------------------------------------------------------------\n"
+  }
+]

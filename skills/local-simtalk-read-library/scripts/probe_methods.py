@@ -39,7 +39,7 @@ import uuid
 
 HOST = "host.docker.internal"
 PORT = 50007
-SOCKET_CLIENT = "/root/skills_of_plant_simulation/skills/local-simtalk-execution/scripts/socket_client.py"
+SOCKET_CLIENT = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))), "skills", "local-simtalk-execution", "scripts", "socket_client.py")
 BATCH = 8  # paths per simtalk_run
 
 

@@ -1,86 +1,35 @@
-# Session Summary — learn loaded Factory51 model via SimTalkClaude TCP
-**Date:** 2026-08-27
-**Agent:** plant-simulation-expert
-**Duration:** ~1 turn (cold-start of session)
-**Skills called:** `local-simtalk-get-folder-tree`, `local-simtalk-execution` (transport only)
+# Session Summary — learn loaded Factory51 model via SimTalkClaude TCP (warehouse orientation)
+**Date:** 2026-08-27  **Agent:** plant-simulation-expert
+**Duration:** ~1 turn(cold-start)
+**Skills called:** local-simtalk-get-folder-tree, local-simtalk-execution
 
-## Goals
+## 04-model-case-studies
+- 模型是 `Factory51` warehouse(早于当天稍后的 09:37 swap 状态确认),142 子节点 pallet warehouse + crane + AGV:
+  - 5 `RackLane` + `.UserObjects.Warehouse` WMS 克隆
+  - `MultiPortalCrane` + `SmallCrane` Tracks + `AGVPool` + `ChargeTrack1/2`(AGV 充电站)
+  - `EmptyPalletsStore` / `StorageArea` / `StoreEntry/Exit` + 卡车到达/漏接 Variables
+- 5 `Variables` + 2 `SankeyDiagrams` + `AGVPool` + `EventController` + `CostAnalyzer` + `HtmlReport` + 2 Methods(`userSetTarget` / `UnloadTruck`)
+- Factory51 与同日稍后 `02-simulation-file-experience/04-model-case-studies/factory51/factory51-simtalkclaude-integration.md` 沉淀的 Class Library / Models 二分法**不是同一份研究**——本次是"warehouse 端 TCP 枚举",那次是"SimtalkClaude v2 离线源码审计"
 
-Orient on the Plant Simulation model currently loaded in the user's GUI by
-probing the TCP bridge at `host.docker.internal:50007`, enumerating the
-Class Library (basis) tree, and characterizing the user's main model Frame
-(`.Models.Factory51`).
+## 03-workflow-playbook
+- `bfs_one_level.py` 在 >~130 子节点 Frame 上 stdout JSON 截断(readlog v15+ buffer ceiling)→ 用 `bfs_full.py <path> 1 <out>.json` 替代(详见 `02-simulation-file-experience/03-workflow-playbook/skill-call-playbook.md §四`)
+- 旧的 `data/basis_tree_depth4.json`(2026-08-26)stale → 用 `basis_tree_depth4_fresh.json` 取代(下次清理旧 cache)
 
-## What was done
+## 02-bridge-tool
+- `var d : dictionary` / `make("Dictionary")` 在 `simtalk_run` 上下文是**语法错** → 回退到 per-child `print` + 外部分组聚合
 
-- **Pre-flight ✅** — `host.docker.internal:50007` reachable; `ping` returns
-  `success`. SimTalkClaude server is live.
-- **Depth-4 BFS ✅** — `bfs_full.py --no-infobox . 4` → 48 round-trips,
-  `data/basis_tree_depth4_fresh.json` written. Captures the entire class
-  library to depth 4 (basis + 9 top-level folders + their children).
-- **Whole-model type aggregation ✅** — 767 nodes, 43 distinct types.
-  Top contributors: Variables (204), Methods (181), Connectors (58), Comments
-  (44), Conveyors (29). Method inventory split cleanly into HBW3D reference
-  (`ApplicationObjects.HBW3D.*`), user warehouse (`UserObjects.Warehouse.*`),
-  CranesAndMore helpers, and the SimtalkClaude TCP-bridge skeleton
-  (`SimtalkClaude.main.*` + `SimtalkClaude.src.*`).
-- **Factory51 child-type breakdown ✅** — confirmed 142 direct children via
-  `simtalk_run`. Mix dominated by Connectors (58), Conveyors (~20),
-  PickAndPlaces (6), Tracks (6, incl. cranes), Converters, Stores, Buffers,
-  Sources/Drains, plus 5 Variables, 2 SankeyDiagrams, AGVPool,
-  EventController, CostAnalyzer, HtmlReport, and 2 Methods
-  (`userSetTarget`, `UnloadTruck`).
-
-Per-skill log:
-- `skills/local-simtalk-get-folder-tree/log/2026-08-27_basis-depth4-full-and-factory51-types.md`
-
-## Key findings / decisions
-
-- **The model is `Factory51`, not `.Models.Model`.** An earlier
-  2026-08-27 minimal-probe log captured a different (near-empty) model
-  state. Today's session reflects a 142-child production layout.
-- **User is doing pallet-warehouse + crane + AGV orchestration.** Strong
-  signals: 5 `RackLane` instances with WMS clones in `.UserObjects.Warehouse`,
-  `MultiPortalCrane` + `SmallCrane` Tracks, `AGVPool`, `ChargeTrack1/2`
-  (charging stations for AGVs), `EmptyPalletsStore`, `StorageArea`,
-  `StoreEntry/Exit`, `PalDeliveryInterval`, `TrucksArrived/Missed` Variables.
-- **`bfs_one_level.py` truncates stdout JSON for sub-frames with > ~130
-  children.** Factory51 (142) hit the readlog buffer ceiling. Use
-  `bfs_full.py <path> 1 <out>.json` for clean dumps of large frames in the
-  future.
-- **SimTalk `var d : dictionary` and `make("Dictionary")` are both
-  syntax errors in `simtalk_run`.** Workaround: per-child `print` lines +
-  external aggregation.
-- **Cached `data/basis_tree_depth4.json` (2026-08-26) is now stale.**
-  Replaced by `basis_tree_depth4_fresh.json`.
+## 01-domain-concepts
+- HBW3D reference 仓库实现在 `.ApplicationObjects.HBW3D.*`;用户仓库实现在 `.UserObjects.Warehouse.*`(WMS + 5 RackLanes)
+- `.UserObjects.*` 下还有 Polishing / Milling / Shipment / Painting / Drying / PostProcess / Production / Warehouse / Line 等生产线组件
 
 ## Cross-references
-
-- `skills/local-simtalk-get-folder-tree/SKILL.md` — read for protocol
-- `skills/local-simtalk-get-folder-tree/log/2026-08-27_basis-depth4-full-and-factory51-types.md` — per-skill usage log
-- `skills/local-simtalk-get-folder-tree/log/2026-08-27_basis-and-models-model-tree.md` — earlier minimal-state probe (different model)
-- `skills/local-simtalk-get-folder-tree/data/basis_tree_depth4_fresh.json` — fresh cached tree
-- `skills/local-simtalk-get-folder-tree/data/basis_tree_depth4.json` — superseded by above
-- `skills/local-simtalk-execution/references/lifelines.md` §5 — readlog v15+
-  degradation, explains why 2nd+ readlog per session only returns the
-  "Log file opened!" line
-- `.ApplicationObjects.HBW3D.*` — reference warehouse impl
-- `.UserObjects.Warehouse.*` — user's warehouse impl (WMS + 5 RackLanes)
-- `.UserObjects.Polishing*`, `Milling`, `Shipment`, `Painting`, `Drying`,
-  `PostProcess*`, `Production`, `Warehouse`, `Line` — production-line
-  components under `.UserObjects.*`
+- per-skill logs: `skills/local-simtalk-get-folder-tree/log/2026-08-27_basis-depth4-full-and-factory51-types.md`
+- 02-simulation-file-experience entries:
+  - `04-model-case-studies/factory51/README.md`(后续 session 沉淀)
+  - `03-workflow-playbook/skill-call-playbook.md §四`(v15+ readlog buffer ceiling)
+  - `02-bridge-tool/simtalkclaude-v1-and-v2.md §5`(v15+ 实测教训,涵盖 readlog 退化)
 
 ## Open questions / next steps
-
-- **Drill into the WMS / RackLane methods.** These are the load-bearing
-  simulation logic; need to read source before any modification.
-- **Inspect `.SimtalkClaude.main.SimtalkAction.simtalk_execute` source.**
-  It's the bridge between incoming TCP JSON and Plant Simulation code
-  execution — understanding it is the foundation for any custom protocol work.
-- **Drill into `.UserObjects.Warehouse.*` (5 RackLanes + WMS) and
-  `.Models.Factory51.Warehouse` (inbound/outbound pallet store).** Likely
-  next target for "modify SimTalk" tasks.
-- **Clean up the stale `data/basis_tree_depth4.json`.** Future drift risk.
-- **Verify the TCP-bridge auth handshake** before any write that goes
-  through it (to avoid silent `result:success` + `log: code execute failed`
-  — see lifelines §4 / team-memory `simtalk-run-soft-failure-design.md`).
+- `.UserObjects.Warehouse.*`(5 RackLanes + WMS)是真正 load-bearing 仿真逻辑 — 下次 drill
+- `.SimtalkClaude.main.SimtalkAction.simtalk_execute` 是 TCP 桥核心 handler — 下次
+- 清理 stale `data/basis_tree_depth4.json`

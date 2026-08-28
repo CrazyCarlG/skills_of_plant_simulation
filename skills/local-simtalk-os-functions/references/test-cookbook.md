@@ -14,7 +14,7 @@ PORT=50007
 
 `scripts/socket_client.py` 由 `local-simtalk-execution` 提供：
 ```bash
-SOCKET_CLIENT="python3 /root/skills_of_plant_simulation/skills/local-simtalk-execution/scripts/socket_client.py"
+SOCKET_CLIENT="python3 skills/local-simtalk-execution/scripts/socket_client.py"
 ```
 
 回包读取：统一用 `--resp-mode delimiter --resp-delimiter '||END||'`（服务端不会主动关闭，`eof` 一定超时）。

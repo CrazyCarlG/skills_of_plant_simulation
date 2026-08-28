@@ -28,10 +28,11 @@ Skill convention (matches local-simtalk-execution v18→v19):
     headless runs where nobody is watching the GUI.
 """
 import json
+import os
 import subprocess
 import sys
 
-SIMTALK_SEND = "/root/skills_of_plant_simulation/skills/local-simtalk-execution/scripts/simtalk_send.py"
+SIMTALK_SEND = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.realpath(__file__))))), "skills", "local-simtalk-execution", "scripts", "simtalk_send.py")
 
 # SimTalk: enumerate direct children of a path passed as a string literal.
 SIMTALK_TEMPLATE = """var p_path: string := "__PATH__"

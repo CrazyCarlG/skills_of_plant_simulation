@@ -41,7 +41,7 @@
 5. **render** — 调 `render_inheritance_map.py` 输出 parent→children 树，落到 `data/inheritance_map.json`。
    - 41 root classes（Origin=VOID）+ 7 derived classes（Origin≠VOID）。
 
-6. **写文档** `02-simulation-file-experience/ctu-warehouse/p4-ctu-class-inheritance.md`
+6. **写文档** `02-simulation-file-experience/04-model-case-studies/ctu-warehouse/p4-ctu-class-inheritance.md`
    - 7 节 ~270 行，专注继承关系，不重复 p4-ctu-modeling-experience.md 的内容。
    - **重要修订**：发现现有 §2 列出的 5 个类（PartA/PartB/Box/MyFrame/Transparency）实际不存在（VOID），
      已在新文档 §五里显式列出此差异，警告下游 agent 不要假设文档跟得上模型状态。
@@ -51,7 +51,7 @@
 - **TSV**：`skills/local-simtalk-get-class-inheritance/data/p4ctu_inherit_raw.tsv` — 48 行
 - **JSON (raw)**：`data/p4ctu_inherit_raw.json` — 同上
 - **JSON (map)**：`data/inheritance_map.json` — render 出的 parent→children
-- **新文档**：`02-simulation-file-experience/ctu-warehouse/p4-ctu-class-inheritance.md`
+- **新文档**：`02-simulation-file-experience/04-model-case-studies/ctu-warehouse/p4-ctu-class-inheritance.md`
 
 **继承链总结（7 个派生类 / 3 条链）**：
 

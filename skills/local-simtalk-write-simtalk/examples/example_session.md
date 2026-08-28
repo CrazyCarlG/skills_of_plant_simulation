@@ -1,10 +1,16 @@
 # local-simtalk-write-simtalk — Example Sessions
 
-End-to-end walk-throughs of three representative uses. All assume
+End-to-end walk-throughs of two representative uses. All assume
 `local-simtalk-execution` is running (Plant Simulation TCP server reachable
-on `host.docker.internal:50007`).
+on `host.docker.internal:50007`) and that the target Method already exists.
 
-## Example 1 — Write code to an existing Method (Flow A)
+> **Note:** This skill no longer creates Method instances. To write code
+> into a brand-new Method, first invoke `local-simtalk-create-method-object`
+> to create the empty container, then invoke this skill to fill it. See
+> `Example 2` in `local-simtalk-create-method-object/examples/example_session.md`
+> for the full delegation chain.
+
+## Example 1 — Write code to an existing Method
 
 **User request** (Chinese):
 
@@ -14,7 +20,7 @@ on `host.docker.internal:50007`).
 **Workflow:**
 
 1. 读知识库 → 确认 SimTalk `print` + 字符串 + `chr(10)` 用法。
-2. 确认目标 Method 路径：`.CTU.Frame.Program`（用户已指定 → 跳过 Step 5 创建）。
+2. 确认目标 Method 路径：`.CTU.Frame.Program`（用户已指定 → 直接进入 Step 4）。
 3. 组装源代码：
 
    ```simtalk
@@ -66,119 +72,36 @@ on `host.docker.internal:50007`).
 
 ---
 
-## Example 2 — Create a new Method then write code (Flow B, default parent)
-
-**User request** (English):
-
-> Add a method named `count_parts` to `.Models.Model` that counts the
-> current number of MUs in the system and prints the total.
-
-**Workflow:**
-
-1. 读知识库 → `getMUs` / `length` / `print` 都在 SimTalk 内置集合里。
-2. 确认目标 Frame：`.Models.Model`（用户指定）。
-3. 确认目标 Method：`count_parts`（用户指定的新名字）。
-4. **新 Method** → 走 Step 5（创建）：
-
-   ```bash
-   python3 ../local-simtalk-class-management/scripts/class_ops.py \
-       inspect .InformationFlow.Method
-   ```
-
-   确认父类存在且 internalclasstype 是 `Method`。
-
-5. 组装源代码：
-
-   ```simtalk
-   -- count_parts — counts current MUs in the system
-   var n: integer := 0
-   var muList: list
-   muList := root.Framework.getMUs
-   n := muList.length
-   print "Total MUs in system: " + to_str(n)
-   ```
-
-6. 调用 `write_simtalk.py`（自动 create + write）：
-
-   ```bash
-   cat > /tmp/count_parts.txt <<'EOF'
-   -- count_parts — counts current MUs in the system
-   var n: integer := 0
-   var muList: list
-   muList := root.Framework.getMUs
-   n := muList.length
-   print "Total MUs in system: " + to_str(n)
-   EOF
-
-   python3 scripts/write_simtalk.py \
-       --frame .Models.Model \
-       --new-method count_parts \
-       --code-file /tmp/count_parts.txt
-   ```
-
-7. 输出（关键节选）：
-
-   ```
-   [write_simtalk] creating new Method instance
-   [write_simtalk]   parent class : .InformationFlow.Method
-   [write_simtalk]   target frame : .Models.Model
-   [write_simtalk]   method name  : count_parts
-   [write_simtalk]   parent class typecheck OK
-   [write_simtalk]   new Method resolves; internalclasstype OK
-   [write_simtalk] writing 6 lines to .Models.Model.count_parts
-   [read] current program (0 bytes):
-   [backup] saved to log/Models_Model_count_parts_program_original.txt
-   [write] sent. ###WRITE_OK###
-   [readback] new program (158 bytes):
-   [verify] method executes OK after edit
-   [write_simtalk] DONE.
-   ```
-
----
-
-## Example 3 — Custom parent class (Flow B, custom parent)
+## Example 2 — Write annotated copy (CJK comments)
 
 **User request** (Chinese):
 
-> 我有个自定义 Method 类 `.UserObjects.LoggingMethod`（继承自
-> `.InformationFlow.Method`，带 `LogLevel: integer` 用户定义属性）。
-> 在 `.Models.Model` 下创建 `log_warn` Method，父类用 `.UserObjects.LoggingMethod`，
-> 内容是打印 `LogLevel = 2` 的告警。
+> 写一个与 `.P4_CTU.AdvancedObject.Software.RCS.m_CalculatePro` 一样功能的
+> 代码,附上注释。
 
 **Workflow:**
 
-```bash
-python3 ../local-simtalk-class-management/scripts/class_ops.py \
-    inspect .UserObjects.LoggingMethod
-```
+1. 读源方法源码（用 `local-simtalk-read-library/scripts/probe_methods.py`）。
+2. 加中文注释（注释语言匹配用户的中文请求）。
+3. 目标 Method：`.P4_CTU.AdvancedObject.Software.RCS.m_CalculatePro_claude`
+   （用户已指定；不需要调 `local-simtalk-create-method-object`）。
+4. 调用 `write_simtalk.py`：
 
-确认父类存在 + 是 Method 的子类。
+   ```bash
+   python3 scripts/write_simtalk.py \
+       --path .P4_CTU.AdvancedObject.Software.RCS.m_CalculatePro_claude \
+       --code-file /tmp/_calcpro_code.txt
+   ```
 
-```bash
-cat > /tmp/log_warn.txt <<'EOF'
--- log_warn — prints a level-2 warning
-param msg: string
-if @.LogLevel < 2
-    return
-end
-print "[WARN] " + msg
-EOF
-
-python3 scripts/write_simtalk.py \
-    --frame .Models.Model \
-    --new-method log_warn \
-    --parent-class .UserObjects.LoggingMethod \
-    --code-file /tmp/log_warn.txt
-```
+5. 验证（用 `probe_methods.py` 读回）：`program_len=1827, has_syntax_error=false`。
 
 ---
 
-## Example 4 — Dry run (no server touch)
+## Example 3 — Dry run (no server touch)
 
 ```bash
 python3 scripts/write_simtalk.py \
-    --frame .Models.Model \
-    --new-method myMethod \
+    --path .Models.Model.count_parts \
     --code-file /tmp/code.txt \
     --dry-run
 ```
@@ -187,14 +110,18 @@ python3 scripts/write_simtalk.py \
 
 ```
 [write_simtalk] ===== SUMMARY =====
-[write_simtalk]   Method path : .Models.Model.myMethod  (newly created)
+[write_simtalk]   Method path : .Models.Model.count_parts  (existing)
 [write_simtalk]   Lines       : 4
 [write_simtalk] ===================
 [write_simtalk] DRY RUN — nothing sent to the server
 [write_simtalk] --- code ---
-var i: integer := 0
-print "hello"
-i := i + 1
+-- myMethod — counts parts in the system
+var n: integer := 0
+while @.getMUs.length > 0
+    @.getMUs.first.deleteObject
+    n := n + 1
+end
+print n
 [write_simtalk] --- end code ---
 ```
 
@@ -206,14 +133,11 @@ i := i + 1
 
 | 现象 | 原因 | 修复 |
 |---|---|---|
-| `ERROR: parent class path does not resolve` | 父类路径打错 | 跑 `class_ops.py list .InformationFlow` 找正确的 |
-| `ERROR: duplicate() failed. ...` | Frame 路径不存在 / 已同名 Method / `&` 没加 | 跑 `local-simtalk-get-folder-tree` 确认；如果是 `&Method.duplicate` 改回裸 `Method.duplicate` 触发 "'create' can only be applied to lists..." 类错误，加回 `&` |
-| `ERROR: after create(), the new Method path did not resolve` | Frame 不存在或没 refresh | 双击目标 Frame 让 GUI refresh；或 `simtalk_run .Models.Model.~` 确认 |
 | `add_note.py --mode replace failed (rc=11)` | Quirk #7 软失败；一般是 program 写失败 | 看 `log/<path>_program_original.txt` 验证 backup 还在；用 `--restore` 回滚 |
+| `ERROR: must supply --code or --code-file` | 都没传 | 加 `--code-file /tmp/code.txt` |
 | 写完后 GUI 红框 `Syntax error near line N at 'result'` | 局部变量名用了保留字 `result` | 把变量改名为 `synOut` / `ret`，重新 `--mode replace` |
 | 写完后 GUI 把多行 source 显示成一行 | 用了 `"\n"` 而不是 `chr(10)` | 这个 skill 用 `add_note.py` 自动 `chr(10)` join，不会出现；如果手工 `simtalk_run` 写就要小心 |
-
----
+| Method 路径不存在 | `--path` 写错，或 Method 未创建 | 先用 `local-simtalk-get-folder-tree` 确认路径；或用 `local-simtalk-create-method-object` 创建 |
 
 ## Rollback
 

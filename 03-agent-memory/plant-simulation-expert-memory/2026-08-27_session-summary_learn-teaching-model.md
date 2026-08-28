@@ -1,63 +1,31 @@
-# Session Summary — Learn the currently loaded Plant Simulation model (NEW: teaching model, third swap today)
-
+# Session Summary — learn teaching model(3rd model swap of the day)
 **Date:** 2026-08-27  **Agent:** plant-simulation-expert
-**Duration:** ~5 min (single-turn orientation)
-**Skills called:** `local-simtalk-execution` (transport), `local-simtalk-get-folder-tree` (1 BFS depth 5), `local-simtalk-read-library` (1 batch probe, 71 paths), `local-simtalk-get-class-inheritance` (1 batch probe, 40 candidate paths)
+**Duration:** ~5 min(single-turn orientation)
+**Skills called:** local-simtalk-execution, local-simtalk-get-folder-tree, local-simtalk-read-library, local-simtalk-get-class-inheritance
 
-## Goals
+## 04-model-case-studies
+- **当日第 3 次换模型**:09:37 warehouse(Factory51)→ 10:20 assembly line(Assembly1/2)→ 12:16 **teaching model**
+- 模型分 3 层:
+  - **Layer A — TCP server runtime** (`.SimtalkClaude.*`) — agent 自己的桥;real code 在 `.SimtalkClaude.src.SimtalkAction.*`(6 non-empty methods);`main.*` + `connection.*` 是 visual shell templates
+  - **Layer B — Demo / teaching domain** (`.Models.internal.*`) — `Admin` Frame (17 methods,学生-打分/考试-No analyzer) + `autoexec`(3072B,模型最大方法) + `Localization`
+  - **Layer C — Material-flow templates** (`.Models.SourceTrigger.*`) — 5 Source variants + 3 sample Parts
+- **0 user-derived classes** — 每个 Frame/Dialog/HtmlReport/Comment 直接继承 Plant Simulation built-ins。**后续若 user 问"本模型定义了什么类",答:"none derived"**
 
-User: "you are @/root/skills_of_plant_simulation/agents/plant-simulation-expert-by-simtalkclaude.md , lear the plant simulation model right now" — orient on whatever model is currently loaded in Plant Simulation right now. Three layers:
-1. Folder/Frame/Method topology
-2. Every Method's `Program` source
-3. Class inheritance for class-defining objects
+## 01-domain-concepts
+- 35 个空 Methods 多是 template placeholders(`.SimtalkClaude.connection.*`、`.SimtalkClaude.main.SimtalkAction.*`、`.Models.internal.Admin.*`、`.Models.SourceTrigger.*` 等的 lifecycle shells)
+- Real code 集中在 28 个方法:`.Models.internal.Admin.*`(~10KB)+ `.Models.internal.autoexec` + `.Models.internal.Localization.*` + `.SimtalkClaude.src.SimtalkAction.*`
 
-## What was done
+## 02-bridge-tool
+- **疑似 bug(out of scope)**:`.SimtalkClaude.src.SimtalkAction.simtalkcode` body 22B,内容是 `var obj:=.createfodler` — `createfodler` 不是 PS function(应是 `createFolder`)。标记待用户确认是否修
 
-1. **Pre-flight ✅** — `host.docker.internal:50007` CONNECTED.
-2. **BFS depth 5** (`bfs_full.py --no-infobox . 5 ...`) — 26 calls,
-   5 top-level Folders: `Models / MaterialFlow / InformationFlow / UserInterface / SimtalkClaude`.
-3. **Method-path filter + probe** (`probe_methods.py`) — 71 unique Method
-   paths, 63 captured (8 silent duplicates under `.SimtalkClaude.main.*`
-   that share bodies with `.SimtalkClaude.src.*`), 0 encrypted,
-   0 syntax errors, 35 empty templates. Library dump →
-   `data/library_dump_fresh.json`.
-4. **Class-inheritance probe** (`probe_inheritance.py`) — 40 candidate
-   paths, 16 captured, **all 16 are root classes (Origin=VOID)**, **zero
-   user-defined derived classes**. Inheritance map →
-   `data/inheritance_map.json`.
-5. **Usage log written** →
-   `skills/local-simtalk-get-folder-tree/log/2026-08-27_orientation-summary-from-fresh-data-2.md`
-   (preserves prior 10:20 log as `-1` variant; this is `-2`).
-
-## Key findings / decisions
-
-- **Model is NOT yesterday's Factory51 OR today's earlier assembly model.**
-  Third distinct model loaded today. Three swaps in one day:
-  1. ~09:37 — warehouse (`.Models.Factory51`, 142 children, WMS + portal crane + AGV)
-  2. ~10:20 — assembly line (`.Models.Assembly1/.Assembly2`, 113 children each, conveyor + PalletOptimization + WorkerChart + EnergyAnalyzer)
-  3. **~12:16 (now) — teaching model**: `.Models.internal.Admin` (Frame, 17 methods, student-grading/exam-No analyzer) + `.Models.internal.Localization` + `.Models.SourceTrigger.*` (5 Source template Frames + 3 sample Parts) + the SimTalkClaude TCP runtime.
-- **Layered architecture**:
-  - **Layer A — TCP server runtime** (`.SimtalkClaude.*`) — the agent's own bridge; real code in `.SimtalkClaude.src.SimtalkAction.*` (6 non-empty methods); `main.*` + `connection.*` are visual shell templates.
-  - **Layer B — Demo / teaching domain** (`.Models.internal.*`) — `Admin` Frame is the model author's working area; `autoexec` (3072 B) is the largest method in the model.
-  - **Layer C — Material-flow templates** (`.Models.SourceTrigger.*`) — 5 Source variants + Parts.
-  - **Runtime backbone** (`.MaterialFlow.*`) — root MaterialFlow class instances (Source, Drain, Conveyor, Connector, EventController).
-- **No user-defined classes.** Every Frame/Dialog/HtmlReport/Comment inherits directly from Plant Simulation built-ins. Worth flagging if user later asks "what classes does this model define" — answer is "none derived".
-- **35 empty Methods are mostly template placeholders** (template class shells under `.SimtalkClaude.connection`, `.SimtalkClaude.main.SimtalkAction.*`, `.Models.internal.Admin.*`, `.Models.SourceTrigger.*` etc.). Real code lives in 28 methods concentrated in `.Models.internal.Admin.*` (~10 KB total), `.Models.internal.autoexec`, `.Models.internal.Localization.*`, and `.SimtalkClaude.src.SimtalkAction.*`.
-- **Possible bug spotted** (out of scope): `.SimtalkClaude.src.SimtalkAction.simtalkcode` body is literally `var obj:=.createfodler` (22 B). `createfodler` is not a real PS function — likely typo of `createFolder`. Flagging in case user wants to fix later.
+## 03-workflow-playbook
+- Model 每 1-2 小时就 swap,新 session **必须**先 `bfs_full.py` depth=1 of `.` 确认加载的是哪个模型(廉价且权威)
 
 ## Cross-references
-
-- `skills/local-simtalk-get-folder-tree/data/basis_tree_depth5_fresh.json` (this run's BFS)
-- `skills/local-simtalk-read-library/data/library_dump_fresh.json` (63-Method library dump)
-- `skills/local-simtalk-get-class-inheritance/data/inheritance_map.json` (16 root classes, 0 derived)
-- `skills/local-simtalk-get-folder-tree/log/2026-08-27_orientation-summary-from-fresh-data-2.md` (this run's usage log)
-- `skills/local-simtalk-get-folder-tree/log/2026-08-27_orientation-summary-from-fresh-data.md` (the 10:20 assembly-model log — same day, different model)
-- `03-agent-memory/plant-simulation-expert-memory/2026-08-27_session-summary_learn-factory51-model.md` (09:37 warehouse summary)
-- `03-agent-memory/plant-simulation-expert-memory/2026-08-27_session-summary_learn-new-assembly-model.md` (10:20 assembly summary)
+- per-skill logs: `skills/local-simtalk-get-folder-tree/log/2026-08-27_orientation-summary-from-fresh-data-2.md`(prior `-1` variant preserved)
+- 02-simulation-file-experience entries: 无新增(本次只 orientation,未触发新 domain 沉淀)
 
 ## Open questions / next steps
-
-- Model rotates every ~1-2 hours today; new runs MUST re-verify which model is loaded (`bfs_full.py` depth 1 of `.` is cheap and definitive).
-- If user wants to drill into the teaching model next: start with `.Models.internal.autoexec` (3072 B, the entry point) then `.Models.internal.Admin.dispatcher` (1323 B, the main flow controller).
-- If user wants to extend the agent runtime: focus on `.SimtalkClaude.src.SimtalkAction.simtalk_execute` (281 B — the actual code-execution handler) — that's the hottest path for the TCP bridge.
-- Open bug to surface (not actioned): `.SimtalkClaude.src.SimtalkAction.simtalkcode` body is a 22-byte stub with a typo (`createfodler`).
+- 若 user 想 drill teaching model:`.Models.internal.autoexec`(3072B, entry point)→ `.Models.internal.Admin.dispatcher`(1323B,主 flow controller)
+- 若想扩展 agent runtime:从 `.SimtalkClaude.src.SimtalkAction.simtalk_execute`(281B,TCP 桥 → PS 代码执行 handler)入手
+- `simtalkcode` body `createfodler` typo — 等 user 确认

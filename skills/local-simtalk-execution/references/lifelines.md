@@ -75,13 +75,41 @@
 | 请求 `type` | 成功判据 |
 |---|---|
 | `simtalk_syntax` | `"hasError" not in result`（`result` 是诊断文本，例如 `"has no Error"`） |
-| `simtalk_run` | **双重检查**：`result == "success" AND not log.startswith("code execute failed")` |
+| `simtalk_run` | **双重检查**：`result == "success" AND not log.startswith("code execute failed")`（⚠️ Q-001 例外：编译期错误会返回 `result:"failed"` + 退出码 10） |
 | `ping` | `type == "ping" AND result == "success"` |
-| `readlog` | `result == "success"`（⚠️ v15 不可信） |
+| `readlog` | `result == "success"`（⚠️ v15 不可信；v15+ 上常返回退出码 20 但 stdout 仍有效 — 见 Q-002） |
 
 **禁忌**：
 - ❌ **永远不要读 `data` 字段**——`simtalk_run` 的 `data` 始终为空（Quirk #6 实测不变）
 - ❌ **永远忽略 `retsult` 字段**——服务端缓存的历史诊断，与本次请求无关（Quirk #5）
+
+### Q-001 — 编译期错误 vs Quirk #7 的边界
+
+`simtalk_run` 在 **编译期错误**（literal `1/0`、声明位置使用未声明标识符、内置函数 arity 不匹配等）下返回的是 `result:"failed"` + 退出码 **10**，**不是** Quirk #7 的 `result:"success"` + `log:"code execute failed..."` 软失败模式。
+
+经验法则：**Quirk #7 只对运行时异常触发**——编译器看不到坏值的情况（如除以运行时变量、未触发分支等）。遇到 literal 上的非法表达式，直接信退出码 10 + `result:"failed"`，别走 Quirk #7 的解析路径。
+
+证据：`log/2026-08-27_ping-syntax-run-readlog-2.md` Step 6（`run '1/0'` exit=10, result=failed — 编译期除零检测，**不是** Quirk #7）。
+
+实操建议：**始终检查 `log` 字段**，不只看 `result` —— 编译期错误时 `result` 反映"失败"，但 `log` 仍携带可读诊断信息。
+
+### Q-002 — v15+ 上 readlog 退出码 20 但 stdout 仍有效
+
+v15+ 回归下 `simtalk_send.py readlog` 经常返回退出码 **20**（`readlog_unreliable_warning`），但 stdout 仍携带完整的 log 内容——只是内容是陈年的 I/O trace，不是本次运行的输出。
+
+硬规则：**退出码 20 视为读取成功**。客户端解析应当：
+
+```python
+rl_proc = subprocess.run(["simtalk_send.py", "readlog"], ...)
+if rl_proc.returncode not in (0, 20):
+    envelope["error"] = "readlog_fetch_failed"
+    return envelope
+log_text = rl_proc.stdout  # 退出码 20 也用 stdout
+```
+
+不要把退出码 20 当作硬失败而丢弃 stdout——那样会同时丢失本次 run 的合法输出和陈年 trace，对调试更有价值。
+
+证据：`log/session-20260826.md` Part B Bug #2 修复 lines 113-137（class-management 的 `if rl_proc.returncode not in (0, 20)` 模式）。
 
 ## 7. 字段命名备忘 / Field Naming
 
@@ -172,11 +200,36 @@ print([1,2,3,4,5])                            -- ✅ 字面量在函数实参位
 
 ---
 
+## 12. 命名空间保护 / Namespace Protection（v17+ 新增）
+
+**铁律**：任何路径以 `.SimtalkClaude` 开头（**包括但不限于** `.SimtalkClaude` / `.SimtalkClaude2` / `.SimtalkClaude3` …）一律视为**禁写**。
+
+| 路径前缀 | 性质 | 处置 |
+|---|---|---|
+| `.SimtalkClaude.*` | SimTalkClaude 1.x 运行时（legacy） | ❌ 禁止读写——会破坏 TCP 桥 |
+| `.SimtalkClaude2.*` | SimTalkClaude 2.x 运行时（当前活跃） | ❌ 禁止读写——会破坏 TCP 桥 + 反射 runtime |
+| `.SimtalkClaude3.*` … | 未来版本（未部署） | ❌ 默认禁写，部署后再评估 |
+
+**为什么这么严**：
+- 两个命名空间容易混淆（`.SimtalkClaude` vs `.SimtalkClaude2` 都"看着像 SimTalkClaude 的家"），2026-08-27 ping-syntax-run 实测在 `simtalk_syntax` 的 stale `log` 里就看到了 `.SimtalkClaude2.Objects` 的 8-child Folder dump。
+- `.SimtalkClaude2.Objects.*`（Method/Socket/DataList/Dialog/HtmlReport/Variable/Button/DataTable）是反射模板，外观像普通 Frame，agent 容易误判为可写对象。
+- 任何 `\d` 后缀都视为同族风险——历史已出现 `SimtalkClaude` → `SimtalkClaude2` 的扩展，未来仍可能继续。
+
+**怎么走是对的**：
+- ✅ 通过受控的协议 verb（`ping` / `simtalk_syntax` / `simtalk_run`）访问 runtime 功能
+- ❌ **不要**直接 `str_to_obj(".SimtalkClaude2.*")` 然后 `.program := ...`
+- ❌ **不要**把这些路径当作 BFS 的 leaf 写入（read-only 探测可以，写入一律拒）
+
+**配合 §5**：v15+ readlog 退化下，stale log 可能含 `.SimtalkClaude\d.*` 的历史 dump——这只是让你看到，不代表可写。
+
+---
+
 ## 11. 变更日志 / Changelog
 
 | 日期 | 变更 |
 |---|---|
 | 2026-08-25 | v17 重构：抽出本文件作为硬规则唯一来源；同步 v15 readlog 回归、v16 Quirk #13 / 异常抛出矩阵 |
+| 2026-08-27 | v17.1 新增 §12 命名空间保护：`.SimtalkClaude\d*` 全部禁写（基于 delta-r2 实测 stale log 含 `.SimtalkClaude2.Objects`） |
 | 2026-08-25 | v16 发现：未知 type 值静默挂死 → §3 Quirk #13 |
 | 2026-08-25 | v16 发现：list 长度查询 `.dim`（不是 `.length`）+ list 字面量不可赋 → §10 新增章节 |
 | 2026-08-25 | v15 发现：readlog v13 修复在当前服务端构建下回归 → §5 |
