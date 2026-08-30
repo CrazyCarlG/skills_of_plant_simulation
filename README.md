@@ -176,7 +176,11 @@ bash scripts/link-agents.sh --unlink
 ## How to Use
 
 Install makes the skills/agents *visible* to Claude Code / OpenClaude. This chapter is about the **runtime side** — what you need running, how to actually invoke the toolchain, and a typical end-to-end workflow.
+### Getting started
 
+End-to-end walkthrough — install, start the listener, and run the first skill:
+
+[How to use.mp4](How%20to%20use.mp4)
 ### Prerequisites (runtime)
 
 Before any skill can do real work, three things must be true:
@@ -280,23 +284,14 @@ Any change to these rules happens only in `skills/local-simtalk-execution/refere
 
 ## Videos
 
-Example walkthroughs of the write-side skills in action.
 
-### 1. Add a comment to a Method (`local-simtalk-add-note-to-method`)
 
-![example-1 — add a comment to a method](example-1-add note1.mp4)
+### Examples
 
-### 2. Add multiple comment lines (`local-simtalk-add-note-to-method`)
+Walkthroughs of the write-side skills in action.
 
-![example-2 — add multiple comment lines](example-2-add note2.mp4)
-
-### 3. Write a full SimTalk program — A* path finder (`local-simtalk-write-simtalk`)
-
-![example-3 — write an A* SimTalk program](example-3-Write A Star.mp4)
-
-### 4. Create a new Marker object (`local-simtalk-create-method-object`)
-
-![example-4 — create a marker](example-4-create marker.mp4)
+1. Add a comment to a Method (`local-simtalk-add-note-to-method`) — [example-1-add note1.mp4](example-1-add%20note1.mp4)
+2. Add multiple comment lines (`local-simtalk-add-note-to-method`) — [example-2-add note2.mp4](example-2-add%20note2.mp4)
 
 ## Path Convention
 
