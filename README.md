@@ -181,14 +181,15 @@ Install makes the skills/agents *visible* to Claude Code / OpenClaude. This chap
 
 Before any skill can do real work, three things must be true:
 
-1. **Plant Simulation is running** (locally on the host, or on a LAN-reachable machine) with the `SimtalkClaude.pslib` library loaded. That library exposes the `.SimtalkClaude.*` scripting API that the TCP listener hooks into.
-2. **Plant Simulation's Windows shortcut has the `/logfile` flag** so Claude can tail the runtime log. Edit the shortcut → **Target** field and append the flag (preserving any existing arguments), e.g.:
+
+1. **Plant Simulation's Windows shortcut has the `/logfile` flag** so Claude can tail the runtime log. Edit the shortcut → **Target** field and append the flag (preserving any existing arguments), e.g.:
    ```
    "C:\Program Files\Siemens\Tecnomatix\Plant Simulation X\Plant Simulation.exe" /logfile "C:\temp\MyLogFile.txt"
    ```
    Make sure `C:\temp\` exists and the user has write permission; without this flag Plant Simulation does not write a log file that Claude can read.
    ![pic2](edit on icon.png)
    ![Plant Simulation 2606 Properties dialog — Shortcut tab, Target field showing /logfile "C:\temp\MyLogFile.txt" appended after PlantSimulation.exe](edit on icon.png)
+2. **Plant Simulation is running** (locally on the host, or on a LAN-reachable machine) with the `SimtalkClaude.pslib` library loaded. That library exposes the `.SimtalkClaude.*` scripting API that the TCP listener hooks into.
 3. **The SimtalkClaude TCP listener is up** — a JSON-over-TCP server bound to some `host:port` (default is usually `127.0.0.1:50007`; in WSL2 you must reach the host via `host.docker.internal:50007`, see `skills/local-simtalk-execution/references/lifelines.md` §1).
 
 To verify the listener is alive without invoking any agent:
