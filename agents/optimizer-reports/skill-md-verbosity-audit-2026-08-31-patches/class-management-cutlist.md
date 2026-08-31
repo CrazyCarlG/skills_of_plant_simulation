@@ -1,0 +1,147 @@
+# Cut list — `local-simtalk-class-management/SKILL.md`
+
+**Source:** `skills/local-simtalk-class-management/SKILL.md` (355 lines / 19 490 bytes)
+**Target:** ~235 lines / ~12 800 bytes (−34%)
+**Patch format:** section-level bullets, not full rewrites. Apply with `Edit` only after user confirms.
+
+---
+
+## Suggested deletions (apply via `Edit` + section removal)
+
+### Cut #1 — Lines 75–92: "Skill convention: always announce with `infoBox`"
+
+Replace the 18-line block with:
+
+```markdown
+### Skill convention: always announce with `infoBox`
+
+Every mutating subcommand opens a non-modal `infoBox(text, false)` on the
+Plant Simulation GUI before doing the work, and closes it (defensively
+twice) on exit. See [`local-simtalk-execution/references/infoBox-convention.md`](
+../../local-simtalk-execution/references/infoBox-convention.md) for the full
+protocol.
+
+To suppress for headless / CI: pass `--no-infobox` as the **first** argument
+(argparse subparsers — see cross-cutting report §--no-infobox positional rule).
+```
+
+**Lines saved:** ~14
+
+### Cut #2 — Lines 50–65 (subcommand table) collapsed into Usage
+
+The "How it works" section's subcommand table is duplicated by the Usage
+section. Replace the inline table with a 3-line pointer:
+
+```markdown
+### Subcommands
+
+| Subcommand | What it does |
+|---|---|
+| (see Usage §<n> for the full table with SimTalk snippets and output envelopes) |
+```
+
+**Lines saved:** ~14
+
+### Cut #3 — Lines 198–214: "Inheritance semantics (Plant Simulation)" → link
+
+The 4-row table is duplicated in `get-class-inheritance/SKILL.md` and a
+canonical copy lives at the proposed
+`local-simtalk-execution/references/inheritance-semantics.md`. Replace with:
+
+```markdown
+## Inheritance semantics (Plant Simulation)
+
+See [`local-simtalk-execution/references/inheritance-semantics.md`](
+../../local-simtalk-execution/references/inheritance-semantics.md) for the
+authoritative `Origin` / `OriginRoot` / `Class` / `InternalClassType` table
+and the `derive` vs `duplicate` comparison.
+```
+
+**Lines saved:** ~14 (the 8-line table) + ~12 (the derive/duplicate prose)
+
+### Cut #4 — Lines 216–261: "Pre-flight rule — build the inheritance map before mutating"
+
+The 45-line block restates the rationale of why to call
+`local-simtalk-get-class-inheritance` first. Move the body to
+`references/preflight.md` and replace SKILL.md with:
+
+```markdown
+## Pre-flight rule
+
+Before invoking any mutating subcommand, call the sibling skill
+`local-simtalk-get-class-inheritance` to understand the inheritance map
+(parent / collision / live-instances). Read-only ops (`list`, `inspect`)
+do not require this step. See [`references/preflight.md`](references/preflight.md)
+for the rationale and recommended workflow.
+```
+
+**Lines saved:** ~38
+
+### Cut #5 — Lines 263–286: "Hard rules / Quirks" — reduce to skill-specific
+
+The 7-row table has 6 rows inherited from `lifelines.md`. After the
+`quirks-canonical.md` patch lands, reduce to:
+
+```markdown
+## Hard rules / Quirks
+
+The 7 universal quirks (#6, #7, #13, modal trap, response framing, readlog
+v15+, infoBox convention) are inherited from `local-simtalk-execution`.
+See [`local-simtalk-execution/references/quirks-canonical.md`](
+../../local-simtalk-execution/references/quirks-canonical.md).
+
+### Skill-specific quirks
+
+(Table CM-1..CM-7 only — kept in this section.)
+```
+
+The "Skill convention" bullet ("Always `infoBox(text, false)` on entry, close
+twice on exit") row becomes a one-line pointer to the new infoBox-convention
+doc.
+
+**Lines saved:** ~24 (the inherited rows + the verbose infoBox row)
+
+---
+
+## Net expected change
+
+| Cut | Lines saved |
+|---|---:|
+| #1 infoBox convention block | ~14 |
+| #2 subcommand table duplication | ~14 |
+| #3 inheritance semantics table | ~26 |
+| #4 pre-flight rule body | ~38 |
+| #5 inherited quirks table | ~24 |
+| **Total** | **~116** |
+
+Post-patch target: ~239 lines / ~12 800 bytes.
+
+---
+
+## What to keep (do not cut)
+
+- `When to use` section (concise, useful for trigger matching).
+- `Do not use this skill for` section (boundary clarity).
+- `Usage` examples with before/after JSON envelopes (operator-facing).
+- `Limitations` section (already concise after the universal quirks are lifted).
+- `Key files` and `Related skills` sections.
+
+---
+
+## Dependencies
+
+- This patch's Cuts #1, #3, #5 require the **3 cross-cutting shared reference
+  docs** proposed in `cross-cutting-shared-refs.md` to exist first
+  (`quirks-canonical.md`, `infoBox-convention.md`, `inheritance-semantics.md`).
+- Cut #4 requires adding `references/preflight.md` (a new 30-line doc with the
+  moved body).
+- Cuts #2 can land independently (intra-file dedup).
+
+**Recommended order:**
+1. Land cross-cutting shared refs (`cross-cutting-shared-refs.md`).
+2. Add `references/preflight.md` to class-management.
+3. Apply Cuts #1, #3, #5, #4, #2 in that order.
+
+---
+
+*Generated by skills-optimizer, 2026-08-31. Verifies against full file read of `local-simtalk-class-management/SKILL.md` lines 1–355.*

@@ -58,20 +58,11 @@ SimTalk 只能在 **Frame** 内部运行，所以写代码的目标 Method 必�
 
 ## 与 `local-simtalk-create-method-object` 的协作
 
-```
-用户: "写一个计算吞吐量的 method" (没指定 Method)
-  ↓
-create-method-object: 创建 .Models.Model.throughput (空容器)
-  ↓ (返回新 Method 路径)
-write-simtalk: 把 SimTalk 代码写到 .Models.Model.throughput.program
-```
+本 skill **不**创建 Method 实例。如果用户没指定目标 Method，先调
+`local-simtalk-create-method-object` 创建空容器，再调本 skill 把代码写
+到新 Method 的 `program` 属性。详细流程见该 skill 的 Workflow。
 
-或者用户直接说"写到 `.Models.Model.count_parts` 里"：
-
-```
-用户 → write-simtalk --path .Models.Model.count_parts --code-file ...
-  (跳过 create-method-object，因为 Method 已存在)
-```
+如果用户直接指定了已存在的 Method 路径，本 skill 直接进入 Step 4。
 
 ## Workflow
 
@@ -149,17 +140,7 @@ write-simtalk: 把 SimTalk 代码写到 .Models.Model.throughput.program
 
 ### Step 5 — 写入 Method
 
-调用 `local-simtalk-add-note-to-method`：
-
-```bash
-python3 skills/local-simtalk-add-note-to-method/scripts/add_note.py \
-    --path <method_path> \
-    --mode replace \
-    --confirm \
-    --note "<line 1>" "<line 2>" "<line 3>" ...
-```
-
-或者更稳的做法——把源代码先写到临时文件，再用 `--note $(cat tmp.txt)`：
+把源代码先写到临时文件，再用 `--note $(cat tmp.txt)` 调用 `add_note.py`：
 
 ```bash
 cat > /tmp/my_method_code.txt <<'EOF'
@@ -227,37 +208,36 @@ python3 scripts/write_simtalk.py \
 `--code` 接受多行字符串，每行作为一个 `--note` 参数传给 `add_note.py`
 （绕开 Quirk #10：argparse `nargs="+"` 会在以 `--` 开头的 token 处截断）。
 
-## 注释语言匹配规则（继承自 add-note-to-method）
+## 注释语言匹配规则
 
-跟 `local-simtalk-add-note-to-method` 一样：
-
-- **英文请求** → 英文注释
-- **中文请求** → 中文注释
-- **混合请求** → 镜像用户的混合方式
-- **明确覆盖**（"用英文" / "用中文注释"）→ 服从明确指令
-- **代码标识符保持原样**：Method 路径、SimTalk 关键字、引号里的契约字符串
-  不翻译
-- **Section 标题 / metadata 行**（`-- Method path :`、`-- Purpose` 等）可双
-  语并列；若请求是单语，则单语清晰呈现
+跟 `local-simtalk-add-note-to-method` 完全一致——见
+[`../local-simtalk-add-note-to-method/SKILL.md` §"Note language (match the user)"](../local-simtalk-add-note-to-method/SKILL.md#note-language-match-the-user)。
 
 ## 硬规则 / Quirks
 
-| # | 规则 | 为什么这个 skill 要关心 |
+The 7 universal quirks (#6, #7, #13, modal trap, response framing,
+readlog v15+ regression, `infoBox` convention) are inherited from
+`local-simtalk-execution`. See
+[`../local-simtalk-execution/references/quirks-canonical.md`](../local-simtalk-execution/references/quirks-canonical.md).
+
+Per-skill quirks for the write side (also documented in
+[`../local-simtalk-add-note-to-method/references/quirks.md`](../local-simtalk-add-note-to-method/references/quirks.md)
+as Q1–Q11):
+
+| # | Rule | Why this skill cares |
 |---|---|---|
-| 1 | 用 `chr(10)` 作为真换行，不要 `"\n"` | SimTalk 字面量**不**解释转义序列；`"\n"` 会被解析为 `\` 和 `n` 两字符 |
-| 2 | 写之前先 backup 原 `program` | `local-simtalk-add-note-to-method` 的 `--mode replace` 会自动备份到 `log/<path>_program_original.txt`；不要跳过 |
-| 3 | 写完后**必须** readback 并 `obj.execute` 验证 | `add_note.py` 默认会调 `obj.execute` 跑一次确认还能跑；保留这个验证 |
-| 4 | 写入前确认 `internalclasstype == "Method"` | 其他类型（`Frame` / `Station` 等）的 `program` 属性可能不存在或语义不同 |
-| 5 | `simtalk_run` `result:"success"` 配 `log:"code execute failed..."` = 软失败 | 这是 simtalk_execution 的 Quirk #7；写完后用 `readlog` 二次确认 |
-| 6 | 写完后必须 `obj.program` 读回对比 | socket 不返回值，只有 `print + readlog` 看得见 |
-| 7 | 单次 `obj.program := <source>` 的 payload 必须 ≤ ~2 KB | 服务器端 JSON 解析器截断 > ~2 KB 的 payload 并返回 `Error in line 1: Unexpected end of string`；长代码必须**分块**写入 |
-| 8 | **绝不要**在 `.SimtalkClaude.*` 下写代码 | 用户约定：禁止 |
-| 9 | `result` 是保留字（隐式函数返回值），不能做局部变量名 | `var result` 会触发 `Syntax error near line 1 at 'result'`；用 `synOut` / `ret` 替代 |
-| 10 | `add_note.py --note` 用 `argparse nargs="+"` 会截断以 `--` 开头的 token | 注释行以 `--` 开头时不能用 `--note` 直接传；用 `write_simtalk.py --code-file <file>` 绕开 |
-| 11 | 装饰行（`=====` / `-----`）必须 `--` / `//` 开头，**或**塞在 `/* */` 块里 | SimTalk lexer 先 tokenize 再判定是否注释；裸 `==` 触发 `Syntax error near line 1 at '=='.` |
-| 12 | `simtalk_hasError(<source>)` 返回 `string`（不是 `boolean`） | 写成 `var b: boolean` 会报 `Left and right sides of the assignment are incompatible.` |
-| 13 | 写 Method 必须挂在 Frame 下 | SimTalk 只能在 Frame 内部运行；孤立 Method 无意义 |
-| 14 | 本 skill **不创建** Method 实例 | 创建 Method 用 `local-simtalk-create-method-object`；本 skill 假设 `--path` 已存在 |
+| 1 | Use `chr(10)` for newlines; never `"\n"` | SimTalk has no string-escape sequences |
+| 2 | Backup original `program` before writing | `add_note.py --mode replace` auto-backups to `log/<path>_program_original.txt`; don't skip |
+| 3 | Readback + `obj.execute` verify after writing | `add_note.py` runs `obj.execute` once as a smoke test |
+| 4 | Confirm `internalclasstype == "Method"` before writing | Non-Method objects' `program` may not exist or have different semantics |
+| 8 | **Never** write inside `.SimtalkClaude.*` | User convention — forbidden |
+| 9 | `result` is a reserved word (implicit return) — no local var | `var result` triggers `Syntax error near line 1 at 'result'` |
+| 10 | `add_note.py --note` `argparse nargs="+"` truncates `--`-prefixed tokens | Use `write_simtalk.py --code-file <file>` instead |
+| 11 | Decorative lines (`=====` / `-----`) must start with `--` / `//`, **or** wrap in `/* */` | Bare `==` triggers `Syntax error near line 1 at '=='.` |
+| 12 | `simtalk_hasError(<source>)` returns `string`, not `boolean` | `var b: boolean` fails "Left and right sides are incompatible" |
+| WS-1 | Single `obj.program := <source>` payload must be ≤ ~2 KB | Server truncates > ~2 KB with `Unexpected end of string`; chunk longer code |
+| WS-2 | Written Method must hang off a Frame | Isolated Method is meaningless; SimTalk only runs inside Frames |
+| WS-3 | This skill does **not** create Method instances | Use `local-simtalk-create-method-object` for that |
 
 ## Limitations
 

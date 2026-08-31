@@ -77,19 +77,11 @@ Both probe scripts depend on:
 
 ### Skill convention: always announce with `infoBox`
 
-Per the `local-simtalk-execution` v18 → v19 convention, every invocation
-opens a non-modal `infoBox(text, false)` on the Plant Simulation GUI
-before doing any work and closes it (defensively twice) on exit.
-
-| Stage | What the script does |
-|---|---|
-| Entry | `infoBox("[probe_methods] start: paths=<N> batch=<B>", false)` |
-| Per-batch progress | `infoBox("[probe_methods] batch <i>/<B>: paths=<start>-<end>", false)` |
-| Exit (success or failure) | `infoBox("", false)` **twice** — defensive double-close |
-
-The second argument `false` is the modal flag — non-modal so it never
-freezes the GUI while batch round-trips are in flight. Pass
-`--no-infobox` to suppress for headless / CI runs.
+Every invocation opens a non-modal `infoBox(text, false)` on the Plant
+Simulation GUI before doing any work and closes it (defensively twice)
+on exit. See
+[`../local-simtalk-execution/references/infoBox-convention.md`](../local-simtalk-execution/references/infoBox-convention.md)
+for the full protocol. Pass `--no-infobox` to suppress for headless / CI.
 
 ## Usage
 
@@ -224,17 +216,11 @@ source of every Method is also printed.
 
 ## Hard rules / Quirks
 
-Inherited from `local-simtalk-execution/references/lifelines.md` —
-see that doc for the full list; the most relevant subset:
-
-| Rule | Why |
-|---|---|
-| `type` field must be one of `ping` / `simtalk_syntax` / `simtalk_run` / `readlog` | Unknown types cause silent server-side hang (Quirk #13) |
-| Use `--resp-mode delimiter --resp-delimiter '\|\|END\|\|'` for reply framing | Server never closes the socket (lifelines §2) |
-| `simtalk_run` `data` field is **always** empty | Quirk #6 — server doesn't serialize return values |
-| Runtime errors return `result:"success"` with `log:"code execute failed..."` | Quirk #7 — must double-check (script exit codes 10/11) |
-| Avoid `prompt` / `infoBox` / writing undeclared global attrs | Modal trap — server blocks until GUI click (lifelines §4) |
-| **Always `infoBox(text, false)` on entry, close twice on exit** | Skill convention from `local-simtalk-execution` v18→v19 |
+The 7 universal quirks (#6, #7, #13, modal trap, response framing,
+readlog v15+ regression, `infoBox` convention) are inherited from
+`local-simtalk-execution`. See
+[`../local-simtalk-execution/references/quirks-canonical.md`](../local-simtalk-execution/references/quirks-canonical.md)
+for the cross-skill pointer.
 
 ### Skill-specific quirks
 
@@ -250,28 +236,20 @@ see that doc for the full list; the most relevant subset:
 
 ## Method-object facts (from the knowledge base)
 
-The probe reads attributes documented in
-`01-plantsimulation-knowledge/.../Method/attributes` and
-`.../Method/read-only-attributes`:
-
-| Attribute | Type | Read via | Notes |
-|---|---|---|---|
-| `Program` | string (rw) | `&m.Program` | The verbatim source code |
-| `Encrypted` | boolean (ro) | `&m.Encrypted` | If true, source is opaque |
-| `HasSyntaxError` | boolean (ro) | `&m.HasSyntaxError([byref ErrorMessage:string, byref Line:integer])` | Returns true if source has compile errors |
-| `NumInExecution` | integer (ro) | `&m.NumInExecution` | Count of in-flight invocations |
-| `RandomSeed` | integer (rw) | `&m.RandomSeed` | Per-Method RNG stream |
-| `UsingNewSyntax` | boolean (rw) | `&m.UsingNewSyntax` | SimTalk 2.0 vs 1.0 mode |
-
-We read the first four; the last two are read-write state that the
-skill currently does not capture (call out for future expansion if
-needed).
+The probe reads `Program`, `Encrypted`, `HasSyntaxError`, and
+`NumInExecution`. For the full attribute reference (including
+`RandomSeed` / `UsingNewSyntax` which the skill currently does not
+capture), see
+[`references/method-attrs-cheatsheet.md`](references/method-attrs-cheatsheet.md)
+or the authoritative docs at
+`01-plantsimulation-knowledge/.../Method/attributes/`.
 
 ## Path resolution
 
 `str_to_obj(<path>)` resolves a path-string to an `object` reference.
 Paths follow Plant Simulation convention (leading `.` per depth level).
-See `local-simtalk-get-folder-tree/SKILL.md` §"Path resolution".
+See
+[`../local-simtalk-get-folder-tree/SKILL.md` §"Path resolution"](../local-simtalk-get-folder-tree/SKILL.md#path-resolution).
 
 The basis identifier itself is **anonymous** — `obj_to_str(basis)`
 returns the empty string. That's why folder-tree uses `root_path: ""`.

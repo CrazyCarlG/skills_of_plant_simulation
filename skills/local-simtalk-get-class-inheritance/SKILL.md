@@ -55,18 +55,11 @@ Both scripts depend on:
 
 ### Skill convention: always announce with `infoBox`
 
-Per the `local-simtalk-execution` v18 → v19 convention, every invocation
-opens a non-modal `infoBox(text, false)` on the Plant Simulation GUI before
-doing any work and closes it (defensively twice) on exit. The text tells
-the operator what the skill is currently doing.
-
-| Stage | What the script does |
-|---|---|
-| Entry | `infoBox("[probe_inheritance] start: paths=<N>", false)` |
-| Exit (success or failure) | `infoBox("", false)` **twice** — defensive double-close |
-
-The second argument `false` is the modal flag — non-modal so it never
-freezes the GUI while batch round-trips are in flight.
+Every invocation opens a non-modal `infoBox(text, false)` on the Plant
+Simulation GUI before doing any work and closes it (defensively twice)
+on exit. See
+[`../local-simtalk-execution/references/infoBox-convention.md`](../local-simtalk-execution/references/infoBox-convention.md)
+for the full protocol.
 
 > ⚠️ **`--no-infobox` is NOT supported.** Unlike `bfs_one_level.py` /
 > `probe_methods.py` / `attr_modify.py`, `probe_inheritance.py` is a
@@ -181,36 +174,19 @@ Origin / OriginRoot / Class triple.
 
 ## Inheritance semantics (Plant Simulation)
 
-From `01-plantsimulation-knowledge/.../common-read-only-attributes.md`:
+See
+[`../local-simtalk-execution/references/inheritance-semantics.md`](../local-simtalk-execution/references/inheritance-semantics.md)
+for the authoritative `Origin` / `OriginRoot` / `Class` /
+`InternalClassType` table, the `VOID` sentinel semantics, and the
+worked example.
 
-| Attribute | Meaning |
-|---|---|
-| `Origin` | The object from which `<Path>` was derived **most recently** (immediate parent) |
-| `OriginRoot` | The **root** of the inheritance chain (built-in class library root) |
-| `Class` | The class in the Class Library from which `<Path>` was derived, possibly over several levels |
-| `InternalClassType` | The unique built-in English object name describing the type of `<Path>` |
+## Hard rules / Quirks
 
-If `<Path>.Origin` returns `VOID`, then `<Path>` is a **root class** in
-the Plant Simulation Class Library (a built-in). Otherwise it's a
-**derived class** (a user-defined subclass).
-
-> Example: `Frame → Frame2 → Frame3` with `Frame1 → Frame2 → Frame3`:
-> - `Frame3.Origin` = `.Frame2` (immediate parent)
-> - `Frame3.OriginRoot` = `.Frame1` (top of inheritance chain)
-> - `Frame3.Class` = `.Frame3` (the Class Library object — interestingly,
->   Plant Simulation walks back up until it finds the Class Library root)
-
-## Hard rules / Quirks (subset of `local-simtalk-execution/references/lifelines.md`)
-
-| Rule | Why |
-|---|---|
-| `type` field must be one of `ping` / `simtalk_syntax` / `simtalk_run` / `readlog` | Unknown types cause silent server-side hang (Quirk #13) |
-| Use `--resp-mode delimiter --resp-delimiter '\|\|END\|\|'` for reply framing | Server never closes the socket (lifelines §2) |
-| `simtalk_run` `data` field is **always** empty | Quirk #6 — server doesn't serialize return values |
-| Runtime errors return `result:"success"` with `log:"code execute failed..."` | Quirk #7 — must double-check (script exit codes 10/11) |
-| Avoid `prompt` / `infoBox` / `promptList*` / writing undeclared global attrs | Modal trap — server blocks until GUI click (lifelines §4) |
-| `param` declarations are silently accepted but not bound by simtalk_run | We bake the path into the code instead (lifelines §A2) |
-| **Always `infoBox(text, false)` on entry, close twice on exit** | Skill convention from `local-simtalk-execution` v18→v19 |
+The 7 universal quirks (#6, #7, #13, modal trap, response framing,
+readlog v15+ regression, `infoBox` convention) are inherited from
+`local-simtalk-execution`. See
+[`../local-simtalk-execution/references/quirks-canonical.md`](../local-simtalk-execution/references/quirks-canonical.md)
+for the cross-skill pointer.
 
 ### Skill-specific quirks
 
@@ -228,8 +204,9 @@ the Plant Simulation Class Library (a built-in). Otherwise it's a
 
 `str_to_obj(<path>)` is the SimTalk built-in that turns a string path into an
 object reference. Paths follow the Plant Simulation convention (leading
-`.` per depth level). See `local-simtalk-get-folder-tree/SKILL.md` §"Path
-resolution" for the full table.
+`.` per depth level). See
+[`../local-simtalk-get-folder-tree/SKILL.md` §"Path resolution"](../local-simtalk-get-folder-tree/SKILL.md#path-resolution)
+for the full table.
 
 ## Limitations
 

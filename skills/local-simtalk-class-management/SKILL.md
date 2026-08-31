@@ -74,22 +74,12 @@ the same convention.
 
 ### Skill convention: always announce with `infoBox`
 
-Per the `local-simtalk-execution` v18 → v19 convention, every **mutating**
-operation (everything except `list` / `inspect`) opens a non-modal
-`infoBox(text, false)` on the Plant Simulation GUI before doing the
-work, and closes it (defensively twice) on exit. The text tells the
-operator what the skill is currently mutating.
-
-| Stage | What the script does |
-|---|---|
-| Entry | `infoBox("[class_ops] start: <subcommand> <args>", false)` |
-| Exit (success or failure) | `infoBox("", false)` **twice** — defensive double-close |
-| Headless / batch runs | Pass `--no-infobox` as the **last** argument to suppress the open/close cycle entirely |
-
-The second argument `false` is the modal flag — non-modal so it never
-freezes the GUI while the request is in flight. Quirk: do **not** swap to
-`infoBox(text, true)` (modal) — that would block the server waiting for a
-GUI click (lifelines §4).
+Every **mutating** operation (everything except `list` / `inspect`) opens a
+non-modal `infoBox(text, false)` on the Plant Simulation GUI before doing
+the work, and closes it (defensively twice) on exit. The text tells the
+operator what the skill is currently mutating. See
+[`../local-simtalk-execution/references/infoBox-convention.md`](../local-simtalk-execution/references/infoBox-convention.md)
+for the full protocol. Pass `--no-infobox` to suppress for headless / CI.
 
 ## Usage
 
@@ -193,20 +183,10 @@ triple for derive/duplicate so you can verify the inheritance link).
 
 ## Inheritance semantics (Plant Simulation)
 
-From `01-plantsimulation-knowledge/.../common-read-only-attributes.md`:
-
-| Attribute | Meaning |
-|---|---|
-| `Origin` | The object from which `<Path>` was derived **most recently** (immediate parent) |
-| `OriginRoot` | The **root** of the inheritance chain (built-in class library root) |
-| `Class` | The class in the Class Library from which `<Path>` was derived, possibly over several levels |
-| `InternalClassType` | The unique built-in English object name describing the type of `<Path>` |
-
-`derive` preserves `Origin`, `OriginRoot`, and `Class` (the new class
-inherits from the source). `duplicate` severs the inheritance link —
-`Origin` becomes the duplicated copy itself, not the original. If you
-want a child that picks up future parent changes, use `derive`. If you
-want a one-off snapshot, use `duplicate`.
+See
+[`../local-simtalk-execution/references/inheritance-semantics.md`](../local-simtalk-execution/references/inheritance-semantics.md)
+for the authoritative `Origin` / `OriginRoot` / `Class` /
+`InternalClassType` table and the `derive` vs `duplicate` comparison.
 
 > The Plant Simulation Help §13 recommendation: **do not change built-in
 > object standard settings; derive instead.** Derived/duplicated objects
@@ -222,55 +202,23 @@ Before invoking **any** mutating subcommand (`derive` / `duplicate` /
 relationships between the candidate classes. Read-only ops (`list`,
 `inspect`) do **not** require this step.
 
-Why the inheritance map must come first:
+See [`references/preflight.md`](references/preflight.md) for the rationale
+(5 reasons) and the recommended 3-step workflow.
 
-1. **Confirm the right parent.** `derive` and `duplicate` produce
-   different outcomes depending on whether the parent is a built-in
-   (`.MaterialFlow.Station`) or a user-derived class
-   (`.UserObjects.MyStation`). The map tells you exactly which one is
-   being targeted, with its `Origin` / `OriginRoot` / `Class` triple.
-2. **Detect name collisions up front.** The map exposes existing
-   siblings (e.g. `.UserObjects.MyConveyor_2`) so you don't have to wait
-   for Plant Simulation to silently suffix your new class with `_2`
-   (Quirk CM-1).
-3. **Spot live instances before delete / rename.** A `delete` on a
-   class with instances in any Frame silently returns `false`
-   (Quirk CM-4); `rename` of a class whose instances still exist is
-   legal but risky. The inheritance map surfaces both situations.
-4. **Don't sever the wrong chain.** `duplicate` cuts the inheritance
-   link entirely — `Origin` becomes the copy itself. Confirm the
-   parent is the one you intended before issuing the call.
-5. **Avoid mutating built-ins directly.** Plant Simulation Help §13
-   recommends *deriving* rather than editing built-in objects. The map
-   shows which classes are built-ins (chain rooted at
-   `.MaterialFlow.*` / `.WorkerPool.*` / etc.) so you know to derive
-   first.
+## Hard rules / Quirks
 
-### Recommended workflow
+The 7 universal quirks (#6, #7, #13, modal trap, response framing,
+readlog v15+ regression, `infoBox` convention) are inherited from
+`local-simtalk-execution`. See
+[`../local-simtalk-execution/references/quirks-canonical.md`](../local-simtalk-execution/references/quirks-canonical.md)
+for the cross-skill pointer.
 
-```text
-┌────────────────────────────────────────────────────────────────┐
-│ 1. local-simtalk-get-folder-tree       → locate candidates    │
-│ 2. local-simtalk-get-class-inheritance  → inheritance map      │
-│ 3. local-simtalk-class-management       → derive / duplicate … │
-└────────────────────────────────────────────────────────────────┘
-```
-
-`inspect <path>` (this skill) is fine to interleave — it's the
-single-class read-only view. The model-wide **map** comes from the
-sibling skill.
-
-## Hard rules / Quirks (subset of `local-simtalk-execution/references/lifelines.md`)
+### Skill-specific operational rules
 
 | Rule | Why |
 |---|---|
-| `type` field must be one of `ping` / `simtalk_syntax` / `simtalk_run` / `readlog` | Unknown types cause silent server-side hang (Quirk #13) |
-| Use `simtalk_send.py run` (it handles `\|\|END\|\|` framing + Quirk double-check) | Server never closes the socket (lifelines §2); `simtalk_run` returns `result:"success"` even on runtime errors (lifelines §6) |
-| `simtalk_run` `data` field is **always** empty | Quirk #6 — server doesn't serialize return values. This skill `print`s the result and parses via the stdout / log envelope |
-| Runtime errors return `result:"success"` with `log:"code execute failed..."` | Quirk #7 — `simtalk_send.py` returns exit code 11 for these; `class_ops.py` translates to `ok:false, error:"runtime"` |
-| Avoid `prompt` / `infoBox(..., true)` / writing undeclared global attrs | Modal trap — server blocks until GUI click (lifelines §4) |
-| **Always `infoBox(text, false)` on entry, close twice on exit** | Skill convention from `local-simtalk-execution` v18→v19 |
 | Each script invocation runs **one** mutating op — no batching | Each `derive` / `duplicate` triggers Plant Simulation events; combining is risky |
+| Use `simtalk_send.py run` (it handles `\|\|END\|\|` framing + Quirk double-check) | Server never closes the socket; `simtalk_run` returns `result:"success"` even on runtime errors — `class_ops.py` translates exit code 11 to `ok:false, error:"runtime"` |
 
 ### Skill-specific quirks
 
