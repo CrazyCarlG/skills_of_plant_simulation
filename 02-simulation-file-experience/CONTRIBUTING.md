@@ -152,5 +152,37 @@ scope: 一句话说明本文件覆盖什么（什么时候来读它）
 
 ---
 
+## 6. playbook per-entry file 约定（2026-08-31 起强制）
+
+`03-workflow-playbook/skill-call-playbook.md` 的 §经验 Log 从 2026-08-31 起**不再内嵌 entry 正文**——每条 entry 单独成 `.md` 文件。
+
+**为什么**：playbook 的 entry 越来越长（最长达 23 行 + 1 个决策表），内嵌导致：
+- 单条 entry 的 git diff 被其他 6 节主体变更噪声淹没
+- tag-based 检索必须 grep 整个 363 行文件
+- per-entry supersede 标记无法精准定位
+
+### 6.1 强制规则
+
+1. **新 entry 必须独立成文件**：`03-workflow-playbook/<YYYY-MM-DD> by @<author> — <entry-title>.md`
+2. **必须在 `03-workflow-playbook/INDEX.md` §经验 Log per-entry files 表格加一行**（Date / Author / tags）
+3. **必须在 `skill-call-playbook.md §经验 Log` 末尾追加 1 行 pointer**（标题保留供反向 grep，正文改为"→ 详见 [file]..."）
+4. **frontmatter 三处同时 bump**：`last_updated: 2026-08-31` + `contributors: [..., @your-handle]`（三个文件：playbook.md / INDEX.md / CONTRIBUTING.md 的 §6 提及）
+
+### 6.2 命名 / URL 编码规则（与 `03-workflow-playbook/INDEX.md §经验 Log per-entry files` 同步）
+
+| 字符 | 文件名 | URL 编码 |
+|---|---|---|
+| `→` space | 空格 | `%20` |
+| `@` | at-sign | `%40` |
+| `—` (em-dash) | em-dash | `%E2%80%94` |
+| 其他 CJK / Latin | 保持原样 | 保持原样 |
+
+### 6.3 范围（只覆盖 playbook）
+
+`01-domain-concepts/` / `02-bridge-tool/` / `04-model-case-studies/` / `05-session-archives/` 的 §经验 Log **目前不强制**走 per-entry file——保留内嵌正文形式。如后续也想迁移，命名约定可复用，详见 `agents/curator-reports/2026-08-31-log-per-entry-files.md §Future migrations`。
+
+---
+
 > **历史**：
 > - 2026-08-28 创建本文件（@z004bjuu + @plant-simulation-expert）；与 README §经验沉淀协议、agents/plant-simulation-expert.md §知识沉淀 配套落地。
+> - 2026-08-31 新增 §6 playbook per-entry file 约定（@plant-simulation-experience-curator）；与 03-workflow-playbook/INDEX.md §经验 Log per-entry files 同步落地。

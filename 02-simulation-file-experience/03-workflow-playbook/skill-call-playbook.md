@@ -1,6 +1,6 @@
 ---
-last_updated: 2026-08-28
-contributors: [@z004bjuu, @plant-simulation-expert]
+last_updated: 2026-08-31
+contributors: [@z004bjuu, @plant-simulation-expert, @plant-simulation-experience-curator]
 scope: 9 个 `local-simtalk-*` 技能调用决策矩阵 + 写操作 5 步硬流程 + Top 10 高频坑
 ---
 
@@ -92,19 +92,7 @@ scope: 9 个 `local-simtalk-*` 技能调用决策矩阵 + 写操作 5 步硬流�
 
 ### 2.3 探针 / Probe
 
-**所有"我要看看 X 的 Y 属性"的操作统一套路**：
-
-```bash
-python3 local-simtalk-execution/scripts/simtalk_send.py run \
-  'var obj: object := str_to_obj("<path>");
-   print "###MARKER_START###";
-   print <expression>;
-   print "###MARKER_END###"'
-```
-
-- `###MARKER_*###` 是**唯一可靠**的"分隔 print 输出与 readlog 噪音"的手段（因为 readlog 截断会丢前文 → 取最后 `###END###` 与 `###START###` 之间的内容是稳定的）。
-- 不依赖 readlog 全量日志、不依赖 `data` 字段（Quirk #6：永远空）。
-- 想拿实际值 → 去 Plant Simulation GUI Console（Window ribbon → Console）肉眼读 print。
+> 完整 bash workflow 见 §6.1 "我要看 X 是什么"——marker 模式 `###START###` / `###END###` + readlog 提取是唯一可靠的"分隔 print 输出与 readlog 噪音"的手段（v15 readlog 截断会丢前文 → 必须 rsplit 取最后 marker 块）。
 
 ### 2.4 通知与 UI / Notification
 
@@ -202,16 +190,7 @@ python3 local-simtalk-execution/scripts/simtalk_send.py run \
 
 ## 五、Plant Simulation 语言层的"小字面契约"
 
-这些是反复被字面比较、踩坑、改错的"硬字面值"，**改任何一处都会破坏远程调用**：
-
-| 字面契约 | 出处 | 踩坑案例 |
-|---|---|---|
-| `action_result["result"]` 的取值是小写 `"success"` / `"failed"` | `simtalk_hasError` 返回值契约 | `add-note` 多次写错成 `"Success"` → 远端拿不到 |
-| log 前缀 `"code execute failed. error msg:..."`（注意开头无空格、句点+空格） | Quirk #7 检测字符串 | 改了大小写/标点会漏判 |
-| 语法失败前缀 `" hasError "`（**有前导空格 + 全角冒号**） | `simtalk_syntax` 返回值契约 | "顺手 ASCII 化"破坏远程解析 |
-| `hasSyntaxError` 必须挂在 `&Method` 上，不能对临时字符串检查 | Plant Simulation 文档 | `simtalk_hasError` 必须先把代码写到 `&simtalkcode.program` |
-| `chr(10)` 是 newline，SimTalk **不**解释 `\n` 转义序列 | Quirk #1 | 写了字面 `\n` 当 newline → 服务端收到 `\` + `n` 两个字符 |
-| `infoBox(text, false)` 第二参数是 `Modal` 标志 | Plant Simulation 文档 | 漏掉 `false` → 服务端挂死 |
+> **canonical home**：[`01-domain-concepts/derived-methods-quirks.md §一`](../01-domain-concepts/derived-methods-quirks.md) 集中维护所有 SimTalk 字面契约（含 `chr(10)` newline / `infoBox(text, false)` 模态标志 / `code execute failed` 前缀 / `hasError` 前导空格 等）。本节不再重复表格——改动请改那一份。
 
 ---
 
@@ -306,69 +285,15 @@ python3 skills/local-simtalk-read-library/scripts/render_library.py \
 
 ---
 
-## 七、Skill 调用的"哲学层"经验
+## 七、Skill 全景与"三步 fallback"
 
-不是文档抄来的，是 9 个 skill × 130+ session 的**反复实证**：
+**三层 fallback**（所有 skill 撞墙时的统一应对）：
 
-### 7.1 当上层 skill 失败时，先问"我是哪种失败"
-
-```
-症状                              → 真正原因
-─────────────────────────────────────────────────────
-exit=1 timeout                     → Quirk #13 (type 非法) 或 payload > 2KB
-exit=2 connection refused          → host:port 错（WSL2 必须 host.docker.internal:50007）
-exit=10 result=failed              → 真编译错（log 含 "Syntax error near line N"）
-exit=11 result=success + log prefix "code execute failed" → Quirk #7 软失败（runtime 异常）
-exit=12 hasError in result         → 真语法错（simtalk_syntax 路径）
-exit=20 result=success             → readlog 收到但 v15+ 内容不可信
-```
-
-### 7.2 不要相信"自动化成功"
-
-- **readlog v15 不可信**——别拿它当任何正式通道。
-- **`simtalk_run` 返回 success 不等于代码执行成功**——必须双重判据。
-- **argparse 默认 `nargs="+"` 不带 `action="append"`** 会静默丢行——必须看 `args.note` 实际值。
-- **NOTE 写完别急着收尾**——`simtalk_hasError` 才是真正的语法通行证。
-
-### 7.3 三层 fallback
-
-1. **首选**：上层 skill（如 `add-note-to-method`、`write-simtalk`）。
+1. **首选**：上层 skill（如 `add-note-to-method`、`write-simtalk`、`modify-attribute`）。
 2. **兜底**：`local-simtalk-execution` 直接跑原始 SimTalk + `obj.program :=` / `obj.attr :=`。
 3. **最后**：去 Plant Simulation GUI 手工操作（drag-drop Frame 实例、Methods 编辑器、Console 读 print 值）。
 
-### 7.4 当所有 skill 都说"这是用户干预"——就把它当用户干预
-
-`simtalk_run` 的软失败设计是 SimtalkClaude 团队**有意为之**的：让 `result` 字段反映"代码编译并进入执行"，让 `log` 字段承担"运行时错误"。如果你看到 `result=success + log 前缀 "code execute failed"`，**不要怀疑协议**——按 Quirk #7 处理即可。详见 `memory/team/simtalk-run-soft-failure-design.md`。
-
----
-
-## 八、可继续挖掘的方向（来自各 session 的"待补"清单合并）
-
-| 主题 | 来源 session | 待办 |
-|---|---|---|
-| `sleep` 在 Method 上下文里的行为 | `os-functions/log/README.md` | 在真正 Method `m()` 里跑 `sleep(3.5, false)` + print |
-| 3 个模态函数的 GUI 手动验证 | `os-functions/log/README.md` | GUI 端手动调 `browseForFolder` / `selectFileForOpen` / `selectFileForSave` 记录返回值 |
-| `getRegistry` string / integer 分支 | `os-functions/log/README.md` | 测 `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\ProductName` |
-| `class_ops.py` 加 `classify` 子命令 | `class-management/log/session-20260826.md` Part E.3 | 打印 Origin/Class/OriginRoot/NumChildren + 标 class/instance |
-| `class_ops.py duplicate` subcommand 文档化 | `class-management/log/session-20260826.md` Part E.5 | 把 Folder/Frame 两种 destination 行为写进 SKILL.md |
-| `add_note.py` multi-line program 的 readback 修复 | `add-note-to-method/log/2026-08-26_m_paramRack_annotation.md` | 修复 `extract_between()` 的时间戳前缀 bug |
-| `simtalk_send.py` 加 `--json-output` / `--quiet` / `batch` 子命令 | `local-simtalk-execution/log/test-session-20260825-v17.md` §11 | 三项非阻塞增强 |
-
----
-
-## 九、本仓库 9 个 skill 的全景索引
-
-| Skill | 主要 log/usage_log 文件 | 核心 session |
-|---|---|---|
-| `local-simtalk-execution` | `log/test-session-20260824-v1.md` ~ `log/test-session-20260825-v19.md`（19 个版本迭代） | v17（重构）+ v18/v19（业务函数族验证） |
-| `local-simtalk-os-functions` | `log/README.md` + `log/test-session-20260825-v14~v17.md` | v14（20 函数实测）+ v17（list API 发现） |
-| `local-simtalk-get-folder-tree` | `log/test-session-20260825-v1/v2/v3.md` | v3（45 round-trips + diff 基准） |
-| `local-simtalk-get-class-inheritance` | `log/test-run-20260826-v1/v2.md` | v2（94 paths / 60 unique / 18 root / 42 derived） |
-| `local-simtalk-read-library` | `log/test-session-20260826-v1.md` + `data/library_dump.json` | v1（27 methods dump） |
-| `local-simtalk-class-management` | `log/session-20260826.md` + `log/derive-vs-duplicate.md` | session-20260826（4 bugs fixed + derive vs duplicate matrix） |
-| `local-simtalk-add-note-to-method` | `log/2026-08-26_*.md`（5 个 annotation sessions） | simtalkclaude2_haserror_reannotation（2 KB chunked write + 113 行 NOTE） |
-| `local-simtalk-write-simtalk` | `log/session-20260826.md` + `usage_log/` | session-20260826（2 bugs fixed + class_ops duplicate Frame 发现） |
-| `local-simtalk-modify-object-attribute` | `log/01_*.log` ~ `log/80_*.log`（80 个细分 session）+ `log/SUMMARY.md` | SUMMARY.md Round 1+2（MaterialFlow 全覆盖 + Resources/InformationFlow） |
+> **9 个 skill 的全景索引**（log 路径 / 核心 session）见 [`02-bridge-tool/simtalkclaude-overview.md §支持动作`](../02-bridge-tool/simtalkclaude-overview.md)；本仓库 9 个 skill 的依赖关系图见 §一。
 
 ---
 
@@ -384,32 +309,13 @@ exit=20 result=success             → readlog 收到但 v15+ 内容不可信
 > [curator-audited 2026-08-28 by @plant-simulation-experience-curator — pre-curator entry; see `agents/curator-reports/2026-08-28-curator-report.md` audit-008]
 
 ### 2026-08-28 by @plant-simulation-expert — 2D 布局完成后必须做 pairwise bbox overlap check
-- **症状**：把 34 个 Frame 子节点摆好后用 `kit.numNodes` + `ch.name` 列表"看上去都摆对了"，实际上 `LastSummary`（写入 "found=34 of 34" 后宽度从 2.69 → 6.19）已经和 `ErrorHistory` 重叠——只是 Frame 在 2D 视图里 overlap 不会触发任何错误，只会让用户看到图标互相压字。
-- **根因**：`_3D.BoundingBoxSize` 是 content-dependent（见 `derived-methods-quirks.md §经验 Log`），布局 probe 完后写入报告字符串 → 报告 Variable 变宽 → 触碰邻居。所以 **布局完成 ≠ 无 overlap**，必须重新 probe 一次并跑 pairwise check。
-- **Workaround / 结论** —— Pairwise 2D bbox overlap check 三步法：
-  1. **Probe 阶段**（写报告前）：对每个 child 取 `ch._3D.Position` + `ch._3D.BoundingBoxSize`，写 `name|cx|cy|hw|hh|minx|maxx|miny|maxy` 表格到 `LastSummary`。
-  2. **Overlap check**：561 对（34×33/2）跑 `(a.minx < b.maxx AND a.maxx > b.minx AND a.miny < b.maxy AND a.maxy > b.miny)` 计数。任何 >0 都报警。
-  3. **Auto-clear 报告 Variable**（`LP/LE/LEC/LS`）：让 layout 回到 nominal 状态；这一步必须在 MLayout / probe Method 末尾就内嵌，不要寄望用户后续清理。
-- **附加收益**：probe 阶段顺便暴露 icon 真实尺寸（Variable 空 / 80 字符宽度差 8.7 倍），后续重布局可以按 nominal 宽度设计坐标。
-- **tags**：`layout`, `pairwise-check`, `2D-bbox`, `overlap`, `auto-clear`, `verifier`
-- **see also**：`01-domain-concepts/derived-methods-quirks.md §经验 Log`（BoundingBoxSize content-dependent）；`02-bridge-tool/simtalkclaude-v1-and-v2.md §经验 Log`（json.dumps / simtalk_hasError）；`skills/local-simtalk-write-simtalk/log/2026-08-28_synctoolkit-frame-relayout.md §No-overlap relayout`（完整 561-pair check 输出）
-- **反思**：用户眼睛能看出来 overlap 但 Plant Simulation 不会报错——verifier 不能省，且 verifier 必须在 layout **最后一次写入之后**跑（不是写入前 probe），否则测的是 nominal 状态而不是真实运行状态。
+→ 详见 [2026-08-28 by @plant-simulation-expert — 2D 布局完成后必须做 pairwise bbox overlap check.md](./2026-08-28%20by%20%40plant-simulation-expert%20%E2%80%94%202D%20%E5%B8%83%E5%B1%80%E5%AE%8C%E6%88%90%E5%90%8E%E5%BF%85%E9%A1%BB%E5%81%9A%20pairwise%20bbox%20overlap%20check.md)（tags: `layout`, `pairwise-check`, `2D-bbox`, `overlap`, `auto-clear`, `verifier`）
 
 > [curator-audited 2026-08-28 by @plant-simulation-experience-curator — pre-curator entry; see `agents/curator-reports/2026-08-28-curator-report.md` audit-009]
 
 ### 2026-08-28 by @plant-simulation-expert — probe pipeline 在大模型上 3 个隐性 quirk
-- **症状 1 (`render_library.py` RENDER-1)**:library dump JSON 里 `program` 字段只剩**首行注释**,但 `program_len` 是正确的完整长度 → 后续分析全错位。
-- **症状 2 (`bfs_one_level.py` 大 Frame 截断)**:对 >~130 子节点的 Frame(如 Factory51 142 children),stdout JSON 在 ~12 KB 处被截断 → 缺失的 child 没人发现。
-- **症状 3 (readlog v15+ batch degradation)**:连续发 `probe_methods.py` batch-8 时,前 17/25 抓干净,后 8 个 EnergyAnalyzer 方法 metadata 全空(META_TYPE=Method 但其他字段空白)→ 方法全空视图。
-- **根因**:
-  1. `probe_methods.py` 写 program body 用**真 newline**;`render_library.py` 用 `for ln in f: ln.split("\t")` 把每行当新 row → multi-line program 拆碎,只保留首注释。
-  2. `bfs_one_level.py` 单 round-trip 用 `simtalk_run`(inline code),命中 v15+ readlog buffer ceiling(本文件 §四 Top 10)。
-  3. v15+ readlog buffer 是按 statement 切片的;长 batch 的后段 metadata 在 buffer 重新分配时丢失。
-- **Workaround / 结论**:
-  1. **RENDER-1**:自定义 TSV re-parser(`/tmp/learning_library_full.json`),recognize header line(path + tab + name + tab + type + tab + ≥6 more tabs),accumulate body until next header。**Upstream 修法待提**:`probe_methods.py` 用 sentinel (`\x1e`) 替换 `\n` 后再写 TSV,renderer 还原;或整体改 quoted-CSV。
-  2. **`bfs_one_level.py`**:改用 `bfs_full.py <path> 1 <out>.json`(depth-by-depth,每 round-trip ≤1 帧)避开 readlog ceiling。
-  3. **readlog degradation**:batch 限制 ≤7 个方法;超出后改逐个 re-probe via `simtalk_send.py run` + readlog 提取(`/tmp/probe_with_log_capture.py`)。
-  4. **re-parser 副作用**:`parse_analyzer_tsv.py` 会把空 row 附加到前一个 method → 修法:detect path-pattern 行(如 `.Models.`)即停积累。
-- **tags**:`render_library`, `RENDER-1`, `bfs_one_level`, `readlog-v15-degradation`, `probe-pipeline`, `large-frame`, `multi-line-program`
-- **see also**:本文件 §四 Top 10(readlog buffer ceiling);`skills/local-simtalk-get-folder-tree/log/2026-08-27_basis-depth4-full-and-factory51-types.md`(Factory51 142 children 截断案例);`skills/local-simtalk-read-library/log/2026-08-27_learn-assembly-model-bottleneckAnalyzer-energyAnalyzer.md`(re-probe 工作流)
-- **反思**:probe pipeline 是**默认信任链路**,但实际有 3 处会让 dump 看起来"成功"而内容破碎——**任何 library dump 后必须做完整性校验**(method count vs inventory、`program_len > 0` 占比、path 格式)。可考虑加 `library_dump_validator.py` 自动跑。
+→ 详见 [2026-08-28 by @plant-simulation-expert — probe pipeline 在大模型上 3 个隐性 quirk.md](./2026-08-28%20by%20%40plant-simulation-expert%20%E2%80%94%20probe%20pipeline%20%E5%9C%A8%E5%A4%A7%E6%A8%A1%E5%9E%8B%E4%B8%8A%203%20%E4%B8%AA%E9%9A%90%E6%80%A7%20quirk.md)（tags: `render_library`, `RENDER-1`, `bfs_one_level`, `readlog-v15-degradation`, `probe-pipeline`, `large-frame`, `multi-line-program`）
+
+### 2026-08-31 by @plant-simulation-experience-curator — "给非 Frame 对象加 method" 不走 `local-simtalk-create-method-object`；直接 `simtalk_run` + `createAttr` + `getAttribute`
+
+→ 详见 [2026-08-31 by @plant-simulation-experience-curator — 给非 Frame 对象加 method 不走 local-simtalk-create-method-object.md](./2026-08-31%20by%20%40plant-simulation-experience-curator%20%E2%80%94%20%E7%BB%99%E9%9D%9E%20Frame%20%E5%AF%B9%E8%B1%A1%E5%8A%A0%20method%20%E4%B8%8D%E8%B5%B0%20local-simtalk-create-method-object.md)（tags: `skill-selection`, `createAttr`, `method-typed-UDA`, `station`, `cross-skill-workflow`, `frame-vs-non-frame`）
