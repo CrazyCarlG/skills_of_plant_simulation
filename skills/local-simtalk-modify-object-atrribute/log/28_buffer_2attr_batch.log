@@ -1,0 +1,11 @@
+
+=== .MaterialFlow.Buffer.Capacity (integer) ===
+  2026-08-26 13:24:03: Capacity: 8 -> 20
+  2026-08-26 13:24:03:
+
+=== .MaterialFlow.Buffer.BufferType (string) ===
+  2026-08-26 13:24:04: BufferType: Queue -> Stack
+  2026-08-26 13:24:04:
+
+=== restoring ===
+  restore OK

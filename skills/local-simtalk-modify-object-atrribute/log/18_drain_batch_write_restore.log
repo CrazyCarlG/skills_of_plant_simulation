@@ -1,0 +1,11 @@
+  RESTORE FAIL: result='failed' log=" hasError ： 'o_' is already defined as a local variable. (in row :5)"
+
+=== .MaterialFlow.Drain.Pause (boolean) ===
+  2026-08-26 13:18:20: Pause: false -> true
+  2026-08-26 13:18:20:
+
+=== .MaterialFlow.Drain.TypeStatOn (boolean) ===
+  2026-08-26 13:18:20: TypeStatOn: true -> false
+  2026-08-26 13:18:20:
+
+=== restoring ===

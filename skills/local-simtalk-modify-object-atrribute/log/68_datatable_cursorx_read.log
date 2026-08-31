@@ -1,0 +1,8 @@
+
+=== .InformationFlow.DataTable.CursorX (None) ===
+  2026-08-26 13:37:17: execute sim-code: 'var obj: object := s......'
+  2026-08-26 13:37:17: ###MARKER###
+  2026-08-26 13:37:18: execute sim-code: 'var obj: object := s......'
+  2026-08-26 13:37:18: ###MARKER###
+  2026-08-26 13:37:18: CursorX: 1
+  2026-08-26 13:37:18:
