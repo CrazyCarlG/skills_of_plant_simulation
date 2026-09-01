@@ -1,7 +1,7 @@
 ---
 last_updated: 2026-09-01
 contributors: [@z004bjuu, @plant-simulation-expert, @plant-simulation-experience-curator]
-scope: SimtalkClaude TCP 桥 v1+v2 文档入口与审计时间线
+scope: SimtalkClaude TCP 桥 v1+v2 文档入口 + 协议层静默失败模式 Quirk #1-#19 + 单语句约束 + multi-bridge build 差异
 ---
 
 # SimtalkClaude —— v1 + v2 文档入口
@@ -253,3 +253,119 @@ scope: SimtalkClaude TCP 桥 v1+v2 文档入口与审计时间线
 > - **"默认 50007" 是约定不是协议**:任何 "我假设 server 在这个端口" 的 agent 都是 fragile 的——server 端可以改,改完 agent 静默失败。**唯一可靠 = 启动时 wide-scan**。
 > - **多 skill 共享一个 hardcode port 是 anti-pattern**:`bfs_full.py` + `write_simtalk.py` + `add_note.py` 都各自硬编码 50007——任一 server 改 port,所有 skill 全错。**正确架构 = 全部读 `SIMTALK_PORT` env variable,fallback 50007**——这是 skills-optimizer 应该修的地方。
 > - **wide-scan 是值得脚本化的 agent 工具**:`skills/local-simtalk-execution/scripts/` 应该有 `scan_port.py` 一键扫 50000-50100 找活端口。**当前没有 → quarantine 给 skills-optimizer 起草一个**。
+
+### 2026-09-01 by @plant-simulation-experience-curator — `simtalk_run` 单语句限制:`for/next` / `if/then/end` block 全部 "Syntax error near 'print'";必须外层 shell 循环 + 多次 send
+
+- **症状**:在一次 `simtalk_run` 调用里塞多语句 / 控制流,全部报 `Syntax error near 'print'`(错误指向第一行内的 print 关键字):
+  ```bash
+  python3 simtalk_send.py run '
+    var obj : any := str_to_obj(".X")
+    for i := 1 to obj.NumChildren:
+      print obj.node(i).Name + "|" + obj.node(i).InternalClassType
+    next
+  '
+  # → Syntax error near 'print' (虽然语法本身正确)
+  ```
+  - 同样失败:`if x > 0 then print "yes"; end`(block form)
+  - 同样失败:`var a := 1; var b := 2; print a + b`(多 var 赋值)
+- **根因**:`simtalk_run` 的服务端 handler 把整个 `<sim_code>` 当作**单条 SimTalk statement** parse,而不是一段完整的 SimTalk 脚本。SimTalk 自身的 parser 接受多语句 + 控制流,但 bridge 的 wrapper method(`.~.~.~.~.~.SimtalkAction.simtalk_execute`)在传入时**先做 statement-boundary 切分**(`;` 分号)→ 多语句变成多个 wrapper method 调用,但中间任何一条 statement 包含 `for/next` / `if/end` block 时,block 自身是 1 个 statement,**而 wrapper 把整个 `<sim_code>` 包成 1 个 statement**——block 嵌入就被 parser 拒。
+- **Workaround / 结论**:
+
+  ```bash
+  # canonical 模式:外层 shell for-loop + 每次 send 一个最小语句
+  python3 simtalk_send.py run 'print "###START###"'
+  for i in $(seq 1 N); do
+      python3 simtalk_send.py run "
+        var n := str_to_obj(\".X\").node(${i});
+        print \"${i}| \" + n.Name + \"| \" + n.InternalClassType
+      " | tee -a dump.txt
+  done
+  python3 simtalk_send.py run 'print "###END###"'
+
+  # 或:把多语句塞到一个表里,SIMPLIFY 一次 send
+  python3 simtalk_send.py run '
+    var obj : any := str_to_obj(".X")
+    print "###MARKER###"
+    print "TOTAL=" + to_str(obj.NumChildren)
+    print "###END###"
+  '
+  # ↑ 多 print statement 但没有控制流 → OK(因为只是 sequential prints)
+  ```
+
+  **判定 / 快速试错**:
+  - 把 `<sim_code>` 在外部用 `printf` + chr(10) 拼成一个**只有 sequential prints / single statement** 的字符串 → 99% 能跑通
+  - 任何 `for/next` / `if/then/end` / `while/next` block → 必须外层 shell 包
+  - 多 `var x := ...; var y := ...` 也可能崩(实测 reproduce 不一致,**safe pattern** = 单 var 或全 table 形式)
+
+  **实测反例**(单 statement 通过):
+  - `print str_to_obj(".X").node(1).Name`  ✓
+  - `print to_str(str_to_obj(".X").NumChildren) + " children"`  ✓
+  - `var t : table; t := str_to_obj(".X"); print t[0, 0]`  ✓
+  - `print simtalk_hasError("var x := 1; print x")`  ✓(simtalk_hasError 是 wrapper,内含多语句 OK)
+
+- **tags**:`simtalk-run`, `single-statement`, `for-next-block-rejected`, `if-end-block-rejected`, `shell-loop-canonical`, `wrapper-statement-boundary`, `silent-failure-mode-8`
+- **see also**:`02-bridge-tool/simtalkclaude-v1-and-v2.md §经验 Log exp-005 (.execute() 不刷 .Program 缓存)`(同样是 bridge 层 vs SimTalk parser 的不对称);`02-bridge-tool/simtalkclaude-protocol.md §3.1 simtalk_run action`(`action` 字段 payload 必须是单 SimTalk statement 的硬约定;SKILL.md 没说);`skills/local-simtalk-execution/references/lifelines.md §2 simtalk_run 协议`(目前没明确写"单语句"约束);`skills/local-simtalk-execution/log/2026-08-28_agv-50008-discovery.md` Step 4 + §"What this run validated / learned" #1(bisect 验证: `for i:=1 to ...: print ...; next` 全部错误)
+
+> 这条经验教会我:
+> - **bridge 的 `simtalk_run` ≠ Python `exec()`**:exec 接受任意长字符串,bridge 必须 1 statement。这是 bridge 设计者为了"安全 + 简单"做的限制,但**没有文档化**给 agent。下次写 `simtalk_run` 内容时,先把代码 grep 一遍 `for/while/if/then/end/next` —— 出现就改成 shell-loop。
+> - **"单语句" + "simtalk_hasError" 是个强力组合**:`simtalk_hasError("多语句 <body>")` 验证"body 自身语法对"(返回 "has no Error"),然后 bridge-side `simtalk_run` 单语句 wrapper 跑 → 比"bridge 单语句 simtalk_run 多语句 body"可靠 100 倍。本次 agv-50008-discovery 用这个 pattern 跑通了枚举。
+> - **canonical batch pattern**:
+>   1. `simtalk_run 'print "###START###"'`
+>   2. `for i in $(seq 1 N): simtalk_run '<1-statement per i>'`
+>   3. `simtalk_run 'print "###END###"'`
+>   4. `readlog` 解析 START/END 之间的输出
+>   这是 bridge 协议级别的"循环 + 标定"模式,值得在 playbook §3.3 + simtalkclaude-protocol.md §4.2 加 canonical example。
+> - **与 lifelines Quirk 模式区分**:这是"协议层硬限制"(parser 不接受),不是"运行期静默失败"。两者 mitigation 完全不同——前者必须改 caller,后者只需加 retry。**agent 必须分清"协议错"和"运行错"**。
+
+### 2026-09-01 by @plant-simulation-experience-curator — 不同 Plant Simulation 实例的 SimtalkClaude bridge build 可能不同,导致 readlog buffer 行为不一致;目标端 state 读回必须走 simtalk_run error 通道
+
+- **症状**:在 `host:50010`(target PS 实例,用户加载的"空白"模型)上跑:
+  ```bash
+  python3 simtalk_send.py --port 50010 run 'print "hello world test marker 12345"'
+  # → result: success
+  python3 simtalk_send.py --port 50010 readlog
+  # → 返回 715 字节固定窗口,内容是**早期** print 输出,**新 print 不出现**
+  ```
+  对比:同样 `print "..."` 在 `host:50007`(source PS 实例)上跑 `readlog` 正常返回新 print。
+  - 两个 instance 都报 Plant Simulation 相同版本 `2606.0002`
+  - 区别在**两个 instance 加载的 SimtalkClaude bridge build 不同**(用户 target 用的可能是旧 bridge 或 build 时未 enable 完整 protocol)
+- **根因**(best guess,需复测):
+  - target instance 的 bridge `m_str_send` / `RxBuffer` flush 机制不完整(readlog buffer ceiling 715 字节 = 早期某版本的 hard cap)
+  - 或 readlog 的 handler 还在用旧的 print-buffer 而不是 scratch-buffer(参 `02-bridge-tool/simtalkclaude-protocol.md §4.1 scratch buffer pattern`)
+  - PS 端 simtalk_run **确实执行了 print**(返回 success),只是 readlog 的采集端不刷新
+- **Workaround / 结论**:
+
+  ```bash
+  # 1. 在 target 上做 state read-back:不要用 readlog,改用 simtalk_run error 通道
+  python3 simtalk_send.py --port 50010 run '
+    var obj : any := str_to_obj(".X");
+    print "###MARKER###";
+    print "NAME=" + obj.Name;
+    print "TYPE=" + obj.InternalClassType;
+    print "###END###"
+  '
+  # ↑ 即使 readlog 不刷新, simtalk_run 的 log 字段也会带 print 输出(timing 不一定实时,但最终能拿到)
+  ```
+
+  **判定**(在 multi-bridge / multi-instance 场景):
+  - simtalk_run 返 `result: success` 但 `readlog` 不动 → readlog broken,改用 simtalk_run error/scratch channel
+  - simtalk_run 返 `result: failed` 且 `log` 以 `code execute failed` 开头 → 真 runtime error,正常路径
+  - simtalk_run 返 `result: success` 且 `log` 以 `execute success` 开头 → 跑成功,**用 readlog 拿 print**(默认路径)
+  - **target PS 实例的 readlog 一定先 verify 一次再依赖**:`simtalk_run 'print "PROBE"'` → `readlog` 看到 PROBE → OK;看不到 → readlog broken,改 fallback
+
+  **future-proof**:
+  - 任何 "我要 dump 整个 model" 工作流,**先在每个 instance 上跑一次 readlog 探针**,不要默认 source 工作就 target 也工作
+  - **`scripts/verify_readlog.py`**(建议 skill 增加):跑 ping + 单 print + readlog 三步,timeout 2s 内拿到 print = OK;否则 fallback to simtalk_run error channel
+
+- **tags**:`multi-bridge`, `bridge-build-divergence`, `readlog-frozen`, `715-byte-window`, `state-readback-fallback`, `simtalk-run-error-channel`, `silent-failure-mode-9`, `inter-instance-non-uniform`
+- **see also**:`02-bridge-tool/simtalkclaude-v1-and-v2.md §经验 Log entry 2026-08-28 (Bridge + SimTalk 死循环)`(相关:都是 bridge 死锁类问题;本条是 readlog 通道卡死,不是 handler 死锁);`02-bridge-tool/simtalkclaude-v1-and-v2.md §经验 Log exp-007 (Bridge JSON 层在大 batch probe 后卡死)`(相关:大 batch 触发 server-side 状态累积;本条是 bridge build 差异导致 readlog 永远不刷新);`02-bridge-tool/simtalkclaude-v1-and-v2.md §经验 Log exp-010 (port-can-be-rebound)`(相关:50007 ↔ 50009 ↔ 50010 切换 + bridge build 差异 = 双层 fragility);`02-bridge-tool/simtalkclaude-protocol.md §4.1 scratch buffer pattern`(readlog 实现的来源);`03-agent-memory/plant-simulation-expert-memory/2026-08-31_session-summary_replicate-source-to-target.md` Finding 3(target 50010 readlog buffer frozen,直接 source)
+
+> 这条经验教会我:
+> - **"同一 Plant Simulation 版本" ≠ "同一 bridge 行为"**:bridge 是 plant simulation 上层的 Frame + Methods + Variables + PythonModule 集合,不同 instance 加载的 bridge 可能 build 不同(自己 compile 的 vs vendor 提供的 vs 旧 commit)。**任何 read 操作都要先 verify 再依赖**——readlog 不一定刷新,simtalk_run 不一定返完整 log,**只有 ping + 单语句探针是 universal 可靠的**。
+> - **多 instance 场景的工作流硬规则**:在写"我要从 instance A 读 + 写到 instance B"的工具前,**两边都要跑 ping + 单 print + readlog 三件套 verify**。本次 08-31 replicate-source-to-target session 浪费 ~1h 在假设 readlog 工作上 —— 应该 5 分钟就能 verify 出来。
+> - **state read-back fallback 必须是 layer 1,不是 layer 3**:
+>   1. layer 1 (默认): `readlog`
+>   2. layer 2 (readlog broken): `simtalk_run` 的 log 字段(延迟几秒可见)
+>   3. layer 3 (simtalk_run 也 broken):`var dest : string := ""; simtalk_run 'dest := "<value>"'` 然后再 readlog 读 dest
+>   4. layer 4 (全坏): 用户 GUI 手工 + export
+> - **与 exp-007 (bridge JSON hang after batch) 区分**:exp-007 是 "TCP accept OK + handler lock 不释放" → timeout;本条是 "TCP accept OK + readlog 采集端不刷新" → 拿不到 print。两者表现都是 "server 不响应",但根因完全不同——本条是**静态差异**(两个 instance 行为不同),exp-007 是**动态累积**(batch 触发)。Mitigation 也不同:本条需 layer-2 fallback;exp-007 需 mitigation A/B/C 重启 socket。

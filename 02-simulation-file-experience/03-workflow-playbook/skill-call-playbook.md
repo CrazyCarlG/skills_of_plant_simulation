@@ -1,7 +1,7 @@
 ---
 last_updated: 2026-09-01
 contributors: [@z004bjuu, @plant-simulation-expert, @plant-simulation-experience-curator]
-scope: 9 个 `local-simtalk-*` 技能调用决策矩阵 + 写操作 5 步硬流程 + Top 10 高频坑
+scope: 9 个 `local-simtalk-*` 技能调用决策矩阵 + 写操作 5 步硬流程 + Top 10 高频坑 + 持久化硬规则 #9
 ---
 
 # Plant Simulation 技能调用实战手册 — 2026-08-26/27 总结
@@ -323,3 +323,7 @@ python3 skills/local-simtalk-read-library/scripts/render_library.py \
 ### 2026-09-01 by @plant-simulation-experience-curator — write 之后必须 readback `o.Program` 确认落盘(硬规则 #8 强化)
 
 → 详见 [2026-09-01 by @plant-simulation-experience-curator — write 之后必须 readback o.Program 确认落盘.md](./2026-09-01%20by%20%40plant-simulation-experience-curator%20%E2%80%94%20write%20%E4%B9%8B%E5%90%8E%E5%BF%85%E9%A1%BB%20readback%20o.Program%20%E7%A1%AE%E8%AE%A4%E8%90%BD%E7%9B%98.md)（tags: `write-verify`, `silent-failure`, `readback-Program`, `must-verify`, `write-simtalk-skill-bug`, `hard-rule-8`, `executeSilent-fresh-compile`）
+
+### 2026-09-01 by @plant-simulation-experience-curator — `m.Program :=` 写入的方法 / 属性 **不持久化**:Plant Simulation 重启即丢,必须用户 GUI 导出 `.psfm`(硬规则 #9)
+
+→ 详见 [2026-09-01 by @plant-simulation-experience-curator — m.Program 不持久化，PS 重启即丢必须 export .psfm.md](./2026-09-01%20by%20%40plant-simulation-experience-curator%20%E2%80%94%20m.Program%20%E4%B8%8D%E6%8C%81%E4%B9%85%E5%8C%96%EF%BC%8CPS%20%E9%87%8D%E5%90%AF%E5%8D%B3%E4%B8%A2%E5%BF%85%E9%A1%BB%20export%20.psfm.md)（tags: `persistence`, `m.Program-not-persistent`, `in-memory-vs-disk`, `psfm-export-required`, `bridge-no-save-action`, `restart-data-loss`, `workflow-mandatory-save`）

@@ -9,7 +9,13 @@
 #      让 curator 阅读 03-agent-memory/ 下 expert 的 session summary，
 #      按 CONTRIBUTING.md 的格式沉淀到 02-simulation-file-experience/ 对应维度
 #
-# 该会话对 /root/skills_of_plant_simulation 拥有 读 / 增 / 改 权限（acceptEdits 模式）
+# 该会话对 /root/skills_of_plant_simulation 拥有 读 / 增 / 改 权限
+#   --add-dir 把可写范围锁在 $REPO_DIR
+#   注意：root 下不能用 bypassPermissions / --dangerously-skip-permissions 等越权模式
+#   （被 openclaude CLI 安全策略拦截，会直接报错退出）。
+#   所以默认走 default 权限模式：每次 Edit / Write / Bash 都需要用户在 REPL 里手动确认。
+#   非交互模式（--print / PRINT_MODE=1）以 root 跑会因为无人确认而失败，
+#   非交互测试请改用 sudo -u 普通用户执行本脚本。
 #
 # 运行模式：
 #   默认（交互式）：合并完后进 REPL，用户继续和 curator 对话
@@ -29,7 +35,26 @@
 #       $ PRINT_MODE=1 AUTO_APPLY=1 ./sync-and-curate.sh
 #       $ ./sync-and-curate.sh --auto-apply --print
 
-set -euo pipefail
+# 1. 默认（交互式，最常用）                                                                                                                                                                        
+#  cd /root/skills_of_plant_simulation                                                                                                                                                              
+#  ./05-auto-workflow-script/sync-and-curate.sh                                                                                                                                                     
+#  流程：分支校验 → fetch/pull → merge fea/Learning → 进 REPL 跟 curator 对话。每次 Edit/Write/Bash 在 REPL 里手动确认。                                                                            
+#                                                                                                                                                                                                   
+#  2. AUTO_APPLY 开启（curator 直接 Edit 02-simulation-file-experience/，不用你再审 patch）                                                                                                         
+#  AUTO_APPLY=1 ./05-auto-workflow-script/sync-and-curate.sh                                                                                                                                        
+#  # 或                                                                                                                                                                                             
+#  ./05-auto-workflow-script/sync-and-curate.sh --auto-apply                                                                                                                                        
+#                                                                                                                                                                                                   
+#  3. 非交互打印模式（CI / 测试）—— root 下会失败，要换用户                                                                                                                                         
+#  # 当前是 root，先切到普通用户                                                                                                                                                                    
+#  sudo -u <普通用户> ./05-auto-workflow-script/sync-and-curate.sh --print                                                                                                                          
+#  # 或                                                                                                                                                                                             
+#  sudo -u <普通用户> PRINT_MODE=1 ./05-auto-workflow-script/sync-and-curate.sh                                                                                                                     
+#                                                                                                                                                                                                   
+#  4. 组合                                                                                                                                                                                          
+#  sudo -u <普通用户> PRINT_MODE=1 AUTO_APPLY=1 ./05-auto-workflow-script/sync-and-curate.sh                                                                                                        
+#  ./05-auto-workflow-script/sync-and-curate.sh --auto-apply --print   # root 下这条会因权限模式失败   
+#set -euo pipefail
 
 # ---------------------------------------------------------------------------
 # 宿主机自检：让脚本在 Windows bash (Git Bash / MSYS2 / Cygwin / WSL)
@@ -181,7 +206,9 @@ PROMPT="$PROMPT"$(cat <<EOF
 4) 完成后请给出一段总结：本轮新沉淀 N 条 / supersede M 条 / 丢弃 K 条 + INDEX 增量行。
    如果走了 AUTO_APPLY，请额外说明 landed N 条（标 ⚡）/ 仍 pending M 条（标 🕐）。
 
-权限说明：本会话已对 $REPO_DIR 授予读 / 增 / 改 权限（acceptEdits 模式）。Bash 可执行 git 操作与 grep 类只读命令。
+权限说明：本会话默认走 default 权限模式（root 下不能用 bypassPermissions，
+会被 openclaude CLI 拦截）。每次 Edit / Write / Bash 都需在 REPL 里手动确认；
+可写范围由 --add-dir 限定在 $REPO_DIR。
 EOF
 )
 
@@ -199,7 +226,6 @@ fi
 exec openclaude \
   --agent "$AGENT" \
   --add-dir "$REPO_DIR" \
-  --permission-mode "acceptEdits" \
   --name "$SESSION_NAME" \
   $PRINT_FLAG \
   "$PROMPT"
