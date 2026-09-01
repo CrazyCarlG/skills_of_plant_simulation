@@ -120,5 +120,14 @@ plant-simulation-experience-curator
 02-simulation-file-experience/<file>.md §经验 Log（append 一条新 entry）
 ```
 
-**硬约束**：curator 本身**不**直接 edit 本目录任何文件——所有 append 走 patch + 用户 / `verification` 复核后再 `Edit` 落地。详细协议见 [`CONTRIBUTING.md`](./CONTRIBUTING.md) 与 curator agent 文件。
+**推荐流程**：
+
+- curator 默认**不**直接 edit 本目录任何文件——所有 append 走 patch + 用户 / `verification` 复核后再 `Edit` 落地（保留审计链）。
+- **AUTO_APPLY 例外**：当用户明确指示（如"apply patches"）或调用方脚本注入 `AUTO_APPLY=1`（如 `sync-and-curate.sh --auto-apply`）时，curator 可直接 Edit 本目录 `## 经验 Log` 区末尾追加新 entry —— **仍须遵守**：
+    - append-only（不动主体，不改老 entry）
+    - bump frontmatter（`last_updated` + `contributors`）
+    - 在报告里标 ⚡ "direct-landed (AUTO_APPLY)" + 引用触发授权来源
+    - supersede 时老 entry 顶部加 marker，正文不改
+
+详细协议见 [`CONTRIBUTING.md`](./CONTRIBUTING.md) 与 [curator agent 定义](../agents/plant-simulation-experience-curator.md)。
 
