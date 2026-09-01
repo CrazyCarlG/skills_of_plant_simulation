@@ -1,11 +1,117 @@
+.AGV_Claude.Pool.AGV_batchedRoute						0	
+.AGV_Claude.Pool.AGV_dashboard						0	
+.AGV_Claude.Pool.AGV_dispatch						0	
+.AGV_Claude.Pool.AGV_init						0	
+.AGV_Claude.Pool.AGV_release						0	
+.AGV_Claude.Pool.AGV_requestCharge						0	
+.AGV_Claude.Pool.AGV_reset						0	
 .InformationFlow.Method						0	
-.MaterialFlow_AGV.BasicObjects.InformationFlow.Method						0	
-.SimtalkClaude.Main.SimtalkAction.ErrorHandler						0	
-.SimtalkClaude.Main.SimtalkAction.ReadLogFile						0	
-.SimtalkClaude.Main.SimtalkAction.Run_Simutalk						0	
-.SimtalkClaude.Main.SimtalkAction.a_readlog						0	
-.SimtalkClaude.Main.SimtalkAction.get_simtalk_hasError						0	
-.SimtalkClaude.Main.SimtalkAction.m_getlog						0	
+.MaterialFlow_AGV.BasicObjects.InformationFlow.Method	Method	Method	false	false	0	163	--------------------------------------------------
+//Function
+//Author:yy.yangyang@siemens.com
+//Date:2024-11-07
+--------------------------------------------------
+.SimtalkClaude.Main.SimtalkAction.ErrorHandler	ErrorHandler	Method	false	false	0	335	-- 这个方法挂在 Method 对象的 ErrorHandler 属性上
+param byref error: string, method_path: string, line_number: integer -> any
+if error = \"Division by zero.\
+\terror := \"\"            // 把 error 置为空字符串 = \"已捕获该错误\
+\treturn 1e300            // 给调用方返回一个合理值
+end
+-- 其它未预期的错误：改写错误信息后继续向上抛
+error := \"error in \" + method_path + \": \" + error
+return 0
+.SimtalkClaude.Main.SimtalkAction.ReadLogFile	ReadLogFile	Method	false	false	0	431	param action:json
+//构造回复\"action_id\
+if not action.contains(\"action_id\") then throwRuntimeError(\"invalid json,mission action_id\") end
+action_result[\"type\"] \t\t:= action[\"type\"]
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+action_result[\"log\"] \t\t:= a_readlog
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+.SimtalkClaude.Main.SimtalkAction.Run_Simutalk	Run_Simutalk	Method	false	false	1	764	param action:json
+//构造回复\"action_id\
+
+action_result[\"type\"] \t\t:= action[\"type\"]
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+var simtalk\t\t\t\t\t:= action[\"simtalk_code\"]
+print \"execute sim-code: '\" + strCopy(simtalk, 1, 20) +\"......'\
+action_result[\"log\"] \t\t:= simtalk_hasError(simtalk)
+var syntax_result := action_result[\"result\"]
+if syntax_result = \"success\
+
+\taction_result[\"log\"] := simtalk_execute
+\tvar run_result := action_result[\"result\"]
+\tif run_result = \"success\
+\t\taction_result[\"result\"] := \"success\
+\telse
+\t\taction_result[\"result\"] := \"failed\
+\tend
+end
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+.SimtalkClaude.Main.SimtalkAction.a_readlog	a_readlog	Method	false	false	0	505	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+
+-- 1) 清空 Console 窗口显示
+clearConsole
+
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
+
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole
+.SimtalkClaude.Main.SimtalkAction.get_simtalk_hasError	get_simtalk_hasError	Method	false	false	0	562	param action:json
+//构造回复\"action_id\
+
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+var simtalk\t\t\t\t\t:= action[\"simtalk_code\"]
+var code_synax \t\t\t\t:= simtalk_hasError(simtalk)
+action_result[\"result\"] := code_synax
+action_result[\"type\"] \t\t:= action[\"type\"]
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+action_result[\"type\"] := \"\
+action_result[\"action_id\"] := \"\
+action_result[\"result\"] := \"\
+action_result[\"log\"] := \"\
+.SimtalkClaude.Main.SimtalkAction.m_getlog	m_getlog	Method	false	false	0	378	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
 .SimtalkClaude.Main.SimtalkAction.simtalk_execute	simtalk_execute	Method	false	false	1	281	->string
 // execute code and get result
 executeSilent(&simtalkcode.program)
@@ -19,7 +125,74 @@ else
 
 \treturn  \"execute success\
 end
-.SimtalkClaude.Main.SimtalkAction.simtalk_hasError	simtalk_hasError	Method	false	false	0	384	param code:string -> string
+.SimtalkClaude.src.SimtalkAction.a_readlog	a_readlog	Method	false	false	0	505	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+
+-- 1) 清空 Console 窗口显示
+clearConsole
+
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
+
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole
+.SimtalkClaude.src.SimtalkAction.get_simtalk_hasError	get_simtalk_hasError	Method	false	false	0	562	param action:json
+//构造回复\"action_id\
+
+action_result[\"action_id\"] \t:= action[\"action_id\"]
+var simtalk\t\t\t\t\t:= action[\"simtalk_code\"]
+var code_synax \t\t\t\t:= simtalk_hasError(simtalk)
+action_result[\"result\"] := code_synax
+action_result[\"type\"] \t\t:= action[\"type\"]
+
+//simtalk action feedback
+if current.~.server
+\tcurrent.~.SocketServer.m_send(action_result)
+else
+\tcurrent.~.SocketClient.m_send(action_result)
+end
+action_result[\"type\"] := \"\
+action_result[\"action_id\"] := \"\
+action_result[\"result\"] := \"\
+action_result[\"log\"] := \"\
+.SimtalkClaude.src.SimtalkAction.m_getlog	m_getlog	Method	false	false	0	378	->string
+var logFilePath : string \t:= getLogFile
+var paths \t\t:= splitstring(logFilePath,\".\")
+var copyPath: string \t\t:= paths[1] + \"_copy.txt\
+
+-- 先复制为副本（注意：copyFile 在源文件被独占锁时仍可能失败）
+if copyFile(logFilePath, copyPath)
+    result := readStringFromFile(copyPath)
+else
+    result := \"can not read log , the log file might be use in another program\
+end
+
+deletefile(copyPath)
+.SimtalkClaude.src.SimtalkAction.simtalk_execute	simtalk_execute	Method	false	false	0	281	->string
+// execute code and get result
+executeSilent(&simtalkcode.program)
+var errMsg := getExecuteSilentError
+var code := &simtalkcode.program
+if errMsg /= \"\
+
+
+\treturn  \"code execute failed. error msg:\"+errMsg+\", in code '\"+Code+\"'\
+else
+
+\treturn  \"execute success\
+end
+.SimtalkClaude.src.SimtalkAction.simtalk_hasError	simtalk_hasError	Method	false	false	0	384	param code:string -> string
 //check if any error in code
 &simtalkcode.program := code
 var errMsg : string
@@ -33,560 +206,39 @@ else
 \taction_result[\"result\"] := \"success\
 \treturn  \"has no Error\
 end
-.SimtalkClaude.Main.SimtalkAction.simtalkcode	simtalkcode	Method	false	false	0	5211	var o: object
-print \"###LIB_HEADERb054ca3c###\
+.SimtalkClaude.src.SimtalkAction.simtalkcode	simtalkcode	Method	false	false	0	22	var obj:=.createfodler
+.SimtalkClaude.src.autoexec	autoexec	Method	false	false	0	432	-- autoexec 方法体（必须放在 Class Library 中）
+-- 模型一打开就会自动执行
 
-o := str_to_obj(\".SimtalkClaude.Main.SimtalkAction.simtalk_execute\")
-print \"###LIB_BEGIN_0###\
-if o = void
-  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalk_execute\
-  print \"META_VOID=true\
-else
-  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalk_execute\
-  print \"META_NAME=\" + o.Name
-  print \"META_TYPE=\" + o.InternalClassType
-  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
-  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
-  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
-  print \"###LIB_BODY_0###\
-  if o.Encrypted
-    print \"<encrypted>\
-  else
-    print o.Program
-  end
-  print \"###LIB_END_0###\
-end
+-- 1) 清空 Console 窗口显示
+clearConsole
 
+-- 2) 清空对应的日志文件（保留文件本身，只清空内容）
+clearLogFile
 
-o := str_to_obj(\".SimtalkClaude.Main.SimtalkAction.simtalk_hasError\")
-print \"###LIB_BEGIN_1###\
-if o = void
-  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalk_hasError\
-  print \"META_VOID=true\
-else
-  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalk_hasError\
-  print \"META_NAME=\" + o.Name
-  print \"META_TYPE=\" + o.InternalClassType
-  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
-  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
-  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
-  print \"###LIB_BODY_1###\
-  if o.Encrypted
-    print \"<encrypted>\
-  else
-    print o.Program
-  end
-  print \"###LIB_END_1###\
-end
-
-
-o := str_to_obj(\".SimtalkClaude.Main.SimtalkAction.simtalkcode\")
-print \"###LIB_BEGIN_2###\
-if o = void
-  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalkcode\
-  print \"META_VOID=true\
-else
-  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalkcode\
-  print \"META_NAME=\" + o.Name
-  print \"META_TYPE=\" + o.InternalClassType
-  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
-  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
-  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
-  print \"###LIB_BODY_2###\
-  if o.Encrypted
-    print \"<encrypted>\
-  else
-    print o.Program
-  end
-  print \"###LIB_END_2###\
-end
-
-
-o := str_to_obj(\".SimtalkClaude.Main.SocketServer.m_callback\")
-print \"###LIB_BEGIN_3###\
-if o = void
-  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_callback\
-  print \"META_VOID=true\
-else
-  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_callback\
-  print \"META_NAME=\" + o.Name
-  print \"META_TYPE=\" + o.InternalClassType
-  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
-  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
-  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
-  print \"###LIB_BODY_3###\
-  if o.Encrypted
-    print \"<encrypted>\
-  else
-    print o.Program
-  end
-  print \"###LIB_END_3###\
-end
-
-
-o := str_to_obj(\".SimtalkClaude.Main.SocketServer.m_send\")
-print \"###LIB_BEGIN_4###\
-if o = void
-  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_send\
-  print \"META_VOID=true\
-else
-  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_send\
-  print \"META_NAME=\" + o.Name
-  print \"META_TYPE=\" + o.InternalClassType
-  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
-  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
-  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
-  print \"###LIB_BODY_4###\
-  if o.Encrypted
-    print \"<encrypted>\
-  else
-    print o.Program
-  end
-  print \"###LIB_END_4###\
-end
-
-
-o := str_to_obj(\".SimtalkClaude.Main.SocketServer.m_str_send\")
-print \"###LIB_BEGIN_5###\
-if o = void
-  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_str_send\
-  print \"META_VOID=true\
-else
-  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_str_send\
-  print \"META_NAME=\" + o.Name
-  print \"META_TYPE=\" + o.InternalClassType
-  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
-  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
-  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
-  print \"###LIB_BODY_5###\
-  if o.Encrypted
-    print \"<encrypted>\
-  else
-    print o.Program
-  end
-  print \"###LIB_END_5###\
-end
-
-
-o := str_to_obj(\".SimtalkClaude.Main.SocketServer.reconnect\")
-print \"###LIB_BEGIN_6###\
-if o = void
-  print \"META_PATH=.SimtalkClaude.Main.SocketServer.reconnect\
-  print \"META_VOID=true\
-else
-  print \"META_PATH=.SimtalkClaude.Main.SocketServer.reconnect\
-  print \"META_NAME=\" + o.Name
-  print \"META_TYPE=\" + o.InternalClassType
-  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
-  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
-  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
-  print \"###LIB_BODY_6###\
-  if o.Encrypted
-    print \"<encrypted>\
-  else
-    print o.Program
-  end
-  print \"###LIB_END_6###\
-end
-
-
-o := str_to_obj(\".SimtalkClaude.Main.onopen\")
-print \"###LIB_BEGIN_7###\
-if o = void
-  print \"META_PATH=.SimtalkClaude.Main.onopen\
-  print \"META_VOID=true\
-else
-  print \"META_PATH=.SimtalkClaude.Main.onopen\
-  print \"META_NAME=\" + o.Name
-  print \"META_TYPE=\" + o.InternalClassType
-  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
-  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
-  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
-  print \"###LIB_BODY_7###\
-  if o.Encrypted
-    print \"<encrypted>\
-  else
-    print o.Program
-  end
-  print \"###LIB_END_7###\
-end
-
-
-.SimtalkClaude.Main.SocketServer.m_callback	m_callback	Method	false	false	0	513	param channelNo: integer, message: string -- TCP
--- param ip: string, message: string -- UDP
-message := regex_replace(message, \"\\|\\|END\\|\\|\", \"\");
-var j: json
-j.parse(message)
-var type := j[\"type\"]
-
-switch type
-case \"ping\
-\tm_send(ping_reply)
-case \"simtalk_syntax\
-\tcurrent.~.simtalkaction.&get_simtalk_hasError.executenewcallchain(j)
-case \"simtalk_run\
-\tcurrent.~.simtalkaction.&Run_Simutalk.executenewcallchain(j)
-case \"readlog\
-\tcurrent.~.simtalkaction.&ReadLogFile.executenewcallchain(j)
-end
-.SimtalkClaude.Main.SocketServer.m_send	m_send	Method	false	false	0	129	param jsondata:json
-
-var msgStr: string := jsondata.asString(false) + \"||END||\
-var success: boolean := MySocket.write(0,msgStr)
-.SimtalkClaude.Main.SocketServer.m_str_send	m_str_send	Method	false	false	0	99	param msgStr:string
-
- msgStr := msgStr+ \"||END||\
-var success: boolean := MySocket.write(0,msgStr)
-.SimtalkClaude.Main.SocketServer.reconnect	reconnect	Method	false	false	0	441	-- param attribute: string, oldValue, newValue: boolean
--- param attribute: string, oldValue: boolean
-param newValue: boolean
-
-if not newValue
-    print \"MySocket disconnected at \", sysdate, \" - reconnecting...\
+-- 3) （可选）重新打开 Console，让用户看到干净的状态
+openConsole
+var MySocket := ~.main.SocketServer.MySocket
+print \"MySocket connecting...\
     MySocket.On := true
-    if MySocket.On
-        print \"MySocket reconnected, listening: \",  num_to_str(MySocket.port)
-    else
+if MySocket.On
+        print \"MySocket reconnected, listen to \",  num_to_str(MySocket.port)
+ else
         print \"Reconnect failed, please check\
-    end
-else
-\tprint \"MySocket connected\
 end
-.SimtalkClaude.Main.onopen	onopen	Method	false	false	0	18	simtalkclaude.open
-.SimtalkClaude.connection.SocketServer.m_callback						0	
-.SimtalkClaude.connection.SocketServer.m_send						0	
-.SimtalkClaude.connection.SocketServer.m_str_send						0	
-.SimtalkClaude.connection.SocketServer.reconnect						0	
-.SimtalkClaude.objects.Method						0	
-.SimtalkClaude.src.ErrorHandler						0	
-.SimtalkClaude.src.SimtalkAction.ErrorHandler						0	
-.SimtalkClaude.src.SimtalkAction.ReadLogFile						0	
-.SimtalkClaude.src.SimtalkAction.Run_Simutalk						0	
-.SimtalkClaude.src.SimtalkAction.a_readlog						0	
-.SimtalkClaude.src.SimtalkAction.get_simtalk_hasError						0	
-.SimtalkClaude.src.SimtalkAction.m_getlog						0	
-.SimtalkClaude.src.SimtalkAction.simtalk_execute						0	
-.SimtalkClaude.src.SimtalkAction.simtalk_hasError						0	
-.SimtalkClaude.src.SimtalkAction.simtalkcode						0	
-.SimtalkClaude.src.autoexec						0	
 .SimtalkClaude.src.autoexecLoadObj	autoexecLoadObj	Method	false	false	0	139	
 print \"starting listen 50007\
 ~.main.SocketServer.MySocket.on := true
 print ~.main.SocketServer.MySocket.on
 print \"started listen 50007\
-.Tools.BottleneckAnalyzer.BasicObjects.Method	Method	Method	false	false	0	0	
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeFrame	analyzeFrame	Method	false	false	0	3478	param frame : object-> list[real]
-var factor_working,factor_setup,factor_wait,factor_block,factor_powering, factor_fail, factor_stopped, factor_pause: real
-
-result.create
-result.insert(1,0)
-result.insert(2,0)
-result.insert(3,0)
-result.insert(4,0)
-result.insert(5,0)
-
-var iMax: integer := frame.numNodes
-
-for var i := 1 to iMax
-\tvar obj : object := frame.node(i)
-\tvar firstObj : boolean
-\tvar factor :real
-\tvar statFile : list[real]
-\t
-\tswitch obj.internalClassName
-\tcase \"Network\"
-\t\tif obj.getAttrNo(\"_BNanalysed\") = 0 or obj._BNanalysed  -- if analyse is desired, else next obj
-\t\t\t
-\t\t\tstatFile := analyzeFrame(obj)
-\t\t\tif scale_icon > 1 AND statFile.max > 0
-\t\t\t\tdraw_Scale(obj)
-\t\t\tend
-\t\t\t
-\t\t\tif statFile.dim > 0 then factor := statFile[1] else factor := 0 end
-\t\t\tif factor > 0
-\t\t\t\tdrawBar(obj,\"work\",factor)
-\t\t\t\tfactor_working := factor
-\t\t\tend
-
-\t\t\tif statFile.dim > 1 then factor := statFile[2] else factor := 0 end
-\t\t\tif factor > 0
-\t\t\t\tdrawBar(obj,\"setup\",factor)
-\t\t\t\tfactor_setup := factor
-\t\t\tend
-
-\t\t\tif statFile.dim > 2 then factor := statFile[3] else factor := 0 end
-\t\t\tif factor > 0
-\t\t\t\tdrawBar(obj,\"wait\",factor)
-\t\t\t\tfactor_wait := factor
-\t\t\tend
-
-\t\t\tif statFile.dim > 3 then factor := statFile[4] else factor := 0 end
-\t\t\tif factor > 0
-\t\t\t\tdrawBar(obj,\"block\",factor)
-\t\t\t\tfactor_block := factor
-\t\t\tend
-\t\t\t
-\t\t\tif statFile.dim > 4 then factor := statFile[5] else factor := 0 end
-\t\t\tif factor > 0
-\t\t\t\tdrawBar(obj,\"PoweringUpDown\",factor)
-\t\t\t\tfactor_powering := factor
-\t\t\tend\t\t\t
-
-\t\t\tif statFile.dim > 5 then factor := statFile[6] else factor := 0 end
-\t\t\tif factor > 0
-\t\t\t\tdrawBar(obj,\"fail\",factor)
-\t\t\t\tfactor_fail := factor
-\t\t\tend
-\t\t\t
-\t\t\tif statFile.dim > 6 then factor := statFile[7] else factor := 0 end
-\t\t\tif factor > 0
-\t\t\t\tdrawBar(obj,\"stop\",factor)
-\t\t\t\tfactor_stopped := factor
-\t\t\tend\t\t\t
-\t\t\t
-\t\t\tif statFile.dim > 7 then factor := statFile[8] else factor := 0 end
-\t\t\tif factor > 0
-\t\t\t\tdrawBar(obj,\"pause\",factor)
-\t\t\t\tfactor_pause := factor
-\t\t\tend
-\t\t\t
-\t\t\t-- showing the maximal working portion,
-\t\t\t-- result contains the object with maximal working portion
-\t\t\tif (not firstObj) OR statFile[1] > result[1]
-\t\t\t\tfirstObj\t:= true
-\t\t\t\tresult\t\t:= statFile.copy
-\t\t\tend
-\t\t\t
-\t\tend -- if analyse is desired
-\t\t
-\t\tif is3Dopen and obj._3D.exists and (NOT obj._3D.ShowContent) and (NOT isTool(obj))
-\t\t\t-- if all factors = 0 then no graphics are generated
-\t\t\tobj._3D.createStatistics(makearray(factor_working, factor_setup, factor_wait, factor_block, factor_powering, factor_fail, factor_stopped, factor_pause))
-\t\tend
-\t\t
-\tcase \"Method\",\"NwWorkplace\",\"NwWorkerPool\",\"NwData\",\"NwExporter\"
-
-\telse
-\t\tif executesilent(to_str(\"-> boolean \",obj,\".StatWorkingPortion; return true\"))
-\t\t -- obj has method 'StatWorkingPortion'
-\t\t\tif obj.getAttrNo(\"_BNanalysed\") = 0 or obj._BNanalysed
-\t\t\t\tstatFile := analyzeObject(obj)
-\t\t\t\t-- showing the maximal working portion,
-\t\t\t\t-- result contains the statistics of the object with maximal working portion
-\t\t\t\tif (not firstObj) OR ( statFile[1] > result[1] )
-\t\t\t\t\tfirstObj\t:= true
-\t\t\t\t\tresult\t\t:= statFile.copy
-\t\t\t\tend
-\t\t\t\t
-\t\t\tend -- if analyse is desired
-\t\tend -- obj with 'StatWorkingPortion'
-\tend-- inspect obj.internalClassName
-\t
-next -- i: obj
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeModel	analyzeModel	Method	false	false	0	455	-- called by: dialog (also showStats)
-if current.class /= void
-\tremoveStats
-\t-- animIcon(TRUE) -- removed since there is no reason for it
-\t
-\tanalyzeFrame(~)
-\t
-\tif is3Dopen and current._3D.exists
-\t\tcurrent._3D.deleteStatistics
-\tend
-\t-- current.sendMessage(\"statistics\", \"0\");
-\t
-\tAnalyzed := true
-else
-\t-- The Bottlenck Analyzer must be inserted before use.
-\tmessagebox(rootfolder.Localization.getText(9),1,11)
-end
- -- markBottleneckObject
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeObject	analyzeObject	Method	false	false	0	5133	-- called by:_analyzeFrame (once)
--- parameter: basic object with statistics
-param obj:object-> list[real]
-
-var factor_working,factor_setup,factor_wait,factor_block,factor_powering, factor_fail, factor_stopped, factor_pause: real
-var tmpStr:string
-
-var isPipe:boolean := (obj.internalclassname = \"NwPipe\")
-
-var isFluid:boolean
-switch obj.internalclassname
-case \"NwTank\",\"NwFluidSource\",\"NwFluidDrain\",\"NwMixer\",\"NwPipe\"
-\tisFluid := true -- statStoppedPortion does not exist
-end
-
-result.create
-
-if NOT isFluid
-\tif obj.resStatOn and
-\t   -- Is statistics desired?  evaluate the resource types, defined on the second tab of the dialog
-\t   ( ( (obj.resourceType = \"Production\" or obj.resourceType = \"Produktion\") and Production ) or
-\t\t    (obj.resourceType = \"Transport\" and Transport) or
-\t\t    ((obj.resourceType = \"Storage\" or obj.resourceType = \"Lagerung\") and Storage) )
-\t
-\t\tif scale_icon > 1
-\t\t\tdraw_Scale(obj)
-\t\tend
-\t
-\t\tfactor_working := obj.statWorkingPortion
-\t\tresult.insert(1,factor_working)
-\t\tif factor_working > 0
-\t\t\tdrawBar(obj,\"work\",factor_working)
-\t\tend
-\t
-\t\tfactor_setup := obj.statSetupPortion
-\t\tresult.insert(2,factor_setup)
-\t\tif factor_setup > 0
-\t\t\tdrawBar(obj,\"setup\",factor_setup)
-\t\tend
-
-\t\tfactor_wait := obj.statWaitingPortion
-\t\tresult.insert(3,factor_wait)
-\t\tif factor_wait > 0
-\t\t\tdrawBar(obj,\"wait\",factor_wait)
-\t\tend
-
-\t\tfactor_block := obj.statBlockingPortion
-\t\tresult.insert(4,factor_block)
-\t\tif factor_block > 0
-\t\t\tdrawBar(obj,\"block\",factor_block)
-\t\tend
-
-\t\tfactor_powering := obj.statPoweringUpDownPortion
-\t\tresult.insert(5,factor_powering)
-\t\tif factor_powering > 0
-\t\t\tdrawBar(obj,\"PoweringUpDown\",factor_powering)
-\t\tend
-
-\t\tfactor_fail := obj.statFailPortion
-\t\tresult.insert(6,factor_fail)
-\t\tif factor_fail > 0
-\t\t\tdrawBar(obj,\"fail\",factor_fail)
-\t\tend
-\t\t
-\t\tfactor_stopped := obj.statStoppedPortion
-\t\tresult.insert(7,factor_stopped)
-\t\tif factor_stopped > 0
-\t\t\tdrawBar(obj,\"stop\",factor_stopped)
-\t\tend
-\t\t
-\t\tfactor_pause := obj.statPausingPortion + obj.statUnplannedPortion
-\t\tresult.insert(8,factor_pause)
-\t\tif factor_pause > 0
-\t\t\tdrawBar(obj,\"pause\",factor_pause)
-\t\tend
-\t\t
-\t\ttmpStr := insRootStr(to_str(obj),to_str(obj.rootframe)) -- path with root
-\t\tresourceStats.writeRow(1,resourceStats.yDim+1,tmpStr,factor_working*100,factor_setup*100,factor_wait*100,factor_block*100,factor_powering*100,factor_fail*100,factor_stopped*100,factor_pause*100)
-\t\tif is3Dopen and obj._3D.exists
-\t\t\tobj._3D.createStatistics(makearray(factor_working, factor_setup, factor_wait, factor_block, factor_powering, factor_fail, factor_stopped, factor_pause))
-\t\tend
-\telse -- no statistics is desired for this object
-\t\tresult.insert(1,0)
-\t\tresult.insert(2,0)
-\t\tresult.insert(3,0)
-\t\tresult.insert(4,0)
-\t\tresult.insert(5,0)
-\tend
-\t
-else -- if_isFluid
-
-\t\tif scale_icon > 1
-\t\t\tdraw_Scale(obj)
-\t\tend
-\t
-\t\tfactor_working := obj.statWorkingPortion -- Fluid
-\t\tresult.insert(1,factor_working)
-\t\tif factor_working > 0
-\t\t\tdrawBar(obj,\"work\",factor_working)
-\t\tend
-\t
-\t\tfactor_setup := obj.statSetupPortion -- Fluid
-\t\tresult.insert(2,factor_setup)
-\t\tif factor_setup > 0
-\t\t\tdrawBar(obj,\"setup\",factor_setup)
-\t\tend
-
-\t\tfactor_wait := obj.statWaitingPortion -- Fluid
-\t\tresult.insert(3,factor_wait)
-\t\tif factor_wait > 0
-\t\t\tdrawBar(obj,\"wait\",factor_wait)
-\t\tend
-
-\t\tif isPipe   -- Fluid
-\t\t\tfactor_block := 0
-\t\telse
-\t\t\tfactor_block := obj.statBlockingPortion
-\t\tend
-\t\tresult.insert(4,factor_block)
-\t\tif factor_block > 0
-\t\t\tdrawBar(obj,\"block\",factor_block)
-\t\tend
-\t\t\t
-\t\tif isPipe  -- Fluid
-\t\t\tfactor_powering := 0
-\t\telse
-\t\t\tfactor_powering := obj.statPoweringUpDownPortion
-\t\tend
-\t\tresult.insert(5,factor_powering)
-\t\tif factor_powering > 0
-\t\t\tdrawBar(obj,\"PoweringUpDown\",factor_powering)
-\t\tend
-
-\t\tif isPipe  -- Fluid
-\t\t\tfactor_fail := 0
-\t\telse
-\t\t\tfactor_fail := obj.statFailPortion
-\t\tend
-\t\tresult.insert(6,factor_fail)
-\t\tif factor_fail > 0
-\t\t\tdrawBar(obj,\"fail\",factor_fail)
-\t\t\tend
-\t\t
-\t\tfactor_stopped := 0  -- Fluid
-\t\t/*factor_stopped := obj.statStoppedPortion;
-\t\t\tresult.insert(7,factor_stopped);
-\t\t\tif factor_stopped > 0 then
-\t\t\t\tdrawBar(obj,\"stop\",factor_stopped);
- \t\t\tend;*/\t
-\t\t\t
-\t\tif isPipe   -- Fluid
-\t\t\tfactor_pause := 0
-\t\telse
-\t\t\tfactor_pause := obj.statPausingPortion + obj.statUnplannedPortion
-\t\tend
-\t\tresult.insert(8,factor_pause)
-\t\tif factor_pause > 0
-\t\t\tdrawBar(obj,\"pause\",factor_pause)
-\t\tend
-\t\t
-\t\ttmpStr := insRootStr(to_str(obj),to_str(obj.rootframe)) -- path with root (new in 90)
-\t\tresourceStats.writeRow(1,resourceStats.yDim+1,tmpStr,factor_working*100,factor_setup*100,factor_wait*100,factor_block*100,factor_powering*100,factor_fail*100,factor_stopped*100,factor_pause*100)
-\t\tif is3Dopen and obj._3D.exists
-\t\t\tobj._3D.createStatistics(makearray(factor_working, factor_setup, factor_wait, factor_block, factor_powering, factor_fail, factor_stopped, factor_pause))
-\t\tend
-
-end -- if_isFluid
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.AnalyzeModel	AnalyzeModel	Method	false	false	0	99	-- called by the context menu 'Show Analysis'
-dialog.callback(\"analyze\")
---~.markBottleneckObject
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.DragDrop	DragDrop	Method	false	false	0	333	param Onstring : string
-var Onobject: object := Onstring
-
-if onobject.getAttrNo(\"_BNanalysed\") = 0
-\tonobject.createAttr(\"_BNanalysed\",\"boolean\")
-end
--- Should this object be considered by the bottleneck analyzer?
-var message: string := rootfolder.Localization.getText(71)
-OnObject._BNanalysed := messageBox(message,48,12) = 16
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.RemoveStats	RemoveStats	Method	false	false	0	63	-- called by the context menu
-dialog.callback(\"removestats\")
-
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openConfig	openConfig	Method	false	false	0	74	-- called by the context menu
-dialog.open
-Dialog.setIndex(\"Register\",2)
-
+.Tools.BottleneckAnalyzer.BasicObjects.Method						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeFrame						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeModel						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeObject						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.AnalyzeModel						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.DragDrop						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.RemoveStats						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openConfig						0	
 .Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openDia	openDia	Method	false	false	0	86	-- needed for update from 7.6
 var ApplObj:object := ~
 ApplObj.userPopupMenu := Context
@@ -747,156 +399,482 @@ else
 \t\tend
 \tend
 end
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.isTool	isTool	Method	false	false	0	159	-- \"Experiment\", \"GAwizard\", \"BottleneckAnalyzer\
-param obj:object->boolean
-if obj.getAttrNo(\"objType\")>0 and Rootfolder.~ = .Tools
-\tresult := true
-end
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.markBottleneckObject	markBottleneckObject	Method	false	false	0	1056	-- for external call
-
-resourceStats.sort(2,\"down\")  --- find the object with maximal working portion
-var obj:object := resourceStats[1,1]
-var x:integer := obj.xpos
-var y:integer := obj.ypos
-var w,h:integer
-obj.getIconSize(w,h)
-
-obj.~.drawEllipse(-15,x-(w/2)-10,y-(h/2)-10,w+20,h+20,makeRGBValue(11, 222, 11),5)
---drawEllipse(Layer:<integer>, X:<integer>, Y:<integer>, Width:<integer>, Height:<integer>, RGB:<integer>, LineWidth:<integer>)
-
-
-resourceStats.sort(4,\"down\")  --- object with max waiting
-obj := resourceStats[1,1]
-x := obj.xpos
-y := obj.ypos
-obj.getIconSize(w,h)
-obj.~.drawEllipse(-15,x-(w/2)-10,y-(h/2)-10,w+20,h+20,colors[1,3],5)
-
-resourceStats.sort(5,\"down\")  --- object with max blocked
-obj := resourceStats[1,1]
-x:= obj.xpos
-y:= obj.ypos
-obj.getIconSize(w,h)
-obj.~.drawEllipse(-15,x-(w/2)-10,y-(h/2)-10,w+20,h+20,colors[1,4],5)
-
-resourceStats.sort(7,\"down\")  --- object with max disrupted
-obj := resourceStats[1,1]
-x := obj.xpos
-y := obj.ypos
-obj.getIconSize(w,h)
-obj.~.drawEllipse(-15,x-(w/2)-10,y-(h/2)-10,w+20,h+20,colors[1,6],5)
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.removeCharts	removeCharts	Method	false	false	0	502	-- recursive procedure
-param frame : object
-
-for var i := 1 to frame.NumNodes
-\tvar obj : object := frame.Node(i)
-\tframe.eraselayer(layer_of_chart)
-\tframe.eraselayer(layer_of_chart-1)
-
-\tif obj.internalClassName = \"Network\"
-\t\tremoveCharts(obj)
-\tend
-\t
-\tif is3Dopen and obj._3D.exists and obj.internalClassName /= \"NwArc\" AND
-\t\t obj.internalClassName /= \"Interface\" AND obj.internalClassName /= \"NwMarker\
-\t\tobj._3D.deleteStatistics -- do not call for Connector and Interface
-\tend
-next
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.removeStats	removeStats	Method	false	false	0	324	-- called by: Dialog + context menu,_analyzeModel, reset
-if current.class /= void
-\t
-\tremoveCharts(~)
-\t
-\tresourceStats.inheritFormat := true
-\tresourceStats.inheritContents := true
-\tAnalyzed := false
-else
-\t-- The Bottleneck Analyzer must be inserted before use.
-\tmessagebox(rootfolder.Localization.getText(9),1,11)
-end
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.reset	reset	Method	false	false	0	12	removeStats
-
-.Tools.BottleneckAnalyzer.BottleneckAnalyzer.sortStats	sortStats	Method	false	false	0	1464	param criteria : integer
-
-var resStats: object := resourceStats
-var jMax: integer := resStats.yDim
-resStats.showComment := true
-var colSort\t: integer := 10
-
-switch criteria
-case 1  -- Working
-\tfor var j := 1 to jMax
-\t\tresStats[colSort,j] := resStats[2,j] -- only working
-\tnext
-\t-- Sorted according to working time
-\tresStats.comment := rootfolder.Localization.getText(57)
-\t
-case 2  -- set-up
-\tfor var j := 1 to jMax
-\t\tresStats[colSort,j] := resStats[3,j]
-\tnext
-\t-- Sorted according to the set-up time
-\tresStats.comment := rootfolder.Localization.getText(64)
-\t
-case 3  -- sum working + failure
-\tfor var j := 1 to jMax
-\t\tresStats[colSort,j] := resStats[2,j] + resStats[7,j]
-\tnext
-\t-- Sorted according to the sum of working time and failure time
-\tresStats.comment := rootfolder.Localization.getText(58)
-\t
-case 4  -- sum working + failure + pause
-\tfor var j := 1 to jMax
-\t\tresStats[colSort,j] := resStats[2,j] + resStats[7,j] + resStats[9,j]
-\tnext
-\t-- Sorted according to the sum of working time, failure time and pause time
-\tresStats.comment := rootfolder.Localization.getText(59)
-\t
-case 5  -- sum working + Set-up + failure + Pause
-\tfor var j := 1 to jMax
-\t\tresStats[colSort,j] := resStats[2,j] + resStats[3,j] + resStats[7,j] + resStats[9,j]
-\tnext
-\t-- Sorted according to the sum of working time, set-up time, failure time and pause time
-\tresStats.comment := rootfolder.Localization.getText(65)
-end
-
-resStats.sort(colSort,\"down\")
-.Tools.BottleneckAnalyzer.Localization.LanguageDesignation	LanguageDesignation	Method	false	false	0	698	/*_______________________________________________________________________________
-Method Tasks:
-Return the abbreviation of the current user interface language like DEU, ENU...
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.isTool						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.markBottleneckObject						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.removeCharts						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.removeStats						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.reset						0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.sortStats						0	
+.Tools.BottleneckAnalyzer.Localization.LanguageDesignation						0	
+.Tools.BottleneckAnalyzer.Localization.getMessage						0	
+.Tools.BottleneckAnalyzer.Localization.getText	getText	Method	false	false	0	864	/*
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-Parameters\t: none
-ReturnValues: the abbreviation which is stored in index row of MessageTab
+Method Tasks: Translation of messages and dialog items.
+The developper of the localization can work incremental.
+Not yet translated item are shons english.
+
+Parameters\t: row in MessageTab
+ReturnValues: translated text
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: PS
+Date\t\t: Nov 2008
+
+_________________________________________________________________________________
+History:
+\t\t\t
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+param index : integer -> string
+
+var s : string := MessageTab[UserInterfaceLanguage+1, index]
+
+-- s := MessageTab[9, index] -- HUN
+-- s := MessageTab[4, index] -- Chinese
+--s := MessageTab[5, index] -- RUS
+--s := MessageTab[1, index] -- DEU
+
+if strLen( s ) = 0
+\ts := MessageTab[2,index] -- english text
+end
+
+return s
+.Tools.BottleneckAnalyzer.Localization.message	message	Method	false	false	0	1846	/*
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Method Tasks:
+write a message, warning or error in the HTML report
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Parameters\t: page, the page in the HTML report where the message should be posted
+\t\t\t  MsgNumber, the index of the message in messageTab
+\t\t\t  p1, p2, p3, possible parameters for the message
+ReturnValues:
 
 Called By\t:
 Calls\t\t:
 
 Author\t\t: Guido Gross
-Date\t\t: 10.10.2008
+Date\t\t: 13.06.2005
 _________________________________________________________________________________
 History:
-PS 10.11.2008 use UserInterfaceLanguage
-
+21.06.2005\tGG\tonly _print the name of the calling object
+24.06.2005\tGG\tadd bold letters for the parameters
+03.08.2007\tGG\tuse AOLLanguage_ which is set by autoexec method
+\t\t\t\tchanging the parameters of the method
+06.08.2007\tGG\tadding Parameter ReportObj to make it more flexible
+08.08.2007\tGG\tdebugging
+08.10.2007  PS version 8.2\t\t\t
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
--> string
-result := MessageTab[UserInterfaceLanguage+1, 0 ]
+param  reportObj : object, page : string, MsgNumber : integer, p1,p2,p3 : string
 
-.Tools.BottleneckAnalyzer.Localization.getMessage						0	
-.Tools.BottleneckAnalyzer.Localization.getText						0	
-.Tools.BottleneckAnalyzer.Localization.message						0	
-.Tools.EnergyAnalyzer.BasicObjects.Method						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.VisObject						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.delVisualize						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.detectEnergyobjects						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.endSim						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.findConsumers						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.init						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.isNameUniqueEverywhere						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.observeEnergyState						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.prepareObserver						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.reset						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.updateConsumption						0	
-.Tools.EnergyAnalyzer.EnergyAnalyzer.visualize						0	
+var mess\t\t\t\t: string
+var pos1, pos2, pos3\t: integer
+var obj\t\t\t\t\t: object
+
+-- get the text of the message
+if messageTab.YDIm<MsgNumber
+\tmess := getText( 1 )
+\tp1 := to_str( MsgNumber )
+else
+\tmess := getText(MsgNumber)
+end
+
+obj := ?
+
+pos1 := strLpos(\"$1\", mess)
+pos2 := strLpos(\"$2\", mess)
+pos3 := strLpos(\"$3\", mess)
+
+if pos3 > 0
+\tmess := strIncl(\"<b>\"+p3+\"</b>\", mess, pos3+2)
+\tmess := strOmit(mess, pos3, 2)
+end
+if pos2 > 0
+\tmess := strIncl(\"<b>\"+p2+\"</b>\", mess, pos2+2)
+\tmess := strOmit(mess, pos2, 2)
+end
+if pos1 > 0
+\tmess := strIncl(\"<b>\"+p1+\"</b>\", mess, pos1+2)
+\tmess := strOmit(mess, pos1, 2)
+end
+
+mess := \"<b><u>\"+obj.name+ \"</u></b>: \" + mess
+
+reportObj.writeln( page, mess)
+.Tools.EnergyAnalyzer.BasicObjects.Method	Method	Method	false	false	0	0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.VisObject	VisObject	Method	false	false	0	4445	-- called by:_visualize
+param objNo:integer, relScaling:real -- relScaling in [0,1]
+
+var x,y,width,height,color,cr,x_curr,layerNo,nr,circleWidth:integer
+
+var obj:object := to_str(\"~.\",EnergyConsumers[0,objNo])
+var objLoc:object := obj.~
+var Consumpt:real :=  EnergyConsumers[1,objNo]
+--\tif Consumpt = 0 then return end;
+cr := floor(relScaling * 255)
+if relScaling < 0.9
+\tif relScaling < 0.7
+\t\tif relScaling < 0.4
+\t\t\tcircleWidth := 1 -- the minimal resource ( < 40 % )
+\t\t\tcr := 0
+\t\telse
+\t\t\tcircleWidth := 3 -- 40 - 70 %
+\t\t\tcr := 127
+\t\tend
+\telse
+\t\tcircleWidth := 5 -- 70 - 90 %
+\t\tcr := 190
+\tend
+else
+\tcircleWidth := 7 -- the top 10 %
+\tcr := 255
+end
+color := makeRGBValue(cr,0,255 - cr)
+
+var stmt:string := \"param obj:object->boolean; result := obj.curveActive\
+var isCurve:boolean := executeSilent(stmt,obj)
+if isCurve
+\t--var tab:table := obj.SegmentsTable
+\tvar tabNew:table
+\tobj.getCurveSegments(tabNew)
+\tvar O:real[2] := objLoc.axesOrigin
+\tvar sf:real   := objLoc.ScalingFactor
+\tvar mx,my:real
+\t-- px: coordinate, mx: meter coordinate
+\t-- px =  mx /sf + Ox
+\t-- py = -my /sf + Oy\t
+\tmx := round( 1/sf * (tabNew[7,1] + tabNew[7,2])/2 + O[1]);
+\tmy := round(-1/sf * (tabNew[8,1] + tabNew[8,2])/2 + O[2]);
+\t\t
+\tvar phi:real := 0.5 * pi * tabNew[3,2]/180 -- > 0 means right turn
+\tif phi = 0 \t\t\t\t
+\t\twidth  := -sf * (tabNew[8,2] - tabNew[8,1]) + O[2] -- delta y
+\t\theight := obj.curvewidth
+\telse
+\t\tvar Vx,Vy:real
+
+\t\tvar Cx:real :=  tabNew[7,1]/sf + O[1]
+\t\tvar Cy:real := -tabNew[8,1]/sf + O[2]
+\t\tvar dr:real := tabNew[4,2]
+\t\tvar w:real  := - pi * (obj.ObjectAngle + tabNew[1,2])/180 -- tangetial angle of the start point
+\t\t--if obj.name=\"Line2\" then debug end
+\t\tvar Tx:real := cos(w)/sf * dr -- tangential vector measured in pixel (red)
+\t\tvar Ty:real := -sin(w)/sf * dr\t
+\t\t\t\t\t
+\t\tif phi > 0 -- right turn
+\t\t\tVx := Ty -- radius vector measured in pixel
+\t\t\tVy := -Tx\t\t\t
+\t\telse -- left turn
+\t\t\tVx := sin(w)/sf * dr -- radius vector measured in pixel
+\t\t\tVy := cos(w)/sf * dr\t\t\t
+\t\tend\t
+\t\tvar c:real := cos(phi)
+\t\tvar s:real := sin(phi)
+\t\tmx := cx - Vx + c * Vx - s * Vy
+\t\tmy := cy - Vy + s * Vx + c * Vy
+\tend
+\t
+--\tobjLoc.drawLine(layer,-Vx+Cx,-Vy+Cy, Cx,Cy, makeRGBValue(0, 128, 0),1,-2) -- radius (green)
+--\tobjLoc.drawLine(layer, Cx,Cy, Tx+Cx,Ty+Cy, makeRGBValue(255, 0, 0),1,-2) -- tangential vector
+
+else
+\tobj.getBoundingBox(x,y,width,height)
+\tmx := round(x + width /2)
+\tmy := round(y + height/2)
+end
+Vx := 2*Radius -- diameter of the ellipse
+objLoc.drawellipse(layer, mx - Radius, my - Radius, Vx, Vx,  color,circleWidth) -- size of the circles in 2D is defined by the real attribute Radius of the wizard
+\t
+var barLength:real := 40 -- show the bar for the energy states
+x_curr :=  round(mx - barLength/2)
+y := my - Radius - 10
+var colorRGB:table := Colors.RGB
+for var j := 1 to 6   -- small bars for the energy states: Working, Setting_up, Operational, Failed, Standby, Off
+\tif Consumpt > 0 then cr := round(barLength * EnergyConsumers[j + 3, objNo]/Consumpt) else cr := 0 end
+\tobjLoc.drawRectangle(layer,x_curr, y, cr, 6, colorRGB[1,j],-1,0)
+\tx_curr := x_curr + cr
+next
+objLoc.drawRectangle(layer,round(mx - barLength/2),y, barLength,6,makeRGBValue(0,0,0),0) -- no gradient, 1 px line
+var scalFrame:real := objLoc.scalingFactor
+var orig :real[2] := objLoc.axesOrigin
+
+if obj._3D.exists  -- therefore objLoc.createIn3D= true\t
+\tvar coord:real[3]
+\tcoord := obj._3D.position
+\tif isCurve
+\t\tcoord[1] := (mx - orig[1]) * scalFrame
+\t\tcoord[2] := (orig[2] - my) * scalFrame
+\tend
+\tcoord[3] := coord[3] + z3D_lowerSurface
+\t
+\tvar analysis:any
+\tif objLoc._3D.existsObject(GrGroupName) then
+\t\tanalysis := objLoc._3D.getObject(GrGroupName)
+\telse
+\t\tanalysis := objLoc._3D.addObject(GrGroupName) -- create animatable object
+\tend
+
+\t-- usage of the 3D access of version 15.0
+\tvar cylinder : any := analysis.getGraphic(\"default\").createConeFrustum(1, 1, when relScaling > 0 then relScaling * (z3D_upperSurface - z3D_lowerSurface) else 0.1)
+\tcylinder.Position := coord
+
+\tcylinder.MaterialActive        := true
+\tcylinder.MaterialDiffuseColor  := color
+\tcylinder.MaterialAmbientColor  := makeRGBValue(20,20,20)
+\tcylinder.MaterialSpecularColor := makeRGBValue(25,25,25)
+\tcylinder.MaterialEmissiveColor := makeRGBValue(15,15,15)
+\tcylinder.MaterialTransparency  := 0.6
+\tcylinder.MaterialShininess     := 0.1\t
+end -- if with 3D
+.Tools.EnergyAnalyzer.EnergyAnalyzer.delVisualize	delVisualize	Method	false	false	0	872	-- button 'Remove', reset, showVisualization
+Dialog.VisualizationON := false
+
+for var j := EnergyConsumers.YDimIndex downto 1
+\tvar obj:object  := EnergyConsumers[0,j]
+\tif obj /= void
+\t\tEnergyConsumers[0,j] := makePathRelative(obj,~)
+\tend
+\t
+\tobj := to_str(\"~.\",EnergyConsumers[0,j])
+\tif obj = void
+\t\tEnergyConsumers.cutRow(j)
+\telse -- if obj /= void
+\t\tvar objLoc:object := obj.~
+\t\tobjLoc.eraselayer(layer)
+\t\t
+\t\tif objLoc._3D.exists -- with 3D\t
+            /* if objLoc._3D.getObject(GrGroupName).exists
+\t\t\t\tobjLoc._3D.getObject(GrGroupName).delete
+\t\t\tend\t
+\t\t\tif objLoc._3D.GraphicGroupNames.find(GrGroupName) > 0
+\t\t\t\tobjLoc._3D.deleteGraphicGroup(GrGroupName)
+\t\t\tend*/
+\t\t\t
+\t\t\tif objLoc._3D.existsObject(GrGroupName)
+\t\t\t\tobjLoc._3D.getObject(GrGroupName).delete
+\t\t\tend
+\t\tend -- with 3D
+\tend -- if obj /= void
+next -- j
+.Tools.EnergyAnalyzer.EnergyAnalyzer.detectEnergyobjects	detectEnergyobjects	Method	false	false	0	96	-- true, if energy is acitve
+-- with error handler
+param o:object->boolean
+return o.EnergyActive
+.Tools.EnergyAnalyzer.EnergyAnalyzer.endSim	endSim	Method	false	false	0	18	updateConsumption
+
+.Tools.EnergyAnalyzer.EnergyAnalyzer.findConsumers	findConsumers	Method	false	false	0	392	-- called by: open the dialog
+param FrameObj:object
+
+var absPathOfMethod:string := to_str(&observeEnergyState)
+for var j := 1 to FrameObj.numNodes
+\tvar o:object := FrameObj.node(j)
+\tif o.internalclassname = \"Network\"
+\t\tfindConsumers(o)
+\telse
+\t\tif detectEnergyobjects(o)
+\t\t\tObjects[1,Objects.ydim+1] := makePathRelative(o,~)
+\t\tend -- if detectEnergyobjects
+\tend
+next -- object o
+.Tools.EnergyAnalyzer.EnergyAnalyzer.init	init	Method	false	false	0	123	-- fill table EnergyConsumers according to the selection
+if MonitoringActive
+\tprepareObserver(true)
+end
+updateConsumption
+
+.Tools.EnergyAnalyzer.EnergyAnalyzer.isNameUniqueEverywhere	isNameUniqueEverywhere	Method	false	false	0	342	-- called by: visualize
+param frame : object, nameToCheck : string -> boolean
+
+if not frame.isNameUnique(nameToCheck) then
+\treturn false
+end
+
+for var i := 1 to frame.numNodes
+\tvar n : object := frame.node(i)
+\tif n.InternalClassName = \"Network\" AND (not isNameUniqueEverywhere(n, nameToCheck)) then
+\t\treturn false
+\tend
+next
+return true
+.Tools.EnergyAnalyzer.EnergyAnalyzer.observeEnergyState	observeEnergyState	Method	false	false	0	1778	-- the observer of 'EnergyCurrentState' 'PowerInput'
+param valueName:string, oldValue:any
+
+if (NOT @.Energyactive) OR (eventController = void)
+\treturn
+end
+var objStr:string := makePathRelative(@,~)
+var row:integer := EnergyConsumers.getRowNo(objStr)
+if row < 1  -- For instance the object was renamed.
+\tif @.rootframe /= root
+\t\treturn -- should not happened
+\tend
+
+\tif NOT &observeEnergyState.InfoWasGiven
+\t\t-- The object '$1' was not registered correctly for the library '$2'.
+\t\tmessageBox(rootFolder.localization.getMessage(56, @,name,\"\"),1,1) -- error
+\t\t&observeEnergyState.InfoWasGiven := true
+\t\teventController.stop
+\tend
+\treturn
+end
+
+var r:real := @.statEnergyTotalConsumption
+--                                  Consumption in the state 'operational',     Current Power [kW]
+EnergyConsumers.writeRow(1,row,  r, r * @.statEnergyOperationalConsumptionPortion, @.PowerInput)
+-- update cust att
+Consumption            := EnergyConsumers.sum({1,1}..{1,*}) -- SUM_Energy [kWh]
+ConsumptionOperational := EnergyConsumers.sum({2,1}..{2,*}) -- SUM_Energy operational [kW]\t
+powerConsumption       := EnergyConsumers.sum({3,1}..{3,*}) -- SUM Current Power [kW] (shown in the plotter)
+
+refEnergy.value := to_str(round(Consumption,1),\" kWh\")
+\t
+if maxPowerConsumption < powerConsumption  -- A new record is detected.
+\tmaxPowerConsumption := powerConsumption
+\tPeakTime := eventController.simTime
+end
+
+/*if abs(@.statEnergyOperationalConsumption - EnergyConsumers[2,objStr]) > 0.01\t
+\tprint \"Powerinput: \",oldValue,\" >>> \",@.Powerinput
+\tprint @.statEnergyOperationalConsumption
+\tprint EnergyConsumers[2,objStr]
+\tdebug
+end*/
+
+if EnergyConsumers.isOpen OR UsageProfile.active  -- The opened table and the diagram, which must be updated.
+\tupdateConsumption
+end
+.Tools.EnergyAnalyzer.EnergyAnalyzer.prepareObserver	prepareObserver	Method	false	false	0	1244	-- called by: reset, init, checkbox 'Monitoring'
+param add:boolean
+var obj:object
+var tab:table := UsageProfile.UtilizationTable
+UsageProfile.UtilizationTable := tab
+tab.delete({1,0}..{*,*})
+
+for var j := EnergyConsumers.YDimIndex downto 1
+\tvar str:string := EnergyConsumers[0,j]
+\tobj := to_str(\"~.\",str)
+\tif obj = void
+\t\tEnergyConsumers.cutRow(j)
+\telse
+\t\ttab[j,0] := str
+\tend
+next
+UsageProfile.UtilizationTable := tab
+
+var absPathOfMethod:string := to_str(\"*\",&observeEnergyState)-- add as object link
+
+if add
+\tObjectsWithObserver.delete
+\tif MonitoringActive
+\t\tfor var j := 1 to EnergyConsumers.YDimIndex
+\t\t\tobj := to_str(\"~.\",EnergyConsumers[0,j])
+\t\t\tObjectsWithObserver.append(obj) -- as object link (with *)
+\t\t\t--obj.addObserver(\"EnergyCurrentState\",absPathOfMethod);
+\t\t\tobj.addObserver(\"PowerInput\",absPathOfMethod)
+\t\tnext
+\t\t-- Monitoring all changes of $1 objects by the wizard '$2' in the frame $3 may have negative effects on run time of your model.
+\t\tprint rootfolder.localization.getMessage(64, ObjectsWithObserver.dim,current.name,current.~)
+\t\tupdateConsumption
+\tend
+
+else -- called by reset
+\t
+\tvar a:object[]
+\tcopyObjectsToClipboard(a)
+\t\t\t
+\tremoveAllPowerInputObserver(root)
+\t
+end
+.Tools.EnergyAnalyzer.EnergyAnalyzer.reset	reset	Method	false	false	0	763	-- remove observer of all object with activated energy simulation
+-- also of objects which are not selected by the user
+delVisualize -- like the button 'Remove' visualization
+prepareObserver(false) -- remove observer
+
+--EnergyConsumers.setBackgroundColorCells({0,1}..{*,*},makeRGBValue(255,255,255))
+EnergyConsumers.delete -- do not delete the selected objects
+
+UsageProfile.UtilizationTable.delete
+UsageProfile.UtilizationTable[1,6] := 0
+
+Consumption := 0
+ConsumptionOperational := 0
+powerConsumption := 0
+maxPowerConsumption := 0
+PeakTime := 0
+
+refEnergy.value := \"\
+
+&observeEnergyState.InfoWasGiven := false
+
+if numPlottedValues > 999 AND numPlottedValues < 100001
+\tPlotter.numValues := numPlottedValues
+else
+\tnumPlottedValues := 10000 -- default value
+end
+.Tools.EnergyAnalyzer.EnergyAnalyzer.updateConsumption	updateConsumption	Method	false	false	0	1538	-- called by: showChart (dialog), open table EnergyConsumers (dialog), init and endsim
+-> string
+
+if EventController=void  -- Please insert an eventcontroller.
+\tmessageBox(rootfolder.Localization.getText(84), 1, 1) -- error
+\treturn
+end
+
+var ConsumerTab:object := EnergyConsumers
+var tab:table := UsageProfile.UtilizationTable
+
+for var j := 1 to ConsumerTab.YDimIndex
+\tvar obj:object := to_str(\"~.\",ConsumerTab[0,j])
+
+\tif obj /= void AND obj.EnergyActive
+\t\tvar X1:real := obj.statEnergyWorkingConsumption
+\t\tvar X2:real := obj.statEnergySetupConsumption
+\t\tvar X3:real := obj.statEnergyOperationalConsumption
+\t\tvar X4:real := obj.statEnergyFailConsumption
+\t\tvar X5:real := obj.statEnergyStandbyConsumption
+\t\tvar X6:real := obj.statEnergyOffConsumption
+
+\t\ttab[j,1] := X1
+\t\ttab[j,2] := X2
+\t\ttab[j,3] := X3
+\t\ttab[j,4] := X4
+\t\ttab[j,5] := X5
+\t\ttab[j,6] := X6
+
+\t\tConsumerTab.writeRow(1,j, obj.statEnergyTotalConsumption, obj.statEnergyOperationalConsumption, obj.PowerInput, X1,X2,X3,X4,X5,X6)
+\tend
+next
+
+Consumption            := ConsumerTab.sum({1,1}..{1,*}) -- SUM Energy [kWh] >>> cust attr
+ConsumptionOperational := ConsumerTab.sum({2,1}..{2,*}) -- SUM Energy operational [kW] >>> cust attr
+powerConsumption       := ConsumerTab.sum({3,1}..{3,*}) -- SUM Current Power [kW] >>> cust attr
+refEnergy.value := to_str(round(Consumption,1),\" kWh\")
+
+if MonitoringActive AND (maxPowerConsumption < powerConsumption)  -- new record
+\tmaxPowerConsumption := powerConsumption
+\tPeakTime := eventController.simTime
+end
+.Tools.EnergyAnalyzer.EnergyAnalyzer.visualize	visualize	Method	false	false	0	629	-- button 'Show', showVisualization
+
+GrGroupName := to_str(\"_\",name,\"_\",abs(layer))
+repeat
+\tGrGroupName += \"_\
+until isNameUniqueEverywhere(root,GrGroupName) -- frequently unique in the root frame
+
+Dialog.VisualizationON := true
+
+var MaxCons:real := EnergyConsumers.max({1,1}..{1,*})
+
+if MaxCons = 0
+\t-- The investigated objects have no energy consumption.
+\tmessageBox(rootfolder.localization.getText(55),1,3)
+\treturn
+end
+
+-- consumptions registered (that is MaxCons > 0)
+for var objNo := 1 to EnergyConsumers.yDim
+\tvar relScaling:real := EnergyConsumers[1,objNo]/MaxCons -- in [0,1]
+\tvisObject(objNo, relScaling)
+next
 .Tools.EnergyAnalyzer.Localization.LanguageDesignation	LanguageDesignation	Method	false	false	0	698	/*_______________________________________________________________________________
 Method Tasks:
 Return the abbreviation of the current user interface language like DEU, ENU...
@@ -1328,7 +1306,88 @@ if firstStart  -- needed for statistics of the simulation machines
 end
 
 &RunProcess.executeNewCallChain
-.Tools.ExperimentManager.Internal.SimulationMachine.CreateProcess						0	
+.Tools.ExperimentManager.Internal.SimulationMachine.CreateProcess	CreateProcess	Method	false	false	0	3599	-- start the remote process (has errorHandler)
+-- called by: DistributedSimulation.StartMachine_
+param Test:boolean
+var MachinesTab:object := ~.MachinesTable
+var Sim3D:boolean := ~.~.SimulateWith3D
+var RemoteMachineName:string := MachinesTab[1,MachineIndex]
+var LicType:string := MachinesTab[4,MachineIndex]
+if rootfolder.Localization.MessageTab.find({*,441},~.~.RemoteLicType) -- Highest Available
+\tLicType := \"HIGHESTAVAILABLE\" -- the LicType can be used like the start option /L
+end
+
+var SmallModel:string := to_str(Applicationhome,\"Examples\\Demo\\Small Parts Production.spp\")
+if Test AND existsFile(SmallModel) -- Button Test of the dialog Advanced Settings
+\teMPlantHandle := CreateRemoteProcess(RemoteMachineName, &EventSink, SmallModel, LicType, NOT Sim3D) -- try with a small model file
+else
+\teMPlantHandle := CreateRemoteProcess(RemoteMachineName, &EventSink, modelFile, LicType, NOT Sim3D) -- try with the current spp-file
+end
+
+if Sim3D
+\tMachinesTab.addLogging(\"Remote process is running with 3D.\", JobId, MachineIndex, false)
+else
+\tMachinesTab.addLogging(\"Remote process is running without 3D.\", JobId, MachineIndex, false)
+end
+
+if eMPlantHandle /= 0 -- if remote process started
+\tvar eMPlant:any := getInterfaceOfRemoteProcess(eMPlantHandle)
+\teMPlant.SetTrustModels(true)
+\teMPlant.SetPathContext(to_str(~.~))
+
+\tvar CPUCoreAssignment := ~.~.CPUCoreAssignment
+\tfor var row := 1 to CPUCoreAssignment.Dim
+\t\tif CPUCoreAssignment.asString(row) = RemoteMachineName
+\t\t\tvar l := CPUCoreAssignment[row]
+\t\t\tif l /= void and l.Dim > 0
+\t\t\t\tvar cpuRow := MachineIndex mod l.Dim
+\t\t\t\tprint \"Machine \", MachineIndex, \" on \", RemoteMachineName, \" using CPU  \", l[cpuRow]
+\t\t\t\teMPlant.ExecuteSimTalk(to_str(\"setProcessAffinityMask(\", to_str(l[cpuRow]),\")\"))
+\t\t\tend
+\t\tend
+\tnext
+
+\tif  eMPlant.ExecuteSimTalk( to_str(\"-> any return 1\"))=1
+\t\t-- \"Remote process was started by '\",~.~,\"'\
+\t\tMachinesTab.addLogging(to_str(\"Remote process was started by the Experimentmanager '\",~.~,\"'\"), JobId, MachineIndex, false)
+\t\tvar InstallFolder:string := to_str(\"ApplicationHome '\",eMPlant.ExecuteSimTalk(\"-> any return ApplicationHome\"),\"'\")
+\t\tMachinesTab.addLogging(InstallFolder, JobId, MachineIndex, false)
+\telse
+\t\tMachinesTab.addLogging(\"Remote process does not work correctly.\", JobId, MachineIndex, false)
+\tend
+
+\tif Test OR ~.~.RemoteMachinesVisible -- Test = true: test button on tab distribution in the dialog 'Advanced Settings'
+\t\teMPlant.setVisible(true)
+\tend
+
+\tvar t:time := ~.~.QuitAfterTime -- setting of the dialog
+\tif t > 0
+\t\teMPlant.QuitAfterTime(1000 * t) -- The number of milliseconds must be < 2^31. Null means infty lifespan of the prozess.
+\t\tMachinesTab.addLogging(\"Start the 'Terminate after time' anew.\", JobId, MachineIndex, false)
+\t\t-- else the remote process is never terminated
+\tend
+
+\tif Test
+\t\teMPlant.ExecuteSimTalk(\"-> integer return 69\")
+\t\tinfobox(\"\",false)
+\t\t~.~.dialog.CB_ShowError
+\t\teMPlant.quit
+\t\treturn
+
+\telse -- if eMPlantHandle /= 0
+\t\t-- A simualtion machine was successful started.
+\t\tvar p:string := to_str(self.~.~) -- path or location
+\t\tvar str:string := to_str(p,\".prepareRemoteProcess\")
+\t\teMPlant.executeSimTalk(str)
+
+\t\tp := to_str(self.~.~.~) -- isSimulationMachine is a custom attribute of the Network of the Experimentmanager
+\t\tstr := to_str(p,\".isSimulationMachine := true\")
+\t\teMPlant.executeSimTalk(str)
+\tend
+
+else -- if remote process started
+\tMachinesTab.addLogging(\"Impossible to start remote process\", JobId, MachineIndex, false)
+end
 .Tools.ExperimentManager.Internal.SimulationMachine.ErrorHandler						0	
 .Tools.ExperimentManager.Internal.SimulationMachine.EventSink						0	
 .Tools.ExperimentManager.Internal.SimulationMachine.M_Quit						0	
@@ -1336,50 +1395,7 @@ end
 .Tools.ExperimentManager.Internal.SimulationMachine.StartReplication						0	
 .Tools.ExperimentManager.Internal.translate						0	
 .Tools.ExperimentManager.Localization.LanguageDesignation						0	
-.Tools.ExperimentManager.Localization.getMessage	getMessage	Method	false	false	0	1193	/*
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-Method Tasks: write a message
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
-Parameters\t: MsgNumber, the index of the message in messageTab
-\t\t\t  p1, p2, p3, possible parameters for the message
-ReturnValues: message with replacements
-
-Called By\t:
-Calls\t\t:
-
-Author\t\t: PS
-Date\t\t: 22.08.2007
-_________________________________________________________________________________
-History:
-
-¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
-param MsgNumber : integer, p1,p2,p3 : any->string
-
-var mess,s1,s2,s3 : string
-var pos1, pos2, pos3\t: integer
-
-mess := getText(MsgNumber)-- get the text of the message with place holder
-s1 := to_str(p1)
-s2 := to_str(p2)
-s3 := to_str(p3)
-
-pos1 := strLpos(\"$1\", mess)
-pos2 := strLpos(\"$2\", mess)
-pos3 := strLpos(\"$3\", mess)
-
-if pos3 > 0
-\tmess := strIncl(s3, mess, pos3+2)
-\tmess := strOmit(mess, pos3, 2)
-end
-if pos2 > 0
-\tmess := strIncl(s2, mess, pos2+2)
-\tmess := strOmit(mess, pos2, 2)
-end
-if pos1 > 0
-\tmess := strIncl(s1, mess, pos1+2)
-\tmess := strOmit(mess, pos1, 2)
-end
-result := mess
+.Tools.ExperimentManager.Localization.getMessage						0	
 .Tools.ExperimentManager.Localization.getText	getText	Method	false	false	0	865	/*
 ¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
 Method Tasks: Translation of messages and dialog items.

@@ -3217,7 +3217,94 @@
       "name": "AGV_Claude",
       "type": "Folder",
       "path": ".AGV_Claude",
-      "children": []
+      "children": [
+        {
+          "i": 1,
+          "name": "Objects",
+          "type": "Folder",
+          "path": ".AGV_Claude.Objects",
+          "children": [
+            {
+              "i": 1,
+              "name": "AGVJobs",
+              "type": "DataTable",
+              "path": ".AGV_Claude.Objects.AGVJobs",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "AGVTelemetry",
+              "type": "DataTable",
+              "path": ".AGV_Claude.Objects.AGVTelemetry",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "Pool",
+          "type": "Frame",
+          "path": ".AGV_Claude.Pool",
+          "children": [
+            {
+              "i": 1,
+              "name": "AGV_init",
+              "type": "Method",
+              "path": ".AGV_Claude.Pool.AGV_init",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "EventController",
+              "type": "EventController",
+              "path": ".AGV_Claude.Pool.EventController",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "AGV_dispatch",
+              "type": "Method",
+              "path": ".AGV_Claude.Pool.AGV_dispatch",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "AGV_release",
+              "type": "Method",
+              "path": ".AGV_Claude.Pool.AGV_release",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "AGV_requestCharge",
+              "type": "Method",
+              "path": ".AGV_Claude.Pool.AGV_requestCharge",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "AGV_dashboard",
+              "type": "Method",
+              "path": ".AGV_Claude.Pool.AGV_dashboard",
+              "children": []
+            },
+            {
+              "i": 7,
+              "name": "AGV_batchedRoute",
+              "type": "Method",
+              "path": ".AGV_Claude.Pool.AGV_batchedRoute",
+              "children": []
+            },
+            {
+              "i": 8,
+              "name": "AGV_reset",
+              "type": "Method",
+              "path": ".AGV_Claude.Pool.AGV_reset",
+              "children": []
+            }
+          ]
+        }
+      ]
     }
   ]
 }

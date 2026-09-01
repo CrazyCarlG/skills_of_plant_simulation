@@ -1,3 +1,10 @@
+.AGV_Claude.Pool.AGV_batchedRoute
+.AGV_Claude.Pool.AGV_dashboard
+.AGV_Claude.Pool.AGV_dispatch
+.AGV_Claude.Pool.AGV_init
+.AGV_Claude.Pool.AGV_release
+.AGV_Claude.Pool.AGV_requestCharge
+.AGV_Claude.Pool.AGV_reset
 .InformationFlow.Method
 .MaterialFlow_AGV.BasicObjects.InformationFlow.Method
 .SimtalkClaude.Main.SimtalkAction.ErrorHandler
