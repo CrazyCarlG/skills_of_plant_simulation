@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-08-31
+last_updated: 2026-09-01
 contributors: [@z004bjuu, @plant-simulation-expert, @plant-simulation-experience-curator]
 scope: 9 个 `local-simtalk-*` 技能调用决策矩阵 + 写操作 5 步硬流程 + Top 10 高频坑
 ---
@@ -319,3 +319,7 @@ python3 skills/local-simtalk-read-library/scripts/render_library.py \
 ### 2026-08-31 by @plant-simulation-experience-curator — "给非 Frame 对象加 method" 不走 `local-simtalk-create-method-object`；直接 `simtalk_run` + `createAttr` + `getAttribute`
 
 → 详见 [2026-08-31 by @plant-simulation-experience-curator — 给非 Frame 对象加 method 不走 local-simtalk-create-method-object.md](./2026-08-31%20by%20%40plant-simulation-experience-curator%20%E2%80%94%20%E7%BB%99%E9%9D%9E%20Frame%20%E5%AF%B9%E8%B1%A1%E5%8A%A0%20method%20%E4%B8%8D%E8%B5%B0%20local-simtalk-create-method-object.md)（tags: `skill-selection`, `createAttr`, `method-typed-UDA`, `station`, `cross-skill-workflow`, `frame-vs-non-frame`）
+
+### 2026-09-01 by @plant-simulation-experience-curator — write 之后必须 readback `o.Program` 确认落盘(硬规则 #8 强化)
+
+→ 详见 [2026-09-01 by @plant-simulation-experience-curator — write 之后必须 readback o.Program 确认落盘.md](./2026-09-01%20by%20%40plant-simulation-experience-curator%20%E2%80%94%20write%20%E4%B9%8B%E5%90%8E%E5%BF%85%E9%A1%BB%20readback%20o.Program%20%E7%A1%AE%E8%AE%A4%E8%90%BD%E7%9B%98.md)（tags: `write-verify`, `silent-failure`, `readback-Program`, `must-verify`, `write-simtalk-skill-bug`, `hard-rule-8`, `executeSilent-fresh-compile`）
