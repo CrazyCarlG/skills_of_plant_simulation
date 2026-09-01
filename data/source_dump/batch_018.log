@@ -1,0 +1,13 @@
+=== Batch: batch_018 (4 paths) ===
+  - .Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_noBatch  [DataTable]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.MUselection  [DataTable]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches  [Source]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.Drain1  [Drain]
+
+--- LOG ---
+2026-08-31 20:57:25: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:25
+2026-08-31 20:57:25: execute sim-code: 'var o: object
+
+
+o :=......'
+

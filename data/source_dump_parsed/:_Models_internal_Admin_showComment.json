@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Admin.showComment",
+  "T": "Method",
+  "N": "showComment",
+  "PROG_LEN": "69",
+  "program": "-- Interaction open of the comments ReadMe and LiesMich\n@.openComment"
+}

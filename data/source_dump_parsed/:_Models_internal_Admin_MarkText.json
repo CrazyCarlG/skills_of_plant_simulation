@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Admin.MarkText",
+  "T": "Method",
+  "N": "MarkText",
+  "PROG_LEN": "385",
+  "program": "-- called by: DisplayResults(table)\nparam word:string,str:string -> string\nvar html_marking:=\"<mark>\"+str+\"</mark>\"\n\nvar titleCase:=strToUpper(strCopy(str,1,1))+strCopy(str,2,strlen(str)-1)\nvar html_marking_title:=\"<mark>\"+titleCase+\"</mark>\"\n\nvar html_text:string:=regex_replace(word,str,html_marking)\nhtml_text:=regex_replace(html_text,titleCase,html_marking_title)\n\nreturn html_text"
+}

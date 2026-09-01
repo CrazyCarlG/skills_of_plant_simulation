@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Localization.getMessage",
+  "T": "Method",
+  "N": "getMessage",
+  "PROG_LEN": "724",
+  "program": "param MsgNumber : integer, p1,p2,p3 : any->string\n\nvar mess, s1, s2, s3\t: string\nvar pos1, pos2, pos3\t: integer\n\nif messageTab.YDIm<MsgNumber \n\tmess := getText( 1 )\n\ts1 := to_str( MsgNumber )\nelse\n\tmess := messageTab[ UserInterfaceLanguage+1, MsgNumber ]\n\tif mess = \"\" \n\t\tmess := messageTab[ \"ENU\", MsgNumber ]\n\tend\nend\n\ns1 := to_str(p1)\ns2 := to_str(p2)\ns3 := to_str(p3)\n\npos1 := strLpos(\"$1\", mess)\npos2 := strLpos(\"$2\", mess)\npos3 := strLpos(\"$3\", mess)\n\nif pos3 > 0 \n\tmess := strIncl(s3, mess, pos3+2)\n\tmess := strOmit(mess, pos3, 2)\nend\nif pos2 > 0 \n\tmess := strIncl(s2, mess, pos2+2)\n\tmess := strOmit(mess, pos2, 2)\nend\nif pos1 > 0 \n\tmess := strIncl(s1, mess, pos1+2)\n\tmess := strOmit(mess, pos1, 2)\nend\nresult := mess"
+}

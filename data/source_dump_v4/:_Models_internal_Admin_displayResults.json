@@ -1,0 +1,6 @@
+{
+  "path": ":.Models.internal.Admin.displayResults",
+  "T": "Method",
+  "N": "displayResults",
+  "program": "-- called by: startSearch (search button)"
+}

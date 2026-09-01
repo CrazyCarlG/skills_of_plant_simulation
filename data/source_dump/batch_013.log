@@ -1,0 +1,13 @@
+=== Batch: batch_013 (4 paths) ===
+  - .Models.SourceTrigger.SourceNumberAdjustable.Drain  [Drain]
+  - .Models.SourceTrigger.SourceNumberAdjustable.endsim  [Method]
+  - .Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts  [DataTable]
+  - .Models.SourceTrigger.SourceNumberAdjustable.MUselection  [DataTable]
+
+--- LOG ---
+2026-08-31 20:57:21: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:21
+2026-08-31 20:57:22: execute sim-code: 'var o: object
+
+
+o :=......'
+

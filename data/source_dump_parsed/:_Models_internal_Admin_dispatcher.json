@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Admin.dispatcher",
+  "T": "Method",
+  "N": "dispatcher",
+  "PROG_LEN": "1218",
+  "program": "-- This method receives the browser requests\n-- and decides either to return an user defined HTML \n-- document or to perform the Plant Simulation default action.\nparam request : string -> string\t\nswitch request\ncase \"$\" \n\t-- HTML window was opened\n\tresult := HTML.cont\nelse\n\tvar p := strLpos(\"+\", request)\n\tif p>0 then\n\t\tresult := HTML.cont\n\t\tvar Frame:string := strCopy(request, 1, p-1)\n\t\tvar FrameObj:object := Frame\n\t\trequest := strCopy(request, p+1, strLen(request))\n\t\tp := strLpos(\"+\", request)\n\t\tvar objFile:string := strCopy(request, 1, p-1)\n\t\tvar use3D := str_to_Bool(strCopy(request, p+1, strLen(request)))\n\t\tif use3D \n\t\t\tif NOT is3Dopen\n\t\t\t\topen3D\n\t\t\tend\n\t\telse\n\t\t\tclose3D(true)\n\t\tend\n\t\t\n\t\t.loadObjectAs(to_str(Folder4Objects,objFile),\"\",true,false)\n\t\tFrameObj.openDialog\n\t\tif use3D\n\t\t\tFrameObj._3D.openWindow\n\t\t\tif FrameObj.Eventcontroller /= void\n\t\t\t\tFrameObj.Eventcontroller.RealTime := true\n\t\t\tend\n\t\tend\n\t\t\tif existsObject(\".Models.internal.Admin\")\n\t\t\t   setExamNo(Frame) -- determine row 'ExamNo' in tablefile ExampleTab\n\t\t\tend\n\t\t\t\n\t\tExampleTab.setCursor(2,1)\n\t\tif ExamNo > 0\n\t\t\tvar code:string := ExampleTab[2,ExamNo]\n\t\t\tif strLen(code)>1\n\t\t\t\texecuteSilent(code)\n\t\t\tend\n\t\tend\n\t\t\n\telse\n\t\treturn\n\tend\nend"
+}

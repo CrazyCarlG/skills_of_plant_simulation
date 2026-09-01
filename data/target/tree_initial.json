@@ -1,0 +1,409 @@
+{
+  "root_path": "",
+  "root_name": "Basis",
+  "root_type": "Folder",
+  "root_numNodes": 5,
+  "children": [
+    {
+      "i": 1,
+      "name": "Models",
+      "type": "Folder",
+      "path": ".Models",
+      "children": [
+        {
+          "i": 1,
+          "name": "internal",
+          "type": "Folder",
+          "path": ".Models.internal",
+          "children": [
+            {
+              "i": 1,
+              "name": "Localization",
+              "type": "Folder",
+              "path": ".Models.internal.Localization"
+            },
+            {
+              "i": 2,
+              "name": "Admin",
+              "type": "Frame",
+              "path": ".Models.internal.Admin"
+            },
+            {
+              "i": 3,
+              "name": "SelDlg",
+              "type": "Dialog",
+              "path": ".Models.internal.SelDlg"
+            },
+            {
+              "i": 4,
+              "name": "autoexec",
+              "type": "Method",
+              "path": ".Models.internal.autoexec"
+            },
+            {
+              "i": 5,
+              "name": "Method",
+              "type": "Method",
+              "path": ".Models.internal.Method"
+            },
+            {
+              "i": 6,
+              "name": "Variable",
+              "type": "Variable",
+              "path": ".Models.internal.Variable"
+            },
+            {
+              "i": 7,
+              "name": "HtmlReport",
+              "type": "HtmlReport",
+              "path": ".Models.internal.HtmlReport"
+            },
+            {
+              "i": 8,
+              "name": "ReadMe",
+              "type": "Comment",
+              "path": ".Models.internal.ReadMe"
+            },
+            {
+              "i": 9,
+              "name": "LiesMich",
+              "type": "Comment",
+              "path": ".Models.internal.LiesMich"
+            },
+            {
+              "i": 10,
+              "name": "DropDownList",
+              "type": "DropDownList",
+              "path": ".Models.internal.DropDownList"
+            },
+            {
+              "i": 11,
+              "name": "Comment",
+              "type": "Comment",
+              "path": ".Models.internal.Comment"
+            },
+            {
+              "i": 12,
+              "name": "DataTable",
+              "type": "DataTable",
+              "path": ".Models.internal.DataTable"
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "SourceTrigger",
+          "type": "Folder",
+          "path": ".Models.SourceTrigger",
+          "children": [
+            {
+              "i": 1,
+              "name": "SourceNumberAdjustable",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourceNumberAdjustable"
+            },
+            {
+              "i": 2,
+              "name": "SourceIntervalAdjustable",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourceIntervalAdjustable"
+            },
+            {
+              "i": 3,
+              "name": "SourceRandom",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourceRandom"
+            },
+            {
+              "i": 4,
+              "name": "SourcePercentage",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourcePercentage"
+            },
+            {
+              "i": 5,
+              "name": "SourceTrigger",
+              "type": "Frame",
+              "path": ".Models.SourceTrigger.SourceTrigger"
+            },
+            {
+              "i": 6,
+              "name": "A",
+              "type": "Part",
+              "path": ".Models.SourceTrigger.A"
+            },
+            {
+              "i": 7,
+              "name": "B",
+              "type": "Part",
+              "path": ".Models.SourceTrigger.B"
+            },
+            {
+              "i": 8,
+              "name": "C",
+              "type": "Part",
+              "path": ".Models.SourceTrigger.C"
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "name": "Animation3D",
+          "type": "Folder",
+          "path": ".Models.Animation3D",
+          "children": [
+            {
+              "i": 1,
+              "name": "RobotArm",
+              "type": "Frame",
+              "path": ".Models.Animation3D.RobotArm"
+            },
+            {
+              "i": 2,
+              "name": "Part",
+              "type": "Part",
+              "path": ".Models.Animation3D.Part"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "MaterialFlow",
+      "type": "Folder",
+      "path": ".MaterialFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".MaterialFlow.EventController",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Source",
+          "type": "Source",
+          "path": ".MaterialFlow.Source",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".MaterialFlow.Drain",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".MaterialFlow.Connector",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Line",
+          "type": "Conveyor",
+          "path": ".MaterialFlow.Line",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Station",
+          "type": "Station",
+          "path": ".MaterialFlow.Station",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "PickAndPlace",
+          "type": "PickAndPlace",
+          "path": ".MaterialFlow.PickAndPlace",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "name": "InformationFlow",
+      "type": "Folder",
+      "path": ".InformationFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "Method",
+          "type": "Method",
+          "path": ".InformationFlow.Method",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "DataTable",
+          "type": "DataTable",
+          "path": ".InformationFlow.DataTable",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Trigger",
+          "type": "Trigger",
+          "path": ".InformationFlow.Trigger",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "name": "UserInterface",
+      "type": "Folder",
+      "path": ".UserInterface",
+      "children": [
+        {
+          "i": 1,
+          "name": "Comment",
+          "type": "Comment",
+          "path": ".UserInterface.Comment",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "name": "SimtalkClaude",
+      "type": "Folder",
+      "path": ".SimtalkClaude",
+      "children": [
+        {
+          "i": 1,
+          "name": "Main",
+          "type": "Frame",
+          "path": ".SimtalkClaude.Main",
+          "children": [
+            {
+              "i": 1,
+              "name": "SocketServer",
+              "type": "Frame",
+              "path": ".SimtalkClaude.Main.SocketServer"
+            },
+            {
+              "i": 2,
+              "name": "SimtalkAction",
+              "type": "Frame",
+              "path": ".SimtalkClaude.Main.SimtalkAction"
+            },
+            {
+              "i": 3,
+              "name": "Server",
+              "type": "Variable",
+              "path": ".SimtalkClaude.Main.Server"
+            },
+            {
+              "i": 4,
+              "name": "SimtalkClaude",
+              "type": "Dialog",
+              "path": ".SimtalkClaude.Main.SimtalkClaude"
+            },
+            {
+              "i": 5,
+              "name": "onopen",
+              "type": "Method",
+              "path": ".SimtalkClaude.Main.onopen"
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "src",
+          "type": "Folder",
+          "path": ".SimtalkClaude.src",
+          "children": [
+            {
+              "i": 1,
+              "name": "SimtalkAction",
+              "type": "Frame",
+              "path": ".SimtalkClaude.src.SimtalkAction"
+            },
+            {
+              "i": 2,
+              "name": "autoexec",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.autoexec"
+            },
+            {
+              "i": 3,
+              "name": "ErrorHandler",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.ErrorHandler"
+            },
+            {
+              "i": 4,
+              "name": "autoexecLoadObj",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.autoexecLoadObj"
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "name": "connection",
+          "type": "Folder",
+          "path": ".SimtalkClaude.connection",
+          "children": [
+            {
+              "i": 1,
+              "name": "SocketServer",
+              "type": "Frame",
+              "path": ".SimtalkClaude.connection.SocketServer"
+            },
+            {
+              "i": 2,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".SimtalkClaude.connection.Socket"
+            }
+          ]
+        },
+        {
+          "i": 4,
+          "name": "objects",
+          "type": "Folder",
+          "path": ".SimtalkClaude.objects",
+          "children": [
+            {
+              "i": 1,
+              "name": "Method",
+              "type": "Method",
+              "path": ".SimtalkClaude.objects.Method"
+            },
+            {
+              "i": 2,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".SimtalkClaude.objects.Socket"
+            },
+            {
+              "i": 3,
+              "name": "HtmlReport",
+              "type": "HtmlReport",
+              "path": ".SimtalkClaude.objects.HtmlReport"
+            },
+            {
+              "i": 4,
+              "name": "Variable",
+              "type": "Variable",
+              "path": ".SimtalkClaude.objects.Variable"
+            },
+            {
+              "i": 5,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".SimtalkClaude.objects.Dialog"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,40 @@
+=== batch 14: 8 paths ===
+.Models.SourceTrigger.SourcePercentage.Connector	Connector	failed
+.Models.SourceTrigger.SourceTrigger	Frame	success
+.Models.SourceTrigger.SourceTrigger.Source	Source	failed
+.Models.SourceTrigger.SourceTrigger.Line	Conveyor	failed
+.Models.SourceTrigger.SourceTrigger.Readme	Comment	failed
+.Models.SourceTrigger.SourceTrigger.Liesmich	Comment	failed
+.Models.SourceTrigger.SourceTrigger.Trigger2	Trigger	success
+.Models.SourceTrigger.SourceTrigger.Trigger1	Trigger	success
+
+--- LOG ---
+2026-08-31 21:00:23: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:00:23
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: ###B:.Models.SourceTrigger.SourceTrigger###
+2026-08-31 21:00:23: T=Frame
+2026-08-31 21:00:23: N=SourceTrigger
+2026-08-31 21:00:23: ###E:.Models.SourceTrigger.SourceTrigger###
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: ###B:.Models.SourceTrigger.SourceTrigger.Trigger2###
+2026-08-31 21:00:23: T=Trigger
+2026-08-31 21:00:23: N=Trigger2
+2026-08-31 21:00:23: ###E:.Models.SourceTrigger.SourceTrigger.Trigger2###
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: ###B:.Models.SourceTrigger.SourceTrigger.Trigger1###
+2026-08-31 21:00:23: T=Trigger
+2026-08-31 21:00:23: N=Trigger1
+2026-08-31 21:00:23: ###E:.Models.SourceTrigger.SourceTrigger.Trigger1###

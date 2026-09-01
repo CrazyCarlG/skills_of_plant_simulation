@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.SourceTrigger.SourceRandom.endsim",
+  "T": "Method",
+  "N": "endsim",
+  "PROG_LEN": "36",
+  "program": "source.creationTable(GeneratedParts)"
+}

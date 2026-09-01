@@ -1,0 +1,296 @@
+{
+  ".Models.Animation3D.Part": {
+    "type": {
+      "type": "Part",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:05: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:05\n2026-08-31 21:07:27: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:27: ###E:.Models.Animation3D.Part###\n"
+  },
+  ".Models.Animation3D.RobotArm.Connector": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:27: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:27\n2026-08-31 21:07:27: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:27: ###E:.Models.Animation3D.RobotArm.Connector###\n"
+  },
+  ".Models.Animation3D.RobotArm.Connector1": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:28\n2026-08-31 21:07:28: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:28: ###E:.Models.Animation3D.RobotArm.Connector1###\n"
+  },
+  ".Models.Animation3D.RobotArm.Connector2": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:28\n2026-08-31 21:07:28: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:28: ###E:.Models.Animation3D.RobotArm.Connector2###\n"
+  },
+  ".Models.Animation3D.RobotArm.Connector3": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:28\n2026-08-31 21:07:28: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:28: ###E:.Models.Animation3D.RobotArm.Connector3###\n"
+  },
+  ".Models.Animation3D.RobotArm.EventController": {
+    "type": {
+      "type": "EventController",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:28\n2026-08-31 21:07:28: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:28: ###E:.Models.Animation3D.RobotArm.EventController###\n"
+  },
+  ".Models.Animation3D.RobotArm.PickAndPlace": {
+    "type": {
+      "type": "PickAndPlace",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:28\n2026-08-31 21:07:28: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:28: ###E:.Models.Animation3D.RobotArm.PickAndPlace###\n"
+  },
+  ".Models.Animation3D.RobotArm.Source": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:29\n2026-08-31 21:07:29: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:29: ###E:.Models.Animation3D.RobotArm.Source###\n"
+  },
+  ".Models.SourceTrigger.A": {
+    "type": {
+      "type": "Part",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:29\n2026-08-31 21:07:29: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:29: ###E:.Models.SourceTrigger.A###\n"
+  },
+  ".Models.SourceTrigger.B": {
+    "type": {
+      "type": "Part",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:29\n2026-08-31 21:07:29: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:29: ###E:.Models.SourceTrigger.B###\n"
+  },
+  ".Models.SourceTrigger.C": {
+    "type": {
+      "type": "Part",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:29\n2026-08-31 21:07:29: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:29: ###E:.Models.SourceTrigger.C###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Connector": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:29\n2026-08-31 21:07:29: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:29: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Connector1": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:30\n2026-08-31 21:07:30: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:30: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector1###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Connector2": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:30\n2026-08-31 21:07:30: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:30: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector2###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Connector3": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:30\n2026-08-31 21:07:30: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:30: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector3###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Connector4": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:30\n2026-08-31 21:07:30: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:30: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector4###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Connector5": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:31\n2026-08-31 21:07:31: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:31: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector5###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.EventController": {
+    "type": {
+      "type": "EventController",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:31\n2026-08-31 21:07:31: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:31: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.EventController###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Source": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:31\n2026-08-31 21:07:31: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:31: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Source###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:31\n2026-08-31 21:07:31: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:31: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches###\n"
+  },
+  ".Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:31\n2026-08-31 21:07:31: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:31: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop###\n"
+  },
+  ".Models.SourceTrigger.SourceNumberAdjustable.Connector": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:32\n2026-08-31 21:07:32: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:32: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Connector###\n"
+  },
+  ".Models.SourceTrigger.SourceNumberAdjustable.Connector1": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:32\n2026-08-31 21:07:32: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:32: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Connector1###\n"
+  },
+  ".Models.SourceTrigger.SourceNumberAdjustable.Connector2": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:32\n2026-08-31 21:07:32: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:32: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Connector2###\n"
+  },
+  ".Models.SourceTrigger.SourceNumberAdjustable.Connector3": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:32\n2026-08-31 21:07:32: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:32: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Connector3###\n"
+  },
+  ".Models.SourceTrigger.SourceNumberAdjustable.EventController": {
+    "type": {
+      "type": "EventController",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:33\n2026-08-31 21:07:33: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:33: ###E:.Models.SourceTrigger.SourceNumberAdjustable.EventController###\n"
+  },
+  ".Models.SourceTrigger.SourceNumberAdjustable.Source": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:33\n2026-08-31 21:07:33: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:33: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Source###\n"
+  },
+  ".Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:33\n2026-08-31 21:07:33: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:33: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch###\n"
+  },
+  ".Models.SourceTrigger.SourcePercentage.Connector": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:33\n2026-08-31 21:07:33: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:33: ###E:.Models.SourceTrigger.SourcePercentage.Connector###\n"
+  },
+  ".Models.SourceTrigger.SourcePercentage.EventController": {
+    "type": {
+      "type": "EventController",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:33\n2026-08-31 21:07:33: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:33: ###E:.Models.SourceTrigger.SourcePercentage.EventController###\n"
+  },
+  ".Models.SourceTrigger.SourcePercentage.Kante7": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:34\n2026-08-31 21:07:34: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:34: ###E:.Models.SourceTrigger.SourcePercentage.Kante7###\n"
+  },
+  ".Models.SourceTrigger.SourcePercentage.Source": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:34\n2026-08-31 21:07:34: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:34: ###E:.Models.SourceTrigger.SourcePercentage.Source###\n"
+  },
+  ".Models.SourceTrigger.SourceRandom.Connector": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:34\n2026-08-31 21:07:34: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:34: ###E:.Models.SourceTrigger.SourceRandom.Connector###\n"
+  },
+  ".Models.SourceTrigger.SourceRandom.EventController": {
+    "type": {
+      "type": "EventController",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:34\n2026-08-31 21:07:34: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:34: ###E:.Models.SourceTrigger.SourceRandom.EventController###\n"
+  },
+  ".Models.SourceTrigger.SourceRandom.Kante7": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:35\n2026-08-31 21:07:35: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:35: ###E:.Models.SourceTrigger.SourceRandom.Kante7###\n"
+  },
+  ".Models.SourceTrigger.SourceRandom.Source": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:35\n2026-08-31 21:07:35: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:35: ###E:.Models.SourceTrigger.SourceRandom.Source###\n"
+  },
+  ".Models.SourceTrigger.SourceTrigger.Connector": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:35\n2026-08-31 21:07:35: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:35: ###E:.Models.SourceTrigger.SourceTrigger.Connector###\n"
+  },
+  ".Models.SourceTrigger.SourceTrigger.EventController": {
+    "type": {
+      "type": "EventController",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:35\n2026-08-31 21:07:35: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:35: ###E:.Models.SourceTrigger.SourceTrigger.EventController###\n"
+  },
+  ".Models.SourceTrigger.SourceTrigger.Kante7": {
+    "type": {
+      "type": "Connector",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:35\n2026-08-31 21:07:35: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:35: ###E:.Models.SourceTrigger.SourceTrigger.Kante7###\n"
+  },
+  ".Models.SourceTrigger.SourceTrigger.Source": {
+    "type": {
+      "type": "Source",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:36: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:36\n2026-08-31 21:07:36: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:36: ###E:.Models.SourceTrigger.SourceTrigger.Source###\n"
+  },
+  ".Models.internal.Admin.DropDownList": {
+    "type": {
+      "type": "DropDownList",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:36: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:36\n2026-08-31 21:07:36: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:36: ###E:.Models.internal.Admin.DropDownList###\n"
+  },
+  ".Models.internal.DropDownList": {
+    "type": {
+      "type": "DropDownList",
+      "result": "success"
+    },
+    "log": "2026-08-31 21:07:36: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:36\n2026-08-31 21:07:36: execute sim-code: 'var o: object\no := s......'\n2026-08-31 21:07:36: ###E:.Models.internal.DropDownList###\n"
+  }
+}

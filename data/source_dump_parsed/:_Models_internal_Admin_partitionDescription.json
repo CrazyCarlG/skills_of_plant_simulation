@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Admin.partitionDescription",
+  "T": "Method",
+  "N": "partitionDescription",
+  "PROG_LEN": "808",
+  "program": "param richTxtDEU,richTxtENU :string, byref TitleENU, TitleDEU, DescriptionENU, DescriptionDEU:string\nvar commentObj:object := ~.Comment\n\ncommentObj.saveAsRichedit := true\ncommentObj.cont := richTxtDEU\ncommentObj.saveAsRichedit := false\nvar str:string := commentObj.cont\nvar cutPos:integer := strLpos(chr(10),str)\nTitleDEU  := removeUnwantedCharacter(strCopy(str,1,cutPos))\nDescriptionDEU := removeUnwantedCharacter(strTrim(strCopy(str,cutPos,strLen(str))))\n\ncommentObj.saveAsRichedit := true\ncommentObj.cont := richTxtENU\ncommentObj.saveAsRichedit := false\nstr := commentObj.cont -- Poor text (not rich text) is needed for searching.\ncutPos := strLpos(chr(10),str)\nTitleENU  := removeUnwantedCharacter(strCopy(str,1,cutPos))\nDescriptionENU := removeUnwantedCharacter(strTrim(strCopy(str,cutPos,strLen(str))))"
+}

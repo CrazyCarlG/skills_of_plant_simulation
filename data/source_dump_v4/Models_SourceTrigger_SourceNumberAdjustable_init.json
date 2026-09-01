@@ -1,0 +1,6 @@
+{
+  "path": ":.Models.SourceTrigger.SourceNumberAdjustable.init",
+  "T": "Method",
+  "N": "init",
+  "program": "   var assignedTriggers:object[2]"
+}

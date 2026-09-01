@@ -1,0 +1,33 @@
+=== Batch: batch_036 (4 paths) ===
+  - .Models.Animation3D.Part  [Part]
+  - .MaterialFlow  [Folder]
+  - .InformationFlow  [Folder]
+  - .UserInterface  [Folder]
+
+--- LOG ---
+2026-08-31 20:57:39: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:39
+2026-08-31 20:57:40: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:40: ###B:.Models.Animation3D.Part###
+2026-08-31 20:57:40: T=Part
+2026-08-31 20:57:40: N=Part
+2026-08-31 20:57:40: C_TYPE=Part
+2026-08-31 20:57:40: ###E:.Models.Animation3D.Part###
+2026-08-31 20:57:40: ###B:.MaterialFlow###
+2026-08-31 20:57:40: T=Folder
+2026-08-31 20:57:40: N=MaterialFlow
+2026-08-31 20:57:40: F=1
+2026-08-31 20:57:40: ###E:.MaterialFlow###
+2026-08-31 20:57:40: ###B:.InformationFlow###
+2026-08-31 20:57:40: T=Folder
+2026-08-31 20:57:40: N=InformationFlow
+2026-08-31 20:57:40: F=1
+2026-08-31 20:57:40: ###E:.InformationFlow###
+2026-08-31 20:57:40: ###B:.UserInterface###
+2026-08-31 20:57:40: T=Folder
+2026-08-31 20:57:40: N=UserInterface
+2026-08-31 20:57:40: F=1
+2026-08-31 20:57:40: ###E:.UserInterface###
+

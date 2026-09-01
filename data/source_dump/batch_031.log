@@ -1,0 +1,16 @@
+=== Batch: batch_031 (4 paths) ===
+  - .Models.SourceTrigger.SourceTrigger.EventController  [EventController]
+  - .Models.SourceTrigger.SourceTrigger.Kante7  [Connector]
+  - .Models.SourceTrigger.SourceTrigger.Connector  [Connector]
+  - .Models.SourceTrigger.A  [Part]
+
+--- LOG ---
+2026-08-31 20:57:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:35
+2026-08-31 20:57:36: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:36: ###B:.Models.SourceTrigger.SourceTrigger.EventController###
+2026-08-31 20:57:36: T=EventController
+2026-08-31 20:57:36: N=EventController
+

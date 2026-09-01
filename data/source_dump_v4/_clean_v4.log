@@ -1,0 +1,2142 @@
+
+=========== .Models  [Folder]  result=success ===========
+2026-08-31 21:02:20: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:02:20
+2026-08-31 21:02:32: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:02:32: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:02:32: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:02:38: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:02:38: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:02:38: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:02:38: execute sim-code: 'var o: object
+ o := ......'
+2026-08-31 21:02:38: Models
+2026-08-31 21:03:16: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:16: ###B:.Models###
+2026-08-31 21:03:16: T=Folder
+2026-08-31 21:03:16: N=Models
+2026-08-31 21:03:16: ###E:.Models###
+
+=========== .Models.internal  [Folder]  result=success ===========
+2026-08-31 21:03:16: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:16
+2026-08-31 21:03:16: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:16: ###B:.Models.internal###
+2026-08-31 21:03:16: T=Folder
+2026-08-31 21:03:16: N=internal
+2026-08-31 21:03:16: ###E:.Models.internal###
+
+=========== .Models.internal.Localization  [Folder]  result=success ===========
+2026-08-31 21:03:17: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:17
+2026-08-31 21:03:17: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:17: ###B:.Models.internal.Localization###
+2026-08-31 21:03:17: T=Folder
+2026-08-31 21:03:17: N=Localization
+2026-08-31 21:03:17: ###E:.Models.internal.Localization###
+
+=========== .Models.internal.Localization.MessageTab  [DataTable]  result=success ===========
+2026-08-31 21:03:17: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:17
+2026-08-31 21:03:17: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:17: ###B:.Models.internal.Localization.MessageTab###
+2026-08-31 21:03:17: T=DataTable
+2026-08-31 21:03:17: N=MessageTab
+2026-08-31 21:03:17: ROWS=36
+2026-08-31 21:03:17: COLS=2
+2026-08-31 21:03:17: ###DT:.Models.internal.Localization.MessageTab###
+2026-08-31 21:03:17: |Die Beispielmodelle können nicht mit der Viewer Lizenz verwaltet werden!|Das Modell wird geschlossen.
+2026-08-31 21:03:17: |The example models can not be managed with the Viewer License!|The model will be closed.
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ||
+2026-08-31 21:03:17: ###DTE:.Models.internal.Localization.MessageTab###
+2026-08-31 21:03:17: ###E:.Models.internal.Localization.MessageTab###
+
+=========== .Models.internal.Localization.getMessage  [Method]  result=success ===========
+2026-08-31 21:03:17: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:17
+2026-08-31 21:03:17: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:17: ###B:.Models.internal.Localization.getMessage###
+2026-08-31 21:03:17: T=Method
+2026-08-31 21:03:17: N=getMessage
+2026-08-31 21:03:17: ###P:.Models.internal.Localization.getMessage###
+2026-08-31 21:03:17: param MsgNumber : integer, p1,p2,p3 : any->string
+
+var mess, s1, s2, s3	: string
+var pos1, pos2, pos3	: integer
+
+if messageTab.YDIm<MsgNumber 
+	mess := getText( 1 )
+	s1 := to_str( MsgNumber )
+else
+	mess := messageTab[ UserInterfaceLanguage+1, MsgNumber ]
+	if mess = "" 
+		mess := messageTab[ "ENU", MsgNumber ]
+	end
+end
+
+s1 := to_str(p1)
+s2 := to_str(p2)
+s3 := to_str(p3)
+
+pos1 := strLpos("$1", mess)
+pos2 := strLpos("$2", mess)
+pos3 := strLpos("$3", mess)
+
+if pos3 > 0 
+	mess := strIncl(s3, mess, pos3+2)
+	mess := strOmit(mess, pos3, 2)
+end
+if pos2 > 0 
+	mess := strIncl(s2, mess, pos2+2)
+	mess := strOmit(mess, pos2, 2)
+end
+if pos1 > 0 
+	mess := strIncl(s1, mess, pos1+2)
+	mess := strOmit(mess, pos1, 2)
+end
+result := mess
+2026-08-31 21:03:17: ###PE:.Models.internal.Localization.getMessage###
+2026-08-31 21:03:17: ###E:.Models.internal.Localization.getMessage###
+
+=========== .Models.internal.Localization.getText  [Method]  result=success ===========
+2026-08-31 21:03:17: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:17
+2026-08-31 21:03:17: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:17: ###B:.Models.internal.Localization.getText###
+2026-08-31 21:03:17: T=Method
+2026-08-31 21:03:17: N=getText
+2026-08-31 21:03:17: ###P:.Models.internal.Localization.getText###
+2026-08-31 21:03:17: param  index : integer  -> string
+
+result := messageTab[UserInterfaceLanguage+1, index ]
+if strLen(result) < 1 
+	result := messageTab["ENU", index ]
+end
+2026-08-31 21:03:17: ###PE:.Models.internal.Localization.getText###
+2026-08-31 21:03:17: ###E:.Models.internal.Localization.getText###
+
+=========== .Models.internal.Admin  [Frame]  result=success ===========
+2026-08-31 21:03:18: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:18
+2026-08-31 21:03:18: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:18: ###B:.Models.internal.Admin###
+2026-08-31 21:03:18: T=Frame
+2026-08-31 21:03:18: N=Admin
+2026-08-31 21:03:18: ###E:.Models.internal.Admin###
+
+=========== .Models.internal.Admin.Folder4Objects  [Variable]  result=success ===========
+2026-08-31 21:03:18: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:18
+2026-08-31 21:03:18: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:18: ###B:.Models.internal.Admin.Folder4Objects###
+2026-08-31 21:03:18: T=Variable
+2026-08-31 21:03:18: N=Folder4Objects
+2026-08-31 21:03:18: V=C:\ProgramFiles\Siemens\TecnomatixPlantSimulation2606\Examples\
+2026-08-31 21:03:18: ###E:.Models.internal.Admin.Folder4Objects###
+
+=========== .Models.internal.Admin.ExamNo  [Variable]  result=success ===========
+2026-08-31 21:03:18: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:18
+2026-08-31 21:03:18: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:18: ###B:.Models.internal.Admin.ExamNo###
+2026-08-31 21:03:18: T=Variable
+2026-08-31 21:03:18: N=ExamNo
+2026-08-31 21:03:18: V=164
+2026-08-31 21:03:18: ###E:.Models.internal.Admin.ExamNo###
+
+=========== .Models.internal.Admin.removeUnwantedCharacter  [Method]  result=success ===========
+2026-08-31 21:03:18: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:18
+2026-08-31 21:03:18: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:18: ###B:.Models.internal.Admin.removeUnwantedCharacter###
+2026-08-31 21:03:18: T=Method
+2026-08-31 21:03:18: N=removeUnwantedCharacter
+2026-08-31 21:03:18: ###P:.Models.internal.Admin.removeUnwantedCharacter###
+2026-08-31 21:03:18: param str:string -> string
+var charArray := makeArray("\"", "'")
+var s:string
+for var charNo := 1 to charArray.dim
+	s := charArray[charNo]
+	while strLpos(s,str) > 0
+		str:= strOmit(str,strLpos(s,str),1)
+	end
+next
+return str
+2026-08-31 21:03:18: ###PE:.Models.internal.Admin.removeUnwantedCharacter###
+2026-08-31 21:03:18: ###E:.Models.internal.Admin.removeUnwantedCharacter###
+
+=========== .Models.internal.Admin.Workflow  [Comment]  result=success ===========
+2026-08-31 21:03:18: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:18
+2026-08-31 21:03:18: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:18: ###B:.Models.internal.Admin.Workflow###
+2026-08-31 21:03:18: T=Comment
+2026-08-31 21:03:18: N=Workflow
+2026-08-31 21:03:18: ###CT:.Models.internal.Admin.Workflow###
+2026-08-31 21:03:18: Add new Example
+2026-08-31 21:03:18: ###CTE:.Models.internal.Admin.Workflow###
+2026-08-31 21:03:18: ###E:.Models.internal.Admin.Workflow###
+
+=========== .Models.internal.Admin.GeneralTable2ExampleTab  [Method]  result=success ===========
+2026-08-31 21:03:19: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:19
+2026-08-31 21:03:19: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:19: ###B:.Models.internal.Admin.GeneralTable2ExampleTab###
+2026-08-31 21:03:19: T=Method
+2026-08-31 21:03:19: N=GeneralTable2ExampleTab
+2026-08-31 21:03:19: ###P:.Models.internal.Admin.GeneralTable2ExampleTab###
+2026-08-31 21:03:19: -- Copying GeneralTable to ExampleTab, which is used for searching
+-- SelDlg.GeneralTable is used for the dialog
+var GeneralTableAttr:table := ~.SelDlg.GeneralTable
+var TargetTab:object := ExampleTab
+TargetTab.delete
+var currRow:integer
+var TitleENU, TitleDEU, DescriptionENU, DescriptionDEU:string -- set byref in method_partitionDescription
+
+for var CategoryNo := 1 to GeneralTableAttr.yDim
+	var CatTab:table := GeneralTableAttr[1,CategoryNo]
+	
+	for var objNo := 1 to CatTab.yDim  -- object/Folder
+		var CategoryInfo:string := to_str(CatTab[3,objNo]," ",CatTab[4,objNo]," ") -- "Topic" German, English
+		var with3D:boolean := CatTab[7,objNo]
+		var objName:string := CatTab[2,objNo] -- Name of the folder/object
+		var modTab:table   := CatTab[1,objNo]
+		for var modNo := 1 to modTab.ydim --
+			var frameName:string := modTab[2,modNo]
+			var descTab:table    := modTab[1,modNo]
+			--if objName="CostAnalyzer" then debug end
+			partitionDescription(descTab[1,1],descTab[2,1], TitleENU, TitleDEU, DescriptionENU, DescriptionDEU)
+			currRow += 1 -- New row of ExampleTab
+			TargetTab.writeRow(1, currRow, to_str(objName,".obj"), to_str(".Models.",objName,".",frameName), with3D, Void,TitleENU, TitleDEU, DescriptionENU, DescriptionDEU, modTab[7,modNo])
+			TargetTab[4,currRow] := to_str(CategoryInfo,modTab[6,modNo]) -- transfer key words (if exists)
+			--debug
+		next -- modNo
+
+	next -- object/Folder
+next
+
+--Fill the Keywords Tab 
+if UserInterfaceLanguage=0 -- When User Interface is german, fill in german keywords
+	KeyWords.copyRangeTo({2,1}..{2,*},TargetTab,4,1)
+else -- otherwise fill in english keywords
+	KeyWords.copyRangeTo({1,1}..{1,*},TargetTab,4,1)
+end
+2026-08-31 21:03:19: ###PE:.Models.internal.Admin.GeneralTable2ExampleTab###
+2026-08-31 21:03:19: ###E:.Models.internal.Admin.GeneralTable2ExampleTab###
+
+=========== .Models.internal.Admin.partitionDescription  [Method]  result=success ===========
+2026-08-31 21:03:19: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:19
+2026-08-31 21:03:19: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:19: ###B:.Models.internal.Admin.partitionDescription###
+2026-08-31 21:03:19: T=Method
+2026-08-31 21:03:19: N=partitionDescription
+2026-08-31 21:03:19: ###P:.Models.internal.Admin.partitionDescription###
+2026-08-31 21:03:19: param richTxtDEU,richTxtENU :string, byref TitleENU, TitleDEU, DescriptionENU, DescriptionDEU:string
+var commentObj:object := ~.Comment
+
+commentObj.saveAsRichedit := true
+commentObj.cont := richTxtDEU
+commentObj.saveAsRichedit := false
+var str:string := commentObj.cont
+var cutPos:integer := strLpos(chr(10),str)
+TitleDEU  := removeUnwantedCharacter(strCopy(str,1,cutPos))
+DescriptionDEU := removeUnwantedCharacter(strTrim(strCopy(str,cutPos,strLen(str))))
+
+commentObj.saveAsRichedit := true
+commentObj.cont := richTxtENU
+commentObj.saveAsRichedit := false
+str := commentObj.cont -- Poor text (not rich text) is needed for searching.
+cutPos := strLpos(chr(10),str)
+TitleENU  := removeUnwantedCharacter(strCopy(str,1,cutPos))
+DescriptionENU := removeUnwantedCharacter(strTrim(strCopy(str,cutPos,strLen(str))))
+2026-08-31 21:03:19: ###PE:.Models.internal.Admin.partitionDescription###
+2026-08-31 21:03:19: ###E:.Models.internal.Admin.partitionDescription###
+
+=========== .Models.internal.Admin.searchStr  [Variable]  result=success ===========
+2026-08-31 21:03:19: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:19
+2026-08-31 21:03:19: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:19: ###B:.Models.internal.Admin.searchStr###
+2026-08-31 21:03:19: T=Variable
+2026-08-31 21:03:19: N=searchStr
+2026-08-31 21:03:19: V=
+2026-08-31 21:03:19: ###E:.Models.internal.Admin.searchStr###
+
+=========== .Models.internal.Admin.startSearch  [Method]  result=success ===========
+2026-08-31 21:03:19: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:19
+2026-08-31 21:03:19: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:19: ###B:.Models.internal.Admin.startSearch###
+2026-08-31 21:03:19: T=Method
+2026-08-31 21:03:19: N=startSearch
+2026-08-31 21:03:19: ###P:.Models.internal.Admin.startSearch###
+2026-08-31 21:03:19: -- called by Search button
+if ExampleTab.yDim = 0
+	/*switch userInterfaceLanguage
+	case 0
+		infobox("Bitte warten Sie, bis die Ergebnisse der Suche angezeigt werden.",false)
+	else
+		infobox("Please wait until the results of your search are being shown.",false)
+	end*/
+	GeneralTable2ExampleTab
+	--infobox("",false)
+end
+var t: table
+t.create
+t.setDataType(8,"Integer")
+searchStr := ~.SelDlg.getValue("SearchString_inp") -- search strinf of the user
+if searchStr = ""
+	return
+end
+
+var a:string[]
+ExampleTab.setCursor(2,1)
+if ExampleTab.find({2,1}..{2,*},searchStr) -- search e.g. ".Models.Robot.StackedParts"; ".Models.worker.Manpower"
+	a := splitString(searchStr,".") -- determine objName,frameName
+	if ~.SelDlg.showExample(a[2],a[3]) -- set Drop-down list boxes of the dialog
+		return
+	end
+end -- found e.g. ".Models.Robot.StackedParts"
+
+var str:string := strToLower(searchStr)
+var StrToBeSearched:string
+var curr:integer
+var found:boolean
+var score:integer
+
+for var row := 1 to ExampleTab.ydim
+	score:=0
+	for var col := 4 to 8 -- Col 1 is contained in col 2
+	StrToBeSearched:=strToLower(to_str(ExampleTab[col,row]))
+/*		if UserInterfaceLanguage=0 and (col=5 or col=7) -- When User Interface is german, skip english title and description
+			continue
+		elseif UserInterfaceLanguage/=0 and (col=6 or col=8) -- When User Interface is not german, skip german title and description
+			continue
+			end
+*/			
+		if strLpos(str,StrToBeSearched) > 0 -- str = search string of the user, StrToBeSearched depends on the column of ExampleTab
+			if not found
+				found := true 
+				curr += 1 -- number of hits of the search
+				--                 Deutscher Titel	  Englischer Titel   Beschreibung DEU   Beschreibung ENG   3D aktiv ja/nein			  Pfad zu Objekt	 Name des Netzwerks  Wertung
+				t.writeRow(1,curr, ExampleTab[6,row], ExampleTab[5,row], ExampleTab[8,row], ExampleTab[7,row], to_str(ExampleTab[3,row]), ExampleTab[1,row], ExampleTab[2,row],  score)
+			end
+			score += calcScore(col,StrToBeSearched,str) -- (score > 0) if and only if the search string occurs
+			t[8,curr] := score -- t = cummulated table of all hits (together with informations of the single example)
+		end
+	next -- col
+	found:=false
+	
+next -- row of ExampleTab
+
+if t.yDim > 0
+	t.sort(8,"down")
+	str := t[7,1]
+	a := splitString(str,".") -- var a:string[]
+	~.SelDlg.showExample(a[2],a[3]) 
+end
+
+displayResults(t)
+2026-08-31 21:03:20: ###PE:.Models.internal.Admin.startSearch###
+2026-08-31 21:03:20: ###E:.Models.internal.Admin.startSearch###
+
+=========== .Models.internal.Admin.HTML  [Comment]  result=success ===========
+2026-08-31 21:03:20: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:20
+2026-08-31 21:03:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:20: ###B:.Models.internal.Admin.HTML###
+2026-08-31 21:03:20: T=Comment
+2026-08-31 21:03:20: N=HTML
+2026-08-31 21:03:20: ###CT:.Models.internal.Admin.HTML###
+2026-08-31 21:03:20: HTML
+2026-08-31 21:03:20: ###CTE:.Models.internal.Admin.HTML###
+2026-08-31 21:03:20: ###E:.Models.internal.Admin.HTML###
+
+=========== .Models.internal.Admin.displayResults  [Method]  result=success ===========
+2026-08-31 21:03:20: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:20
+2026-08-31 21:03:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:20: ###B:.Models.internal.Admin.displayResults###
+2026-08-31 21:03:20: T=Method
+2026-08-31 21:03:20: N=displayResults
+2026-08-31 21:03:20: ###P:.Models.internal.Admin.displayResults###
+2026-08-31 21:03:20: -- called by: startSearch (search button)
+param t : table
+
+t.openDialog
+HTML.cont := "<HTML>"
+HTML.cont := to_str(HTML.cont, "<html lang=\"en\"><head>")
+HTML.cont := to_str(HTML.cont, "<meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">")
+HTML.cont := to_str(HTML.cont, "<meta charset=\"utf-8\">")
+--HTML.cont := to_str(HTML.cont, "<base target=\"_blank\">") -- not needed in 13.2 and newer
+HTML.cont := to_str(HTML.cont, "<title>.UserInterface.HtmlReport</title>")
+
+HTML.cont := to_str(HTML.cont, "<style id=\"defaultCSS\" type=\"text/css\">")
+HTML.cont := to_str(HTML.cont, "h1 {")
+HTML.cont := to_str(HTML.cont, "font-family:         Calibri, Tahoma, Arial, 'Arial Unicode', 'Segoe UI Symbol', sans-serif;")
+HTML.cont := to_str(HTML.cont, "font-size:           21px;}")
+
+HTML.cont := to_str(HTML.cont, "h3 {")
+HTML.cont := to_str(HTML.cont, "font-family:         Calibri, Tahoma, Arial, 'Arial Unicode', 'Segoe UI Symbol', sans-serif;")
+HTML.cont := to_str(HTML.cont, "font-size:           17px;}")
+
+HTML.cont := to_str(HTML.cont, "body {")
+HTML.cont := to_str(HTML.cont, "font-family:         Calibri, Tahoma, Arial, 'Arial Unicode', 'Segoe UI Symbol', sans-serif;")
+HTML.cont := to_str(HTML.cont, "font-size:           15px;}")
+
+HTML.cont := to_str(HTML.cont, "</style>")
+HTML.cont := to_str(HTML.cont, "</head>")
+
+HTML.cont :=to_str(HTML.cont, "<BODY>")
+
+var str : string:= ~.Localization.getText(3)              -- results of searching for
+HTML.cont :=to_str(HTML.cont, "<h1>", str, " ", searchStr, "</h1>")
+
+var numberOfCharacter : integer := maxDescription
+var text : string
+for var i := 1 to t.YDim loop
+	if UserInterfaceLanguage=0 then
+		text := t[3,i]
+		var header := t[1,i]
+	else
+		text := t[4,i]
+		header := t[2,i]
+	end
+				
+	str :=strCopy(text, numberOfCharacter, strLen(text))
+	var p := strLpos(" ", str)
+	if p>0 then
+		str := to_str(strCopy(text, 1, numberOfCharacter+p-1), " ...")
+	else
+		str := text -- not truncated
+	end
+				
+	var frame := t[7,i]
+	var objFile :=     t[6,i]
+				
+	HTML.cont := to_str(HTML.cont, "<h3>",MarkText(header,searchStr), "</h3>")
+	HTML.cont := to_str(HTML.cont, MarkText(str,searchStr))
+	HTML.cont := to_str(HTML.cont, "<p>")
+	-- HTML.cont := to_str(HTML.cont, "<A NAME=2 HREF=\"/SC_CallMethod:.Models.Frame1.Dispatcher|BEEP\" target=\"_top\">Tell Plant Simulation to start a simulation.</A>")
+	--  HTML.cont := to_str(HTML.cont, "<A HREF=\"/SC_CallMethod:.Models.Frame1.Dispatcher|BEEP\" target=\"_top\">Tell Plant Simulation to start a simulation.</A>")
+	HTML.cont := to_str(HTML.cont, "<a href=\"callMethod:.Models.Internal.Admin.Dispatcher|",frame,"+",objFile,"+",t[5,i],"\">",~.Localization.getText(5),"</a>")
+	HTML.cont := to_str(HTML.cont, "</p>")
+
+next
+
+str := ~.Localization.getText(4)              -- search results       WindowTitle, x-position on screen, y-position, width, height
+var HTML:string := Dispatcher("$")
+openHTMLWindow(HTML,~.Localization.getText(14), 50,10,750,500) -- "Search Results"
+2026-08-31 21:03:20: ###PE:.Models.internal.Admin.displayResults###
+2026-08-31 21:03:20: ###E:.Models.internal.Admin.displayResults###
+
+=========== .Models.internal.Admin.dispatcher  [Method]  result=success ===========
+2026-08-31 21:03:21: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:21
+2026-08-31 21:03:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:21: ###B:.Models.internal.Admin.dispatcher###
+2026-08-31 21:03:21: T=Method
+2026-08-31 21:03:21: N=dispatcher
+2026-08-31 21:03:21: ###P:.Models.internal.Admin.dispatcher###
+2026-08-31 21:03:21: -- This method receives the browser requests
+-- and decides either to return an user defined HTML 
+-- document or to perform the Plant Simulation default action.
+param request : string -> string	
+switch request
+case "$" 
+	-- HTML window was opened
+	result := HTML.cont
+else
+	var p := strLpos("+", request)
+	if p>0 then
+		result := HTML.cont
+		var Frame:string := strCopy(request, 1, p-1)
+		var FrameObj:object := Frame
+		request := strCopy(request, p+1, strLen(request))
+		p := strLpos("+", request)
+		var objFile:string := strCopy(request, 1, p-1)
+		var use3D := str_to_Bool(strCopy(request, p+1, strLen(request)))
+		if use3D 
+			if NOT is3Dopen
+				open3D
+			end
+		else
+			close3D(true)
+		end
+		
+		.loadObjectAs(to_str(Folder4Objects,objFile),"",true,false)
+		FrameObj.openDialog
+		if use3D
+			FrameObj._3D.openWindow
+			if FrameObj.Eventcontroller /= void
+				FrameObj.Eventcontroller.RealTime := true
+			end
+		end
+			if existsObject(".Models.internal.Admin")
+			   setExamNo(Frame) -- determine row 'ExamNo' in tablefile ExampleTab
+			end
+			
+		ExampleTab.setCursor(2,1)
+		if ExamNo > 0
+			var code:string := ExampleTab[2,ExamNo]
+			if strLen(code)>1
+				executeSilent(code)
+			end
+		end
+		
+	else
+		return
+	end
+end
+2026-08-31 21:03:21: ###PE:.Models.internal.Admin.dispatcher###
+2026-08-31 21:03:21: ###E:.Models.internal.Admin.dispatcher###
+
+=========== .Models.internal.Admin.setExamNo  [Method]  result=success ===========
+2026-08-31 21:03:21: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:21
+2026-08-31 21:03:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:21: ###B:.Models.internal.Admin.setExamNo###
+2026-08-31 21:03:21: T=Method
+2026-08-31 21:03:21: N=setExamNo
+2026-08-31 21:03:21: ###P:.Models.internal.Admin.setExamNo###
+2026-08-31 21:03:21: -- called by: .Models.internal.Admin.dispatcher (The user clicked a ling to open a frame.)
+param frame:string
+ExamNo := 0;
+ExampleTab.setCursor(2,1)
+if ExampleTab.find({2,1}..{2,*}, frame)
+	ExamNo := ExampleTab.cursorY
+end
+2026-08-31 21:03:21: ###PE:.Models.internal.Admin.setExamNo###
+2026-08-31 21:03:21: ###E:.Models.internal.Admin.setExamNo###
+
+=========== .Models.internal.Admin.showComment  [Method]  result=success ===========
+2026-08-31 21:03:21: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:21
+2026-08-31 21:03:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:21: ###B:.Models.internal.Admin.showComment###
+2026-08-31 21:03:21: T=Method
+2026-08-31 21:03:21: N=showComment
+2026-08-31 21:03:21: ###P:.Models.internal.Admin.showComment###
+2026-08-31 21:03:21: -- Interaction open of the comments ReadMe and LiesMich
+@.openComment
+2026-08-31 21:03:21: ###PE:.Models.internal.Admin.showComment###
+2026-08-31 21:03:21: ###E:.Models.internal.Admin.showComment###
+
+=========== .Models.internal.Admin.DropDownList  [DropDownList]  result=success ===========
+2026-08-31 21:03:21: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:21
+2026-08-31 21:03:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:21: ###B:.Models.internal.Admin.DropDownList###
+2026-08-31 21:03:21: T=DropDownList
+2026-08-31 21:03:21: N=DropDownList
+
+=========== .Models.internal.Admin.maxDescription  [Variable]  result=success ===========
+2026-08-31 21:03:22: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:22
+2026-08-31 21:03:22: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:22: ###B:.Models.internal.Admin.maxDescription###
+2026-08-31 21:03:22: T=Variable
+2026-08-31 21:03:22: N=maxDescription
+2026-08-31 21:03:22: V=500
+2026-08-31 21:03:22: ###E:.Models.internal.Admin.maxDescription###
+
+=========== .Models.internal.Admin.prepareSave  [Method]  result=success ===========
+2026-08-31 21:03:22: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:22
+2026-08-31 21:03:22: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:22: ###B:.Models.internal.Admin.prepareSave###
+2026-08-31 21:03:22: T=Method
+2026-08-31 21:03:22: N=prepareSave
+2026-08-31 21:03:22: ###P:.Models.internal.Admin.prepareSave###
+2026-08-31 21:03:22: var spp:string := to_str(Folder4Objects,"examples.spp")
+~.SelDlg.close(false)
+~.SelDlg.setCaption("SearchString_inp","")
+
+~.SelDlg.label := ~.Localization.getText(21)
+searchStr := ""
+~.Comment.Cont := ""
+current.closeDialog
+close3D(false)
+~.SelDlg.closeDialog
+ExampleTab.delete
+if existsFile(spp) then
+	system(to_str("del ",spp));
+	messageBox(to_str("The model file was deleted.",strChr(10),"Make sure to save the model."),1,4);
+end;
+2026-08-31 21:03:22: ###PE:.Models.internal.Admin.prepareSave###
+2026-08-31 21:03:22: ###E:.Models.internal.Admin.prepareSave###
+
+=========== .Models.internal.Admin.Comment2GeneralTable  [Method]  result=success ===========
+2026-08-31 21:03:22: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:22
+2026-08-31 21:03:22: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:22: ###B:.Models.internal.Admin.Comment2GeneralTable###
+2026-08-31 21:03:22: T=Method
+2026-08-31 21:03:22: N=Comment2GeneralTable
+2026-08-31 21:03:22: ###P:.Models.internal.Admin.Comment2GeneralTable###
+2026-08-31 21:03:22: var GeneralTableAttr:table := ~.SelDlg.GeneralTable
+var modFolder: object := .Models
+
+for var i := 1 to modFolder.numNodes 
+	var catagoryFolder: object := modFolder.Node(i)
+	if catagoryFolder.name /= "internal" -- name of the obj file / name of the Folder with the example frames
+		
+		for var j := 1 to catagoryFolder.NumNodes 
+			var frameObj:object := catagoryFolder.Node(j)
+			if frameObj.internalclassname = "Network"
+				
+				for var k := 1 to GeneralTableAttr.ydim 
+					var catTab:table := GeneralTableAttr[1,k]
+					catTab.cursory := 1
+					if catTab.find({2,1}..{2,*}, catagoryFolder.name) 
+						var rowCat:integer := catTab.cursory
+						var modTab:table := catTab[1,rowCat]
+						modTab.cursory := 1
+						if modTab.find({2,1}..{2,*}, frameObj.name) 
+							var rowMod	: integer := modTab.cursory		
+							if messageBox(to_str("Do you want to write the comments of frame '",frameObj,"' of category '",catagoryFolder.name,"' to the GeneralTable?"), 48, 2) = 16 
+								modTab[1,rowMod][1,1] := frameObj.Liesmich.cont
+								modTab[1,rowMod][2,1] := frameObj.Readme.cont
+								print "Write comments of frame '",frameObj,"' to the GeneralTable."
+							end 
+						end
+					end
+				next -- k
+
+			end -- if Network
+		next -- j
+
+	end -- not folder "internal"
+next -- i
+2026-08-31 21:03:22: ###PE:.Models.internal.Admin.Comment2GeneralTable###
+2026-08-31 21:03:22: ###E:.Models.internal.Admin.Comment2GeneralTable###
+
+=========== .Models.internal.Admin.saveObject  [Method]  result=success ===========
+2026-08-31 21:03:22: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:22
+2026-08-31 21:03:22: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:22: ###B:.Models.internal.Admin.saveObject###
+2026-08-31 21:03:22: T=Method
+2026-08-31 21:03:22: N=saveObject
+2026-08-31 21:03:22: ###P:.Models.internal.Admin.saveObject###
+2026-08-31 21:03:22: var FolderStr:string := Folder4Objects -- generated from modelFile (autoexec)
+if NOT existsFile(FolderStr) 
+	str := modelFile
+	FolderStr := strCopy(str,1,StrRpos("\\",str))
+	Folder4Objects := FolderStr
+end
+
+if setCurrentDirectory(FolderStr) 
+	print "The current Example Collection is: ",FolderStr
+else
+	print "Unknown folder '",FolderStr,"'"
+	return
+end
+
+if .Models.numNodes > 2
+	messageBox(to_str("It is only allowed",strChr(10),"to save a single object."), 1, 1)
+	return
+end
+
+var GeneralTab:table := ~.SelDlg.GeneralTable
+
+for var j := 1 to .Models.numNodes 
+	var FrameObj:object := .Models.node(j)
+	if FrameObj.name /= "internal" 
+		var str:string := FrameObj.name
+		
+		for var cat := 1 to GeneralTab.yDim
+			var catTab:table := GeneralTab[1,cat]
+			catTab.setCursor(2,1)
+			if catTab.find({2,1}..{2,*},str)
+				str := catTab[2,catTab.cursorY]
+			end
+		next
+	
+		str := to_str(str,".obj")
+		--closeDialog
+		if FrameObj.writeObject(str,false)  -- no library
+			print "Save ",str
+			return
+		end
+	end
+next
+print "No example was loaded."
+2026-08-31 21:03:22: ###PE:.Models.internal.Admin.saveObject###
+2026-08-31 21:03:22: ###E:.Models.internal.Admin.saveObject###
+
+=========== .Models.internal.Admin.OpenGeneralTable  [Method]  result=success ===========
+2026-08-31 21:03:23: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:23
+2026-08-31 21:03:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:23: ###B:.Models.internal.Admin.OpenGeneralTable###
+2026-08-31 21:03:23: T=Method
+2026-08-31 21:03:23: N=OpenGeneralTable
+2026-08-31 21:03:23: ###P:.Models.internal.Admin.OpenGeneralTable###
+2026-08-31 21:03:23: ~.SelDlg.GeneralTable.opendialog
+2026-08-31 21:03:23: ###PE:.Models.internal.Admin.OpenGeneralTable###
+2026-08-31 21:03:23: ###E:.Models.internal.Admin.OpenGeneralTable###
+
+=========== .Models.internal.Admin.move_AxesOrigin  [Method]  result=success ===========
+2026-08-31 21:03:23: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:23
+2026-08-31 21:03:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:23: ###B:.Models.internal.Admin.move_AxesOrigin###
+2026-08-31 21:03:23: T=Method
+2026-08-31 21:03:23: N=move_AxesOrigin
+2026-08-31 21:03:23: ###P:.Models.internal.Admin.move_AxesOrigin###
+2026-08-31 21:03:23: -- move_AxesOrigin
+for var j := 1 to numNodes
+	var obj:object := node(j)
+	obj.Coordinate3D[1] += 15
+	obj.Coordinate3D[2] -= 15
+next
+
+AxesOrigin := [0.0,0]
+return
+eraseLayer(0)
+drawRectangle(0, 0,0, 500,100, makeRGBValue(170,255,213),-1)
+self.deleteObject
+2026-08-31 21:03:23: ###PE:.Models.internal.Admin.move_AxesOrigin###
+2026-08-31 21:03:23: ###E:.Models.internal.Admin.move_AxesOrigin###
+
+=========== .Models.internal.Admin.ExampleTab  [DataTable]  result=success ===========
+2026-08-31 21:03:23: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:23
+2026-08-31 21:03:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:23: ###B:.Models.internal.Admin.ExampleTab###
+2026-08-31 21:03:23: T=DataTable
+2026-08-31 21:03:23: N=ExampleTab
+2026-08-31 21:03:23: ROWS=0
+2026-08-31 21:03:23: COLS=0
+2026-08-31 21:03:23: ###DT:.Models.internal.Admin.ExampleTab###
+2026-08-31 21:03:23: ###DTE:.Models.internal.Admin.ExampleTab###
+2026-08-31 21:03:23: ###E:.Models.internal.Admin.ExampleTab###
+
+=========== .Models.internal.Admin.greenRectangle  [Method]  result=success ===========
+2026-08-31 21:03:23: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:23
+2026-08-31 21:03:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:23: ###B:.Models.internal.Admin.greenRectangle###
+2026-08-31 21:03:23: T=Method
+2026-08-31 21:03:23: N=greenRectangle
+2026-08-31 21:03:23: ###P:.Models.internal.Admin.greenRectangle###
+2026-08-31 21:03:23: -- instantiate this method and call it
+current.drawRectangle(555, 0,0, 250,100, makeRGBValue(170,255,213),-1)
+2026-08-31 21:03:23: ###PE:.Models.internal.Admin.greenRectangle###
+2026-08-31 21:03:23: ###E:.Models.internal.Admin.greenRectangle###
+
+=========== .Models.internal.Admin.CalcScore  [Method]  result=success ===========
+2026-08-31 21:03:24: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:24
+2026-08-31 21:03:24: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:24: ###B:.Models.internal.Admin.CalcScore###
+2026-08-31 21:03:24: T=Method
+2026-08-31 21:03:24: N=CalcScore
+2026-08-31 21:03:24: ###P:.Models.internal.Admin.CalcScore###
+2026-08-31 21:03:24: -- Called by; startSearch (row 62)
+param tab:integer,word:string,str:string -> integer
+var score:integer
+switch tab -- column of ExampleTab
+-- case 2
+	-- score += 1 -- column 'Name of the frame': like .Models.Container.WorkpieceCarrier (name of the obj file is not a good characteristic for the example)
+case 4
+	score += 10 -- column 'key words'
+case 5
+	score += 15+CountOccur(word,str,5) -- TitleENU
+case 6
+	score += 15+CountOccur(word,str,6) -- TitleDEU
+case 7
+	score += 10+CountOccur(word,str,7) -- DescriptionENU
+case 8
+	score += 10+CountOccur(word,str,8) -- DescriptionDEU
+end
+
+return score
+2026-08-31 21:03:24: ###PE:.Models.internal.Admin.CalcScore###
+2026-08-31 21:03:24: ###E:.Models.internal.Admin.CalcScore###
+
+=========== .Models.internal.Admin.CountOccur  [Method]  result=success ===========
+2026-08-31 21:03:24: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:24
+2026-08-31 21:03:24: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:24: ###B:.Models.internal.Admin.CountOccur###
+2026-08-31 21:03:24: T=Method
+2026-08-31 21:03:24: N=CountOccur
+2026-08-31 21:03:24: ###P:.Models.internal.Admin.CountOccur###
+2026-08-31 21:03:24: -- called by: CalcScore
+param word:string,str:string,tab:integer -> integer
+-- tab: column of table 'ExampleTab'
+-- word = searchStr, str = strToLower(searchStr)
+var occurences:integer
+var iterate:=true
+var idx:integer
+while iterate
+	idx:=strLpos(str,word)
+	if idx>0
+		occurences+=1
+		word:=strOmit(word,0,idx+strlen(str))
+		var delimiter:=strAscii(strToUpper(strCopy(word,1,1)))
+		if (delimiter>128 or (delimiter>=65 and delimiter<=90))
+			occurences+=1
+		else
+			if tab=5 or tab=6 -- TitleDEU or TitleENU
+				occurences += 10
+			else
+				occurences += 2
+			end
+		end
+	else
+		iterate:=false
+	end
+end
+
+return occurences
+2026-08-31 21:03:24: ###PE:.Models.internal.Admin.CountOccur###
+2026-08-31 21:03:24: ###E:.Models.internal.Admin.CountOccur###
+
+=========== .Models.internal.Admin.MarkText  [Method]  result=success ===========
+2026-08-31 21:03:24: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:24
+2026-08-31 21:03:24: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:24: ###B:.Models.internal.Admin.MarkText###
+2026-08-31 21:03:24: T=Method
+2026-08-31 21:03:24: N=MarkText
+2026-08-31 21:03:24: ###P:.Models.internal.Admin.MarkText###
+2026-08-31 21:03:24: -- called by: DisplayResults(table)
+param word:string,str:string -> string
+var html_marking:="<mark>"+str+"</mark>"
+
+var titleCase:=strToUpper(strCopy(str,1,1))+strCopy(str,2,strlen(str)-1)
+var html_marking_title:="<mark>"+titleCase+"</mark>"
+
+var html_text:string:=regex_replace(word,str,html_marking)
+html_text:=regex_replace(html_text,titleCase,html_marking_title)
+
+return html_text
+2026-08-31 21:03:24: ###PE:.Models.internal.Admin.MarkText###
+2026-08-31 21:03:24: ###E:.Models.internal.Admin.MarkText###
+
+=========== .Models.internal.Admin.ExportToExcel  [Method]  result=success ===========
+2026-08-31 21:03:24: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:24
+2026-08-31 21:03:24: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:24: ###B:.Models.internal.Admin.ExportToExcel###
+2026-08-31 21:03:24: T=Method
+2026-08-31 21:03:24: N=ExportToExcel
+2026-08-31 21:03:24: ###P:.Models.internal.Admin.ExportToExcel###
+2026-08-31 21:03:24: -- Python interface
+var s1:string := modelFile
+var Folder4Objects:string := strCopy(s1,1,StrRpos("\\",s1))
+ExampleTab.delete
+GeneralTable2ExampleTab
+var ExportTable:table
+ExportTable.create
+ExampleTab.copyRangeTo({5,*}..{8,*},ExportTable,1,1)
+ExportTable.writeExcelFile(Folder4Objects+"DescriptionTable")
+2026-08-31 21:03:24: ###PE:.Models.internal.Admin.ExportToExcel###
+2026-08-31 21:03:24: ###E:.Models.internal.Admin.ExportToExcel###
+
+=========== .Models.internal.Admin.ImportKeywords  [Method]  result=success ===========
+2026-08-31 21:03:25: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:25
+2026-08-31 21:03:25: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:25: ###B:.Models.internal.Admin.ImportKeywords###
+2026-08-31 21:03:25: T=Method
+2026-08-31 21:03:25: N=ImportKeywords
+2026-08-31 21:03:25: ###P:.Models.internal.Admin.ImportKeywords###
+2026-08-31 21:03:25: -- Python interface
+-- Import Excel File with the 
+
+var s1:string := modelFile
+var Folder4Objects:string := strCopy(s1,1,StrRpos("\\",s1))
+var ImportTable:table
+ImportTable.create
+
+ImportTable.readExcelFile(Folder4Objects+"KeyWordFile.xlsx")
+KeyWords.delete
+
+ImportTable.copyRangeTo({2,2}..{3,*},KeyWords,1,1)
+2026-08-31 21:03:25: ###PE:.Models.internal.Admin.ImportKeywords###
+2026-08-31 21:03:25: ###E:.Models.internal.Admin.ImportKeywords###
+
+=========== .Models.internal.Admin.KeyWords  [DataTable]  result=success ===========
+2026-08-31 21:03:25: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:25
+2026-08-31 21:03:25: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:25: ###B:.Models.internal.Admin.KeyWords###
+2026-08-31 21:03:25: T=DataTable
+2026-08-31 21:03:25: N=KeyWords
+2026-08-31 21:03:25: ROWS=0
+2026-08-31 21:03:25: COLS=0
+2026-08-31 21:03:25: ###DT:.Models.internal.Admin.KeyWords###
+2026-08-31 21:03:25: ###DTE:.Models.internal.Admin.KeyWords###
+2026-08-31 21:03:25: ###E:.Models.internal.Admin.KeyWords###
+
+=========== .Models.internal.SelDlg  [Dialog]  result=success ===========
+2026-08-31 21:03:25: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:25
+2026-08-31 21:03:25: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:25: ###B:.Models.internal.SelDlg###
+2026-08-31 21:03:25: T=Dialog
+2026-08-31 21:03:25: N=SelDlg
+2026-08-31 21:03:25: ###E:.Models.internal.SelDlg###
+
+=========== .Models.internal.autoexec  [Method]  result=success ===========
+2026-08-31 21:03:25: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:25
+2026-08-31 21:03:25: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:25: ###B:.Models.internal.autoexec###
+2026-08-31 21:03:25: T=Method
+2026-08-31 21:03:25: N=autoexec
+2026-08-31 21:03:25: ###P:.Models.internal.autoexec###
+2026-08-31 21:03:25: if licenseName = "EMPLANT_VIEW" 
+	-- The example models can not be managed with the Viewer License!
+	-- The model will be closed.
+	messagebox(to_str(Localization.getText(34),strChr(10),strChr(13),Localization.getText(35)), 1,13)
+	closeModel -- return
+else
+	var s1:string := modelFile
+	var Folder4Objects:string := strCopy(s1,1,StrRpos("\\",s1))
+	Admin.Folder4Objects  := Folder4Objects
+	var column4sort:integer 
+	switch userInterfaceLanguage
+	case 0
+		Admin.DropDownList.Value := 2
+		column4sort := 3 -- German
+	else
+		Admin.DropDownList.Value := 1
+		column4sort := 4 -- English
+	end
+	
+	SelDlg.label := Localization.getText(21) -- Beispielmodellsammlung, Examples Collection
+	animation(true)
+	comment.saveAsRichedit := true
+	
+	Admin.searchStr := ""
+	SelDlg.setCaption("SearchString_inp","")
+	
+	var GenTable:table := SelDlg.GeneralTable
+	var numObjects,numExamples:integer
+	for var cat := 1 to GenTable.ydim
+		var modTable:table := GenTable[1,cat]
+		modTable.sort(column4sort,"up")
+		for var TopicNo := 1 to modTable.Ydim
+			numObjects += 1
+			var FrameTab:table := modTable[1,TopicNo]
+			FrameTab.sort(column4sort,"up")
+			numExamples += FrameTab.Ydim
+		next
+	next
+	
+	SelDlg.open -- Eventcontroller.exampleStoppingTime > 0 =>> Eventcontroller.end := exampleStoppingTime
+	clearConsole
+	
+	return -- comment out this return statement to test the consistency and completeness of the collection
+	
+	print "Number objects: ",numObjects
+	print "Number frames: ",numExamples	
+	
+	var ObjFiles:list := getFilesOfFolder(to_str(Folder4Objects,"*.obj"))	
+	
+	
+	var gTab:table := SelDlg.GeneralTable
+	var fileName, FolderName:string
+	var n:integer
+	for var j := 1 to gTab.yDim 
+		var t:table := gTab[1,j]
+		for var k := 1 to t.yDim 
+			FolderName := to_str(".Models.",t[2,k],".")
+			fileName := to_str(t[2,k],".obj")
+			if existsFile(to_str(Folder4Objects,fileName)) 
+				.loadObjectAs(fileName ,"",true,false);
+			else
+				messageBox(to_str("The file ",fileName," is not in your installation."),1,1)
+			end
+
+			ObjFiles.cursor := 1
+			if ObjFiles.find({1}..{*},fileName) 
+				ObjFiles.cutRow(ObjFiles.cursor)									
+				n := n + 1
+			end
+
+			var ObjTab:table := t[1,k]
+			for var FrameNo := 1 to ObjTab.yDim
+				if NOT existsObject(to_str(FolderName,ObjTab[2,FrameNo]))
+					messageBox(to_str(fileName," does not in the frame ",ObjTab[2,FrameNo]),1,1)
+				end
+			next
+		next -- k
+	next -- j
+	print n," objects are managed by the Example Collection."
+		
+	if ObjFiles.dim>0 
+		s1 := ""
+		for var j := 1 to ObjFiles.dim 
+			if strLen(s1) > 2
+				s1 := to_str(s1,", ",ObjFiles[j])	
+			else
+				s1 := ObjFiles[j]
+			end
+		next
+		if strLpos(",", s1) > 0
+			messageBox(to_str(s1," are not managed by the Example Collection."),1,1)
+		else
+			messageBox(to_str(s1," is not managed by the Example Collection."),1,1)
+		end
+	end
+
+end -- else licenseName = "EMPLANT_VIEW"
+2026-08-31 21:03:26: ###PE:.Models.internal.autoexec###
+2026-08-31 21:03:26: ###E:.Models.internal.autoexec###
+
+=========== .Models.internal.Method  [Method]  result=success ===========
+2026-08-31 21:03:26: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:26
+2026-08-31 21:03:26: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:26: ###B:.Models.internal.Method###
+2026-08-31 21:03:26: T=Method
+2026-08-31 21:03:26: N=Method
+2026-08-31 21:03:26: ###P:.Models.internal.Method###
+2026-08-31 21:03:26: 
+2026-08-31 21:03:26: ###PE:.Models.internal.Method###
+2026-08-31 21:03:26: ###E:.Models.internal.Method###
+
+=========== .Models.internal.Variable  [Variable]  result=success ===========
+2026-08-31 21:03:26: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:26
+2026-08-31 21:03:26: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:26: ###B:.Models.internal.Variable###
+2026-08-31 21:03:26: T=Variable
+2026-08-31 21:03:26: N=Variable
+2026-08-31 21:03:26: V=0
+2026-08-31 21:03:26: ###E:.Models.internal.Variable###
+
+=========== .Models.internal.HtmlReport  [HtmlReport]  result=success ===========
+2026-08-31 21:03:27: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:27
+2026-08-31 21:03:27: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:27: ###B:.Models.internal.HtmlReport###
+2026-08-31 21:03:27: T=HtmlReport
+2026-08-31 21:03:27: N=HtmlReport
+2026-08-31 21:03:27: ###E:.Models.internal.HtmlReport###
+
+=========== .Models.internal.ReadMe  [Comment]  result=success ===========
+2026-08-31 21:03:27: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:27
+2026-08-31 21:03:27: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:27: ###B:.Models.internal.ReadMe###
+2026-08-31 21:03:27: T=Comment
+2026-08-31 21:03:27: N=ReadMe
+2026-08-31 21:03:27: ###CT:.Models.internal.ReadMe###
+2026-08-31 21:03:27: ReadMe
+2026-08-31 21:03:27: ###CTE:.Models.internal.ReadMe###
+2026-08-31 21:03:27: ###E:.Models.internal.ReadMe###
+
+=========== .Models.internal.LiesMich  [Comment]  result=success ===========
+2026-08-31 21:03:27: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:27
+2026-08-31 21:03:27: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:27: ###B:.Models.internal.LiesMich###
+2026-08-31 21:03:27: T=Comment
+2026-08-31 21:03:27: N=LiesMich
+2026-08-31 21:03:27: ###CT:.Models.internal.LiesMich###
+2026-08-31 21:03:27: LiesMich
+2026-08-31 21:03:27: ###CTE:.Models.internal.LiesMich###
+2026-08-31 21:03:27: ###E:.Models.internal.LiesMich###
+
+=========== .Models.internal.DropDownList  [DropDownList]  result=success ===========
+2026-08-31 21:03:27: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:27
+2026-08-31 21:03:27: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:27: ###B:.Models.internal.DropDownList###
+2026-08-31 21:03:27: T=DropDownList
+2026-08-31 21:03:27: N=DropDownList
+
+=========== .Models.internal.Comment  [Comment]  result=success ===========
+2026-08-31 21:03:27: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:27
+2026-08-31 21:03:27: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:27: ###B:.Models.internal.Comment###
+2026-08-31 21:03:27: T=Comment
+2026-08-31 21:03:27: N=Comment
+2026-08-31 21:03:27: ###CT:.Models.internal.Comment###
+2026-08-31 21:03:27: Text
+2026-08-31 21:03:27: ###CTE:.Models.internal.Comment###
+2026-08-31 21:03:27: ###E:.Models.internal.Comment###
+
+=========== .Models.internal.DataTable  [DataTable]  result=success ===========
+2026-08-31 21:03:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:28
+2026-08-31 21:03:28: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:28: ###B:.Models.internal.DataTable###
+2026-08-31 21:03:28: T=DataTable
+2026-08-31 21:03:28: N=DataTable
+2026-08-31 21:03:28: ROWS=0
+2026-08-31 21:03:28: COLS=0
+2026-08-31 21:03:28: ###DT:.Models.internal.DataTable###
+2026-08-31 21:03:28: ###DTE:.Models.internal.DataTable###
+2026-08-31 21:03:28: ###E:.Models.internal.DataTable###
+
+=========== .Models.SourceTrigger  [Folder]  result=success ===========
+2026-08-31 21:03:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:28
+2026-08-31 21:03:28: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:28: ###B:.Models.SourceTrigger###
+2026-08-31 21:03:28: T=Folder
+2026-08-31 21:03:28: N=SourceTrigger
+2026-08-31 21:03:28: ###E:.Models.SourceTrigger###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable  [Frame]  result=success ===========
+2026-08-31 21:03:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:28
+2026-08-31 21:03:28: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:28: ###B:.Models.SourceTrigger.SourceNumberAdjustable###
+2026-08-31 21:03:28: T=Frame
+2026-08-31 21:03:28: N=SourceNumberAdjustable
+2026-08-31 21:03:28: ###E:.Models.SourceTrigger.SourceNumberAdjustable###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Readme  [Comment]  result=success ===========
+2026-08-31 21:03:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:28
+2026-08-31 21:03:28: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:28: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Readme###
+2026-08-31 21:03:28: T=Comment
+2026-08-31 21:03:28: N=Readme
+2026-08-31 21:03:28: ###CT:.Models.SourceTrigger.SourceNumberAdjustable.Readme###
+2026-08-31 21:03:28: ReadMe
+2026-08-31 21:03:28: ###CTE:.Models.SourceTrigger.SourceNumberAdjustable.Readme###
+2026-08-31 21:03:28: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Readme###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Liesmich  [Comment]  result=success ===========
+2026-08-31 21:03:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:29
+2026-08-31 21:03:29: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:29: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Liesmich###
+2026-08-31 21:03:29: T=Comment
+2026-08-31 21:03:29: N=Liesmich
+2026-08-31 21:03:29: ###CT:.Models.SourceTrigger.SourceNumberAdjustable.Liesmich###
+2026-08-31 21:03:29: LiesMich
+2026-08-31 21:03:29: ###CTE:.Models.SourceTrigger.SourceNumberAdjustable.Liesmich###
+2026-08-31 21:03:29: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Liesmich###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.EventController  [EventController]  result=success ===========
+2026-08-31 21:03:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:29
+2026-08-31 21:03:29: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:29: ###B:.Models.SourceTrigger.SourceNumberAdjustable.EventController###
+2026-08-31 21:03:29: T=EventController
+2026-08-31 21:03:29: N=EventController
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.init  [Method]  result=success ===========
+2026-08-31 21:03:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:29
+2026-08-31 21:03:29: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:29: ###B:.Models.SourceTrigger.SourceNumberAdjustable.init###
+2026-08-31 21:03:29: T=Method
+2026-08-31 21:03:29: N=init
+2026-08-31 21:03:29: ###P:.Models.SourceTrigger.SourceNumberAdjustable.init###
+2026-08-31 21:03:29:    var assignedTriggers:object[2]
+
+  for var j := 1 to 2 
+     assignedTriggers[j] := to_str("Trigger",j) -- string to object conversion
+  next
+  Source.trigger := assignedTriggers
+2026-08-31 21:03:29: ###PE:.Models.SourceTrigger.SourceNumberAdjustable.init###
+2026-08-31 21:03:29: ###E:.Models.SourceTrigger.SourceNumberAdjustable.init###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Source  [Source]  result=success ===========
+2026-08-31 21:03:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:29
+2026-08-31 21:03:29: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:29: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Source###
+2026-08-31 21:03:29: T=Source
+2026-08-31 21:03:29: N=Source
+2026-08-31 21:03:29: I=1:00.0000
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Drain  [Drain]  result=success ===========
+2026-08-31 21:03:29: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:29
+2026-08-31 21:03:29: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:29: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Drain###
+2026-08-31 21:03:29: T=Drain
+2026-08-31 21:03:29: N=Drain
+2026-08-31 21:03:29: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Drain###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.endsim  [Method]  result=success ===========
+2026-08-31 21:03:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:30
+2026-08-31 21:03:30: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:30: ###B:.Models.SourceTrigger.SourceNumberAdjustable.endsim###
+2026-08-31 21:03:30: T=Method
+2026-08-31 21:03:30: N=endsim
+2026-08-31 21:03:30: ###P:.Models.SourceTrigger.SourceNumberAdjustable.endsim###
+2026-08-31 21:03:30: source.creationTable(GeneratedParts)
+source_AsBatch.creationTable(GeneratedParts_AsBatch)
+2026-08-31 21:03:30: ###PE:.Models.SourceTrigger.SourceNumberAdjustable.endsim###
+2026-08-31 21:03:30: ###E:.Models.SourceTrigger.SourceNumberAdjustable.endsim###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts  [DataTable]  result=success ===========
+2026-08-31 21:03:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:30
+2026-08-31 21:03:30: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:30: ###B:.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts###
+2026-08-31 21:03:30: T=DataTable
+2026-08-31 21:03:30: N=GeneratedParts
+2026-08-31 21:03:30: ROWS=0
+2026-08-31 21:03:30: COLS=0
+2026-08-31 21:03:30: ###DT:.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts###
+2026-08-31 21:03:30: ###DTE:.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts###
+2026-08-31 21:03:30: ###E:.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.MUselection  [DataTable]  result=success ===========
+2026-08-31 21:03:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:30
+2026-08-31 21:03:30: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:30: ###B:.Models.SourceTrigger.SourceNumberAdjustable.MUselection###
+2026-08-31 21:03:30: T=DataTable
+2026-08-31 21:03:30: N=MUselection
+2026-08-31 21:03:30: ROWS=3
+2026-08-31 21:03:30: COLS=3
+2026-08-31 21:03:30: ###DT:.Models.SourceTrigger.SourceNumberAdjustable.MUselection###
+2026-08-31 21:03:30: |.Models.SourceTrigger.A|.Models.SourceTrigger.B|.Models.SourceTrigger.C
+2026-08-31 21:03:30: |1|2|3
+2026-08-31 21:03:30: |A|B|C
+2026-08-31 21:03:30: ###DTE:.Models.SourceTrigger.SourceNumberAdjustable.MUselection###
+2026-08-31 21:03:30: ###E:.Models.SourceTrigger.SourceNumberAdjustable.MUselection###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch  [Source]  result=success ===========
+2026-08-31 21:03:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:30
+2026-08-31 21:03:30: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:30: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch###
+2026-08-31 21:03:30: T=Source
+2026-08-31 21:03:30: N=Source_AsBatch
+2026-08-31 21:03:30: I=1:00.0000
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Drain1  [Drain]  result=success ===========
+2026-08-31 21:03:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:30
+2026-08-31 21:03:30: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:30: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Drain1###
+2026-08-31 21:03:30: T=Drain
+2026-08-31 21:03:30: N=Drain1
+2026-08-31 21:03:30: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Drain1###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts_AsBatch  [DataTable]  result=success ===========
+2026-08-31 21:03:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:31
+2026-08-31 21:03:31: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:31: ###B:.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts_AsBatch###
+2026-08-31 21:03:31: T=DataTable
+2026-08-31 21:03:31: N=GeneratedParts_AsBatch
+2026-08-31 21:03:31: ROWS=0
+2026-08-31 21:03:31: COLS=0
+2026-08-31 21:03:31: ###DT:.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts_AsBatch###
+2026-08-31 21:03:31: ###DTE:.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts_AsBatch###
+2026-08-31 21:03:31: ###E:.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts_AsBatch###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Line  [Conveyor]  result=success ===========
+2026-08-31 21:03:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:31
+2026-08-31 21:03:31: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:31: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Line###
+2026-08-31 21:03:31: T=Conveyor
+2026-08-31 21:03:31: N=Line
+2026-08-31 21:03:31: L=20
+2026-08-31 21:03:31: W=1
+2026-08-31 21:03:31: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Line###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Line1  [Conveyor]  result=success ===========
+2026-08-31 21:03:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:31
+2026-08-31 21:03:31: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:31: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Line1###
+2026-08-31 21:03:31: T=Conveyor
+2026-08-31 21:03:31: N=Line1
+2026-08-31 21:03:31: L=20
+2026-08-31 21:03:31: W=1
+2026-08-31 21:03:31: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Line1###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Connector  [Connector]  result=success ===========
+2026-08-31 21:03:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:31
+2026-08-31 21:03:31: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:31: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Connector###
+2026-08-31 21:03:31: T=Connector
+2026-08-31 21:03:31: N=Connector
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Connector1  [Connector]  result=success ===========
+2026-08-31 21:03:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:32
+2026-08-31 21:03:32: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:32: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Connector1###
+2026-08-31 21:03:32: T=Connector
+2026-08-31 21:03:32: N=Connector1
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Connector2  [Connector]  result=success ===========
+2026-08-31 21:03:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:32
+2026-08-31 21:03:32: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:32: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Connector2###
+2026-08-31 21:03:32: T=Connector
+2026-08-31 21:03:32: N=Connector2
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Connector3  [Connector]  result=success ===========
+2026-08-31 21:03:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:32
+2026-08-31 21:03:32: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:32: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Connector3###
+2026-08-31 21:03:32: T=Connector
+2026-08-31 21:03:32: N=Connector3
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable  [Frame]  result=success ===========
+2026-08-31 21:03:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:32
+2026-08-31 21:03:32: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:32: ###B:.Models.SourceTrigger.SourceIntervalAdjustable###
+2026-08-31 21:03:32: T=Frame
+2026-08-31 21:03:32: N=SourceIntervalAdjustable
+2026-08-31 21:03:32: ###E:.Models.SourceTrigger.SourceIntervalAdjustable###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Readme  [Comment]  result=success ===========
+2026-08-31 21:03:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:32
+2026-08-31 21:03:32: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:32: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Readme###
+2026-08-31 21:03:32: T=Comment
+2026-08-31 21:03:32: N=Readme
+2026-08-31 21:03:32: ###CT:.Models.SourceTrigger.SourceIntervalAdjustable.Readme###
+2026-08-31 21:03:32: ReadMe
+2026-08-31 21:03:32: ###CTE:.Models.SourceTrigger.SourceIntervalAdjustable.Readme###
+2026-08-31 21:03:32: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Readme###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Liesmich  [Comment]  result=success ===========
+2026-08-31 21:03:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:33
+2026-08-31 21:03:33: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:33: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Liesmich###
+2026-08-31 21:03:33: T=Comment
+2026-08-31 21:03:33: N=Liesmich
+2026-08-31 21:03:33: ###CT:.Models.SourceTrigger.SourceIntervalAdjustable.Liesmich###
+2026-08-31 21:03:33: LiesMich
+2026-08-31 21:03:33: ###CTE:.Models.SourceTrigger.SourceIntervalAdjustable.Liesmich###
+2026-08-31 21:03:33: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Liesmich###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.EventController  [EventController]  result=success ===========
+2026-08-31 21:03:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:33
+2026-08-31 21:03:33: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:33: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.EventController###
+2026-08-31 21:03:33: T=EventController
+2026-08-31 21:03:33: N=EventController
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Source  [Source]  result=success ===========
+2026-08-31 21:03:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:33
+2026-08-31 21:03:33: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:33: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Source###
+2026-08-31 21:03:33: T=Source
+2026-08-31 21:03:33: N=Source
+2026-08-31 21:03:33: I=10:00.0000
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Drain  [Drain]  result=success ===========
+2026-08-31 21:03:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:33
+2026-08-31 21:03:33: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:33: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Drain###
+2026-08-31 21:03:33: T=Drain
+2026-08-31 21:03:33: N=Drain
+2026-08-31 21:03:33: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Drain###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.endsim  [Method]  result=success ===========
+2026-08-31 21:03:33: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:33
+2026-08-31 21:03:33: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:33: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.endsim###
+2026-08-31 21:03:33: T=Method
+2026-08-31 21:03:33: N=endsim
+2026-08-31 21:03:33: ###P:.Models.SourceTrigger.SourceIntervalAdjustable.endsim###
+2026-08-31 21:03:33: Source.creationTable(GeneratedParts_noBatch)
+Source_Batches.creationTable(GeneratedParts_Batches)
+Source_Stop.creationTable(GeneratedParts_Stop)
+2026-08-31 21:03:33: ###PE:.Models.SourceTrigger.SourceIntervalAdjustable.endsim###
+2026-08-31 21:03:33: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.endsim###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_noBatch  [DataTable]  result=success ===========
+2026-08-31 21:03:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:34
+2026-08-31 21:03:34: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:34: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_noBatch###
+2026-08-31 21:03:34: T=DataTable
+2026-08-31 21:03:34: N=GeneratedParts_noBatch
+2026-08-31 21:03:34: ROWS=0
+2026-08-31 21:03:34: COLS=0
+2026-08-31 21:03:34: ###DT:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_noBatch###
+2026-08-31 21:03:34: ###DTE:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_noBatch###
+2026-08-31 21:03:34: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_noBatch###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.MUselection  [DataTable]  result=success ===========
+2026-08-31 21:03:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:34
+2026-08-31 21:03:34: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:34: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.MUselection###
+2026-08-31 21:03:34: T=DataTable
+2026-08-31 21:03:34: N=MUselection
+2026-08-31 21:03:34: ROWS=2
+2026-08-31 21:03:34: COLS=3
+2026-08-31 21:03:34: ###DT:.Models.SourceTrigger.SourceIntervalAdjustable.MUselection###
+2026-08-31 21:03:34: |.Models.SourceTrigger.A|.Models.SourceTrigger.B|VOID
+2026-08-31 21:03:34: |1|3|0
+2026-08-31 21:03:34: ###DTE:.Models.SourceTrigger.SourceIntervalAdjustable.MUselection###
+2026-08-31 21:03:34: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.MUselection###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches  [Source]  result=success ===========
+2026-08-31 21:03:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:34
+2026-08-31 21:03:34: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:34: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches###
+2026-08-31 21:03:34: T=Source
+2026-08-31 21:03:34: N=Source_Batches
+2026-08-31 21:03:34: I=10:00.0000
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Drain1  [Drain]  result=success ===========
+2026-08-31 21:03:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:34
+2026-08-31 21:03:34: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:34: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Drain1###
+2026-08-31 21:03:34: T=Drain
+2026-08-31 21:03:34: N=Drain1
+2026-08-31 21:03:34: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Drain1###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Batches  [DataTable]  result=success ===========
+2026-08-31 21:03:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:35
+2026-08-31 21:03:35: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:35: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Batches###
+2026-08-31 21:03:35: T=DataTable
+2026-08-31 21:03:35: N=GeneratedParts_Batches
+2026-08-31 21:03:35: ROWS=0
+2026-08-31 21:03:35: COLS=0
+2026-08-31 21:03:35: ###DT:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Batches###
+2026-08-31 21:03:35: ###DTE:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Batches###
+2026-08-31 21:03:35: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Batches###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop  [Source]  result=success ===========
+2026-08-31 21:03:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:35
+2026-08-31 21:03:35: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:35: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop###
+2026-08-31 21:03:35: T=Source
+2026-08-31 21:03:35: N=Source_Stop
+2026-08-31 21:03:35: I=10:00.0000
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Drain2  [Drain]  result=success ===========
+2026-08-31 21:03:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:35
+2026-08-31 21:03:35: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:35: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Drain2###
+2026-08-31 21:03:35: T=Drain
+2026-08-31 21:03:35: N=Drain2
+2026-08-31 21:03:35: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Drain2###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Stop  [DataTable]  result=success ===========
+2026-08-31 21:03:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:35
+2026-08-31 21:03:35: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:35: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Stop###
+2026-08-31 21:03:35: T=DataTable
+2026-08-31 21:03:35: N=GeneratedParts_Stop
+2026-08-31 21:03:35: ROWS=0
+2026-08-31 21:03:35: COLS=0
+2026-08-31 21:03:35: ###DT:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Stop###
+2026-08-31 21:03:35: ###DTE:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Stop###
+2026-08-31 21:03:35: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Stop###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Line  [Conveyor]  result=success ===========
+2026-08-31 21:03:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:35
+2026-08-31 21:03:35: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:35: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Line###
+2026-08-31 21:03:35: T=Conveyor
+2026-08-31 21:03:35: N=Line
+2026-08-31 21:03:35: L=20
+2026-08-31 21:03:35: W=1
+2026-08-31 21:03:35: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Line###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Line1  [Conveyor]  result=success ===========
+2026-08-31 21:03:36: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:36
+2026-08-31 21:03:36: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:36: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Line1###
+2026-08-31 21:03:36: T=Conveyor
+2026-08-31 21:03:36: N=Line1
+2026-08-31 21:03:36: L=20
+2026-08-31 21:03:36: W=1
+2026-08-31 21:03:36: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Line1###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Line2  [Conveyor]  result=success ===========
+2026-08-31 21:03:36: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:36
+2026-08-31 21:03:36: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:36: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Line2###
+2026-08-31 21:03:36: T=Conveyor
+2026-08-31 21:03:36: N=Line2
+2026-08-31 21:03:36: L=20
+2026-08-31 21:03:36: W=1
+2026-08-31 21:03:36: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Line2###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector  [Connector]  result=success ===========
+2026-08-31 21:03:36: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:36
+2026-08-31 21:03:36: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:36: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector###
+2026-08-31 21:03:36: T=Connector
+2026-08-31 21:03:36: N=Connector
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector1  [Connector]  result=success ===========
+2026-08-31 21:03:36: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:36
+2026-08-31 21:03:36: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:36: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector1###
+2026-08-31 21:03:36: T=Connector
+2026-08-31 21:03:36: N=Connector1
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector2  [Connector]  result=success ===========
+2026-08-31 21:03:37: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:37
+2026-08-31 21:03:37: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:37: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector2###
+2026-08-31 21:03:37: T=Connector
+2026-08-31 21:03:37: N=Connector2
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector3  [Connector]  result=success ===========
+2026-08-31 21:03:37: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:37
+2026-08-31 21:03:37: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:37: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector3###
+2026-08-31 21:03:37: T=Connector
+2026-08-31 21:03:37: N=Connector3
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector4  [Connector]  result=success ===========
+2026-08-31 21:03:37: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:37
+2026-08-31 21:03:37: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:37: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector4###
+2026-08-31 21:03:37: T=Connector
+2026-08-31 21:03:37: N=Connector4
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector5  [Connector]  result=success ===========
+2026-08-31 21:03:37: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:37
+2026-08-31 21:03:37: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:37: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector5###
+2026-08-31 21:03:37: T=Connector
+2026-08-31 21:03:37: N=Connector5
+
+=========== .Models.SourceTrigger.SourceRandom  [Frame]  result=success ===========
+2026-08-31 21:03:37: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:37
+2026-08-31 21:03:37: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:37: ###B:.Models.SourceTrigger.SourceRandom###
+2026-08-31 21:03:37: T=Frame
+2026-08-31 21:03:37: N=SourceRandom
+2026-08-31 21:03:37: ###E:.Models.SourceTrigger.SourceRandom###
+
+=========== .Models.SourceTrigger.SourceRandom.Source  [Source]  result=success ===========
+2026-08-31 21:03:38: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:38
+2026-08-31 21:03:38: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:38: ###B:.Models.SourceTrigger.SourceRandom.Source###
+2026-08-31 21:03:38: T=Source
+2026-08-31 21:03:38: N=Source
+2026-08-31 21:03:38: I=1:00.0000
+
+=========== .Models.SourceTrigger.SourceRandom.Line  [Conveyor]  result=success ===========
+2026-08-31 21:03:38: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:38
+2026-08-31 21:03:38: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:38: ###B:.Models.SourceTrigger.SourceRandom.Line###
+2026-08-31 21:03:38: T=Conveyor
+2026-08-31 21:03:38: N=Line
+2026-08-31 21:03:38: L=20
+2026-08-31 21:03:38: W=1
+2026-08-31 21:03:38: ###E:.Models.SourceTrigger.SourceRandom.Line###
+
+=========== .Models.SourceTrigger.SourceRandom.Readme  [Comment]  result=success ===========
+2026-08-31 21:03:38: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:38
+2026-08-31 21:03:38: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:38: ###B:.Models.SourceTrigger.SourceRandom.Readme###
+2026-08-31 21:03:38: T=Comment
+2026-08-31 21:03:38: N=Readme
+2026-08-31 21:03:38: ###CT:.Models.SourceTrigger.SourceRandom.Readme###
+2026-08-31 21:03:38: ReadMe
+2026-08-31 21:03:38: ###CTE:.Models.SourceTrigger.SourceRandom.Readme###
+2026-08-31 21:03:38: ###E:.Models.SourceTrigger.SourceRandom.Readme###
+
+=========== .Models.SourceTrigger.SourceRandom.Liesmich  [Comment]  result=success ===========
+2026-08-31 21:03:38: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:38
+2026-08-31 21:03:38: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:38: ###B:.Models.SourceTrigger.SourceRandom.Liesmich###
+2026-08-31 21:03:38: T=Comment
+2026-08-31 21:03:38: N=Liesmich
+2026-08-31 21:03:38: ###CT:.Models.SourceTrigger.SourceRandom.Liesmich###
+2026-08-31 21:03:38: LiesMich
+2026-08-31 21:03:38: ###CTE:.Models.SourceTrigger.SourceRandom.Liesmich###
+2026-08-31 21:03:38: ###E:.Models.SourceTrigger.SourceRandom.Liesmich###
+
+=========== .Models.SourceTrigger.SourceRandom.Drain  [Drain]  result=success ===========
+2026-08-31 21:03:38: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:38
+2026-08-31 21:03:38: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:38: ###B:.Models.SourceTrigger.SourceRandom.Drain###
+2026-08-31 21:03:38: T=Drain
+2026-08-31 21:03:38: N=Drain
+2026-08-31 21:03:38: ###E:.Models.SourceTrigger.SourceRandom.Drain###
+
+=========== .Models.SourceTrigger.SourceRandom.Frequencies  [DataTable]  result=success ===========
+2026-08-31 21:03:39: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:39
+2026-08-31 21:03:39: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:39: ###B:.Models.SourceTrigger.SourceRandom.Frequencies###
+2026-08-31 21:03:39: T=DataTable
+2026-08-31 21:03:39: N=Frequencies
+2026-08-31 21:03:39: ROWS=2
+2026-08-31 21:03:39: COLS=3
+2026-08-31 21:03:39: ###DT:.Models.SourceTrigger.SourceRandom.Frequencies###
+2026-08-31 21:03:39: |.Models.SourceTrigger.A|.Models.SourceTrigger.B|VOID
+2026-08-31 21:03:39: |40|60|0
+2026-08-31 21:03:39: ###DTE:.Models.SourceTrigger.SourceRandom.Frequencies###
+2026-08-31 21:03:39: ###E:.Models.SourceTrigger.SourceRandom.Frequencies###
+
+=========== .Models.SourceTrigger.SourceRandom.endsim  [Method]  result=success ===========
+2026-08-31 21:03:39: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:39
+2026-08-31 21:03:39: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:39: ###B:.Models.SourceTrigger.SourceRandom.endsim###
+2026-08-31 21:03:39: T=Method
+2026-08-31 21:03:39: N=endsim
+2026-08-31 21:03:39: ###P:.Models.SourceTrigger.SourceRandom.endsim###
+2026-08-31 21:03:39: source.creationTable(GeneratedParts)
+2026-08-31 21:03:39: ###PE:.Models.SourceTrigger.SourceRandom.endsim###
+2026-08-31 21:03:39: ###E:.Models.SourceTrigger.SourceRandom.endsim###
+
+=========== .Models.SourceTrigger.SourceRandom.GeneratedParts  [DataTable]  result=success ===========
+2026-08-31 21:03:39: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:39
+2026-08-31 21:03:39: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:39: ###B:.Models.SourceTrigger.SourceRandom.GeneratedParts###
+2026-08-31 21:03:39: T=DataTable
+2026-08-31 21:03:39: N=GeneratedParts
+2026-08-31 21:03:39: ROWS=0
+2026-08-31 21:03:39: COLS=0
+2026-08-31 21:03:39: ###DT:.Models.SourceTrigger.SourceRandom.GeneratedParts###
+2026-08-31 21:03:39: ###DTE:.Models.SourceTrigger.SourceRandom.GeneratedParts###
+2026-08-31 21:03:39: ###E:.Models.SourceTrigger.SourceRandom.GeneratedParts###
+
+=========== .Models.SourceTrigger.SourceRandom.EventController  [EventController]  result=success ===========
+2026-08-31 21:03:39: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:39
+2026-08-31 21:03:39: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:39: ###B:.Models.SourceTrigger.SourceRandom.EventController###
+2026-08-31 21:03:39: T=EventController
+2026-08-31 21:03:39: N=EventController
+
+=========== .Models.SourceTrigger.SourceRandom.Kante7  [Connector]  result=success ===========
+2026-08-31 21:03:40: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:40
+2026-08-31 21:03:40: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:40: ###B:.Models.SourceTrigger.SourceRandom.Kante7###
+2026-08-31 21:03:40: T=Connector
+2026-08-31 21:03:40: N=Kante7
+
+=========== .Models.SourceTrigger.SourceRandom.Connector  [Connector]  result=success ===========
+2026-08-31 21:03:40: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:40
+2026-08-31 21:03:40: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:40: ###B:.Models.SourceTrigger.SourceRandom.Connector###
+2026-08-31 21:03:40: T=Connector
+2026-08-31 21:03:40: N=Connector
+
+=========== .Models.SourceTrigger.SourcePercentage  [Frame]  result=success ===========
+2026-08-31 21:03:40: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:40
+2026-08-31 21:03:40: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:40: ###B:.Models.SourceTrigger.SourcePercentage###
+2026-08-31 21:03:40: T=Frame
+2026-08-31 21:03:40: N=SourcePercentage
+2026-08-31 21:03:40: ###E:.Models.SourceTrigger.SourcePercentage###
+
+=========== .Models.SourceTrigger.SourcePercentage.Source  [Source]  result=success ===========
+2026-08-31 21:03:40: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:40
+2026-08-31 21:03:40: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:40: ###B:.Models.SourceTrigger.SourcePercentage.Source###
+2026-08-31 21:03:40: T=Source
+2026-08-31 21:03:40: N=Source
+2026-08-31 21:03:40: I=1:00.0000
+
+=========== .Models.SourceTrigger.SourcePercentage.Line  [Conveyor]  result=success ===========
+2026-08-31 21:03:40: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:40
+2026-08-31 21:03:40: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:40: ###B:.Models.SourceTrigger.SourcePercentage.Line###
+2026-08-31 21:03:40: T=Conveyor
+2026-08-31 21:03:40: N=Line
+2026-08-31 21:03:40: L=25.6
+2026-08-31 21:03:40: W=1
+2026-08-31 21:03:40: ###E:.Models.SourceTrigger.SourcePercentage.Line###
+
+=========== .Models.SourceTrigger.SourcePercentage.Readme  [Comment]  result=success ===========
+2026-08-31 21:03:41: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:41
+2026-08-31 21:03:41: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:41: ###B:.Models.SourceTrigger.SourcePercentage.Readme###
+2026-08-31 21:03:41: T=Comment
+2026-08-31 21:03:41: N=Readme
+2026-08-31 21:03:41: ###CT:.Models.SourceTrigger.SourcePercentage.Readme###
+2026-08-31 21:03:41: ReadMe
+2026-08-31 21:03:41: ###CTE:.Models.SourceTrigger.SourcePercentage.Readme###
+2026-08-31 21:03:41: ###E:.Models.SourceTrigger.SourcePercentage.Readme###
+
+=========== .Models.SourceTrigger.SourcePercentage.Liesmich  [Comment]  result=success ===========
+2026-08-31 21:03:41: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:41
+2026-08-31 21:03:41: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:41: ###B:.Models.SourceTrigger.SourcePercentage.Liesmich###
+2026-08-31 21:03:41: T=Comment
+2026-08-31 21:03:41: N=Liesmich
+2026-08-31 21:03:41: ###CT:.Models.SourceTrigger.SourcePercentage.Liesmich###
+2026-08-31 21:03:41: LiesMich
+2026-08-31 21:03:41: ###CTE:.Models.SourceTrigger.SourcePercentage.Liesmich###
+2026-08-31 21:03:41: ###E:.Models.SourceTrigger.SourcePercentage.Liesmich###
+
+=========== .Models.SourceTrigger.SourcePercentage.Drain  [Drain]  result=success ===========
+2026-08-31 21:03:41: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:41
+2026-08-31 21:03:41: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:41: ###B:.Models.SourceTrigger.SourcePercentage.Drain###
+2026-08-31 21:03:41: T=Drain
+2026-08-31 21:03:41: N=Drain
+2026-08-31 21:03:41: ###E:.Models.SourceTrigger.SourcePercentage.Drain###
+
+=========== .Models.SourceTrigger.SourcePercentage.Frequencies  [DataTable]  result=success ===========
+2026-08-31 21:03:41: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:41
+2026-08-31 21:03:41: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:41: ###B:.Models.SourceTrigger.SourcePercentage.Frequencies###
+2026-08-31 21:03:41: T=DataTable
+2026-08-31 21:03:41: N=Frequencies
+2026-08-31 21:03:41: ROWS=2
+2026-08-31 21:03:41: COLS=3
+2026-08-31 21:03:41: ###DT:.Models.SourceTrigger.SourcePercentage.Frequencies###
+2026-08-31 21:03:41: |.Models.SourceTrigger.A|.Models.SourceTrigger.B|VOID
+2026-08-31 21:03:41: |40|60|0
+2026-08-31 21:03:41: ###DTE:.Models.SourceTrigger.SourcePercentage.Frequencies###
+2026-08-31 21:03:41: ###E:.Models.SourceTrigger.SourcePercentage.Frequencies###
+
+=========== .Models.SourceTrigger.SourcePercentage.endsim  [Method]  result=success ===========
+2026-08-31 21:03:41: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:41
+2026-08-31 21:03:41: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:41: ###B:.Models.SourceTrigger.SourcePercentage.endsim###
+2026-08-31 21:03:41: T=Method
+2026-08-31 21:03:41: N=endsim
+2026-08-31 21:03:41: ###P:.Models.SourceTrigger.SourcePercentage.endsim###
+2026-08-31 21:03:41: source.creationTable(GeneratedParts)
+2026-08-31 21:03:41: ###PE:.Models.SourceTrigger.SourcePercentage.endsim###
+2026-08-31 21:03:41: ###E:.Models.SourceTrigger.SourcePercentage.endsim###
+
+=========== .Models.SourceTrigger.SourcePercentage.GeneratedParts  [DataTable]  result=success ===========
+2026-08-31 21:03:42: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:42
+2026-08-31 21:03:42: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:42: ###B:.Models.SourceTrigger.SourcePercentage.GeneratedParts###
+2026-08-31 21:03:42: T=DataTable
+2026-08-31 21:03:42: N=GeneratedParts
+2026-08-31 21:03:42: ROWS=0
+2026-08-31 21:03:42: COLS=0
+2026-08-31 21:03:42: ###DT:.Models.SourceTrigger.SourcePercentage.GeneratedParts###
+2026-08-31 21:03:42: ###DTE:.Models.SourceTrigger.SourcePercentage.GeneratedParts###
+2026-08-31 21:03:42: ###E:.Models.SourceTrigger.SourcePercentage.GeneratedParts###
+
+=========== .Models.SourceTrigger.SourcePercentage.EventController  [EventController]  result=success ===========
+2026-08-31 21:03:42: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:42
+2026-08-31 21:03:42: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:42: ###B:.Models.SourceTrigger.SourcePercentage.EventController###
+2026-08-31 21:03:42: T=EventController
+2026-08-31 21:03:42: N=EventController
+
+=========== .Models.SourceTrigger.SourcePercentage.Kante7  [Connector]  result=success ===========
+2026-08-31 21:03:42: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:42
+2026-08-31 21:03:42: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:42: ###B:.Models.SourceTrigger.SourcePercentage.Kante7###
+2026-08-31 21:03:42: T=Connector
+2026-08-31 21:03:42: N=Kante7
+
+=========== .Models.SourceTrigger.SourcePercentage.Connector  [Connector]  result=success ===========
+2026-08-31 21:03:42: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:42
+2026-08-31 21:03:42: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:42: ###B:.Models.SourceTrigger.SourcePercentage.Connector###
+2026-08-31 21:03:42: T=Connector
+2026-08-31 21:03:42: N=Connector
+
+=========== .Models.SourceTrigger.SourceTrigger  [Frame]  result=success ===========
+2026-08-31 21:03:43: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:43
+2026-08-31 21:03:43: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:43: ###B:.Models.SourceTrigger.SourceTrigger###
+2026-08-31 21:03:43: T=Frame
+2026-08-31 21:03:43: N=SourceTrigger
+2026-08-31 21:03:43: ###E:.Models.SourceTrigger.SourceTrigger###
+
+=========== .Models.SourceTrigger.SourceTrigger.Source  [Source]  result=success ===========
+2026-08-31 21:03:43: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:43
+2026-08-31 21:03:43: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:43: ###B:.Models.SourceTrigger.SourceTrigger.Source###
+2026-08-31 21:03:43: T=Source
+2026-08-31 21:03:43: N=Source
+2026-08-31 21:03:43: I=0.0000
+
+=========== .Models.SourceTrigger.SourceTrigger.Line  [Conveyor]  result=success ===========
+2026-08-31 21:03:43: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:43
+2026-08-31 21:03:43: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:43: ###B:.Models.SourceTrigger.SourceTrigger.Line###
+2026-08-31 21:03:43: T=Conveyor
+2026-08-31 21:03:43: N=Line
+2026-08-31 21:03:43: L=25.6
+2026-08-31 21:03:43: W=1
+2026-08-31 21:03:43: ###E:.Models.SourceTrigger.SourceTrigger.Line###
+
+=========== .Models.SourceTrigger.SourceTrigger.Readme  [Comment]  result=success ===========
+2026-08-31 21:03:43: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:43
+2026-08-31 21:03:43: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:43: ###B:.Models.SourceTrigger.SourceTrigger.Readme###
+2026-08-31 21:03:43: T=Comment
+2026-08-31 21:03:43: N=Readme
+2026-08-31 21:03:43: ###CT:.Models.SourceTrigger.SourceTrigger.Readme###
+2026-08-31 21:03:43: ReadMe
+2026-08-31 21:03:43: ###CTE:.Models.SourceTrigger.SourceTrigger.Readme###
+2026-08-31 21:03:43: ###E:.Models.SourceTrigger.SourceTrigger.Readme###
+
+=========== .Models.SourceTrigger.SourceTrigger.Liesmich  [Comment]  result=success ===========
+2026-08-31 21:03:43: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:43
+2026-08-31 21:03:44: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:44: ###B:.Models.SourceTrigger.SourceTrigger.Liesmich###
+2026-08-31 21:03:44: T=Comment
+2026-08-31 21:03:44: N=Liesmich
+2026-08-31 21:03:44: ###CT:.Models.SourceTrigger.SourceTrigger.Liesmich###
+2026-08-31 21:03:44: LiesMich
+2026-08-31 21:03:44: ###CTE:.Models.SourceTrigger.SourceTrigger.Liesmich###
+2026-08-31 21:03:44: ###E:.Models.SourceTrigger.SourceTrigger.Liesmich###
+
+=========== .Models.SourceTrigger.SourceTrigger.Trigger2  [Trigger]  result=success ===========
+2026-08-31 21:03:44: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:44
+2026-08-31 21:03:44: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:44: ###B:.Models.SourceTrigger.SourceTrigger.Trigger2###
+2026-08-31 21:03:44: T=Trigger
+2026-08-31 21:03:44: N=Trigger2
+2026-08-31 21:03:44: ###E:.Models.SourceTrigger.SourceTrigger.Trigger2###
+
+=========== .Models.SourceTrigger.SourceTrigger.Trigger1  [Trigger]  result=success ===========
+2026-08-31 21:03:44: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:44
+2026-08-31 21:03:44: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:44: ###B:.Models.SourceTrigger.SourceTrigger.Trigger1###
+2026-08-31 21:03:44: T=Trigger
+2026-08-31 21:03:44: N=Trigger1
+2026-08-31 21:03:44: ###E:.Models.SourceTrigger.SourceTrigger.Trigger1###
+
+=========== .Models.SourceTrigger.SourceTrigger.Drain  [Drain]  result=success ===========
+2026-08-31 21:03:44: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:44
+2026-08-31 21:03:44: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:44: ###B:.Models.SourceTrigger.SourceTrigger.Drain###
+2026-08-31 21:03:44: T=Drain
+2026-08-31 21:03:44: N=Drain
+2026-08-31 21:03:44: ###E:.Models.SourceTrigger.SourceTrigger.Drain###
+
+=========== .Models.SourceTrigger.SourceTrigger.init  [Method]  result=success ===========
+2026-08-31 21:03:44: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:44
+2026-08-31 21:03:44: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:44: ###B:.Models.SourceTrigger.SourceTrigger.init###
+2026-08-31 21:03:44: T=Method
+2026-08-31 21:03:44: N=init
+2026-08-31 21:03:44: ###P:.Models.SourceTrigger.SourceTrigger.init###
+2026-08-31 21:03:44: var assignedTriggers:object[2]
+
+for var j := 1 to 2 
+	assignedTriggers[j] := to_str("Trigger",j) -- string to object conversion
+next
+Source.trigger := assignedTriggers
+2026-08-31 21:03:44: ###PE:.Models.SourceTrigger.SourceTrigger.init###
+2026-08-31 21:03:44: ###E:.Models.SourceTrigger.SourceTrigger.init###
+
+=========== .Models.SourceTrigger.SourceTrigger.endsim  [Method]  result=success ===========
+2026-08-31 21:03:45: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:45
+2026-08-31 21:03:45: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:45: ###B:.Models.SourceTrigger.SourceTrigger.endsim###
+2026-08-31 21:03:45: T=Method
+2026-08-31 21:03:45: N=endsim
+2026-08-31 21:03:45: ###P:.Models.SourceTrigger.SourceTrigger.endsim###
+2026-08-31 21:03:45: source.creationTable(GeneratedParts)
+2026-08-31 21:03:45: ###PE:.Models.SourceTrigger.SourceTrigger.endsim###
+2026-08-31 21:03:45: ###E:.Models.SourceTrigger.SourceTrigger.endsim###
+
+=========== .Models.SourceTrigger.SourceTrigger.GeneratedParts  [DataTable]  result=success ===========
+2026-08-31 21:03:45: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:45
+2026-08-31 21:03:45: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:45: ###B:.Models.SourceTrigger.SourceTrigger.GeneratedParts###
+2026-08-31 21:03:45: T=DataTable
+2026-08-31 21:03:45: N=GeneratedParts
+2026-08-31 21:03:45: ROWS=0
+2026-08-31 21:03:45: COLS=0
+2026-08-31 21:03:45: ###DT:.Models.SourceTrigger.SourceTrigger.GeneratedParts###
+2026-08-31 21:03:45: ###DTE:.Models.SourceTrigger.SourceTrigger.GeneratedParts###
+2026-08-31 21:03:45: ###E:.Models.SourceTrigger.SourceTrigger.GeneratedParts###
+
+=========== .Models.SourceTrigger.SourceTrigger.EventController  [EventController]  result=success ===========
+2026-08-31 21:03:45: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:45
+2026-08-31 21:03:45: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:45: ###B:.Models.SourceTrigger.SourceTrigger.EventController###
+2026-08-31 21:03:45: T=EventController
+2026-08-31 21:03:45: N=EventController
+
+=========== .Models.SourceTrigger.SourceTrigger.Kante7  [Connector]  result=success ===========
+2026-08-31 21:03:45: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:45
+2026-08-31 21:03:45: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:45: ###B:.Models.SourceTrigger.SourceTrigger.Kante7###
+2026-08-31 21:03:45: T=Connector
+2026-08-31 21:03:45: N=Kante7
+
+=========== .Models.SourceTrigger.SourceTrigger.Connector  [Connector]  result=success ===========
+2026-08-31 21:03:45: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:45
+2026-08-31 21:03:45: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:45: ###B:.Models.SourceTrigger.SourceTrigger.Connector###
+2026-08-31 21:03:45: T=Connector
+2026-08-31 21:03:45: N=Connector
+
+=========== .Models.SourceTrigger.A  [Part]  result=success ===========
+2026-08-31 21:03:46: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:46
+2026-08-31 21:03:46: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:46: ###B:.Models.SourceTrigger.A###
+2026-08-31 21:03:46: T=Part
+2026-08-31 21:03:46: N=A
+
+=========== .Models.SourceTrigger.B  [Part]  result=success ===========
+2026-08-31 21:03:46: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:46
+2026-08-31 21:03:46: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:46: ###B:.Models.SourceTrigger.B###
+2026-08-31 21:03:46: T=Part
+2026-08-31 21:03:46: N=B
+
+=========== .Models.SourceTrigger.C  [Part]  result=success ===========
+2026-08-31 21:03:46: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:46
+2026-08-31 21:03:46: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:46: ###B:.Models.SourceTrigger.C###
+2026-08-31 21:03:46: T=Part
+2026-08-31 21:03:46: N=C
+
+=========== .Models.Animation3D  [Folder]  result=success ===========
+2026-08-31 21:03:46: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:46
+2026-08-31 21:03:46: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:46: ###B:.Models.Animation3D###
+2026-08-31 21:03:46: T=Folder
+2026-08-31 21:03:46: N=Animation3D
+2026-08-31 21:03:46: ###E:.Models.Animation3D###
+
+=========== .Models.Animation3D.RobotArm  [Frame]  result=success ===========
+2026-08-31 21:03:47: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:47
+2026-08-31 21:03:47: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:47: ###B:.Models.Animation3D.RobotArm###
+2026-08-31 21:03:47: T=Frame
+2026-08-31 21:03:47: N=RobotArm
+2026-08-31 21:03:47: ###E:.Models.Animation3D.RobotArm###
+
+=========== .Models.Animation3D.RobotArm.EventController  [EventController]  result=success ===========
+2026-08-31 21:03:47: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:47
+2026-08-31 21:03:47: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:47: ###B:.Models.Animation3D.RobotArm.EventController###
+2026-08-31 21:03:47: T=EventController
+2026-08-31 21:03:47: N=EventController
+
+=========== .Models.Animation3D.RobotArm.Source  [Source]  result=success ===========
+2026-08-31 21:03:47: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:47
+2026-08-31 21:03:47: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:47: ###B:.Models.Animation3D.RobotArm.Source###
+2026-08-31 21:03:47: T=Source
+2026-08-31 21:03:47: N=Source
+2026-08-31 21:03:47: I=20.0000
+
+=========== .Models.Animation3D.RobotArm.Station  [Station]  result=success ===========
+2026-08-31 21:03:47: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:47
+2026-08-31 21:03:47: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:47: ###B:.Models.Animation3D.RobotArm.Station###
+2026-08-31 21:03:47: T=Station
+2026-08-31 21:03:47: N=Station
+2026-08-31 21:03:47: PT=10.0000
+2026-08-31 21:03:47: ###E:.Models.Animation3D.RobotArm.Station###
+
+=========== .Models.Animation3D.RobotArm.Connector  [Connector]  result=success ===========
+2026-08-31 21:03:47: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:47
+2026-08-31 21:03:47: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:47: ###B:.Models.Animation3D.RobotArm.Connector###
+2026-08-31 21:03:47: T=Connector
+2026-08-31 21:03:47: N=Connector
+
+=========== .Models.Animation3D.RobotArm.PickAndPlace  [PickAndPlace]  result=success ===========
+2026-08-31 21:03:48: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:48
+2026-08-31 21:03:48: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:48: ###B:.Models.Animation3D.RobotArm.PickAndPlace###
+2026-08-31 21:03:48: T=PickAndPlace
+2026-08-31 21:03:48: N=PickAndPlace
+
+=========== .Models.Animation3D.RobotArm.Connector1  [Connector]  result=success ===========
+2026-08-31 21:03:48: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:48
+2026-08-31 21:03:48: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:48: ###B:.Models.Animation3D.RobotArm.Connector1###
+2026-08-31 21:03:48: T=Connector
+2026-08-31 21:03:48: N=Connector1
+
+=========== .Models.Animation3D.RobotArm.Station1  [Station]  result=success ===========
+2026-08-31 21:03:48: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:48
+2026-08-31 21:03:48: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:48: ###B:.Models.Animation3D.RobotArm.Station1###
+2026-08-31 21:03:48: T=Station
+2026-08-31 21:03:48: N=Station1
+2026-08-31 21:03:48: PT=10.0000
+2026-08-31 21:03:48: ###E:.Models.Animation3D.RobotArm.Station1###
+
+=========== .Models.Animation3D.RobotArm.Connector2  [Connector]  result=success ===========
+2026-08-31 21:03:48: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:48
+2026-08-31 21:03:48: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:48: ###B:.Models.Animation3D.RobotArm.Connector2###
+2026-08-31 21:03:48: T=Connector
+2026-08-31 21:03:48: N=Connector2
+
+=========== .Models.Animation3D.RobotArm.Drain  [Drain]  result=success ===========
+2026-08-31 21:03:48: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:48
+2026-08-31 21:03:48: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:48: ###B:.Models.Animation3D.RobotArm.Drain###
+2026-08-31 21:03:48: T=Drain
+2026-08-31 21:03:48: N=Drain
+2026-08-31 21:03:48: ###E:.Models.Animation3D.RobotArm.Drain###
+
+=========== .Models.Animation3D.RobotArm.Connector3  [Connector]  result=success ===========
+2026-08-31 21:03:49: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:49
+2026-08-31 21:03:49: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:49: ###B:.Models.Animation3D.RobotArm.Connector3###
+2026-08-31 21:03:49: T=Connector
+2026-08-31 21:03:49: N=Connector3
+
+=========== .Models.Animation3D.RobotArm.ReadMe  [Comment]  result=success ===========
+2026-08-31 21:03:49: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:49
+2026-08-31 21:03:49: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:49: ###B:.Models.Animation3D.RobotArm.ReadMe###
+2026-08-31 21:03:49: T=Comment
+2026-08-31 21:03:49: N=ReadMe
+2026-08-31 21:03:49: ###CT:.Models.Animation3D.RobotArm.ReadMe###
+2026-08-31 21:03:49: ReadMe
+2026-08-31 21:03:49: ###CTE:.Models.Animation3D.RobotArm.ReadMe###
+2026-08-31 21:03:49: ###E:.Models.Animation3D.RobotArm.ReadMe###
+
+=========== .Models.Animation3D.RobotArm.LiesMich  [Comment]  result=success ===========
+2026-08-31 21:03:49: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:49
+2026-08-31 21:03:49: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:49: ###B:.Models.Animation3D.RobotArm.LiesMich###
+2026-08-31 21:03:49: T=Comment
+2026-08-31 21:03:49: N=LiesMich
+2026-08-31 21:03:49: ###CT:.Models.Animation3D.RobotArm.LiesMich###
+2026-08-31 21:03:49: LiesMich
+2026-08-31 21:03:49: ###CTE:.Models.Animation3D.RobotArm.LiesMich###
+2026-08-31 21:03:49: ###E:.Models.Animation3D.RobotArm.LiesMich###
+
+=========== .Models.Animation3D.Part  [Part]  result=success ===========
+2026-08-31 21:03:49: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:49
+2026-08-31 21:03:49: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:49: ###B:.Models.Animation3D.Part###
+2026-08-31 21:03:49: T=Part
+2026-08-31 21:03:49: N=Part
+
+=========== .SimtalkClaude  [Folder]  result=success ===========
+2026-08-31 21:03:50: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:03:50
+2026-08-31 21:03:50: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:03:50: ###B:.SimtalkClaude###
+2026-08-31 21:03:50: T=Folder
+2026-08-31 21:03:50: N=SimtalkClaude
+2026-08-31 21:03:50: ###E:.SimtalkClaude###

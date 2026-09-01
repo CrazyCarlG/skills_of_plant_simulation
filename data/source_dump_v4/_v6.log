@@ -1,0 +1,378 @@
+
+=========== .Models.Animation3D.Part  [{'type': 'Part', 'result': 'success'}]  result=success ===========
+2026-08-31 21:05:52: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:05:52
+2026-08-31 21:06:42: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:42: ###B:.Models.Animation3D.Part###
+2026-08-31 21:06:42: T=Part
+2026-08-31 21:06:42: N=Part
+2026-08-31 21:06:42: ###E:.Models.Animation3D.Part###
+
+=========== .Models.Animation3D.RobotArm.Connector  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:42: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:42
+2026-08-31 21:06:42: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:42: ###B:.Models.Animation3D.RobotArm.Connector###
+2026-08-31 21:06:42: T=Connector
+2026-08-31 21:06:42: N=Connector
+2026-08-31 21:06:42: ###E:.Models.Animation3D.RobotArm.Connector###
+
+=========== .Models.Animation3D.RobotArm.Connector1  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:43: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:43
+2026-08-31 21:06:43: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:43: ###B:.Models.Animation3D.RobotArm.Connector1###
+2026-08-31 21:06:43: T=Connector
+2026-08-31 21:06:43: N=Connector1
+2026-08-31 21:06:43: ###E:.Models.Animation3D.RobotArm.Connector1###
+
+=========== .Models.Animation3D.RobotArm.Connector2  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:43: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:43
+2026-08-31 21:06:43: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:43: ###B:.Models.Animation3D.RobotArm.Connector2###
+2026-08-31 21:06:43: T=Connector
+2026-08-31 21:06:43: N=Connector2
+2026-08-31 21:06:43: ###E:.Models.Animation3D.RobotArm.Connector2###
+
+=========== .Models.Animation3D.RobotArm.Connector3  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:44: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:44
+2026-08-31 21:06:44: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:44: ###B:.Models.Animation3D.RobotArm.Connector3###
+2026-08-31 21:06:44: T=Connector
+2026-08-31 21:06:44: N=Connector3
+2026-08-31 21:06:44: ###E:.Models.Animation3D.RobotArm.Connector3###
+
+=========== .Models.Animation3D.RobotArm.EventController  [{'type': 'EventController', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:45: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:45
+2026-08-31 21:06:45: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:45: ###B:.Models.Animation3D.RobotArm.EventController###
+2026-08-31 21:06:45: T=EventController
+2026-08-31 21:06:45: N=EventController
+2026-08-31 21:06:45: ###E:.Models.Animation3D.RobotArm.EventController###
+
+=========== .Models.Animation3D.RobotArm.PickAndPlace  [{'type': 'PickAndPlace', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:45: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:45
+2026-08-31 21:06:45: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:45: ###B:.Models.Animation3D.RobotArm.PickAndPlace###
+2026-08-31 21:06:45: T=PickAndPlace
+2026-08-31 21:06:45: N=PickAndPlace
+2026-08-31 21:06:45: ###E:.Models.Animation3D.RobotArm.PickAndPlace###
+
+=========== .Models.Animation3D.RobotArm.Source  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:46: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:46
+2026-08-31 21:06:46: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:46: ###B:.Models.Animation3D.RobotArm.Source###
+2026-08-31 21:06:46: T=Source
+2026-08-31 21:06:46: N=Source
+2026-08-31 21:06:46: ###E:.Models.Animation3D.RobotArm.Source###
+
+=========== .Models.SourceTrigger.A  [{'type': 'Part', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:46: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:46
+2026-08-31 21:06:46: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:46: ###B:.Models.SourceTrigger.A###
+2026-08-31 21:06:46: T=Part
+2026-08-31 21:06:46: N=A
+2026-08-31 21:06:46: ###E:.Models.SourceTrigger.A###
+
+=========== .Models.SourceTrigger.B  [{'type': 'Part', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:47: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:47
+2026-08-31 21:06:47: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:47: ###B:.Models.SourceTrigger.B###
+2026-08-31 21:06:47: T=Part
+2026-08-31 21:06:47: N=B
+2026-08-31 21:06:47: ###E:.Models.SourceTrigger.B###
+
+=========== .Models.SourceTrigger.C  [{'type': 'Part', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:47: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:47
+2026-08-31 21:06:47: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:47: ###B:.Models.SourceTrigger.C###
+2026-08-31 21:06:47: T=Part
+2026-08-31 21:06:47: N=C
+2026-08-31 21:06:47: ###E:.Models.SourceTrigger.C###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:48: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:48
+2026-08-31 21:06:48: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:48: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector###
+2026-08-31 21:06:48: T=Connector
+2026-08-31 21:06:48: N=Connector
+2026-08-31 21:06:48: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector1  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:48: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:48
+2026-08-31 21:06:48: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:48: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector1###
+2026-08-31 21:06:48: T=Connector
+2026-08-31 21:06:48: N=Connector1
+2026-08-31 21:06:48: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector1###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector2  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:49: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:49
+2026-08-31 21:06:49: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:49: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector2###
+2026-08-31 21:06:49: T=Connector
+2026-08-31 21:06:49: N=Connector2
+2026-08-31 21:06:49: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector2###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector3  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:49: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:49
+2026-08-31 21:06:49: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:49: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector3###
+2026-08-31 21:06:49: T=Connector
+2026-08-31 21:06:49: N=Connector3
+2026-08-31 21:06:49: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector3###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector4  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:50: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:50
+2026-08-31 21:06:50: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:50: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector4###
+2026-08-31 21:06:50: T=Connector
+2026-08-31 21:06:50: N=Connector4
+2026-08-31 21:06:50: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector4###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Connector5  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:50: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:50
+2026-08-31 21:06:50: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:50: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector5###
+2026-08-31 21:06:50: T=Connector
+2026-08-31 21:06:51: N=Connector5
+2026-08-31 21:06:51: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Connector5###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.EventController  [{'type': 'EventController', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:51: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:51
+2026-08-31 21:06:51: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:51: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.EventController###
+2026-08-31 21:06:51: T=EventController
+2026-08-31 21:06:51: N=EventController
+2026-08-31 21:06:51: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.EventController###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Source  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:52: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:52
+2026-08-31 21:06:52: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:52: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Source###
+2026-08-31 21:06:52: T=Source
+2026-08-31 21:06:52: N=Source
+2026-08-31 21:06:52: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Source###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:52: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:52
+2026-08-31 21:06:52: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:52: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches###
+2026-08-31 21:06:52: T=Source
+2026-08-31 21:06:52: N=Source_Batches
+2026-08-31 21:06:52: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Source_Batches###
+
+=========== .Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:53: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:53
+2026-08-31 21:06:53: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:53: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop###
+2026-08-31 21:06:53: T=Source
+2026-08-31 21:06:53: N=Source_Stop
+2026-08-31 21:06:53: ###E:.Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Connector  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:53: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:53
+2026-08-31 21:06:53: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:53: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Connector###
+2026-08-31 21:06:53: T=Connector
+2026-08-31 21:06:53: N=Connector
+2026-08-31 21:06:53: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Connector###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Connector1  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:54: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:54
+2026-08-31 21:06:54: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:54: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Connector1###
+2026-08-31 21:06:54: T=Connector
+2026-08-31 21:06:54: N=Connector1
+2026-08-31 21:06:54: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Connector1###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Connector2  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:54: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:54
+2026-08-31 21:06:54: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:54: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Connector2###
+2026-08-31 21:06:54: T=Connector
+2026-08-31 21:06:54: N=Connector2
+2026-08-31 21:06:54: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Connector2###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Connector3  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:55: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:55
+2026-08-31 21:06:55: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:55: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Connector3###
+2026-08-31 21:06:55: T=Connector
+2026-08-31 21:06:55: N=Connector3
+2026-08-31 21:06:55: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Connector3###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.EventController  [{'type': 'EventController', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:55: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:55
+2026-08-31 21:06:55: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:55: ###B:.Models.SourceTrigger.SourceNumberAdjustable.EventController###
+2026-08-31 21:06:55: T=EventController
+2026-08-31 21:06:55: N=EventController
+2026-08-31 21:06:55: ###E:.Models.SourceTrigger.SourceNumberAdjustable.EventController###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Source  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:56: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:56
+2026-08-31 21:06:56: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:56: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Source###
+2026-08-31 21:06:56: T=Source
+2026-08-31 21:06:56: N=Source
+2026-08-31 21:06:56: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Source###
+
+=========== .Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:56: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:56
+2026-08-31 21:06:56: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:56: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch###
+2026-08-31 21:06:56: T=Source
+2026-08-31 21:06:56: N=Source_AsBatch
+2026-08-31 21:06:56: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch###
+
+=========== .Models.SourceTrigger.SourcePercentage.Connector  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:57: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:57
+2026-08-31 21:06:57: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:57: ###B:.Models.SourceTrigger.SourcePercentage.Connector###
+2026-08-31 21:06:57: T=Connector
+2026-08-31 21:06:57: N=Connector
+2026-08-31 21:06:57: ###E:.Models.SourceTrigger.SourcePercentage.Connector###
+
+=========== .Models.SourceTrigger.SourcePercentage.EventController  [{'type': 'EventController', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:57: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:57
+2026-08-31 21:06:57: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:57: ###B:.Models.SourceTrigger.SourcePercentage.EventController###
+2026-08-31 21:06:57: T=EventController
+2026-08-31 21:06:57: N=EventController
+2026-08-31 21:06:57: ###E:.Models.SourceTrigger.SourcePercentage.EventController###
+
+=========== .Models.SourceTrigger.SourcePercentage.Kante7  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:58: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:58
+2026-08-31 21:06:58: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:58: ###B:.Models.SourceTrigger.SourcePercentage.Kante7###
+2026-08-31 21:06:58: T=Connector
+2026-08-31 21:06:58: N=Kante7
+2026-08-31 21:06:58: ###E:.Models.SourceTrigger.SourcePercentage.Kante7###
+
+=========== .Models.SourceTrigger.SourcePercentage.Source  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:59: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:59
+2026-08-31 21:06:59: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:59: ###B:.Models.SourceTrigger.SourcePercentage.Source###
+2026-08-31 21:06:59: T=Source
+2026-08-31 21:06:59: N=Source
+2026-08-31 21:06:59: ###E:.Models.SourceTrigger.SourcePercentage.Source###
+
+=========== .Models.SourceTrigger.SourceRandom.Connector  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:06:59: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:06:59
+2026-08-31 21:06:59: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:06:59: ###B:.Models.SourceTrigger.SourceRandom.Connector###
+2026-08-31 21:06:59: T=Connector
+2026-08-31 21:06:59: N=Connector
+2026-08-31 21:06:59: ###E:.Models.SourceTrigger.SourceRandom.Connector###
+
+=========== .Models.SourceTrigger.SourceRandom.EventController  [{'type': 'EventController', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:00: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:00
+2026-08-31 21:07:00: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:00: ###B:.Models.SourceTrigger.SourceRandom.EventController###
+2026-08-31 21:07:00: T=EventController
+2026-08-31 21:07:00: N=EventController
+2026-08-31 21:07:00: ###E:.Models.SourceTrigger.SourceRandom.EventController###
+
+=========== .Models.SourceTrigger.SourceRandom.Kante7  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:00: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:00
+2026-08-31 21:07:00: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:00: ###B:.Models.SourceTrigger.SourceRandom.Kante7###
+2026-08-31 21:07:00: T=Connector
+2026-08-31 21:07:00: N=Kante7
+2026-08-31 21:07:00: ###E:.Models.SourceTrigger.SourceRandom.Kante7###
+
+=========== .Models.SourceTrigger.SourceRandom.Source  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:01: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:01
+2026-08-31 21:07:01: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:01: ###B:.Models.SourceTrigger.SourceRandom.Source###
+2026-08-31 21:07:01: T=Source
+2026-08-31 21:07:01: N=Source
+2026-08-31 21:07:01: ###E:.Models.SourceTrigger.SourceRandom.Source###
+
+=========== .Models.SourceTrigger.SourceTrigger.Connector  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:01: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:01
+2026-08-31 21:07:01: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:01: ###B:.Models.SourceTrigger.SourceTrigger.Connector###
+2026-08-31 21:07:01: T=Connector
+2026-08-31 21:07:01: N=Connector
+2026-08-31 21:07:01: ###E:.Models.SourceTrigger.SourceTrigger.Connector###
+
+=========== .Models.SourceTrigger.SourceTrigger.EventController  [{'type': 'EventController', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:02: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:02
+2026-08-31 21:07:02: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:02: ###B:.Models.SourceTrigger.SourceTrigger.EventController###
+2026-08-31 21:07:02: T=EventController
+2026-08-31 21:07:02: N=EventController
+2026-08-31 21:07:02: ###E:.Models.SourceTrigger.SourceTrigger.EventController###
+
+=========== .Models.SourceTrigger.SourceTrigger.Kante7  [{'type': 'Connector', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:03: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:03
+2026-08-31 21:07:03: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:03: ###B:.Models.SourceTrigger.SourceTrigger.Kante7###
+2026-08-31 21:07:03: T=Connector
+2026-08-31 21:07:03: N=Kante7
+2026-08-31 21:07:03: ###E:.Models.SourceTrigger.SourceTrigger.Kante7###
+
+=========== .Models.SourceTrigger.SourceTrigger.Source  [{'type': 'Source', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:03: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:03
+2026-08-31 21:07:03: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:03: ###B:.Models.SourceTrigger.SourceTrigger.Source###
+2026-08-31 21:07:03: T=Source
+2026-08-31 21:07:03: N=Source
+2026-08-31 21:07:03: ###E:.Models.SourceTrigger.SourceTrigger.Source###
+
+=========== .Models.internal.Admin.DropDownList  [{'type': 'DropDownList', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:04: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:04
+2026-08-31 21:07:04: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:04: ###B:.Models.internal.Admin.DropDownList###
+2026-08-31 21:07:04: T=DropDownList
+2026-08-31 21:07:04: N=DropDownList
+2026-08-31 21:07:04: ###E:.Models.internal.Admin.DropDownList###
+
+=========== .Models.internal.DropDownList  [{'type': 'DropDownList', 'result': 'success'}]  result=success ===========
+2026-08-31 21:07:04: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:07:04
+2026-08-31 21:07:04: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:07:04: ###B:.Models.internal.DropDownList###
+2026-08-31 21:07:04: T=DropDownList
+2026-08-31 21:07:04: N=DropDownList
+2026-08-31 21:07:04: ###E:.Models.internal.DropDownList###

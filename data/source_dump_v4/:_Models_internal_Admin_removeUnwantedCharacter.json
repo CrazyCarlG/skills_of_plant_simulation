@@ -1,0 +1,6 @@
+{
+  "path": ":.Models.internal.Admin.removeUnwantedCharacter",
+  "T": "Method",
+  "N": "removeUnwantedCharacter",
+  "program": "param str:string -> string"
+}

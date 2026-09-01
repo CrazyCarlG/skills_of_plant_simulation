@@ -1,0 +1,6 @@
+{
+  "path": ":.Models.internal.Admin.startSearch",
+  "T": "Method",
+  "N": "startSearch",
+  "program": "-- called by Search button"
+}

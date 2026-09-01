@@ -1,1 +1,1474 @@
-.Models.Model.smoke_test_method			false			0	
+.InformationFlow.Method						0	
+.MaterialFlow_AGV.BasicObjects.InformationFlow.Method						0	
+.SimtalkClaude.Main.SimtalkAction.ErrorHandler						0	
+.SimtalkClaude.Main.SimtalkAction.ReadLogFile						0	
+.SimtalkClaude.Main.SimtalkAction.Run_Simutalk						0	
+.SimtalkClaude.Main.SimtalkAction.a_readlog						0	
+.SimtalkClaude.Main.SimtalkAction.get_simtalk_hasError						0	
+.SimtalkClaude.Main.SimtalkAction.m_getlog						0	
+.SimtalkClaude.Main.SimtalkAction.simtalk_execute	simtalk_execute	Method	false	false	1	281	->string
+// execute code and get result
+executeSilent(&simtalkcode.program)
+var errMsg := getExecuteSilentError
+var code := &simtalkcode.program
+if errMsg /= \"\
+
+
+\treturn  \"code execute failed. error msg:\"+errMsg+\", in code '\"+Code+\"'\
+else
+
+\treturn  \"execute success\
+end
+.SimtalkClaude.Main.SimtalkAction.simtalk_hasError	simtalk_hasError	Method	false	false	0	384	param code:string -> string
+//check if any error in code
+&simtalkcode.program := code
+var errMsg : string
+var errLine : integer
+var hasError := &simtalkcode.hasSyntaxError(errMsg, errLine)
+if hasError
+\taction_result[\"result\"] := \"failed\
+    return \" hasError ： \"+ errMsg+ \" (in row :\"+errLine+\")\
+
+else
+\taction_result[\"result\"] := \"success\
+\treturn  \"has no Error\
+end
+.SimtalkClaude.Main.SimtalkAction.simtalkcode	simtalkcode	Method	false	false	0	5211	var o: object
+print \"###LIB_HEADERb054ca3c###\
+
+o := str_to_obj(\".SimtalkClaude.Main.SimtalkAction.simtalk_execute\")
+print \"###LIB_BEGIN_0###\
+if o = void
+  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalk_execute\
+  print \"META_VOID=true\
+else
+  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalk_execute\
+  print \"META_NAME=\" + o.Name
+  print \"META_TYPE=\" + o.InternalClassType
+  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###LIB_BODY_0###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###LIB_END_0###\
+end
+
+
+o := str_to_obj(\".SimtalkClaude.Main.SimtalkAction.simtalk_hasError\")
+print \"###LIB_BEGIN_1###\
+if o = void
+  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalk_hasError\
+  print \"META_VOID=true\
+else
+  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalk_hasError\
+  print \"META_NAME=\" + o.Name
+  print \"META_TYPE=\" + o.InternalClassType
+  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###LIB_BODY_1###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###LIB_END_1###\
+end
+
+
+o := str_to_obj(\".SimtalkClaude.Main.SimtalkAction.simtalkcode\")
+print \"###LIB_BEGIN_2###\
+if o = void
+  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalkcode\
+  print \"META_VOID=true\
+else
+  print \"META_PATH=.SimtalkClaude.Main.SimtalkAction.simtalkcode\
+  print \"META_NAME=\" + o.Name
+  print \"META_TYPE=\" + o.InternalClassType
+  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###LIB_BODY_2###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###LIB_END_2###\
+end
+
+
+o := str_to_obj(\".SimtalkClaude.Main.SocketServer.m_callback\")
+print \"###LIB_BEGIN_3###\
+if o = void
+  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_callback\
+  print \"META_VOID=true\
+else
+  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_callback\
+  print \"META_NAME=\" + o.Name
+  print \"META_TYPE=\" + o.InternalClassType
+  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###LIB_BODY_3###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###LIB_END_3###\
+end
+
+
+o := str_to_obj(\".SimtalkClaude.Main.SocketServer.m_send\")
+print \"###LIB_BEGIN_4###\
+if o = void
+  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_send\
+  print \"META_VOID=true\
+else
+  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_send\
+  print \"META_NAME=\" + o.Name
+  print \"META_TYPE=\" + o.InternalClassType
+  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###LIB_BODY_4###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###LIB_END_4###\
+end
+
+
+o := str_to_obj(\".SimtalkClaude.Main.SocketServer.m_str_send\")
+print \"###LIB_BEGIN_5###\
+if o = void
+  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_str_send\
+  print \"META_VOID=true\
+else
+  print \"META_PATH=.SimtalkClaude.Main.SocketServer.m_str_send\
+  print \"META_NAME=\" + o.Name
+  print \"META_TYPE=\" + o.InternalClassType
+  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###LIB_BODY_5###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###LIB_END_5###\
+end
+
+
+o := str_to_obj(\".SimtalkClaude.Main.SocketServer.reconnect\")
+print \"###LIB_BEGIN_6###\
+if o = void
+  print \"META_PATH=.SimtalkClaude.Main.SocketServer.reconnect\
+  print \"META_VOID=true\
+else
+  print \"META_PATH=.SimtalkClaude.Main.SocketServer.reconnect\
+  print \"META_NAME=\" + o.Name
+  print \"META_TYPE=\" + o.InternalClassType
+  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###LIB_BODY_6###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###LIB_END_6###\
+end
+
+
+o := str_to_obj(\".SimtalkClaude.Main.onopen\")
+print \"###LIB_BEGIN_7###\
+if o = void
+  print \"META_PATH=.SimtalkClaude.Main.onopen\
+  print \"META_VOID=true\
+else
+  print \"META_PATH=.SimtalkClaude.Main.onopen\
+  print \"META_NAME=\" + o.Name
+  print \"META_TYPE=\" + o.InternalClassType
+  print \"META_ENCRYPTED=\" + to_str(o.Encrypted)
+  print \"META_SYNTAX_ERROR=\" + to_str(o.HasSyntaxError)
+  print \"META_NUM_IN_EXECUTION=\" + to_str(o.NumInExecution)
+  print \"###LIB_BODY_7###\
+  if o.Encrypted
+    print \"<encrypted>\
+  else
+    print o.Program
+  end
+  print \"###LIB_END_7###\
+end
+
+
+.SimtalkClaude.Main.SocketServer.m_callback	m_callback	Method	false	false	0	513	param channelNo: integer, message: string -- TCP
+-- param ip: string, message: string -- UDP
+message := regex_replace(message, \"\\|\\|END\\|\\|\", \"\");
+var j: json
+j.parse(message)
+var type := j[\"type\"]
+
+switch type
+case \"ping\
+\tm_send(ping_reply)
+case \"simtalk_syntax\
+\tcurrent.~.simtalkaction.&get_simtalk_hasError.executenewcallchain(j)
+case \"simtalk_run\
+\tcurrent.~.simtalkaction.&Run_Simutalk.executenewcallchain(j)
+case \"readlog\
+\tcurrent.~.simtalkaction.&ReadLogFile.executenewcallchain(j)
+end
+.SimtalkClaude.Main.SocketServer.m_send	m_send	Method	false	false	0	129	param jsondata:json
+
+var msgStr: string := jsondata.asString(false) + \"||END||\
+var success: boolean := MySocket.write(0,msgStr)
+.SimtalkClaude.Main.SocketServer.m_str_send	m_str_send	Method	false	false	0	99	param msgStr:string
+
+ msgStr := msgStr+ \"||END||\
+var success: boolean := MySocket.write(0,msgStr)
+.SimtalkClaude.Main.SocketServer.reconnect	reconnect	Method	false	false	0	441	-- param attribute: string, oldValue, newValue: boolean
+-- param attribute: string, oldValue: boolean
+param newValue: boolean
+
+if not newValue
+    print \"MySocket disconnected at \", sysdate, \" - reconnecting...\
+    MySocket.On := true
+    if MySocket.On
+        print \"MySocket reconnected, listening: \",  num_to_str(MySocket.port)
+    else
+        print \"Reconnect failed, please check\
+    end
+else
+\tprint \"MySocket connected\
+end
+.SimtalkClaude.Main.onopen	onopen	Method	false	false	0	18	simtalkclaude.open
+.SimtalkClaude.connection.SocketServer.m_callback						0	
+.SimtalkClaude.connection.SocketServer.m_send						0	
+.SimtalkClaude.connection.SocketServer.m_str_send						0	
+.SimtalkClaude.connection.SocketServer.reconnect						0	
+.SimtalkClaude.objects.Method						0	
+.SimtalkClaude.src.ErrorHandler						0	
+.SimtalkClaude.src.SimtalkAction.ErrorHandler						0	
+.SimtalkClaude.src.SimtalkAction.ReadLogFile						0	
+.SimtalkClaude.src.SimtalkAction.Run_Simutalk						0	
+.SimtalkClaude.src.SimtalkAction.a_readlog						0	
+.SimtalkClaude.src.SimtalkAction.get_simtalk_hasError						0	
+.SimtalkClaude.src.SimtalkAction.m_getlog						0	
+.SimtalkClaude.src.SimtalkAction.simtalk_execute						0	
+.SimtalkClaude.src.SimtalkAction.simtalk_hasError						0	
+.SimtalkClaude.src.SimtalkAction.simtalkcode						0	
+.SimtalkClaude.src.autoexec						0	
+.SimtalkClaude.src.autoexecLoadObj	autoexecLoadObj	Method	false	false	0	139	
+print \"starting listen 50007\
+~.main.SocketServer.MySocket.on := true
+print ~.main.SocketServer.MySocket.on
+print \"started listen 50007\
+.Tools.BottleneckAnalyzer.BasicObjects.Method	Method	Method	false	false	0	0	
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeFrame	analyzeFrame	Method	false	false	0	3478	param frame : object-> list[real]
+var factor_working,factor_setup,factor_wait,factor_block,factor_powering, factor_fail, factor_stopped, factor_pause: real
+
+result.create
+result.insert(1,0)
+result.insert(2,0)
+result.insert(3,0)
+result.insert(4,0)
+result.insert(5,0)
+
+var iMax: integer := frame.numNodes
+
+for var i := 1 to iMax
+\tvar obj : object := frame.node(i)
+\tvar firstObj : boolean
+\tvar factor :real
+\tvar statFile : list[real]
+\t
+\tswitch obj.internalClassName
+\tcase \"Network\"
+\t\tif obj.getAttrNo(\"_BNanalysed\") = 0 or obj._BNanalysed  -- if analyse is desired, else next obj
+\t\t\t
+\t\t\tstatFile := analyzeFrame(obj)
+\t\t\tif scale_icon > 1 AND statFile.max > 0
+\t\t\t\tdraw_Scale(obj)
+\t\t\tend
+\t\t\t
+\t\t\tif statFile.dim > 0 then factor := statFile[1] else factor := 0 end
+\t\t\tif factor > 0
+\t\t\t\tdrawBar(obj,\"work\",factor)
+\t\t\t\tfactor_working := factor
+\t\t\tend
+
+\t\t\tif statFile.dim > 1 then factor := statFile[2] else factor := 0 end
+\t\t\tif factor > 0
+\t\t\t\tdrawBar(obj,\"setup\",factor)
+\t\t\t\tfactor_setup := factor
+\t\t\tend
+
+\t\t\tif statFile.dim > 2 then factor := statFile[3] else factor := 0 end
+\t\t\tif factor > 0
+\t\t\t\tdrawBar(obj,\"wait\",factor)
+\t\t\t\tfactor_wait := factor
+\t\t\tend
+
+\t\t\tif statFile.dim > 3 then factor := statFile[4] else factor := 0 end
+\t\t\tif factor > 0
+\t\t\t\tdrawBar(obj,\"block\",factor)
+\t\t\t\tfactor_block := factor
+\t\t\tend
+\t\t\t
+\t\t\tif statFile.dim > 4 then factor := statFile[5] else factor := 0 end
+\t\t\tif factor > 0
+\t\t\t\tdrawBar(obj,\"PoweringUpDown\",factor)
+\t\t\t\tfactor_powering := factor
+\t\t\tend\t\t\t
+
+\t\t\tif statFile.dim > 5 then factor := statFile[6] else factor := 0 end
+\t\t\tif factor > 0
+\t\t\t\tdrawBar(obj,\"fail\",factor)
+\t\t\t\tfactor_fail := factor
+\t\t\tend
+\t\t\t
+\t\t\tif statFile.dim > 6 then factor := statFile[7] else factor := 0 end
+\t\t\tif factor > 0
+\t\t\t\tdrawBar(obj,\"stop\",factor)
+\t\t\t\tfactor_stopped := factor
+\t\t\tend\t\t\t
+\t\t\t
+\t\t\tif statFile.dim > 7 then factor := statFile[8] else factor := 0 end
+\t\t\tif factor > 0
+\t\t\t\tdrawBar(obj,\"pause\",factor)
+\t\t\t\tfactor_pause := factor
+\t\t\tend
+\t\t\t
+\t\t\t-- showing the maximal working portion,
+\t\t\t-- result contains the object with maximal working portion
+\t\t\tif (not firstObj) OR statFile[1] > result[1]
+\t\t\t\tfirstObj\t:= true
+\t\t\t\tresult\t\t:= statFile.copy
+\t\t\tend
+\t\t\t
+\t\tend -- if analyse is desired
+\t\t
+\t\tif is3Dopen and obj._3D.exists and (NOT obj._3D.ShowContent) and (NOT isTool(obj))
+\t\t\t-- if all factors = 0 then no graphics are generated
+\t\t\tobj._3D.createStatistics(makearray(factor_working, factor_setup, factor_wait, factor_block, factor_powering, factor_fail, factor_stopped, factor_pause))
+\t\tend
+\t\t
+\tcase \"Method\",\"NwWorkplace\",\"NwWorkerPool\",\"NwData\",\"NwExporter\"
+
+\telse
+\t\tif executesilent(to_str(\"-> boolean \",obj,\".StatWorkingPortion; return true\"))
+\t\t -- obj has method 'StatWorkingPortion'
+\t\t\tif obj.getAttrNo(\"_BNanalysed\") = 0 or obj._BNanalysed
+\t\t\t\tstatFile := analyzeObject(obj)
+\t\t\t\t-- showing the maximal working portion,
+\t\t\t\t-- result contains the statistics of the object with maximal working portion
+\t\t\t\tif (not firstObj) OR ( statFile[1] > result[1] )
+\t\t\t\t\tfirstObj\t:= true
+\t\t\t\t\tresult\t\t:= statFile.copy
+\t\t\t\tend
+\t\t\t\t
+\t\t\tend -- if analyse is desired
+\t\tend -- obj with 'StatWorkingPortion'
+\tend-- inspect obj.internalClassName
+\t
+next -- i: obj
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeModel	analyzeModel	Method	false	false	0	455	-- called by: dialog (also showStats)
+if current.class /= void
+\tremoveStats
+\t-- animIcon(TRUE) -- removed since there is no reason for it
+\t
+\tanalyzeFrame(~)
+\t
+\tif is3Dopen and current._3D.exists
+\t\tcurrent._3D.deleteStatistics
+\tend
+\t-- current.sendMessage(\"statistics\", \"0\");
+\t
+\tAnalyzed := true
+else
+\t-- The Bottlenck Analyzer must be inserted before use.
+\tmessagebox(rootfolder.Localization.getText(9),1,11)
+end
+ -- markBottleneckObject
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeObject	analyzeObject	Method	false	false	0	5133	-- called by:_analyzeFrame (once)
+-- parameter: basic object with statistics
+param obj:object-> list[real]
+
+var factor_working,factor_setup,factor_wait,factor_block,factor_powering, factor_fail, factor_stopped, factor_pause: real
+var tmpStr:string
+
+var isPipe:boolean := (obj.internalclassname = \"NwPipe\")
+
+var isFluid:boolean
+switch obj.internalclassname
+case \"NwTank\",\"NwFluidSource\",\"NwFluidDrain\",\"NwMixer\",\"NwPipe\"
+\tisFluid := true -- statStoppedPortion does not exist
+end
+
+result.create
+
+if NOT isFluid
+\tif obj.resStatOn and
+\t   -- Is statistics desired?  evaluate the resource types, defined on the second tab of the dialog
+\t   ( ( (obj.resourceType = \"Production\" or obj.resourceType = \"Produktion\") and Production ) or
+\t\t    (obj.resourceType = \"Transport\" and Transport) or
+\t\t    ((obj.resourceType = \"Storage\" or obj.resourceType = \"Lagerung\") and Storage) )
+\t
+\t\tif scale_icon > 1
+\t\t\tdraw_Scale(obj)
+\t\tend
+\t
+\t\tfactor_working := obj.statWorkingPortion
+\t\tresult.insert(1,factor_working)
+\t\tif factor_working > 0
+\t\t\tdrawBar(obj,\"work\",factor_working)
+\t\tend
+\t
+\t\tfactor_setup := obj.statSetupPortion
+\t\tresult.insert(2,factor_setup)
+\t\tif factor_setup > 0
+\t\t\tdrawBar(obj,\"setup\",factor_setup)
+\t\tend
+
+\t\tfactor_wait := obj.statWaitingPortion
+\t\tresult.insert(3,factor_wait)
+\t\tif factor_wait > 0
+\t\t\tdrawBar(obj,\"wait\",factor_wait)
+\t\tend
+
+\t\tfactor_block := obj.statBlockingPortion
+\t\tresult.insert(4,factor_block)
+\t\tif factor_block > 0
+\t\t\tdrawBar(obj,\"block\",factor_block)
+\t\tend
+
+\t\tfactor_powering := obj.statPoweringUpDownPortion
+\t\tresult.insert(5,factor_powering)
+\t\tif factor_powering > 0
+\t\t\tdrawBar(obj,\"PoweringUpDown\",factor_powering)
+\t\tend
+
+\t\tfactor_fail := obj.statFailPortion
+\t\tresult.insert(6,factor_fail)
+\t\tif factor_fail > 0
+\t\t\tdrawBar(obj,\"fail\",factor_fail)
+\t\tend
+\t\t
+\t\tfactor_stopped := obj.statStoppedPortion
+\t\tresult.insert(7,factor_stopped)
+\t\tif factor_stopped > 0
+\t\t\tdrawBar(obj,\"stop\",factor_stopped)
+\t\tend
+\t\t
+\t\tfactor_pause := obj.statPausingPortion + obj.statUnplannedPortion
+\t\tresult.insert(8,factor_pause)
+\t\tif factor_pause > 0
+\t\t\tdrawBar(obj,\"pause\",factor_pause)
+\t\tend
+\t\t
+\t\ttmpStr := insRootStr(to_str(obj),to_str(obj.rootframe)) -- path with root
+\t\tresourceStats.writeRow(1,resourceStats.yDim+1,tmpStr,factor_working*100,factor_setup*100,factor_wait*100,factor_block*100,factor_powering*100,factor_fail*100,factor_stopped*100,factor_pause*100)
+\t\tif is3Dopen and obj._3D.exists
+\t\t\tobj._3D.createStatistics(makearray(factor_working, factor_setup, factor_wait, factor_block, factor_powering, factor_fail, factor_stopped, factor_pause))
+\t\tend
+\telse -- no statistics is desired for this object
+\t\tresult.insert(1,0)
+\t\tresult.insert(2,0)
+\t\tresult.insert(3,0)
+\t\tresult.insert(4,0)
+\t\tresult.insert(5,0)
+\tend
+\t
+else -- if_isFluid
+
+\t\tif scale_icon > 1
+\t\t\tdraw_Scale(obj)
+\t\tend
+\t
+\t\tfactor_working := obj.statWorkingPortion -- Fluid
+\t\tresult.insert(1,factor_working)
+\t\tif factor_working > 0
+\t\t\tdrawBar(obj,\"work\",factor_working)
+\t\tend
+\t
+\t\tfactor_setup := obj.statSetupPortion -- Fluid
+\t\tresult.insert(2,factor_setup)
+\t\tif factor_setup > 0
+\t\t\tdrawBar(obj,\"setup\",factor_setup)
+\t\tend
+
+\t\tfactor_wait := obj.statWaitingPortion -- Fluid
+\t\tresult.insert(3,factor_wait)
+\t\tif factor_wait > 0
+\t\t\tdrawBar(obj,\"wait\",factor_wait)
+\t\tend
+
+\t\tif isPipe   -- Fluid
+\t\t\tfactor_block := 0
+\t\telse
+\t\t\tfactor_block := obj.statBlockingPortion
+\t\tend
+\t\tresult.insert(4,factor_block)
+\t\tif factor_block > 0
+\t\t\tdrawBar(obj,\"block\",factor_block)
+\t\tend
+\t\t\t
+\t\tif isPipe  -- Fluid
+\t\t\tfactor_powering := 0
+\t\telse
+\t\t\tfactor_powering := obj.statPoweringUpDownPortion
+\t\tend
+\t\tresult.insert(5,factor_powering)
+\t\tif factor_powering > 0
+\t\t\tdrawBar(obj,\"PoweringUpDown\",factor_powering)
+\t\tend
+
+\t\tif isPipe  -- Fluid
+\t\t\tfactor_fail := 0
+\t\telse
+\t\t\tfactor_fail := obj.statFailPortion
+\t\tend
+\t\tresult.insert(6,factor_fail)
+\t\tif factor_fail > 0
+\t\t\tdrawBar(obj,\"fail\",factor_fail)
+\t\t\tend
+\t\t
+\t\tfactor_stopped := 0  -- Fluid
+\t\t/*factor_stopped := obj.statStoppedPortion;
+\t\t\tresult.insert(7,factor_stopped);
+\t\t\tif factor_stopped > 0 then
+\t\t\t\tdrawBar(obj,\"stop\",factor_stopped);
+ \t\t\tend;*/\t
+\t\t\t
+\t\tif isPipe   -- Fluid
+\t\t\tfactor_pause := 0
+\t\telse
+\t\t\tfactor_pause := obj.statPausingPortion + obj.statUnplannedPortion
+\t\tend
+\t\tresult.insert(8,factor_pause)
+\t\tif factor_pause > 0
+\t\t\tdrawBar(obj,\"pause\",factor_pause)
+\t\tend
+\t\t
+\t\ttmpStr := insRootStr(to_str(obj),to_str(obj.rootframe)) -- path with root (new in 90)
+\t\tresourceStats.writeRow(1,resourceStats.yDim+1,tmpStr,factor_working*100,factor_setup*100,factor_wait*100,factor_block*100,factor_powering*100,factor_fail*100,factor_stopped*100,factor_pause*100)
+\t\tif is3Dopen and obj._3D.exists
+\t\t\tobj._3D.createStatistics(makearray(factor_working, factor_setup, factor_wait, factor_block, factor_powering, factor_fail, factor_stopped, factor_pause))
+\t\tend
+
+end -- if_isFluid
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.AnalyzeModel	AnalyzeModel	Method	false	false	0	99	-- called by the context menu 'Show Analysis'
+dialog.callback(\"analyze\")
+--~.markBottleneckObject
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.DragDrop	DragDrop	Method	false	false	0	333	param Onstring : string
+var Onobject: object := Onstring
+
+if onobject.getAttrNo(\"_BNanalysed\") = 0
+\tonobject.createAttr(\"_BNanalysed\",\"boolean\")
+end
+-- Should this object be considered by the bottleneck analyzer?
+var message: string := rootfolder.Localization.getText(71)
+OnObject._BNanalysed := messageBox(message,48,12) = 16
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.RemoveStats	RemoveStats	Method	false	false	0	63	-- called by the context menu
+dialog.callback(\"removestats\")
+
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openConfig	openConfig	Method	false	false	0	74	-- called by the context menu
+dialog.open
+Dialog.setIndex(\"Register\",2)
+
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openDia	openDia	Method	false	false	0	86	-- needed for update from 7.6
+var ApplObj:object := ~
+ApplObj.userPopupMenu := Context
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openHelp	openHelp	Method	false	false	0	74	-- called by context menu and dialog
+dialog.callback(\"HelpObject_Menu\")
+
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.showLanguage	showLanguage	Method	false	false	0	761	-- show the dialog box in the current userinterfacelanguage
+var display:list[string]
+display.create
+/*\tOnly Bars
+\tPlus Scale
+\tPlus Background
+*/
+for var n := 1 to 3
+\tdisplay.insert(n, rootfolder.Localization.getText(n+3))
+next
+dialog.setList(\"display_pop\",  display)
+dialog.label := rootfolder.Localization.getText(70)-- \"Bottleneck Analyzer\
+
+for var n := 1 to Translations.yDim
+\tvar Dialog_elem: string := Translations[0,n]
+\tvar messageTabNo:integer := Translations[1,n]
+\tdialog.setCaption(Dialog_elem,rootfolder.Localization.getText(messageTabNo))
+next
+
+dialog.setCheckBox(\"prod_chk\",~.production)
+dialog.setCheckBox(\"transp_chk\",~.transport)
+dialog.setCheckBox(\"stor_chk\",~.storage)
+dialog.setIndex(\"display_pop\",~.scale_icon)
+
+dialog.open
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.showStats	showStats	Method	false	false	0	1006	-- called by: dialog
+var i : integer
+
+if not ~.analyzed
+\tanalyzeModel
+end
+
+if ~.~ = rootfolder
+\treturn
+end
+
+var sortCriteria:list[string]
+sortCriteria.create
+for i := 1 to 5
+\tsortCriteria.insert(i, rootfolder.Localization.getText(i+10))
+next
+-- Please select the sort criteria for statistics ranking.
+i := promptlist1(sortCriteria, rootfolder.Localization.getText(8))
+
+~.resourceStats.writeRow(1,0,rootfolder.Localization.getText(41),-- resource
+\trootfolder.Localization.getText(43),-- working
+\trootfolder.Localization.getText(48),-- setup
+\trootfolder.Localization.getText(42),-- waiting\t\t
+\trootfolder.Localization.getText(44),-- blocked
+    rootfolder.Localization.getText(40),-- PoweringUpDown
+\trootfolder.Localization.getText(45),-- disrupted
+\trootfolder.Localization.getText(49),-- stopped
+\trootfolder.Localization.getText(46),-- pause
+    rootfolder.Localization.getText(47)) -- sortCriteria
+
+if i > 0
+\t~.sortStats(i)
+\t~.resourceStats.showComment := true
+\t~.resourceStats.openDialog
+end
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.drawBar	drawBar	Method	false	false	0	577	param obj : object, typeStr:string, factor : real
+
+var ZeropointX,ZeropointY,IconLen,IconHeight:integer
+
+obj.getBoundingBox(ZeropointX,ZeropointY,IconLen,IconHeight)
+ZeropointX := ZeropointX + IconLen/2 - 20
+ZeropointY := ZeropointY - 10
+\t\t
+if ZeropointY - 40 < 10
+\tZeropointY := ZeropointY + 70 + IconHeight
+end
+ var color:integer := colors[1,typeStr]
+var y_Null:integer := ZeropointY - 1
+ var x_Null:integer := ZeropointX + colors[6,typeStr]
+
+-- reduce the width of the bars from 6 to 4, 3
+obj.~.drawRectangle(layer_of_chart - 1,x_Null,y_Null,3,-round(40*factor),color,-1)
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.draw_Scale	draw_Scale	Method	false	false	0	1411	param obj:object
+var color_scale,ZeropointX,ZeropointY,IconLen,IconHeight,x,y: integer
+var locObj:object := obj.~
+obj.getBoundingBox(ZeropointX,ZeropointY,IconLen,IconHeight)
+ZeropointX := ZeropointX + IconLen/2 - 20; ZeropointY := ZeropointY - 10
+\t\t
+if ZeropointY - 40 < 10
+\tZeropointY := ZeropointY + 70 + IconHeight
+end
+var x_Null: integer := ZeropointX
+var y_Null: integer := ZeropointY
+
+if scale_icon = 2
+\tcolor_scale := makeRGBValue(190,190,190)
+else
+\tcolor_scale := makeRGBValue(0,0,0)
+end
+var Layer:integer := Layer_of_chart
+
+--horizontal line with arrow
+locObj.drawLine(Layer,x_Null,y_Null,x_Null+49,y_Null,color_scale,1)
+for var i:= 0 to 7
+\tx := x_Null+(i*5)+6
+\tlocObj.drawLine(Layer,x,y_Null-1,x,y_Null+2,color_scale,1)
+next
+locObj.drawLine(Layer,x_Null+49,y_Null,x_Null+46,y_Null+3,color_scale,1)
+   locObj.drawLine(Layer,x_Null+49,y_Null,x_Null+46,y_Null-3,color_scale,1)
+   -- vertical line
+\tlocObj.drawLine(Layer,x_Null,y_Null,x_Null,y_Null-42,color_scale,1)
+for var i:= 1 to 3
+\ty := y_Null-(i*10)
+\tlocObj.drawLine(Layer,x_Null+2,y,x_Null-2,y,color_scale,1)
+next
+locObj.drawLine(Layer,x_Null,y_Null-42,x_Null+3,y_Null-39,color_scale,1)
+   locObj.drawLine(Layer,x_Null,y_Null-42,x_Null-3,y_Null-39,color_scale,1)
+   -- grey degrees
+if scale_icon = 3 \t\t
+\tfor var i:= 1 to 3
+\t\ty := y_Null-(i*10)
+\t\tlocObj.drawLine(Layer,x_Null+3,y,x_Null+46,y,makeRGBValue(190,190,190),1)
+\tnext
+end
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.fill4Report	fill4Report	Method	false	false	0	744	-- ResourceStats is filled and sorted according to the sum working + failure
+-- All bar charts are shown.
+-- called by: preparing a report for an arbitrary application (external call)
+analyzeModel
+
+ResourceStats.writeRow(1,0,rootfolder.Localization.getText(41),-- resource
+\trootfolder.Localization.getText(43),-- working
+\trootfolder.Localization.getText(48),-- setup
+\trootfolder.Localization.getText(42),-- waiting\t\t
+\trootfolder.Localization.getText(44),-- blocked
+    rootfolder.Localization.getText(40),-- PoweringUpDown
+\trootfolder.Localization.getText(45),-- disrupted
+\trootfolder.Localization.getText(49),-- stopped
+\trootfolder.Localization.getText(46),-- pause
+\trootfolder.Localization.getText(47)) -- sortCriteria
+
+sortStats(3)
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.insRootStr	insRootStr	Method	false	false	0	626	param obj_str,root_str:string->string
+
+while strLpos(\" \",obj_str)=1 loop obj_str := strOmit(obj_str,1,1);end
+if strLpos(\"root\",obj_str) = 1
+\t-- already \"root\" inserted OR entry deleted
+\treturn obj_str
+else
+\tif strLpos(\".\",obj_str) /= 1  -- for instance: obj_str = \"station.procTime\
+\t\treturn to_str(\"root.\",obj_str)
+\telse
+\t\tif strLpos(root_str,obj_str)=1   -- for instance: obj_str = \".Model.station.procTime\
+\t\t\tvar L:integer := StrLen(root_str)
+\t\t\treturn to_str(\"root\",strOmit(obj_str,0,L+1))
+\t\telse -- for instance: obj_str = \".MUs.Part.statAvgLifeSpan\
+\t\t\treturn obj_str
+\t\tend
+\tend
+end
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.isTool	isTool	Method	false	false	0	159	-- \"Experiment\", \"GAwizard\", \"BottleneckAnalyzer\
+param obj:object->boolean
+if obj.getAttrNo(\"objType\")>0 and Rootfolder.~ = .Tools
+\tresult := true
+end
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.markBottleneckObject	markBottleneckObject	Method	false	false	0	1056	-- for external call
+
+resourceStats.sort(2,\"down\")  --- find the object with maximal working portion
+var obj:object := resourceStats[1,1]
+var x:integer := obj.xpos
+var y:integer := obj.ypos
+var w,h:integer
+obj.getIconSize(w,h)
+
+obj.~.drawEllipse(-15,x-(w/2)-10,y-(h/2)-10,w+20,h+20,makeRGBValue(11, 222, 11),5)
+--drawEllipse(Layer:<integer>, X:<integer>, Y:<integer>, Width:<integer>, Height:<integer>, RGB:<integer>, LineWidth:<integer>)
+
+
+resourceStats.sort(4,\"down\")  --- object with max waiting
+obj := resourceStats[1,1]
+x := obj.xpos
+y := obj.ypos
+obj.getIconSize(w,h)
+obj.~.drawEllipse(-15,x-(w/2)-10,y-(h/2)-10,w+20,h+20,colors[1,3],5)
+
+resourceStats.sort(5,\"down\")  --- object with max blocked
+obj := resourceStats[1,1]
+x:= obj.xpos
+y:= obj.ypos
+obj.getIconSize(w,h)
+obj.~.drawEllipse(-15,x-(w/2)-10,y-(h/2)-10,w+20,h+20,colors[1,4],5)
+
+resourceStats.sort(7,\"down\")  --- object with max disrupted
+obj := resourceStats[1,1]
+x := obj.xpos
+y := obj.ypos
+obj.getIconSize(w,h)
+obj.~.drawEllipse(-15,x-(w/2)-10,y-(h/2)-10,w+20,h+20,colors[1,6],5)
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.removeCharts	removeCharts	Method	false	false	0	502	-- recursive procedure
+param frame : object
+
+for var i := 1 to frame.NumNodes
+\tvar obj : object := frame.Node(i)
+\tframe.eraselayer(layer_of_chart)
+\tframe.eraselayer(layer_of_chart-1)
+
+\tif obj.internalClassName = \"Network\"
+\t\tremoveCharts(obj)
+\tend
+\t
+\tif is3Dopen and obj._3D.exists and obj.internalClassName /= \"NwArc\" AND
+\t\t obj.internalClassName /= \"Interface\" AND obj.internalClassName /= \"NwMarker\
+\t\tobj._3D.deleteStatistics -- do not call for Connector and Interface
+\tend
+next
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.removeStats	removeStats	Method	false	false	0	324	-- called by: Dialog + context menu,_analyzeModel, reset
+if current.class /= void
+\t
+\tremoveCharts(~)
+\t
+\tresourceStats.inheritFormat := true
+\tresourceStats.inheritContents := true
+\tAnalyzed := false
+else
+\t-- The Bottleneck Analyzer must be inserted before use.
+\tmessagebox(rootfolder.Localization.getText(9),1,11)
+end
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.reset	reset	Method	false	false	0	12	removeStats
+
+.Tools.BottleneckAnalyzer.BottleneckAnalyzer.sortStats	sortStats	Method	false	false	0	1464	param criteria : integer
+
+var resStats: object := resourceStats
+var jMax: integer := resStats.yDim
+resStats.showComment := true
+var colSort\t: integer := 10
+
+switch criteria
+case 1  -- Working
+\tfor var j := 1 to jMax
+\t\tresStats[colSort,j] := resStats[2,j] -- only working
+\tnext
+\t-- Sorted according to working time
+\tresStats.comment := rootfolder.Localization.getText(57)
+\t
+case 2  -- set-up
+\tfor var j := 1 to jMax
+\t\tresStats[colSort,j] := resStats[3,j]
+\tnext
+\t-- Sorted according to the set-up time
+\tresStats.comment := rootfolder.Localization.getText(64)
+\t
+case 3  -- sum working + failure
+\tfor var j := 1 to jMax
+\t\tresStats[colSort,j] := resStats[2,j] + resStats[7,j]
+\tnext
+\t-- Sorted according to the sum of working time and failure time
+\tresStats.comment := rootfolder.Localization.getText(58)
+\t
+case 4  -- sum working + failure + pause
+\tfor var j := 1 to jMax
+\t\tresStats[colSort,j] := resStats[2,j] + resStats[7,j] + resStats[9,j]
+\tnext
+\t-- Sorted according to the sum of working time, failure time and pause time
+\tresStats.comment := rootfolder.Localization.getText(59)
+\t
+case 5  -- sum working + Set-up + failure + Pause
+\tfor var j := 1 to jMax
+\t\tresStats[colSort,j] := resStats[2,j] + resStats[3,j] + resStats[7,j] + resStats[9,j]
+\tnext
+\t-- Sorted according to the sum of working time, set-up time, failure time and pause time
+\tresStats.comment := rootfolder.Localization.getText(65)
+end
+
+resStats.sort(colSort,\"down\")
+.Tools.BottleneckAnalyzer.Localization.LanguageDesignation	LanguageDesignation	Method	false	false	0	698	/*_______________________________________________________________________________
+Method Tasks:
+Return the abbreviation of the current user interface language like DEU, ENU...
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Parameters\t: none
+ReturnValues: the abbreviation which is stored in index row of MessageTab
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: Guido Gross
+Date\t\t: 10.10.2008
+_________________________________________________________________________________
+History:
+PS 10.11.2008 use UserInterfaceLanguage
+
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+-> string
+result := MessageTab[UserInterfaceLanguage+1, 0 ]
+
+.Tools.BottleneckAnalyzer.Localization.getMessage						0	
+.Tools.BottleneckAnalyzer.Localization.getText						0	
+.Tools.BottleneckAnalyzer.Localization.message						0	
+.Tools.EnergyAnalyzer.BasicObjects.Method						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.VisObject						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.delVisualize						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.detectEnergyobjects						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.endSim						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.findConsumers						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.init						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.isNameUniqueEverywhere						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.observeEnergyState						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.prepareObserver						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.reset						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.updateConsumption						0	
+.Tools.EnergyAnalyzer.EnergyAnalyzer.visualize						0	
+.Tools.EnergyAnalyzer.Localization.LanguageDesignation	LanguageDesignation	Method	false	false	0	698	/*_______________________________________________________________________________
+Method Tasks:
+Return the abbreviation of the current user interface language like DEU, ENU...
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Parameters\t: none
+ReturnValues: the abbreviation which is stored in index row of MessageTab
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: Guido Gross
+Date\t\t: 10.10.2008
+_________________________________________________________________________________
+History:
+PS 10.11.2008 use UserInterfaceLanguage
+
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+-> string
+result := MessageTab[UserInterfaceLanguage+1, 0 ]
+
+.Tools.EnergyAnalyzer.Localization.getMessage	getMessage	Method	false	false	0	1194	/*
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Method Tasks: write a message
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Parameters\t: MsgNumber, the index of the message in messageTab
+\t\t\t  p1, p2, p3, possible parameters for the message
+ReturnValues: message with replacements
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: PS
+Date\t\t: 17.02.2020
+_________________________________________________________________________________
+History:
+
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+param MsgNumber : integer, p1,p2,p3 : any->string
+
+var mess,s1,s2,s3 : string
+var pos1, pos2, pos3\t: integer
+
+mess := getText(MsgNumber) -- get the text of the message with place holder
+s1 := to_str(p1)
+s2 := to_str(p2)
+s3 := to_str(p3)
+
+pos1 := strLpos(\"$1\", mess)
+pos2 := strLpos(\"$2\", mess)
+pos3 := strLpos(\"$3\", mess)
+
+if pos3 > 0
+\tmess := strIncl(s3, mess, pos3+2)
+\tmess := strOmit(mess, pos3, 2)
+end
+if pos2 > 0
+\tmess := strIncl(s2, mess, pos2+2)
+\tmess := strOmit(mess, pos2, 2)
+end
+if pos1 > 0
+\tmess := strIncl(s1, mess, pos1+2)
+\tmess := strOmit(mess, pos1, 2)
+end
+result := mess
+.Tools.EnergyAnalyzer.Localization.getText	getText	Method	false	false	0	863	/*
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Method Tasks: Translation of messages and dialog items.
+The developper of the localization can work incremental.
+Not yet translated item are shons english.
+
+Parameters\t: row in MessageTab
+ReturnValues: translated text
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: PS
+Date\t\t: Nov 2008
+
+_________________________________________________________________________________
+History:
+\t\t\t
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+param index : integer -> string
+
+var s : string := MessageTab[UserInterfaceLanguage+1, index]
+--s := MessageTab[9, index] -- HUN
+ -- s := MessageTab[4, index] -- Chinese
+--s := MessageTab[5, index] -- RUS
+--s := MessageTab[1, index] -- DEU
+
+if strLen( s ) = 0
+\ts := MessageTab[2,index] -- english text
+end
+
+return s
+.Tools.EnergyAnalyzer.Localization.message	message	Method	false	false	0	1823	/*
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Method Tasks:
+write a message, warning or error in the HTML report
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Parameters\t: page, the page in the HTML report where the message should be posted
+\t\t\t  MsgNumber, the index of the message in messageTab
+\t\t\t  p1, p2, p3, possible parameters for the message
+ReturnValues:
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: Guido Gross
+Date\t\t: 13.06.2005
+_________________________________________________________________________________
+History:
+21.06.2005\tGG\tonly _print the name of the calling object
+24.06.2005\tGG\tadd bold letters for the parameters
+03.08.2007\tGG\tuse AOLLanguage_ which is set by autoexec method
+\t\t\t\tchanging the parameters of the method
+06.08.2007\tGG\tadding Parameter ReportObj to make it more flexible
+08.08.2007\tGG\tdebugging\t\t\t\t
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+param  reportObj : object, page : string, MsgNumber : integer, p1,p2,p3 : string
+
+var mess\t\t\t\t: string
+var pos1, pos2, pos3\t: integer
+var obj\t\t\t\t\t: object
+
+-- get the text of the message
+if messageTab.yDim < MsgNumber
+\tmess := getText( 1 )
+\tp1 := to_str( MsgNumber )
+else
+\tmess := getText(MsgNumber)
+end
+
+obj := ?
+
+pos1 := strLpos(\"$1\", mess)
+pos2 := strLpos(\"$2\", mess)
+pos3 := strLpos(\"$3\", mess)
+
+if pos3 > 0
+\tmess := strIncl(\"<b>\"+p3+\"</b>\", mess, pos3+2)
+\tmess := strOmit(mess, pos3, 2)
+end
+if pos2 > 0
+\tmess := strIncl(\"<b>\"+p2+\"</b>\", mess, pos2+2)
+\tmess := strOmit(mess, pos2, 2)
+end
+if pos1 > 0
+\tmess := strIncl(\"<b>\"+p1+\"</b>\", mess, pos1+2)
+\tmess := strOmit(mess, pos1, 2)
+end
+
+mess := \"<b><u>\"+obj.name+ \"</u></b>: \" + mess
+
+reportObj.writeln( page, mess)
+.Tools.ExperimentManager.BasicObjects.InformationFlow.Method	Method	Method	false	false	0	7	--
+--
+
+
+.Tools.ExperimentManager.BasicObjects.MaterialFlow._Icons_	_Icons_	Method	false	false	0	0	
+.Tools.ExperimentManager.Internal.DistributedSimulation.ActivateMachines	ActivateMachines	Method	false	false	0	258	-- called by: GAwizard (evaluate))
+var machTab:object := MachinesTable
+
+for var i := 1 to MachinesTable.ydim
+\tvar simMachine:object := machTab[17,i]
+\tif simMachine /= void
+\t\tsimMachine.JobId := -1
+\t\tsimMachine.&RunProcess.executeNewCallChain
+\tend
+next
+.Tools.ExperimentManager.Internal.DistributedSimulation.ErrorHandling	ErrorHandling	Method	false	false	0	956	-- Error handler in a simulation machine during a distributed simulation
+param byref error : string, method_path : string, line_number : integer
+
+var observedError:string := error
+
+/*if ~.ModelErrorHandling /= void -- There is an error handler of the model.
+\t~.ModelErrorHandling.execute(error, method_path, line_number)
+\t-- In case of error = \"\" means that the error was treated by the global error handler of the model.
+end*/
+
+if line_number = 0
+\t-- The error was in a formular.
+\tvar stopOnErrors, stopOnFormularErrors: boolean
+\tgetErrorStop(stopOnErrors, stopOnFormularErrors)
+\tif stopOnFormularErrors
+\t\tfireSimTalkMessage(to_str(\"Unknown error in formular \", makePathRelative(method_path,~.~), \": \",observedError))
+\tend;
+
+else
+\t-- The error was in a method.
+\tfireSimTalkMessage(to_str(\"Unknown error in method \", makePathRelative(method_path,~.~),\" in line \",line_number,\": \",observedError))
+end
+
+error := \"\" -- catch the error
+.Tools.ExperimentManager.Internal.DistributedSimulation.EvaluateSimMachines	EvaluateSimMachines	Method	false	false	0	1618	-- called by ExpMgr.EndOfAllExperiments, GAwizard.Termination
+-- Prepare statistics in table RemMachines = Dialog.RemoteMachines
+param JobTab, RemMachines, AllRemoteMachines:object -- JobsTable, Dialog.RemoteMachines, Dialog.RemoteTable
+if ~.UsingRules
+\tJobTab.delete
+\tJobTab.AllJobs4Rules.copyContentTo(JobTab)
+end
+
+RemMachines.delete({0,1}..{*,*});
+var columnJobTab:integer := JobTab.stateColumnNo;
+-- Computer, Number of parallel processes, Number of runs, Total simulation time, Mean running time of a simulation
+for var j := 1 to JobTab.yDim loop
+\tvar CompName:string := JobTab[columnJobTab + 1,j] -- Computername (no)
+\tif CompName /= \"\
+\t\tCompName := strCopy(CompName,1,strLpos(\"(\", CompName)-2)
+\t\tvar compNo:integer := RemMachines.getRowNo(CompName)
+\t\tif compNo < 1 then
+\t\t\tcompNo := RemMachines.yDim + 1
+\t\t\tRemMachines[0,compNo] := CompName
+\t\t\tAllRemoteMachines.setCursor(1,1)
+\t\t\tif strToUpper(CompName) = strToUpper(getenv(\"COMPUTERNAME\"))
+\t\t\t\tCompName := \"localhost\";
+\t\t\tend;
+\t\t\tif AllRemoteMachines.find({1,1}..{1,*}, CompName)
+\t\t\t\tRemMachines[1,compNo] := AllRemoteMachines[2, AllRemoteMachines.cursorY] -- Number of parallel processes
+\t\t\tend\t\t
+\t\tend
+\t\tRemMachines[2,compNo] := RemMachines[2,compNo] + 1;  -- Number of runs
+\t\tRemMachines[3,compNo] := RemMachines[3,compNo] + JobTab[columnJobTab + 4,j] -- Total simulation time
+\tend -- if CompName /= \"\
+next
+
+for var j := 1 to RemMachines.yDim loop
+\tvar h:integer := RemMachines[2,compNo]
+\tif h>0 then
+\t\tRemMachines[4,j] := RemMachines[3,compNo]/h -- Mean running time of a simulation
+\tend
+next;
+.Tools.ExperimentManager.Internal.DistributedSimulation.M_isComputerAccessPermitted	M_isComputerAccessPermitted	Method	false	false	0	800	-- called by: Button 'Test' of the dialog 'Advanced settings' tab 'Distribution'
+-- resetWizard (check of seetings 'Save report', 'Save results', 'Send e-mail'.)
+-- NOTE THAT: Don't ask the user to allow the access to the computer.
+param tip:string -> boolean
+
+if ApplicationVersion >= 23002001
+\treturn askForAccessToTheComputer(tip)
+else
+\tif isComputerAccessPermitted
+\t\treturn true
+\telse
+\t\tvar InfoStr := to_str(rootfolder.Localization.getMessage(423,rootFolder.name,\"\",\"\"),\"  \",rootfolder.Localization.getText(451))
+\t\t-- The library ExperimentManager demands access to the computer.
+\t\t-- Access to the computer is prohibited in the model settings though.
+\t\tMessageBox(InfoStr, 1, 3) -- warning with the OK button
+\t\tif strLen(tip) > 0
+\t\t\tprint \"Tip: \",tip
+\t\tend
+\tend
+end
+.Tools.ExperimentManager.Internal.DistributedSimulation.Start	Start	Method	false	false	0	828	/* starts the simulation machines each in an own callchain
+Call Chain: Start
+StartMachine
+\t\tMachine.ConnectProcess_(asTest,firstStart)
+\t\tMachine.RunProcess_
+*/
+terminateRemoteProcesses
+removeDistrSim
+
+var numSimMachines:integer
+
+switch ~.ObjType  -- Starting remote processes
+case \"Experiment\
+\tnumSimMachines := min(MachinesTable.yDim, ~.JobsTable.yDim)
+case \"GAwizard\
+\tnumSimMachines := min(MachinesTable.yDim, 2 * ~.JobsTable.yDim)
+\t-- note that the first generation is generated, which is smaller
+end
+
+MachinesTable.numSimMachine := numSimMachines
+-- Number of SimMachine that still need to be started
+
+for var row := 1 to numSimMachines
+\t-- StartMachine will be started after this callChain has ended
+\t-- call them running in parallel
+\t&StartMachine.executeNewCallChain(row,false,true) -- test, firstStart
+next
+.Tools.ExperimentManager.Internal.DistributedSimulation.StartMachine	StartMachine	Method	false	false	0	1695	-- create a frame for every SimulationMachine
+-- called by: DistributedSimulation.Start
+param row:integer,asTest,firstStart:boolean\t-- row number of MachinesTable
+
+if firstStart\t
+\tvar y:integer
+\tvar x:integer := row mod 5
+\tif x = 0 then
+\t\tx := 5
+\t\ty := row div 5 - 1
+\telse
+\t\ty := row div 5
+\tend
+\tvar newMachine:object := rootfolder.Internal.SimulationMachine.duplicate(current)
+\tnewMachine.Coordinate3D := makeArray(6 * x, -12 - 3 * y, 0.0)
+\t-- initialize the SimulationMachine frame attributes
+\tnewMachine.MachineIndex    \t:= row
+\t
+\tvar RemoteName:string := MachinesTable[1,row]
+\tnewMachine.label         := RemoteName
+\t
+\tnewMachine.StartNetwork  \t:= MachinesTable[3,row]
+\t
+\tMachinesTable[17,row] := newMachine
+\tMachinesTable.createNestedList(8,row)
+\tMachinesTable[8,row].name := \"Logging\
+\t
+\tnewMachine.JobId \t\t\t:= -1\t-- JobId
+\tMachinesTable[9,row]\t\t:= -1\t-- JobId
+\t
+else
+\tnewMachine := MachinesTable[17,row]
+end
+
+newMachine.eMPlantHandle    := 0\t-- Handle
+MachinesTable[7,row]\t\t:= 0\t-- Handle
+
+if asTest
+\t-- \"Test connection to\"],\" '\",~.DistributedSimulation.MachinesTable[1,row],\"'\
+\tinfoBox(to_str(~.rootFolder.Localization.getMessage(214,MachinesTable[1,row],\"\",\"\")),false)
+
+else
+\tvar RemoteTab:object := ~.Dialog.RemoteTable
+\tRemoteTab.setCursor(1,1)
+\tvar numCoresStr:string
+\tif RemoteTab.find({1,1}..{1,*},RemoteName) then
+\t\tnumCoresStr := to_str(RemoteTab[2,RemoteTab.cursorY])
+\telse
+\t\tnumCoresStr := \"n\
+\tend
+\tinfobox(rootfolder.Localization.getMessage(425,to_str(MachinesTable[19,row],\"/\",numCoresStr),RemoteName,\"\"),false) -- Starting remote process $1 on '$2'.
+end
+
+newMachine.ConnectProcess(asTest,firstStart)
+.Tools.ExperimentManager.Internal.DistributedSimulation.prepareRemoteProcess	prepareRemoteProcess	Method	false	false	0	715	-- called by CreateProcess after creation of the remote process
+-- It is running on the simulation machine (as a remote process)
+var WizObj:object := ~
+closeAllWindows
+
+if WizObj.RemoteLowerPrio
+\tSetProcessPriorityToBelowNormal(true)
+end
+
+if NOT ~.simulateWithAnimation
+\tanimation(false)
+end
+closeConsole(true)
+
+var pathStr:string := to_str(WizObj,\".state\")
+if existsObject(pathStr)
+\tstr_to_obj(pathStr).value := \"ready\
+end
+
+if eventController /= void
+\teventController.SummaryReport := false
+\teventController.RealTime := false
+\t-- set the attribute ExperimentManager of the EventController in the remote simulation models
+\teventController.ExperimentManager := WizObj
+end;
+
+setErrorHandler(&ErrorHandling)
+.Tools.ExperimentManager.Internal.DistributedSimulation.removeDistrSim	removeDistrSim	Method	false	false	0	564	-- delete all instances of SimulationMachine
+-- called by:
+-- 1. Start distributed simulation
+-- 2. Testrun button (always a local experiment run with duration 1)
+-- 3. Reset_ button
+-- not at the end of distributed simulation (purpose debugging)
+deleteSuspendedMethods
+~.rootfolder.internal.sema := false
+
+var classObj:object := rootfolder.Internal.SimulationMachine
+for var i := numNodes downto 1
+\tvar objI:object := node(i)
+\tif objI.class = classObj
+\t\tobjI.deleteObject
+\tend
+next
+
+MachinesTable.delete({7,1}..{18,*})\t-- delete, starting with handle column
+.Tools.ExperimentManager.Internal.DistributedSimulation.updateMachinesTable	updateMachinesTable	Method	false	false	0	848	-- called by: \"APPLY\" of the dialog
+-- Start a distributed simulation run, after saving the model
+param RemoteTableFromDialog:object
+
+var LicType:string := ~.RemoteLicType -- attribute of the Experiment Manager
+--if LicType ~= \"Professional\" then LicType:= \"_Development\"; end
+
+MachinesTable.delete({1,1}..{*,*})
+var row:integer
+for var j := 1 to RemoteTableFromDialog.yDim
+\tvar numProc:integer := RemoteTableFromDialog[2,j]
+\tfor var k := 1 to numProc
+\t\trow := row + 1 --             Comp name                    2 sema of the library  3                        4        5                 6
+\t\tMachinesTable.writeRow(1,row, RemoteTableFromDialog[1,j], void,                   to_str(EventController), LicType, ~.QuitAfterTime, ~.RemoteLowerPrio)
+\t\tMachinesTable[9,row] := -1 -- jobID
+\t\tMachinesTable[19,row] := k
+\tnext -- k
+next -- j
+.Tools.ExperimentManager.Internal.SimulationMachine.ConnectProcess	ConnectProcess	Method	false	false	0	1216	-- start the remote process
+-- this method has NO ErrorHandler, errors should open the debugger
+-- called by: DistributedSimulation.StartMachine
+param Test,firstStart:boolean
+
+if emplantHandle > 0
+\tM_Quit -- with errorhandler
+end
+
+var MachinesTab:object := ~.MachinesTable
+MachinesTab[10,MachineIndex] := \"Process started\" -- job status
+CreateProcess(Test)
+
+if Test
+\tvar TestMsg:string := MachinesTab[14,MachineIndex]
+\tif strLen(TestMsg) > 1
+\t\tinfoBox(\"\",false)
+\t\tmessageBox(to_str(~.~.rootfolder.Localization.getText(177), \":  \", TestMsg),1,4) -- info: DCOM message
+\tend
+\treturn
+else
+\tMachinesTab.numSimMachine := MachinesTab.numSimMachine - 1
+\tif MachinesTab.numSimMachine = 0
+\t\tinfoBox(\"\",false) -- \"Starting remote processes ...\
+\tend
+end
+sleep(~.~.DCOM_StartDelay, true) -- suspends the current Plant Simulation process and wait until the started process is ready (got license)
+MachinesTab[10,MachineIndex] \t:= \"Process initialized\"\t-- job status
+MachinesTab[7,MachineIndex] \t:= eMPlantHandle\t\t\t-- dispatch handle
+if firstStart  -- needed for statistics of the simulation machines
+\tMachinesTab[15,MachineIndex] := 0 -- counter simulation runs
+end
+
+&RunProcess.executeNewCallChain
+.Tools.ExperimentManager.Internal.SimulationMachine.CreateProcess						0	
+.Tools.ExperimentManager.Internal.SimulationMachine.ErrorHandler						0	
+.Tools.ExperimentManager.Internal.SimulationMachine.EventSink						0	
+.Tools.ExperimentManager.Internal.SimulationMachine.M_Quit						0	
+.Tools.ExperimentManager.Internal.SimulationMachine.RunProcess						0	
+.Tools.ExperimentManager.Internal.SimulationMachine.StartReplication						0	
+.Tools.ExperimentManager.Internal.translate						0	
+.Tools.ExperimentManager.Localization.LanguageDesignation						0	
+.Tools.ExperimentManager.Localization.getMessage	getMessage	Method	false	false	0	1193	/*
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Method Tasks: write a message
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Parameters\t: MsgNumber, the index of the message in messageTab
+\t\t\t  p1, p2, p3, possible parameters for the message
+ReturnValues: message with replacements
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: PS
+Date\t\t: 22.08.2007
+_________________________________________________________________________________
+History:
+
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+param MsgNumber : integer, p1,p2,p3 : any->string
+
+var mess,s1,s2,s3 : string
+var pos1, pos2, pos3\t: integer
+
+mess := getText(MsgNumber)-- get the text of the message with place holder
+s1 := to_str(p1)
+s2 := to_str(p2)
+s3 := to_str(p3)
+
+pos1 := strLpos(\"$1\", mess)
+pos2 := strLpos(\"$2\", mess)
+pos3 := strLpos(\"$3\", mess)
+
+if pos3 > 0
+\tmess := strIncl(s3, mess, pos3+2)
+\tmess := strOmit(mess, pos3, 2)
+end
+if pos2 > 0
+\tmess := strIncl(s2, mess, pos2+2)
+\tmess := strOmit(mess, pos2, 2)
+end
+if pos1 > 0
+\tmess := strIncl(s1, mess, pos1+2)
+\tmess := strOmit(mess, pos1, 2)
+end
+result := mess
+.Tools.ExperimentManager.Localization.getText	getText	Method	false	false	0	865	/*
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Method Tasks: Translation of messages and dialog items.
+The developper of the localization can work incremental.
+Not yet translated item are shons english.
+
+Parameters\t: row in MessageTab
+ReturnValues: translated text
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: PS
+Date\t\t: Nov 2008
+
+_________________________________________________________________________________
+History:
+\t\t\t
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+param index : integer -> string
+
+var s : string := MessageTab[UserInterfaceLanguage+1, index]
+--s := MessageTab[9, index]; -- HUN
+--s := MessageTab[4, index]; -- Chinese
+--s := MessageTab[5, index]; -- RUS
+--s := MessageTab[1, index]; -- DEU
+
+if strLen( s ) = 0
+\ts := MessageTab[2,index] -- english text
+end
+
+return s
+.Tools.ExperimentManager.Localization.message	message	Method	false	false	0	1827	/*
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Method Tasks:
+write a message, warning or error in the HTML_report
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯
+Parameters\t: page, the page in the HTML_report where the message should be posted
+\t\t\t  MsgNumber, the index of the message in messageTab
+\t\t\t  p1, p2, p3, possible parameters for the message
+ReturnValues:
+
+Called By\t:
+Calls\t\t:
+
+Author\t\t: Guido Gross
+Date\t\t: 13.06.2005
+_________________________________________________________________________________
+History:
+21.06.2005\tGG\tonly _print the name of the calling object
+24.06.2005\tGG\tadd bold letters for the parameters
+03.08.2007\tGG\tuse AOLLanguage_ which is set by autoexec method
+\t\t\t\tchanging the parameters of the method
+06.08.2007\tGG\tadding Parameter ReportObj to make it more flexible
+08.08.2007\tGG\tdebugging\t\t\t\t
+¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯¯*/
+param  reportObj : object, page : string, MsgNumber : integer, p1,p2,p3 : string
+
+var mess\t\t\t\t: string
+var pos1, pos2, pos3\t: integer
+var obj\t\t\t\t\t: object
+
+-- get the text of the message
+if messageTab.yDim < MsgNumber
+\tmess := getText( 1 )
+\tp1 := to_str( MsgNumber )
+else
+\tmess := getText(MsgNumber)--90
+end
+
+obj := ?
+
+pos1 := strLpos(\"$1\", mess)
+pos2 := strLpos(\"$2\", mess)
+pos3 := strLpos(\"$3\", mess)
+
+if pos3 > 0
+\tmess := strIncl(\"<b>\"+p3+\"</b>\", mess, pos3+2)
+\tmess := strOmit(mess, pos3, 2)
+end
+if pos2 > 0
+\tmess := strIncl(\"<b>\"+p2+\"</b>\", mess, pos2+2)
+\tmess := strOmit(mess, pos2, 2)
+end
+if pos1 > 0
+\tmess := strIncl(\"<b>\"+p1+\"</b>\", mess, pos1+2)
+\tmess := strOmit(mess, pos1, 2)
+end
+
+mess := \"<b><u>\"+obj.name+ \"</u></b>: \" + mess
+
+reportObj.writeln( page, mess)

@@ -1,0 +1,16 @@
+=== Batch: batch_025 (4 paths) ===
+  - .Models.SourceTrigger.SourceRandom.Connector  [Connector]
+  - .Models.SourceTrigger.SourcePercentage  [Frame]
+  - .Models.SourceTrigger.SourcePercentage.Source  [Source]
+  - .Models.SourceTrigger.SourcePercentage.Line  [Conveyor]
+
+--- LOG ---
+2026-08-31 20:57:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:31
+2026-08-31 20:57:31: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:31: ###B:.Models.SourceTrigger.SourceRandom.Connector###
+2026-08-31 20:57:31: T=Connector
+2026-08-31 20:57:31: N=Connector
+

@@ -1,0 +1,6 @@
+{
+  "path": ":.Models.internal.Admin.saveObject",
+  "T": "Method",
+  "N": "saveObject",
+  "program": "var FolderStr:string := Folder4Objects -- generated from modelFile (autoexec)"
+}

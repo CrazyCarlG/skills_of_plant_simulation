@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Admin.ExportToExcel",
+  "T": "Method",
+  "N": "ExportToExcel",
+  "PROG_LEN": "304",
+  "program": "-- Python interface\nvar s1:string := modelFile\nvar Folder4Objects:string := strCopy(s1,1,StrRpos(\"\\\\\",s1))\nExampleTab.delete\nGeneralTable2ExampleTab\nvar ExportTable:table\nExportTable.create\nExampleTab.copyRangeTo({5,*}..{8,*},ExportTable,1,1)\nExportTable.writeExcelFile(Folder4Objects+\"DescriptionTable\")"
+}

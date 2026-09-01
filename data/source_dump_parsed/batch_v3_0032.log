@@ -1,0 +1,36 @@
+=== batch 4: 8 paths ===
+.Models.internal.Admin.ExportToExcel	Method	failed
+.Models.internal.Admin.ImportKeywords	Method	failed
+.Models.internal.Admin.KeyWords	DataTable	failed
+.Models.internal.SelDlg	Dialog	success
+.Models.internal.autoexec	Method	failed
+.Models.internal.Method	Method	failed
+.Models.internal.Variable	Variable	failed
+.Models.internal.HtmlReport	HtmlReport	success
+
+--- LOG ---
+2026-08-31 21:00:20: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:00:20
+2026-08-31 21:00:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:20: ###B:.Models.internal.SelDlg###
+2026-08-31 21:00:20: T=Dialog
+2026-08-31 21:00:20: N=SelDlg
+2026-08-31 21:00:20: ###E:.Models.internal.SelDlg###
+2026-08-31 21:00:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:20: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:20: ###B:.Models.internal.HtmlReport###
+2026-08-31 21:00:20: T=HtmlReport
+2026-08-31 21:00:20: N=HtmlReport
+2026-08-31 21:00:20: ###E:.Models.internal.HtmlReport###

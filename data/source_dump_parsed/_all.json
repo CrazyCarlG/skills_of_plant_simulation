@@ -1,0 +1,132 @@
+{
+  ":.Models": {
+    "path": ":.Models",
+    "T": "Folder",
+    "N": "Models"
+  },
+  ":.Models.internal": {
+    "path": ":.Models.internal",
+    "T": "Folder",
+    "N": "internal"
+  },
+  ":.Models.internal.Localization": {
+    "path": ":.Models.internal.Localization",
+    "T": "Folder",
+    "N": "Localization"
+  },
+  ":.Models.internal.Admin": {
+    "path": ":.Models.internal.Admin",
+    "T": "Frame",
+    "N": "Admin"
+  },
+  ":.Models.internal.SelDlg": {
+    "path": ":.Models.internal.SelDlg",
+    "T": "Dialog",
+    "N": "SelDlg"
+  },
+  ":.Models.internal.HtmlReport": {
+    "path": ":.Models.internal.HtmlReport",
+    "T": "HtmlReport",
+    "N": "HtmlReport"
+  },
+  ":.Models.SourceTrigger": {
+    "path": ":.Models.SourceTrigger",
+    "T": "Folder",
+    "N": "SourceTrigger"
+  },
+  ":.Models.SourceTrigger.SourceNumberAdjustable": {
+    "path": ":.Models.SourceTrigger.SourceNumberAdjustable",
+    "T": "Frame",
+    "N": "SourceNumberAdjustable"
+  },
+  ":.Models.SourceTrigger.SourceNumberAdjustable.Drain": {
+    "path": ":.Models.SourceTrigger.SourceNumberAdjustable.Drain",
+    "T": "Drain",
+    "N": "Drain"
+  },
+  ":.Models.SourceTrigger.SourceNumberAdjustable.Drain1": {
+    "path": ":.Models.SourceTrigger.SourceNumberAdjustable.Drain1",
+    "T": "Drain",
+    "N": "Drain1"
+  },
+  ":.Models.SourceTrigger.SourceIntervalAdjustable": {
+    "path": ":.Models.SourceTrigger.SourceIntervalAdjustable",
+    "T": "Frame",
+    "N": "SourceIntervalAdjustable"
+  },
+  ":.Models.SourceTrigger.SourceIntervalAdjustable.Drain": {
+    "path": ":.Models.SourceTrigger.SourceIntervalAdjustable.Drain",
+    "T": "Drain",
+    "N": "Drain"
+  },
+  ":.Models.SourceTrigger.SourceIntervalAdjustable.Drain1": {
+    "path": ":.Models.SourceTrigger.SourceIntervalAdjustable.Drain1",
+    "T": "Drain",
+    "N": "Drain1"
+  },
+  ":.Models.SourceTrigger.SourceIntervalAdjustable.Drain2": {
+    "path": ":.Models.SourceTrigger.SourceIntervalAdjustable.Drain2",
+    "T": "Drain",
+    "N": "Drain2"
+  },
+  ":.Models.SourceTrigger.SourceRandom": {
+    "path": ":.Models.SourceTrigger.SourceRandom",
+    "T": "Frame",
+    "N": "SourceRandom"
+  },
+  ":.Models.SourceTrigger.SourceRandom.Drain": {
+    "path": ":.Models.SourceTrigger.SourceRandom.Drain",
+    "T": "Drain",
+    "N": "Drain"
+  },
+  ":.Models.SourceTrigger.SourcePercentage": {
+    "path": ":.Models.SourceTrigger.SourcePercentage",
+    "T": "Frame",
+    "N": "SourcePercentage"
+  },
+  ":.Models.SourceTrigger.SourcePercentage.Drain": {
+    "path": ":.Models.SourceTrigger.SourcePercentage.Drain",
+    "T": "Drain",
+    "N": "Drain"
+  },
+  ":.Models.SourceTrigger.SourceTrigger": {
+    "path": ":.Models.SourceTrigger.SourceTrigger",
+    "T": "Frame",
+    "N": "SourceTrigger"
+  },
+  ":.Models.SourceTrigger.SourceTrigger.Trigger2": {
+    "path": ":.Models.SourceTrigger.SourceTrigger.Trigger2",
+    "T": "Trigger",
+    "N": "Trigger2"
+  },
+  ":.Models.SourceTrigger.SourceTrigger.Trigger1": {
+    "path": ":.Models.SourceTrigger.SourceTrigger.Trigger1",
+    "T": "Trigger",
+    "N": "Trigger1"
+  },
+  ":.Models.SourceTrigger.SourceTrigger.Drain": {
+    "path": ":.Models.SourceTrigger.SourceTrigger.Drain",
+    "T": "Drain",
+    "N": "Drain"
+  },
+  ":.Models.Animation3D": {
+    "path": ":.Models.Animation3D",
+    "T": "Folder",
+    "N": "Animation3D"
+  },
+  ":.Models.Animation3D.RobotArm": {
+    "path": ":.Models.Animation3D.RobotArm",
+    "T": "Frame",
+    "N": "RobotArm"
+  },
+  ":.Models.Animation3D.RobotArm.Drain": {
+    "path": ":.Models.Animation3D.RobotArm.Drain",
+    "T": "Drain",
+    "N": "Drain"
+  },
+  ":.SimtalkClaude": {
+    "path": ":.SimtalkClaude",
+    "T": "Folder",
+    "N": "SimtalkClaude"
+  }
+}

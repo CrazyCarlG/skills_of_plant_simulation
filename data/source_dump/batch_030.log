@@ -1,0 +1,45 @@
+=== Batch: batch_030 (4 paths) ===
+  - .Models.SourceTrigger.SourceTrigger.Drain  [Drain]
+  - .Models.SourceTrigger.SourceTrigger.init  [Method]
+  - .Models.SourceTrigger.SourceTrigger.endsim  [Method]
+  - .Models.SourceTrigger.SourceTrigger.GeneratedParts  [DataTable]
+
+--- LOG ---
+2026-08-31 20:57:35: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:35
+2026-08-31 20:57:35: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:35: ###B:.Models.SourceTrigger.SourceTrigger.Drain###
+2026-08-31 20:57:35: T=Drain
+2026-08-31 20:57:35: N=Drain
+2026-08-31 20:57:35: D=1
+2026-08-31 20:57:35: ###E:.Models.SourceTrigger.SourceTrigger.Drain###
+2026-08-31 20:57:35: ###B:.Models.SourceTrigger.SourceTrigger.init###
+2026-08-31 20:57:35: T=Method
+2026-08-31 20:57:35: N=init
+2026-08-31 20:57:35: PROG_LEN=167
+2026-08-31 20:57:35: ###P:.Models.SourceTrigger.SourceTrigger.init###
+2026-08-31 20:57:35: var assignedTriggers:object[2]
+
+for var j := 1 to 2 
+	assignedTriggers[j] := to_str("Trigger",j) -- string to object conversion
+next
+Source.trigger := assignedTriggers
+2026-08-31 20:57:35: ###PE:.Models.SourceTrigger.SourceTrigger.init###
+2026-08-31 20:57:35: ###E:.Models.SourceTrigger.SourceTrigger.init###
+2026-08-31 20:57:35: ###B:.Models.SourceTrigger.SourceTrigger.endsim###
+2026-08-31 20:57:35: T=Method
+2026-08-31 20:57:35: N=endsim
+2026-08-31 20:57:35: PROG_LEN=36
+2026-08-31 20:57:35: ###P:.Models.SourceTrigger.SourceTrigger.endsim###
+2026-08-31 20:57:35: source.creationTable(GeneratedParts)
+2026-08-31 20:57:35: ###PE:.Models.SourceTrigger.SourceTrigger.endsim###
+2026-08-31 20:57:35: ###E:.Models.SourceTrigger.SourceTrigger.endsim###
+2026-08-31 20:57:35: ###B:.Models.SourceTrigger.SourceTrigger.GeneratedParts###
+2026-08-31 20:57:35: T=DataTable
+2026-08-31 20:57:35: N=GeneratedParts
+2026-08-31 20:57:35: ROWS=0
+2026-08-31 20:57:35: COLS=0
+2026-08-31 20:57:35: ###DT:.Models.SourceTrigger.SourceTrigger.GeneratedParts###
+

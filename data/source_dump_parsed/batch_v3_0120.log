@@ -1,0 +1,32 @@
+=== batch 15: 8 paths ===
+.Models.SourceTrigger.SourceTrigger.Drain	Drain	success
+.Models.SourceTrigger.SourceTrigger.init	Method	failed
+.Models.SourceTrigger.SourceTrigger.endsim	Method	failed
+.Models.SourceTrigger.SourceTrigger.GeneratedParts	DataTable	failed
+.Models.SourceTrigger.SourceTrigger.EventController	EventController	failed
+.Models.SourceTrigger.SourceTrigger.Kante7	Connector	failed
+.Models.SourceTrigger.SourceTrigger.Connector	Connector	failed
+.Models.SourceTrigger.A	Part	failed
+
+--- LOG ---
+2026-08-31 21:00:23: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:00:23
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: ###B:.Models.SourceTrigger.SourceTrigger.Drain###
+2026-08-31 21:00:23: T=Drain
+2026-08-31 21:00:23: N=Drain
+2026-08-31 21:00:23: ###E:.Models.SourceTrigger.SourceTrigger.Drain###
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:23: execute sim-code: 'var o: object
+o := s......'

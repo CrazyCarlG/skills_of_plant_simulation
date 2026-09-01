@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Localization.getText",
+  "T": "Method",
+  "N": "getText",
+  "PROG_LEN": "152",
+  "program": "param  index : integer  -> string\n\nresult := messageTab[UserInterfaceLanguage+1, index ]\nif strLen(result) < 1 \n\tresult := messageTab[\"ENU\", index ]\nend"
+}

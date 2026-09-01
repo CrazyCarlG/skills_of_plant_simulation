@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Admin.move_AxesOrigin",
+  "T": "Method",
+  "N": "move_AxesOrigin",
+  "PROG_LEN": "254",
+  "program": "-- move_AxesOrigin\nfor var j := 1 to numNodes\n\tvar obj:object := node(j)\n\tobj.Coordinate3D[1] += 15\n\tobj.Coordinate3D[2] -= 15\nnext\n\nAxesOrigin := [0.0,0]\nreturn\neraseLayer(0)\ndrawRectangle(0, 0,0, 500,100, makeRGBValue(170,255,213),-1)\nself.deleteObject"
+}

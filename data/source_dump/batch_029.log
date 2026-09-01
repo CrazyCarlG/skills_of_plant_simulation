@@ -1,0 +1,33 @@
+=== Batch: batch_029 (4 paths) ===
+  - .Models.SourceTrigger.SourceTrigger.Readme  [Comment]
+  - .Models.SourceTrigger.SourceTrigger.Liesmich  [Comment]
+  - .Models.SourceTrigger.SourceTrigger.Trigger2  [Trigger]
+  - .Models.SourceTrigger.SourceTrigger.Trigger1  [Trigger]
+
+--- LOG ---
+2026-08-31 20:57:34: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:34
+2026-08-31 20:57:34: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:34: ###B:.Models.SourceTrigger.SourceTrigger.Readme###
+2026-08-31 20:57:34: T=Comment
+2026-08-31 20:57:34: N=Readme
+2026-08-31 20:57:34: C_TYPE=Comment
+2026-08-31 20:57:34: ###E:.Models.SourceTrigger.SourceTrigger.Readme###
+2026-08-31 20:57:34: ###B:.Models.SourceTrigger.SourceTrigger.Liesmich###
+2026-08-31 20:57:34: T=Comment
+2026-08-31 20:57:34: N=Liesmich
+2026-08-31 20:57:34: C_TYPE=Comment
+2026-08-31 20:57:34: ###E:.Models.SourceTrigger.SourceTrigger.Liesmich###
+2026-08-31 20:57:34: ###B:.Models.SourceTrigger.SourceTrigger.Trigger2###
+2026-08-31 20:57:34: T=Trigger
+2026-08-31 20:57:34: N=Trigger2
+2026-08-31 20:57:34: C_TYPE=Trigger
+2026-08-31 20:57:34: ###E:.Models.SourceTrigger.SourceTrigger.Trigger2###
+2026-08-31 20:57:34: ###B:.Models.SourceTrigger.SourceTrigger.Trigger1###
+2026-08-31 20:57:34: T=Trigger
+2026-08-31 20:57:34: N=Trigger1
+2026-08-31 20:57:34: C_TYPE=Trigger
+2026-08-31 20:57:34: ###E:.Models.SourceTrigger.SourceTrigger.Trigger1###
+

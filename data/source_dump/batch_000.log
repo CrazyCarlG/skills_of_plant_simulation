@@ -1,0 +1,46 @@
+=== Batch: batch_000 (4 paths) ===
+  - .Models  [Folder]
+  - .Models.internal  [Folder]
+  - .Models.internal.Localization  [Folder]
+  - .Models.internal.Localization.MessageTab  [DataTable]
+
+--- LOG ---
+2026-08-31 20:49:54: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:49:54
+2026-08-31 20:51:16: execute sim-code: 'print currentModel......'
+2026-08-31 20:51:16: execute sim-code: 'var o: object := str......'
+2026-08-31 20:51:16: execute sim-code: 'var o: object := str......'
+2026-08-31 20:51:16: execute sim-code: 'var o: object := str......'
+2026-08-31 20:51:16: VOID
+2026-08-31 20:51:26: execute sim-code: 'print str_to_obj(".c......'
+2026-08-31 20:51:26: VOID
+2026-08-31 20:51:26: execute sim-code: 'print @.getAttribute......'
+2026-08-31 20:51:26: execute sim-code: 'var o: object := str......'
+2026-08-31 20:51:26: VOID
+2026-08-31 20:51:26: execute sim-code: 'var o: object := str......'
+2026-08-31 20:55:51: execute sim-code: 'infoBox("[replicate]......'
+2026-08-31 20:57:09: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:09: ###B:.Models###
+2026-08-31 20:57:09: T=Folder
+2026-08-31 20:57:09: N=Models
+2026-08-31 20:57:09: F=1
+2026-08-31 20:57:09: ###E:.Models###
+2026-08-31 20:57:09: ###B:.Models.internal###
+2026-08-31 20:57:09: T=Folder
+2026-08-31 20:57:09: N=internal
+2026-08-31 20:57:09: F=1
+2026-08-31 20:57:09: ###E:.Models.internal###
+2026-08-31 20:57:09: ###B:.Models.internal.Localization###
+2026-08-31 20:57:09: T=Folder
+2026-08-31 20:57:09: N=Localization
+2026-08-31 20:57:09: F=1
+2026-08-31 20:57:09: ###E:.Models.internal.Localization###
+2026-08-31 20:57:09: ###B:.Models.internal.Localization.MessageTab###
+2026-08-31 20:57:09: T=DataTable
+2026-08-31 20:57:09: N=MessageTab
+2026-08-31 20:57:09: ROWS=36
+2026-08-31 20:57:09: COLS=2
+2026-08-31 20:57:09: ###DT:.Models.internal.Localization.MessageTab###
+

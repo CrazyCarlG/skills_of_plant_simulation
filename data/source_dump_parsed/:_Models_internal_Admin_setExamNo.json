@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Admin.setExamNo",
+  "T": "Method",
+  "N": "setExamNo",
+  "PROG_LEN": "222",
+  "program": "-- called by: .Models.internal.Admin.dispatcher (The user clicked a ling to open a frame.)\nparam frame:string\nExamNo := 0;\nExampleTab.setCursor(2,1)\nif ExampleTab.find({2,1}..{2,*}, frame)\n\tExamNo := ExampleTab.cursorY\nend"
+}

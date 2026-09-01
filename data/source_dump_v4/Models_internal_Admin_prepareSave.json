@@ -1,0 +1,6 @@
+{
+  "path": ":.Models.internal.Admin.prepareSave",
+  "T": "Method",
+  "N": "prepareSave",
+  "program": "var spp:string := to_str(Folder4Objects,\"examples.spp\")"
+}

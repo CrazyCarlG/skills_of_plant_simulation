@@ -1,0 +1,12 @@
+=== Batch: batch_019 (4 paths) ===
+  - .Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Batches  [DataTable]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.Source_Stop  [Source]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.Drain2  [Drain]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.GeneratedParts_Stop  [DataTable]
+
+--- LOG ---
+2026-08-31 20:57:26: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:26
+2026-08-31 20:57:26: Error in JSON data: Error in line 1: Unexpected end of string
+2026-08-31 20:57:26: Error in JSON data: Syntax error near line 1 at 'p###\"
+"}'.
+

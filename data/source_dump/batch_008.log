@@ -1,0 +1,54 @@
+=== Batch: batch_008 (4 paths) ===
+  - .Models.internal.Admin.ExportToExcel  [Method]
+  - .Models.internal.Admin.ImportKeywords  [Method]
+  - .Models.internal.Admin.KeyWords  [DataTable]
+  - .Models.internal.SelDlg  [Dialog]
+
+--- LOG ---
+2026-08-31 20:57:17: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:17
+2026-08-31 20:57:17: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:17: ###B:.Models.internal.Admin.ExportToExcel###
+2026-08-31 20:57:17: T=Method
+2026-08-31 20:57:17: N=ExportToExcel
+2026-08-31 20:57:17: PROG_LEN=304
+2026-08-31 20:57:17: ###P:.Models.internal.Admin.ExportToExcel###
+2026-08-31 20:57:17: -- Python interface
+var s1:string := modelFile
+var Folder4Objects:string := strCopy(s1,1,StrRpos("\\",s1))
+ExampleTab.delete
+GeneralTable2ExampleTab
+var ExportTable:table
+ExportTable.create
+ExampleTab.copyRangeTo({5,*}..{8,*},ExportTable,1,1)
+ExportTable.writeExcelFile(Folder4Objects+"DescriptionTable")
+2026-08-31 20:57:17: ###PE:.Models.internal.Admin.ExportToExcel###
+2026-08-31 20:57:17: ###E:.Models.internal.Admin.ExportToExcel###
+2026-08-31 20:57:17: ###B:.Models.internal.Admin.ImportKeywords###
+2026-08-31 20:57:17: T=Method
+2026-08-31 20:57:17: N=ImportKeywords
+2026-08-31 20:57:17: PROG_LEN=309
+2026-08-31 20:57:17: ###P:.Models.internal.Admin.ImportKeywords###
+2026-08-31 20:57:17: -- Python interface
+-- Import Excel File with the 
+
+var s1:string := modelFile
+var Folder4Objects:string := strCopy(s1,1,StrRpos("\\",s1))
+var ImportTable:table
+ImportTable.create
+
+ImportTable.readExcelFile(Folder4Objects+"KeyWordFile.xlsx")
+KeyWords.delete
+
+ImportTable.copyRangeTo({2,2}..{3,*},KeyWords,1,1)
+2026-08-31 20:57:17: ###PE:.Models.internal.Admin.ImportKeywords###
+2026-08-31 20:57:17: ###E:.Models.internal.Admin.ImportKeywords###
+2026-08-31 20:57:17: ###B:.Models.internal.Admin.KeyWords###
+2026-08-31 20:57:17: T=DataTable
+2026-08-31 20:57:17: N=KeyWords
+2026-08-31 20:57:17: ROWS=0
+2026-08-31 20:57:17: COLS=0
+2026-08-31 20:57:17: ###DT:.Models.internal.Admin.KeyWords###
+

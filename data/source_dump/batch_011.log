@@ -1,0 +1,19 @@
+=== Batch: batch_011 (4 paths) ===
+  - .Models.internal.DataTable  [DataTable]
+  - .Models.SourceTrigger  [Folder]
+  - .Models.SourceTrigger.SourceNumberAdjustable  [Frame]
+  - .Models.SourceTrigger.SourceNumberAdjustable.Readme  [Comment]
+
+--- LOG ---
+2026-08-31 20:57:20: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:20
+2026-08-31 20:57:20: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:20: ###B:.Models.internal.DataTable###
+2026-08-31 20:57:20: T=DataTable
+2026-08-31 20:57:20: N=DataTable
+2026-08-31 20:57:20: ROWS=0
+2026-08-31 20:57:20: COLS=0
+2026-08-31 20:57:20: ###DT:.Models.internal.DataTable###
+

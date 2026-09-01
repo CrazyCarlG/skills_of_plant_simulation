@@ -1,0 +1,3223 @@
+{
+  "root_path": "",
+  "root_name": "Basis",
+  "root_type": "Folder",
+  "root_numNodes": 12,
+  "children": [
+    {
+      "i": 1,
+      "name": "MaterialFlow",
+      "type": "Folder",
+      "path": ".MaterialFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "Connector",
+          "type": "Connector",
+          "path": ".MaterialFlow.Connector",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "EventController",
+          "type": "EventController",
+          "path": ".MaterialFlow.EventController",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Frame",
+          "type": "Frame",
+          "path": ".MaterialFlow.Frame",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Interface",
+          "type": "Interface",
+          "path": ".MaterialFlow.Interface",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Source",
+          "type": "Source",
+          "path": ".MaterialFlow.Source",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Drain",
+          "type": "Drain",
+          "path": ".MaterialFlow.Drain",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Station",
+          "type": "Station",
+          "path": ".MaterialFlow.Station",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "ParallelStation",
+          "type": "ParallelStation",
+          "path": ".MaterialFlow.ParallelStation",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "AssemblyStation",
+          "type": "AssemblyStation",
+          "path": ".MaterialFlow.AssemblyStation",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "DismantleStation",
+          "type": "DismantleStation",
+          "path": ".MaterialFlow.DismantleStation",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "PickAndPlace",
+          "type": "PickAndPlace",
+          "path": ".MaterialFlow.PickAndPlace",
+          "children": []
+        },
+        {
+          "i": 12,
+          "name": "Store",
+          "type": "Store",
+          "path": ".MaterialFlow.Store",
+          "children": []
+        },
+        {
+          "i": 13,
+          "name": "Buffer",
+          "type": "Buffer",
+          "path": ".MaterialFlow.Buffer",
+          "children": []
+        },
+        {
+          "i": 14,
+          "name": "Sorter",
+          "type": "Sorter",
+          "path": ".MaterialFlow.Sorter",
+          "children": []
+        },
+        {
+          "i": 15,
+          "name": "Conveyor",
+          "type": "Conveyor",
+          "path": ".MaterialFlow.Conveyor",
+          "children": []
+        },
+        {
+          "i": 16,
+          "name": "AngularConverter",
+          "type": "AngularConverter",
+          "path": ".MaterialFlow.AngularConverter",
+          "children": []
+        },
+        {
+          "i": 17,
+          "name": "Converter",
+          "type": "Converter",
+          "path": ".MaterialFlow.Converter",
+          "children": []
+        },
+        {
+          "i": 18,
+          "name": "Turntable",
+          "type": "Turntable",
+          "path": ".MaterialFlow.Turntable",
+          "children": []
+        },
+        {
+          "i": 19,
+          "name": "Turnplate",
+          "type": "Turnplate",
+          "path": ".MaterialFlow.Turnplate",
+          "children": []
+        },
+        {
+          "i": 20,
+          "name": "Track",
+          "type": "Track",
+          "path": ".MaterialFlow.Track",
+          "children": []
+        },
+        {
+          "i": 21,
+          "name": "TwoLaneTrack",
+          "type": "TwoLaneTrack",
+          "path": ".MaterialFlow.TwoLaneTrack",
+          "children": []
+        },
+        {
+          "i": 22,
+          "name": "FlowControl",
+          "type": "FlowControl",
+          "path": ".MaterialFlow.FlowControl",
+          "children": []
+        },
+        {
+          "i": 23,
+          "name": "Cycle",
+          "type": "Cycle",
+          "path": ".MaterialFlow.Cycle",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 2,
+      "name": "Fluids",
+      "type": "Folder",
+      "path": ".Fluids",
+      "children": [
+        {
+          "i": 1,
+          "name": "Pipe",
+          "type": "Pipe",
+          "path": ".Fluids.Pipe",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "FluidSource",
+          "type": "FluidSource",
+          "path": ".Fluids.FluidSource",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "FluidDrain",
+          "type": "FluidDrain",
+          "path": ".Fluids.FluidDrain",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Tank",
+          "type": "Tank",
+          "path": ".Fluids.Tank",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Mixer",
+          "type": "Mixer",
+          "path": ".Fluids.Mixer",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "ContinuousMixer",
+          "type": "ContinuousMixer",
+          "path": ".Fluids.ContinuousMixer",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Portioner",
+          "type": "Portioner",
+          "path": ".Fluids.Portioner",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "DePortioner",
+          "type": "DePortioner",
+          "path": ".Fluids.DePortioner",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "PatchMatrix",
+          "type": "PatchMatrix",
+          "path": ".Fluids.PatchMatrix",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "MaterialsTable",
+          "type": "DataTable",
+          "path": ".Fluids.MaterialsTable",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 3,
+      "name": "Resources",
+      "type": "Folder",
+      "path": ".Resources",
+      "children": [
+        {
+          "i": 1,
+          "name": "Workplace",
+          "type": "Workplace",
+          "path": ".Resources.Workplace",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "FootPath",
+          "type": "FootPath",
+          "path": ".Resources.FootPath",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "WorkerPool",
+          "type": "WorkerPool",
+          "path": ".Resources.WorkerPool",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "Worker",
+          "type": "Worker",
+          "path": ".Resources.Worker",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "Exporter",
+          "type": "Exporter",
+          "path": ".Resources.Exporter",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "Broker",
+          "type": "Broker",
+          "path": ".Resources.Broker",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "AGVPool",
+          "type": "AGVPool",
+          "path": ".Resources.AGVPool",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "Marker",
+          "type": "Marker",
+          "path": ".Resources.Marker",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "ShiftCalendar",
+          "type": "ShiftCalendar",
+          "path": ".Resources.ShiftCalendar",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "LockoutZone",
+          "type": "LockoutZone",
+          "path": ".Resources.LockoutZone",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 4,
+      "name": "InformationFlow",
+      "type": "Folder",
+      "path": ".InformationFlow",
+      "children": [
+        {
+          "i": 1,
+          "name": "Method",
+          "type": "Method",
+          "path": ".InformationFlow.Method",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Variable",
+          "type": "Variable",
+          "path": ".InformationFlow.Variable",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "DataTable",
+          "type": "DataTable",
+          "path": ".InformationFlow.DataTable",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "DataList",
+          "type": "DataList",
+          "path": ".InformationFlow.DataList",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "DataStack",
+          "type": "DataStack",
+          "path": ".InformationFlow.DataStack",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "DataQueue",
+          "type": "DataQueue",
+          "path": ".InformationFlow.DataQueue",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "TimeSequence",
+          "type": "TimeSequence",
+          "path": ".InformationFlow.TimeSequence",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "Trigger",
+          "type": "Trigger",
+          "path": ".InformationFlow.Trigger",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "Generator",
+          "type": "Generator",
+          "path": ".InformationFlow.Generator",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "AttributeExplorer",
+          "type": "AttributeExplorer",
+          "path": ".InformationFlow.AttributeExplorer",
+          "children": []
+        },
+        {
+          "i": 11,
+          "name": "FileLink",
+          "type": "FileLink",
+          "path": ".InformationFlow.FileLink",
+          "children": []
+        },
+        {
+          "i": 12,
+          "name": "FileInterface",
+          "type": "FileInterface",
+          "path": ".InformationFlow.FileInterface",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 5,
+      "name": "UserInterface",
+      "type": "Folder",
+      "path": ".UserInterface",
+      "children": [
+        {
+          "i": 1,
+          "name": "Comment",
+          "type": "Comment",
+          "path": ".UserInterface.Comment",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Display",
+          "type": "Display",
+          "path": ".UserInterface.Display",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Chart",
+          "type": "Chart",
+          "path": ".UserInterface.Chart",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "SankeyDiagram",
+          "type": "SankeyDiagram",
+          "path": ".UserInterface.SankeyDiagram",
+          "children": []
+        },
+        {
+          "i": 5,
+          "name": "CostAnalyzer",
+          "type": "CostAnalyzer",
+          "path": ".UserInterface.CostAnalyzer",
+          "children": []
+        },
+        {
+          "i": 6,
+          "name": "HtmlReport",
+          "type": "HtmlReport",
+          "path": ".UserInterface.HtmlReport",
+          "children": []
+        },
+        {
+          "i": 7,
+          "name": "Dialog",
+          "type": "Dialog",
+          "path": ".UserInterface.Dialog",
+          "children": []
+        },
+        {
+          "i": 8,
+          "name": "Checkbox",
+          "type": "Checkbox",
+          "path": ".UserInterface.Checkbox",
+          "children": []
+        },
+        {
+          "i": 9,
+          "name": "Button",
+          "type": "Button",
+          "path": ".UserInterface.Button",
+          "children": []
+        },
+        {
+          "i": 10,
+          "name": "DropDownList",
+          "type": "DropDownList",
+          "path": ".UserInterface.DropDownList",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 6,
+      "name": "MUs",
+      "type": "Folder",
+      "path": ".MUs",
+      "children": [
+        {
+          "i": 1,
+          "name": "Part",
+          "type": "Part",
+          "path": ".MUs.Part",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "Container",
+          "type": "Container",
+          "path": ".MUs.Container",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Transporter",
+          "type": "Transporter",
+          "path": ".MUs.Transporter",
+          "children": []
+        }
+      ]
+    },
+    {
+      "i": 7,
+      "name": "UserObjects",
+      "type": "Folder",
+      "path": ".UserObjects",
+      "children": [
+        {
+          "i": 1,
+          "name": "PartA",
+          "type": "Part",
+          "path": ".UserObjects.PartA",
+          "children": []
+        },
+        {
+          "i": 2,
+          "name": "PartB",
+          "type": "Part",
+          "path": ".UserObjects.PartB",
+          "children": []
+        },
+        {
+          "i": 3,
+          "name": "Box",
+          "type": "Container",
+          "path": ".UserObjects.Box",
+          "children": []
+        },
+        {
+          "i": 4,
+          "name": "MyFrame",
+          "type": "Frame",
+          "path": ".UserObjects.MyFrame",
+          "children": [
+            {
+              "i": 1,
+              "name": "Station",
+              "type": "Station",
+              "path": ".UserObjects.MyFrame.Station",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Conveyor",
+              "type": "Conveyor",
+              "path": ".UserObjects.MyFrame.Conveyor",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "Comment",
+              "type": "Comment",
+              "path": ".UserObjects.MyFrame.Comment",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "Connector",
+              "type": "Connector",
+              "path": ".UserObjects.MyFrame.Connector",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 8,
+      "name": "Tools",
+      "type": "Folder",
+      "path": ".Tools",
+      "children": [
+        {
+          "i": 1,
+          "name": "BottleneckAnalyzer",
+          "type": "Folder",
+          "path": ".Tools.BottleneckAnalyzer",
+          "children": [
+            {
+              "i": 1,
+              "name": "BottleneckAnalyzer",
+              "type": "Frame",
+              "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "analyzeFrame",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeFrame",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "analyzeObject",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeObject",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "analyzeModel",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.analyzeModel",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "removeStats",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.removeStats",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "removeCharts",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.removeCharts",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "dialog",
+                  "type": "Frame",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "showStats",
+                      "type": "Method",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.showStats",
+                      "children": []
+                    },
+                    {
+                      "i": 2,
+                      "name": "Translations",
+                      "type": "DataTable",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.Translations",
+                      "children": []
+                    },
+                    {
+                      "i": 3,
+                      "name": "showLanguage",
+                      "type": "Method",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.showLanguage",
+                      "children": []
+                    },
+                    {
+                      "i": 4,
+                      "name": "Context",
+                      "type": "DataTable",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.Context",
+                      "children": []
+                    },
+                    {
+                      "i": 5,
+                      "name": "Dialog",
+                      "type": "Dialog",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.Dialog",
+                      "children": []
+                    },
+                    {
+                      "i": 6,
+                      "name": "openHelp",
+                      "type": "Method",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openHelp",
+                      "children": []
+                    },
+                    {
+                      "i": 7,
+                      "name": "openConfig",
+                      "type": "Method",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openConfig",
+                      "children": []
+                    },
+                    {
+                      "i": 8,
+                      "name": "AnalyzeModel",
+                      "type": "Method",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.AnalyzeModel",
+                      "children": []
+                    },
+                    {
+                      "i": 9,
+                      "name": "RemoveStats",
+                      "type": "Method",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.RemoveStats",
+                      "children": []
+                    },
+                    {
+                      "i": 10,
+                      "name": "openDia",
+                      "type": "Method",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.openDia",
+                      "children": []
+                    },
+                    {
+                      "i": 11,
+                      "name": "DragDrop",
+                      "type": "Method",
+                      "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.dialog.DragDrop",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "i": 7,
+                  "name": "Production",
+                  "type": "Variable",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.Production",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Transport",
+                  "type": "Variable",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.Transport",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "Storage",
+                  "type": "Variable",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.Storage",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "ResourceStats",
+                  "type": "DataTable",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.ResourceStats",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "sortStats",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.sortStats",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "reset",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.reset",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "scale_icon",
+                  "type": "Variable",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.scale_icon",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Layer_of_chart",
+                  "type": "Variable",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.Layer_of_chart",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "draw_Scale",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.draw_Scale",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "Analyzed",
+                  "type": "Variable",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.Analyzed",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "drawBar",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.drawBar",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "insRootStr",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.insRootStr",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "colors",
+                  "type": "Variable",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.colors",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "fill4Report",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.fill4Report",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "markBottleneckObject",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.markBottleneckObject",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "isTool",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BottleneckAnalyzer.isTool",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "BasicObjects",
+              "type": "Folder",
+              "path": ".Tools.BottleneckAnalyzer.BasicObjects",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Variable",
+                  "type": "Variable",
+                  "path": ".Tools.BottleneckAnalyzer.BasicObjects.Variable",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Frame",
+                  "type": "Frame",
+                  "path": ".Tools.BottleneckAnalyzer.BasicObjects.Frame",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "TableFile",
+                  "type": "DataTable",
+                  "path": ".Tools.BottleneckAnalyzer.BasicObjects.TableFile",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "CardFile",
+                  "type": "DataList",
+                  "path": ".Tools.BottleneckAnalyzer.BasicObjects.CardFile",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".Tools.BottleneckAnalyzer.BasicObjects.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Method",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.BasicObjects.Method",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "Localization",
+              "type": "Folder",
+              "path": ".Tools.BottleneckAnalyzer.Localization",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "MessageTab",
+                  "type": "DataTable",
+                  "path": ".Tools.BottleneckAnalyzer.Localization.MessageTab",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "message",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.Localization.message",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "getMessage",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.Localization.getMessage",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "getText",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.Localization.getText",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "LanguageDesignation",
+                  "type": "Method",
+                  "path": ".Tools.BottleneckAnalyzer.Localization.LanguageDesignation",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "EnergyAnalyzer",
+          "type": "Folder",
+          "path": ".Tools.EnergyAnalyzer",
+          "children": [
+            {
+              "i": 1,
+              "name": "EnergyAnalyzer",
+              "type": "Frame",
+              "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "EnergyConsumers",
+                  "type": "DataTable",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.EnergyConsumers",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "init",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.init",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "findConsumers",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.findConsumers",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "reset",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.reset",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "observeEnergyState",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.observeEnergyState",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "detectEnergyobjects",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.detectEnergyobjects",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Plotter",
+                  "type": "Chart",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.Plotter",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "visualize",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.visualize",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "delVisualize",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.delVisualize",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "ConsumersSelection",
+                  "type": "DataTable",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.ConsumersSelection",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "endSim",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.endSim",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "UsageProfile",
+                  "type": "Chart",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.UsageProfile",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "VisObject",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.VisObject",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "ConsumersDragDrop",
+                  "type": "DataTable",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.ConsumersDragDrop",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "Colors",
+                  "type": "DataTable",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.Colors",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "Objects",
+                  "type": "DataTable",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.Objects",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "prepareObserver",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.prepareObserver",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "updateConsumption",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.updateConsumption",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "ReportObject",
+                  "type": "HtmlReport",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.ReportObject",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "GrGroupName",
+                  "type": "Variable",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.GrGroupName",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Frames",
+                  "type": "DataTable",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.Frames",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Energy",
+                  "type": "Variable",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.Energy",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "isNameUniqueEverywhere",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.EnergyAnalyzer.isNameUniqueEverywhere",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "BasicObjects",
+              "type": "Folder",
+              "path": ".Tools.EnergyAnalyzer.BasicObjects",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Method",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.BasicObjects.Method",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "TableFile",
+                  "type": "DataTable",
+                  "path": ".Tools.EnergyAnalyzer.BasicObjects.TableFile",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Chart",
+                  "type": "Chart",
+                  "path": ".Tools.EnergyAnalyzer.BasicObjects.Chart",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".Tools.EnergyAnalyzer.BasicObjects.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "HtmlReport",
+                  "type": "HtmlReport",
+                  "path": ".Tools.EnergyAnalyzer.BasicObjects.HtmlReport",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Variable",
+                  "type": "Variable",
+                  "path": ".Tools.EnergyAnalyzer.BasicObjects.Variable",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Variable3D",
+                  "type": "Variable",
+                  "path": ".Tools.EnergyAnalyzer.BasicObjects.Variable3D",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".Tools.EnergyAnalyzer.BasicObjects.Comment",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "Localization",
+              "type": "Folder",
+              "path": ".Tools.EnergyAnalyzer.Localization",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "message",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.Localization.message",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "getMessage",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.Localization.getMessage",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "getText",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.Localization.getText",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "MessageTab",
+                  "type": "DataTable",
+                  "path": ".Tools.EnergyAnalyzer.Localization.MessageTab",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "LanguageDesignation",
+                  "type": "Method",
+                  "path": ".Tools.EnergyAnalyzer.Localization.LanguageDesignation",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "name": "ExperimentManager",
+          "type": "Folder",
+          "path": ".Tools.ExperimentManager",
+          "children": [
+            {
+              "i": 1,
+              "name": "ExperimentManager",
+              "type": "Frame",
+              "path": ".Tools.ExperimentManager.ExperimentManager",
+              "error": "Unterminated string starting at: line 1 column 11968 (char 11967)"
+            },
+            {
+              "i": 2,
+              "name": "Internal",
+              "type": "Folder",
+              "path": ".Tools.ExperimentManager.Internal",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "DistributedSimulation",
+                  "type": "Frame",
+                  "path": ".Tools.ExperimentManager.Internal.DistributedSimulation",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "MachinesTable",
+                      "type": "DataTable",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.MachinesTable",
+                      "children": []
+                    },
+                    {
+                      "i": 2,
+                      "name": "StartMachine",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.StartMachine",
+                      "children": []
+                    },
+                    {
+                      "i": 3,
+                      "name": "Start",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.Start",
+                      "children": []
+                    },
+                    {
+                      "i": 4,
+                      "name": "removeDistrSim",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.removeDistrSim",
+                      "children": []
+                    },
+                    {
+                      "i": 5,
+                      "name": "ActivateMachines",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.ActivateMachines",
+                      "children": []
+                    },
+                    {
+                      "i": 6,
+                      "name": "dialog",
+                      "type": "Dialog",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.dialog",
+                      "children": []
+                    },
+                    {
+                      "i": 7,
+                      "name": "prepareRemoteProcess",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.prepareRemoteProcess",
+                      "children": []
+                    },
+                    {
+                      "i": 8,
+                      "name": "ErrorHandling",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.ErrorHandling",
+                      "children": []
+                    },
+                    {
+                      "i": 9,
+                      "name": "EvaluateSimMachines",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.EvaluateSimMachines",
+                      "children": []
+                    },
+                    {
+                      "i": 10,
+                      "name": "updateMachinesTable",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.updateMachinesTable",
+                      "children": []
+                    },
+                    {
+                      "i": 11,
+                      "name": "M_isComputerAccessPermitted",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.DistributedSimulation.M_isComputerAccessPermitted",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "i": 2,
+                  "name": "SimulationMachine",
+                  "type": "Frame",
+                  "path": ".Tools.ExperimentManager.Internal.SimulationMachine",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "MachineIndex",
+                      "type": "Variable",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.MachineIndex",
+                      "children": []
+                    },
+                    {
+                      "i": 2,
+                      "name": "ConnectProcess",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.ConnectProcess",
+                      "children": []
+                    },
+                    {
+                      "i": 3,
+                      "name": "StartNetwork",
+                      "type": "Variable",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.StartNetwork",
+                      "children": []
+                    },
+                    {
+                      "i": 4,
+                      "name": "JobId",
+                      "type": "Variable",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.JobId",
+                      "children": []
+                    },
+                    {
+                      "i": 5,
+                      "name": "M_Quit",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.M_Quit",
+                      "children": []
+                    },
+                    {
+                      "i": 6,
+                      "name": "ErrorHandler",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.ErrorHandler",
+                      "children": []
+                    },
+                    {
+                      "i": 7,
+                      "name": "eMPlantHandle",
+                      "type": "Variable",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.eMPlantHandle",
+                      "children": []
+                    },
+                    {
+                      "i": 8,
+                      "name": "startDateTime",
+                      "type": "Variable",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.startDateTime",
+                      "children": []
+                    },
+                    {
+                      "i": 9,
+                      "name": "RunProcess",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.RunProcess",
+                      "children": []
+                    },
+                    {
+                      "i": 10,
+                      "name": "EventSink",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.EventSink",
+                      "children": []
+                    },
+                    {
+                      "i": 11,
+                      "name": "StartReplication",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.StartReplication",
+                      "children": []
+                    },
+                    {
+                      "i": 12,
+                      "name": "CreateProcess",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.Internal.SimulationMachine.CreateProcess",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "i": 3,
+                  "name": "translate",
+                  "type": "Method",
+                  "path": ".Tools.ExperimentManager.Internal.translate",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "sema",
+                  "type": "Variable",
+                  "path": ".Tools.ExperimentManager.Internal.sema",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "BasicObjects",
+              "type": "Folder",
+              "path": ".Tools.ExperimentManager.BasicObjects",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "InformationFlow",
+                  "type": "Folder",
+                  "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "TableFile",
+                      "type": "DataTable",
+                      "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.TableFile",
+                      "children": []
+                    },
+                    {
+                      "i": 2,
+                      "name": "Variable",
+                      "type": "Variable",
+                      "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.Variable",
+                      "children": []
+                    },
+                    {
+                      "i": 3,
+                      "name": "Method",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.Method",
+                      "children": []
+                    },
+                    {
+                      "i": 4,
+                      "name": "comment",
+                      "type": "Comment",
+                      "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.comment",
+                      "children": []
+                    },
+                    {
+                      "i": 5,
+                      "name": "FileInterface",
+                      "type": "FileInterface",
+                      "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.FileInterface",
+                      "children": []
+                    },
+                    {
+                      "i": 6,
+                      "name": "Effects",
+                      "type": "DataTable",
+                      "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.Effects",
+                      "children": []
+                    },
+                    {
+                      "i": 7,
+                      "name": "Design",
+                      "type": "DataTable",
+                      "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.Design",
+                      "children": []
+                    },
+                    {
+                      "i": 8,
+                      "name": "CardFile",
+                      "type": "DataList",
+                      "path": ".Tools.ExperimentManager.BasicObjects.InformationFlow.CardFile",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "i": 2,
+                  "name": "UserInterface",
+                  "type": "Folder",
+                  "path": ".Tools.ExperimentManager.BasicObjects.UserInterface",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "Dialog",
+                      "type": "Dialog",
+                      "path": ".Tools.ExperimentManager.BasicObjects.UserInterface.Dialog",
+                      "children": []
+                    },
+                    {
+                      "i": 2,
+                      "name": "Chart",
+                      "type": "Chart",
+                      "path": ".Tools.ExperimentManager.BasicObjects.UserInterface.Chart",
+                      "children": []
+                    },
+                    {
+                      "i": 3,
+                      "name": "HtmlReport",
+                      "type": "HtmlReport",
+                      "path": ".Tools.ExperimentManager.BasicObjects.UserInterface.HtmlReport",
+                      "children": []
+                    },
+                    {
+                      "i": 4,
+                      "name": "HtmlReport_org",
+                      "type": "HtmlReport",
+                      "path": ".Tools.ExperimentManager.BasicObjects.UserInterface.HtmlReport_org",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "i": 3,
+                  "name": "MaterialFlow",
+                  "type": "Folder",
+                  "path": ".Tools.ExperimentManager.BasicObjects.MaterialFlow",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "_Icons_",
+                      "type": "Method",
+                      "path": ".Tools.ExperimentManager.BasicObjects.MaterialFlow._Icons_",
+                      "children": []
+                    },
+                    {
+                      "i": 2,
+                      "name": "Frame",
+                      "type": "Frame",
+                      "path": ".Tools.ExperimentManager.BasicObjects.MaterialFlow.Frame",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "i": 4,
+              "name": "Localization",
+              "type": "Folder",
+              "path": ".Tools.ExperimentManager.Localization",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "message",
+                  "type": "Method",
+                  "path": ".Tools.ExperimentManager.Localization.message",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "getMessage",
+                  "type": "Method",
+                  "path": ".Tools.ExperimentManager.Localization.getMessage",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "getText",
+                  "type": "Method",
+                  "path": ".Tools.ExperimentManager.Localization.getText",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "MessageTab",
+                  "type": "DataTable",
+                  "path": ".Tools.ExperimentManager.Localization.MessageTab",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "LanguageDesignation",
+                  "type": "Method",
+                  "path": ".Tools.ExperimentManager.Localization.LanguageDesignation",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 9,
+      "name": "Models",
+      "type": "Folder",
+      "path": ".Models",
+      "children": [
+        {
+          "i": 1,
+          "name": "Model",
+          "type": "Frame",
+          "path": ".Models.Model",
+          "children": [
+            {
+              "i": 1,
+              "name": "EventController",
+              "type": "EventController",
+              "path": ".Models.Model.EventController",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 10,
+      "name": "SimtalkClaude",
+      "type": "Folder",
+      "path": ".SimtalkClaude",
+      "children": [
+        {
+          "i": 1,
+          "name": "Main",
+          "type": "Frame",
+          "path": ".SimtalkClaude.Main",
+          "children": [
+            {
+              "i": 1,
+              "name": "SocketServer",
+              "type": "Frame",
+              "path": ".SimtalkClaude.Main.SocketServer",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "m_callback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SocketServer.m_callback",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.Main.SocketServer.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SocketServer.m_send",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "ping_reply",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.Main.SocketServer.ping_reply",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "m_str_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SocketServer.m_str_send",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "reconnect",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SocketServer.reconnect",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "SimtalkAction",
+              "type": "Frame",
+              "path": ".SimtalkClaude.Main.SimtalkAction",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "simtalkcode",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.simtalkcode",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_getlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.m_getlog",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "get_simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.get_simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "action_result",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.action_result",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "simtalk_execute",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.simtalk_execute",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "a_readlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.a_readlog",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Run_Simutalk",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.Run_Simutalk",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "ReadLogFile",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.ReadLogFile",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "ErrorHandler",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.Main.SimtalkAction.ErrorHandler",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "Server",
+              "type": "Variable",
+              "path": ".SimtalkClaude.Main.Server",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "SimtalkClaude",
+              "type": "Dialog",
+              "path": ".SimtalkClaude.Main.SimtalkClaude",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "onopen",
+              "type": "Method",
+              "path": ".SimtalkClaude.Main.onopen",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "src",
+          "type": "Folder",
+          "path": ".SimtalkClaude.src",
+          "children": [
+            {
+              "i": 1,
+              "name": "SimtalkAction",
+              "type": "Frame",
+              "path": ".SimtalkClaude.src.SimtalkAction",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "simtalkcode",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalkcode",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_getlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.m_getlog",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "get_simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.get_simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "simtalk_hasError",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalk_hasError",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "action_result",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.src.SimtalkAction.action_result",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "simtalk_execute",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.simtalk_execute",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "a_readlog",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.a_readlog",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Run_Simutalk",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.Run_Simutalk",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "ReadLogFile",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.ReadLogFile",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "ErrorHandler",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.src.SimtalkAction.ErrorHandler",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "autoexec",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.autoexec",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "ErrorHandler",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.ErrorHandler",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "autoexecLoadObj",
+              "type": "Method",
+              "path": ".SimtalkClaude.src.autoexecLoadObj",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "name": "connection",
+          "type": "Folder",
+          "path": ".SimtalkClaude.connection",
+          "children": [
+            {
+              "i": 1,
+              "name": "SocketServer",
+              "type": "Frame",
+              "path": ".SimtalkClaude.connection.SocketServer",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "MySocket",
+                  "type": "Socket",
+                  "path": ".SimtalkClaude.connection.SocketServer.MySocket",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "m_callback",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_callback",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "m_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_send",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "ping_reply",
+                  "type": "Variable",
+                  "path": ".SimtalkClaude.connection.SocketServer.ping_reply",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "m_str_send",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.m_str_send",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "reconnect",
+                  "type": "Method",
+                  "path": ".SimtalkClaude.connection.SocketServer.reconnect",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".SimtalkClaude.connection.Socket",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 4,
+          "name": "objects",
+          "type": "Folder",
+          "path": ".SimtalkClaude.objects",
+          "children": [
+            {
+              "i": 1,
+              "name": "Method",
+              "type": "Method",
+              "path": ".SimtalkClaude.objects.Method",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "Socket",
+              "type": "Socket",
+              "path": ".SimtalkClaude.objects.Socket",
+              "children": []
+            },
+            {
+              "i": 3,
+              "name": "HtmlReport",
+              "type": "HtmlReport",
+              "path": ".SimtalkClaude.objects.HtmlReport",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "Variable",
+              "type": "Variable",
+              "path": ".SimtalkClaude.objects.Variable",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "Dialog",
+              "type": "Dialog",
+              "path": ".SimtalkClaude.objects.Dialog",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 11,
+      "name": "MaterialFlow_AGV",
+      "type": "Folder",
+      "path": ".MaterialFlow_AGV",
+      "children": [
+        {
+          "i": 1,
+          "name": "BasicObjects",
+          "type": "Folder",
+          "path": ".MaterialFlow_AGV.BasicObjects",
+          "children": [
+            {
+              "i": 1,
+              "name": "Resources",
+              "type": "Folder",
+              "path": ".MaterialFlow_AGV.BasicObjects.Resources",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Workplace",
+                  "type": "Workplace",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.Workplace",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "FootPath",
+                  "type": "FootPath",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.FootPath",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "WorkerPool",
+                  "type": "WorkerPool",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.WorkerPool",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Worker",
+                  "type": "Worker",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.Worker",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Exporter",
+                  "type": "Exporter",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.Exporter",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Broker",
+                  "type": "Broker",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.Broker",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Marker",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.Marker",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "ShiftCalendar",
+                  "type": "ShiftCalendar",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.ShiftCalendar",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "LockoutZone",
+                  "type": "LockoutZone",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.LockoutZone",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "AGVPool",
+                  "type": "AGVPool",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.AGVPool",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Toolbar",
+                  "type": "Toolbar",
+                  "path": ".MaterialFlow_AGV.BasicObjects.Resources.Toolbar",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 2,
+              "name": "MUs",
+              "type": "Folder",
+              "path": ".MaterialFlow_AGV.BasicObjects.MUs",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Part",
+                  "type": "Part",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MUs.Part",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Container",
+                  "type": "Container",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MUs.Container",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Transporter",
+                  "type": "Transporter",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MUs.Transporter",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Toolbar",
+                  "type": "Toolbar",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MUs.Toolbar",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 3,
+              "name": "MaterialFlow",
+              "type": "Folder",
+              "path": ".MaterialFlow_AGV.BasicObjects.MaterialFlow",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MaterialFlow.Connector",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Interface",
+                  "type": "Interface",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MaterialFlow.Interface",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "EventController",
+                  "type": "EventController",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MaterialFlow.EventController",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Source",
+                  "type": "Source",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MaterialFlow.Source",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Drain",
+                  "type": "Drain",
+                  "path": ".MaterialFlow_AGV.BasicObjects.MaterialFlow.Drain",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 4,
+              "name": "InformationFlow",
+              "type": "Folder",
+              "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Method",
+                  "type": "Method",
+                  "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow.Method",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Variable",
+                  "type": "Variable",
+                  "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow.Variable",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "DataList",
+                  "type": "DataList",
+                  "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow.DataList",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "DataTable",
+                  "type": "DataTable",
+                  "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow.DataTable",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Generator",
+                  "type": "Generator",
+                  "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow.Generator",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Chart",
+                  "type": "Chart",
+                  "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow.Chart",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "SankeyDiagram",
+                  "type": "SankeyDiagram",
+                  "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow.SankeyDiagram",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Trigger",
+                  "type": "Trigger",
+                  "path": ".MaterialFlow_AGV.BasicObjects.InformationFlow.Trigger",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 5,
+              "name": "UserInterface",
+              "type": "Folder",
+              "path": ".MaterialFlow_AGV.BasicObjects.UserInterface",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Comment",
+                  "type": "Comment",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.Comment",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Display",
+                  "type": "Display",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.Display",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Chart",
+                  "type": "Chart",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.Chart",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "SankeyDiagram",
+                  "type": "SankeyDiagram",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.SankeyDiagram",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "CostAnalyzer",
+                  "type": "CostAnalyzer",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.CostAnalyzer",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "HtmlReport",
+                  "type": "HtmlReport",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.HtmlReport",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Dialog",
+                  "type": "Dialog",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.Dialog",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Checkbox",
+                  "type": "Checkbox",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.Checkbox",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "Button",
+                  "type": "Button",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.Button",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "DropDownList",
+                  "type": "DropDownList",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.DropDownList",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Toolbar",
+                  "type": "Toolbar",
+                  "path": ".MaterialFlow_AGV.BasicObjects.UserInterface.Toolbar",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "i": 2,
+          "name": "AdvancedObejcts",
+          "type": "Folder",
+          "path": ".MaterialFlow_AGV.AdvancedObejcts",
+          "children": [
+            {
+              "i": 1,
+              "name": "AGVPool",
+              "type": "AGVPool",
+              "path": ".MaterialFlow_AGV.AdvancedObejcts.AGVPool",
+              "children": []
+            },
+            {
+              "i": 2,
+              "name": "CapacityCalculation_v2",
+              "type": "Frame",
+              "path": ".MaterialFlow_AGV.AdvancedObejcts.CapacityCalculation_v2",
+              "error": "Unterminated string starting at: line 1 column 11975 (char 11974)"
+            },
+            {
+              "i": 3,
+              "name": "Marker",
+              "type": "Marker",
+              "path": ".MaterialFlow_AGV.AdvancedObejcts.Marker",
+              "children": []
+            },
+            {
+              "i": 4,
+              "name": "OrderCreater",
+              "type": "Source",
+              "path": ".MaterialFlow_AGV.AdvancedObejcts.OrderCreater",
+              "children": []
+            },
+            {
+              "i": 5,
+              "name": "PalletAGV",
+              "type": "Transporter",
+              "path": ".MaterialFlow_AGV.AdvancedObejcts.PalletAGV",
+              "children": []
+            },
+            {
+              "i": 6,
+              "name": "BoxAGV",
+              "type": "Transporter",
+              "path": ".MaterialFlow_AGV.AdvancedObejcts.BoxAGV",
+              "children": []
+            }
+          ]
+        },
+        {
+          "i": 3,
+          "name": "Area",
+          "type": "Folder",
+          "path": ".MaterialFlow_AGV.Area",
+          "children": [
+            {
+              "i": 1,
+              "name": "PhaseIV_Shopfloor",
+              "type": "Frame",
+              "path": ".MaterialFlow_AGV.Area.PhaseIV_Shopfloor",
+              "error": "Unterminated string starting at: line 1 column 11996 (char 11995)"
+            },
+            {
+              "i": 2,
+              "name": "PhaseIII_Shopfloor",
+              "type": "Frame",
+              "path": ".MaterialFlow_AGV.Area.PhaseIII_Shopfloor",
+              "error": "Unterminated string starting at: line 1 column 11956 (char 11955)"
+            },
+            {
+              "i": 3,
+              "name": "PhaseIV_GRArea",
+              "type": "Frame",
+              "path": ".MaterialFlow_AGV.Area.PhaseIV_GRArea",
+              "error": "Unterminated string starting at: line 1 column 11998 (char 11997)"
+            },
+            {
+              "i": 4,
+              "name": "PhaseIV_SF",
+              "type": "Frame",
+              "path": ".MaterialFlow_AGV.Area.PhaseIV_SF",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "Marker",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker",
+                  "children": []
+                },
+                {
+                  "i": 2,
+                  "name": "Marker1",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker1",
+                  "children": []
+                },
+                {
+                  "i": 3,
+                  "name": "Marker2",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker2",
+                  "children": []
+                },
+                {
+                  "i": 4,
+                  "name": "Marker3",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker3",
+                  "children": []
+                },
+                {
+                  "i": 5,
+                  "name": "Connector",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector",
+                  "children": []
+                },
+                {
+                  "i": 6,
+                  "name": "Connector2",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector2",
+                  "children": []
+                },
+                {
+                  "i": 7,
+                  "name": "Marker4",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker4",
+                  "children": []
+                },
+                {
+                  "i": 8,
+                  "name": "Connector1",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector1",
+                  "children": []
+                },
+                {
+                  "i": 9,
+                  "name": "Marker5",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker5",
+                  "children": []
+                },
+                {
+                  "i": 10,
+                  "name": "Connector111",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector111",
+                  "children": []
+                },
+                {
+                  "i": 11,
+                  "name": "Marker6",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker6",
+                  "children": []
+                },
+                {
+                  "i": 12,
+                  "name": "Connector4",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector4",
+                  "children": []
+                },
+                {
+                  "i": 13,
+                  "name": "Connector5",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector5",
+                  "children": []
+                },
+                {
+                  "i": 14,
+                  "name": "Entry",
+                  "type": "Interface",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Entry",
+                  "children": []
+                },
+                {
+                  "i": 15,
+                  "name": "Connector6",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector6",
+                  "children": []
+                },
+                {
+                  "i": 16,
+                  "name": "Exit",
+                  "type": "Interface",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Exit",
+                  "children": []
+                },
+                {
+                  "i": 17,
+                  "name": "Connector7",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector7",
+                  "children": []
+                },
+                {
+                  "i": 18,
+                  "name": "Marker7",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker7",
+                  "children": []
+                },
+                {
+                  "i": 19,
+                  "name": "Connector8",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector8",
+                  "children": []
+                },
+                {
+                  "i": 20,
+                  "name": "Connector9",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector9",
+                  "children": []
+                },
+                {
+                  "i": 21,
+                  "name": "Marker8",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker8",
+                  "children": []
+                },
+                {
+                  "i": 22,
+                  "name": "Connector10",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector10",
+                  "children": []
+                },
+                {
+                  "i": 23,
+                  "name": "Connector12",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector12",
+                  "children": []
+                },
+                {
+                  "i": 24,
+                  "name": "Marker9",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker9",
+                  "children": []
+                },
+                {
+                  "i": 25,
+                  "name": "Marker10",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker10",
+                  "children": []
+                },
+                {
+                  "i": 26,
+                  "name": "Connector3",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector3",
+                  "children": []
+                },
+                {
+                  "i": 27,
+                  "name": "Marker11",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker11",
+                  "children": []
+                },
+                {
+                  "i": 28,
+                  "name": "Marker12",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker12",
+                  "children": []
+                },
+                {
+                  "i": 29,
+                  "name": "Connector31",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector31",
+                  "children": []
+                },
+                {
+                  "i": 30,
+                  "name": "Connector13",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector13",
+                  "children": []
+                },
+                {
+                  "i": 31,
+                  "name": "Connector14",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector14",
+                  "children": []
+                },
+                {
+                  "i": 32,
+                  "name": "Connector15",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector15",
+                  "children": []
+                },
+                {
+                  "i": 33,
+                  "name": "Connector16",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector16",
+                  "children": []
+                },
+                {
+                  "i": 34,
+                  "name": "Marker13",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker13",
+                  "children": []
+                },
+                {
+                  "i": 35,
+                  "name": "Connector112",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector112",
+                  "children": []
+                },
+                {
+                  "i": 36,
+                  "name": "Connector11",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector11",
+                  "children": []
+                },
+                {
+                  "i": 37,
+                  "name": "Marker14",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker14",
+                  "children": []
+                },
+                {
+                  "i": 38,
+                  "name": "Connector17",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector17",
+                  "children": []
+                },
+                {
+                  "i": 39,
+                  "name": "Connector18",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector18",
+                  "children": []
+                },
+                {
+                  "i": 40,
+                  "name": "Marker15",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker15",
+                  "children": []
+                },
+                {
+                  "i": 41,
+                  "name": "Connector3111",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector3111",
+                  "children": []
+                },
+                {
+                  "i": 42,
+                  "name": "Connector311",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector311",
+                  "children": []
+                },
+                {
+                  "i": 43,
+                  "name": "Marker16",
+                  "type": "Marker",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Marker16",
+                  "children": []
+                },
+                {
+                  "i": 44,
+                  "name": "Connector19",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector19",
+                  "children": []
+                },
+                {
+                  "i": 45,
+                  "name": "Connector20",
+                  "type": "Connector",
+                  "path": ".MaterialFlow_AGV.Area.PhaseIV_SF.Connector20",
+                  "children": []
+                }
+              ]
+            },
+            {
+              "i": 5,
+              "name": "SmallArea",
+              "type": "Folder",
+              "path": ".MaterialFlow_AGV.Area.SmallArea",
+              "children": [
+                {
+                  "i": 1,
+                  "name": "PhaseIV_MaterialArea1",
+                  "type": "Frame",
+                  "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "Exit",
+                      "type": "Interface",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Exit",
+                      "children": []
+                    },
+                    {
+                      "i": 2,
+                      "name": "Entry",
+                      "type": "Interface",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Entry",
+                      "children": []
+                    },
+                    {
+                      "i": 3,
+                      "name": "Marker107",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Marker107",
+                      "children": []
+                    },
+                    {
+                      "i": 4,
+                      "name": "Marker28",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Marker28",
+                      "children": []
+                    },
+                    {
+                      "i": 5,
+                      "name": "Marker108",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Marker108",
+                      "children": []
+                    },
+                    {
+                      "i": 6,
+                      "name": "Marker103",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Marker103",
+                      "children": []
+                    },
+                    {
+                      "i": 7,
+                      "name": "Marker105",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Marker105",
+                      "children": []
+                    },
+                    {
+                      "i": 8,
+                      "name": "Marker31",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Marker31",
+                      "children": []
+                    },
+                    {
+                      "i": 9,
+                      "name": "Connector",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector",
+                      "children": []
+                    },
+                    {
+                      "i": 10,
+                      "name": "Connector1",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector1",
+                      "children": []
+                    },
+                    {
+                      "i": 11,
+                      "name": "Connector2",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector2",
+                      "children": []
+                    },
+                    {
+                      "i": 12,
+                      "name": "Connector4",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector4",
+                      "children": []
+                    },
+                    {
+                      "i": 13,
+                      "name": "Connector5",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector5",
+                      "children": []
+                    },
+                    {
+                      "i": 14,
+                      "name": "Connector6",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector6",
+                      "children": []
+                    },
+                    {
+                      "i": 15,
+                      "name": "Connector7",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector7",
+                      "children": []
+                    },
+                    {
+                      "i": 16,
+                      "name": "Connector8",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector8",
+                      "children": []
+                    },
+                    {
+                      "i": 17,
+                      "name": "Connector9",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector9",
+                      "children": []
+                    },
+                    {
+                      "i": 18,
+                      "name": "Connector10",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector10",
+                      "children": []
+                    },
+                    {
+                      "i": 19,
+                      "name": "Connector11",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea1.Connector11",
+                      "children": []
+                    }
+                  ]
+                },
+                {
+                  "i": 2,
+                  "name": "PhaseIV_MaterialArea2",
+                  "type": "Frame",
+                  "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2",
+                  "children": [
+                    {
+                      "i": 1,
+                      "name": "Marker57",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker57",
+                      "children": []
+                    },
+                    {
+                      "i": 2,
+                      "name": "Marker15",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker15",
+                      "children": []
+                    },
+                    {
+                      "i": 3,
+                      "name": "Marker59",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker59",
+                      "children": []
+                    },
+                    {
+                      "i": 4,
+                      "name": "Marker61",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker61",
+                      "children": []
+                    },
+                    {
+                      "i": 5,
+                      "name": "Marker8",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker8",
+                      "children": []
+                    },
+                    {
+                      "i": 6,
+                      "name": "Marker58",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker58",
+                      "children": []
+                    },
+                    {
+                      "i": 7,
+                      "name": "Marker14",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker14",
+                      "children": []
+                    },
+                    {
+                      "i": 8,
+                      "name": "Marker63",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker63",
+                      "children": []
+                    },
+                    {
+                      "i": 9,
+                      "name": "Marker62",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker62",
+                      "children": []
+                    },
+                    {
+                      "i": 10,
+                      "name": "Marker56",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker56",
+                      "children": []
+                    },
+                    {
+                      "i": 11,
+                      "name": "Connector36",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector36",
+                      "children": []
+                    },
+                    {
+                      "i": 12,
+                      "name": "Connector332",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector332",
+                      "children": []
+                    },
+                    {
+                      "i": 13,
+                      "name": "Connector40",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector40",
+                      "children": []
+                    },
+                    {
+                      "i": 14,
+                      "name": "Connector39",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector39",
+                      "children": []
+                    },
+                    {
+                      "i": 15,
+                      "name": "Connector42",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector42",
+                      "children": []
+                    },
+                    {
+                      "i": 16,
+                      "name": "Connector41",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector41",
+                      "children": []
+                    },
+                    {
+                      "i": 17,
+                      "name": "Connector37",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector37",
+                      "children": []
+                    },
+                    {
+                      "i": 18,
+                      "name": "Connector44",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector44",
+                      "children": []
+                    },
+                    {
+                      "i": 19,
+                      "name": "Connector43",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector43",
+                      "children": []
+                    },
+                    {
+                      "i": 20,
+                      "name": "Connector381",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector381",
+                      "children": []
+                    },
+                    {
+                      "i": 21,
+                      "name": "Connector45",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector45",
+                      "children": []
+                    },
+                    {
+                      "i": 22,
+                      "name": "Connector46",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector46",
+                      "children": []
+                    },
+                    {
+                      "i": 23,
+                      "name": "Entry",
+                      "type": "Interface",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Entry",
+                      "children": []
+                    },
+                    {
+                      "i": 24,
+                      "name": "Exit",
+                      "type": "Interface",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Exit",
+                      "children": []
+                    },
+                    {
+                      "i": 25,
+                      "name": "Connector",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector",
+                      "children": []
+                    },
+                    {
+                      "i": 26,
+                      "name": "Connector1",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector1",
+                      "children": []
+                    },
+                    {
+                      "i": 27,
+                      "name": "Marker",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker",
+                      "children": []
+                    },
+                    {
+                      "i": 28,
+                      "name": "Connector38",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector38",
+                      "children": []
+                    },
+                    {
+                      "i": 29,
+                      "name": "Connector2",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector2",
+                      "children": []
+                    },
+                    {
+                      "i": 30,
+                      "name": "Marker1",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker1",
+                      "children": []
+                    },
+                    {
+                      "i": 31,
+                      "name": "Connector3611",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector3611",
+                      "children": []
+                    },
+                    {
+                      "i": 32,
+                      "name": "Connector3",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector3",
+                      "children": []
+                    },
+                    {
+                      "i": 33,
+                      "name": "Marker2",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker2",
+                      "children": []
+                    },
+                    {
+                      "i": 34,
+                      "name": "Connector3612",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector3612",
+                      "children": []
+                    },
+                    {
+                      "i": 35,
+                      "name": "Connector361",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector361",
+                      "children": []
+                    },
+                    {
+                      "i": 36,
+                      "name": "Connector4",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector4",
+                      "children": []
+                    },
+                    {
+                      "i": 37,
+                      "name": "Marker3",
+                      "type": "Marker",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Marker3",
+                      "children": []
+                    },
+                    {
+                      "i": 38,
+                      "name": "Connector3821",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector3821",
+                      "children": []
+                    },
+                    {
+                      "i": 39,
+                      "name": "Connector382",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector382",
+                      "children": []
+                    },
+                    {
+                      "i": 40,
+                      "name": "Connector5",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector5",
+                      "children": []
+                    },
+                    {
+                      "i": 41,
+                      "name": "Connector6",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector6",
+                      "children": []
+                    },
+                    {
+                      "i": 42,
+                      "name": "Connector7",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector7",
+                      "children": []
+                    },
+                    {
+                      "i": 43,
+                      "name": "Connector8",
+                      "type": "Connector",
+                      "path": ".MaterialFlow_AGV.Area.SmallArea.PhaseIV_MaterialArea2.Connector8",
+                      "children": []
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "i": 12,
+      "name": "AGV_Claude",
+      "type": "Folder",
+      "path": ".AGV_Claude",
+      "children": []
+    }
+  ]
+}

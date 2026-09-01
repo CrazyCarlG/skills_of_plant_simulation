@@ -1,0 +1,41 @@
+=== Batch: batch_003 (4 paths) ===
+  - .Models.internal.Admin.partitionDescription  [Method]
+  - .Models.internal.Admin.searchStr  [Variable]
+  - .Models.internal.Admin.startSearch  [Method]
+  - .Models.internal.Admin.HTML  [Comment]
+
+--- LOG ---
+2026-08-31 20:57:11: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:11
+2026-08-31 20:57:11: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:11: ###B:.Models.internal.Admin.partitionDescription###
+2026-08-31 20:57:11: T=Method
+2026-08-31 20:57:11: N=partitionDescription
+2026-08-31 20:57:11: PROG_LEN=808
+2026-08-31 20:57:11: ###P:.Models.internal.Admin.partitionDescription###
+2026-08-31 20:57:11: param richTxtDEU,richTxtENU :string, byref TitleENU, TitleDEU, DescriptionENU, DescriptionDEU:string
+var commentObj:object := ~.Comment
+
+commentObj.saveAsRichedit := true
+commentObj.cont := richTxtDEU
+commentObj.saveAsRichedit := false
+var str:string := commentObj.cont
+var cutPos:integer := strLpos(chr(10),str)
+TitleDEU  := removeUnwantedCharacter(strCopy(str,1,cutPos))
+DescriptionDEU := removeUnwantedCharacter(strTrim(strCopy(str,cutPos,strLen(str))))
+
+commentObj.saveAsRichedit := true
+commentObj.cont := richTxtENU
+commentObj.saveAsRichedit := false
+str := commentObj.cont -- Poor text (not rich text) is needed for searching.
+cutPos := strLpos(chr(10),str)
+TitleENU  := removeUnwantedCharacter(strCopy(str,1,cutPos))
+DescriptionENU := removeUnwantedCharacter(strTrim(strCopy(str,cutPos,strLen(str))))
+2026-08-31 20:57:12: ###PE:.Models.internal.Admin.partitionDescription###
+2026-08-31 20:57:12: ###E:.Models.internal.Admin.partitionDescription###
+2026-08-31 20:57:12: ###B:.Models.internal.Admin.searchStr###
+2026-08-31 20:57:12: T=Variable
+2026-08-31 20:57:12: N=searchStr
+

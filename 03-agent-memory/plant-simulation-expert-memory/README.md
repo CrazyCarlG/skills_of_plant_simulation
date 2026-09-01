@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-08-28
+last_updated: 2026-08-31
 purpose: plant-simulation-expert session summary 索引。agent 冷启动第一动作 = Read 此文件,不要批量 Read 同目录下 8 篇 session summary。
 ---
 
@@ -7,7 +7,8 @@ purpose: plant-simulation-expert session summary 索引。agent 冷启动第一�
 
 | Date | Topic | Skills called | Dimensions touched | Key takeaway |
 |---|---|---|---|---|
-| 2026-08-28 | learn P4_CTU 模型(2026-08-27 已沉淀,本 session verify+精炼回答) | execution, get-folder-tree, read-library | 04-model-case-studies, 01-domain-concepts | 不重写 case study,只 verify 子节点数与新 dump 35 方法源码;RCS 实测 41M+14V+10DT+1DL=66(2026-08-27 沉淀写 40+12 略偏);`m_StockOut` 源码单等号疑似 bug 需 curator 关注;`&o.Program` 当 o 已是 object 引用时**不要** `&` |
+| 2026-08-31 | **Create `.AGV_Claude` library — optimized user-space replacement of vendor MaterialFlow_AGV**(2 DataTable + 7 Methods 全部就位) | execution, get-folder-tree, get-class-inheritance, class-management, create-method-object, write-simtalk | 04-model-case-studies, 03-workflow-playbook | vendor `getIdleAGV()` FIFO 无智能 → AGV_dispatch 评分 `1/(1+dist)` + 电量门控;vendor 无遥测 → AGV_release 自动 upsert AGVTelemetry;vendor 无主动充电 → AGV_requestCharge;vendor 无 dashboard → AGV_dashboard;vendor 无 milk-run → AGV_batchedRoute。**vendor 拼写陷阱**:`AdvancedObejcts`(非 Objects);**10 个 SimTalk 坑**沉淀(详见 `materialflow-agv/simulation-quirks.md`),最关键:Quirk #10 `--` 注释行让 write_simtalk argparse 终止,必须 `grep -v ^--` 过滤 |
+| 2026-08-31 | Replicate source 50007 → target 50010(用户主任务,blocked on 多个桥接/工具缺陷) | execution(raw socket), get-folder-tree(BFS leak) | 02-bridge-tool, 03-workflow-playbook | **3 大 blocker**:`bfs_full.py` 硬编码 50007 → 之前 `data/target/tree.json` 实际是 source 副本(md5 相同);target 50010 readlog 返回 715 字节冻结窗口,新 print 永不出现(simtalk_run `execute success` 但 readlog 不刷新);write_simtalk/add_note 调 simtalk_send 时不带 `--host/--port` → 默认写源 → 需 wrap 或打补丁。Target 实测仅 built-ins + .SimtalkClaude,确认用户"空白模型"前提;复制路径只有 D:error-driven probe + 脚本批量写。 |
 | 2026-08-28 | SyncToolkit foundation + copy/sync + MLayout relayout (4 addenda) | execution, write-simtalk, class-management | 02-bridge-tool, 03-workflow-playbook, 01-domain-concepts | TCP 单次 ~2.7KB 上限 → chunked writer via `m.Program := ...`;`escape()`+`chr(10)` 拼接(不是 `json.dumps`);`_3D.BoundingBoxSize` 内容相关 → Log Variable 写入长字符串后图标会膨胀;layout 必须做 pairwise 2D bbox overlap 验证 |
 | 2026-08-27 | A* 通用图搜索挑战(`.P4_CTU.ctux1_agvx1.A_Star`) | execution | 02-bridge-tool, 01-domain-concepts | `table[T,V]` v15+ 运行期只读(语法接受、运行期拒绝)→ 改用平行 list 模拟 hashmap;bridge `while` 循环必须带 `picked`/termination sentinel 否则不可达节点触发桥卡死 |
 | 2026-08-27 | 9 skill 全量回归 + 3-commit 路径修复验证 | all 9 | 02-bridge-tool, 03-workflow-playbook | 7 个 Python 脚本绝对→相对路径修复全部 PASS;`bfs_one_level` 命中 encrypted-method 阻塞(模型侧状态,非回归);`write-simtalk --code "..."` dry-run 预存 bug(应改 `--code-file`) |

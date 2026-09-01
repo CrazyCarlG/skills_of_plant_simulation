@@ -1,0 +1,7 @@
+{
+  "path": ":.Models.internal.Admin.greenRectangle",
+  "T": "Method",
+  "N": "greenRectangle",
+  "PROG_LEN": "109",
+  "program": "-- instantiate this method and call it\ncurrent.drawRectangle(555, 0,0, 250,100, makeRGBValue(170,255,213),-1)"
+}

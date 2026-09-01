@@ -1,0 +1,32 @@
+=== batch 7: 8 paths ===
+.Models.SourceTrigger.SourceNumberAdjustable.Source_AsBatch	Source	failed
+.Models.SourceTrigger.SourceNumberAdjustable.Drain1	Drain	success
+.Models.SourceTrigger.SourceNumberAdjustable.GeneratedParts_AsBatch	DataTable	failed
+.Models.SourceTrigger.SourceNumberAdjustable.Line	Conveyor	failed
+.Models.SourceTrigger.SourceNumberAdjustable.Line1	Conveyor	failed
+.Models.SourceTrigger.SourceNumberAdjustable.Connector	Connector	failed
+.Models.SourceTrigger.SourceNumberAdjustable.Connector1	Connector	failed
+.Models.SourceTrigger.SourceNumberAdjustable.Connector2	Connector	failed
+
+--- LOG ---
+2026-08-31 21:00:21: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 13:00:21
+2026-08-31 21:00:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:21: ###B:.Models.SourceTrigger.SourceNumberAdjustable.Drain1###
+2026-08-31 21:00:21: T=Drain
+2026-08-31 21:00:21: N=Drain1
+2026-08-31 21:00:21: ###E:.Models.SourceTrigger.SourceNumberAdjustable.Drain1###
+2026-08-31 21:00:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:21: execute sim-code: 'var o: object
+o := s......'
+2026-08-31 21:00:21: execute sim-code: 'var o: object
+o := s......'

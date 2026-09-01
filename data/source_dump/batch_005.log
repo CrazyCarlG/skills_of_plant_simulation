@@ -1,0 +1,21 @@
+=== Batch: batch_005 (4 paths) ===
+  - .Models.internal.Admin.DropDownList  [DropDownList]
+  - .Models.internal.Admin.maxDescription  [Variable]
+  - .Models.internal.Admin.prepareSave  [Method]
+  - .Models.internal.Admin.Comment2GeneralTable  [Method]
+
+--- LOG ---
+2026-08-31 20:57:14: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:14
+2026-08-31 20:57:14: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:14: ###B:.Models.internal.Admin.DropDownList###
+2026-08-31 20:57:14: T=DropDownList
+2026-08-31 20:57:14: N=DropDownList
+2026-08-31 20:57:14: C_TYPE=DropDownList
+2026-08-31 20:57:14: ###E:.Models.internal.Admin.DropDownList###
+2026-08-31 20:57:14: ###B:.Models.internal.Admin.maxDescription###
+2026-08-31 20:57:14: T=Variable
+2026-08-31 20:57:14: N=maxDescription
+

@@ -1,0 +1,11 @@
+{
+  "path": ":.Models.SourceTrigger.SourceIntervalAdjustable.MUselection",
+  "T": "DataTable",
+  "N": "MUselection",
+  "ROWS": "2",
+  "COLS": "3",
+  "cells": [
+    "|.Models.SourceTrigger.A|.Models.SourceTrigger.B|VOID",
+    "|1|3|0"
+  ]
+}

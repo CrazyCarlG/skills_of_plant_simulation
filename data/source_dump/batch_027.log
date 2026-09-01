@@ -1,0 +1,27 @@
+=== Batch: batch_027 (4 paths) ===
+  - .Models.SourceTrigger.SourcePercentage.endsim  [Method]
+  - .Models.SourceTrigger.SourcePercentage.GeneratedParts  [DataTable]
+  - .Models.SourceTrigger.SourcePercentage.EventController  [EventController]
+  - .Models.SourceTrigger.SourcePercentage.Kante7  [Connector]
+
+--- LOG ---
+2026-08-31 20:57:32: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:32
+2026-08-31 20:57:33: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:33: ###B:.Models.SourceTrigger.SourcePercentage.endsim###
+2026-08-31 20:57:33: T=Method
+2026-08-31 20:57:33: N=endsim
+2026-08-31 20:57:33: PROG_LEN=36
+2026-08-31 20:57:33: ###P:.Models.SourceTrigger.SourcePercentage.endsim###
+2026-08-31 20:57:33: source.creationTable(GeneratedParts)
+2026-08-31 20:57:33: ###PE:.Models.SourceTrigger.SourcePercentage.endsim###
+2026-08-31 20:57:33: ###E:.Models.SourceTrigger.SourcePercentage.endsim###
+2026-08-31 20:57:33: ###B:.Models.SourceTrigger.SourcePercentage.GeneratedParts###
+2026-08-31 20:57:33: T=DataTable
+2026-08-31 20:57:33: N=GeneratedParts
+2026-08-31 20:57:33: ROWS=0
+2026-08-31 20:57:33: COLS=0
+2026-08-31 20:57:33: ###DT:.Models.SourceTrigger.SourcePercentage.GeneratedParts###
+

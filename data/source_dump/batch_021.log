@@ -1,0 +1,16 @@
+=== Batch: batch_021 (4 paths) ===
+  - .Models.SourceTrigger.SourceIntervalAdjustable.Connector1  [Connector]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.Connector2  [Connector]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.Connector3  [Connector]
+  - .Models.SourceTrigger.SourceIntervalAdjustable.Connector4  [Connector]
+
+--- LOG ---
+2026-08-31 20:57:28: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:28
+2026-08-31 20:57:28: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:28: ###B:.Models.SourceTrigger.SourceIntervalAdjustable.Connector1###
+2026-08-31 20:57:28: T=Connector
+2026-08-31 20:57:28: N=Connector1
+

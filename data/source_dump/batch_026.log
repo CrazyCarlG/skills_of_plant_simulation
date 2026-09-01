@@ -1,0 +1,34 @@
+=== Batch: batch_026 (4 paths) ===
+  - .Models.SourceTrigger.SourcePercentage.Readme  [Comment]
+  - .Models.SourceTrigger.SourcePercentage.Liesmich  [Comment]
+  - .Models.SourceTrigger.SourcePercentage.Drain  [Drain]
+  - .Models.SourceTrigger.SourcePercentage.Frequencies  [DataTable]
+
+--- LOG ---
+2026-08-31 20:57:31: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:31
+2026-08-31 20:57:32: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:32: ###B:.Models.SourceTrigger.SourcePercentage.Readme###
+2026-08-31 20:57:32: T=Comment
+2026-08-31 20:57:32: N=Readme
+2026-08-31 20:57:32: C_TYPE=Comment
+2026-08-31 20:57:32: ###E:.Models.SourceTrigger.SourcePercentage.Readme###
+2026-08-31 20:57:32: ###B:.Models.SourceTrigger.SourcePercentage.Liesmich###
+2026-08-31 20:57:32: T=Comment
+2026-08-31 20:57:32: N=Liesmich
+2026-08-31 20:57:32: C_TYPE=Comment
+2026-08-31 20:57:32: ###E:.Models.SourceTrigger.SourcePercentage.Liesmich###
+2026-08-31 20:57:32: ###B:.Models.SourceTrigger.SourcePercentage.Drain###
+2026-08-31 20:57:32: T=Drain
+2026-08-31 20:57:32: N=Drain
+2026-08-31 20:57:32: D=1
+2026-08-31 20:57:32: ###E:.Models.SourceTrigger.SourcePercentage.Drain###
+2026-08-31 20:57:32: ###B:.Models.SourceTrigger.SourcePercentage.Frequencies###
+2026-08-31 20:57:32: T=DataTable
+2026-08-31 20:57:32: N=Frequencies
+2026-08-31 20:57:32: ROWS=2
+2026-08-31 20:57:32: COLS=3
+2026-08-31 20:57:32: ###DT:.Models.SourceTrigger.SourcePercentage.Frequencies###
+

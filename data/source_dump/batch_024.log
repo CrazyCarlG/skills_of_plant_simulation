@@ -1,0 +1,27 @@
+=== Batch: batch_024 (4 paths) ===
+  - .Models.SourceTrigger.SourceRandom.endsim  [Method]
+  - .Models.SourceTrigger.SourceRandom.GeneratedParts  [DataTable]
+  - .Models.SourceTrigger.SourceRandom.EventController  [EventController]
+  - .Models.SourceTrigger.SourceRandom.Kante7  [Connector]
+
+--- LOG ---
+2026-08-31 20:57:30: Log file opened! Application Version: 2606.0002, UTC: 2026-08-31 12:57:30
+2026-08-31 20:57:30: execute sim-code: 'var o: object
+
+
+o :=......'
+2026-08-31 20:57:30: ###B:.Models.SourceTrigger.SourceRandom.endsim###
+2026-08-31 20:57:30: T=Method
+2026-08-31 20:57:30: N=endsim
+2026-08-31 20:57:30: PROG_LEN=36
+2026-08-31 20:57:30: ###P:.Models.SourceTrigger.SourceRandom.endsim###
+2026-08-31 20:57:30: source.creationTable(GeneratedParts)
+2026-08-31 20:57:30: ###PE:.Models.SourceTrigger.SourceRandom.endsim###
+2026-08-31 20:57:30: ###E:.Models.SourceTrigger.SourceRandom.endsim###
+2026-08-31 20:57:30: ###B:.Models.SourceTrigger.SourceRandom.GeneratedParts###
+2026-08-31 20:57:30: T=DataTable
+2026-08-31 20:57:30: N=GeneratedParts
+2026-08-31 20:57:30: ROWS=0
+2026-08-31 20:57:30: COLS=0
+2026-08-31 20:57:30: ###DT:.Models.SourceTrigger.SourceRandom.GeneratedParts###
+
