@@ -47,7 +47,7 @@
 #                                                                                                                                                                                                   
 #  3. 非交互打印模式（CI / 测试）—— root 下会失败，要换用户                                                                                                                                         
 #  # 当前是 root，先切到普通用户                                                                                                                                                                    
-#  sudo -u <普通用户> ./05-auto-workflow-script/sync-and-curate.sh --print                                                                                                                          
+#  sudo -u worker ./05-auto-workflow-script/sync-and-curate.sh --print                                                                                                                          
 #  # 或                                                                                                                                                                                             
 #  sudo -u <普通用户> PRINT_MODE=1 ./05-auto-workflow-script/sync-and-curate.sh                                                                                                                     
 #                                                                                                                                                                                                   
