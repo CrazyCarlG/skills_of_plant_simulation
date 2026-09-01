@@ -1,3 +1,0 @@
-  EXEC FAIL: result='success' log='code execute failed. error msg:Invalid blocking behavior., in code \'var obj: object := str_to_obj(".MaterialFlow.FlowControl")\nif obj = void\n  print "###MARKER###"\n  print "ERR: str_to_obj returned void for path=.MaterialFlow.FlowControl"\n  print "###END###"\n  return\nend\nvar before: boolean := obj.EntryBlocking\nobj.EntryBlocking := true\nvar after: boolean := obj.EntryBlocking\nprint "###MARKER###"\nprint "EntryBlocking: " + to_str(before) + " -> " + to_str(after)\nprint "###END###"\n\''
-
-=== .MaterialFlow.FlowControl.EntryBlocking (boolean) ===

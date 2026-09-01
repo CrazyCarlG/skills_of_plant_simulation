@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.setExamNo",
-  "T": "Method",
-  "N": "setExamNo",
-  "program": "-- called by: .Models.internal.Admin.dispatcher (The user clicked a ling to open a frame.)"
-}

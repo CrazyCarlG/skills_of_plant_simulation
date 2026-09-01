@@ -81,6 +81,21 @@ description: 在本机通过 TCP 连接执行 Plant Simulation 的 SimTalk 代�
 | 服务端回包是裸字符串（不是 JSON） | 客户端发了坏 JSON / 字段缺失 / 字段类型错 | 服务端用裸字符串回错误，客户端做非 JSON fallback 解析（详见 `message-schema.md` 异常抛出矩阵） |
 | `simtalk_run` 写未声明 attr / 用 `prompt` 卡死 GUI | 模态陷阱（详见 `lifelines.md` §4） | 改用局部 `var` / `print` 替代 |
 
+## Logging / 日志
+
+每次调用本技能 **必须** 在 `log/` 下新建一个日志文件,禁止追加到已有日志,每次调用一个新文件。文件名格式:
+
+```
+<YYYY-MM-DD>-<agent>-<topic>.md
+```
+
+- `<agent>` 是调用方 agent 的 kebab-case 形式,默认为 `plant-simulation-expert`。
+- `<topic>` 是 kebab-case slug(≤ 5 个英文词),描述这次调用做了什么。本技能的示例: `ping-syntax-run-readlog`。
+- 同一天多次调用:在 `.md` 前加 `-2`、`-3` 等后缀。
+- 不要重命名或移动已存在的日志文件(老的 `YYYY-MM-DD_<topic-slug>.md` 是历史记录)。
+
+完整的 schema(frontmatter 字段、必填段落、verdict 规则):见 `log/CONTRIBUTING.md`。
+
 ## 知识库路径 / Knowledge Paths
 
 本技能**不需要**直接读取知识库——它只负责把消息送出去并解析回包。SimTalk 语法/对象方法的权威说明请查阅 `01-plantsimulation-knowledge` 知识库。

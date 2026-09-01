@@ -1,7 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.CalcScore",
-  "T": "Method",
-  "N": "CalcScore",
-  "PROG_LEN": "595",
-  "program": "-- Called by; startSearch (row 62)\nparam tab:integer,word:string,str:string -> integer\nvar score:integer\nswitch tab -- column of ExampleTab\n-- case 2\n\t-- score += 1 -- column 'Name of the frame': like .Models.Container.WorkpieceCarrier (name of the obj file is not a good characteristic for the example)\ncase 4\n\tscore += 10 -- column 'key words'\ncase 5\n\tscore += 15+CountOccur(word,str,5) -- TitleENU\ncase 6\n\tscore += 15+CountOccur(word,str,6) -- TitleDEU\ncase 7\n\tscore += 10+CountOccur(word,str,7) -- DescriptionENU\ncase 8\n\tscore += 10+CountOccur(word,str,8) -- DescriptionDEU\nend\n\nreturn score"
-}

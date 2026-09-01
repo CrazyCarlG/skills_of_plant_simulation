@@ -1,3 +1,0 @@
-  EXEC FAIL: result='success' log='code execute failed. error msg:Unknown identifier \'FillWholeLayer\', in code \'var obj: object := str_to_obj(".MaterialFlow.Sorter")\nif obj = void\n  print "###MARKER###"\n  print "ERR: str_to_obj returned void for path=.MaterialFlow.Sorter"\n  print "###END###"\n  return\nend\nprint "###MARKER###"\nprint "FillWholeLayer: " + to_str(obj.FillWholeLayer)\nprint "###END###"\n\''
-
-=== .MaterialFlow.Sorter.FillWholeLayer (None) ===

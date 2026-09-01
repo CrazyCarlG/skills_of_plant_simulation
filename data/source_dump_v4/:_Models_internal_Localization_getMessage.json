@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.internal.Localization.getMessage",
-  "T": "Method",
-  "N": "getMessage",
-  "program": "param MsgNumber : integer, p1,p2,p3 : any->string"
-}

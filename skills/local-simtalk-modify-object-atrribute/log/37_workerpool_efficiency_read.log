@@ -1,3 +1,0 @@
-  EXEC FAIL: result='success' log='code execute failed. error msg:Unknown identifier \'Efficiency\', in code \'var obj: object := str_to_obj(".Resources.WorkerPool")\nif obj = void\n  print "###MARKER###"\n  print "ERR: str_to_obj returned void for path=.Resources.WorkerPool"\n  print "###END###"\n  return\nend\nprint "###MARKER###"\nprint "Efficiency: " + to_str(obj.Efficiency)\nprint "###END###"\n\''
-
-=== .Resources.WorkerPool.Efficiency (None) ===

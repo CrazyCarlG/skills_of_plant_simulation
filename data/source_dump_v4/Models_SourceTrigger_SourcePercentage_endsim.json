@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.SourceTrigger.SourcePercentage.endsim",
-  "T": "Method",
-  "N": "endsim",
-  "program": "source.creationTable(GeneratedParts)"
-}

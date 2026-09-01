@@ -1,7 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.saveObject",
-  "T": "Method",
-  "N": "saveObject",
-  "PROG_LEN": "1036",
-  "program": "var FolderStr:string := Folder4Objects -- generated from modelFile (autoexec)\nif NOT existsFile(FolderStr) \n\tstr := modelFile\n\tFolderStr := strCopy(str,1,StrRpos(\"\\\\\",str))\n\tFolder4Objects := FolderStr\nend\n\nif setCurrentDirectory(FolderStr) \n\tprint \"The current Example Collection is: \",FolderStr\nelse\n\tprint \"Unknown folder '\",FolderStr,\"'\"\n\treturn\nend\n\nif .Models.numNodes > 2\n\tmessageBox(to_str(\"It is only allowed\",strChr(10),\"to save a single object.\"), 1, 1)\n\treturn\nend\n\nvar GeneralTab:table := ~.SelDlg.GeneralTable\n\nfor var j := 1 to .Models.numNodes \n\tvar FrameObj:object := .Models.node(j)\n\tif FrameObj.name /= \"internal\" \n\t\tvar str:string := FrameObj.name\n\t\t\n\t\tfor var cat := 1 to GeneralTab.yDim\n\t\t\tvar catTab:table := GeneralTab[1,cat]\n\t\t\tcatTab.setCursor(2,1)\n\t\t\tif catTab.find({2,1}..{2,*},str)\n\t\t\t\tstr := catTab[2,catTab.cursorY]\n\t\t\tend\n\t\tnext\n\t\n\t\tstr := to_str(str,\".obj\")\n\t\t--closeDialog\n\t\tif FrameObj.writeObject(str,false)  -- no library\n\t\t\tprint \"Save \",str\n\t\t\treturn\n\t\tend\n\tend\nnext\nprint \"No example was loaded.\""
-}

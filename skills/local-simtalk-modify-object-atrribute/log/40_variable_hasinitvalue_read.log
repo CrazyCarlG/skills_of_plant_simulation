@@ -1,6 +1,0 @@
-
-=== .InformationFlow.Variable.HasInitValue (None) ===
-  2026-08-26 13:33:46: execute sim-code: 'var obj: object := s......'
-  2026-08-26 13:33:46: ###MARKER###
-  2026-08-26 13:33:46: HasInitValue: false
-  2026-08-26 13:33:46:

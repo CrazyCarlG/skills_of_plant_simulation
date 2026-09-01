@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.CalcScore",
-  "T": "Method",
-  "N": "CalcScore",
-  "program": "-- Called by; startSearch (row 62)"
-}

@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.SourceTrigger.SourceTrigger.init",
-  "T": "Method",
-  "N": "init",
-  "program": "var assignedTriggers:object[2]"
-}

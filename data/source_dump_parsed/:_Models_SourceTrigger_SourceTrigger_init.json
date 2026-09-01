@@ -1,7 +1,0 @@
-{
-  "path": ":.Models.SourceTrigger.SourceTrigger.init",
-  "T": "Method",
-  "N": "init",
-  "PROG_LEN": "167",
-  "program": "var assignedTriggers:object[2]\n\nfor var j := 1 to 2 \n\tassignedTriggers[j] := to_str(\"Trigger\",j) -- string to object conversion\nnext\nSource.trigger := assignedTriggers"
-}

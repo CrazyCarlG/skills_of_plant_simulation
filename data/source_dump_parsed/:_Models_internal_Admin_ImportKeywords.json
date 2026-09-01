@@ -1,7 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.ImportKeywords",
-  "T": "Method",
-  "N": "ImportKeywords",
-  "PROG_LEN": "309",
-  "program": "-- Python interface\n-- Import Excel File with the \n\nvar s1:string := modelFile\nvar Folder4Objects:string := strCopy(s1,1,StrRpos(\"\\\\\",s1))\nvar ImportTable:table\nImportTable.create\n\nImportTable.readExcelFile(Folder4Objects+\"KeyWordFile.xlsx\")\nKeyWords.delete\n\nImportTable.copyRangeTo({2,2}..{3,*},KeyWords,1,1)"
-}

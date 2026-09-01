@@ -1,7 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.CountOccur",
-  "T": "Method",
-  "N": "CountOccur",
-  "PROG_LEN": "619",
-  "program": "-- called by: CalcScore\nparam word:string,str:string,tab:integer -> integer\n-- tab: column of table 'ExampleTab'\n-- word = searchStr, str = strToLower(searchStr)\nvar occurences:integer\nvar iterate:=true\nvar idx:integer\nwhile iterate\n\tidx:=strLpos(str,word)\n\tif idx>0\n\t\toccurences+=1\n\t\tword:=strOmit(word,0,idx+strlen(str))\n\t\tvar delimiter:=strAscii(strToUpper(strCopy(word,1,1)))\n\t\tif (delimiter>128 or (delimiter>=65 and delimiter<=90))\n\t\t\toccurences+=1\n\t\telse\n\t\t\tif tab=5 or tab=6 -- TitleDEU or TitleENU\n\t\t\t\toccurences += 10\n\t\t\telse\n\t\t\t\toccurences += 2\n\t\t\tend\n\t\tend\n\telse\n\t\titerate:=false\n\tend\nend\n\nreturn occurences"
-}

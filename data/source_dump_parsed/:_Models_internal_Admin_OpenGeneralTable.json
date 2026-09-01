@@ -1,7 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.OpenGeneralTable",
-  "T": "Method",
-  "N": "OpenGeneralTable",
-  "PROG_LEN": "32",
-  "program": "~.SelDlg.GeneralTable.opendialog"
-}

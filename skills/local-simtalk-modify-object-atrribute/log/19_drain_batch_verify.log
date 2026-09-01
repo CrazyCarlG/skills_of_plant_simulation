@@ -1,5 +1,0 @@
-    items = _parse_batch(args.batch)
-            ^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/root/skills_of_plant_simulation/skills/local-simtalk-modify-object-atrribute/scripts/attr_modify.py", line 193, in _parse_batch
-    raise ValueError(f"--batch item must be 'ATTR=VAL:TYPE', got: {item}")
-ValueError: --batch item must be 'ATTR=VAL:TYPE', got: Pause=--read-only

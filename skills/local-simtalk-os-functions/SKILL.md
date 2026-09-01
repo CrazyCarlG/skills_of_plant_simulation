@@ -69,6 +69,21 @@ Plant Simulation SimTalk 提供 20 个**预定义操作系统函数**，用于�
 - `references/safety-and-prerequisites.md`：哪些函数需要"Allow access to the computer"模型设置才能跑
 - `log/README.md`：测试日志存放位置 + 已完成的测试 session 索引
 
+## Logging / 日志
+
+每次调用本技能 **必须** 在 `log/` 下新建一个日志文件,禁止追加到已有日志,每次调用一个新文件。文件名格式:
+
+```
+<YYYY-MM-DD>-<agent>-<topic>.md
+```
+
+- `<agent>` 是调用方 agent 的 kebab-case 形式,默认为 `plant-simulation-expert`。
+- `<topic>` 是 kebab-case slug(≤ 5 个英文词),描述这次调用做了什么。本技能的示例: `verify-getfilesoffolder-on-c-windows`。
+- 同一天多次调用:在 `.md` 前加 `-2`、`-3` 等后缀。
+- 不要重命名或移动已存在的日志文件(老的 `YYYY-MM-DD_<topic-slug>.md` 是历史记录)。
+
+完整的 schema(frontmatter 字段、必填段落、verdict 规则):见 `log/CONTRIBUTING.md`。
+
 ## 知识库路径 / Knowledge Paths
 
 本技能整合自：

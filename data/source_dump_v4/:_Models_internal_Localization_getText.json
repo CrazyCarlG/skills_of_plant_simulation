@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.internal.Localization.getText",
-  "T": "Method",
-  "N": "getText",
-  "program": "param  index : integer  -> string"
-}

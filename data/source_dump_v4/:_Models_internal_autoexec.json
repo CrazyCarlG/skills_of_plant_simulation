@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.internal.autoexec",
-  "T": "Method",
-  "N": "autoexec",
-  "program": "if licenseName = \"EMPLANT_VIEW\" "
-}

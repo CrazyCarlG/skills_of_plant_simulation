@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.dispatcher",
-  "T": "Method",
-  "N": "dispatcher",
-  "program": "-- This method receives the browser requests"
-}

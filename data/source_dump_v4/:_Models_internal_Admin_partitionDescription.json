@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.partitionDescription",
-  "T": "Method",
-  "N": "partitionDescription",
-  "program": "param richTxtDEU,richTxtENU :string, byref TitleENU, TitleDEU, DescriptionENU, DescriptionDEU:string"
-}

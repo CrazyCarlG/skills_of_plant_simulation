@@ -1,6 +1,0 @@
-{
-  "path": ":.Models.internal.Admin.Comment2GeneralTable",
-  "T": "Method",
-  "N": "Comment2GeneralTable",
-  "program": "var GeneralTableAttr:table := ~.SelDlg.GeneralTable"
-}

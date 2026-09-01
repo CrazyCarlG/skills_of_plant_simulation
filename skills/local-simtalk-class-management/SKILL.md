@@ -288,6 +288,26 @@ a leading `.` for each depth level.
 - `data/` — JSON envelopes from successful runs (operational log)
 - `log/` — human-readable session notes
 
+## Logging
+
+Every invocation of this skill **must** produce exactly one new log file
+under `log/` — appending to existing logs is forbidden, one file per
+session. Filename pattern:
+
+```
+<YYYY-MM-DD>-<agent>-<topic>.md
+```
+
+- `<agent>` is the calling agent in kebab-case. Default: `plant-simulation-expert`.
+- `<topic>` is a kebab-case slug (≤ 5 words) describing what this call
+  did. Example for this skill: `derive-myclass-into-userobjects`.
+- Same-day multiple sessions: append `-2`, `-3`, … before `.md`.
+- DO NOT rename or move existing log files (old
+  `YYYY-MM-DD_<topic-slug>.md` files stay as historical record).
+
+Full schema (frontmatter fields, required sections, verdict rubric):
+see `log/CONTRIBUTING.md`.
+
 ## Related skills
 
 - `local-simtalk-execution` — the underlying TCP transport skill;
