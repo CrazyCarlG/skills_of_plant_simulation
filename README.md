@@ -1,6 +1,6 @@
 # skills_of_plant_simulation
 
-A collection of **Claude Code / OpenClaude skills and agents** for Siemens Tecnomatix Plant Simulation — local SimTalk execution over TCP, OS-function reference, model-structure extraction, and write-side model mutation. Skills drive a running Plant Simulation process to obtain real execution results, and reuse the bundled knowledge base (`01-plantsimulation-knowledge/`) and the experience log (`02-simulation-file-experience/`) as the authoritative data sources.
+A collection of **Claude Code / OpenClaude skills and agents** for Siemens Tecnomatix Plant Simulation — local SimTalk execution over TCP, OS-function reference, model-structure extraction, and write-side model mutation. Skills drive a running Plant Simulation process to obtain real execution results, and reuse the bundled knowledge base (`01-plantsimulation-knowledge/`) and the synthesized domain know-how (`02-domain-know-how/`) as the authoritative data sources.
 
 ## Directory Structure
 
@@ -11,8 +11,9 @@ skills_of_plant_simulation/
 │   │   ├── getting-to-know-plant-simulation/
 │   │   ├── objects/                                    # By category: common, fluid, information-flow, material-flow, resource, user-interface
 │   │   ├── simtalk/                                    # Language, control flow, data types, predefined functions, 3D, ...
-│   │   └── step-by-step/                               # Tutorials — modeling workflow, material flow, graphics, transport, fluids, ...
-│   ├── 02-official-psfm-model/                         # Official PSFM reference models + SimTalkClaude client lib
+│   │   ├── step-by-step/                               # Tutorials — modeling workflow, material flow, graphics, transport, fluids, ...
+│   │   └── communication-interface/                    # PS↔external integration protocols
+│   ├── 02-offcial-psfm-model/                          # Official PSFM reference models + SimTalkClaude client lib (note: historical typo in dir name)
 │   │   ├── Factory51/
 │   │   ├── Small-Parts-Production/
 │   │   └── SimTalkClaude/                              # SimtalkClaude2606.pslib — load into Plant Simulation to enable `.SimtalkClaude.*` scripting
@@ -20,18 +21,32 @@ skills_of_plant_simulation/
 │   ├── scripts/
 │   ├── LICENSE
 │   └── README.md
-├── 02-simulation-file-experience/                      # Practical notes — case studies, integration patterns, call playbook
-│   ├── 01-domain-concepts/         # PS 领域知识（与模型无关）
-│   ├── 02-bridge-tool/             # SimtalkClaude 桥 v1+v2
-│   ├── 03-workflow-playbook/       # 跨 9 skill 的工作流
-│   ├── 04-model-case-studies/      # 3 个真实模型案例
-│   └── 05-session-archives/        # 一次性 session 报告
-├── 03-agent-memory/                                    # Cross-session memory for agents
-│   └── plant-simulation-expert-memory/
+├── 02-domain-know-how/                                 # Synthesized domain knowledge (7-dim topic-organized, NOT append-only)
+│   ├── 01-factory-know-how/                            # Factory & warehouse case patterns (RCS / DataTable / 3-tier executor / ...)
+│   ├── 02-simtalkclaude-knowhow/                       # SimtalkClaude TCP bridge architecture, v1↔v2, operational quirks
+│   ├── 03-modeling-know-how/                           # Generic modeling knowledge
+│   │   ├── 01-objects/                                 # Class/Instance/Frame/Folder + how to discriminate
+│   │   ├── 02-simtalk/                                 # SimTalk literal contract + 10 major gotchas
+│   │   └── 03-software/                                # Skill-orchestration decision matrix + write-side hard process
+│   ├── 04-modeling-example/                            # Modeling patterns (assembly line / vendor lib ext / probe / SimTalk implementation)
+│   └── 05-modeling-experience/                         # Synthesized experience — coverage matrix + consolidated insights + session-summaries/
+│   └── README.md                                       # Cold-start entry point
+├── 03-modeling-experience/                             # Curator's per-entry append-only archive (one file per finding/topic; ≤300 lines each)
+│   ├── 01-skill-experience/                            # Skill CLI / API / Quirk / best practice / `simtalk_*` behavior
+│   ├── 02-user-expectation-experience/                 # User preference / communication / teaching cadence / question patterns
+│   └── 03-modeling-experience/                         # Per-model patterns (Factory51 / P4_CTU / AGV_Claude / SyncToolkit / ...)
+├── 04-agent-memory/                                    # Cross-session memory — one subdir per agent
+│   ├── CONTRIBUTING.md
+│   ├── plant-simulation-expert-memory/                 # expert session summaries + lessons learned
+│   ├── curator-memory/                                 # curator's own session log
+│   ├── student-memory/                                 # 5-dim mirror study notes
+│   ├── skill-optimizer-memory/                         # optimizer reports + candidate patches + 已落地改动
+│   └── synthesizer-memory/                             # synthesizer's own session log
 ├── 04-simtalkclaude-client/                            # Vendored SimTalkClaude.pslib — load into Plant Simulation to enable `.SimtalkClaude.*` scripting
 │   └── SimtalkClaude.pslib
+├── 05-auto-workflow-script/                            # Auto-workflow scripts (auxiliary)
 ├── skills/                                             # Skills — one directory per skill
-│   ├── local-simtalk-execution/                       # Local SimTalk execution over TCP (transport layer base)
+│   ├── local-simtalk-execution/                        # Local SimTalk execution over TCP (transport layer base)
 │   ├── local-simtalk-os-functions/                     # SimTalk OS-function reference & live probing
 │   ├── local-simtalk-get-folder-tree/                  # Model object hierarchy → JSON tree
 │   ├── local-simtalk-get-class-inheritance/            # Class inheritance structure (parent → children)
@@ -42,13 +57,13 @@ skills_of_plant_simulation/
 │   ├── local-simtalk-create-method-object/             # Write: insert an empty Method container at `<frame>.<name>`
 │   └── local-simtalk-write-simtalk/                    # Write: write SimTalk source code into a Method
 ├── agents/                                             # Agent definitions (invoked via the Agent tool with subagent_type)
-│   ├── README.md                                       # Agents overview, install, naming convention
-│   ├── plant-simulation-expert.md                      # Domain expert — picks skills, consults KB, writes usage logs
-│   ├── plant-simulation-experience-curator.md         # Curator — dedupes session summaries / skill logs, decides what to promote into 02-simulation-file-experience/
-│   ├── skills-optimizer.md                             # Self-maintenance agent — scans skill logs, optimizes SKILL.md / scripts (with 4 safety rails)
-│   └── curator-reports/                                # Reports produced by plant-simulation-experience-curator
-├── data/                                               # Raw datasets (e.g. extracted Method signatures)
-│   └── methods_raw.tsv
+│   ├── README.md                                       # 5-agent overview, relationships, hard rules, install, naming convention
+│   ├── plant-simulation-expert.md                      # Domain expert — picks skills, consults KB, writes per-skill logs + session summary
+│   ├── plant-simulation-curator.md                     # Curator — dedupes session summaries / skill logs into 03-modeling-experience/ (per-entry, append-only)
+│   ├── plant-simulation-student.md                     # Student — 5-dim mirror read-only study notes (per-skill log per SKILL.md)
+│   ├── plant-simulation-knowledge-synthesizer.md       # Synthesizer — composes curator archive into 02-domain-know-how/ active topic docs
+│   └── skills-optimizer.md                             # Self-maintenance agent — scans skill logs, optimizes SKILL.md / scripts (with 4 safety rails)
+├── data/                                               # Raw datasets (reserved; currently empty)
 ├── docs/
 │   └── skill-authoring.md                              # Skill authoring spec
 └── scripts/
@@ -96,7 +111,7 @@ local-simtalk-execution                ← Transport layer base (the other 8 dep
         │       │
         │       ├── local-simtalk-get-class-inheritance
         │       └── local-simtalk-read-library
-        │
+        │       │
         ├── local-simtalk-class-management
         │       └── local-simtalk-create-method-object
         ├── local-simtalk-modify-object-attribute
@@ -108,11 +123,38 @@ local-simtalk-execution                ← Transport layer base (the other 8 dep
 
 ## Agents
 
-| Agent `subagent_type` | Description | File |
-|---|---|---|
-| `plant-simulation-expert` | Plant Simulation / SimTalk / model-operation domain expert: pre-flights the SimTalkClaude TCP listener, picks skills per request, consults the knowledge base (`01-plantsimulation-knowledge/`) and the experience log (`02-simulation-file-experience/`), writes per-skill usage logs under `skills/<skill>/log/`, and writes a session summary to `03-agent-memory/plant-simulation-expert-memory/` | [`agents/plant-simulation-expert.md`](agents/plant-simulation-expert.md) |
-| `plant-simulation-experience-curator` | Experience curator: dedupes / classifies / indexes session summaries and per-skill logs, decides which findings are worth permanently promoting into the append-only regions of `02-simulation-file-experience/`. Writes reports to `agents/curator-reports/` (single report + INDEX). **Does NOT edit `02-simulation-file-experience/` body** — every promotion proposal is gated by user (or `verification`) review | [`agents/plant-simulation-experience-curator.md`](agents/plant-simulation-experience-curator.md) |
-| `skills-optimizer` | Repository self-maintenance agent: scans 3 signal sources (`skills/<skill>/log/` primary + `04-agent-memory/plant-simulation-expert-memory/` corroborating + `04-agent-memory/student-memory/` drift detection), runs a gap analysis against `SKILL.md` + `references/`, and emits structured optimizer reports into `04-agent-memory/skill-optimizer-memory/<skill>-YYYY-MM-DD.md` (plus an INDEX). **Autonomously edits** `SKILL.md` / scripts / references with 4 safety rails (report trail / soft-confirm high-risk / single-revert granularity / scope isolation) | [`agents/skills-optimizer.md`](agents/skills-optimizer.md) |
+5 agents share the same baseline knowledge (`01-plantsimulation-knowledge/` + `02-domain-know-how/`) and the same `local-simtalk-*` skills, but play distinct roles: expert executes, curator archives per-entry, student mirrors read-only, synthesizer composes topic docs, optimizer self-maintains skills.
+
+| Agent `subagent_type` | Role | Description | File |
+|---|---|---|---|
+| `plant-simulation-expert` | **Brain** — Discovery + execution | Plant Simulation / SimTalk / model-operation domain expert: pre-flights the SimTalkClaude TCP listener, picks skills per request, consults the knowledge base (`01-plantsimulation-knowledge/`) and the synthesized know-how (`02-domain-know-how/`), writes per-skill usage logs under `skills/<skill>/log/`, and writes a session summary to `04-agent-memory/plant-simulation-expert-memory/` | [`agents/plant-simulation-expert.md`](agents/plant-simulation-expert.md) |
+| `plant-simulation-curator` | **Experience curator** — per-entry archive | Deduplicates / classifies / indexes session summaries and per-skill logs; promotes each finding into a dedicated per-entry file under `03-modeling-experience/<dim>/` (append-only, ≤300 lines/file). Writes reports to `agents/curator-reports/` (single report + INDEX). **Never edits `02-domain-know-how/` body** — every promotion proposal into active topic docs is gated by user (or `verification`) review | [`agents/plant-simulation-curator.md`](agents/plant-simulation-curator.md) |
+| `plant-simulation-student` | **Student** — 5-dim read-only mirror | Studies the currently-loaded model via read-only skills and writes 5-dimensional mirror notes (factory / simtalkclaude / modeling / modeling-example / modeling-experience) to `04-agent-memory/student-memory/`. **Strictly read-only** — refuses any "顺手改一下" (drive-by modification) | [`agents/plant-simulation-student.md`](agents/plant-simulation-student.md) |
+| `plant-simulation-knowledge-synthesizer` | **Synthesizer** — composes topic docs | Reads the append-only archive at `03-modeling-experience/`, curator reports, and session summaries; synthesizes them into active topic documents under `02-domain-know-how/<dim>/<topic>.md`. Writes audit reports to `agents/synthesis-reports/` | [`agents/plant-simulation-knowledge-synthesizer.md`](agents/plant-simulation-knowledge-synthesizer.md) |
+| `skills-optimizer` | **Skill self-maintenance** — independent path | Scans 3 signal sources (`skills/<skill>/log/` primary + `04-agent-memory/plant-simulation-expert-memory/` corroborating + `04-agent-memory/student-memory/` drift detection); runs gap analysis against `SKILL.md` + `references/`; emits structured optimizer reports into `04-agent-memory/skill-optimizer-memory/<skill>-YYYY-MM-DD.md` (plus an INDEX). **Autonomously edits** `SKILL.md` / scripts / references with 4 safety rails (report trail / soft-confirm high-risk / single-revert granularity / scope isolation). Targets: 🎯精准命中 (right-skill selection) / ⚡性能 (slow-call patterns) / ✂️瘦身 (stale-doc trimming) | [`agents/skills-optimizer.md`](agents/skills-optimizer.md) |
+
+### Data Flow
+
+```
+expert  ──write──→ skills/<x>/log/  (per-skill call log)
+        ──write──→ 04-agent-memory/plant-simulation-expert-memory/  (session summary)
+                ↓ read
+curator ──write──→ 03-modeling-experience/<dim>/  (per-entry, append-only)
+        ──write──→ agents/curator-reports/  (audit report)
+        ──write──→ 04-agent-memory/curator-memory/  (curator own log)
+                ↓ read
+synthesizer ──write──→ 02-domain-know-how/<dim>/<topic>.md  (active topic doc)
+           ──write──→ agents/synthesis-reports/  (synthesis audit)
+           ──write──→ 04-agent-memory/synthesizer-memory/  (synthesizer own log)
+
+student  ──write──→ 04-agent-memory/student-memory/  (5-dim mirror notes)
+
+optimizer ──read──→ skills/<x>/log/  (primary)
+         ──read──→ 04-agent-memory/plant-simulation-expert-memory/  (corroborating)
+         ──read──→ 04-agent-memory/student-memory/  (drift detection)
+         ──write──→ 04-agent-memory/skill-optimizer-memory/  (report + candidate patches + 已落地改动)
+         ──direct Edit──→ skills/<x>/SKILL.md / scripts/ / references/  (🎯精准命中 + ⚡性能 + ✂️瘦身)
+```
 
 Invocation example:
 
@@ -124,7 +166,7 @@ Agent(
 )
 ```
 
-See [`agents/README.md`](agents/README.md) for the full overview, naming convention, and the Skills-vs-Agents comparison.
+See [`agents/README.md`](agents/README.md) for the full overview (relationship graph, hard-rule comparison across all 5 agents, install, naming convention).
 
 ## Install & Use
 
@@ -175,15 +217,16 @@ bash scripts/link-agents.sh --unlink
 ## How to Use
 
 Install makes the skills/agents *visible* to Claude Code / OpenClaude. This chapter is about the **runtime side** — what you need running, how to actually invoke the toolchain, and a typical end-to-end workflow.
+
 ### Getting started
 
 End-to-end walkthrough — install, start the listener, and run the first skill:
 
 [How to use.mp4](How%20to%20use.mp4)
+
 ### Prerequisites (runtime)
 
 Before any skill can do real work, three things must be true:
-
 
 1. **Plant Simulation's Windows shortcut has the `/logfile` flag** so Claude can tail the runtime log. Edit the shortcut → **Target** field and append the flag (preserving any existing arguments), e.g.:
    ```
@@ -205,6 +248,8 @@ python3 skills/local-simtalk-execution/scripts/simtalk_send.py \
 
 A successful round-trip echoes the `action_id` back. Exit code `2` = cannot connect, `1` = timeout — both mean the listener isn't reachable, not that the skill is broken.
 
+> **Note on `simtalk_run`:** this transport type is **designed** to return `result:"success"` even when the SimTalk code throws a runtime exception — the actual error text is delivered in the `log` field, prefixed with `"code execute failed. error msg:..."`. Don't flag this as a server bug; treat the verdict as double-gated (`result == "success" AND log does NOT start with "code execute failed"`).
+
 ### Two ways to use the toolchain
 
 | Path | Tool | When to use it |
@@ -212,7 +257,9 @@ A successful round-trip echoes the `action_id` back. Exit code `2` = cannot conn
 | **Expert agent (recommended)** | `Agent(subagent_type="plant-simulation-expert", …)` | Open-ended tasks in natural language: "explain how Factory51 buffers work", "run method `.M.reset` and report errors", "add a comment to `Line.init`" |
 | **Direct skill** | `Skill(<skill-name>)` | You already know which single skill does the job and want a one-shot, low-ceremony invocation |
 
-The expert agent picks the right skill for you, consults the knowledge base (`01-plantsimulation-knowledge/`) and the experience log (`02-simulation-file-experience/`), and writes a per-skill usage log under `skills/<skill>/log/`. The direct-skill path skips all of that — pick the skill name from the table above and let it run.
+The expert agent picks the right skill for you, consults the knowledge base (`01-plantsimulation-knowledge/`) and the synthesized know-how (`02-domain-know-how/`), and writes a per-skill usage log under `skills/<that-skill>/log/`. The direct-skill path skips all of that — pick the skill name from the table above and let it run.
+
+For pure observational / learning tasks ("explain / learn / read this model"), use `plant-simulation-student` — it is strictly read-only and writes 5-dim mirror notes to `04-agent-memory/student-memory/` for later reuse by expert.
 
 ### Invoking the expert agent
 
@@ -272,6 +319,7 @@ These are called out across the skill docs but bite everyone the first time:
 - **Delimiter mode is the default** for the TCP transport. Use `--resp-mode delimiter --resp-delimiter '||END||'` unless you have a reason not to.
 - **Modal traps** (`prompt`, `infoBox`, writing undeclared attributes) will freeze the Plant Simulation GUI. Replace with local `var` + `print(...)` when scripting headlessly.
 - **`readlog` is unreliable on v15+** (regression). Don't put it in a loop — read the GUI Console directly when you need `print(...)` output.
+- **`simtalk_run` returns success even on runtime exceptions** by design — check the `log` field for `"code execute failed"` prefix before declaring victory.
 
 Any change to these rules happens only in `skills/local-simtalk-execution/references/lifelines.md`.
 
@@ -282,8 +330,6 @@ Any change to these rules happens only in `skills/local-simtalk-execution/refere
 ![pic2](pic2.png)
 
 ## Videos
-
-
 
 ### Examples
 
@@ -298,10 +344,12 @@ All skills and agents reference the knowledge base via repo-root-relative paths,
 
 ## Cross-session Memory
 
-- **Per-session summaries** (`plant-simulation-expert`): `03-agent-memory/plant-simulation-expert-memory/YYYY-MM-DD_session-summary_*.md`
-- **Per-skill usage logs** (written by `plant-simulation-expert`): `skills/<skill-name>/log/YYYY-MM-DD_<short-topic>.md`
+- **Per-session summaries** (`plant-simulation-expert`): `04-agent-memory/plant-simulation-expert-memory/YYYY-MM-DD_session-summary_*.md` (+ `YYYY-MM-DD_lesson-*.md` for硬规则 lessons)
+- **Per-skill usage logs** (written by `plant-simulation-expert` and `plant-simulation-student` per their respective `SKILL.md` rules): `skills/<skill-name>/log/YYYY-MM-DD_<short-topic>.md`
+- **Curator reports** (written by `plant-simulation-curator`): `agents/curator-reports/YYYY-MM-DD-curator-report.md` and `agents/curator-reports/INDEX.md`; per-entry archive at `03-modeling-experience/<dim>/<topic>.md`
+- **Synthesis reports** (written by `plant-simulation-knowledge-synthesizer`): `agents/synthesis-reports/YYYY-MM-DD-<scenario>.md`; active topic docs at `02-domain-know-how/<dim>/<topic>.md`
 - **Optimizer reports** (written by `skills-optimizer`): `04-agent-memory/skill-optimizer-memory/<skill>-YYYY-MM-DD.md` and `04-agent-memory/skill-optimizer-memory/INDEX.md` (含已落地改动清单 `## 已落地改动` 段)
-- **Curator reports** (written by `plant-simulation-experience-curator`): `agents/curator-reports/YYYY-MM-DD-curator-report.md` and `agents/curator-reports/INDEX.md`
+- **Student 5-dim mirror notes** (written by `plant-simulation-student`): `04-agent-memory/student-memory/<date>-<model>-<scenario>.md`
 
 ## License & Copyright
 
