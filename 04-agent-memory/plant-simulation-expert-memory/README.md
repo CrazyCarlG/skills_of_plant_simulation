@@ -1,6 +1,6 @@
 ---
 last_updated: 2026-09-02
-purpose: plant-simulation-expert session summary 索引。agent 冷启动第一动作 = Read 此文件,不要批量 Read 同目录下 11 篇 session summary。
+purpose: plant-simulation-expert session summary 索引。agent 冷启动第一动作 = Read 此文件,不要批量 Read 同目录下 13 篇 session summary。
 ---
 
 # Session Memory Index — plant-simulation-expert
@@ -11,6 +11,9 @@ purpose: plant-simulation-expert session summary 索引。agent 冷启动第一�
 
 | Date | Topic | Skills called | Dimensions touched | Key takeaway |
 |---|---|---|---|---|
+| 2026-09-02 | 在 `.Models.Model.method` 写通用图 A* 寻路(7-param signature + 23 块 chunked-write + 三重 readback) | execution (simtalk_send.py run / syntax) + 自写 chunked writer (`/tmp/_write_astar_method.py`) | .Models.Model.method | **3 个新 Quirk** = SimTalk string literal escape 是 `\"` 不是 `""`;multi-line simtalk_run 必须用 Python 真换行 `"\n"`;readlog v15+ 退化下 method readback 三重 proxy(syntax --target-path + m.execute(0 args) soft-fail + functional m.execute(7 args));**23/23 chunk rc=0 + 7-param signature 识别 + functional smoke test 通过**;h=0 退化为 Dijkstra;复用 v4 chunk-write 协议 |
+| 2026-09-02 | 端口 50008 当前模型结构映射(basis + 7 example scenes + SimtalkClaude workspace) | execution (simtalk_send --port 50008 直接驱动;`bfs_one_level.py` / `bfs_full.py` 端口硬编码 50007 → 复用 SIMTALK_TEMPLATE 写 `/tmp/bfs_one_level_50008.py` 注入 `--port 50008`,**未**经 skill 入口) | .Models.{RobotComau, XZYStacker, PortalCrane, LinearPortal, MarkerCrossing, SevenAxisRobot, AGVWithRobot, Model}, .SimtalkClaude.{Main, src, connection, objects}, .UserObjects.AGV | **basis 10 子 + .Models 8 Frame + .UserObjects 1 + .SimtalkClaude 4 子目录**;7 个 example scenes 按复杂度 LinearPortal(9)→PortalCrane(10)→SevenAxisRobot(13)→RobotComau/XZYStacker(14)→AGVWithRobot(22)→MarkerCrossing(26);**bfs skill 端口硬编码 50007 必须显式 bypass**;Quirk #5 退化重现(.Models.Model.EventController numNodes 拿不到,跳过);head -50 截断误判 .Models.RobotComau 拓扑(实际 6 Connector);Connector 编号乱序 = 建模零散插入;`.Models.Model` 是**空壳工作 Frame**(仅 EventController + Method),真实场景全在兄弟 Frame |
+| 2026-09-02 | 写 `.Models.Test.method` 模型结构注释(端口 50008) | execution (simtalk_run / simtalk_syntax / readlog) — Skill 工具未注册 `local-simtalk-*`,经 `simtalk_send.py` 直接驱动 | .Models.Test.method | **Method 程序文本必须用 `m.Program := ...`,不是 `m.~ := ...`**(`.~` 是 numeric,程序文本在 string-typed `Program` 属性);**`&` 在 simtalk_run 上下文里报 `ref-operator has no effect`**——不能 `&m.Program :=`;**v15+ readlog 不捕获 print 值**——`m.~` print 出来是 path 不是源码,readback 只能用 `simtalk_syntax` 空代码 + `target_path` 代理;**`length()` 不是函数**,应用 `.dim`(Quirk 重现);**Quirk #10 重现**:`write_simtalk.py` 不支持全 `--` 注释块(被 argparse 截断),绕走 raw socket + `chr(10)` 拼接;**2.7KB SimTalk ceiling**——长注释必须 chunked,本次压缩到 14 行 ~1.3KB 单次写入 |
 | 2026-09-01 | **AGV_Claude v2 收尾**:DataTable 重建阻塞 + 7 method API 校正 | execution (simtalk_run / simtalk_syntax / readlog) | 01-domain-concepts, 02-bridge-tool, 03-workflow-playbook, 04-model-case-studies | **DataTable 运行时 resize 必须用 `MaxYDim :=` / `MaxXDim :=` 属性,不是 setSize**;**`make2DimArray(xDim, arrayData:any[])` 第二参必须 1D 数组**(常被误用为 `(y,x)`);**SimTalk 创建 DataTable 不可行**——`.InformationFlow.DataTable.create(...)` 全失败,`deleteObject` 可,只能 GUI 重建;**bridge 静默失败第 4 种**:inner `executeSilent` 的 print 完全看不到,只能用 `getExecuteSilentError`;`getAttrNo` 全返回 0(语义 ≠ "not found",直接读 .Program/.name 才是可靠路径) |
 | 2026-09-01 | **AGV_Claude v2 恢复 + 7 method 重写**(端口 50009) | execution, get-folder-tree, read-library, write-simtalk(经 simtalk_run) | 04-model-case-studies, 02-bridge-tool, 03-workflow-playbook | **5 个新 Quirk**: `var x:table; x:=str_to_obj(...)` 必须前置 `param` 声明否则"incompatible"; `var x:object` 不暴露 DataTable 方法; `.execute()` 不刷 .Program 缓存(需 reopen model); `length()` 不是函数; `\n` 在字面量是 2 字符。7/7 compile pass,functional test 待 model 重启清缓存 |
 | 2026-09-01 | **AGV_Claude recovery prep** — 08-31 创建的 7 个 method 全部 `program_len:0`(silent fail);服务端 JSON 层随后卡死 | execution, get-folder-tree, read-library | 03-workflow-playbook, 02-bridge-tool, 04-model-case-studies | **`write_simtalk [verify] OK` ≠ 落盘**——任何 write 后必须 readback `o.Program` 确认非空;**bridge lock 易在大 batch 后卡死**——下次 batch 间插 ping;MaterialFlow_AGV 全方位学习未完成(等重启服务后继续) |
@@ -45,3 +48,17 @@ purpose: plant-simulation-expert session summary 索引。agent 冷启动第一�
 
 - 写完一篇新的 `YYYY-MM-DD_session-summary.md` → 同步 append 表格最上方一行。
 - session 中途切换主题 / 长 session 拆分为多个 summary 文件 → 每篇对应一行。
+
+---
+
+## Lessons learned(独立于 session summary)
+
+跨 session 复用的硬规则,不归入 session summary 表格。命名 `YYYY-MM-DD_lesson-<topic>.md`。
+
+| Date | Topic | One-line rule |
+|---|---|---|
+| 2026-09-02 | [Method 程序文本 API](2026-09-02_lesson-method-program-text.md) | 写源码用 `var m; m:=str_to_obj(...); m.Program := <chr(10) 拼接>`;`m.~` 是 numeric,`&m.Program` 在 simtalk_run 上下文禁用,`write_simtalk.py` 拒全 `--` 注释(Quirk #10) |
+| 2026-09-02 | [PROBE 前缀纪律](2026-09-02_lesson-probe-prefix.md) | v15+ readlog 不捕获 print;所有探测必须 `print "PROBE_<purpose>: " + ...` 前缀,避免 echo 与输出撞色 |
+| 2026-09-02 | [SimTalk string literal escape](2026-09-02_lesson-simtalk-string-escape.md) | SimTalk 字面量内 `"` 必须 `\"` 转义,**不**是 `""` doubling;chunked-write `encode_chunk` 必须先 `\\` → `\\\\` 再 `"` → `\"` |
+| 2026-09-02 | [multi-line simtalk_run newline](2026-09-02_lesson-multiline-simtalk-run-newline.md) | Python f-string 必须放真 `\n` 换行字符,不是字面 `\n` 两字符;`;` 串多语句单行被 SimTalk 拒;必须 `subprocess.run` 保留换行 |
+| 2026-09-02 | [method readback proxy](2026-09-02_lesson-method-readback-proxy.md) | readlog v15+ 退化下,method write 后三重 proxy:`simtalk_syntax --target-path` + `m.execute()` 无参 soft-fail 显示 param count + functional `m.execute(args)` execute success |
