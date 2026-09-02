@@ -45,8 +45,7 @@ skills_of_plant_simulation/
 │   ├── README.md                                       # Agents overview, install, naming convention
 │   ├── plant-simulation-expert.md                      # Domain expert — picks skills, consults KB, writes usage logs
 │   ├── plant-simulation-experience-curator.md         # Curator — dedupes session summaries / skill logs, decides what to promote into 02-simulation-file-experience/
-│   ├── skills-optimizer.md                             # Self-maintenance agent — scans skill logs, produces optimizer reports
-│   ├── optimizer-reports/                              # Reports produced by skills-optimizer (per-skill + INDEX)
+│   ├── skills-optimizer.md                             # Self-maintenance agent — scans skill logs, optimizes SKILL.md / scripts (with 4 safety rails)
 │   └── curator-reports/                                # Reports produced by plant-simulation-experience-curator
 ├── data/                                               # Raw datasets (e.g. extracted Method signatures)
 │   └── methods_raw.tsv
@@ -113,7 +112,7 @@ local-simtalk-execution                ← Transport layer base (the other 8 dep
 |---|---|---|
 | `plant-simulation-expert` | Plant Simulation / SimTalk / model-operation domain expert: pre-flights the SimTalkClaude TCP listener, picks skills per request, consults the knowledge base (`01-plantsimulation-knowledge/`) and the experience log (`02-simulation-file-experience/`), writes per-skill usage logs under `skills/<skill>/log/`, and writes a session summary to `03-agent-memory/plant-simulation-expert-memory/` | [`agents/plant-simulation-expert.md`](agents/plant-simulation-expert.md) |
 | `plant-simulation-experience-curator` | Experience curator: dedupes / classifies / indexes session summaries and per-skill logs, decides which findings are worth permanently promoting into the append-only regions of `02-simulation-file-experience/`. Writes reports to `agents/curator-reports/` (single report + INDEX). **Does NOT edit `02-simulation-file-experience/` body** — every promotion proposal is gated by user (or `verification`) review | [`agents/plant-simulation-experience-curator.md`](agents/plant-simulation-experience-curator.md) |
-| `skills-optimizer` | Repository self-maintenance agent: scans `skills/<skill>/log/`, `usage_log/`, and `code_log/` for repeated failure modes, undocumented Quirks, and validated best practices, runs a gap analysis against `SKILL.md` + `references/`, and emits structured optimizer reports into `agents/optimizer-reports/<skill>-YYYY-MM-DD.md` (plus an INDEX). **Read-only** — never edits `SKILL.md` / scripts / references without user approval | [`agents/skills-optimizer.md`](agents/skills-optimizer.md) |
+| `skills-optimizer` | Repository self-maintenance agent: scans 3 signal sources (`skills/<skill>/log/` primary + `04-agent-memory/plant-simulation-expert-memory/` corroborating + `04-agent-memory/student-memory/` drift detection), runs a gap analysis against `SKILL.md` + `references/`, and emits structured optimizer reports into `04-agent-memory/skill-optimizer-memory/<skill>-YYYY-MM-DD.md` (plus an INDEX). **Autonomously edits** `SKILL.md` / scripts / references with 4 safety rails (report trail / soft-confirm high-risk / single-revert granularity / scope isolation) | [`agents/skills-optimizer.md`](agents/skills-optimizer.md) |
 
 Invocation example:
 
@@ -301,7 +300,7 @@ All skills and agents reference the knowledge base via repo-root-relative paths,
 
 - **Per-session summaries** (`plant-simulation-expert`): `03-agent-memory/plant-simulation-expert-memory/YYYY-MM-DD_session-summary_*.md`
 - **Per-skill usage logs** (written by `plant-simulation-expert`): `skills/<skill-name>/log/YYYY-MM-DD_<short-topic>.md`
-- **Optimizer reports** (written by `skills-optimizer`): `agents/optimizer-reports/<skill>-YYYY-MM-DD.md` and `agents/optimizer-reports/INDEX.md`
+- **Optimizer reports** (written by `skills-optimizer`): `04-agent-memory/skill-optimizer-memory/<skill>-YYYY-MM-DD.md` and `04-agent-memory/skill-optimizer-memory/INDEX.md` (含已落地改动清单 `## 已落地改动` 段)
 - **Curator reports** (written by `plant-simulation-experience-curator`): `agents/curator-reports/YYYY-MM-DD-curator-report.md` and `agents/curator-reports/INDEX.md`
 
 ## License & Copyright

@@ -17,5 +17,5 @@ click (lifelines §4).
 
 **Headless / CI:** pass `--no-infobox` (positional rule varies per skill —
 see each skill's Usage section, or
-`agents/optimizer-reports/cross-cutting-2026-08-27.md` Theme 2 for the
+`04-agent-memory/skill-optimizer-memory/cross-cutting-2026-08-27.md` Theme 2 for the
 cross-skill positional rule summary).

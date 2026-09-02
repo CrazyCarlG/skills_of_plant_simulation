@@ -15,7 +15,7 @@ tools: Read, Grep, Glob, Bash, Edit, Write
 | Agent | 角色 | 输入 | 输出 |
 |---|---|---|---|
 | `plant-simulation-expert` | Discovery + 执行 | 用户任务 | `04-agent-memory/plant-simulation-expert-memory/` session summary |
-| `skills-optimizer` | 技能质量差距 | `skills/<name>/log/` + `SKILL.md` + `references/` | `agents/optimizer-reports/` |
+| `skills-optimizer` | 技能质量差距 | `skills/<name>/log/` + `04-agent-memory/plant-simulation-expert-memory/` + `04-agent-memory/student-memory/` + `SKILL.md` + `references/` | `04-agent-memory/skill-optimizer-memory/`(报告 + 候选 patch + 已落地改动) |
 | **`plant-simulation-experience-curator`(本 agent)** | 经验策展 | expert session summary | `03-modeling-experience/<子目录>/<新文件>` + README bump + `04-agent-memory/curator-memory/` session log |
 
 **红线**:不抢 expert/optimizer 的活;默认 dry-run(报告 → 等用户拍板);用户明确说"直接落"才写文件。

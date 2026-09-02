@@ -10,7 +10,7 @@
 |---|---|---|---|---|
 | 1 | `plant-simulation-expert` | **大脑** — Discovery + 执行 | 接收用户任务、挑选 9 skill(per-skill log 由各 `SKILL.md` 要求)、session 收尾写 summary | [`plant-simulation-expert.md`](plant-simulation-expert.md) |
 | 2 | `plant-simulation-experience-curator` | **策展人** — append-only 沉淀 | 把 expert session summary 落成 per-entry file + append-only archive | [`plant-simulation-curator.md`](plant-simulation-curator.md) |
-| 3 | `skills-optimizer` | **技能优化师** — 独立优化 skill(精准命中 + 性能 + 瘦身) | 扫 `skills/<x>/log/` → ①**精准命中**(防止 expert 选错 skill)+ ②**性能提升**(silent fail / timeout)+ ③**瘦身**(精简 SKILL.md);产出到 `agents/optimizer-reports/`,**不调 SimTalkClaude 服务**、**不依赖其他 agent 产出**,可独立调度 | [`skills-optimizer.md`](skills-optimizer.md) |
+| 3 | `skills-optimizer` | **技能优化师** — 独立优化 skill(精准命中 + 性能 + 瘦身) | 扫 3 路信号源(`skills/<x>/log/` 主 + `04-agent-memory/plant-simulation-expert-memory/` 佐证 + `04-agent-memory/student-memory/` 脱节检测)→ ①**精准命中**(防止 expert 选错 skill)+ ②**性能提升**(silent fail / timeout)+ ③**瘦身**(精简 SKILL.md);产出到 `04-agent-memory/skill-optimizer-memory/`,**可主动修改** `SKILL.md` / scripts / references(带 4 道安全闸),**不调 SimTalkClaude 服务**、**不依赖其他 agent 产出**,可独立调度 | [`skills-optimizer.md`](skills-optimizer.md) |
 | 4 | `plant-simulation-student` | **学生** — 严格只读 5 维镜像 | 学习当前打开的模型,写 5 维镜像笔记,不动任何东西(**per-skill log 由各 `SKILL.md` 要求**) | [`plant-simulation-student.md`](plant-simulation-student.md) |
 | 5 | `plant-simulation-knowledge-synthesizer` | **合成者** — 主题合成长文档 | 把 curator archive 合成为 `02-domain-know-how/` 的 active 主题文档 | [`plant-simulation-knowledge-synthesizer.md`](plant-simulation-knowledge-synthesizer.md) |
 
@@ -69,8 +69,8 @@
 │                   │   精准命中/性能/瘦身信号        │
 └──────┬──────────────┘                                  │
        │                                                 │
-       │ ⑧ 优化报告 + 候选 patches                       │
-       │  agents/optimizer-reports/                       │
+       │ ⑧ 优化报告 + 候选 patches + 已落地改动           │
+       │  04-agent-memory/skill-optimizer-memory/         │
        │  (🎯精准命中 + ⚡性能 + ✂️瘦身)               │
        ▼                                                 │
 ┌─────────────────────────┐                            │
@@ -102,11 +102,12 @@ expert  ───────写─────→ skills/<x>/log/              
 
 student  ───────写─────→ 03-agent-memory/student-memory/             (5 维镜像笔记)
 
-optimizer ────独立路径───→ skills/<x>/log/    (主输入,与 expert/curator 解耦)
-             ──写──→ agents/optimizer-reports/   (优化建议 + 候选 patches)
-             🎯精准命中 + ⚡性能 + ✂️瘦身
-             ↓ user 批准后才可写
-         skills/<x>/SKILL.md / scripts/ (经 user 复核)
+optimizer ──读──→ skills/<x>/log/                              (主输入,与 expert/curator 解耦)
+       ──读──→ 04-agent-memory/plant-simulation-expert-memory/   (佐证信号)
+       ──读──→ 04-agent-memory/student-memory/                   (脱节检测信号)
+       ──写──→ 04-agent-memory/skill-optimizer-memory/          (报告 + 候选 patches + 已落地改动)
+       ──直接 Edit──→ skills/<x>/SKILL.md / scripts/ / references/ (闸 ❶·可主动修改,见 skills-optimizer ❶)
+       🎯精准命中 + ⚡性能 + ✂️瘦身
 ```
 
 ---
@@ -119,7 +120,7 @@ optimizer ────独立路径───→ skills/<x>/log/    (主输入,与
 |---|---|---|
 | **expert** | `03-agent-memory/expert-memory/` | 其他 4 agent 的任何路径(`SKILL.md` 自管 per-skill log) |
 | **curator** | `03-modeling-experience/<dim>/` + `agents/curator-reports/` + `04-agent-memory/curator-memory/` | `02-domain-know-how/`、`03-agent-memory/` 其他子目录、`SKILL.md`、模型对象 |
-| **optimizer** | `agents/optimizer-reports/` + 候选 patches | `SKILL.md` / `scripts/`(除非 user 明确批准)、`02-simulation-file-experience/`、`02-domain-know-how/`、模型对象;**不依赖**其他 agent 的 session 输出 |
+| **optimizer** | `04-agent-memory/skill-optimizer-memory/` + 候选 patches + 已落地改动 | `agents/*.md`、`02-domain-know-how/`、`04-agent-memory/`(除 optimizer 报告目录)、模型对象;**可主动修改** `SKILL.md` / `scripts/` / `references/`(见 optimizer ❶·4 道安全闸);**不依赖**其他 agent 的 session 输出 |
 | **student** | `03-agent-memory/student-memory/` | 模型对象、`02-simulation-file-experience/`、`02-domain-know-how/`、`SKILL.md`、任何写操作 |
 | **synthesizer** | `02-domain-know-how/<子目录>/<topic>.md` + `agents/synthesis-reports/` + `04-agent-memory/synthesizer-memory/` | `02-simulation-file-experience/` 任何文件(append-only 铁律)、`SKILL.md`、模型对象 |
 
@@ -200,11 +201,11 @@ optimizer ────独立路径───→ skills/<x>/log/    (主输入,与
 
 ```
 [1] 主对话路由 → skills-optimizer(独立 agent,不需 expert 在线)
-[2] optimizer 扫 skills/local-simtalk-write-simtalk/log/ 找三类信号:
+[2] optimizer 扫 3 路信号源(主 log + 佐证 expert-memory + 脱节检测 student-memory)找三类信号:
     🎯精准命中(选错 skill)、⚡性能(timeout/silent fail)、✂️瘦身(过期章节)
 [3] optimizer 读 SKILL.md + scripts/ 交叉验证
-[4] optimizer 产出 agents/optimizer-reports/write-simtalk-YYYY-MM-DD.md + 候选 patches/
-[5] user 复核后 → optimizer 才可 Edit SKILL.md(或 user 自己修)
+[4] optimizer 产出 04-agent-memory/skill-optimizer-memory/write-simtalk-YYYY-MM-DD.md + 候选 patches/
+[5] optimizer 直接 Edit SKILL.md(闸 ❶·主动修改);user 可从报告 `## 已落地改动` 段反向 revert
 ```
 
 ### 场景 E:用户说"优化 skill 让 expert 选得更准"

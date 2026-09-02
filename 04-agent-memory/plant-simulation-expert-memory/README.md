@@ -1,9 +1,13 @@
 ---
-last_updated: 2026-09-01
-purpose: plant-simulation-expert session summary 索引。agent 冷启动第一动作 = Read 此文件,不要批量 Read 同目录下 8 篇 session summary。
+last_updated: 2026-09-02
+purpose: plant-simulation-expert session summary 索引。agent 冷启动第一动作 = Read 此文件,不要批量 Read 同目录下 11 篇 session summary。
 ---
 
 # Session Memory Index — plant-simulation-expert
+
+> **第 4 列表头仍是历史遗留的 `Dimensions touched`**(维度分类已废弃,见 CONTRIBUTING.md)。**新行第 4 列填对象 / Frame 路径**,逗号分隔。表头重命名待 user 批准。
+>
+> 列含义:`Date | Topic | Skills called | **<对象路径,旧行沿用维度值>** | Key takeaway`
 
 | Date | Topic | Skills called | Dimensions touched | Key takeaway |
 |---|---|---|---|---|
@@ -23,16 +27,16 @@ purpose: plant-simulation-expert session summary 索引。agent 冷启动第一�
 
 ## How to use
 
-1. **First action at cold-start**: Read this file (~80 lines).**不要**批量 Read 同目录下 8 篇 session summary。
-2. **Grep 表格找匹配行**(topic / skill / dimension 列)。
-3. **只打开行匹配的 session summary 文件**(对应 `## Cross-references` → `02-simulation-file-experience/` 或 `skills/<name>/log/`)。
+1. **First action at cold-start**: Read this file (~50 行)。**不要**批量 Read 同目录下 11+ 篇 session summary。
+2. **Grep 表格找匹配行**(topic / skill / 第 4 列 / key takeaway)。
+3. **只打开行匹配的 session summary 文件**(对应 `## Cross-references` → `03-modeling-experience/<子目录>/` 或 `skills/<name>/log/`)。
 4. 找不到匹配行 → 新任务,无需加载历史。
 
 ## Conventions
 
 - **Newest at top**。
-- 每篇 session summary 对应一行;author 在 session 结束时**必填**(date / topic / skills / dimensions / key takeaway)。
-- `Dimensions touched` 列用逗号分隔,值取自 `02-simulation-file-experience/` 的 5 个目录前缀(`01-domain-concepts` / `02-bridge-tool` / `03-workflow-playbook` / `04-model-case-studies` / `05-session-archives`)。
+- 每篇 session summary 对应一行;author 在 session 结束时**必填**(date / topic / skills / 第 4 列 / key takeaway)。
+- 第 4 列填**对象 / Frame 路径**(逗号分隔),不再打维度标签——taxonomy 已废弃(详见 CONTRIBUTING.md)。历史行可能仍是旧维度值,保留以兼容。
 - 文件命名例外:`2026-08-27_modelassistants-study.md` 和 `2026-08-27_session-summary.md`(缺 `_session-summary_` 中缀,因生成时未走标准模板)。保留原文件名以避免破坏 cross-ref;**新文件必须遵循 `YYYY-MM-DD_session-summary_<topic>.md`**。
 
 ## 何时写新行

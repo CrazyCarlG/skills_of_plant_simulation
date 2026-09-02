@@ -37,10 +37,10 @@ last_updated: YYYY-MM-DD
 scenario: <一句话:本轮合成任务在做什么>
 operator: plant-simulation-knowledge-synthesizer
 sources_scanned:
-  - 02-simulation-file-experience/<dim>/logs/<count> per-entry
-  - agents/curator-reports/<count> reports
-  - 03-agent-memory/plant-simulation-expert-memory/<count> session summaries
-  - (optional) agents/optimizer-reports/<count> reports
+  - 03-modeling-experience/<子目录>/<count> per-entry
+  - 04-agent-memory/skill-optimizer-memory/<count> reports
+  - 04-agent-memory/plant-simulation-expert-memory/<count> session summaries
+  - (optional) agents/curator-reports/<count> reports(目录当前为空,保留作为历史兼容)
 ---
 ```
 
@@ -54,7 +54,7 @@ sources_scanned:
 ## Inputs scanned
 | Source | Count | Date range |
 |---|---|---|
-| `02-simulation-file-experience/<dim>/logs/` | N | YYYY-MM-DD → YYYY-MM-DD |
+| `03-modeling-experience/<子目录>/` | N | YYYY-MM-DD → YYYY-MM-DD |
 | ... | | |
 
 ## Files created in 02-domain-know-how/
@@ -88,7 +88,7 @@ sources_scanned:
 - ...
 
 ## Operator self-review
-- **Iron Rule ❶ (no append-only archive corruption)**: 本轮 ✅ 0 files in 02-simulation-file-experience/ 改动
+- **Iron Rule ❶ (no curator asset corruption)**: 本轮 ✅ 0 files in 03-modeling-experience/ 改动
 - **Iron Rule ❷ (≥2 sources or tentative)**: N entries skipped for single-source;M entries synthesized with cross-ref
 - **Iron Rule ❸ (cross-ref completeness)**: 每个新文件都有 Upstream + Curator + Session 三类 cross-ref
 - **Scope discipline**: 没碰 expert / curator / optimizer / student 的 agent 文件;没改 SKILL.md / scripts
@@ -113,6 +113,5 @@ sources_scanned:
 - ❌ 在 session log 里写"我打算合成"——只写**已合成**。
 - ❌ 跨 session 合并(每次独立 session = 独立文件)。
 - ❌ 在本目录写实际合成的 `02-domain-know-how/` 文档(那是合成产物,不是 session log)。
-- ❌ append 到 `02-simulation-file-experience/` 任何文件(append-only 是 curator 唯一权利,铁律❶)。
-</content>
+- ❌ append/edit 到 `03-modeling-experience/` 任何文件(curator 唯一权利,铁律❶)。
 </invoke>

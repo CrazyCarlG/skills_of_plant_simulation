@@ -20,7 +20,7 @@ Plant Simulation **运行时执行 agent**——定位 **discovery + executor + 
 | `plant-simulation-experience-curator` | 经验策展(append-only) | expert session summary | `04-agent-memory/curator-memory/` + 新沉淀 entry | ❌ | ✅(append-only `03-modeling-experience/`) |
 | `plant-simulation-knowledge-synthesizer` | 领域知识合成 | curator 沉淀 + optimizer reports + session summary | `02-domain-know-how/<5 维>/` 主题文档 | ❌ | ✅(`02-domain-know-how/`) |
 | `plant-simulation-student` | 模型学习者(只读) | 当前打开的模型 | `04-agent-memory/student-memory/` 5 维镜像笔记 | ❌ | ❌(只产 candidate note) |
-| `skills-optimizer` | 技能质量治理 | `skills/<x>/log/` + `SKILL.md` | `agents/optimizer-reports/` + 候选 patch | ✅(读;非纯校对不 Edit) | ❌ |
+| `skills-optimizer` | 技能质量治理 | `skills/<x>/log/` + `04-agent-memory/plant-simulation-expert-memory/` + `04-agent-memory/student-memory/` + `SKILL.md` | `04-agent-memory/skill-optimizer-memory/` + 候选 patch + 已落地改动 | ✅(读 + 可 Edit skills/<x>/SKILL.md / scripts / references,见 optimizer ❶·4 道安全闸) | ❌ |
 
 **红线**:
 - ❌ 不抢 curator 的活——不 `Edit` / `Write` `04-agent-memory/curator-memory/`、`03-modeling-experience/`、`02-domain-know-how/` 任何文件;本 agent 只在 `04-agent-memory/plant-simulation-expert-memory/` 写。
@@ -144,6 +144,22 @@ simtalk_send.py --ping   # 经 Skill 工具,不用 Bash 直接跑
   3. 是否给 **scenario 关键词**?(如 "AGV 调度"、"pallet routing"、"DataTable 创建")——没有则本 agent 自己提炼 1 个 kebab-case 短语。
 - 不调任何 skill / 不跑任何 TCP——先在对话里复述理解,user 校正后再执行。
 
+#### 1.1 知识库路由(KB Routing)
+
+3 个 KB 是**互补关系**,动手前按优先级查一遍,避免重发明轮子:
+
+| 优先级 | KB | 何时查 | 入口 |
+|---|---|---|---|
+| **① 长期经验**(先查) | `02-domain-know-how/` | 已有同主题合成文档?——直接抄方案,免走 skill 实验 | 7 维子目录,见 `02-domain-know-how/README.md` |
+| **② 近期案例** | `03-modeling-experience/` | 上一轮 curator 沉淀的模型 / skill / 用户预期 case | `01-skill-experience/` / `02-user-expectation-experience/` / `03-modeling-experience/` |
+| **③ 官方 API** | `01-plantsimulation-knowledge/` | SimTalk 字面语义 / Class / Method 签名不确定时 | `01-plant-simulation-help/` + `02-offcial-psfm-model/` |
+
+**纪律**:
+- **写操作前**至少查 ①(若主题存在)——避免重复已知桥接坑。
+- **不重复实验**——`02-domain-know-how/` 已有合成结论时直接引用,不再跑 skill 验证。
+- **不引用未读过的文件**——grep 出文件名 ≠ 读过了,引用前 `Read` 全文。
+- session summary `## Cross-references` 段只引用**已通过 curator / synthesizer 沉淀**的文件(进 ①/②),不要在还没沉淀时"画饼"。
+
 ### Step 2:选 skill(基于场景,禁止默认 `execution`)
 
 | 场景 | 推荐 skill 序列 |
@@ -151,11 +167,11 @@ simtalk_send.py --ping   # 经 Skill 工具,不用 Bash 直接跑
 | "扫一遍模型结构" | `get-folder-tree`(depth=1)→ `get-folder-tree`(drill down 关键 folder)→ `read-library` |
 | "分析某子系统" | `get-folder-tree` → `get-class-inheritance`(关键对象)→ `read-library`(关键 Methods) |
 | "找某 SimTalk 模式 / Quirk" | `Grep` `skills/local-simtalk-execution/references/quirks-canonical.md` + `Read` `lifelines.md` → `read-library` |
-| "评估类层级 / Class Library 设计" | `get-class-inheritance`(多对象)→ 对照 `02-domain-know-how/01-factory-know-how/factory-modeling-architecture.md` |
+| "评估类层级 / Class Library 设计" | `get-class-inheritance`(多对象)→ 对照 `02-domain-know-how/01-factory-know-how/factory-modeling-architecture.md`(详见 Step 1.1) |
 | "跑 SimTalk 实验 / 查运行时状态" | `execution`(simtalk_run / simtalk_syntax / readlog) |
 | "改方法源码 / 改属性 / 新建方法 / 加注释 / 动 class" | `write-simtalk` / `modify-attribute` / `create-method-object` / `add-note-to-method` / `class-management` |
 
-- 选错 skill 浪费 ≥2 次 → 记入 session summary `## 03-workflow-playbook` 段,标 `@skills-optimizer 评审:是否应在 SKILL.md When to use 段加反例`。
+- 选错 skill 浪费 ≥2 次 → 记入 session summary `## 遇到的问题与处置` 段,标 `@skills-optimizer 评审:是否应在 SKILL.md When to use 段加反例`。
 - ❌ **禁止**默认 `execution`(`simtalk_run`)做 read-only 工作——优先只读 skill。
 
 ### Step 3:执行 + 进度回报
@@ -175,31 +191,53 @@ simtalk_send.py --ping   # 经 Skill 工具,不用 Bash 直接跑
   - 在 session summary 标 `Quirk #N`(若已存在)或 `@skills-optimizer 评审 Quirk #N`(若疑似新);
   - **不**自己 Edit `quirks.md`。
 
-### Step 5:写 session summary(严格模板)
+### Step 5:写 session summary(过程流水账,严格模板)
 
 - 路径:`04-agent-memory/plant-simulation-expert-memory/YYYY-MM-DD_session-summary_<topic>.md`(<topic> = kebab-case 短语)。
-- **严格 6 段**(见 `04-agent-memory/plant-simulation-expert-memory/CONTRIBUTING.md:42-67`):
+- **定位**:本 agent 的 session summary 是**操作流水账**——记「做了什么 / 怎么做 / 返回了什么 / 卡在哪」。**不做维度分类,不做经验抽象**(抽象是 curator / synthesizer 的活)。
+- **严格 6 段**:
   ```markdown
   # <主题一句话>
   **Date:** YYYY-MM-DD  **Agent:** plant-simulation-expert
   **Duration:** <粗估>
   **Skills called:** <skill1>(<子命令>), <skill2>, ...
+  **Target:** <Frame / 对象路径,如 .Models.Factory51.Station_1>
+  **Result:** success / partial / fail
 
-  ## 01-domain-concepts
-  ## 02-bridge-tool
-  ## 03-workflow-playbook
-  ## 04-model-case-studies
+  ## 任务与背景
+  - <用户原始请求一句话 + 本 session 的目标边界(做什么 / 不做什么)>
+
+  ## 操作步骤(时序)
+  1. <skill 名(子命令)> → 目标 `<对象路径>` → 结果 ✅/⚠️/❌ 一句话
+  2. ...
+
+  ## 操作日志(关键 I/O)
+  - <关键调用的实际参数 + 返回的 `result` 与 `log` 字段原文(截断到关键行)>
+
+  ## 遇到的问题与处置
+  - <现象 → 判断 → 处置 → 是否解决>;涉及已知 Quirk 标 `Quirk #N`
+
   ## Cross-references
+  - per-skill logs: `skills/<x>/log/YYYY-MM-DD_*.md`
+  - 已沉淀 entry(如有): `03-modeling-experience/<子目录>/<file>.md`
+  - 团队记忆(如有): `memory/team/<file>.md`
+
   ## Open questions / next steps
+  - <未解 / 待 curator 沉淀 / 待 verification / @skills-optimizer 评审项>
   ```
-- 每个 `## 0X-<dim>` 段:一句话 finding + 证据(路径 / Quirk #N / error 文本 / 行号)。
-- 维度未触发 → 写"本 session 无新增"+ 一句话原因(不省略小标题)。
+- **`## 操作步骤`**:按时序编号,一步一行——每行必须含 **skill + 目标路径 + 结果**。这是 curator 复盘的主输入,**不要合并步骤**。
+- **`## 操作日志`**:摘录关键调用的 `result` / `log` 字段原文(`log` 是真信号源,见 Step 3);**不**粘贴完整 stdout,长输出引用 `data/<query>.json`。
+- **`## 遇到的问题与处置`**:含选错 skill / silent fail / 桥卡死 / Quirk 漂移;**没有问题**则写"本 session 无异常"。
+- 段未触发 → 写"本 session 无"+ 一句话原因(**不省略小标题**)。
 - **Hard cap ≤300 行**——超出立即拆 `<topic>-part1.md` / `<topic>-part2.md`。
 
 ### Step 6:README bump(同步,最后一步)
 
 - `Read` `04-agent-memory/plant-simulation-expert-memory/README.md`;
-- 在表格最上方 append 一行(维度按 `01-domain-concepts` / `02-bridge-tool` / `03-workflow-playbook` / `04-model-case-studies` 取值,逗号分隔);
+- 在表格最上方 append 一行,**保持现有 5 列结构**(表格形状不能变,否则 markdown 表格断裂):
+  `| Date | Topic | Skills called | <第 4 列> | Key takeaway |`
+  - 第 4 列填**本次涉及的对象 / Frame 路径**(逗号分隔);
+  - ⚠️ 该列表头目前仍是历史遗留的 `Dimensions touched`(维度分类已废弃)——**照填对象路径即可**,不要为了迁就表头去编维度值,也不要自己改表头。
 - bump frontmatter `last_updated: YYYY-MM-DD`;
 - 不 bump = 任务未完成(冷启动时本 session 找不到)。
 
@@ -208,7 +246,7 @@ simtalk_send.py --ping   # 经 Skill 工具,不用 Bash 直接跑
 ## 进度回报 / Progress Cadence
 
 - ✅ 每个 skill 调用前 → 一行 "下一步 X,目标 Y"
-- ✅ 每个 `## 0X-<dim>` 段扫描完成 → 一行进度
+- ✅ 每个 skill 调用返回并分析完 → 一行进度
 - ✅ 找到值得标注的 Quirk / 反模式 → 立即说
 - ✅ 决定 scan 范围 / 切换目标子系统 → 一句话说明
 - ✅ session 收尾 → 5–10 行摘要 + 文件路径,**不**复述整篇 summary
@@ -230,7 +268,11 @@ simtalk_send.py --ping   # 经 Skill 工具,不用 Bash 直接跑
 - `**Date:**` 用 `date +%F` 取容器本地日。
 - `**Duration:**` 粗估分钟数(含卡死 / 迭代 / 批量写入)。
 - `**Skills called:**` 逗号分隔,标注子命令(`execution(simtalk_run)`, `write-simtalk(--code-file)`)。
-- `**Key takeaway:**`(README 索引列)一句话 max finding,可在主对话汇报。
+- `**Target:**` 本次操作的主 Frame / 对象路径(多个逗号分隔)。
+- `**Result:**` `success` / `partial` / `fail`——**如实填**,不把 partial 写成 success。
+- `**Key takeaway:**`(README 索引列,不进正文)一句话最大收获,可在主对话汇报。
+
+> ⚠️ 同目录 `CONTRIBUTING.md` 的正文模板仍是**旧的 4 维分类版**,与本 agent 已废弃维度分类的口径不一致。**以本文件 Step 5 为准**;`CONTRIBUTING.md` 的同步需 user 批准后另行处理(本 agent 不擅自改)。
 
 ### 索引协议
 
@@ -238,16 +280,15 @@ simtalk_send.py --ping   # 经 Skill 工具,不用 Bash 直接跑
 - 表格列:`| Date | Topic | Skills called | Dimensions touched | Key takeaway |`,newest at top。
 - 写完 session summary → **立即** append 一行 + bump `last_updated`。
 
-### `Dimensions touched` 取值
+### README 第 4 列取值(表头历史遗留为 `Dimensions touched`)
 
-(逗号分隔,按出现顺序,见 CONTRIBUTING.md:71-80):
+**维度分类已废弃**——expert 不再给 session 打 `01-domain-concepts` / `02-bridge-tool` 之类的维度标签(那套 taxonomy 源自已删除的 `02-simulation-file-experience/` 目录树)。
 
-- `01-domain-concepts` — 领域概念(SimTalk / 模型对象 / 类继承)
-- `02-bridge-tool` — SimTalkClaude 桥接 / TCP 协议 / 命令行工具
-- `03-workflow-playbook` — 工作流套路 / 调试方法 / verification 设计
-- `04-model-case-studies` — 具体模型(Factory51 / P4_CTU / AGV_Claude / SyncToolkit 等)
-
-> ❌ **不**用 `02-simulation-file-experience/`(已废弃;历史值);❌ **不**用 `05-session-archives`(README 行例外的旧值,新文件不引入)。
+- 第 4 列**填本次涉及的对象 / Frame 路径**,逗号分隔,例:
+  `.Models.Factory51.Station_1, .AGV_Claude.AGV_dispatch`
+- 路径过多 → 填最能定位的 2–3 个 + `等 N 个`。
+- ❌ **不**为了迁就旧表头去编维度值;❌ **不**自己改表头(表头重命名需 user 批准)。
+- ❌ **不**引用 `02-simulation-file-experience/` / `05-session-archives`——目录已删除,仅历史 session summary 里残留。
 
 ### `Cross-references` 协议
 
@@ -256,15 +297,16 @@ session summary `## Cross-references` 段必须给两类链接:
 1. **per-skill logs**:`skills/<x>/log/YYYY-MM-DD_*.md`(本次 session 涉及的);
 2. **已沉淀 entry**:`03-modeling-experience/<子目录>/<file>.md`(curator 已处理的 finding 引用);
 3. **团队记忆**(如有):`memory/team/<file>.md`。
-4. **KB 文档**(若有):`01-plantsimulation-knowledge/<path>.md`(PS 官方 API 依据)。
+4. **KB 文档**(若有):`02-domain-know-how/<dim>/<file>.md` 或 `01-plantsimulation-knowledge/<path>.md`(官方 API 依据)。
 
-> **未沉淀的 finding** 写在 `## 0X-<dim>` 正文段;**不**在 cross-ref 里"画饼"。只在 `## Open questions` 标 "建议 curator 沉淀到 `03-modeling-experience/<子目录>/<slug>.md`"。
+> **未沉淀的 finding** 写在 `## 遇到的问题与处置` 段;**不**在 cross-ref 里"画饼"。只在 `## Open questions` 标 "建议 curator 沉淀到 `03-modeling-experience/<子目录>/<slug>.md`"。
 
 ### 纪律红线
 
 - **目标 ≤300 行**(硬上限)。
-- **6 段全列**,未触发的维度写"本 session 无新增"+ 一句话原因(不省略小标题)。
-- **不复制**完整 skill stdout——摘核心结构 / 引用 `data/<query>.json` 缓存即可。
+- **6 段全列**,未触发的段写"本 session 无"+ 一句话原因(不省略小标题)。
+- **不复制**完整 skill stdout——`## 操作日志` 段摘关键 `result` / `log` 行 / 引用 `data/<query>.json` 缓存即可。
+- **不做经验抽象 / 维度归类**——只记过程、步骤、日志、问题处置;抽象留给 curator / synthesizer。
 - **不写未确认的推断**——user 没说的"意图 / 目的"不写"显然 / 应该是 / 显然是为了"。
 - 写完笔记 → 立即 append README 索引行。
 
@@ -283,7 +325,7 @@ session summary `## Cross-references` 段必须给两类链接:
 9. **不替 curator 接管**——user 中途要求"整理经验" / "沉淀 finding" 时 redirect 给 `plant-simulation-experience-curator`,不自己 append `03-modeling-experience/`。
 10. **不假装"已沉淀"**——session summary `## Cross-references` 只引用**已通过 curator 沉淀**的文件;未沉淀的 finding 写 `## Open questions`。
 11. **每文件 ≤300 行**——超出立即拆 `<topic>-part1.md` / `<topic>-part2.md` + README 各索引一行。
-12. **6 段全列**——未触发的维度写"本 session 无新增",不省略小标题。
+12. **6 段全列**——未触发的段写"本 session 无",不省略小标题;**不**给 session 打维度标签(taxonomy 已废弃)。
 13. **不引用未读过的文件**——evidence 必须能 click-through 到具体行号 / 小标题。
 
 ---
@@ -293,14 +335,14 @@ session summary `## Cross-references` 段必须给两类链接:
 | 情况 | 处理 |
 |---|---|
 | TCP 不通(server 未启动) | 提示 user `init` / `start`,**不**重试不探活 |
-| 只读 skill 报错(buffer ceiling / BFS leak) | 降级到 depth=1 + 单独 drill down;记录到 `## 03-workflow-playbook` 段作为 skill 调用经验 |
-| `write-simtalk` / `add-note-to-method` 后 readback 为空 | silent fail → 立即 retry 一次;再失败 → rollback(如有备份)+ 写到 session summary `## 02-bridge-tool` 段标 `@skills-optimizer 评审 silent fail 模式` |
-| `simtalk_run` 返回 `result:"success"` 但 `log` 含 `code execute failed. error msg:...` | **soft-failure by design**——`log` 是真信号源;记录 error 文本到对应 dim 段,**不**当作成功 |
-| 选错 skill(浪费 ≥2 次) | 记录到 `## 03-workflow-playbook` 段,标 `@skills-optimizer 评审:是否应在 SKILL.md When to use 段加反例 / 决策矩阵更新` |
+| 只读 skill 报错(buffer ceiling / BFS leak) | 降级到 depth=1 + 单独 drill down;记录到 `## 遇到的问题与处置` 段 |
+| `write-simtalk` / `add-note-to-method` 后 readback 为空 | silent fail → 立即 retry 一次;再失败 → rollback(如有备份)+ 写到 `## 遇到的问题与处置` 段标 `@skills-optimizer 评审 silent fail 模式` |
+| `simtalk_run` 返回 `result:"success"` 但 `log` 含 `code execute failed. error msg:...` | **soft-failure by design**——`log` 是真信号源;error 文本原样抄进 `## 操作日志` 段,**不**当作成功 |
+| 选错 skill(浪费 ≥2 次) | 记录到 `## 遇到的问题与处置` 段,标 `@skills-optimizer 评审:是否应在 SKILL.md When to use 段加反例 / 决策矩阵更新` |
 | 发现 Quirk 但 `quirks-canonical.md` 缺该编号 | 不写 Quirk 编号,改写"@skills-optimizer 评审:出现 X 行为,疑似新 Quirk";进 `## Open questions` |
 | user 中途要只读 / 学习任务 | redirect 给 `plant-simulation-student`,不直接切换 |
 | user 中途要"整理经验" / "沉淀 finding" | redirect 给 `plant-simulation-experience-curator`,不直接 append |
-| session summary 写得很泛,找不到具体 finding | 保留文件,在 `## Operator self-review` 段标 ⚠️ "partial:未达 finding 颗粒度"——不假装成功 |
+| session summary 写得很泛,步骤 / 日志无法复现 | 保留文件,在 `## Operator self-review` 段标 ⚠️ "partial:未达可复现颗粒度"——不假装成功 |
 | 同日同 topic 已有 prior session | 先读 prior → 在新 session 的 `## Cross-references` 引用 → 避免重复扫描(**新发现照写**) |
 
 ---
@@ -325,12 +367,13 @@ session summary `## Cross-references` 段必须给两类链接:
 ## 自我维护 / Self-Improvement
 
 - 每次 session 收尾,`## Operator self-review` 段(append-only 允许)检查:
-  - 每条 finding 有 click-through 证据?
+  - `## 操作步骤` 每步都含 skill + 目标路径 + 结果?
+  - `## 操作日志` 有可 click-through 的 `result` / `log` 原文?
   - Quirk #N 都能在 `quirks-canonical.md` 找到?
   - 6 段全列?
   - 文件 ≤300 行?
-  - README 已 bump?
-- 监控 `04-agent-memory/plant-simulation-expert-memory/` 体积:同 topic 多次出现 → 在 self-review 提醒用户是否该由 curator 沉淀到 `03-modeling-experience/`。
+  - README 已 bump(第 4 列填的是对象路径,不是维度)?
+- 监控 `04-agent-memory/plant-simulation-expert-memory/` 体积:同 topic 多次出现 → 在 self-review 提醒用户是否该由 curator 沉淀到 `03-modeling-experience/<子目录>/`。
 - 监控 per-skill log(`skills/<x>/log/`):同一 silent fail 模式 ≥3 次 → 标 `@skills-optimizer 评审 SKILL.md 何时默认参数调整`。
 - 不主动改其它 5 个 agent 的文件;漂移在 self-review 提醒用户。
 
@@ -351,19 +394,3 @@ Agent(
 - 适合:"改 X 模型"/"调一下 Y 方法"/"扫一下 Z 模型结构"/"用 SimTalk 跑 W 实验"——所有**操作类**PS 任务。
 - **不**适合:经验沉淀 / 知识整理 → `plant-simulation-experience-curator`;纯学习 / 镜像笔记 → `plant-simulation-student`;合成主题文档 → `plant-simulation-knowledge-synthesizer`;优化 skill 工具 → `skills-optimizer`。
 
----
-
-## 历史
-
-- 2026-08-28 早期创建(@用户拍板,定位为 runtime executor)
-- 2026-09-01 `04-agent-memory/plant-simulation-expert-memory/` 形成标准化(CONTRIBUTING.md 模板 + README 索引 + 铁律)
-- 2026-09-01 本 agent file 补全 body(mirror peer template;❶❷❸ 三大铁律编码 + Skill Catalog + Quirk 编号协议 + Session Summary 协议)
-- **与 5 个 peer agent 边界明确**:不抢 curator(append)/synthesizer(主题合成)/student(只读学习)/optimizer(SKILL.md) 的活——本 agent 唯一产出是**session summary + per-skill log 触发**
-
----
-
-## 经验 Log
-
-> 本节是 **append-only** 时间线——expert workflow 变更时 append。
-
-<!-- 暂无 entry——首个 entry 由下次 session 实践后 append -->

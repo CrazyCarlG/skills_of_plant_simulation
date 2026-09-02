@@ -37,47 +37,58 @@ YYYY-MM-DD_session-summary_<topic>.md
 
 ---
 
-## 文件正文模板（≤300 行）
+## 文件正文模板（≤300 行，过程流水账）
+
+**定位**:expert session summary 是**操作流水账**——记「做了什么 / 怎么做 / 返回了什么 / 卡在哪」。**不做维度分类,不做经验抽象**(抽象是 curator / synthesizer 的活)。
 
 ```markdown
 # <主题一句话>
 **Date:** YYYY-MM-DD  **Agent:** plant-simulation-expert
 **Duration:** <粗估，含卡死/迭代/批量写入分钟数>
 **Skills called:** <skill1>(<子命令>), <skill2>, ...
+**Target:** <Frame / 对象路径，如 .Models.Factory51.Station_1>
+**Result:** success / partial / fail
 
-## 01-domain-concepts
-- <一句话 finding + 证据（路径 / Quirk #N / error 文本）>
+## 任务与背景
+- <用户原始请求一句话 + 本 session 的目标边界（做什么 / 不做什么）>
 
-## 02-bridge-tool
-- ...
+## 操作步骤（时序）
+1. <skill 名(子命令)> → 目标 `<对象路径>` → 结果 ✅/⚠️/❌ 一句话
+2. ...
 
-## 03-workflow-playbook
-- ...
+## 操作日志（关键 I/O）
+- <关键调用的实际参数 + 返回的 `result` 与 `log` 字段原文（截断到关键行）>
 
-## 04-model-case-studies
-- ...
+## 遇到的问题与处置
+- <现象 → 判断 → 处置 → 是否解决>；涉及已知 Quirk 标 `Quirk #N`
 
 ## Cross-references
 - per-skill logs: `skills/<x>/log/YYYY-MM-DD_*.md`
-- 03-modeling-experience entries: `03-modeling-experience/<子目录>/<file>.md`
+- 已沉淀 entry: `03-modeling-experience/<子目录>/<file>.md`
 - 团队记忆: `memory/team/<file>.md`
+- KB 文档: `02-domain-know-how/<dim>/<file>.md` 或 `01-plantsimulation-knowledge/<path>.md`
 
 ## Open questions / next steps
-- <未解 / 待 curator 沉淀 / 待 verification>
+- <未解 / 待 curator 沉淀 / 待 verification / @skills-optimizer 评审项>
 ```
+
+**段位纪律**:
+- **`## 操作步骤`**:按时序编号,一步一行——每行必须含 **skill + 目标路径 + 结果**。curator 复盘的主输入,**不合并步骤**。
+- **`## 操作日志`**:摘录关键调用的 `result` / `log` 字段原文(`log` 是真信号源);不粘贴完整 stdout,长输出引用 `data/<query>.json`。
+- **`## 遇到的问题与处置`**:含选错 skill / silent fail / 桥卡死 / Quirk 漂移;**无问题**则写"本 session 无异常"。
+- 段未触发 → 写"本 session 无"+ 一句话原因(**不省略小标题**)。
 
 ---
 
-## `Dimensions touched` 字段（README 索引列取值）
+## README 第 4 列取值（表头历史遗留为 `Dimensions touched`）
 
-README 索引表里 `Dimensions touched` 列允许以下值（逗号分隔、按出现顺序）：
+**维度分类已废弃**——expert 不再给 session 打 `01-domain-concepts` / `02-bridge-tool` 之类的维度标签（那套 taxonomy 源自已删除的 `02-simulation-file-experience/` 目录树，commit `e9affee`）。
 
-- `01-domain-concepts` — 领域概念（SimTalk / 模型对象 / 类继承）
-- `02-bridge-tool` — SimTalkClaude 桥接 / TCP 协议 / 命令行工具
-- `03-workflow-playbook` — 工作流套路 / 调试方法 / verification 设计
-- `04-model-case-studies` — 具体模型（Factory51 / P4_CTU / AGV_Claude / SyncToolkit 等）
-
-> **历史值** `02-simulation-file-experience/` 已被 `03-modeling-experience/` 取代；旧 session summary 里仍可能引用老路径，**新文件不要复用**。
+- 第 4 列**填本次涉及的对象 / Frame 路径**,逗号分隔,例:`.Models.Factory51.Station_1, .AGV_Claude.AGV_dispatch`
+- 路径过多 → 填最能定位的 2–3 个 + `等 N 个`。
+- ❌ **不**为了迁就旧表头去编维度值。
+- ❌ **不**引用 `02-simulation-file-experience/` / `05-session-archives`——目录已删除,仅历史 session summary 里残留。
+- 表头重命名需 user 批准,本目录 README 仍保留 `Dimensions touched` 字样（historical column header）。
 
 ---
 
@@ -88,8 +99,9 @@ expert 在 `## Cross-references` 段必须给两类链接：
 1. **per-skill logs**：本次 session 涉及的 `skills/<x>/log/*.md`。
 2. **已沉淀到 `03-modeling-experience/` 的 entry**：curator 已经处理过的 finding 引用其目标文件路径。
 3. **团队记忆**（如有）：`memory/team/<file>.md`。
+4. **KB 文档**（若有）：`02-domain-know-how/<dim>/<file>.md`（合成主题文档）或 `01-plantsimulation-knowledge/<path>.md`（官方 API）。
 
-> **未沉淀的 finding 写在 `## 0X-<dim>` 正文段**，不在 cross-references 里"画饼"——只在 `## Open questions` 标 "建议下次 curator 沉淀到 `03-modeling-experience/<子目录>/<slug>.md`"。
+> **未沉淀的 finding 写在 `## 遇到的问题与处置` 正文段**，不在 cross-references 里"画饼"——只在 `## Open questions` 标 "建议下次 curator 沉淀到 `03-modeling-experience/<子目录>/<slug>.md`"。
 
 ---
 
