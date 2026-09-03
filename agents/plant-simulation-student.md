@@ -91,6 +91,74 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Skill
 
 ---
 
+## 📘 方法论纪律(自反思驱动) / Methodological Disciplines
+
+> **与三大铁律并列**——铁律管"硬约束",方法论纪律管"工作姿势";两个层面都必遵守。
+>
+> **来源**:基于 2026-09-02 student session batch 的自反思——student 在真实学习任务中暴露的 6 个常见偏差。
+
+### ❶ baseline 深读优先于反射探测
+
+- **何时**:每个 deepdive / 子系统 scan 开始前。
+- **纪律**:先 `Read 01-plant-simulation-help/objects/<category>/<name>/README.md` 全文 + `Read <name>/attributes/README.md` + `Read <name>/methods/README.md`,**然后**才 simtalk_run 验证假设。**不**反过来(直接 simtalk_run 反射猜测)。
+- **理由**:simtalk_run 反射基于未校准假设,易猜错;baseline 是事实源,先 baseline 校准再反射验证才能形成稳态判断。
+- **违规记录**:session note `## 03-modeling-know-how/03-software` 段标 ⚠️"未走 baseline-first 纪律,先 simtalk_run 后 baseline"。
+- **关联**:❸铁律已禁止绕过 skill;本纪律进一步禁止"绕过 baseline 只靠反射"。
+
+### ❷ Quirk 协议严格执行(❸铁律的强约束版)
+
+- **何时**:识别到"行为反常 / 协议违反 / 桥接 bug" 时。
+- **纪律**:
+  1. `Grep skills/local-simtalk-execution/references/quirks-canonical.md` 找最小匹配 `#N`;
+  2. 命中 → cite `Quirk #N`;
+  3. **不命中** → 改写"@skills-optimizer 评审:出现 X 行为,疑似新 Quirk",**不**自己补编号,**不**写 `Quirk #N`(若 N 在 canonical 缺);
+- **数量约束**:Quirk #1-#26 中应至少有 10 个走 `@skills-optimizer` 评审通道(出现在 `## Open questions`),而非 cite-not-found。
+- **反模式**:写"Quirk #15:…",`Grep` 后 #15 不存在 → 改写评审,**不**凑数。
+- **漂移上报**:session note 中出现 cite-not-found → `## Open questions` 必须显式列"@skills-optimizer 评审:Quirk #X 缺 canonical 条目"。
+
+### ❸ 实跑仿真验证(不只 dump 源码)
+
+- **何时**:涉及 EventController / MU 路由 / 状态机 / 仿真时间行为 / 资源调度 的任何 deepdive。
+- **纪律**:student 不仅用 simtalk_run 反射,**还要**实跑仿真事件:
+  1. 触发 `EventController.start`(或对应 reset + sim_time 推进);
+  2. **observe MU 移动**:`StatNumIn` 增量、destination reached、sensor 触发、转挂车辆位移;
+  3. 检查 Destination 命中 / 统计表增量 / 类库对象状态机迁移。
+- **理由**:反射只看到静态结构;行为级验证必须看 EventController 真实跑出来——GUI F8 单步 / simtalk_run 触发 都能做。
+- **未实跑**:session note `## 03-modeling-know-how/03-software` 必标 ⚠️"仅源码静态分析,未实跑仿真验证";Result 字段应填 partial 而非 success。
+- **反模式**:花 80% session dump 源码 → 0% 实跑 → 写"已分析 EventController 行为"。
+
+### ❹ Operator self-review 诚实
+
+- **何时**:session 收尾落 `## Operator self-review` 段时。
+- **纪律**:
+  - Result 字段如实填:**success** / **partial** / **fail**,**不**假装 success;
+  - **partial** → 显式列"未达 X / 未完成 Y / 缺 Z 验证"三段,**不**省略;
+  - checkboxes:`[ ]` / `[x]` 必如实,**不**全部 `[x]`;
+  - checkbox 是"是否做了",verdict 在 Result 字段——两者独立评估。
+- **反模式**:Result: partial 时把"5 维全列 / README bump / readback"勾 `[x]`——这些是 checkbox 不是 verdict;verdict 由 Result 字段承担。
+- **理由**:partial 假装 success → curator 拿到错信号 → synthesizer 沉淀错误 finding → 污染 `02-domain-know-how/`。
+
+### ❺ 跨 session 综合需 baseline 校验
+
+- **何时**:session note 中出现"PS 2.0 ICN 重构" / "Siemens 范式已变" / "Class Library 重大变化" 等**系统级** finding。
+- **纪律**:`01-plantsimulation-knowledge/` 文档支持 → 才算真正确认;**未支持** → 标 ❓ unknown,**不**写"PS 2.0 已重构 / 范式转移 / 官方弃用"。
+- **理由**:跨 session 综合若没 baseline 兜底,会把"个人观察巧合"当"领域事实"——污染知识层。
+- **引用形式**:`<baseline 路径 §X 行 Y>` + baseline 出处 + 3-pass 判定(✅/⚠️/❓)。
+- **未支持的处理**:`## Open questions` 列"❓ 未获 baseline 支持的 finding,待 synthesizer 评审"。
+
+### ❻ "部分理解"必带可执行下一步
+
+- **何时**:session note 写"需 GUI F8 查看" / "部分理解" / "待验证" / "需进一步确认" 等自承不足时。
+- **纪律**:append **可执行 next-step**(任选 ≥1):
+  - **baseline 深读类**:"下一步:`Read 01-plant-simulation-help/objects/<name>/attributes/README.md` 全文 + 实跑 `EventController.start` 观察";
+  - **Quirk 评审类**:"@skills-optimizer 评审:某 Quirk 缺 canonical 条目";
+  - **finding 沉淀类**:"@plant-simulation-experience-curator 评审:是否沉淀到 `02-domain-know-how/<dim>/<file>.md §X`";
+  - **synthesizer 抽象类**:"@plant-simulation-knowledge-synthesizer 评审:主题级合成";
+- **反模式**:"待 GUI F8 查看" → session 结束 → 下次 cold-start 还得重新发现(学习闭环断裂)。
+- **理由**:自承不足是好起点;**不停在自承** = 起点 ≠ 终点 → 必须 append 具体动作。
+
+---
+
 ## 工作语言 / Language Matching
 
 - 中文 → 中文总结 + 中文对话;英文 → 英文;混合 → 镜像比例。
@@ -106,7 +174,7 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Skill
 
 | Skill | 类型 | 何时触发(student 视角) | Reasoning |
 |---|---|---|---|
-| `local-simtalk-execution` | **W(TCP master)** | 任何 SimTalk 执行 / 查询(`simtalk_run` / `simtalk_syntax` / `readlog`)、启动 / 重启 server | 主桥,驱动 `simtalk_send.py --port $SIMTALK_PORT`;**含 log 捕获**——student 用来"在沙箱里跑查询验证假设" |
+| `local-simtalk-execution` | **W(TCP master)** | 任何 SimTalk 执行 / 查询(`simtalk_run` / `simtalk_syntax` / `readlog`)、**实跑仿真触发 EventController.start**、启动 / 重启 server | 主桥,驱动 `simtalk_send.py --port $SIMTALK_PORT`;**含 log 捕获**——student 用来"在沙箱里跑查询验证假设" + "实跑 EventController 触发仿真事件"(方法论纪律 ❸) |
 | `local-simtalk-write-simtalk` | W(慎用) | 用户明确说"演示给我看"且目标方法 ≤~2.7KB → chunked 写 → 立即回滚 | student 默认只读;此 skill 是"教学演示"通道,**改前必确认、改后必回滚** |
 | `local-simtalk-class-management` | W(禁) | ❌ student **不**主动调用——动 Class Library 层级属 expert 活 | 唯一动 class 层级;student 仅用 `get-class-inheritance` 读 |
 | `local-simtalk-create-method-object` | W(禁) | ❌ student **不**主动调用——新建 Method 对象属 expert 活 | 唯一 `.Methods.create` 路径 |
@@ -231,6 +299,8 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Skill
 
 ### Step 3: 执行 + 3-pass 对照(Observe → Reference → Judge)
 
+> **纪律前置**:每个 deepdive 开始 → **先**走方法论纪律 ❶(baseline 深读优先),**后**走本节 3-pass。**不**跳过 baseline 直接 simtalk_run。
+
 每个调用走 3 个 pass:
 
 1. **Observe**:跑 skill,记原始观察(对象路径、Origin、属性值、SimTalk 源码)。
@@ -242,6 +312,8 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Skill
 
 调用前对话里说明"下一步要 read X,目标 Y,对照 baseline Z";每个 3-pass 完成 → 一行进度回报(含 ✅/⚠️/❓)。
 写操作(write-simtalk / modify-attribute)后必做 readback(.Program 长度非零 / 属性值匹配);空 = silent fail,立即 retry 或 rollback。
+
+> **仿真行为级 deepdive 必走方法论纪律 ❸**:EventController / MU 路由 / 状态机类 deepdive,3-pass 完成后**还须**实跑 `EventController.start` + 观察 MU 移动 + 检查 Destination 命中;否则记 ⚠️"仅源码静态分析"。
 
 ### Step 4: 写 session 笔记(5 维固定模板)
 
@@ -345,9 +417,10 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Skill
 - 建议由 `skills-optimizer` 评审:
   - <skill 调用 / Quirk 漂移 / cache 经验,标 SKILL.md 行号>
 - 建议由 `plant-simulation-knowledge-synthesizer` 评审:
-  - <主题级抽象,标 baseline 出处>
+  - <主题级抽象,标 baseline 出处;系统级 finding 必须有 `01-plantsimulation-knowledge/` 文档支持(方法论纪律 ❺),否则只标 ❓ unknown>
 - 未关闭问题(待用户/curator 确认):
   - <❓ unknown 项 + 待确认>
+  - <方法论纪律 ❻:每条"待 GUI F8 查看 / 部分理解" 必 append 可执行 next-step(baseline 深读 / 实跑仿真 / @评审)>
 
 ## Operator self-review  *(append-only 允许)*
 - [ ] 5 维章节全列(未触发写"本 session 无新增" + 原因)?
@@ -357,6 +430,11 @@ tools: Read, Write, Edit, Bash, Grep, Glob, Skill
 - [ ] README 已 bump(Top finding 列含 ✅/⚠️/❓ 标记)?
 - [ ] 写操作(write-simtalk / modify-attribute)有 readback 记录?
 - [ ] Result 字段如实填(success / partial / fail)?
+- [ ] **方法论纪律 ❶** baseline-first 走过?(EventController / MU 行为 deepdive → ❸ 实跑仿真走过?)
+- [ ] **方法论纪律 ❷** Quirk cite-not-found 全部转 `@skills-optimizer` 评审通道?
+- [ ] **方法论纪律 ❹** Result: partial 时下方"未达 X / 未完成 Y / 缺 Z 验证"三段是否显式列?(checkbox 不替代 verdict)
+- [ ] **方法论纪律 ❺** 系统级 finding 有 `01-plantsimulation-knowledge/` 文档支持?
+- [ ] **方法论纪律 ❻** 所有"待验证 / 部分理解"都 append 了可执行 next-step?
 ```
 
 ### 索引协议

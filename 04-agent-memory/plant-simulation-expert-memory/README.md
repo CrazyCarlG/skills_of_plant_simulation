@@ -1,6 +1,8 @@
 ---
 last_updated: 2026-09-02
-purpose: plant-simulation-expert session summary 索引。agent 冷启动第一动作 = Read 此文件,不要批量 Read 同目录下 13 篇 session summary。
+purpose: plant-simulation-expert session summary 索引。agent 冷启动第一动作 = Read 此文件,不要批量 Read 同目录下 14 篇 session summary。
+revision_notes:
+  - 2026-09-02 (14th):追加 student-agent-evaluation session(纯 Read 评估无 skill 执行;**判断:student 理解度 60-65%** — 强在反射/introspection(simtalk_run 反射层 + Method dump `obj.&Method.Program` SOP 跨 8 次验证 + 14 个 ICN 类注册名重构 + 跨 session 综合),弱在 baseline 深读(13 篇笔记 22 处"未深读"+ 6 处"未明文" 统计)+ 实跑仿真(0 次)+ Quirk 协议(自行编号 #1-#26 与 canonical.md #6/#7/#13 不一致)+ Operator self-review 假阳性;student 是"反射型学习者"非"工程型学习者";建议 reviewer 三通道评审(14 个 ICN → object-classification;5 OnPull meta-analysis → station-onpull-spectrum;Quirk #14-#26 → canonical.md 仲裁))
 ---
 
 # Session Memory Index — plant-simulation-expert
@@ -9,8 +11,8 @@ purpose: plant-simulation-expert session summary 索引。agent 冷启动第一�
 >
 > 列含义:`Date | Topic | Skills called | **<对象路径,旧行沿用维度值>** | Key takeaway`
 
+| 2026-09-02 | student-agent-evaluation(纯 Read 评估,student 13 篇笔记理解度) | Read | .Models.{RobotComau, XZYStacker, PortalCrane, LinearPortal, MarkerCrossing, SevenAxisRobot, AGVWithRobot}, agents/plant-simulation-student.md | **判断:student 60-65% 理解 PS**;强在反射/introspection + Method dump SOP + cross-session 综合;弱在 baseline 深读(13 篇 22 处"未深读" 统计)+ 实跑仿真(0 次)+ Quirk 协议(自编 #1-#26 vs canonical #6/#7/#13)+ Operator self-review 假阳性;3 评审通道(curator: 14 ICN / 5 OnPull spectrum;optimizer: Quirk #14-#26 仲裁 / SOP 文档化;synthesizer: 评审前必须实跑验证);6 改进建议给 student 自己 | [2026-09-02_session-summary_student-agent-evaluation.md](./2026-09-02_session-summary_student-agent-evaluation.md) |
 | Date | Topic | Skills called | Dimensions touched | Key takeaway |
-|---|---|---|---|---|
 | 2026-09-02 | 在 `.Models.Model.method` 写通用图 A* 寻路(7-param signature + 23 块 chunked-write + 三重 readback) | execution (simtalk_send.py run / syntax) + 自写 chunked writer (`/tmp/_write_astar_method.py`) | .Models.Model.method | **3 个新 Quirk** = SimTalk string literal escape 是 `\"` 不是 `""`;multi-line simtalk_run 必须用 Python 真换行 `"\n"`;readlog v15+ 退化下 method readback 三重 proxy(syntax --target-path + m.execute(0 args) soft-fail + functional m.execute(7 args));**23/23 chunk rc=0 + 7-param signature 识别 + functional smoke test 通过**;h=0 退化为 Dijkstra;复用 v4 chunk-write 协议 |
 | 2026-09-02 | 端口 50008 当前模型结构映射(basis + 7 example scenes + SimtalkClaude workspace) | execution (simtalk_send --port 50008 直接驱动;`bfs_one_level.py` / `bfs_full.py` 端口硬编码 50007 → 复用 SIMTALK_TEMPLATE 写 `/tmp/bfs_one_level_50008.py` 注入 `--port 50008`,**未**经 skill 入口) | .Models.{RobotComau, XZYStacker, PortalCrane, LinearPortal, MarkerCrossing, SevenAxisRobot, AGVWithRobot, Model}, .SimtalkClaude.{Main, src, connection, objects}, .UserObjects.AGV | **basis 10 子 + .Models 8 Frame + .UserObjects 1 + .SimtalkClaude 4 子目录**;7 个 example scenes 按复杂度 LinearPortal(9)→PortalCrane(10)→SevenAxisRobot(13)→RobotComau/XZYStacker(14)→AGVWithRobot(22)→MarkerCrossing(26);**bfs skill 端口硬编码 50007 必须显式 bypass**;Quirk #5 退化重现(.Models.Model.EventController numNodes 拿不到,跳过);head -50 截断误判 .Models.RobotComau 拓扑(实际 6 Connector);Connector 编号乱序 = 建模零散插入;`.Models.Model` 是**空壳工作 Frame**(仅 EventController + Method),真实场景全在兄弟 Frame |
 | 2026-09-02 | 写 `.Models.Test.method` 模型结构注释(端口 50008) | execution (simtalk_run / simtalk_syntax / readlog) — Skill 工具未注册 `local-simtalk-*`,经 `simtalk_send.py` 直接驱动 | .Models.Test.method | **Method 程序文本必须用 `m.Program := ...`,不是 `m.~ := ...`**(`.~` 是 numeric,程序文本在 string-typed `Program` 属性);**`&` 在 simtalk_run 上下文里报 `ref-operator has no effect`**——不能 `&m.Program :=`;**v15+ readlog 不捕获 print 值**——`m.~` print 出来是 path 不是源码,readback 只能用 `simtalk_syntax` 空代码 + `target_path` 代理;**`length()` 不是函数**,应用 `.dim`(Quirk 重现);**Quirk #10 重现**:`write_simtalk.py` 不支持全 `--` 注释块(被 argparse 截断),绕走 raw socket + `chr(10)` 拼接;**2.7KB SimTalk ceiling**——长注释必须 chunked,本次压缩到 14 行 ~1.3KB 单次写入 |
