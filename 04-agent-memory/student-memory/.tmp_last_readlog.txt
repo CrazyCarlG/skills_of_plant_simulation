@@ -1,0 +1,704 @@
+2026-09-07 21:39:47: Log file opened! Application Version: 2606.0002, UTC: 2026-09-07 13:39:47
+2026-09-07 21:40:04: execute sim-code: '
+var pm: object := s......'
+2026-09-07 21:40:04: ###CODE###
+2026-09-07 21:40:04: import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt
+import numpy as np
+import base64
+from io import BytesIO
+import traceback
+from matplotlib.ticker import MaxNLocator
+
+class HTMLHandler:
+    """
+    _______________________________________________________________________________
+
+    Class Tasks:
+        Create SVG plots (min/mean/max per objective + Pareto) and produce HTML in 
+        HTMLReport. This is done to visualize the Optimization to the user.
+    _______________________________________________________________________________
+            
+    Used by:
+        Optimize
+        
+    Uses:
+        HTMLReport
+    _______________________________________________________________________________ 
+        
+    """
+
+
+    def __init__(self):
+        self.history = {"min": [], "mean": [], "max": []}
+
+    def create_min_max_avg_plot(self,F, generation):
+        """
+        Method Tasks:
+            Make min/mean/max plots per objective and update history.
+        """
+        
+        F = np.atleast_2d(F)
+        n_obj = F.shape[1]
+
+        f_min = F.min(axis=0)
+        f_mean = F.mean(axis=0)
+        f_max = F.max(axis=0)
+
+        self.history["min"].append(f_min.copy())
+        self.history["mean"].append(f_mean.copy())
+        self.history["max"].append(f_max.copy())
+    
+        mins = np.array(self.history["min"])
+        means = np.array(self.history["mean"])
+        maxs = np.array(self.history["max"])
+        generations = np.arange(1, len(mins) + 1)
+    
+        fig, axes = plt.subplots(1, n_obj, figsize=(6 * n_obj, 4))
+        if n_obj == 1:
+            axes = [axes]
+            
+        objectives = ["Throughput","Cost"]    
+    
+        for i, ax in enumerate(axes):
+            y_min = mins[:, i]
+            y_mean = means[:, i]
+            y_max = maxs[:, i]
+
+            y_min_plot = np.abs(y_min)
+            y_mean_plot = np.abs(y_mean)
+            y_max_plot = np.abs(y_max)
+
+            min_color = "green" if np.all(y_min >= 0) else "red"
+            max_color = "red" if np.all(y_max >= 0) else "green"
+            mean_color = "blue"
+            
+            if not np.all(y_min >= 0):
+                temp = y_min_plot
+                y_min_plot = y_max_plot
+                y_max_plot = temp
+    
+            ordered = [("Minimum", y_min_plot, min_color),
+                       ("Mean", y_mean_plot, mean_color),
+                       ("Maximum", y_max_plot, max_color)]
+
+            for label, y, color in ordered:
+                ax.plot(generations, y, label=label, color=color, linewidth=2)
+    
+            ax.set_xlabel("Generation")
+            ax.set_ylabel(objectives[i])
+            ax.legend(framealpha=0.85, loc="best")
+            ax.xaxis.set_major_locator(MaxNLocator(integer=True))
+    
+        plt.tight_layout()
+        return fig
+    
+    def create_pareto_plot(self,pareto_front):
+        """
+        Method Tasks:
+            Create a Pareto front scatter plot (mirror negatives if needed).
+        """
+        
+        pareto_front = np.array(pareto_front)
+    
+        mirrored = pareto_front.copy()
+        if np.all(pareto_front[:, 0] <= 0):
+            mirrored[:, 0] = -mirrored[:, 0]
+        if np.all(pareto_front[:, 1] <= 0):
+            mirrored[:, 1] = -mirrored[:, 1]
+    
+        fig, ax = plt.subplots(figsize=(6,4))
+    
+        ax.scatter(
+            mirrored[:, 0],
+            mirrored[:, 1],
+            s=30,
+            facecolors="none",
+            edgecolors="blue",
+            label="Current Pareto Front"
+        )
+    
+        ax.set_title("Pareto Front")
+        ax.set_xlabel("Throughput")
+        ax.set_ylabel("Cost")
+        ax.legend(framealpha=0.85)
+        plt.tight_layout()
+    
+        return fig
+    
+    
+    def html_plot_callback(self,algorithm):
+        """
+        Method Tasks:
+            Build HTML with fitness evolution and Pareto plots and write to HtmlReport.
+        """
+        
+        try:
+            if getattr(algorithm, "n_gen", 0) == 1:
+                self.history["min"].clear()
+                self.history["mean"].clear()
+                self.history["max"].clear()
+    
+            F = algorithm.pop.get("F")
+            fig_main = self.create_min_max_avg_plot(F, getattr(algorithm, "n_gen", 0))
+
+            tmp1 = BytesIO()
+            fig_main.savefig(tmp1, format="svg", bbox_inches="tight")
+            plt.close(fig_main)
+            img_b64_main = base64.b64encode(tmp1.getvalue()).decode("utf-8")
+            img_tag_main = f'<img src="data:image/svg+xml;base64,{img_b64_main}" alt="fitness plots"/>'
+
+            pareto_front = None
+            if hasattr(algorithm, "opt") and algorithm.opt is not None:
+                pareto_front = algorithm.opt.get("F")
+            else:
+                pareto_front = F
+    
+            fig_pareto = self.create_pareto_plot(pareto_front)
+            tmp2 = BytesIO()
+            fig_pareto.savefig(tmp2, format="svg", bbox_inches="tight")
+            plt.close(fig_pareto)
+            img_b64_pareto = base64.b64encode(tmp2.getvalue()).decode("utf-8")
+            img_tag_pareto = f'<img src="data:image/svg+xml;base64,{img_b64_pareto}" alt="pareto front" style="max-width:45%; height:auto;"/>'
+    
+            generations_done = len(self.history["min"])
+
+            pop_size = "?"
+            try:
+                pop_obj = algorithm.pop
+                if hasattr(pop_obj, "size"):
+                    pop_size = getattr(pop_obj, "size")
+                else:
+                    try:
+                        pop_size = len(pop_obj)
+                    except Exception:
+                        if isinstance(F, np.ndarray):
+                            pop_size = F.shape[0]
+            except Exception:
+                pop_size = "?"
+    
+            pareto_explanation = f"""
+            ## Pareto Front
+            {img_tag_pareto}
+            The Pareto Front represents the set of optimal trade-offs between conflicting objectives.
+            Each point on this curve is a solution where improving one objective would worsen another.
+            In other words, all points on the Pareto Front are equally good (pareto-optimal) from a multi-objective perspective.
+            """
+    
+            header_html = f"""
+                # Genetic Algorithm using Python
+                * Number of Generations:{generations_done}
+                * Population Size: {pop_size}
+                
+                ## Min/Max/Avg Plots for each Objective
+            """
+            
+            solution_table = f"""
+            ## Solution Table
+            This Table shows all pareto-optimal solutions and their individuals.
+            [{current.Solutions}]
+            """
+    
+            html_content = header_html + img_tag_main + "<br><br>" + pareto_explanation + "<br><br>" + solution_table
+            
+            if hasattr(current, "HtmlReport"):
+                current.HtmlReport.Content = html_content
+                plt.close(fig_main)
+                plt.close(fig_pareto)
+    
+        except Exception as e:
+            print(f"[Callback error in generation {getattr(algorithm, 'n_gen', '?')}]: {e}")
+            traceback.print_exc()
+2026-09-07 21:40:05: execute sim-code: '
+var pm: object := s......'
+2026-09-07 21:40:05: ###CODE###
+2026-09-07 21:40:05: import numpy as np
+from pymoo.core.crossover import Crossover
+
+class GroupwiseCrossover(Crossover):
+    """
+    _______________________________________________________________________________
+
+    Class Tasks:
+        Provide a crossover operator that applies different crossover strategies
+        to distinct groups of genes within individuals. Each gene group is
+        defined by a mask value; a dedicated crossover operator from
+        `group_crossovers` is used to combine only the genes that belong to
+        that group. This enables heterogeneous recombination where segments
+        with different semantics (e.g. integer buffers, real-valued parameters,
+        permutation segments) are processed by the most appropriate crossover.
+        This is needed, since buffers and sequences have to be handled differently
+    _______________________________________________________________________________
+    
+    Used by:
+        Optimizer
+        
+    Uses:
+        -
+    _______________________________________________________________________________
+    """
+    
+    def __init__(self, mask, group_crossovers):
+        n_parents_max = max(crossover.n_parents for crossover in group_crossovers.values())
+        n_offsprings_max = max(crossover.n_offsprings for crossover in group_crossovers.values())
+        
+        super().__init__(n_parents=n_parents_max, n_offsprings=n_offsprings_max)
+        
+        self.mask = np.array(mask)
+        self.group_crossovers = group_crossovers
+        
+        unique_groups = np.unique(self.mask)
+        for group in unique_groups:
+            if group not in group_crossovers:
+                raise ValueError(f"Kein Crossover-Operator für Gruppe '{group}' angegeben")
+    
+    def _do(self, problem, X, **kwargs):
+        """
+        _______________________________________________________________________________
+
+        Method Tasks:
+            Execute group-wise crossover on the provided parents array `X`. For each
+            mating (pairing) the method:
+            - Creates an offspring template by copying parents.
+            - Iterates over each unique group defined by `self.mask`.
+            - For each group, extracts the subgroup of genes from the parents,
+              constructs a small subproblem describing bounds for that subgroup,
+              and delegates the recombination to the group's crossover operator.
+            - Inserts the resulting subgroup offspring back into the global offspring
+              template so full-length offspring are constructed using per-group logic.
+            The method returns a properly shaped offspring array expected by pymoo.
+        _______________________________________________________________________________
+        """
+        n_parents, n_matings, n_vars = X.shape
+        
+        Y = np.empty((self.n_offsprings, n_matings, n_vars), dtype=X.dtype)
+        
+        for i in range(n_matings):
+            offsprings = [X[j, i].copy() for j in range(self.n_offsprings)]
+            
+            for group in np.unique(self.mask):
+                crossover = self.group_crossovers[group]
+                
+                group_indices = np.where(self.mask == group)[0]
+                
+                if len(group_indices) == 0:
+                    continue
+                
+                class SubProblem:
+                    def __init__(self, n_var, xl=None, xu=None):
+                        self.n_var = n_var
+                        self.xl = xl
+                        self.xu = xu
+                    
+                    def bounds(self):
+                        return self.xl, self.xu
+                        
+                    def has_bounds(self):
+                        return True    
+                
+                xl = None
+                xu = None
+                
+                if hasattr(problem, 'bounds'):
+                    problem_xl, problem_xu = problem.bounds()
+                    if problem_xl is not None and hasattr(problem_xl, '__iter__'):
+                        xl = np.array([problem_xl[i] for i in group_indices])
+                    else:
+                        xl = problem_xl
+                        
+                    if problem_xu is not None and hasattr(problem_xu, '__iter__'):
+                        xu = np.array([problem_xu[i] for i in group_indices])
+                    else:
+                        xu = problem_xu
+                elif hasattr(problem, 'xl') and hasattr(problem, 'xu'):
+                    if problem.xl is not None and hasattr(problem.xl, '__iter__'):
+                        xl = np.array([problem.xl[i] for i in group_indices])
+                    else:
+                        xl = problem.xl
+                        
+                    if problem.xu is not None and hasattr(problem.xu, '__iter__'):
+                        xu = np.array([problem.xu[i] for i in group_indices])
+                    else:
+                        xu = problem.xu
+                
+                sub_problem = SubProblem(len(group_indices), xl, xu)
+                
+                X_sub = np.zeros((crossover.n_parents, 1, len(group_indices)), dtype=X.dtype)
+                for j in range(min(crossover.n_parents, n_parents)):
+                    X_sub[j, 0] = X[j, i, group_indices]
+                
+                Y_sub = crossover._do(sub_problem, X_sub, **kwargs)
+                
+                for j in range(min(crossover.n_offsprings, self.n_offsprings)):
+                    offsprings[j][group_indices] = Y_sub[j, 0]
+            
+            for j in range(self.n_offsprings):
+                Y[j, i] = offsprings[j]
+        
+        return Y
+2026-09-07 21:40:05: execute sim-code: '
+var pm: object := s......'
+2026-09-07 21:40:05: ###CODE###
+2026-09-07 21:40:05: import numpy as np
+from pymoo.core.mutation import Mutation
+
+class GroupwiseMutation(Mutation):
+    """
+    _______________________________________________________________________________
+
+    Class Tasks:
+        Implement a mutation operator that applies different mutation strategies
+        to distinct groups of variables as defined by a mask. Each group is
+        mapped to a dedicated mutation operator in `group_mutations`. During
+        mutation, the operator extracts group-specific variable segments,
+        constructs a lightweight SubProblem describing that segment (bounds and
+        variable types if available), and delegates the actual mutation to the
+        group's operator. The resulting subgroup outputs are merged back into
+        full-length individuals.
+
+        This enables mixed-semantics mutation (e.g. integer/permutation parts,
+        continuous parts) within pymoo optimization flows and is needed, since 
+        buffers and sequences have to be handled differently
+    _______________________________________________________________________________
+
+    Used by:
+       Optimizer
+
+    Uses:
+        -
+    _______________________________________________________________________________
+    """
+    
+    def __init__(self, mask, group_mutations):
+        super().__init__()
+        
+        self.mask = np.array(mask)
+        self.group_mutations = group_mutations
+        
+        
+        unique_groups = np.unique(self.mask)
+        for group in unique_groups:
+            if group not in group_mutations:
+                raise ValueError(f"Kein Mutations-Operator für Gruppe '{group}' angegeben")
+    
+    def _do(self, problem, X, **kwargs):
+        """
+        _______________________________________________________________________________
+
+        Method Tasks:
+            Apply group-wise mutation to a 2D population array `X`. For each mask-defined
+            group the method:
+              - Identifies indices of variables that belong to the group.
+              - Builds a minimal SubProblem describing the group's variable count and bounds.
+              - Calls the group's mutation operator for each individual (or batch),
+                receiving a mutated subgroup.
+              - Reintegrates the mutated subgroup into the output population array.
+            The method returns the mutated population with the same shape as `X`.
+        _______________________________________________________________________________
+        """
+        
+        if X.ndim != 2:
+            raise ValueError(f"Erwartete Form (n_individuals, n_vars), erhielt {X.shape}")
+        
+        n_individuals, n_vars = X.shape
+        
+        Y = X.copy()
+
+        for group in np.unique(self.mask):
+            mutation = self.group_mutations[group]
+            
+            group_indices = np.where(self.mask == group)[0]
+            
+            if len(group_indices) == 0:
+                continue
+            
+            class SubProblem:
+                def __init__(self, n_var, xl=None, xu=None):
+                    self.n_var = n_var
+                    self.xl = xl  
+                    self.xu = xu
+                    self._xl = xl 
+                    self._xu = xu
+                
+                def bounds(self):
+                    return self._xl, self._xu
+            
+            xl = None
+            xu = None
+            
+            if hasattr(problem, 'bounds'):
+                problem_xl, problem_xu = problem.bounds()
+                if problem_xl is not None and hasattr(problem_xl, '__iter__'):
+                    xl = np.array([problem_xl[i] for i in group_indices])
+                else:
+                    xl = problem_xl
+                    
+                if problem_xu is not None and hasattr(problem_xu, '__iter__'):
+                    xu = np.array([problem_xu[i] for i in group_indices])
+                else:
+                    xu = problem_xu
+            elif hasattr(problem, 'xl') and hasattr(problem, 'xu'):
+                if problem.xl is not None and hasattr(problem.xl, '__iter__'):
+                    xl = np.array([problem.xl[i] for i in group_indices])
+                else:
+                    xl = problem.xl
+                    
+                if problem.xu is not None and hasattr(problem.xu, '__iter__'):
+                    xu = np.array([problem.xu[i] for i in group_indices])
+                else:
+                    xu = problem.xu
+            
+            sub_problem = SubProblem(len(group_indices), xl, xu)
+            
+            for i in range(n_individuals):
+                x_i = X[i, group_indices].reshape(1, -1)  
+                
+                try:
+                    y_i = mutation._do(sub_problem, x_i, **kwargs)
+                    
+                    Y[i, group_indices] = y_i.flatten() 
+                except Exception as e:
+                    print(f"Fehler bei Mutation für Gruppe {group}: {e}")
+                    continue
+        
+        return Y
+2026-09-07 21:40:06: execute sim-code: '
+var pm: object := s......'
+2026-09-07 21:40:06: ###CODE###
+2026-09-07 21:40:06: import numpy as np
+from pymoo.core.sampling import Sampling
+
+class GroupwiseSampling(Sampling):
+    """
+    _______________________________________________________________________________
+
+    Class Tasks:
+        Provide a sampling operator that applies different sampling strategies to
+        distinct groups of variables as defined by a mask. For each group, the
+        corresponding sampling operator in `group_samplings` is used to generate
+        samples for that subset of variables. The produced subgroup samples are
+        validated, reshaped if necessary, and assembled into full-length
+        individuals consistent with the problem's bounds and variable types.
+        This enables mixed-semantics initialization (e.g., integer permutations,
+        continuous parameters) within pymoo-based optimization runs. This is 
+        needed, since buffers and sequences have to be handled differently.
+    _______________________________________________________________________________
+    
+    Used by:
+        Optimizer
+        
+    Uses:
+        -
+    _______________________________________________________________________________
+    """
+    def __init__(self, mask, group_samplings, dtype=int):
+        super().__init__()
+        
+        self.mask = np.array(mask)
+        self.group_samplings = group_samplings
+        self.dtype = dtype
+        
+        unique_groups = np.unique(self.mask)
+        for group in unique_groups:
+            if group not in group_samplings:
+                raise ValueError(f"Kein Sampling-Operator für Gruppe '{group}' angegeben")
+    
+    def _do(self, problem, n_samples, **kwargs):
+        """
+        _______________________________________________________________________________
+
+        Method Tasks:
+            Generate `n_samples` individuals by delegating sampling of each mask-defined
+            variable group to its dedicated sampling operator. For every group the method:
+              - Extracts the group's variable indices.
+              - Constructs a lightweight SubProblem describing the subgroup's
+                number of variables and bounds (xl, xu).
+              - Copies variable types (vtype) for the subgroup when available.
+              - Calls the group's sampling operator to produce subgroup samples.
+              - Validates and reshapes the subgroup output and inserts it into
+                the global sample array with the configured `dtype`.
+            Returns an array (n_samples, n_vars) suitable for downstream pymoo usage.
+        _______________________________________________________________________________
+        
+        """
+        
+        n_vars = problem.n_var if hasattr(problem, 'n_var') else len(self.mask)
+        
+        X = np.zeros((n_samples, n_vars), dtype=self.dtype)
+        
+        for group in np.unique(self.mask):
+            sampling = self.group_samplings[group]
+            
+            group_indices = np.where(self.mask == group)[0]
+            
+            if len(group_indices) == 0:
+                continue
+            
+            class SubProblem:
+                def __init__(self, n_var, xl=None, xu=None):
+                    self.n_var = n_var
+                    self.xl = xl  
+                    self.xu = xu
+                    self._xl = xl
+                    self._xu = xu
+                
+                def bounds(self):
+                    return self._xl, self._xu
+            
+            xl = None
+            xu = None
+            
+            if hasattr(problem, 'bounds'):
+                problem_xl, problem_xu = problem.bounds()
+                if problem_xl is not None and hasattr(problem_xl, '__iter__'):
+                    xl = np.array([problem_xl[i] for i in group_indices])
+                else:
+                    xl = problem_xl 
+                    
+                if problem_xu is not None and hasattr(problem_xu, '__iter__'):
+                    xu = np.array([problem_xu[i] for i in group_indices])
+                else:
+                    xu = problem_xu  
+            elif hasattr(problem, 'xl') and hasattr(problem, 'xu'):
+                if problem.xl is not None and hasattr(problem.xl, '__iter__'):
+                    xl = np.array([problem.xl[i] for i in group_indices])
+                else:
+                    xl = problem.xl 
+                    
+                if problem.xu is not None and hasattr(problem.xu, '__iter__'):
+                    xu = np.array([problem.xu[i] for i in group_indices])
+                else:
+                    xu = problem.xu 
+            
+            sub_problem = SubProblem(len(group_indices), xl, xu)
+            
+            if hasattr(problem, 'vtype') and problem.vtype is not None:
+                if hasattr(problem.vtype, '__iter__'):  
+                    sub_problem.vtype = np.array([problem.vtype[i] for i in group_indices])
+                else:
+                    sub_problem.vtype = problem.vtype
+            
+            X_sub = sampling._do(sub_problem, n_samples, **kwargs)
+            
+            if X_sub.shape != (n_samples, len(group_indices)):
+                try:
+                    X_sub = X_sub.reshape(n_samples, len(group_indices))
+                except:
+                    raise ValueError(f"Sampling für Gruppe {group} ergab Form {X_sub.shape}, "
+                                    f"erwartet wurde ({n_samples}, {len(group_indices)})")
+            
+            X[:, group_indices] = X_sub.astype(self.dtype)
+        
+        return X
+2026-09-07 21:40:06: execute sim-code: '
+var pm: object := s......'
+2026-09-07 21:40:06: ###CODE###
+2026-09-07 21:40:06: class SolutionHandler:
+    """
+    _______________________________________________________________________________
+
+    Class Tasks:
+         Provide methods to transfer optimization results into the simulation model 
+         and UI.
+    _______________________________________________________________________________
+
+    Used by:
+       Optimizer
+
+    Uses:
+        Solutions, DropDownList
+    _______________________________________________________________________________
+    """
+
+    def writeIndividualToModel(self,i_idx):
+        """
+        _______________________________________________________________________________
+        Method Tasks:
+            Applies solution i_idx to the model.
+        _______________________________________________________________________________    
+            
+        """
+        sequenceCount = 1
+        for v_idx in range(4, current.Solutions.xDim):
+            
+            attribute = eval(current.Solutions[v_idx,0])
+            
+            if type(attribute) is int:
+                capacityValue = current.Solutions[v_idx,i_idx]
+                #WHY: Because attribute is an integer, since Buffer.Capacity is in the Table
+                exec(current.Solutions[v_idx,0] + "=" + str(capacityValue))
+                sequenceCount = 1
+            else:
+                table = attribute
+                
+                chrom_idx = 0
+                for c_idx,name in enumerate(table[1:,0][0]):
+                    if name == "Chrom":
+                        chrom_idx = c_idx +1
+                table[chrom_idx,sequenceCount] = current.Solutions[v_idx,i_idx]
+                
+                sequenceCount = sequenceCount+1
+                
+                if sequenceCount == table.yDim:
+                    table.sort(chrom_idx,"up")                                                 
+                    
+    def writeIndividualsToDropDown(self,op):
+        """
+        _______________________________________________________________________________
+        Method Tasks:
+            Fill dropdown with all pareto-optimal solutions and apply the first solution.
+            This is done, so the user can choose from all solutions.
+        _______________________________________________________________________________    
+            
+        """
+        string_list = [f"Throughput: {-x:.0f} Cost: {y:.0f}" for x, y in op.F]
+        current.DropdownList.Items = string_list
+        if len(current.DropdownList.Items) > 1:
+            #To always refresh/call the OnClicked of the Dropdown
+            current.DropdownList.Value = 2
+        current.DropdownList.Value = 1
+        current.DropdownList.updateDialog
+        
+        
+    def writeSolutionsTable(self,op):
+        """
+        _______________________________________________________________________________
+        Method Tasks:
+            Writes the solution table, so the user can view it in the table directly or
+            in HTML.
+        _______________________________________________________________________________    
+            
+        """
+    
+        current.Solutions[None] = []
+        
+        current.Solutions[1,0] = "Throughput"
+        current.Solutions[2,0] = "Cost"
+    
+        for s_idx, solutions in enumerate(op.F):
+            current.Solutions[1,s_idx+1] = -solutions[0]
+            current.Solutions[2,s_idx+1] = solutions[1]
+            
+        mask = op.problem.mask
+        input_count = 0
+        sequence_count = 0
+               
+        for p_idx, position in enumerate(mask):
+            if position == "buffer":
+                current.Solutions[p_idx+4,0] = current.Input[1,input_count+1]
+                input_count = input_count +1
+            else:
+                current.Solutions[p_idx+4,0] = current.Input[1,input_count+1]
+                if len(mask) >= p_idx+2 and mask[p_idx+1] != "sequence":
+                    input_count = input_count +1
+                    sequence_count = 0
+        
+        for i_idx, individual in enumerate(op.X):
+            for g_idx, gene in enumerate(individual):
+                current.Solutions[g_idx+4,i_idx+1] = gene   
+                
+def writeIndividualToModel(i_idx):
+    #So PS Objects can call it
+    sh = SolutionHandler()
+    sh.writeIndividualToModel(i_idx)                

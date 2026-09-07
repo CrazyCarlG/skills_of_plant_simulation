@@ -1,0 +1,17 @@
+﻿2026-09-07 21:19:03: Log file opened! Application Version: 2606.0002, UTC: 2026-09-07 13:19:03
+2026-09-07 21:19:22: starting listen
+2026-09-07 21:19:24: started listen
+2026-09-07 21:19:24: 50019
+2026-09-07 21:19:24: MySocket connected
+2026-09-07 21:20:01: The model already contains this version of the library 'simtalk-claude'.
+Do you want to load the library anyway?
+2026-09-07 21:20:36: The model already contains this version of the library 'simtalk-claude'.
+Do you want to load the library anyway?
+2026-09-07 21:20:50: starting listen
+2026-09-07 21:20:50: MySocket connected
+2026-09-07 21:20:50: started listen
+2026-09-07 21:20:50: 50019
+2026-09-07 21:23:25: C:\ProgramFiles\Siemens\TecnomatixPlantSimulation2606\Examples\Demo\BIW_ConceptSimulation.spp:
+
+Would you like to save your model?
+2026-09-07 21:23:25: Log file closed! CPU Time: 2.27s

@@ -1,0 +1,24 @@
+﻿2026-09-07 22:01:38: Log file opened! Application Version: 2606.0002, UTC: 2026-09-07 14:01:38
+2026-09-07 22:01:51: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:03:12: execute sim-code: 'var src: object := s......'
+2026-09-07 22:03:12: DONE
+2026-09-07 22:03:32: execute sim-code: 'var f: string := "C:......'
+2026-09-07 22:03:41: ALL_DONE
+2026-09-07 22:05:24: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:05:49: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:05:49: STEP1_DONE
+2026-09-07 22:05:58: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:06:19: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:06:22: ALL_DONE
+2026-09-07 22:06:33: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:06:36: ALL_DONE
+2026-09-07 22:06:56: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:07:01: ALL_DONE
+2026-09-07 22:07:18: execute sim-code: 'var drn: object := s......'
+2026-09-07 22:07:19: DONE
+2026-09-07 22:10:21: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:10:47: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:11:06: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:11:21: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:11:41: execute sim-code: 'var ec: object := st......'
+2026-09-07 22:12:14: execute sim-code: 'var ec: object := st......'

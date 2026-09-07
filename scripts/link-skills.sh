@@ -30,6 +30,13 @@ pick_target() {
     echo "$OPENCLAUDE_SKILLS_DIR"
     return
   fi
+  # If user has an ~/.openclaude directory, prefer ~/.openclaude/skills so
+  # skills are colocated with OpenClaude agents. Otherwise fall back to
+  # ~/.claude/skills for compatibility with Claude Code layout.
+  if [[ -d "$HOME/.openclaude" ]]; then
+    echo "$HOME/.openclaude/skills"
+    return
+  fi
   echo "$HOME/.claude/skills"
 }
 

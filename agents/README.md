@@ -8,10 +8,10 @@
 
 | # | Agent `subagent_type` | 角色 | 一句话职责 | 文件 |
 |---|---|---|---|---|
-| 1 | `plant-simulation-expert` | **大脑** — Discovery + 执行 | 接收用户任务、挑选 9 skill(per-skill log 由各 `SKILL.md` 要求)、session 收尾写 summary | [`plant-simulation-expert.md`](plant-simulation-expert.md) |
+| 1 | `plant-simulation-expert` | **大脑** — Discovery + 执行 | 接收用户任务、先调 `local-window-com-start-plant-simulation`(只 Windows)把 PS 进程 + SimtalkClaude socket 跑起来、再调 10 个 `local-simtalk-*` skill 完成写/读操作(per-skill log 由各 `SKILL.md` 要求)、session 收尾写 summary | [`plant-simulation-expert.md`](plant-simulation-expert.md) |
 | 2 | `plant-simulation-experience-curator` | **策展人** — append-only 沉淀 | 把 expert session summary 落成 per-entry file + append-only archive | [`plant-simulation-curator.md`](plant-simulation-curator.md) |
-| 3 | `skills-optimizer` | **技能优化师** — 独立优化 skill(精准命中 + 性能 + 瘦身) | 扫 3 路信号源(`skills/<x>/log/` 主 + `04-agent-memory/plant-simulation-expert-memory/` 佐证 + `04-agent-memory/student-memory/` 脱节检测)→ ①**精准命中**(防止 expert 选错 skill)+ ②**性能提升**(silent fail / timeout)+ ③**瘦身**(精简 SKILL.md);产出到 `04-agent-memory/skill-optimizer-memory/`,**可主动修改** `SKILL.md` / scripts / references(带 4 道安全闸),**不调 SimTalkClaude 服务**、**不依赖其他 agent 产出**,可独立调度 | [`skills-optimizer.md`](skills-optimizer.md) |
-| 4 | `plant-simulation-student` | **学生** — 严格只读 5 维镜像 | 学习当前打开的模型,写 5 维镜像笔记,不动任何东西(**per-skill log 由各 `SKILL.md` 要求**) | [`plant-simulation-student.md`](plant-simulation-student.md) |
+| 3 | `skills-optimizer` | **技能优化师** — 独立优化 skill(精准命中 + 性能 + 瘦身) | 扫 3 路信号源(`skills/<x>/log/` 主 + `04-agent-memory/plant-simulation-expert-memory/` 佐证 + `04-agent-memory/student-memory/` 脱节检测)→ ①**精准命中**(防止 expert 选错 skill)+ ②**性能提升**(silent fail / timeout)+ ③**瘦身**(精简 SKILL.md);产出到 `04-agent-memory/skill-optimizer-memory/`,**可主动修改** `SKILL.md` / scripts / references(带 4 道安全闸),**不调 SimTalkClaude 服务**、**不依赖其他 agent 产出**,可独立调度;**新增 `local-window-com-start-plant-simulation` 也归其扫描**(Windows-only 前置初始化 skill) | [`skills-optimizer.md`](skills-optimizer.md) |
+| 4 | `plant-simulation-student` | **学生** — 严格只读 5 维镜像 | 学习当前打开的模型,先经 `local-window-com-start-plant-simulation`(只 Windows)确认 server 在线,再写 5 维镜像笔记,不动任何东西(**per-skill log 由各 `SKILL.md` 要求**) | [`plant-simulation-student.md`](plant-simulation-student.md) |
 | 5 | `plant-simulation-knowledge-synthesizer` | **合成者** — 主题合成长文档 | 把 curator archive 合成为 `02-domain-know-how/` 的 active 主题文档 | [`plant-simulation-knowledge-synthesizer.md`](plant-simulation-knowledge-synthesizer.md) |
 
 ---
@@ -165,14 +165,15 @@ optimizer ──读──→ skills/<x>/log/                              (主�
 
 ```
 [1] 主对话路由 → plant-simulation-expert(写操作)
-[2] expert 调用 local-simtalk-write-simtalk 失败
-[3] expert 通过 README/curator 报告找到 canonical pattern:createAttr + getAttribute
-[4] expert 写 method → 完成 → session summary 写到 03-agent-memory/expert-memory/
-[5] curator(下一轮)读 session summary → 发现 P0 finding(Station 加 method)
-[6] curator quarantine 给 optimizer(因为是 SKILL.md 描述 gap——🎯精准命中)
-[7] curator 在 02-simulation-file-experience/01-domain-concepts/logs/ 创建 per-entry file + bump README
-[8] optimizer 读 curator quarantine + expert log → 产出 SKILL.md 修改建议(🎯精准命中)
-[9] user 复核 → optimizer 落地 SKILL.md 修改
+[2] expert Pre-flight:Windows → 调 local-window-com-start-plant-simulation 启动 PS 进程 + 注入 SimtalkClaude + 配置端口(只 Windows;Linux/macOS 跳过此步)
+[3] expert 调用 local-simtalk-write-simtalk 失败
+[4] expert 通过 README/curator 报告找到 canonical pattern:createAttr + getAttribute
+[5] expert 写 method → 完成 → session summary 写到 04-agent-memory/expert-memory/
+[6] curator(下一轮)读 session summary → 发现 P0 finding(Station 加 method)
+[7] curator quarantine 给 optimizer(因为是 SKILL.md 描述 gap——🎯精准命中)
+[8] curator 在 03-modeling-experience/01-skill-experience/ 创建 per-entry file + bump README
+[9] optimizer 读 curator quarantine + expert log → 产出 SKILL.md 修改建议(🎯精准命中)
+[10] user 复核 → optimizer 落地 SKILL.md 修改
 ```
 
 ### 场景 B:用户说"学习 P4_CTU 模型"
@@ -323,7 +324,8 @@ bash scripts/link-agents.sh --unlink
 - **2026-09-01** — 强化 `skills-optimizer` 为**独立技能优化师**,聚焦 🎯精准命中 + ⚡性能提升 + ✂️瘦身 三类产出,可独立调度不依赖其他 agent
 - **2026-09-01** — 创建 `plant-simulation-student`(5 维镜像只读笔记)
 - **2026-09-01** — 创建 `plant-simulation-knowledge-synthesizer`(主题合成长文档);同时建 `04-agent-memory/synthesizer-memory/` 目录
-- **5 agent 协作链 + 1 个独立路径**:expert 写 → curator 沉 → synthesizer 合 → student 只读镜像;**skills-optimizer 独立路径** 直接扫 skills/<x>/log/ 出优化建议,帮 expert 选对 skill
+- **2026-09-07** — **新增 `local-window-com-start-plant-simulation` skill**:Windows 上经 COM `Tecnomatix.PlantSimulation.RemoteControl.26.6` 启动 PS 2606 + 加载 `.spp` + 注入 `SimtalkClaude.pslib` + 配置 SocketServer 端口;作为所有下游 `local-simtalk-*` TCP skill 的**唯一前置初始化通道**(expert / student Pre-flight 必跑);expert / student 的 Skill Catalog 从 10 → 11、Pre-flight 失败处理按 Windows / Linux 分流、Hard Rules 新增"TCP 操作前必先经本 skill"纪律
+- **5 agent 协作链 + 1 个独立路径**:expert 写 → curator 沉 → synthesizer 合 → student 只读镜像;**skills-optimizer 独立路径** 直接扫 skills/<x>/log/ 出优化建议,帮 expert 选对 skill;**新增 init skill**(Windows)作为整个 TCP 工具链的 bootstrap,expert / student Pre-flight 第一动作
 
 ---
 

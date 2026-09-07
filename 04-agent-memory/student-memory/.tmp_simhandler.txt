@@ -1,0 +1,237 @@
+2026-09-07 21:37:46: Log file opened! Application Version: 2606.0002, UTC: 2026-09-07 13:37:46
+2026-09-07 21:39:40: execute sim-code: '
+var pm: object := s......'
+2026-09-07 21:39:40: ###CODE###
+2026-09-07 21:39:40: import time
+import os
+import subprocess
+import sys
+import re
+import json
+import numpy as np
+import ast
+import logging
+
+import PlantSimulation as ps
+
+current_working_dir = os.getcwd()
+
+logging.basicConfig(
+    level=logging.INFO,
+    format="%(asctime)s [%(levelname)s] %(message)s",
+    datefmt="%H:%M:%S"
+)
+
+class SimHandler:
+    """
+    _______________________________________________________________________________
+
+    Class Tasks:
+        This class is responsible for parameterizing the Plant Simulation model 
+        so that it can be optimized, and for configuring and running simulations 
+        in the Plant Simulation Console. It ensures that all inputs, SimTalk scripts, 
+        and execution steps are correctly prepared for automated optimization runs.
+    _______________________________________________________________________________
+    
+    Used by:
+        FitnessEvaluator
+        
+    Uses:
+        SimTemplate, Input, Drain, EventController
+    _______________________________________________________________________________    
+    """
+
+    def configureSequenceTables(self):
+        """
+        _______________________________________________________________________________
+
+        Method Tasks:
+            Ensures that each sequence table in the Input has the required “Orig” and “Chrom” 
+            columns, adding them if necessary. This is needed so evolutionary algorithms can track 
+            and manipulate original and chromosome-based indices consistently.
+        _______________________________________________________________________________
+        """
+    
+        for idx in range(current.Input.yDim):
+            attribute = eval(current.Input[1,idx+1])
+            if type(attribute) is not int:
+                table = attribute
+                
+                table.ColumnIndex = True
+                
+                column = table.xDim
+                  
+                # WHY: “Orig” column stores the original order of the sequence.
+                # This prevents losing mapping when evolutionary changes occur.
+                if "Orig" not in table[1:,0][0]:
+                    column = column + 1
+                    table.insertColumn(column)
+                    table.setDataType(column, "Integer")
+                    table[column, 0] = "Orig"
+                    
+                    for i in range(table.yDim+1):
+                        table[column,i] = i   
+                
+                # WHY: “Chrom” column allows genetic algorithms to map simulation data
+                # back to chromosome indices for traceability.
+                if "Chrom" not in table[1:,0][0]:
+                    column = column + 1
+                    table.insertColumn(column)
+                    table.setDataType(column, "Integer")
+                    table[column, 0] = "Chrom"
+                    
+                    for i in range(table.yDim+1):
+                        table[column,i] = i 
+                        
+    def getNextBufferIndex(self, idx,mask):
+        """
+        _______________________________________________________________________________
+
+        Method Tasks:
+            Recursively searches for the next buffer variable in the Input.
+            Needed when parsign the Input table.
+        _______________________________________________________________________________
+        """
+        
+        if current.Input[2,idx+1] is None:
+            lengthOfSequence = eval(f"{current.Input[1,idx+1]}.yDim")
+            if mask[idx+lengthOfSequence] == "buffer":
+                return idx
+            else:
+                return getNextBufferIndex(idx+1,mask)
+        else:
+            return idx      
+        
+    def getSimTalkParameters(self,bufferPopulation, sequencePopulation):
+    
+        """
+        _______________________________________________________________________________
+
+        Method Tasks:
+            Assembles all simulation parameters required for running Plant Simulation via SimTalk.
+            Combines buffer and sequence data along with references to Plant Simulation objects.
+        _______________________________________________________________________________
+        """
+        
+        parameters = {
+            "eventController": root.EventController,
+            "output": root.Drain,
+            "capacityValues": bufferPopulation,
+            "sequences": sequencePopulation
+        }
+        
+        buffers = []
+        dataTables = []
+        
+        for variable in range(current.Input.yDim):
+            if current.Input.xDim != 1 and current.Input[2,variable+1] is not None:
+                buffers.append(str(eval(current.Input[1,variable+1].rsplit('.', 1)[0])))
+            else:
+                dataTables.append(str(eval(current.Input[1,variable+1])))
+                
+        parameters["buffers"] = buffers
+        parameters["dataTables"] = dataTables
+        
+        return parameters
+        
+    def writeSimTalkFile(self, parameters, t_idx):
+        """
+        _______________________________________________________________________________
+
+        Method Tasks:
+            Generates a temporary SimTalk script (.txt) from a template, inserting all 
+            runtime parameters (buffers, sequences, event controllers, etc.).
+            This script is later passed to the Plant Simulation console for execution.
+        _______________________________________________________________________________
+        """
+        
+        template = current.SimTemplate.Program.replace("---","")
+    
+        def _default(o):
+            if isinstance(o, (np.integer, np.floating)):
+                return o.item()
+            if isinstance(o, np.ndarray):
+                return o.tolist()
+            raise TypeError(f"Type {type(o)} not serializable")
+            
+        a = parameters["sequences"]
+    
+        values = {
+            "eventController": parameters["eventController"],
+            "buffers":          parameters["buffers"],
+            "output":           parameters["output"],
+            "capacityValues":   parameters["capacityValues"],
+            "dataTables":       parameters["dataTables"],
+            "sequences":        parameters["sequences"],
+        }
+    
+        ser = {
+            k: (
+                "[" + ", ".join(v) + "]"
+                if isinstance(v, list) and all(isinstance(i, str) for i in v)
+                else json.dumps(v, default=_default)
+                if isinstance(v, (list, dict, np.ndarray))
+                else v
+                if isinstance(v, str)
+                else str(v)
+            )
+            for k, v in values.items()
+        }
+    
+        filled = template.format_map(ser)
+
+        out_path = current_working_dir + rf"\simtalk{t_idx}.txt"
+        with open(out_path, "w", encoding="utf-8") as f:
+            f.write(filled)      
+        
+    def setupSim(self, bufferPopulation, sequencePopulation, t_idx):
+        parameters = self.getSimTalkParameters(bufferPopulation, sequencePopulation)
+        self.writeSimTalkFile(parameters, t_idx)
+        self.configureSequenceTables()
+        
+    def string_to_dict(self, s: str) -> dict:
+        result = {}
+        for line in s.splitlines():
+            line = line.strip()
+            if not line:
+                continue
+            parts = [p.strip() for p in line.split(":", 2)]
+            if len(parts) == 3:
+                parent, child, value = parts
+                if parent not in result or not isinstance(result[parent], dict):
+                    result[parent] = {}
+                result[parent][child] = value
+            elif len(parts) == 2:
+                key, value = parts
+                result[key] = value
+        return result
+
+    def runSim(self, t_idx):
+        """
+        _______________________________________________________________________________
+
+        Method Tasks:
+            Executes Plant Simulation in console mode using the previously generated 
+            SimTalk script. Collects throughput results and handles cleanup of temporary files.
+        _______________________________________________________________________________
+        """
+        x64Bin_folder = ps.applicationHome()
+        model_File = ps.modelFile()
+        frame_Path = str(root)
+        simTalk_Path = current_working_dir + rf"\simtalk{t_idx}.txt"
+        
+        PlantSimulationConsoleExe = f"{x64Bin_folder}\\PlantSimulationConsole.exe"
+
+        if os.path.exists(PlantSimulationConsoleExe):
+            args = [PlantSimulationConsoleExe,"/f", model_File,"/m", frame_Path,"/e", simTalk_Path, "/EnablePrint", "/hideBBL"]
+            consproc = subprocess.run(args, capture_output=True, text=True, creationflags=subprocess.CREATE_NO_WINDOW)
+            versionStr = consproc.stdout
+            if consproc.returncode > 0:
+                logging.exception(f"'{PlantSimulationConsoleExe}' could not be launched! Error: " + str(consproc.returncode))
+                os.remove(simTalk_Path)
+                sys.exit(1)
+            else:
+                versionDict = self.string_to_dict(versionStr)
+                throughputs = ast.literal_eval(versionDict['Print']['Throughputs'])
+                os.remove(simTalk_Path)
+                return throughputs

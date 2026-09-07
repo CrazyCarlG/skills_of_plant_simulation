@@ -1,0 +1,22 @@
+2026-09-07 21:44:02: Log file opened! Application Version: 2606.0002, UTC: 2026-09-07 13:44:02
+2026-09-07 21:44:12: execute sim-code: '
+print "###TEST###"
+......'
+2026-09-07 21:44:12: ###TEST###
+2026-09-07 21:44:12: ###N###15
+2026-09-07 21:44:12: EventController|EventController
+2026-09-07 21:44:12: Source|Source
+2026-09-07 21:44:12: Station|Station
+2026-09-07 21:44:12: Buffer|Buffer
+2026-09-07 21:44:12: Station2|Station
+2026-09-07 21:44:12: Drain|Drain
+2026-09-07 21:44:12: setupMatrix|DataTable
+2026-09-07 21:44:12: Display|Display
+2026-09-07 21:44:12: Delivery|DataTable
+2026-09-07 21:44:12: GAConfigure|Method
+2026-09-07 21:44:12: GA|Frame
+2026-09-07 21:44:12: Connector|Connector
+2026-09-07 21:44:12: Connector2|Connector
+2026-09-07 21:44:12: Connector3|Connector
+2026-09-07 21:44:12: Connector4|Connector
+2026-09-07 21:44:12: ###END###
