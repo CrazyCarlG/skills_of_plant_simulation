@@ -7,8 +7,11 @@
 #   3) 启动 OpenClaude REPL 会话：
 #        - agent : plant-simulation-experience-curator
 #        - prompt: 请总结student和expert新的memory为经验到03-modeling-experience文件夹内
-#        - 权限 : 本仓库（/root/skills_of_plant_simulation）的 读 / 编辑
-#                 (Read Edit Write Glob Grep 白名单；其它工具全部禁用)
+#        - 权限 : 本仓库（/root/skills_of_plant_simulation）内
+#                 读 / 编辑 / 执行命令 全部允许
+#                 (Read Edit Write Glob Grep Bash 白名单；
+#                  其它工具如 Agent / Skill / NotebookEdit 等仍禁用)
+#        - 作用域 : 通过 --add-dir 把可读写范围限定到本仓库根目录
 #
 # 运行：
 #   $ ./run-curator-session.sh
@@ -93,13 +96,14 @@ echo "==> 3/3 启动 curator 会话"
 echo "   repo  : $REPO_DIR"
 echo "   agent : $AGENT_NAME"
 echo "   prompt: $PROMPT"
-echo "   tools : Read Edit Write Glob Grep（白名单）"
+echo "   scope : $REPO_DIR（通过 --add-dir 限定可读写范围）"
+echo "   tools : Read Edit Write Glob Grep Bash（白名单）"
 echo "   mode  : acceptEdits"
 echo "----"
 
 exec openclaude \
   --agent "$AGENT_NAME" \
   --add-dir "$REPO_DIR" \
-  --allowedTools "Read Edit Write Glob Grep" \
+  --allowedTools "Read Edit Write Glob Grep Bash" \
   --permission-mode acceptEdits \
   "$PROMPT" "$@"
