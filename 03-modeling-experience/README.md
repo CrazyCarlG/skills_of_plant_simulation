@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-09-01
+last_updated: 2026-09-10
 purpose: 03-modeling-experience 顶层索引。每个 finding/topic 一个新文件，不 append 到已有文件。每文件硬上限 ≤300 行。
 ---
 
@@ -21,4 +21,17 @@ purpose: 03-modeling-experience 顶层索引。每个 finding/topic 一个新文
 
 | Date | File | Topic | Dimension |
 |---|---|---|---|
-| _(empty — curator 在每次总结后 append 一行)_ | | | |
+| 2026-09-10 | `01-skill-experience/2026-09-02_program-cache-stale-execute-uses-old-body.md` | `.execute()` 不刷新 `.Program` 编译缓存 | 01-skill-experience |
+| 2026-09-10 | `01-skill-experience/2026-09-10_length-not-simtalk-function.md` | `length()` 不是 SimTalk 函数 | 01-skill-experience |
+| 2026-09-10 | `01-skill-experience/2026-09-10_bfs-scripts-hardcoded-port-50007.md` | bfs_*.py 硬编码 50007 多 server 打错目标 | 01-skill-experience |
+| 2026-09-10 | `01-skill-experience/2026-09-10_v15-readlog-regression-workarounds.md` | v15+ readlog 退化三重 readback proxy | 01-skill-experience |
+| 2026-09-10 | `01-skill-experience/2026-09-10_write-simtalk-silent-failure.md` | write_simtalk `[verify] OK` ≠ 落盘 silent failure | 01-skill-experience |
+| 2026-09-10 | `01-skill-experience/2026-09-10_simtalk-string-escape-backslash-quote.md` | SimTalk string literal escape `\"` not `""` | 01-skill-experience |
+| 2026-09-10 | `01-skill-experience/2026-09-10_simtalk-multiline-run-real-newline.md` | multi-line simtalk_run 必须真换行 | 01-skill-experience |
+| 2026-09-10 | `01-skill-experience/2026-09-10_simtalk-run-soft-failure-modes.md` | simtalk_run 静默失败 4 种模式 | 01-skill-experience |
+| 2026-09-10 | `01-skill-experience/2026-09-10_obj-amp-method-program-dump-sop.md` | `obj.&Method.Program` 跨 8+ Method dump SOP | 01-skill-experience |
+| 2026-09-10 | `02-user-expectation-experience/2026-09-10_student-reflective-not-engineering-learner.md` | student = 反射型学习者 60-65% 理解度 | 02-user-expectation-experience |
+| 2026-09-10 | `03-modeling-experience/2026-09-10_station-onpull-spectrum-5-models.md` | 7-Frame 集 Station.OnPull 三种 callback 模式 | 03-modeling-experience |
+| 2026-09-10 | `03-modeling-experience/2026-09-10_frame-as-semaphore-mutex-pattern.md` | Frame-as-Semaphore AGV 互斥锁模式 | 03-modeling-experience |
+| 2026-09-10 | `03-modeling-experience/2026-09-10_agv-claude-optimization-layer-pattern.md` | `.AGV_Claude` vendor 优化层模式 | 03-modeling-experience |
+| 2026-09-10 | `03-modeling-experience/2026-09-10_pymoo-ga-integration-python-call-ps.md` | Python_GA_Demo Pymoo 集成 PS 范式 | 03-modeling-experience |
