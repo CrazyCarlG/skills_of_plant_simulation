@@ -172,7 +172,7 @@ behind=$(git rev-list --count "origin/$SOURCE_BRANCH..$SOURCE_BRANCH" 2>/dev/nul
 if [ "${behind:-0}" -eq 0 ]; then
   echo "ℹ️  本地 $SOURCE_BRANCH 与 origin/$SOURCE_BRANCH 已同步，无需回流"
   echo "no more memory"
-  exit 10
+  #exit 10
 fi
 echo "🔍 本地 $SOURCE_BRANCH 比 origin/$SOURCE_BRANCH 领先 $behind 个 commit，准备回流"
 
