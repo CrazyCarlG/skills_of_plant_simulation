@@ -88,6 +88,7 @@ SKIP_SESSION=0
 SKIP_PUSH=0
 SKIP_BACK_MERGE=0
 CUSTOM_MSG=""
+BACK_MERGE_ARGS=()
 EXTRA_ARGS=()
 
 while [ $# -gt 0 ]; do
@@ -98,6 +99,10 @@ while [ $# -gt 0 ]; do
       ;;
     --dry-run-push)
       DRY_RUN_PUSH=1
+      shift
+      ;;
+    --dry-run)
+      BACK_MERGE_ARGS+=("--dry-run")
       shift
       ;;
     --skip-merge)
@@ -115,6 +120,14 @@ while [ $# -gt 0 ]; do
     --skip-back-merge)
       SKIP_BACK_MERGE=1
       shift
+      ;;
+    --target|--back-merge-target)
+      if [ $# -lt 2 ]; then
+        echo "❌ 缺少目标分支参数: $1"
+        exit 1
+      fi
+      BACK_MERGE_ARGS+=("--target" "$2")
+      shift 2
       ;;
     -m|--message)
       CUSTOM_MSG="$2"
@@ -236,7 +249,15 @@ fi
 if [ "$SKIP_BACK_MERGE" -eq 0 ]; then
   echo "----"
   echo "==> 4/5 curator-back-merge"
-  if "$SCRIPT_DIR/curator-back-merge.sh" "${EXTRA_ARGS[@]}"; then
+
+  if [ "${#BACK_MERGE_ARGS[@]}" -eq 0 ]; then
+    BACK_MERGE_ARGS=(--target fea/expert --target fea/student)
+    echo "   target: fea/expert + fea/student (默认回流目标)"
+  else
+    echo "   target: ${BACK_MERGE_ARGS[*]}"
+  fi
+
+  if "$SCRIPT_DIR/curator-back-merge.sh" "${BACK_MERGE_ARGS[@]}"; then
     echo "✅ back-merge 完成"
   else
     rc=$?
