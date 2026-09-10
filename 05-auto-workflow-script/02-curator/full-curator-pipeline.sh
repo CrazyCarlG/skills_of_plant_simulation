@@ -23,6 +23,9 @@
 #   $ ./full-curator-pipeline.sh --skip-back-merge  # 跳过 back-merge 步骤
 #   $ ./full-curator-pipeline.sh --message "..."    # 透传 commit 文案
 #
+# 注：back-merge 步骤内部固定回流到 fea/expert + fea/student，
+#     不再对外暴露 --target / --dry-run 参数。
+#
 # 退出码：透传被调用脚本的非"no more memory"退出码
 #        merge       退出 10（no more memory）→ 短路，流水线正常退出 0
 #        merge       退出 11（already summary）→ 继续
@@ -88,7 +91,6 @@ SKIP_SESSION=0
 SKIP_PUSH=0
 SKIP_BACK_MERGE=0
 CUSTOM_MSG=""
-BACK_MERGE_ARGS=()
 EXTRA_ARGS=()
 
 while [ $# -gt 0 ]; do
@@ -99,10 +101,6 @@ while [ $# -gt 0 ]; do
       ;;
     --dry-run-push)
       DRY_RUN_PUSH=1
-      shift
-      ;;
-    --dry-run)
-      BACK_MERGE_ARGS+=("--dry-run")
       shift
       ;;
     --skip-merge)
@@ -121,20 +119,12 @@ while [ $# -gt 0 ]; do
       SKIP_BACK_MERGE=1
       shift
       ;;
-    --target|--back-merge-target)
-      if [ $# -lt 2 ]; then
-        echo "❌ 缺少目标分支参数: $1"
-        exit 1
-      fi
-      BACK_MERGE_ARGS+=("--target" "$2")
-      shift 2
-      ;;
     -m|--message)
       CUSTOM_MSG="$2"
       shift 2
       ;;
     -h|--help)
-      sed -n '2,49p' "$0"
+      sed -n '2,52p' "$0"
       exit 0
       ;;
     *)
@@ -249,15 +239,9 @@ fi
 if [ "$SKIP_BACK_MERGE" -eq 0 ]; then
   echo "----"
   echo "==> 4/5 curator-back-merge"
+  echo "   target: fea/expert + fea/student (curator-back-merge 内部固定)"
 
-  if [ "${#BACK_MERGE_ARGS[@]}" -eq 0 ]; then
-    BACK_MERGE_ARGS=(--target fea/expert --target fea/student)
-    echo "   target: fea/expert + fea/student (默认回流目标)"
-  else
-    echo "   target: ${BACK_MERGE_ARGS[*]}"
-  fi
-
-  if "$SCRIPT_DIR/curator-back-merge.sh" "${BACK_MERGE_ARGS[@]}"; then
+  if "$SCRIPT_DIR/curator-back-merge.sh"; then
     echo "✅ back-merge 完成"
   else
     rc=$?

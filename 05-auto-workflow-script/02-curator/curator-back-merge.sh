@@ -21,9 +21,7 @@
 # 运行：
 #   $ ./curator-back-merge.sh
 #
-# 可选：
-#   $ ./curator-back-merge.sh --target fea/expert          # 只回流向 expert
-#   $ ./curator-back-merge.sh --dry-run                    # 不真做 checkout/merge/push
+# 可选环境变量：
 #   $ PRINT_MODE=1 ./curator-back-merge.sh                  # 非交互
 #
 # 退出码：
@@ -89,34 +87,9 @@ CURATOR_NAME="Curator"
 CURATOR_EMAIL="plant-simulation-curator.md@agent.com"
 
 # ---------------------------------------------------------------------------
-# 解析参数
+# 目标分支（固定，不接参数）
 # ---------------------------------------------------------------------------
-TARGETS=()
-DRY_RUN=0
-while [ $# -gt 0 ]; do
-  case "$1" in
-    --target)
-      TARGETS+=("$2")
-      shift 2
-      ;;
-    --dry-run)
-      DRY_RUN=1
-      shift
-      ;;
-    -h|--help)
-      sed -n '2,55p' "$0"
-      exit 0
-      ;;
-    *)
-      echo "❌ 未知参数: $1"
-      exit 1
-      ;;
-  esac
-done
-
-if [ "${#TARGETS[@]}" -eq 0 ]; then
-  TARGETS=("${DEFAULT_TARGETS[@]}")
-fi
+TARGETS=("${DEFAULT_TARGETS[@]}")
 
 cd "$REPO_DIR"
 
@@ -176,16 +149,6 @@ if [ "${behind:-0}" -eq 0 ]; then
 fi
 echo "🔍 本地 $SOURCE_BRANCH 比 origin/$SOURCE_BRANCH 领先 $behind 个 commit，准备回流"
 
-if [ "$DRY_RUN" -eq 1 ]; then
-  echo "ℹ️  --dry-run 已启用，仅打印计划："
-  echo "   将把 origin/$SOURCE_BRANCH 的最新 $behind 个 commit merge 到下列分支："
-  for t in "${TARGETS[@]}"; do
-    echo "     - $t"
-  done
-  echo "   然后切回 $SOURCE_BRANCH"
-  exit 0
-fi
-
 # ---------------------------------------------------------------------------
 # 逐个 target 分支执行：checkout → merge → push
 # ---------------------------------------------------------------------------
@@ -220,7 +183,16 @@ for target in "${TARGETS[@]}"; do
   fi
   echo "✅ 已切换到 $target"
 
-  # 6.3 merge origin/$SOURCE_BRANCH （no-ff）
+  # 6.3 pull origin/$target 同步到最新
+  if git pull origin "$target"; then
+    echo "✅ pull origin/$target 完成"
+  else
+    echo "❌ pull origin/$target 失败"
+    failed_target="$target"
+    exit 7
+  fi
+
+  # 6.4 merge origin/$SOURCE_BRANCH （no-ff）
   merge_msg="back-merge $SOURCE_BRANCH into $target @ $(date +%Y-%m-%d)"
   if git merge --no-ff -m "$merge_msg" "origin/$SOURCE_BRANCH"; then
     echo "✅ merge origin/$SOURCE_BRANCH 完成"
@@ -235,7 +207,7 @@ for target in "${TARGETS[@]}"; do
     exit 8
   fi
 
-  # 6.4 push origin
+  # 6.5 push origin
   if git push origin "$target"; then
     echo "✅ push origin/$target 完成"
   else
