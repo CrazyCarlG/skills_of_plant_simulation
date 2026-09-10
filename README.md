@@ -355,3 +355,50 @@ All skills and agents reference the knowledge base via repo-root-relative paths,
 
 - **Apache License 2.0** — see [LICENSE](LICENSE).
 - Knowledge base content: sourced from Siemens *Plant Simulation Help* (© 2026 Siemens, Unpublished work), for learning and knowledge management only; all rights belong to Siemens.
+
+## 快速开始（Windows）
+
+- **推荐步骤（最短路径）**:
+  1. 克隆仓库：
+
+     ```powershell
+     git clone <repo-url>
+     cd skills_of_plant_simulation
+     ```
+  2. 运行安装脚本（在 Windows 上请使用 Git Bash / WSL2 或通过适配的 PowerShell 命令）:
+
+     ```bash
+     bash scripts/install.sh
+     ```
+  3. 启动 Plant Simulation（确保已按“Prerequisites”设置 `/logfile`）并加载 `SimtalkClaude.pslib`。
+  4. 启动 SimtalkClaude TCP listener（通常在 Plant Simulation 内或配套的 Python 脚本中），默认端口 `127.0.0.1:50007`。
+  5. 用示例命令验证连通性：
+
+     ```powershell
+     python3 skills/local-simtalk-execution/scripts/simtalk_send.py --host 127.0.0.1 --port 50007 --type ping
+     ```
+
+- **Windows 专用注意事项**:
+  - 请以管理员或具有写权限的用户运行 Plant Simulation，以确保 `/logfile` 路径可写。
+  - 如果使用 WSL2，Host 地址可能不是 `localhost`：请使用 `host.docker.internal` 或根据 WSL 网络设置访问主机端口。
+
+## 贡献指南
+
+- **小改动（文档/修复/样例）**：直接创建 PR 到 `main`，标题格式 `docs: ...` 或 `fix: ...`。
+- **新技能 / 大改动**：
+  1. 在本地分支开发并包含 `SKILL.md`、最小可运行脚本和示例输入/输出。
+  2. 在 PR 描述中明确列出对 `lifelines.md` 或 `references` 的任何硬规则变更请求（高风险更改需单独审阅）。
+  3. 添加或更新相应单元测试 / 使用示例（若适用）。
+
+- **合并准则**：至少一名域专家（`plant-simulation-expert` 的维护者）审阅通过；写入类（write-side）变更需至少两人通过并附回滚计划。
+
+## 维护与联系方式
+
+- **维护者**: 仓库维护团队（见 CONTRIBUTORS 文件或仓库设置）。
+- **问题反馈**: 在 GitHub Issues 提交 `bug` / `enhancement` 标签并描述可复现步骤。
+- **讨论与支持**: 首选 Issues → PR → 邮件（仓库维护者列表），紧急问题可在 agent 运行时在会话中 @maintainer（依团队约定）。
+
+## 许可与版权（简要）
+
+- **Apache License 2.0** — 详见仓库根目录的 [LICENSE](LICENSE) 文件。
+- 知识库部分包含源自 Siemens *Plant Simulation Help* 的摘录或改写材料，仅用于教学与知识管理，原始版权归 Siemens 所有。
