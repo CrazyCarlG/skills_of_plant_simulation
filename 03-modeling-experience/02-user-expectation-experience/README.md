@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-09-01
+last_updated: 2026-09-10
 purpose: 用户预期 / 偏好 / 沟通模式沉淀。每文件一个 finding/topic，≤300 行。
 ---
 
@@ -11,4 +11,4 @@ purpose: 用户预期 / 偏好 / 沟通模式沉淀。每文件一个 finding/to
 
 | Date | File | Topic |
 |---|---|---|
-| _(empty — curator 在每次总结后 append 一行)_ | | | |
+| 2026-09-10 | `2026-09-10_student-reflective-not-engineering-learner.md` | student = 反射型学习者 60-65% 理解度,非工程型 |
