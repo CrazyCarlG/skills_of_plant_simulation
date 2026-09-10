@@ -6,6 +6,7 @@
 #   2) run-curator-session.sh    启动 plant-simulation-experience-curator agent
 #                                 （默认 --print 非交互，便于串接；可用 --interactive 切回交互）
 #   3) commit-and-push-curator.sh 提交并推送 fea/curator
+#   4) curator-back-merge.sh     把 fea/curator 的沉淀回流到 fea/expert / fea/student
 #
 # 之所以是 wrapper 而不是把三段逻辑塞进一个文件：
 #   - 三个脚本各自独立、签名清晰，便于单独跑、单独调试
@@ -19,11 +20,14 @@
 #   $ ./full-curator-pipeline.sh --skip-merge       # 跳过 merge 步骤
 #   $ ./full-curator-pipeline.sh --skip-session     # 跳过 session 步骤
 #   $ ./full-curator-pipeline.sh --skip-push        # 跳过 commit+push 步骤
+#   $ ./full-curator-pipeline.sh --skip-back-merge  # 跳过 back-merge 步骤
 #   $ ./full-curator-pipeline.sh --message "..."    # 透传 commit 文案
 #
 # 退出码：透传被调用脚本的非"no more memory"退出码
-#        merge   退出 10（no more memory）/ 11（already summary）→ 继续
-#        push    退出 6（no more memory）→ 正常退出 0
+#        merge       退出 10（no more memory）→ 短路，流水线正常退出 0
+#        merge       退出 11（already summary）→ 继续
+#        push        退出 6（no more memory）→ 正常退出 0
+#        back-merge  退出 10（no more memory）→ 正常退出 0
 #
 #set -euo pipefail
 
@@ -82,6 +86,7 @@ DRY_RUN_PUSH=0
 SKIP_MERGE=0
 SKIP_SESSION=0
 SKIP_PUSH=0
+SKIP_BACK_MERGE=0
 CUSTOM_MSG=""
 EXTRA_ARGS=()
 
@@ -107,12 +112,16 @@ while [ $# -gt 0 ]; do
       SKIP_PUSH=1
       shift
       ;;
+    --skip-back-merge)
+      SKIP_BACK_MERGE=1
+      shift
+      ;;
     -m|--message)
       CUSTOM_MSG="$2"
       shift 2
       ;;
     -h|--help)
-      sed -n '2,45p' "$0"
+      sed -n '2,49p' "$0"
       exit 0
       ;;
     *)
@@ -125,7 +134,7 @@ done
 # ---------------------------------------------------------------------------
 # Step 0：分支校验
 # ---------------------------------------------------------------------------
-echo "==> 0/4 校验当前分支"
+echo "==> 0/5 校验当前分支"
 current_branch=$(git rev-parse --abbrev-ref HEAD)
 if [ "$current_branch" != "$EXPECTED_BRANCH" ]; then
   echo "❌ 当前分支是 '$current_branch'，必须在 '$EXPECTED_BRANCH' 上。"
@@ -139,13 +148,14 @@ echo "✅ 当前分支: $current_branch"
 # ---------------------------------------------------------------------------
 if [ "$SKIP_MERGE" -eq 0 ]; then
   echo "----"
-  echo "==> 1/4 merge-student-expert"
+  echo "==> 1/5 merge-student-expert"
   if "$SCRIPT_DIR/merge-student-expert.sh" "${EXTRA_ARGS[@]}"; then
     echo "✅ merge 完成"
   else
     rc=$?
     if [ "$rc" -eq 10 ]; then
-      echo "ℹ️  merge 返回 10（no more memory），继续"
+      echo "ℹ️  merge 返回 10（no more memory），后面步骤无内容可做，流水线正常结束"
+      exit 0
     elif [ "$rc" -eq 11 ]; then
       echo "ℹ️  merge 返回 11（already summary to experience），继续"
     else
@@ -163,7 +173,7 @@ fi
 # ---------------------------------------------------------------------------
 if [ "$SKIP_SESSION" -eq 0 ]; then
   echo "----"
-  echo "==> 2/4 run-curator-session"
+  echo "==> 2/5 run-curator-session"
   session_args=()
   if [ "$INTERACTIVE" -eq 0 ]; then
     session_args+=(--print)
@@ -193,7 +203,7 @@ fi
 # ---------------------------------------------------------------------------
 if [ "$SKIP_PUSH" -eq 0 ]; then
   echo "----"
-  echo "==> 3/4 commit-and-push-curator"
+  echo "==> 3/5 commit-and-push-curator"
   push_args=()
   if [ "$DRY_RUN_PUSH" -eq 1 ]; then
     push_args+=(--dry-run)
@@ -221,5 +231,27 @@ else
 fi
 
 # ---------------------------------------------------------------------------
+# Step 4：curator-back-merge（把 fea/curator 的沉淀回流到 fea/expert / fea/student）
+# ---------------------------------------------------------------------------
+if [ "$SKIP_BACK_MERGE" -eq 0 ]; then
+  echo "----"
+  echo "==> 4/5 curator-back-merge"
+  if "$SCRIPT_DIR/curator-back-merge.sh" "${EXTRA_ARGS[@]}"; then
+    echo "✅ back-merge 完成"
+  else
+    rc=$?
+    if [ "$rc" -eq 10 ]; then
+      echo "ℹ️  back-merge 返回 10（no more memory），流水线正常结束"
+      exit 0
+    else
+      echo "❌ curator-back-merge 失败 (exit $rc)，流水线中止"
+      exit "$rc"
+    fi
+  fi
+else
+  echo "⏭️  跳过 curator-back-merge"
+fi
+
+# ---------------------------------------------------------------------------
 echo "----"
-echo "✅ 完整 curator 流水线完成（merge → session → commit+push）"
+echo "✅ 完整 curator 流水线完成（merge → session → commit+push → back-merge）"
