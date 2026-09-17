@@ -1,5 +1,5 @@
 ---
-last_updated: 2026-09-02
+last_updated: 2026-09-17
 purpose: skills-optimizer 报告 + 已落地改动 索引。agent 冷启动第一动作 = Read 此文件,不要批量 Read 同目录下报告。
 ---
 
@@ -9,7 +9,8 @@ purpose: skills-optimizer 报告 + 已落地改动 索引。agent 冷启动第�
 
 | Date | Skill | 🎯 | ⚡ | ✂️ | 已落地 | Key takeaway |
 |---|---|---|---|---|---|---|
-| (暂无 entry——首个 entry 由下次优化实践后 append) | — | — | — | — | — | — |
+| 2026-09-17 | local-simtalk-execution | 2 | 2 | 3 | 5 + 7删 | Quick Start 顶部 + quick-start.md;**第二轮精简到 2 references + 2 scripts**(删 7 冗余 + SKILL.md 同步去 dead refs) |
+| (暂无 entry) | — | — | — | — | — | — |
 
 ## How to use
 
