@@ -1,0 +1,99 @@
+{
+  "category": "com-errors",
+  "description": "COM error handling — known HRESULTs must print the right hint and exit 3. The mock shim injects each fault; the runner checks stderr shape.",
+  "tasks": [
+    {
+      "id": "com-001-hresult-class-not-registered",
+      "category": "com-errors",
+      "name": "0x80040154 (class not registered) → exit 3 + regsvr32 hint",
+      "args": ["-p", "50007"],
+      "mock": true,
+      "mock_setup": {
+        "by_progid": {
+          "Tecnomatix.PlantSimulation.RemoteControl.26.6": {
+            "LoadModel": {"action": "raise_com_error", "hresult": 2147746132, "message": "Class not registered"}
+          }
+        }
+      },
+      "timeout": 10,
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 3,
+        "stderr_includes": ["class not registered", "regsvr32", "0x80040154"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-3", "com-error-0x80040154", "lifelines-§hint", "regression"]
+    },
+    {
+      "id": "com-002-hresult-singleton-held",
+      "category": "com-errors",
+      "name": "0x80080005 (singleton held) → exit 3 + taskkill hint",
+      "args": ["-p", "50007"],
+      "mock": true,
+      "mock_setup": {
+        "by_progid": {
+          "Tecnomatix.PlantSimulation.RemoteControl.26.6": {
+            "SetVisible": {"action": "raise_com_error", "hresult": 2148007941, "message": "COM server execution failed"}
+          }
+        }
+      },
+      "timeout": 10,
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 3,
+        "stderr_includes": ["taskkill", "Plant Simulation.exe", "0x80080005"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-3", "com-error-0x80080005", "lifelines-§2", "regression"]
+    },
+    {
+      "id": "com-003-hresult-disp-e-exception",
+      "category": "com-errors",
+      "name": "0x80020009 (DISP_E_EXCEPTION) → exit 3 + lifelines/allow-message-box hint",
+      "args": ["-p", "50007"],
+      "mock": true,
+      "mock_setup": {
+        "by_progid": {
+          "Tecnomatix.PlantSimulation.RemoteControl.26.6": {
+            "ExecuteSimTalk": {"action": "raise_com_error", "hresult": 2147614729, "message": "SimTalk execution failed"}
+          }
+        }
+      },
+      "timeout": 10,
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 3,
+        "stderr_includes": ["0x80020009"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-3", "com-error-0x80020009", "lifelines-§1", "regression"]
+    },
+    {
+      "id": "com-004-unknown-hresult",
+      "category": "com-errors",
+      "name": "unknown HRESULT → exit 3 + generic hint (lifelines.md / --allow-message-box)",
+      "args": ["-p", "50007"],
+      "mock": true,
+      "mock_setup": {
+        "by_progid": {
+          "Tecnomatix.PlantSimulation.RemoteControl.26.6": {
+            "LoadModel": {"action": "raise_com_error", "hresult": 2147483653, "message": "Unknown failure"}
+          }
+        }
+      },
+      "timeout": 10,
+      "weight": 1.5,
+      "expected": {
+        "exit_code": 3,
+        "stderr_includes": ["0x80000005"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-3", "com-error-generic", "regression"],
+      "notes": "Generic hint should mention 'lifelines.md' or '--allow-message-box'. The mock hex 2147500037 = 0x80000005."
+    }
+  ]
+}

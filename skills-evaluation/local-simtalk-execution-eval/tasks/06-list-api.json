@@ -1,0 +1,52 @@
+{
+  "category": "list-api",
+  "description": "List API traps from lifelines.md §10 — .dim is the only correct length query; literal assignment fails (Quirk #7).",
+  "tasks": [
+    {
+      "id": "list-001-dim-correct",
+      "category": "list-api",
+      "name": "list.dim — correct length query",
+      "type": "simtalk_run",
+      "code": "var l: list\nl := getFilesOfFolder(\".\")\nprint l.dim",
+      "timeout": 15,
+      "tags": ["happy-path", "list-api", "lifelines-§10"],
+      "expected": {
+        "exit_code": 0,
+        "result_includes": ["success"],
+        "log_not_starts_with": "code execute failed",
+        "wall_time_max_ms": 10000
+      }
+    },
+    {
+      "id": "list-002-length-unknown-identifier",
+      "category": "list-api",
+      "name": "list.length — Unknown identifier 'Length' → Quirk #7 soft fail (exit 11)",
+      "type": "simtalk_run",
+      "code": "var l: list\nl := getFilesOfFolder(\".\")\nprint l.length",
+      "timeout": 15,
+      "tags": ["quirk-7", "list-api", "lifelines-§10"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 11,
+        "log_starts_with": "code execute failed",
+        "result_includes": ["success"],
+        "wall_time_max_ms": 8000
+      }
+    },
+    {
+      "id": "list-003-literal-assign-soft-fail",
+      "category": "list-api",
+      "name": "var l: list; l := [1,2,3] — incompatible assignment → Quirk #7",
+      "type": "simtalk_run",
+      "code": "var l: list\nl := [1,2,3]",
+      "timeout": 15,
+      "tags": ["quirk-7", "list-api", "lifelines-§10"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 11,
+        "log_starts_with": "code execute failed",
+        "wall_time_max_ms": 8000
+      }
+    }
+  ]
+}

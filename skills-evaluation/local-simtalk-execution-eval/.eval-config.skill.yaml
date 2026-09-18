@@ -1,0 +1,8 @@
+# Eval config pointing at the actual skill under test.
+# Skill location: C:\Users\z004bjuu\Documents\skills_of_plant_simulation\skills\local-simtalk-execution
+
+simtalk_send_path: C:/Users/z004bjuu/Documents/skills_of_plant_simulation/skills/local-simtalk-execution/scripts/simtalk_send.py
+host: 127.0.0.1
+port: 50007
+iterations: 3
+mock: false

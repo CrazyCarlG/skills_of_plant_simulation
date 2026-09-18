@@ -1,0 +1,110 @@
+{
+  "category": "exit-codes",
+  "description": "Full exit-code matrix verification. Every documented exit code (0/2/3/4/5) must be reachable from its documented trigger. The mini matrix here is a regression net: if a refactor accidentally collapses two exit codes (e.g., catches ValueError but returns 5), the suite catches it.",
+  "tasks": [
+    {
+      "id": "exit-code-0-happy-mock",
+      "category": "exit-codes",
+      "name": "exit 0 — happy path in mock mode (no --wait-ready)",
+      "args": [],
+      "mock": true,
+      "timeout": 10,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 0,
+        "stdout_includes": ["Plant Simulation launched"],
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-0", "smoke", "exit-code-matrix", "regression"]
+    },
+    {
+      "id": "exit-code-2-bad-args",
+      "category": "exit-codes",
+      "name": "exit 2 — bad CLI args (missing --simtalkclaudefile)",
+      "args": [],
+      "mock": true,
+      "fill_defaults": false,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 2,
+        "stderr_includes": ["required"],
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-2", "exit-code-matrix", "hard-gate", "regression"]
+    },
+    {
+      "id": "exit-code-3-com-error",
+      "category": "exit-codes",
+      "name": "exit 3 — COM error (simulated 0x80040154)",
+      "args": [],
+      "mock": true,
+      "mock_setup": {
+        "by_progid": {
+          "Tecnomatix.PlantSimulation.RemoteControl.26.6": {
+            "LoadModel": {"action": "raise_com_error", "hresult": 2147746132, "message": "Class not registered"}
+          }
+        }
+      },
+      "timeout": 10,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 3,
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-3", "exit-code-matrix", "hard-gate", "regression"]
+    },
+    {
+      "id": "exit-code-3-socket-timeout",
+      "category": "exit-codes",
+      "name": "exit 3 — --wait-ready socket timeout",
+      "args": ["-p", "51113", "--wait-ready", "1"],
+      "mock": true,
+      "timeout": 15,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 3,
+        "stderr_includes": ["socket readiness check failed"],
+        "wall_time_max_ms": 2700
+      },
+      "tags": ["hermetic", "exit-3", "exit-code-matrix", "hard-gate", "regression"]
+    },
+    {
+      "id": "exit-code-4-file-not-found",
+      "category": "exit-codes",
+      "name": "exit 4 — model file not found",
+      "args": ["-m", "C:/no/such/file.spp"],
+      "mock": true,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 4,
+        "stderr_includes": ["Model file not found"],
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-4", "exit-code-matrix", "hard-gate", "regression"]
+    },
+    {
+      "id": "exit-code-5-uncaught",
+      "category": "exit-codes",
+      "name": "exit 5 — uncaught RuntimeError from non-COM fault",
+      "args": [],
+      "mock": true,
+      "mock_setup": {
+        "by_progid": {
+          "Tecnomatix.PlantSimulation.RemoteControl.26.6": {
+            "LoadModel": {"action": "raise", "message": "synthetic non-com fault for exit-5 matrix"}
+          }
+        }
+      },
+      "timeout": 10,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 5,
+        "stderr_includes": ["synthetic non-com fault"],
+        "wall_time_max_ms": 350
+      },
+      "tags": ["hermetic", "exit-5", "exit-code-matrix", "hard-gate", "regression"]
+    }
+  ]
+}

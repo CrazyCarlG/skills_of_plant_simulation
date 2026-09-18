@@ -1,0 +1,68 @@
+{
+  "category": "connection",
+  "description": "Smoke tests for basic TCP connectivity — the runner must reach the server and complete a round-trip without errors. Other categories assume these pass.",
+  "tasks": [
+    {
+      "id": "conn-001-ping",
+      "category": "connection",
+      "name": "ping a healthy server",
+      "type": "ping",
+      "timeout": 5,
+      "tags": ["smoke", "happy-path", "lifelines-§6"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 0,
+        "result_includes": ["success"],
+        "result_excludes": ["hasError"],
+        "json_field": {"type": "ping", "result": "success"},
+        "wall_time_max_ms": 2000
+      }
+    },
+    {
+      "id": "conn-002-syntax-smoke",
+      "category": "connection",
+      "name": "simtalk_syntax smoke (valid var decl)",
+      "type": "simtalk_syntax",
+      "code": "var x: integer := 42",
+      "timeout": 10,
+      "tags": ["smoke", "happy-path", "lifelines-§6"],
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 0,
+        "result_includes": ["has no Error"],
+        "result_excludes": ["hasError"],
+        "wall_time_max_ms": 3000
+      }
+    },
+    {
+      "id": "conn-003-run-smoke",
+      "category": "connection",
+      "name": "simtalk_run smoke (print literal)",
+      "type": "simtalk_run",
+      "code": "print 1+1",
+      "timeout": 15,
+      "tags": ["smoke", "happy-path", "lifelines-§6"],
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 0,
+        "result_includes": ["success"],
+        "log_not_starts_with": "code execute failed",
+        "json_field": {"result": "success"},
+        "wall_time_max_ms": 5000
+      }
+    },
+    {
+      "id": "conn-004-readlog-q002",
+      "category": "connection",
+      "name": "readlog — v15+ may exit 20 with valid stdout (Q-002)",
+      "type": "readlog",
+      "timeout": 10,
+      "tags": ["smoke", "v15", "lifelines-§5"],
+      "weight": 1.0,
+      "expected": {
+        "exit_code_in": [0, 20],
+        "wall_time_max_ms": 5000
+      }
+    }
+  ]
+}

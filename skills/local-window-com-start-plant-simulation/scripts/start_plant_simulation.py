@@ -1,24 +1,46 @@
 """Start Plant Simulation via COM RemoteControl.
 
-Example VBScript equivalent being mirrored:
-var PlantSim = WScript.CreateObject("Tecnomatix.PlantSimulation.RemoteControl.26.6");
-PlantSim.SetVisible(true);
-PlantSim.SetNoMessageBox(true);
-PlantSim.OpenConsoleLogFile("C:\\logs\\run_" + Date() + ".txt");
-PlantSim.LoadModel("C:\\Models\\MyModel.spp");
+Usage:
+    python start_plant_simulation.py -m <model.spp> -s <simtalkclaude.pslib> [options]
 
-This script provides a Python equivalent using pywin32's win32com.client,
-plus validation, COM-specific error handling, optional socket-readiness polling,
-and optional PID lookup via tasklist.
+Required:
+    -m, --model PATH                 Path to the .spp model file to load
+    -s, --simtalkclaudefile PATH     Path to the SimtalkClaude .pslib injected via basis.loadObjectAs
 
-It does NOT execute any business SimTalk, does NOT maintain a socket
-connection, and does NOT interact with the model beyond the steps required
-to get a SocketServer listening on the requested port.
+Optional:
+    -p, --port N                     TCP port for SimtalkClaude SocketServer (default: 50007, range 1-65535)
+    --wait-ready SECONDS             After loading, poll 127.0.0.1:port until TCP connect succeeds or timeout (default: 0 = skip)
+    --print-pid                      After loading, look up Plant Simulation.exe PIDs via tasklist and print them
+    --no-visible                     Run Plant Simulation without showing the main window (default: visible)
+    --allow-message-box              Allow modal message boxes (default: SetNoMessageBox(true))
+
+Exit codes:
+    0  success — PS launched, model loaded, port set (and socket ready if --wait-ready succeeded)
+    2  bad CLI arguments (e.g. port out of range)
+    3  COM dispatch failed or socket readiness check failed
+    4  model or SimtalkClaude file not found
+    5  other unhandled exception
+
+Example (Windows, cmd):
+    python start_plant_simulation.py ^
+        -m "C:\Models\MyModel.spp" ^
+        -s "C:\lib\SimtalkClaude.pslib" ^
+        -p 50007 ^
+        --wait-ready 30 ^
+        --print-pid
+
+Notes:
+    - Requires pywin32 (`pip install pywin32`) and a registered
+      "Tecnomatix.PlantSimulation.RemoteControl.26.6" COM class (Plant Simulation 2606).
+    - Designed to be the first step before any TCP-based skill (local-simtalk-*) talks to the model;
+      it intentionally does not run business SimTalk beyond the two lines needed to inject
+      SimtalkClaude and flip the SocketServer port.
+    - --wait-ready only verifies *something* listens on host:port; it does not verify the listener
+      is the SimtalkClaude socket (see references/lifelines.md §1).
 """
 from __future__ import annotations
 
 import argparse
-import datetime
 import os
 import socket
 import subprocess
@@ -44,7 +66,6 @@ EXIT_OTHER = 5
 def start_plant_simulation(
 	model_path: str,
 	simtalkclaudefile: str,
-	log_dir: str,
 	visible: bool = True,
 	no_message_box: bool = True,
 	port: int = 50007,
@@ -73,10 +94,6 @@ def start_plant_simulation(
 	if not os.path.isfile(simtalkclaudefile):
 		raise FileNotFoundError(f"SimtalkClaude library not found: {simtalkclaudefile}")
 
-	os.makedirs(log_dir, exist_ok=True)
-	timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
-	logfile = os.path.join(log_dir, f"run_{timestamp}.txt")
-
 	# escape any double-quotes in the path to avoid breaking the SimTalk string
 	esc = simtalkclaudefile.replace('"', '\\"')
 	inject_command = f'basis.loadObjectAs("{esc}","", true, false)'
@@ -87,7 +104,6 @@ def start_plant_simulation(
 	rc.SetVisible(bool(visible))
 	rc.SetNoMessageBox(bool(no_message_box))
 
-	rc.OpenConsoleLogFile(logfile)
 	rc.LoadModel(model_path)
 	rc.SetTrustModels(True)
 	rc.ExecuteSimTalk(inject_command)
@@ -172,7 +188,6 @@ def _parse_args() -> argparse.Namespace:
 		description="Start Tecnomatix Plant Simulation via COM RemoteControl"
 	)
 	p.add_argument("-m", "--model", required=True, help="Path to the .spp model file to load")
-	p.add_argument("-l", "--log-dir", required=True, help="Directory to write console log files (required; e.g. C:\\logs or a user-chosen writable path)")
 	p.add_argument("--no-visible", dest="visible", action="store_false", help="Do not show the Plant Simulation window")
 	p.add_argument("--allow-message-box", dest="no_message_box", action="store_false", help="Allow message boxes (disable SetNoMessageBox)")
 	p.add_argument("-s", "--simtalkclaudefile", required=True, help="Path to a SimtalkClaude .pslib to inject via basis.loadObjectAs before changing the port (required)")
@@ -189,7 +204,6 @@ def main() -> int:
 		start_plant_simulation(
 			args.model,
 			args.simtalkclaudefile,
-			args.log_dir,
 			visible=args.visible,
 			no_message_box=args.no_message_box,
 			port=args.port,

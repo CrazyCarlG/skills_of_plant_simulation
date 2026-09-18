@@ -1,0 +1,120 @@
+{
+  "category": "cli-validation",
+  "description": "Argparse-level validation. All tasks are hermetic (mock: true) — they exit before COM is touched. Each task verifies the documented exit code (2 or 4) and the right error string on stderr.",
+  "tasks": [
+    {
+      "id": "cli-001-missing-model",
+      "category": "cli-validation",
+      "name": "missing --model → exit 2 + argparse error",
+      "args": [],
+      "mock": true,
+      "fill_defaults": false,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 2,
+        "stderr_includes": ["required", "--model"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 400
+      },
+      "tags": ["smoke", "hermetic", "exit-2", "cli-args-§exit-codes", "regression"]
+    },
+    {
+      "id": "cli-002-missing-simtalkclaudefile",
+      "category": "cli-validation",
+      "name": "missing --simtalkclaudefile → exit 2 + argparse error",
+      "args": [],
+      "mock": true,
+      "fill_defaults": false,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 2,
+        "stderr_includes": ["required", "--simtalkclaudefile"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 400
+      },
+      "tags": ["smoke", "hermetic", "exit-2", "cli-args-§exit-codes", "lifeline-L1", "regression"]
+    },
+    {
+      "id": "cli-003-port-zero",
+      "category": "cli-validation",
+      "name": "port 0 → exit 2 + 'Port must be in 1..65535'",
+      "args": ["-p", "0"],
+      "mock": true,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 2,
+        "stderr_includes": ["1..65535"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "exit-2", "cli-args-§port", "regression"]
+    },
+    {
+      "id": "cli-004-port-65536",
+      "category": "cli-validation",
+      "name": "port 65536 → exit 2 + 'Port must be in 1..65535'",
+      "args": ["-p", "65536"],
+      "mock": true,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 2,
+        "stderr_includes": ["1..65535"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "exit-2", "cli-args-§port", "regression"]
+    },
+    {
+      "id": "cli-005-port-abc",
+      "category": "cli-validation",
+      "name": "port 'abc' → exit 2 + argparse invalid int value",
+      "args": ["-p", "abc"],
+      "mock": true,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 2,
+        "stderr_includes": ["invalid int value"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "exit-2", "cli-args-§port", "regression"]
+    },
+    {
+      "id": "cli-006-model-not-found",
+      "category": "cli-validation",
+      "name": "model path does not exist → exit 4 + 'Model file not found'",
+      "args": ["-m", "C:/nonexistent/missing_model.spp"],
+      "mock": true,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 4,
+        "stderr_includes": ["Model file not found"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "exit-4", "cli-args-§exit-codes", "regression"]
+    },
+    {
+      "id": "cli-007-simtalkclaudefile-not-found",
+      "category": "cli-validation",
+      "name": "pslib path does not exist → exit 4 + 'SimtalkClaude library not found'",
+      "args": ["-s", "C:/nonexistent/missing.pslib"],
+      "mock": true,
+      "timeout": 5,
+      "weight": 1.0,
+      "expected": {
+        "exit_code": 4,
+        "stderr_includes": ["SimtalkClaude library not found"],
+        "stdout_empty": true,
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "exit-4", "cli-args-§exit-codes", "regression"]
+    }
+  ]
+}

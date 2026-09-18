@@ -33,7 +33,6 @@ verdict: PASS
    python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
      --model "D:\Models\AGV_Factory.spp" \
      --port 50007 \
-     --log-dir "C:\logs" \
      --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib"
    ```
 5. **看退出码** —— 期望 `0`,stderr 应为空。
@@ -55,7 +54,6 @@ poll `127.0.0.1:50007` 直到连接成功或 30s 超时:
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
   --model "D:\Models\AGV_Factory.spp" \
   --port 50007 \
-  --log-dir "C:\logs" \
   --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib" \
   --wait-ready 30 \
   --print-pid
@@ -83,7 +81,6 @@ CI / 无人值守场景,不需要 GUI:
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
   --model "D:\Models\AGV_Factory.spp" \
   --port 50007 \
-  --log-dir "C:\logs" \
   --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib" \
   --no-visible \
   --allow-message-box \
@@ -103,9 +100,7 @@ CI 期建议**打开** `--allow-message-box`(与默认相反)以便模型加载�
 | 4 | `start_plant_simulation.py ...` | 0 | stdout `Plant Simulation launched, model loaded, socket port set to 50007.` |
 | 6 | `socket_client.py ping` | 0 | `{"type":"ping","result":"success"}` |
 
-Console log 路径:`C:\logs\run_20260907_153022.txt`(约 4 KB,主要是
-"loaded model AGV_Factory.spp" + simtalkclaude `socket listening on 50007`
-两条记录)。
+Console log 由 PS GUI 直接呈现;本脚本不落盘。
 
 ## Verdict
 

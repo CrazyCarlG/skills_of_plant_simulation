@@ -1,0 +1,70 @@
+{
+  "category": "framing-and-namespace",
+  "description": "Reply framing modes (lifelines.md §2) — eof mode and missing ||END|| must hang. These verify the runner respects the framing contract.",
+  "tasks": [
+    {
+      "id": "frame-001-delimiter-default",
+      "category": "framing-and-namespace",
+      "name": "default delimiter framing — happy path",
+      "type": "ping",
+      "timeout": 5,
+      "tags": ["smoke", "happy-path", "lifelines-§2"],
+      "expected": {
+        "exit_code": 0,
+        "result_includes": ["success"],
+        "wall_time_max_ms": 2000
+      }
+    },
+    {
+      "id": "frame-002-eof-mode-hangs",
+      "category": "framing-and-namespace",
+      "name": "--resp-mode eof — server doesn't close → runner must timeout (lifelines §2)",
+      "type": "simtalk_syntax",
+      "code": "",
+      "timeout": 5,
+      "mode": "raw_socket",
+      "raw_data": "{\"type\":\"simtalk_syntax\",\"action_id\":\"eofmode\",\"simtalk_code\":\"var x:integer:=1\"}||END||",
+      "raw_resp_mode": "eof",
+      "tags": ["expected_timeout", "framing", "lifelines-§2"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 1,
+        "wall_time_max_ms": 6000
+      }
+    },
+    {
+      "id": "frame-003-missing-end-delimiter",
+      "category": "framing-and-namespace",
+      "name": "missing trailing ||END|| — client can't find frame end → timeout",
+      "type": "simtalk_syntax",
+      "code": "",
+      "timeout": 5,
+      "mode": "raw_socket",
+      "raw_data": "{\"type\":\"simtalk_syntax\",\"action_id\":\"noend\",\"simtalk_code\":\"var x:integer:=1\"}",
+      "tags": ["expected_timeout", "framing", "lifelines-§2"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 1,
+        "wall_time_max_ms": 6000
+      }
+    },
+    {
+      "id": "frame-004-fixed-mode-misframing",
+      "category": "framing-and-namespace",
+      "name": "--resp-mode fixed with wrong byte count → hangs (no fixed mode in current protocol)",
+      "type": "simtalk_syntax",
+      "code": "",
+      "timeout": 5,
+      "mode": "raw_socket",
+      "raw_data": "{\"type\":\"simtalk_syntax\",\"action_id\":\"fixedmode\",\"simtalk_code\":\"var x:integer:=1\"}||END||",
+      "raw_resp_mode": "fixed",
+      "raw_resp_arg": "999999",
+      "tags": ["expected_timeout", "framing", "lifelines-§2"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 1,
+        "wall_time_max_ms": 6000
+      }
+    }
+  ]
+}

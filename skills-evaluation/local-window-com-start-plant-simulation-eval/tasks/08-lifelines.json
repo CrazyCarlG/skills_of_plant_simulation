@@ -1,0 +1,105 @@
+{
+  "category": "lifelines",
+  "description": "Lifeline L1–L6 compliance (per references/lifelines.md). L2 and L5 are documentation-only — verified by reading the doc, not by running the script. L6 is verified by code review (see CONTRIBUTING.md). This file covers L1, L3, L4 (the runtime-enforceable ones).",
+  "tasks": [
+    {
+      "id": "lifeline-L1-inject-before-port",
+      "category": "lifelines",
+      "name": "L1: basis.loadObjectAs is called BEFORE .SimtalkClaude.Main.SocketServer.mysocket.port",
+      "args": ["-p", "50007"],
+      "mock": true,
+      "timeout": 10,
+      "weight": 3.0,
+      "expected": {
+        "exit_code": 0,
+        "stdout_includes": ["Plant Simulation launched"],
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "lifeline-L1", "hard-gate", "regression"],
+      "notes": "Grader checks mock_calls for two ExecuteSimTalk entries; both will be present but their args are not separately exposed in the mock log (we record method names, not arguments). The cross-check is: if either ExecuteSimTalk fails, exit != 0. The 'L1 before' ordering is verified via the script's source order (see tests/test_lifeline_order.py in a future iteration)."
+    },
+    {
+      "id": "lifeline-L3-no-message-box-default",
+      "category": "lifelines",
+      "name": "L3: default invocation calls SetNoMessageBox(True)",
+      "args": [],
+      "mock": true,
+      "timeout": 10,
+      "weight": 3.0,
+      "expected": {
+        "exit_code": 0,
+        "mock_call_sequence_includes": [
+          "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetNoMessageBox"
+        ],
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "lifeline-L3", "hard-gate", "regression"]
+    },
+    {
+      "id": "lifeline-L3-allow-message-box",
+      "category": "lifelines",
+      "name": "L3: --allow-message-box still calls SetNoMessageBox (with False)",
+      "args": ["--allow-message-box"],
+      "mock": true,
+      "timeout": 10,
+      "weight": 1.5,
+      "expected": {
+        "exit_code": 0,
+        "mock_call_sequence_includes": [
+          "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetNoMessageBox"
+        ],
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "lifeline-L3", "regression"],
+      "notes": "The mock records the call but not the argument. We verify the call happened; the arg value is verified by code review."
+    },
+    {
+      "id": "lifeline-L4-abspath-applied",
+      "category": "lifelines",
+      "name": "L4: relative --model path is abspath-ified before os.path.isfile",
+      "args": ["-m", "no_such_relative.spp"],
+      "mock": true,
+      "timeout": 5,
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 4,
+        "stderr_includes": ["Model file not found"],
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "lifeline-L4", "exit-4", "hard-gate", "regression"],
+      "notes": "We cannot directly inspect the abspath; we infer it from the error message containing 'Model file not found' followed by some path. A direct check is in the source code review checklist (CONTRIBUTING.md)."
+    },
+    {
+      "id": "lifeline-L4-abspath-pslib",
+      "category": "lifelines",
+      "name": "L4: relative --simtalkclaudefile path is abspath-ified",
+      "args": ["-s", "no_such_relative.pslib"],
+      "mock": true,
+      "timeout": 5,
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 4,
+        "stderr_includes": ["SimtalkClaude library not found"],
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "lifeline-L4", "exit-4", "hard-gate", "regression"]
+    },
+    {
+      "id": "lifeline-L6-pywin32-required",
+      "category": "lifelines",
+      "name": "L6: missing pywin32 → RuntimeError 'pywin32 (wincom) is required...'",
+      "args": [],
+      "mock": true,
+      "timeout": 5,
+      "weight": 2.0,
+      "env": {"EVAL_MOCK_DISABLE": "1"},
+      "expected": {
+        "exit_code_in": [3, 5],
+        "stderr_includes": ["pywin32"],
+        "wall_time_max_ms": 400
+      },
+      "tags": ["hermetic", "lifeline-L6", "regression"],
+      "notes": "This task uses EVAL_MOCK_DISABLE=1 to make the shim raise on import, simulating a host with no pywin32. The script should raise RuntimeError, which is caught by the generic Exception handler. Exit code may be 3 (if the script's 'no message box default' branch runs first) or 5 (uncaught). Both are acceptable; the key check is the 'pywin32' string in stderr."
+    }
+  ]
+}

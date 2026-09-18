@@ -1,0 +1,2517 @@
+{
+  "timestamp": "2026-09-18T06:51:40Z",
+  "iterations": 3,
+  "tasks": [
+    {
+      "id": "conn-001-ping",
+      "type": "ping",
+      "tags": [
+        "smoke",
+        "happy-path",
+        "lifelines-§6"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 421,
+          "stdout_head": "{ \"type\": \"ping\", \"result\": \"success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "ping",
+            "result": "success"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 459,
+          "stdout_head": "{ \"type\": \"ping\", \"result\": \"success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "ping",
+            "result": "success"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 421,
+          "stdout_head": "{ \"type\": \"ping\", \"result\": \"success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "ping",
+            "result": "success"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "conn-001-ping",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 421
+        },
+        {
+          "task_id": "conn-001-ping",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 459
+        },
+        {
+          "task_id": "conn-001-ping",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 421
+        }
+      ]
+    },
+    {
+      "id": "conn-002-syntax-smoke",
+      "type": "simtalk_syntax",
+      "tags": [
+        "smoke",
+        "happy-path",
+        "lifelines-§6"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 519,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"0e589df581e64b21af6494d729143c2e\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "0e589df581e64b21af6494d729143c2e",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 396,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"7febd6e48aa1485abd22552937919b07\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "7febd6e48aa1485abd22552937919b07",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 401,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"2f4bf6b391a1438cbc2d9e22bbac293d\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "2f4bf6b391a1438cbc2d9e22bbac293d",
+            "result": "has no Error",
+            "log": ""
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "conn-002-syntax-smoke",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 519
+        },
+        {
+          "task_id": "conn-002-syntax-smoke",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 396
+        },
+        {
+          "task_id": "conn-002-syntax-smoke",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 401
+        }
+      ]
+    },
+    {
+      "id": "conn-003-run-smoke",
+      "type": "simtalk_run",
+      "tags": [
+        "smoke",
+        "happy-path",
+        "lifelines-§6"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 430,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"4e417b7bfc444c1b818de3df7acfa516\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "4e417b7bfc444c1b818de3df7acfa516",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 452,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"5e3384112c594a2aa9e5f1f03edaee8c\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "5e3384112c594a2aa9e5f1f03edaee8c",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 388,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"853a3389424543478179c1a7ba993043\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "853a3389424543478179c1a7ba993043",
+            "result": "success",
+            "log": "execute success"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "conn-003-run-smoke",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 430
+        },
+        {
+          "task_id": "conn-003-run-smoke",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 452
+        },
+        {
+          "task_id": "conn-003-run-smoke",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 388
+        }
+      ]
+    },
+    {
+      "id": "conn-004-readlog-q002",
+      "type": "readlog",
+      "tags": [
+        "smoke",
+        "v15",
+        "lifelines-§5"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 20,
+          "wall_time_ms": 453,
+          "stdout_head": "{ \"type\": \"readlog\", \"action_id\": \"5c8e81d62dc149c89b10e65dc7c45ab6\", \"result\": \"success\", \"log\": \"Index is out of range.\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "readlog",
+            "action_id": "5c8e81d62dc149c89b10e65dc7c45ab6",
+            "result": "success",
+            "log": "Index is out of range."
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 421,
+          "stdout_head": "{ \"type\": \"readlog\", \"action_id\": \"d07cb04d6ff340f69bb7e45cac1fe721\", \"result\": \"\", \"log\": \"Index is out of range.\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "readlog",
+            "action_id": "d07cb04d6ff340f69bb7e45cac1fe721",
+            "result": "",
+            "log": "Index is out of range."
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 411,
+          "stdout_head": "{ \"type\": \"readlog\", \"action_id\": \"ef7d1b902374407983ed06fbabd248e9\", \"result\": \"\", \"log\": \"Index is out of range.\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "readlog",
+            "action_id": "ef7d1b902374407983ed06fbabd248e9",
+            "result": "",
+            "log": "Index is out of range."
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "conn-004-readlog-q002",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 20,
+          "wall_time_ms": 453
+        },
+        {
+          "task_id": "conn-004-readlog-q002",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code_in: expected one of [0, 20], got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 421
+        },
+        {
+          "task_id": "conn-004-readlog-q002",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code_in: expected one of [0, 20], got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 411
+        }
+      ]
+    },
+    {
+      "id": "syntax-001-valid-var",
+      "type": "simtalk_syntax",
+      "tags": [
+        "smoke",
+        "happy-path"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 420,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"9cf6b2ed5c534e5487368fa98d78aa45\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "9cf6b2ed5c534e5487368fa98d78aa45",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 464,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"a2389f9ebf5041f58ca19634385c0c8c\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "a2389f9ebf5041f58ca19634385c0c8c",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 439,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"b19dd98900fe416bbd7bf3bb34476541\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "b19dd98900fe416bbd7bf3bb34476541",
+            "result": "has no Error",
+            "log": ""
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "syntax-001-valid-var",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 420
+        },
+        {
+          "task_id": "syntax-001-valid-var",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 464
+        },
+        {
+          "task_id": "syntax-001-valid-var",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 439
+        }
+      ]
+    },
+    {
+      "id": "syntax-002-valid-control-flow",
+      "type": "simtalk_syntax",
+      "tags": [
+        "happy-path",
+        "control-flow"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 416,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"f5fc72d0f33f47188d8934a4c3dc252a\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "f5fc72d0f33f47188d8934a4c3dc252a",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 416,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"ac18d5db85914390b570b5814353756a\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "ac18d5db85914390b570b5814353756a",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 408,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"734c19c702fa4ffe92b32a96f6ad1f08\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "734c19c702fa4ffe92b32a96f6ad1f08",
+            "result": "has no Error",
+            "log": ""
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "syntax-002-valid-control-flow",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 416
+        },
+        {
+          "task_id": "syntax-002-valid-control-flow",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 416
+        },
+        {
+          "task_id": "syntax-002-valid-control-flow",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 408
+        }
+      ]
+    },
+    {
+      "id": "syntax-003-valid-param-default",
+      "type": "simtalk_syntax",
+      "tags": [
+        "happy-path",
+        "param",
+        "v10"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 440,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"e4d866c0b49d4ad3b84e58ce1d793f11\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "e4d866c0b49d4ad3b84e58ce1d793f11",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 420,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"e81078ef9a7d4b3da4204e0861937ce5\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "e81078ef9a7d4b3da4204e0861937ce5",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 425,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"0885b796e4a14dfe934eb1abf659f0f1\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "0885b796e4a14dfe934eb1abf659f0f1",
+            "result": "has no Error",
+            "log": ""
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "syntax-003-valid-param-default",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 440
+        },
+        {
+          "task_id": "syntax-003-valid-param-default",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 420
+        },
+        {
+          "task_id": "syntax-003-valid-param-default",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 425
+        }
+      ]
+    },
+    {
+      "id": "syntax-004-invalid-byval",
+      "type": "simtalk_syntax",
+      "tags": [
+        "negative",
+        "param",
+        "v10"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 12,
+          "wall_time_ms": 440,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 12,
+          "wall_time_ms": 419,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 12,
+          "wall_time_ms": 439,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "syntax-004-invalid-byval",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 440
+        },
+        {
+          "task_id": "syntax-004-invalid-byval",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 419
+        },
+        {
+          "task_id": "syntax-004-invalid-byval",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 439
+        }
+      ]
+    },
+    {
+      "id": "syntax-005-invalid-byref-default",
+      "type": "simtalk_syntax",
+      "tags": [
+        "negative",
+        "param",
+        "v10"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 12,
+          "wall_time_ms": 418,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 12,
+          "wall_time_ms": 420,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 12,
+          "wall_time_ms": 437,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "syntax-005-invalid-byref-default",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 418
+        },
+        {
+          "task_id": "syntax-005-invalid-byref-default",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 420
+        },
+        {
+          "task_id": "syntax-005-invalid-byref-default",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 437
+        }
+      ]
+    },
+    {
+      "id": "syntax-006-invalid-name-clash",
+      "type": "simtalk_syntax",
+      "tags": [
+        "negative",
+        "v9-regression"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 12,
+          "wall_time_ms": 429,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 12,
+          "wall_time_ms": 428,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 12,
+          "wall_time_ms": 436,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_syntax] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "syntax-006-invalid-name-clash",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 429
+        },
+        {
+          "task_id": "syntax-006-invalid-name-clash",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 428
+        },
+        {
+          "task_id": "syntax-006-invalid-name-clash",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "syntax_error",
+          "failed_predicates": [
+            "result_includes: missing 'hasError' in result ''"
+          ],
+          "notes": "",
+          "exit_code": 12,
+          "wall_time_ms": 436
+        }
+      ]
+    },
+    {
+      "id": "run-001-print-string",
+      "type": "simtalk_run",
+      "tags": [
+        "happy-path"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 453,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"dc820918e52948149718f9e3640d5a8f\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "dc820918e52948149718f9e3640d5a8f",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 446,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"8b729a52ea83431ea816cdd27bea81a2\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "8b729a52ea83431ea816cdd27bea81a2",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 478,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"6d49021995b6440e937091ff8087508d\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "6d49021995b6440e937091ff8087508d",
+            "result": "success",
+            "log": "execute success"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "run-001-print-string",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 453
+        },
+        {
+          "task_id": "run-001-print-string",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 446
+        },
+        {
+          "task_id": "run-001-print-string",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 478
+        }
+      ]
+    },
+    {
+      "id": "run-002-arithmetic",
+      "type": "simtalk_run",
+      "tags": [
+        "happy-path"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 447,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"f2cd483827234807b0bbfd470987aefc\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "f2cd483827234807b0bbfd470987aefc",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 447,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"29fb48146dfd4caeb5b740409f91741c\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "29fb48146dfd4caeb5b740409f91741c",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 427,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"96d3db14f81d434f8398b01b1b9666ea\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "96d3db14f81d434f8398b01b1b9666ea",
+            "result": "success",
+            "log": "execute success"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "run-002-arithmetic",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 447
+        },
+        {
+          "task_id": "run-002-arithmetic",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 447
+        },
+        {
+          "task_id": "run-002-arithmetic",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 427
+        }
+      ]
+    },
+    {
+      "id": "run-003-quirk7-runtime-unknown-identifier",
+      "type": "simtalk_run",
+      "tags": [
+        "quirk-7",
+        "runtime-error",
+        "lifelines-§6"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 11,
+          "wall_time_ms": 430,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"6c03b9000cc74b09a5dfecdc6293c3f0\", \"result\": \"success\", \"log\": \"code execute failed. error msg:Unknown identifier 'nonExistentVariable', in code 'print nonExiste",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "6c03b9000cc74b09a5dfecdc6293c3f0",
+            "result": "success",
+            "log": "code execute failed. error msg:Unknown identifier 'nonExistentVariable', in code 'print nonExistentVariable'"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 11,
+          "wall_time_ms": 404,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"90f0a26240bd422db20f8e92fa212f63\", \"result\": \"success\", \"log\": \"code execute failed. error msg:Unknown identifier 'nonExistentVariable', in code 'print nonExiste",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "90f0a26240bd422db20f8e92fa212f63",
+            "result": "success",
+            "log": "code execute failed. error msg:Unknown identifier 'nonExistentVariable', in code 'print nonExistentVariable'"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 11,
+          "wall_time_ms": 407,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"07acbc7ad13c4dedabf015a92a7840c6\", \"result\": \"success\", \"log\": \"code execute failed. error msg:Unknown identifier 'nonExistentVariable', in code 'print nonExiste",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "07acbc7ad13c4dedabf015a92a7840c6",
+            "result": "success",
+            "log": "code execute failed. error msg:Unknown identifier 'nonExistentVariable', in code 'print nonExistentVariable'"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "run-003-quirk7-runtime-unknown-identifier",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 11,
+          "wall_time_ms": 430
+        },
+        {
+          "task_id": "run-003-quirk7-runtime-unknown-identifier",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 11,
+          "wall_time_ms": 404
+        },
+        {
+          "task_id": "run-003-quirk7-runtime-unknown-identifier",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 11,
+          "wall_time_ms": 407
+        }
+      ]
+    },
+    {
+      "id": "run-004-compile-error-division-by-zero",
+      "type": "simtalk_run",
+      "tags": [
+        "compile-error",
+        "Q-001",
+        "lifelines-§6"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 10,
+          "wall_time_ms": 495,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 443,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 441,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "run-004-compile-error-division-by-zero",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "result_includes: missing 'failed' in result ''",
+            "log_starts_with: expected prefix ' hasError', got ''..."
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 495
+        },
+        {
+          "task_id": "run-004-compile-error-division-by-zero",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "result_includes: missing 'failed' in result ''",
+            "log_starts_with: expected prefix ' hasError', got ''..."
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 443
+        },
+        {
+          "task_id": "run-004-compile-error-division-by-zero",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "result_includes: missing 'failed' in result ''",
+            "log_starts_with: expected prefix ' hasError', got ''..."
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 441
+        }
+      ]
+    },
+    {
+      "id": "run-005-return-with-type",
+      "type": "simtalk_run",
+      "tags": [
+        "happy-path",
+        "v8"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 437,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"6734372507dc4b608927a5775b513f1f\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "6734372507dc4b608927a5775b513f1f",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 453,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"5c4dc53a48994d7db5eb941d60040bcb\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "5c4dc53a48994d7db5eb941d60040bcb",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 446,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"4ed09d764ba54dfab62ec7fb9f150f22\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "4ed09d764ba54dfab62ec7fb9f150f22",
+            "result": "success",
+            "log": "execute success"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "run-005-return-with-type",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 437
+        },
+        {
+          "task_id": "run-005-return-with-type",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 453
+        },
+        {
+          "task_id": "run-005-return-with-type",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 446
+        }
+      ]
+    },
+    {
+      "id": "run-006-list-dim",
+      "type": "simtalk_run",
+      "tags": [
+        "happy-path",
+        "list-api",
+        "lifelines-§10"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 474,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"31dbed5c2b80435e8630fee5d201d187\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "31dbed5c2b80435e8630fee5d201d187",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 523,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"4ea12b300b0e4072a182ee7ba1387104\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "4ea12b300b0e4072a182ee7ba1387104",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 423,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"8e37719b10e74fa69585185536b69d2c\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "8e37719b10e74fa69585185536b69d2c",
+            "result": "success",
+            "log": "execute success"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "run-006-list-dim",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 474
+        },
+        {
+          "task_id": "run-006-list-dim",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 523
+        },
+        {
+          "task_id": "run-006-list-dim",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 423
+        }
+      ]
+    },
+    {
+      "id": "quirk-005-retsult-stale",
+      "type": "simtalk_syntax",
+      "tags": [
+        "quirk-5",
+        "regression"
+      ],
+      "weight": 3.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 449,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"cc1a4734d6c74163bb10fdd02ece2cff\", \"result\": \"has no Error\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "cc1a4734d6c74163bb10fdd02ece2cff",
+            "result": "has no Error",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 416,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"e8f5871b73d040618fe433e48aaf100b\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "e8f5871b73d040618fe433e48aaf100b",
+            "result": "has no Error",
+            "log": ""
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 384,
+          "stdout_head": "{ \"type\": \"simtalk_syntax\", \"action_id\": \"a38c0eacefc94153953c34c9d6dab71d\", \"result\": \"has no Error\", \"log\": \"\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_syntax",
+            "action_id": "a38c0eacefc94153953c34c9d6dab71d",
+            "result": "has no Error",
+            "log": ""
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "quirk-005-retsult-stale",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 449
+        },
+        {
+          "task_id": "quirk-005-retsult-stale",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 416
+        },
+        {
+          "task_id": "quirk-005-retsult-stale",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 384
+        }
+      ]
+    },
+    {
+      "id": "quirk-006-data-field-ignored",
+      "type": "simtalk_run",
+      "tags": [
+        "quirk-6",
+        "regression"
+      ],
+      "weight": 3.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 483,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"f6e052b556e94347bad12435c2a12958\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "f6e052b556e94347bad12435c2a12958",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 0,
+          "wall_time_ms": 416,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"fd1a97b6bdf94119acda8a1f8d4ecd0d\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "fd1a97b6bdf94119acda8a1f8d4ecd0d",
+            "result": "success",
+            "log": "execute success"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 0,
+          "wall_time_ms": 448,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"aa82931b4798478d9c36b6f1cd4ad2e5\", \"result\": \"success\", \"log\": \"execute success\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "aa82931b4798478d9c36b6f1cd4ad2e5",
+            "result": "success",
+            "log": "execute success"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "quirk-006-data-field-ignored",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 483
+        },
+        {
+          "task_id": "quirk-006-data-field-ignored",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 416
+        },
+        {
+          "task_id": "quirk-006-data-field-ignored",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 448
+        }
+      ]
+    },
+    {
+      "id": "quirk-007-soft-failure-detected",
+      "type": "simtalk_run",
+      "tags": [
+        "quirk-7",
+        "regression",
+        "lifelines-§6"
+      ],
+      "weight": 3.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 11,
+          "wall_time_ms": 418,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"3beeae185c804f59ba8ee64cfe21d7a3\", \"result\": \"success\", \"log\": \"code execute failed. error msg:Unknown identifier 'undeclared_identifier_here', in code 'print un",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "3beeae185c804f59ba8ee64cfe21d7a3",
+            "result": "success",
+            "log": "code execute failed. error msg:Unknown identifier 'undeclared_identifier_here', in code 'print undeclared_identifier_here'"
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 11,
+          "wall_time_ms": 407,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"9c6a66bf15d1440b8470b1298c3d1a3f\", \"result\": \"success\", \"log\": \"code execute failed. error msg:Unknown identifier 'undeclared_identifier_here', in code 'print un",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "9c6a66bf15d1440b8470b1298c3d1a3f",
+            "result": "success",
+            "log": "code execute failed. error msg:Unknown identifier 'undeclared_identifier_here', in code 'print undeclared_identifier_here'"
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 11,
+          "wall_time_ms": 437,
+          "stdout_head": "{ \"type\": \"simtalk_run\", \"action_id\": \"276f0f028ee149a38551c861e9337cfb\", \"result\": \"success\", \"log\": \"code execute failed. error msg:Unknown identifier 'undeclared_identifier_here', in code 'print un",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "simtalk_run",
+            "action_id": "276f0f028ee149a38551c861e9337cfb",
+            "result": "success",
+            "log": "code execute failed. error msg:Unknown identifier 'undeclared_identifier_here', in code 'print undeclared_identifier_here'"
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "quirk-007-soft-failure-detected",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 11,
+          "wall_time_ms": 418
+        },
+        {
+          "task_id": "quirk-007-soft-failure-detected",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 11,
+          "wall_time_ms": 407
+        },
+        {
+          "task_id": "quirk-007-soft-failure-detected",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 11,
+          "wall_time_ms": 437
+        }
+      ]
+    },
+    {
+      "id": "quirk-013-unknown-type-hangs",
+      "type": "simtalk_run",
+      "tags": [
+        "quirk-13",
+        "regression",
+        "lifelines-§3"
+      ],
+      "weight": 3.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 1,
+          "wall_time_ms": 5225,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 1,
+          "wall_time_ms": 5196,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 1,
+          "wall_time_ms": 5208,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "quirk-013-unknown-type-hangs",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5225
+        },
+        {
+          "task_id": "quirk-013-unknown-type-hangs",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5196
+        },
+        {
+          "task_id": "quirk-013-unknown-type-hangs",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5208
+        }
+      ]
+    },
+    {
+      "id": "quirk-readlog-q002-stdout-valid",
+      "type": "readlog",
+      "tags": [
+        "quirk-readlog",
+        "Q-002",
+        "lifelines-§5"
+      ],
+      "weight": 3.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 20,
+          "wall_time_ms": 428,
+          "stdout_head": "{ \"type\": \"readlog\", \"action_id\": \"df3f42cb3ac64112bce826d58d676d24\", \"result\": \"success\", \"log\": \"Index is out of range.\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "readlog",
+            "action_id": "df3f42cb3ac64112bce826d58d676d24",
+            "result": "success",
+            "log": "Index is out of range."
+          }
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 440,
+          "stdout_head": "{ \"type\": \"readlog\", \"action_id\": \"6ca6704db4ef49cebb6f34412d045d7e\", \"result\": \"\", \"log\": \"Index is out of range.\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "readlog",
+            "action_id": "6ca6704db4ef49cebb6f34412d045d7e",
+            "result": "",
+            "log": "Index is out of range."
+          }
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 409,
+          "stdout_head": "{ \"type\": \"readlog\", \"action_id\": \"4fa8f4c36e3c417fa641e029024e3a3a\", \"result\": \"\", \"log\": \"Index is out of range.\" }\n",
+          "stderr_head": "",
+          "parsed_json": {
+            "type": "readlog",
+            "action_id": "4fa8f4c36e3c417fa641e029024e3a3a",
+            "result": "",
+            "log": "Index is out of range."
+          }
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "quirk-readlog-q002-stdout-valid",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 20,
+          "wall_time_ms": 428
+        },
+        {
+          "task_id": "quirk-readlog-q002-stdout-valid",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code_in: expected one of [0, 20], got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 440
+        },
+        {
+          "task_id": "quirk-readlog-q002-stdout-valid",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code_in: expected one of [0, 20], got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 409
+        }
+      ]
+    },
+    {
+      "id": "modal-001-prompt",
+      "type": "simtalk_run",
+      "tags": [
+        "expected_timeout",
+        "modal-trap",
+        "lifelines-§4"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 10,
+          "wall_time_ms": 8416,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 8412,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 8411,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "modal-001-prompt",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8416
+        },
+        {
+          "task_id": "modal-001-prompt",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8412
+        },
+        {
+          "task_id": "modal-001-prompt",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8411
+        }
+      ]
+    },
+    {
+      "id": "modal-002-infoBox",
+      "type": "simtalk_run",
+      "tags": [
+        "expected_timeout",
+        "modal-trap",
+        "lifelines-§4"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 10,
+          "wall_time_ms": 8460,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 8458,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 8450,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "modal-002-infoBox",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8460
+        },
+        {
+          "task_id": "modal-002-infoBox",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8458
+        },
+        {
+          "task_id": "modal-002-infoBox",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8450
+        }
+      ]
+    },
+    {
+      "id": "modal-003-undeclared-attr",
+      "type": "simtalk_run",
+      "tags": [
+        "expected_timeout",
+        "modal-trap",
+        "lifelines-§4",
+        "v9-R5"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 10,
+          "wall_time_ms": 8414,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 8738,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 8446,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "modal-003-undeclared-attr",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8414
+        },
+        {
+          "task_id": "modal-003-undeclared-attr",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8738
+        },
+        {
+          "task_id": "modal-003-undeclared-attr",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8446
+        }
+      ]
+    },
+    {
+      "id": "modal-004-promptList1",
+      "type": "simtalk_run",
+      "tags": [
+        "expected_timeout",
+        "modal-trap",
+        "lifelines-§4"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 10,
+          "wall_time_ms": 8453,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 8429,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 8426,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "modal-004-promptList1",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8453
+        },
+        {
+          "task_id": "modal-004-promptList1",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8429
+        },
+        {
+          "task_id": "modal-004-promptList1",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 1, got 10"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 8426
+        }
+      ]
+    },
+    {
+      "id": "list-001-dim-correct",
+      "type": "simtalk_run",
+      "tags": [
+        "happy-path",
+        "list-api",
+        "lifelines-§10"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 10,
+          "wall_time_ms": 15437,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 15418,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 15444,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "list-001-dim-correct",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 0, got 10",
+            "result_includes: missing 'success' in result ''",
+            "wall_time_max_ms: 15437ms > 10000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15437
+        },
+        {
+          "task_id": "list-001-dim-correct",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 0, got 10",
+            "result_includes: missing 'success' in result ''",
+            "wall_time_max_ms: 15418ms > 10000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15418
+        },
+        {
+          "task_id": "list-001-dim-correct",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 0, got 10",
+            "result_includes: missing 'success' in result ''",
+            "wall_time_max_ms: 15444ms > 10000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15444
+        }
+      ]
+    },
+    {
+      "id": "list-002-length-unknown-identifier",
+      "type": "simtalk_run",
+      "tags": [
+        "quirk-7",
+        "list-api",
+        "lifelines-§10"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 10,
+          "wall_time_ms": 15425,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 15380,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 15444,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "list-002-length-unknown-identifier",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 11, got 10",
+            "result_includes: missing 'success' in result ''",
+            "log_starts_with: expected prefix 'code execute failed', got ''...",
+            "wall_time_max_ms: 15425ms > 8000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15425
+        },
+        {
+          "task_id": "list-002-length-unknown-identifier",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 11, got 10",
+            "result_includes: missing 'success' in result ''",
+            "log_starts_with: expected prefix 'code execute failed', got ''...",
+            "wall_time_max_ms: 15380ms > 8000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15380
+        },
+        {
+          "task_id": "list-002-length-unknown-identifier",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 11, got 10",
+            "result_includes: missing 'success' in result ''",
+            "log_starts_with: expected prefix 'code execute failed', got ''...",
+            "wall_time_max_ms: 15444ms > 8000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15444
+        }
+      ]
+    },
+    {
+      "id": "list-003-literal-assign-soft-fail",
+      "type": "simtalk_run",
+      "tags": [
+        "quirk-7",
+        "list-api",
+        "lifelines-§10"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 10,
+          "wall_time_ms": 15447,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 10,
+          "wall_time_ms": 15453,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 10,
+          "wall_time_ms": 15408,
+          "stdout_head": "\n",
+          "stderr_head": "[simtalk_send.cmd_run] socket error: code=1 reply=''\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "list-003-literal-assign-soft-fail",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 11, got 10",
+            "log_starts_with: expected prefix 'code execute failed', got ''...",
+            "wall_time_max_ms: 15447ms > 8000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15447
+        },
+        {
+          "task_id": "list-003-literal-assign-soft-fail",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 11, got 10",
+            "log_starts_with: expected prefix 'code execute failed', got ''...",
+            "wall_time_max_ms: 15453ms > 8000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15453
+        },
+        {
+          "task_id": "list-003-literal-assign-soft-fail",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "compile_error",
+          "failed_predicates": [
+            "exit_code: expected 11, got 10",
+            "log_starts_with: expected prefix 'code execute failed', got ''...",
+            "wall_time_max_ms: 15408ms > 8000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 10,
+          "wall_time_ms": 15408
+        }
+      ]
+    },
+    {
+      "id": "frame-001-delimiter-default",
+      "type": "ping",
+      "tags": [
+        "smoke",
+        "happy-path",
+        "lifelines-§2"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 1,
+          "wall_time_ms": 5440,
+          "stdout_head": "\n",
+          "stderr_head": "",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 1,
+          "wall_time_ms": 5424,
+          "stdout_head": "\n",
+          "stderr_head": "",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 1,
+          "wall_time_ms": 5452,
+          "stdout_head": "\n",
+          "stderr_head": "",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "frame-001-delimiter-default",
+          "iteration": 1,
+          "verdict": "fail",
+          "bucket": "timeout",
+          "failed_predicates": [
+            "exit_code: expected 0, got 1",
+            "result_includes: missing 'success' in result ''",
+            "wall_time_max_ms: 5440ms > 2000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5440
+        },
+        {
+          "task_id": "frame-001-delimiter-default",
+          "iteration": 2,
+          "verdict": "fail",
+          "bucket": "timeout",
+          "failed_predicates": [
+            "exit_code: expected 0, got 1",
+            "result_includes: missing 'success' in result ''",
+            "wall_time_max_ms: 5424ms > 2000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5424
+        },
+        {
+          "task_id": "frame-001-delimiter-default",
+          "iteration": 3,
+          "verdict": "fail",
+          "bucket": "timeout",
+          "failed_predicates": [
+            "exit_code: expected 0, got 1",
+            "result_includes: missing 'success' in result ''",
+            "wall_time_max_ms: 5452ms > 2000ms budget"
+          ],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5452
+        }
+      ]
+    },
+    {
+      "id": "frame-002-eof-mode-hangs",
+      "type": "simtalk_syntax",
+      "tags": [
+        "expected_timeout",
+        "framing",
+        "lifelines-§2"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 1,
+          "wall_time_ms": 5215,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 1,
+          "wall_time_ms": 5196,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 1,
+          "wall_time_ms": 5214,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "frame-002-eof-mode-hangs",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5215
+        },
+        {
+          "task_id": "frame-002-eof-mode-hangs",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5196
+        },
+        {
+          "task_id": "frame-002-eof-mode-hangs",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5214
+        }
+      ]
+    },
+    {
+      "id": "frame-003-missing-end-delimiter",
+      "type": "simtalk_syntax",
+      "tags": [
+        "expected_timeout",
+        "framing",
+        "lifelines-§2"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 1,
+          "wall_time_ms": 5197,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 1,
+          "wall_time_ms": 5198,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 1,
+          "wall_time_ms": 5208,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "frame-003-missing-end-delimiter",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5197
+        },
+        {
+          "task_id": "frame-003-missing-end-delimiter",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5198
+        },
+        {
+          "task_id": "frame-003-missing-end-delimiter",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5208
+        }
+      ]
+    },
+    {
+      "id": "frame-004-fixed-mode-misframing",
+      "type": "simtalk_syntax",
+      "tags": [
+        "expected_timeout",
+        "framing",
+        "lifelines-§2"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 1,
+          "wall_time_ms": 5213,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 2,
+          "exit_code": 1,
+          "wall_time_ms": 5224,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        },
+        {
+          "iteration": 3,
+          "exit_code": 1,
+          "wall_time_ms": 5214,
+          "stdout_head": "",
+          "stderr_head": "TIMEOUT: no reply within 5.0s\n",
+          "parsed_json": null
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "frame-004-fixed-mode-misframing",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5213
+        },
+        {
+          "task_id": "frame-004-fixed-mode-misframing",
+          "iteration": 2,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5224
+        },
+        {
+          "task_id": "frame-004-fixed-mode-misframing",
+          "iteration": 3,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 1,
+          "wall_time_ms": 5214
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,240 @@
+{
+  "timestamp": "2026-09-18T03:09:28Z",
+  "iterations": 1,
+  "tasks": [
+    {
+      "id": "cli-001-missing-model",
+      "category": "cli-validation",
+      "tags": [
+        "smoke",
+        "hermetic",
+        "exit-2",
+        "cli-args-§exit-codes",
+        "regression"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 2,
+          "wall_time_ms": 219,
+          "stdout_head": "",
+          "stderr_head": "C:\\Users\\z004bjuu\\Documents\\skills_of_plant_simulation\\skills\\local-window-com-start-plant-simulation\\scripts\\start_plant_simulation.py:26: SyntaxWarning: invalid escape sequence '\\M'\n  -m \"C:\\Models\\",
+          "mock_calls": []
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "cli-001-missing-model",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 2,
+          "wall_time_ms": 219
+        }
+      ]
+    },
+    {
+      "id": "cli-002-missing-simtalkclaudefile",
+      "category": "cli-validation",
+      "tags": [
+        "smoke",
+        "hermetic",
+        "exit-2",
+        "cli-args-§exit-codes",
+        "lifeline-L1",
+        "regression"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 2,
+          "wall_time_ms": 219,
+          "stdout_head": "",
+          "stderr_head": "C:\\Users\\z004bjuu\\Documents\\skills_of_plant_simulation\\skills\\local-window-com-start-plant-simulation\\scripts\\start_plant_simulation.py:26: SyntaxWarning: invalid escape sequence '\\M'\n  -m \"C:\\Models\\",
+          "mock_calls": []
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "cli-002-missing-simtalkclaudefile",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 2,
+          "wall_time_ms": 219
+        }
+      ]
+    },
+    {
+      "id": "model-001-loadmodel-called",
+      "category": "model-load",
+      "tags": [
+        "hermetic",
+        "smoke",
+        "lifecycle",
+        "regression"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 234,
+          "stdout_head": "Plant Simulation launched, model loaded, socket port set to 50007.\n",
+          "stderr_head": "C:\\Users\\z004bjuu\\Documents\\skills_of_plant_simulation\\skills\\local-window-com-start-plant-simulation\\scripts\\start_plant_simulation.py:26: SyntaxWarning: invalid escape sequence '\\M'\n  -m \"C:\\Models\\",
+          "mock_calls": [
+            "Dispatch('Tecnomatix.PlantSimulation.RemoteControl.26.6')",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetVisible",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetNoMessageBox",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.LoadModel",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetTrustModels",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.ExecuteSimTalk",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.ExecuteSimTalk"
+          ]
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "model-001-loadmodel-called",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 234
+        }
+      ]
+    },
+    {
+      "id": "inject-001-loadobjectas-called",
+      "category": "injection",
+      "tags": [
+        "hermetic",
+        "smoke",
+        "lifecycle",
+        "regression"
+      ],
+      "weight": 2.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 234,
+          "stdout_head": "Plant Simulation launched, model loaded, socket port set to 50007.\n",
+          "stderr_head": "C:\\Users\\z004bjuu\\Documents\\skills_of_plant_simulation\\skills\\local-window-com-start-plant-simulation\\scripts\\start_plant_simulation.py:26: SyntaxWarning: invalid escape sequence '\\M'\n  -m \"C:\\Models\\",
+          "mock_calls": [
+            "Dispatch('Tecnomatix.PlantSimulation.RemoteControl.26.6')",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetVisible",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetNoMessageBox",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.LoadModel",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetTrustModels",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.ExecuteSimTalk",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.ExecuteSimTalk"
+          ]
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "inject-001-loadobjectas-called",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 234
+        }
+      ]
+    },
+    {
+      "id": "port-001-default-50007",
+      "category": "port-change",
+      "tags": [
+        "hermetic",
+        "smoke",
+        "lifecycle",
+        "regression"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 202,
+          "stdout_head": "Plant Simulation launched, model loaded, socket port set to 50007.\n",
+          "stderr_head": "C:\\Users\\z004bjuu\\Documents\\skills_of_plant_simulation\\skills\\local-window-com-start-plant-simulation\\scripts\\start_plant_simulation.py:26: SyntaxWarning: invalid escape sequence '\\M'\n  -m \"C:\\Models\\",
+          "mock_calls": [
+            "Dispatch('Tecnomatix.PlantSimulation.RemoteControl.26.6')",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetVisible",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetNoMessageBox",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.LoadModel",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetTrustModels",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.ExecuteSimTalk",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.ExecuteSimTalk"
+          ]
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "port-001-default-50007",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 202
+        }
+      ]
+    },
+    {
+      "id": "exit-code-0-happy-mock",
+      "category": "exit-codes",
+      "tags": [
+        "hermetic",
+        "exit-0",
+        "smoke",
+        "exit-code-matrix",
+        "regression"
+      ],
+      "weight": 1.0,
+      "observations": [
+        {
+          "iteration": 1,
+          "exit_code": 0,
+          "wall_time_ms": 186,
+          "stdout_head": "Plant Simulation launched, model loaded, socket port set to 50007.\n",
+          "stderr_head": "C:\\Users\\z004bjuu\\Documents\\skills_of_plant_simulation\\skills\\local-window-com-start-plant-simulation\\scripts\\start_plant_simulation.py:26: SyntaxWarning: invalid escape sequence '\\M'\n  -m \"C:\\Models\\",
+          "mock_calls": [
+            "Dispatch('Tecnomatix.PlantSimulation.RemoteControl.26.6')",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetVisible",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetNoMessageBox",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.LoadModel",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.SetTrustModels",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.ExecuteSimTalk",
+            "Tecnomatix.PlantSimulation.RemoteControl.26.6.ExecuteSimTalk"
+          ]
+        }
+      ],
+      "grade_results": [
+        {
+          "task_id": "exit-code-0-happy-mock",
+          "iteration": 1,
+          "verdict": "pass",
+          "bucket": "pass",
+          "failed_predicates": [],
+          "notes": "",
+          "exit_code": 0,
+          "wall_time_ms": 186
+        }
+      ]
+    }
+  ]
+}

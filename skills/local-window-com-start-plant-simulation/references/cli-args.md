@@ -8,7 +8,6 @@
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
   --model <path.spp> \
   --simtalkclaudefile <path.pslib> \
-  --log-dir <dir> \
   [--port <1-65535>] \
   [--no-visible] \
   [--allow-message-box] \
@@ -22,7 +21,6 @@ python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simul
 |---|---|---|---|---|
 | `-m / --model` | path | 无 | **是** | `.spp` 模型文件路径。`os.path.abspath` 后做 `os.path.isfile` 校验,不存在退出码 4。 |
 | `-p / --port` | int | `50007` | 否 | SimtalkClaude SocketServer 监听端口。范围 1-65535,越界或非整数退出码 2。 |
-| `-l / --log-dir` | path | 无 | **是** | `OpenConsoleLogFile` 写入目录(argparse `required=True`)。`os.makedirs(exist_ok=True)`,不存在会自动建;路径须当前用户可写(详见 `lifelines.md` §4)。 |
 | `-s / --simtalkclaudefile` | path | 无 | **是** | `SimtalkClaude.pslib` 绝对/相对路径(argparse `required=True`)。脚本会用 `basis.loadObjectAs("<path>","", true, false)` 注入。缺失触发 argparse 报错 + 退出码 2;路径不存在退出码 4。 |
 | `--no-visible` | flag | `visible=True` | 否 | 关闭 PS GUI 窗口(`SetVisible(False)`)。CI / 无人值守场景用。 |
 | `--allow-message-box` | flag | `no_message_box=True` | 否 | 关闭 `SetNoMessageBox`(允许模型加载失败时弹窗出现)。排查期用。 |
@@ -34,7 +32,7 @@ python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simul
 | 退出码 | 含义 | 触发条件 |
 |---|---|---|
 | **0** | 成功 | COM Dispatch + LoadModel + 注入 + 改端口 全部成功;若传 `--wait-ready`,socket 也连上了(或未传 `--wait-ready`)。 |
-| **2** | 参数错 / 端口错 | `--port` 非整数(argparse 层);或 `--port` 不在 1-65535;或 `--simtalkclaudefile` 未传;或 `--log-dir` 未传(argparse `required=True`)。 |
+| **2** | 参数错 / 端口错 | `--port` 非整数(argparse 层);或 `--port` 不在 1-65535;或 `--simtalkclaudefile` 未传(argparse `required=True`)。 |
 | **3** | COM 错 / socket readiness 失败 | `pywintypes.com_error`(详细 HRESULT 与 hint 见 `lifelines.md`);或 `--wait-ready` 超时;或 socket 轮询遇 `OSError`。 |
 | **4** | 文件不存在 | `--model` 路径找不到;或 `--simtalkclaudefile` 路径找不到。 |
 | **5** | 其它未捕获异常 | 兜底;bug 报告时附 stderr。 |

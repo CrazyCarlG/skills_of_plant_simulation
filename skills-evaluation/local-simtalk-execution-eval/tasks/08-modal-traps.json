@@ -1,0 +1,62 @@
+{
+  "category": "modal-traps",
+  "description": "Modal traps per lifelines.md §4 — these tasks MUST hang the server (modal dialog blocks GUI thread). The runner must surface this as TIMEOUT (exit 1), NOT as semantic success. Tagged 'expected_timeout' so they don't count as flakes.",
+  "tasks": [
+    {
+      "id": "modal-001-prompt",
+      "category": "modal-traps",
+      "name": "prompt() — GUI modal hangs the socket",
+      "type": "simtalk_run",
+      "code": "prompt(\"this will hang the socket forever\")",
+      "timeout": 8,
+      "tags": ["expected_timeout", "modal-trap", "lifelines-§4"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 1,
+        "wall_time_max_ms": 10000
+      }
+    },
+    {
+      "id": "modal-002-infoBox",
+      "category": "modal-traps",
+      "name": "infoBox() — same modal trap",
+      "type": "simtalk_run",
+      "code": "infoBox(\"will also hang\")",
+      "timeout": 8,
+      "tags": ["expected_timeout", "modal-trap", "lifelines-§4"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 1,
+        "wall_time_max_ms": 10000
+      }
+    },
+    {
+      "id": "modal-003-undeclared-attr",
+      "category": "modal-traps",
+      "name": "writing an attribute that doesn't exist triggers modal 'create attribute?' dialog",
+      "type": "simtalk_run",
+      "code": "MyNotYetExistingAttr := 99",
+      "timeout": 8,
+      "tags": ["expected_timeout", "modal-trap", "lifelines-§4", "v9-R5"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 1,
+        "wall_time_max_ms": 10000
+      }
+    },
+    {
+      "id": "modal-004-promptList1",
+      "category": "modal-traps",
+      "name": "promptList1() — also modal",
+      "type": "simtalk_run",
+      "code": "promptList1(\"pick one\", \"a\", \"b\")",
+      "timeout": 8,
+      "tags": ["expected_timeout", "modal-trap", "lifelines-§4"],
+      "weight": 2.0,
+      "expected": {
+        "exit_code": 1,
+        "wall_time_max_ms": 10000
+      }
+    }
+  ]
+}

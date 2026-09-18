@@ -153,7 +153,14 @@ def cmd_syntax(args):
     code, reply = _run_socket_client(args.host, args.port, args.timeout, payload)
     print(reply)
     if code != 0:
-        return code
+        # socket 层错误（连接拒/超时/协议错）——stderr 留痕，按"语法失败"处理
+        # （exit 12）。让调用方拿到稳定 exit code 而不是静默的 1 + 空 stdout。
+        # 详见 reports/EVAL_REPORT_skill-evaluation.md Bug #1。
+        print(
+            f"[simtalk_send.cmd_syntax] socket error: code={code} reply={reply!r}",
+            file=sys.stderr,
+        )
+        return 12
 
     try:
         resp = json.loads(reply)
@@ -193,7 +200,14 @@ def cmd_run(args):
     code, reply = _run_socket_client(args.host, args.port, args.timeout, payload)
     print(reply)
     if code != 0:
-        return code
+        # socket 层错误（连接拒/超时/协议错）——stderr 留痕，按"编译错"处理
+        # （exit 10）。让调用方拿到稳定 exit code 而不是静默的 1 + 空 stdout。
+        # 详见 reports/EVAL_REPORT_skill-evaluation.md Bug #1。
+        print(
+            f"[simtalk_send.cmd_run] socket error: code={code} reply={reply!r}",
+            file=sys.stderr,
+        )
+        return 10
 
     try:
         resp = json.loads(reply)
@@ -253,6 +267,16 @@ def cmd_readlog(args):
 
 
 def main():
+    # Windows 默认 cp1252 无法 encode ⚠️ / 中文 docstring。
+    # --help / epilog 里有非 ASCII 字符时直接 stack trace。
+    # reconfigure 在 Python 3.7+ 才存在；旧版本或已重定向时静默跳过。
+    # 详见 reports/EVAL_REPORT_skill-evaluation.md Bug #3。
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8")
+        except (AttributeError, ValueError):
+            pass
+
     parser = argparse.ArgumentParser(
         description=(
             "simtalk_send.py — Plant Simulation SimTalk 高层发送器。"

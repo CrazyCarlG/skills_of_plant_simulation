@@ -1,0 +1,37 @@
+# local-window-com-start-plant-simulation-eval configuration.
+#
+# Override any field with --config /path/to/this.yaml
+# or via CLI: --iterations, --mock.
+
+# Path to the skill's start script (relative to repo root by default).
+# The runner auto-resolves against the eval directory's parent.
+script_path: skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py
+
+# Default model + SimtalkClaude.pslib used by integration tasks.
+# Override per-task via the `args` list, or by editing the relevant task JSON.
+# These paths are placeholders — set them to real files on the CI host.
+default_model: C:/temp/UR10.spp
+default_simtalkclaudefile: C:/temp/SimtalkClaude.pslib
+
+# Iterations per task. Variance threshold in stats.py uses pass_rate < 0.80.
+iterations: 3
+
+# Wall-time budget per task in seconds (also enforced by subprocess timeout).
+default_timeout: 30
+
+# Set to true to use the mock win32com shim (no PS required; offline dev only).
+# NEVER enable in CI for non-hermetic tasks — the mock doesn't validate the
+# real COM wire protocol. Use --mock as a tag filter: `--tag hermetic --mock`.
+mock: false
+
+# Pass-rate threshold for the CI gate. Below this → exit 1.
+pass_rate_threshold: 0.95
+
+# Buckets that must never regress (lifelines + exit codes). Tasks in these
+# categories with pass_rate < 1.0 cause exit 3.
+hard_gates:
+  - lifeline-L1
+  - lifeline-L3
+  - lifeline-L4
+  - lifeline-L6
+  - exit-code

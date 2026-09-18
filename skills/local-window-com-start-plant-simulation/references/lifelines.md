@@ -41,28 +41,14 @@ COM 单例。若已经有 Plant Simulation 2606 在跑,Dispatch 会拿到同一�
 ## 3. `SetNoMessageBox` 默认开启
 
 `SetNoMessageBox(True)` 会**吞掉所有 PS 弹窗**——模型加载失败、SimTalk 编译
-错误、找不到类、参数非法等场景下,弹窗不再出现,错误只能从 console log 读。
+错误、找不到类、参数非法等场景下,弹窗不再出现,错误只能从 PS GUI / console 读。
 
 **排查期**:传 `--allow-message-box` 关掉 `SetNoMessageBox`,让 PS 把真实错误弹窗显示出来。
 
 **生产期**:保持默认(`SetNoMessageBox=True`),避免 PS 阻塞等用户点 OK;
-错误统一从 `--log-dir/run_<时间戳>.txt` 读。
+错误看 PS 主窗口 / console。
 
-## 4. `log_dir` 必须可写
-
-`OpenConsoleLogFile` 失败时,异常信息模糊(走 COM `IDispatch::Invoke` 异常,
-HRESULT 通常是 `0x80004005` 或类似)。脚本的 COM 错误处理不会猜这个特定场景。
-
-**规避**:
-
-- 启动前确认 `log_dir` 存在;脚本里有 `os.makedirs(exist_ok=True)`,但要当前
-  用户对父目录有 `mkdir` 权限。Windows 上 `C:\logs` 是常见选择,但需要管理员先建;
-  选自建路径(例如 `%USERPROFILE%\ps-logs`)通常更稳。
-- 不要指向系统根目录或受保护的系统目录等只读目录。
-- 路径里**不要有空格以外的特殊字符**(脚本里 SimTalk 字符串已 escape 双引号,
-  但路径含换行 / 控制字符会让 `ExecuteSimTalk` 出问题)。
-
-## 5. 模型路径建议绝对化
+## 4. 模型路径建议绝对化
 
 脚本内部 `os.path.abspath(model_path)`,传相对路径也行,但 `os.path.abspath`
 以**当前进程 cwd** 为基准。在 CI / 计划任务 / 服务启动场景下,cwd 可能不是
@@ -70,7 +56,7 @@ HRESULT 通常是 `0x80004005` 或类似)。脚本的 COM 错误处理不会猜�
 
 **规避**:始终传绝对路径。
 
-## 6. `--wait-ready` 的协议层盲区
+## 5. `--wait-ready` 的协议层盲区
 
 `wait_for_socket()` 用 `socket.create_connection((host, port), timeout=1)`
 做 TCP 层连接测试。它**不**验证:
@@ -85,7 +71,7 @@ HRESULT 通常是 `0x80004005` 或类似)。脚本的 COM 错误处理不会猜�
 **典型误报场景**:端口被 OS 自己占了(罕见);或同时跑两个 PS 实例,后者覆盖了
 前者的 socket。
 
-## 7. `pywintypes` 不可用 ≠ 脚本不可用
+## 6. `pywintypes` 不可用 ≠ 脚本不可用
 
 `from pywintypes import com_error` 在没装 pywin32 时会 `ImportError`。脚本
 设计成:`win32com` / `pywintypes` 都 import 失败时,把两个都置 `None`,只

@@ -45,7 +45,6 @@ verdict: PASS
    python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
      --model "tests/fixtures/smoke.spp" \
      --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib" \
-     --log-dir "C:\logs" \
      --port 50099 \
      --wait-ready 5
    ```
@@ -70,15 +69,13 @@ verdict: PASS
 # 退出码 4: model 不存在
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
   --model "D:\does\not\exist.spp" \
-  --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib" \
-  --log-dir "C:\logs"
+  --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib"
 echo "exit=$?"  # 期望 4
 
 # 退出码 2: port 越界
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
   --model tests/fixtures/smoke.spp \
   --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib" \
-  --log-dir "C:\logs" \
   --port 99999
 echo "exit=$?"  # 期望 2
 
@@ -86,27 +83,18 @@ echo "exit=$?"  # 期望 2
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
   --model tests/fixtures/smoke.spp \
   --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib" \
-  --log-dir "C:\logs" \
   --port abc
 echo "exit=$?"  # 期望 2
 
 # 退出码 2: 缺 --simtalkclaudefile(argparse required=True)
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
-  --model tests/fixtures/smoke.spp \
-  --log-dir "C:\logs"
-echo "exit=$?"  # 期望 2
-
-# 退出码 2: 缺 --log-dir(argparse required=True)
-python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
-  --model tests/fixtures/smoke.spp \
-  --simtalkclaudefile "<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib"
+  --model tests/fixtures/smoke.spp
 echo "exit=$?"  # 期望 2
 
 # 退出码 4: simtalkclaudefile 不存在
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
   --model tests/fixtures/smoke.spp \
-  --simtalkclaudefile /does/not/exist.pslib \
-  --log-dir "C:\logs"
+  --simtalkclaudefile /does/not/exist.pslib
 echo "exit=$?"  # 期望 4
 
 # --help 必须能正常打印且退出码 0
@@ -128,7 +116,6 @@ echo "exit=$?"  # 期望 0
 | 错误码 | `--port 99999` | 2 | `Error: Port must be in 1..65535, got 99999` |
 | 错误码 | `--port abc` | 2 | argparse `invalid int value: 'abc'` |
 | 错误码 | 缺 `--simtalkclaudefile` | 2 | argparse `required: --simtalkclaudefile` |
-| 错误码 | 缺 `--log-dir` | 2 | argparse `required: --log-dir` |
 | 错误码 | `--simtalkclaudefile` 不存在 | 4 | `Error: SimtalkClaude library not found: ...` |
 | 错误码 | `--help` | 0 | usage 输出完整,含 `--simtalkclaudefile` 为 `required`,含 `--wait-ready` / `--print-pid` |
 
