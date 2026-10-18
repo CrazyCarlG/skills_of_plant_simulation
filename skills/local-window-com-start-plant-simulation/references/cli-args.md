@@ -8,7 +8,7 @@
 python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py \
   --model <path.spp> \
   --simtalkclaudefile <path.pslib> \
-  [--port <1-65535>] \
+  [--port <starting-port>] \
   [--no-visible] \
   [--allow-message-box] \
   [--wait-ready <seconds>] \
@@ -20,7 +20,7 @@ python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simul
 | Flag | 类型 | 默认 | 必填 | 说明 |
 |---|---|---|---|---|
 | `-m / --model` | path | 无 | **是** | `.spp` 模型文件路径。`os.path.abspath` 后做 `os.path.isfile` 校验,不存在退出码 4。 |
-| `-p / --port` | int | `50007` | 否 | SimtalkClaude SocketServer 监听端口。范围 1-65535,越界或非整数退出码 2。 |
+| `-p / --port` | int | `50007` | 否 | 端口扫描起点。范围 1-65535,越界或非整数退出码 2。从该端口向上逐个 bind 检查,遇占用则尝试下一个,选出第一个可用端口供 SocketServer 监听;若从起点到 65535 全被占用则退出码 2。 |
 | `-s / --simtalkclaudefile` | path | 无 | **是** | `SimtalkClaude.pslib` 绝对/相对路径(argparse `required=True`)。脚本会用 `basis.loadObjectAs("<path>","", true, false)` 注入。缺失触发 argparse 报错 + 退出码 2;路径不存在退出码 4。 |
 | `--no-visible` | flag | `visible=True` | 否 | 关闭 PS GUI 窗口(`SetVisible(False)`)。CI / 无人值守场景用。 |
 | `--allow-message-box` | flag | `no_message_box=True` | 否 | 关闭 `SetNoMessageBox`(允许模型加载失败时弹窗出现)。排查期用。 |
@@ -32,7 +32,7 @@ python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simul
 | 退出码 | 含义 | 触发条件 |
 |---|---|---|
 | **0** | 成功 | COM Dispatch + LoadModel + 注入 + 改端口 全部成功;若传 `--wait-ready`,socket 也连上了(或未传 `--wait-ready`)。 |
-| **2** | 参数错 / 端口错 | `--port` 非整数(argparse 层);或 `--port` 不在 1-65535;或 `--simtalkclaudefile` 未传(argparse `required=True`)。 |
+| **2** | 参数错 / 端口错 | `--port` 非整数(argparse 层);或 `--port` 不在 1-65535;或起点到 65535 均无可用端口;或 `--simtalkclaudefile` 未传(argparse `required=True`)。 |
 | **3** | COM 错 / socket readiness 失败 | `pywintypes.com_error`(详细 HRESULT 与 hint 见 `lifelines.md`);或 `--wait-ready` 超时;或 socket 轮询遇 `OSError`。 |
 | **4** | 文件不存在 | `--model` 路径找不到;或 `--simtalkclaudefile` 路径找不到。 |
 | **5** | 其它未捕获异常 | 兜底;bug 报告时附 stderr。 |
@@ -42,7 +42,7 @@ python3 skills/local-window-com-start-plant-simulation/scripts/start_plant_simul
 **stdout**(成功时):
 
 ```
-Plant Simulation launched, model loaded, socket port set to <port>.
+Plant Simulation launched, model loaded, socket port set to <actual-port>.
 Plant Simulation PID: [<pid1>, <pid2>, ...]    # 仅 --print-pid 时
 ```
 
@@ -58,7 +58,7 @@ Plant Simulation PID: [<pid1>, <pid2>, ...]    # 仅 --print-pid 时
 
 **stderr**(失败时,退出码 2/3/4/5):
 
-- 退出码 2:`Error: Port must be in 1..65535, got <port>` 或 argparse `invalid int value: '<port>'`。
+- 退出码 2:`Error: Port must be in 1..65535, got <port>`、`Error: No available TCP port at or above <port> (maximum is 65535)` 或 argparse `invalid int value: '<port>'`。
 - 退出码 3:`COMError: <msg> (hresult=0xHHHHHHHH)` 后跟 hint;或 `Error: socket readiness check failed: <msg>`。
 - 退出码 4:`Error: Model file not found: <abs path>` 或 `Error: SimtalkClaude library not found: <abs path>`。
 - 退出码 5:`Error: <exception text>`(兜底)。

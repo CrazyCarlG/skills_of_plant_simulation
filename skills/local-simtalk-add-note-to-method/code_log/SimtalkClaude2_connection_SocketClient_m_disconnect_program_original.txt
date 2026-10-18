@@ -1,2 +1,0 @@
-MySocket.On := false
-print "Disconnect"

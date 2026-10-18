@@ -1,4 +1,0 @@
-param jsondata:json
-
-var msgStr: string := jsondata.asString(false) + "||END||"
-var success: boolean := MySocket.write(0,msgStr)

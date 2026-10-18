@@ -8,7 +8,7 @@ Required:
     -s, --simtalkclaudefile PATH     Path to the SimtalkClaude .pslib injected via basis.loadObjectAs
 
 Optional:
-    -p, --port N                     TCP port for SimtalkClaude SocketServer (default: 50007, range 1-65535)
+	-p, --port N                     Starting TCP port for SimtalkClaude SocketServer (default: 50007; scans upward)
     --wait-ready SECONDS             After loading, poll 127.0.0.1:port until TCP connect succeeds or timeout (default: 0 = skip)
     --print-pid                      After loading, look up Plant Simulation.exe PIDs via tasklist and print them
     --no-visible                     Run Plant Simulation without showing the main window (default: visible)
@@ -70,12 +70,12 @@ def start_plant_simulation(
 	no_message_box: bool = True,
 	port: int = 50007,
 	wait_ready: int = 0,
-) -> None:
+) -> int:
 	"""Start PS, load model, inject SimtalkClaude, set port.
 
 	Raises:
 		RuntimeError: pywin32 not installed.
-		ValueError: port out of range.
+		ValueError: port out of range or no free port remains.
 		FileNotFoundError: model or simtalkclaudefile missing.
 		pywintypes.com_error: COM dispatch / model load / SimTalk execution failed.
 		TimeoutError: --wait-ready polling did not see a listener in time.
@@ -85,6 +85,7 @@ def start_plant_simulation(
 		raise RuntimeError("pywin32 (win32com) is required. Install with 'pip install pywin32'.")
 	if not (1 <= port <= 65535):
 		raise ValueError(f"Port must be in 1..65535, got {port}")
+	port = find_available_port(port)
 
 	model_path = os.path.abspath(model_path)
 	if not os.path.isfile(model_path):
@@ -111,6 +112,19 @@ def start_plant_simulation(
 
 	if wait_ready > 0:
 		wait_for_socket("127.0.0.1", port, wait_ready)
+	return port
+
+
+def find_available_port(start_port: int) -> int:
+	"""Return the first bindable TCP port at or above start_port."""
+	for candidate in range(start_port, 65536):
+		try:
+			with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as probe:
+				probe.bind(("0.0.0.0", candidate))
+			return candidate
+		except OSError:
+			print(f"Port {candidate} is occupied; trying {candidate + 1}.", file=sys.stderr)
+	raise ValueError(f"No available TCP port at or above {start_port} (maximum is 65535)")
 
 
 def wait_for_socket(host: str, port: int, timeout: int) -> None:
@@ -191,7 +205,7 @@ def _parse_args() -> argparse.Namespace:
 	p.add_argument("--no-visible", dest="visible", action="store_false", help="Do not show the Plant Simulation window")
 	p.add_argument("--allow-message-box", dest="no_message_box", action="store_false", help="Allow message boxes (disable SetNoMessageBox)")
 	p.add_argument("-s", "--simtalkclaudefile", required=True, help="Path to a SimtalkClaude .pslib to inject via basis.loadObjectAs before changing the port (required)")
-	p.add_argument("-p", "--port", type=int, default=50007, help="TCP port for SimtalkClaude SocketServer (default: 50007, range 1-65535)")
+	p.add_argument("-p", "--port", type=int, default=50007, help="Starting TCP port; scan upward for the first available port (default: 50007)")
 	p.add_argument("--wait-ready", type=int, default=0, metavar="SECONDS", help="After loading, poll 127.0.0.1:port until TCP connect succeeds or timeout (default: 0 = skip)")
 	p.add_argument("--print-pid", dest="print_pid", action="store_true", help="After loading, look up Plant Simulation.exe PIDs via tasklist and print them on stdout")
 	return p.parse_args()
@@ -201,7 +215,7 @@ def main() -> int:
 	args = _parse_args()
 
 	try:
-		start_plant_simulation(
+		actual_port = start_plant_simulation(
 			args.model,
 			args.simtalkclaudefile,
 			visible=args.visible,
@@ -224,7 +238,7 @@ def main() -> int:
 		print(f"Error: {exc}", file=sys.stderr)
 		return EXIT_OTHER
 
-	print(f"Plant Simulation launched, model loaded, socket port set to {args.port}.")
+	print(f"Plant Simulation launched, model loaded, socket port set to {actual_port}.")
 	if args.print_pid:
 		pids = get_ps_pids_via_tasklist()
 		if pids:

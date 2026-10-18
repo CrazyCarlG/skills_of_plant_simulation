@@ -1,8 +1,0 @@
-
-=== .MaterialFlow.Sorter.Pause (None) ===
-  2026-08-26 13:29:22: execute sim-code: 'var obj: object := s......'
-  2026-08-26 13:29:22: ###MARKER###
-  2026-08-26 13:32:40: execute sim-code: 'var obj: object := s......'
-  2026-08-26 13:32:40: ###MARKER###
-  2026-08-26 13:32:40: Pause: false
-  2026-08-26 13:32:40:

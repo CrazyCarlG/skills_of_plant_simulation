@@ -5,7 +5,7 @@ description: 在本机 Windows 通过 COM `Tecnomatix.PlantSimulation.RemoteCont
 
 # local-window-com-start-plant-simulation
 
-把一台本机 Windows 上的 Plant Simulation 2606 进程通过 COM 拉起来:加载一个用户给定的 `.spp` 模型,把用户指定的 `SimtalkClaude.pslib` 用 `basis.loadObjectAs` 注入,然后把 `.SimtalkClaude.Main.SocketServer.mysocket.port` 设到指定端口。脚本不落盘任何 PS console log;console 输出由 PS GUI / 用户自行决定怎么收。
+把一台本机 Windows 上的 Plant Simulation 2606 进程通过 COM 拉起来:加载一个用户给定的 `.spp` 模型,把用户指定的 `SimtalkClaude.pslib` 用 `basis.loadObjectAs` 注入,然后从默认端口 `50007`(或用户指定的起始端口)开始,逐个尝试直到找到空闲 TCP 端口并配置 SocketServer。脚本不落盘任何 PS console log;console 输出由 PS GUI / 用户自行决定怎么收。
 
 > 本技能**只负责把 PS 进程 + SimtalkClaude socket 准备好**。不执行任何业务 SimTalk、不解析模型结构、不维护 socket 连接、不重试 COM 错误——这些属于下游技能(`local-simtalk-execution` / `local-simtalk-write-simtalk` 等)或调用方 agent。
 
@@ -15,7 +15,7 @@ description: 在本机 Windows 通过 COM `Tecnomatix.PlantSimulation.RemoteCont
 
 ### ✅ 命中(以下任一信号 → 调本技能)
 
-1. **用户给了 `.spp` 路径 + 一个 TCP 端口**(或默认 50007),且要求"起来" / "加载" / "准备好"。例:"用 UR10.spp 把 PS 起来,50007 端口"。
+1. **用户给了 `.spp` 路径**(+ 可选起始端口,默认 50007),且要求"起来" / "加载" / "准备好"。例:"用 UR10.spp 把 PS 起来,端口从 50007 开始"。
 2. **用户要做的事依赖于 PS 在某个端口监听**,但 PS 还没起。例:"先起 PS,我后面要发 TCP 命令"。
 3. **用户要做的事属于 PS 业务 SimTalk**(查询/修改模型),且没说 PS 已起。例:"帮我查 UR10 里 Buffer 的当前 MU 数"。
 4. **下游技能(`local-simtalk-execution` / `local-simtalk-write-simtalk` 等)的前提没满足**——不管用户原话是什么,只要依赖项是 PS socket 就先调本技能。
@@ -49,15 +49,15 @@ description: 在本机 Windows 通过 COM `Tecnomatix.PlantSimulation.RemoteCont
 ## 任务流程 / Workflow
 
 1. 校验 `--model` 路径存在(脚本内 `FileNotFoundError` → 退出码 4)。
-2. 校验 `--port` 是 1-65535 整数(`type=int` + `ValueError` → 退出码 2)。
+2. 校验 `--port` 是 1-65535 整数(`type=int` + `ValueError` → 退出码 2),并从该端口起向上扫描第一个可绑定端口(默认起点 50007)。
 3. 校验 `--simtalkclaudefile` 路径存在(argparse `required=True` + 脚本内 `FileNotFoundError` → 退出码 2 / 4)。
 4. `Dispatch("Tecnomatix.PlantSimulation.RemoteControl.26.6")`,按需 `SetVisible` / `SetNoMessageBox`。
 5. `LoadModel(<model>)` + `SetTrustModels(True)`。
 6. `ExecuteSimTalk('basis.loadObjectAs("<path>","", true, false)')`(注入 SimtalkClaude 库)。
-7. `ExecuteSimTalk('.SimtalkClaude.Main.SocketServer.mysocket.port:=<port>')`。
+7. 把找到的第一个可用端口配置到 `.SimtalkClaude.Main.SocketServer.mysocket.port`。
 8. (可选 `--wait-ready`) TCP 轮询 `127.0.0.1:<port>` 直到连上或超时,详见 `references/cli-args.md`。
 9. (可选 `--print-pid`) `tasklist` 查 `Plant Simulation.exe` PID 打到 stdout,详见 `references/cli-args.md`。
-10. 打印成功消息,退出码 0。
+10. 打印成功消息和实际选中的端口,退出码 0。默认从 50007 向上扫描;端口被占用时依次尝试下一个端口,直到找到可用端口或耗尽 65535。
 
 ## 关键文件 / Key Files
 
