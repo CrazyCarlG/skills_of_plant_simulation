@@ -68,6 +68,13 @@ powershell -NoProfile -Command ^
 set /p HTTP=<"%TEMP%\copilot_check.txt"
 del "%TEMP%\copilot_check.txt" 2>nul
 if "%HTTP%"=="200" goto :ready
+<nul set /p "=."
+set /a STATUS_REMAINDER=TRIES %% 5
+if %STATUS_REMAINDER% EQU 0 (
+    echo.
+    echo [CoPilot] Still starting (check %TRIES%/60). Model/index loading or MCP connection may take time.
+    echo           Log: %LOG%
+)
 goto :wait_loop
 
 :ready
