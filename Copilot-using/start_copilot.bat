@@ -47,7 +47,7 @@ del "%TEMP%\copilot_check.txt" 2>nul
 REM --- launch (pythonw = no console window; correct entry point = uvicorn) ---
 echo [CoPilot] Starting service (port %PORT%)...
 cd /d "%COPILOT_DIR%"
-start "CoPilot Service" /B "" "%COPILOT_DIR%\python-3.14.5-embed\pythonw.exe" -m uvicorn copilot_service:app --host 127.0.0.1 --port %PORT% > "%LOG%" 2>&1
+start "CoPilot Service" /B "%COPILOT_DIR%\python-3.14.5-embed\pythonw.exe" -m uvicorn copilot_service:app --host 127.0.0.1 --port %PORT% > "%LOG%" 2>&1
 
 REM --- wait for service to bind (RAG indices + embedding model take 5-15s on first run) ---
 echo [CoPilot] Waiting for service to become ready...

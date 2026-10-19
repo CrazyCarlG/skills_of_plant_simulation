@@ -1,73 +1,75 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-"""
-simtalk_send.py — ping 专用：连通性检查。
-
-仅暴露 ping 子命令。其它动词用对应技能：
-  ping    -> 本技能
-  syntax  -> local-simtalk-checksyntax
-  run     -> local-simtalk-runsimtalk
-  readlog -> local-simtalk-readlog
-
-退出码：
-  0  ping 成功（type=="ping" AND result=="success"）
-  1  socket 超时
-  2  cannot connect
-  3  连接中途断开 / 回包非 JSON
-  10 ping 未成功（回包合法但 result≠success）
-
-参考：references/lifelines.md §1-3 / §6 / §9
-"""
+# simtalk_send.py：发送 ping 帧并接收响应。
+# 使用方法（在仓库根目录运行）：
+# 可选连接参数：--host（默认 127.0.0.1）、--port（默认 50007）、--timeout（默认 30 秒）。
+# 示例：python skills/local-simtalk-ping/scripts/simtalk_send.py --host 127.0.0.1 --port 50007 --timeout 10
 
 import argparse
 import json
-import os
-import subprocess
+import socket
 import sys
 import uuid
 
-SOCKET_CLIENT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "socket_client.py")
 END_DELIM = "||END||"
-DEFAULT_HOST = "host.docker.internal"
+DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 50007
 DEFAULT_TIMEOUT = 30.0
 
 
-def _run_socket_client(host, port, timeout, json_payload):
-    payload = json.dumps(json_payload, ensure_ascii=False) + END_DELIM
-    cmd = [
-        sys.executable, SOCKET_CLIENT_PATH,
-        "--host", host,
-        "--port", str(port),
-        "--timeout", str(timeout),
-        "--data", payload,
-        "--resp-mode", "delimiter",
-        "--resp-delimiter", END_DELIM,
-    ]
+def _send_and_recv(host, port, timeout, payload_json):
+    """Send one request and receive its delimiter-terminated reply."""
+    data = (json.dumps(payload_json, ensure_ascii=False) + END_DELIM).encode("utf-8")
+    delimiter = END_DELIM.encode("utf-8")
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(timeout)
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 5.0)
-    except subprocess.TimeoutExpired:
-        return 1, "TIMEOUT: socket_client.py 子进程超时"
-    reply = proc.stdout.rstrip("\n")
-    if reply.endswith(END_DELIM):
-        reply = reply[: -len(END_DELIM)]
-    return proc.returncode, reply
+        sock.connect((host, port))
+    except (socket.timeout, ConnectionRefusedError, OSError) as exc:
+        sock.close()
+        return 2, f"ERR: cannot connect to {host}:{port} -> {exc}"
+
+    try:
+        sock.sendall(data)
+        buffer = bytearray()
+        while delimiter not in buffer:
+            chunk = sock.recv(4096)
+            if not chunk:
+                break
+            buffer.extend(chunk)
+        reply = buffer.decode("utf-8", errors="replace")
+        if reply.endswith(END_DELIM):
+            reply = reply[:-len(END_DELIM)]
+        return 0, reply
+    except socket.timeout:
+        return 1, f"TIMEOUT: no reply within {timeout}s"
+    except OSError as exc:
+        return 3, f"ERR: connection closed before reply -> {exc}"
+    finally:
+        try:
+            sock.shutdown(socket.SHUT_RDWR)
+        except OSError:
+            pass
+        sock.close()
 
 
 def cmd_ping(args):
-    payload = {"type": "ping", "timestamp": uuid.uuid4().hex}
-    code, reply = _run_socket_client(args.host, args.port, args.timeout, payload)
+    payload = {
+        "type": "ping",
+        "action_id": uuid.uuid4().hex,
+    }
+    code, reply = _send_and_recv(args.host, args.port, args.timeout, payload)
     print(reply)
     if code != 0:
         return code
+
     try:
         resp = json.loads(reply)
     except json.JSONDecodeError:
-        print("ERR: 服务端回包不是合法 JSON", file=sys.stderr)
         return 3
+
     if resp.get("type") == "ping" and resp.get("result") == "success":
         return 0
-    print(f"ERR: ping 未成功 (回包: {resp})", file=sys.stderr)
     return 10
 
 
@@ -80,7 +82,7 @@ def main():
             pass
 
     parser = argparse.ArgumentParser(
-        description="Plant Simulation ping — 通过 TCP 检查 SocketServer 是否可达。",
+        description="Plant Simulation ping — 检查 SocketServer 是否可达。",
     )
     parser.add_argument("--host", default=DEFAULT_HOST,
                         help=f"Server host (default: {DEFAULT_HOST})")

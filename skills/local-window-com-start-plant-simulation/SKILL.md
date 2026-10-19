@@ -55,13 +55,15 @@ description: 在本机 Windows 通过 COM `Tecnomatix.PlantSimulation.RemoteCont
 5. `LoadModel(<model>)` + `SetTrustModels(True)`。
 6. `ExecuteSimTalk('basis.loadObjectAs("<path>","", true, false)')`(注入 SimtalkClaude 库)。
 7. 把找到的第一个可用端口配置到 `.SimtalkClaude.Main.SocketServer.mysocket.port`。
-8. (可选 `--wait-ready`) TCP 轮询 `127.0.0.1:<port>` 直到连上或超时,详见 `references/cli-args.md`。
-9. (可选 `--print-pid`) `tasklist` 查 `Plant Simulation.exe` PID 打到 stdout,详见 `references/cli-args.md`。
-10. 打印成功消息和实际选中的端口,退出码 0。默认从 50007 向上扫描;端口被占用时依次尝试下一个端口,直到找到可用端口或耗尽 65535。
+8. (可选 `--print-pid`) `tasklist` 查 `Plant Simulation.exe` PID 打到 stdout,详见 `references/cli-args.md`。
+9. 打印成功消息和实际选中的端口,退出码 0。默认从 50007 向上扫描;端口被占用时依次尝试下一个端口,直到找到可用端口或耗尽 65535。
+
+> 本技能成功退出只表示 **COM + 注入 + 改端口** 三步通过,**不**验证 SimtalkClaude socket 已可连。
+> 调用方应紧跟一步 `local-simtalk-ping`(发协议级 `{type:"ping"}`),拿到 `result:success` 才视为真正可用。
 
 ## 关键文件 / Key Files
 
-- `scripts/start_plant_simulation.py` — 本技能唯一脚本(启动 + 注入 + 改端口 + 可选探活 + 可选 PID 查询)。
+- `scripts/start_plant_simulation.py` — 本技能唯一脚本(启动 + 注入 + 改端口 + 可选 PID 查询)。
 - `examples/launch-and-probe.md` — 完整 e2e 示例:本脚本启动 + 下游 `local-simtalk-execution` 的 ping 探针。
 - `examples/smoke-test.md` — 仅本脚本的最小冒烟流程(不含下游 ping),用于快速验证环境。
 - `references/cli-args.md` — 所有 CLI flag + 退出码详解。
@@ -78,6 +80,6 @@ description: 在本机 Windows 通过 COM `Tecnomatix.PlantSimulation.RemoteCont
 | 退出码 4 + `SimtalkClaude library not found` | `--simtalkclaudefile` 路径不对 | 同上 |
 | 退出码 2 + 缺 `--simtalkclaudefile` | argparse 强制要求未传 | 传 `<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib` 路径 |
 | 退出码 2 + `Port must be in 1..65535` | `--port` 越界 | 传 1-65535 整数 |
-| 退出码 3 + `socket readiness check failed` | `--wait-ready` 超时 | 见 `references/lifelines.md` §1 + §4 |
+| 退出码 0 但 `local-simtalk-ping` 失败 | COM 链路 OK 但 SimtalkClaude 没真起来 | 检查 PS GUI / console;确认 `--simtalkclaudefile` 没拼错路径 |
 | 模型加载报错但 SetNoMessageBox 把弹窗吞了 | 关了消息框 | 排查期传 `--allow-message-box` 看弹窗 |
 | 退出码 3 + 提示`taskkill` | 多个 PS 实例并存(详见 `lifelines.md` §2) | 关掉旧实例,只留一个 |

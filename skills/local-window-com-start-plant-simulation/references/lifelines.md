@@ -14,15 +14,15 @@
 `.pslib` 注入失败或路径错误,`ExecuteSimTalk` 会以 0x80020009(`DISP_E_EXCEPTION`)
 抛出,脚本退出码 3(由 `_handle_com_error` 处理)。
 
-**这意味着 `--wait-ready` 不能完全兜底**:`socket.create_connection` 只看
-"该端口有没有东西在 listen",若有别的进程意外占了这个端口,TCP 层会 connect
-成功,脚本会**误报 socket ready**。
+**这意味着仅靠退出码 0 是不够的**:本脚本只验证 COM 链路 + `loadObjectAs` +
+改端口 SimTalk 都跑通,**不**验证 SimtalkClaude 真起来。若端口被其它进程意外
+占了,启动脚本照常退出 0,但下游 socket 全打到一个错误的服务上。
 
 **规避:**
 
 1. 启动前确认端口空闲:`netstat -ano | findstr :<port>`(Windows)。
-2. 启动后用下游 `local-simtalk-execution/scripts/socket_client.py ping` 做协议层
-   验证(详见 `skills/local-simtalk-execution/SKILL.md`)。
+2. 启动后跑 `local-simtalk-ping` 做协议层验证(`{"type":"ping"}` → `result:success`),
+   拿到合法回包才视为真可用。
 3. `--simtalkclaudefile` 必传:`<仓库根>/04-simtalkclaude-client/SimtalkClaude.pslib`。
 
 ## 2. COM 单例 — 同时只能有一个 PS 2606 实例
@@ -56,22 +56,7 @@ COM 单例。若已经有 Plant Simulation 2606 在跑,Dispatch 会拿到同一�
 
 **规避**:始终传绝对路径。
 
-## 5. `--wait-ready` 的协议层盲区
-
-`wait_for_socket()` 用 `socket.create_connection((host, port), timeout=1)`
-做 TCP 层连接测试。它**不**验证:
-
-- 监听者是 PS / SimtalkClaude 还是别的程序。
-- 监听者已 accept 完成(只验证 SYN/ACK)。
-- 服务端协议是否真的就绪(它可能正在 init / bind)。
-
-**对绝大多数场景够用**,但**不**能替代下游 `local-simtalk-execution` 的
-`socket_client.py ping`(那才是协议层验证)。
-
-**典型误报场景**:端口被 OS 自己占了(罕见);或同时跑两个 PS 实例,后者覆盖了
-前者的 socket。
-
-## 6. `pywintypes` 不可用 ≠ 脚本不可用
+## 5. `pywintypes` 不可用 ≠ 脚本不可用
 
 `from pywintypes import com_error` 在没装 pywin32 时会 `ImportError`。脚本
 设计成:`win32com` / `pywintypes` 都 import 失败时,把两个都置 `None`,只
