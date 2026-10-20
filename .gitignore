@@ -1,0 +1,9 @@
+# Local CoPilot runtime bundle (embedded Python 3.14.5 + RAG embedding models).
+# ~1.6 GB, contains a >100 MB model weight and a >300 MB torch DLL that GitHub
+# refuses to accept. Kept local; the installed copy under
+# C:\ProgramFiles\Siemens\TecnomatixPlantSimulation2606\Copilot is the runtime.
+Copilot/
+
+# Python bytecode
+__pycache__/
+*.pyc
