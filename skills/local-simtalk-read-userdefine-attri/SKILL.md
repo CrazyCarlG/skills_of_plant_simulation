@@ -10,10 +10,12 @@ description: 通过 TCP 读取 Plant Simulation 指定对象的自定义属性�
 ## 使用
 
 ```bash
-python3 skills/local-simtalk-read-userdefine-attri/scripts/simtalk_readuserdefine.py --target "Models.Object"
+python3 skills/local-simtalk-read-userdefine-attri/scripts/simtalk_readuserdefine.py --target ".Models.Model.Source"
 ```
 
-`--target` 必填，使用 Plant Simulation 对象路径。可选参数：`--host`（默认 `127.0.0.1`）、`--port`（默认 `50007`）、`--timeout`（默认 `30` 秒）。WSL2 等环境可按需传入可访问 Plant Simulation 主机的地址。
+`--target` 必填，使用 Plant Simulation **绝对对象路径，必须带前导点**（例：`.Models.Model.Source`）。
+少了前导点会回 `<path> not exists!`（退出码 `10`）。
+可选参数：`--host`（默认 `127.0.0.1`）、`--port`（默认 `50007`）、`--timeout`（默认 `30` 秒）。WSL2 等环境可按需传入可访问 Plant Simulation 主机的地址。
 
 ## 退出码
 

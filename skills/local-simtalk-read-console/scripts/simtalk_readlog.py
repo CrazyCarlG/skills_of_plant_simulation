@@ -95,7 +95,9 @@ def cmd_readlog(args):
     except json.JSONDecodeError:
         return 20
 
-    if resp.get("result") == "success":
+    # 服务端对 readlog 把内容放在 log 字段，result 恒为空串——
+    # 所以不能只认 result == "success"，否则成功的读取会被判成失败。
+    if resp.get("result") == "success" or "log" in resp:
         return 20
     return 10
 

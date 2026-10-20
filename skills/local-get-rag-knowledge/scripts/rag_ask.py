@@ -38,11 +38,13 @@ try:
 except Exception:
     pass
 
-ASK_COPILOT_PATH = Path(
-    r"C:\Users\z004bjuu\Documents\skills_of_plant_simulation\Copilot-using\ask_copilot.py"
-)
-SIMTALK_SKILLS_PATH = Path(__file__).resolve().parents[3] / "skills"
+REPO_ROOT = Path(__file__).resolve().parents[3]
+ASK_COPILOT_PATH = REPO_ROOT / "Copilot-using" / "ask_copilot.py"
+SIMTALK_SKILLS_PATH = REPO_ROOT / "skills"
 MAX_CONTEXT_CHARS = 12000
+
+sys.path.insert(0, str(REPO_ROOT / "Copilot-using"))
+from copilot_config import get as _config_get  # noqa: E402
 
 
 def _run_simtalk_script(script: Path) -> tuple[int | None, str]:
@@ -165,13 +167,16 @@ def health() -> dict:
     try:
         h = mod._http_get_json(f"{mod.BASE}/health", timeout=3)
     except Exception as e:
+        copilot_dir = _config_get("COPILOT_DIR")
+        copilot_python = _config_get("COPILOT_PYTHON")
         raise SystemExit(
             f"[error] Cannot reach CoPilot at {mod.BASE}: {e}\n"
             f"        Start it by double-clicking:\n"
             f"          {ASK_COPILOT_PATH.parent}\\start_copilot.bat\n"
             f"        Or manually:\n"
-            f"          cd C:\\ProgramFiles\\Siemens\\TecnomatixPlantSimulation2606\\Copilot\n"
-            f"          python-3.14.5-embed\\pythonw.exe -m uvicorn copilot_service:app --port 8002"
+            f"          cd {copilot_dir}\n"
+            f"          {copilot_python} -m uvicorn {_config_get('COPILOT_SERVICE')}"
+            f" --port {_config_get('COPILOT_PORT')}"
         )
     if not h.get("agent_ready"):
         raise SystemExit(

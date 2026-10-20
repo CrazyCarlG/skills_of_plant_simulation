@@ -1,22 +1,26 @@
 """
 Simple Plant Simulation CoPilot client.
 
-向本地 CoPilot 服务（http://localhost:8002）发送问题并打印答案。
+向本地 CoPilot 服务发送问题并打印答案。
 仅使用标准库（urllib），无需 pip install 任何东西。
+
+主机/端口/安装目录来自仓库根目录的 config/local.properties。
 
 用法:
     python ask_copilot.py "如何用 SimTalk 创建一个 Buffer?"
     python ask_copilot.py                         # 交互输入
 
 启动 CoPilot 服务（独立运行，不需要 PS 窗口）:
-    "C:\\ProgramFiles\\Siemens\\TecnomatixPlantSimulation2606\\Copilot\\
-        python-3.14.5-embed\\python.exe" -m uvicorn copilot_service:app ^
-        --host 127.0.0.1 --port 8002
+    双击 Copilot-using\\start_copilot.bat
 """
 import json
 import sys
 import urllib.request
 import urllib.error
+from pathlib import Path
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from copilot_config import get as _config_get
 
 # Force UTF-8 stdout so non-ASCII characters (→ ✓ etc.) print on Windows
 try:
@@ -24,7 +28,9 @@ try:
 except Exception:
     pass
 
-BASE = "http://localhost:8002"
+COPILOT_HOST = _config_get("COPILOT_HOST")
+COPILOT_PORT = _config_get("COPILOT_PORT")
+BASE = f"http://{COPILOT_HOST}:{COPILOT_PORT}"
 
 
 def _http_post_json(url: str, body: dict, timeout: float = 10.0) -> dict:
@@ -52,7 +58,7 @@ def ask(question: str) -> dict:
     except (urllib.error.URLError, ConnectionError) as e:
         raise SystemExit(
             f"[error] 连不上 CoPilot 服务 ({BASE}): {e}\n"
-            f"        请先启动: python -m uvicorn copilot_service:app --port 8002"
+            f"        请先启动: Copilot-using\\start_copilot.bat"
         )
     if not h.get("agent_ready"):
         raise SystemExit(

@@ -11,22 +11,21 @@ description: 通过 TCP 向 Plant Simulation 拉取 GUI Console 输出与日志�
 
 ```bash
 # 默认 host/port（WSL2 → PS 主机：host.docker.internal:50007）
-python3 skills/local-simtalk-readlog/scripts/simtalk_readlog.py
+python3 skills/local-simtalk-read-console/scripts/simtalk_readlog.py
 
 # 显式参数
-python3 skills/local-simtalk-readlog/scripts/simtalk_readlog.py --host 127.0.0.1 --port 50007 --timeout 10
+python3 skills/local-simtalk-read-console/scripts/simtalk_readlog.py --host 127.0.0.1 --port 50007 --timeout 10
 ```
 
 ## 退出码
 
 | 退出码 | 含义 |
 |---|---|
-| `0` | 拉取成功（但内容不可信） |
-| `20` | 已收到回包（`result == "success"` 或回包非 JSON）——**stdout 仍可用，不要丢弃** |
-| `10` | `result ≠ success` |
+| `20` | 已收到回包（`result == "success"` 或回包里带 `log` 字段）——**stdout 仍可用，不要丢弃** |
+| `10` | 回包合法但既没有 `log` 也没有 `result == "success"` |
 | `1` | socket 超时 |
 | `2` | cannot connect |
-| `3` | 连接中途断开 / 回包非 JSON |
+| `3` | 连接中途断开 |
 
 ## 默认连接
 

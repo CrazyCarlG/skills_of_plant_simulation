@@ -2,14 +2,21 @@
 REM ============================================================
 REM  Stop Plant Simulation CoPilot service.
 REM  Tries /shutdown first; falls back to killing pythonw.exe.
+REM
+REM  Paths come from ..\config\local.properties
 REM ============================================================
 
 setlocal
-set "PORT=8002"
 
-echo [CoPilot] Requesting graceful shutdown on port %PORT%...
+call "%~dp0..\config\load_paths.cmd"
+if errorlevel 1 (
+    pause
+    exit /b 1
+)
+
+echo [CoPilot] Requesting graceful shutdown on port %COPILOT_PORT%...
 powershell -NoProfile -Command ^
-    "try { (Invoke-WebRequest -UseBasicParsing -TimeoutSec 3 -Method POST http://localhost:%PORT%/shutdown).Content } catch { 'FALLBACK' }" ^
+    "try { (Invoke-WebRequest -UseBasicParsing -TimeoutSec 3 -Method POST http://%COPILOT_HOST%:%COPILOT_PORT%/shutdown).Content } catch { 'FALLBACK' }" ^
     > "%TEMP%\copilot_stop.txt" 2>nul
 set /p RESULT=<"%TEMP%\copilot_stop.txt"
 
@@ -27,7 +34,7 @@ taskkill /F /IM pythonw.exe > nul 2>&1
 :verify
 del "%TEMP%\copilot_stop.txt" 2>nul
 powershell -NoProfile -Command ^
-    "try { (Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 http://localhost:%PORT%/health).StatusCode } catch { 0 }" ^
+    "try { (Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 http://%COPILOT_HOST%:%COPILOT_PORT%/health).StatusCode } catch { 0 }" ^
     > "%TEMP%\copilot_check.txt" 2>nul
 set /p HTTP=<"%TEMP%\copilot_check.txt"
 del "%TEMP%\copilot_check.txt" 2>nul

@@ -11,13 +11,14 @@ description: 通过 TCP 读取 Plant Simulation 中指定 Method 对象的 progr
 
 ```bash
 # 默认 host/port（WSL2 → PS 主机：host.docker.internal:50007）
-python3 skills/local-simtalk-read-program/scripts/simtalk_readprogram.py --methodpath "Models.Model.init"
+python3 skills/local-simtalk-read-program/scripts/simtalk_readprogram.py --methodpath ".Models.Model.Method2"
 
 # 显式参数
-python3 skills/local-simtalk-read-program/scripts/simtalk_readprogram.py --methodpath "Models.Model.init" --host 127.0.0.1 --port 50007 --timeout 30
+python3 skills/local-simtalk-read-program/scripts/simtalk_readprogram.py --methodpath ".Models.Model.Method2" --host 127.0.0.1 --port 50007 --timeout 30
 ```
 
-`--methodpath` 必填（点分路径，例：`Models.Model.init`）。
+`--methodpath` 必填（**绝对对象路径，必须带前导点**，例：`.Models.Model.Method2`）。
+少了前导点会回 `invalid path，or target is not a Method`（退出码 `10`）。
 
 ## 退出码
 

@@ -21,37 +21,48 @@ simtalk_send.py — simtalk_syntax 专用：仅做 SimTalk 语法/编译检查�
 
 import argparse
 import json
-import os
-import subprocess
+import socket
 import sys
 import uuid
 
-SOCKET_CLIENT_PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "socket_client.py")
 END_DELIM = "||END||"
-DEFAULT_HOST = "host.docker.internal"
+DEFAULT_HOST = "127.0.0.1"
 DEFAULT_PORT = 50007
 DEFAULT_TIMEOUT = 30.0
 
 
-def _run_socket_client(host, port, timeout, json_payload):
-    payload = json.dumps(json_payload, ensure_ascii=False) + END_DELIM
-    cmd = [
-        sys.executable, SOCKET_CLIENT_PATH,
-        "--host", host,
-        "--port", str(port),
-        "--timeout", str(timeout),
-        "--data", payload,
-        "--resp-mode", "delimiter",
-        "--resp-delimiter", END_DELIM,
-    ]
+def _send_and_recv(host, port, timeout, payload_json):
+    """TCP 往返一次。返回 (exit_code, reply_text)。"""
+    data = (json.dumps(payload_json, ensure_ascii=False) + END_DELIM).encode("utf-8")
+    delim = END_DELIM.encode("utf-8")
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(timeout)
     try:
-        proc = subprocess.run(cmd, capture_output=True, text=True, timeout=timeout + 5.0)
-    except subprocess.TimeoutExpired:
-        return 1, "TIMEOUT: socket_client.py 子进程超时"
-    reply = proc.stdout.rstrip("\n")
-    if reply.endswith(END_DELIM):
-        reply = reply[: -len(END_DELIM)]
-    return proc.returncode, reply
+        sock.connect((host, port))
+    except (socket.timeout, ConnectionRefusedError, OSError) as e:
+        return 2, f"ERR: cannot connect to {host}:{port} -> {e}"
+    try:
+        sock.sendall(data)
+        buf = bytearray()
+        while delim not in buf:
+            chunk = sock.recv(4096)
+            if not chunk:
+                break
+            buf.extend(chunk)
+        reply = buf.decode("utf-8", errors="replace")
+        if reply.endswith(END_DELIM):
+            reply = reply[: -len(END_DELIM)]
+        return 0, reply
+    except socket.timeout:
+        return 1, f"TIMEOUT: no reply within {timeout}s"
+    except OSError as e:
+        return 3, f"ERR: connection closed before reply -> {e}"
+    finally:
+        try:
+            sock.shutdown(socket.SHUT_RDWR)
+        except OSError:
+            pass
+        sock.close()
 
 
 def cmd_syntax(args):
@@ -63,7 +74,7 @@ def cmd_syntax(args):
     if args.target_path:
         payload["target_path"] = args.target_path
 
-    code, reply = _run_socket_client(args.host, args.port, args.timeout, payload)
+    code, reply = _send_and_recv(args.host, args.port, args.timeout, payload)
     print(reply)
     if code != 0:
         # socket 层错误（连接拒/超时/协议错）——stderr 留痕，按"语法失败"处理

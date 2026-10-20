@@ -10,7 +10,7 @@ description: 通过 TCP 把 SimTalk 代码片段送进 Plant Simulation 真跑�
 ## Quick Start
 
 ```bash
-python3 skills/local-simtalk-runsimtalk/scripts/simtalk_send.py --timeout 30 'print("hello from SimTalk")'
+python3 skills/local-simtalk-runsimtalk/scripts/simtalk_runsimtalk.py --timeout 30 'print("hello from SimTalk")'
 ```
 
 ## 成功判据（双重检查，必读）

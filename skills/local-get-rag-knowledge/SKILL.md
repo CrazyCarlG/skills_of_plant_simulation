@@ -100,7 +100,7 @@ for c in result.get("citations", []):
 
 | 现象 | 可能原因 | 处理 |
 |---|---|---|
-| `[error] Cannot reach CoPilot at http://localhost:8002` | 服务没启动 | 双击 `Copilot-using/start_copilot.bat`；或 `cd C:\ProgramFiles\Siemens\TecnomatixPlantSimulation2606\Copilot && python-3.14.5-embed\pythonw.exe -m uvicorn copilot_service:app --port 8002` |
+| `[error] Cannot reach CoPilot at http://localhost:8002` | 服务没启动 | 双击 `Copilot-using/start_copilot.bat`（路径读自 `config/local.properties`）；或手动 `cd <COPILOT_DIR> && python-3.14.5-embed\pythonw.exe -m uvicorn copilot_service:app --port 8002` |
 | `[error] CoPilot agent not ready ...` | LLM 凭据缺失 | 配置 LLM API key（参考 Copilot 服务启动日志），重启服务 |
 | 答案很短 / 完全是泛泛而谈 | 文档索引未命中 | 换英文问法（CoPilot 内部以英文文档为主）；细化问题（加对象名 / 方法名） |
 | 长时间无响应（> 2 min） | LLM 推理慢 / 文档检索阻塞 | 调高 Agent 端 timeout；如必要，重启服务 |

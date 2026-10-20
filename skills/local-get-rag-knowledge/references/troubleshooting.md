@@ -48,7 +48,7 @@
 
 1. 去 CoPilot 服务目录查 `.env` / 配置文件：
    ```
-   C:\ProgramFiles\Siemens\TecnomatixPlantSimulation2606\Copilot\
+   <COPILOT_DIR>\        # 即 config/local.properties 里的 COPILOT_DIR
    ```
 2. 配置 LLM 凭据（具体字段名以目录里的 README / 配置模板为准）。
 3. 重启服务：`stop_copilot.bat` → `start_copilot.bat`。
@@ -91,7 +91,7 @@
 
 1. 直接看服务日志：
    ```
-   C:\ProgramFiles\Siemens\TecnomatixPlantSimulation2606\Copilot\logs\copilot.log
+   <COPILOT_DIR>\logs\copilot.log      # 见 config/local.properties
    ```
 2. 看到具体错误按错误信息走。
 3. 没明显错误 → 重启服务再试。

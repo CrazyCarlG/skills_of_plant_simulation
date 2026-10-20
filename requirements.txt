@@ -1,0 +1,21 @@
+# ============================================================
+#  本仓库自身 Python 脚本的依赖 / Dependencies for this repo's own scripts
+#
+#  安装 / install:
+#      python -m venv .venv
+#      .venv\Scripts\python -m pip install -r requirements.txt
+#
+#  说明 / notes:
+#    - 绝大部分脚本只用标准库（socket / json / urllib），
+#      不装任何东西也能跑。只有下面两处需要第三方包。
+#    - skills/ 下的所有 socket 脚本、Copilot-using/ask_copilot.py、
+#      Copilot-using/copilot_config.py 都只依赖标准库。
+# ============================================================
+
+# skills/local-window-com-start-plant-simulation/scripts/start_plant_simulation.py
+# 通过 COM 启动 Plant Simulation 2606。Windows 专用。
+pywin32>=306; sys_platform == "win32"
+
+# .openclaude/skills/skill-creator/scripts/quick_validate.py
+# 解析 SKILL.md 的 YAML frontmatter。仅在开发/校验技能时需要。
+PyYAML>=6.0

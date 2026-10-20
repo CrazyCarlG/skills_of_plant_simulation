@@ -4,28 +4,29 @@
 
 ## 1. 启动 CoPilot 服务
 
-服务监听 `127.0.0.1:8002`，没启动时所有调用都会 fail。
+服务监听 `127.0.0.1:8002`（地址与端口见 `config/local.properties` 的 `COPILOT_HOST` / `COPILOT_PORT`），没启动时所有调用都会 fail。
 
 **方法 A：双击启动脚本**（推荐）
 
 ```
-C:\Users\z004bjuu\Documents\skills_of_plant_simulation\Copilot-using\start_copilot.bat
+Copilot-using\start_copilot.bat
 ```
 
 脚本会：
-1. 检查 Python 与依赖是否存在
-2. 后台拉起 `uvicorn copilot_service:app`
-3. 轮询 `/health` 直到返回 200（首次 5–15s，索引加载）
-4. 打印 `/health` 的 JSON 内容
+1. 从 `config/local.properties` 读取 CoPilot 安装路径、Python、服务入口、端口
+2. 检查 Python 与依赖是否存在
+3. 后台拉起 `uvicorn copilot_service:app`
+4. 轮询 `/health` 直到返回 200（首次要 3–5 分钟，torch + arctic-embed 模型加载）
+5. 打印 `/health` 的 JSON 内容
 
 **方法 B：手动命令**
 
 ```bash
-cd "C:\ProgramFiles\Siemens\TecnomatixPlantSimulation2606\Copilot"
+cd "<COPILOT_DIR>"          # 即 config/local.properties 里的值
 "python-3.14.5-embed\pythonw.exe" -m uvicorn copilot_service:app --host 127.0.0.1 --port 8002
 ```
 
-> `pythonw.exe` 不弹窗；想看实时日志就把 `pythonw` 换成 `python`。
+> `pythonw.exe` 不弹窗；想看实时日志就把 `pythonw` 换成 `python`。日志在 `%COPILOT_DIR%\logs\copilot.log`。
 
 **停止服务**
 
