@@ -25,7 +25,7 @@ This project uses an Agent to query official documentation through Plant Simulat
 
 
 
-#### 一次性准备 / One-time setup
+#### 0.一次性准备 / One-time setup
 
 ```bash
 # 1) 依赖 / Dependencies (only the COM launcher and skill-creator need third-party packages)
@@ -55,7 +55,7 @@ taskkill /IM "Plant Simulation.exe" /F
 ---
 
 
-#### 启动 Plant Simulation CoPilot RAG 服务 / Start the Plant Simulation CoPilot RAG service
+#### 1.启动 Plant Simulation CoPilot RAG 服务 / Start the Plant Simulation CoPilot RAG service
 
 使用 Agent 查询官方 Plant Simulation 文档前，先启动 CoPilot RAG 服务。以下两种方式任选其一：
 
@@ -119,7 +119,7 @@ Ask the Agent to query documentation only after `agent_ready` is `true`. If the 
 
 
 
-#### 加载 Agent 和 Skills / Load the Agent and Skills
+#### 2.加载 Agent 和 Skills / Load the Agent and Skills
 
 先在 AI 工具中打开本仓库根目录 `skills_of_plant_simulation/` 作为工作区。Agent 的说明文件是 `agent/plant-simulation.agent.md`；各项技能及其操作脚本、示例和参考资料位于 `skills/<技能名>/`。技能不是需要单独安装的程序包，Agent 根据任务读取相应的 `SKILL.md`，再按其中说明调用仓库脚本。
 
@@ -152,7 +152,7 @@ English version:
 Use the current repository as the workspace. Read agent/plant-simulation.agent.md in full and follow its routing, workflow, and task boundaries. For Plant Simulation or SimTalk requests, select a skill from the Agent routing table, read the relevant skills/<skill-name>/SKILL.md in full, and follow its instructions for any references, examples, and scripts. Resolve relative paths from the repository root. If a task requires model access or control and the user has not provided the full path to an .spp file, ask for it first. Once provided, use the repository COM launcher to open Plant Simulation, load the model, inject simtalkclaude-client/SimtalkClaude.pslib, and verify the connection with the ping skill before any model operation. Do not guess paths, skip prerequisites, or claim unverified success. Clearly report if files cannot be read or scripts cannot be run.
 ```
 
-#### 提供并启动 Plant Simulation 模型 / Provide and start a Plant Simulation model
+#### 3.提供并启动 Plant Simulation 模型 / Provide and start a Plant Simulation model
 
 如果路线 A 的任务需要读取或控制 Plant Simulation 模型，必须先给 Agent 一个 `.spp` 模型文件的完整路径。若本轮对话还没有提供路径，Agent 应先询问，不要猜测路径，也不要声称已经连接或控制模型。拿到路径后，Agent 使用仓库的 COM 启动脚本打开 Plant Simulation、加载该模型并注入 `SimtalkClaude.pslib`，然后运行 ping 技能确认 TCP 链路可用；确认成功后才能继续读取或操作模型。
 
