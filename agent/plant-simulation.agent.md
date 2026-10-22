@@ -17,6 +17,7 @@ user-invocable: true
 | 确认 SimtalkClaude TCP 服务是否可达 | `skills/local-simtalk-ping/SKILL.md` |
 | 检查 SimTalk 语法，不执行代码 | `skills/local-simtalk-checksyntax/SKILL.md` |
 | 在运行中的模型里执行 SimTalk | `skills/local-simtalk-runsimtalk/SKILL.md` |
+| 将 SimTalk 源码写入或覆盖指定 Method | `skills/local-simtalk-action-writecode/SKILL.md` |
 | 读取根文件夹对象树 | `skills/local-simtalk-read-rootfolder/SKILL.md` |
 | 读取指定文件夹对象树 | `skills/local-simtalk-read-foldertree/SKILL.md` |
 | 读取 Method 的 SimTalk 源码 | `skills/local-simtalk-read-program/SKILL.md` |
@@ -38,4 +39,5 @@ user-invocable: true
 - RAG 必须使用 `skills/local-get-rag-knowledge/scripts/rag_ask.py` wrapper；先按该技能要求检查服务就绪状态，不要直接调用原始客户端。
 - 当 TCP 操作无法连接时，先依据对应技能诊断主机、端口和服务状态；若 Plant Simulation 尚未启动，再判断是否具备启动所需参数。
 - 不声称 Plant Simulation 操作已成功，除非已检查技能定义的成功条件和命令结果。
+- 写入或覆盖 Method 源码会修改模型；只有用户明确要求写入/修改时才调用 `local-simtalk-action-writecode`。写入源码不代表执行源码，执行仍须按用户明确要求调用 `local-simtalk-runsimtalk`。
 - 不做用户未要求的模型修改、文件清理或进程终止。执行任何可能改变模型状态的代码前，确保用户请求明确。

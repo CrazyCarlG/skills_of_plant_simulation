@@ -1,6 +1,6 @@
 @echo off
 REM ============================================================
-REM  Start Plant Simulation CoPilot service (background, no console)
+REM  Start Plant Simulation CoPilot service and stream its startup log
 REM  Double-click to run.
 REM
 REM  Paths come from ..\config\local.properties
@@ -15,13 +15,15 @@ if errorlevel 1 (
     exit /b 1
 )
 
+set "COPILOT_CONSOLE_PYTHON=%COPILOT_PYTHON:pythonw.exe=python.exe%"
+
 set "LOG_DIR=%COPILOT_DIR%\%COPILOT_LOG_SUBDIR%"
 set "LOG=%LOG_DIR%\%COPILOT_LOG_FILE%"
 
 REM --- preflight ---
-if not exist "%COPILOT_DIR%\%COPILOT_PYTHON%" (
-    echo [error] Embedded Python not found at:
-    echo         %COPILOT_DIR%\%COPILOT_PYTHON%
+if not exist "%COPILOT_DIR%\%COPILOT_CONSOLE_PYTHON%" (
+    echo [error] Console Python not found at:
+    echo         %COPILOT_DIR%\%COPILOT_CONSOLE_PYTHON%
     echo         Run setup.bat first.
     pause
     exit /b 1
@@ -36,56 +38,38 @@ if not exist "%LOG_DIR%" mkdir "%LOG_DIR%"
 
 REM --- already-running check ---
 powershell -NoProfile -Command ^
-    "try { $r=Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 http://%COPILOT_HOST%:%COPILOT_PORT%/health; if($r.StatusCode -eq 200){'RUNNING'} else {'DOWN'} } catch { 'DOWN' }" ^
+    "try { $h=Invoke-RestMethod -TimeoutSec 2 http://%COPILOT_HOST%:%COPILOT_PORT%/health; if($h.agent_ready -eq $true){'READY'} else {'STARTING'} } catch { 'DOWN' }" ^
     > "%TEMP%\copilot_check.txt" 2>nul
 set /p STATUS=<"%TEMP%\copilot_check.txt"
-if /i "%STATUS%"=="RUNNING" (
-    echo [CoPilot] Already running on port %COPILOT_PORT%.
-    echo.
-    powershell -NoProfile -Command "(Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 http://%COPILOT_HOST%:%COPILOT_PORT%/health).Content"
-    echo.
-    del "%TEMP%\copilot_check.txt" 2>nul
-    pause
-    exit /b 0
-)
 del "%TEMP%\copilot_check.txt" 2>nul
+if /i "%STATUS%"=="READY" (
+    echo [CoPilot] Already ready on port %COPILOT_PORT%.
+    goto :ready
+)
+if /i "%STATUS%"=="STARTING" (
+    echo [CoPilot] Service is responding but the agent is still initializing.
+    goto :wait_for_ready
+)
 
-REM --- launch (pythonw = no console window; correct entry point = uvicorn) ---
+REM --- launch with console Python so redirected service logs are available ---
 echo [CoPilot] Starting service (port %COPILOT_PORT%)...
 cd /d "%COPILOT_DIR%"
-start "CoPilot Service" /B "%COPILOT_DIR%\%COPILOT_PYTHON%" -m uvicorn %COPILOT_SERVICE% --host %COPILOT_HOST% --port %COPILOT_PORT% > "%LOG%" 2>&1
+start "CoPilot Service" /B "%COPILOT_DIR%\%COPILOT_CONSOLE_PYTHON%" -u -m uvicorn %COPILOT_SERVICE% --host %COPILOT_HOST% --port %COPILOT_PORT% > "%LOG%" 2>&1
 
-REM --- wait for service to bind (torch + arctic-embed model load takes 3-5 min on first run) ---
-echo [CoPilot] Waiting for service to become ready...
-set /a TRIES=0
-:wait_loop
-set /a TRIES+=1
-if %TRIES% GTR 240 (
-    echo [CoPilot] Service did not respond after 480s. Check log:
+:wait_for_ready
+echo [CoPilot] Waiting for agent_ready=true. Streaming service log:
+powershell -NoProfile -ExecutionPolicy Bypass -File "%~dp0wait_copilot.ps1" -HostName "%COPILOT_HOST%" -Port %COPILOT_PORT% -LogPath "%LOG%" -TimeoutSeconds 480
+if errorlevel 1 (
+    echo [CoPilot] Service did not become ready after 480s. Check log:
     echo           %LOG%
     pause
     exit /b 1
 )
-REM Use ping for sleep (works in both cmd and Git Bash; avoid 'timeout' which clashes with GNU coreutils)
-ping -n 3 127.0.0.1 > nul
-powershell -NoProfile -Command ^
-    "try { (Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 http://%COPILOT_HOST%:%COPILOT_PORT%/health).StatusCode } catch { 0 }" ^
-    > "%TEMP%\copilot_check.txt" 2>nul
-set /p HTTP=<"%TEMP%\copilot_check.txt"
-del "%TEMP%\copilot_check.txt" 2>nul
-if "%HTTP%"=="200" goto :ready
-<nul set /p "=."
-set /a STATUS_REMAINDER=TRIES %% 5
-if %STATUS_REMAINDER% EQU 0 (
-    echo.
-    echo [CoPilot] Still starting (check %TRIES%/240). Model/index loading or MCP connection may take time.
-    echo           Log: %LOG%
-)
-goto :wait_loop
+goto :ready
 
 :ready
 echo.
-echo [CoPilot] Service is up. /health:
+echo [CoPilot] Agent is ready. /health:
 powershell -NoProfile -Command "(Invoke-WebRequest -UseBasicParsing -TimeoutSec 2 http://%COPILOT_HOST%:%COPILOT_PORT%/health).Content"
 echo.
 echo.

@@ -14,6 +14,8 @@ if errorlevel 1 (
     exit /b 1
 )
 
+set "COPILOT_CONSOLE_PYTHON=%COPILOT_PYTHON:pythonw.exe=python.exe%"
+
 echo [CoPilot] Requesting graceful shutdown on port %COPILOT_PORT%...
 powershell -NoProfile -Command ^
     "try { (Invoke-WebRequest -UseBasicParsing -TimeoutSec 3 -Method POST http://%COPILOT_HOST%:%COPILOT_PORT%/shutdown).Content } catch { 'FALLBACK' }" ^
@@ -27,9 +29,9 @@ if /i not "%RESULT%"=="FALLBACK" (
     goto :verify
 )
 
-echo [CoPilot] /shutdown did not respond, killing pythonw.exe...
-taskkill /F /IM pythonw.exe /FI "WINDOWTITLE eq CoPilot Service*" > nul 2>&1
-taskkill /F /IM pythonw.exe > nul 2>&1
+echo [CoPilot] /shutdown did not respond, locating the CoPilot Uvicorn process...
+powershell -NoProfile -Command ^
+    "$python='%COPILOT_DIR%\%COPILOT_CONSOLE_PYTHON%'; $service='%COPILOT_SERVICE%'; Get-CimInstance Win32_Process | Where-Object { $_.ExecutablePath -ieq $python -and $_.CommandLine -like ('*-m uvicorn ' + $service + '*') } | ForEach-Object { Stop-Process -Id $_.ProcessId -Force }"
 
 :verify
 del "%TEMP%\copilot_stop.txt" 2>nul
