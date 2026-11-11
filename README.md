@@ -11,6 +11,68 @@ This project uses an Agent to query official documentation through Plant Simulat
 | Copilot RAG | `127.0.0.1:8002` | 官方知识检索与问答 / Official documentation retrieval and Q&A |
 | Plant Simulation bridge | `127.0.0.1:50007` | 连接运行中的模型 / Connects to a running model |
 
+## 工作原理 / Architecture
+
+系统分为两条可独立运行的链路：RAG 用于检索和解释官方知识；本地桥接用于连接真实模型、检查或执行 SimTalk。需要时 Agent 可以先查文档，再在模型中验证，但启动模型不依赖 RAG。
+
+The system has two independently usable paths: RAG retrieves and explains documentation, while the local bridge connects to a live model for SimTalk checks or execution. The Agent can combine them for research followed by verification; model startup does not depend on RAG.
+
+```mermaid
+flowchart LR
+    User[User] --> Agent[Plant Simulation Agent]
+    Agent --> Skills[Skills routing and scripts]
+
+    subgraph Knowledge[Knowledge path]
+        RagSkill[local-get-rag-knowledge] --> Wrapper[rag_ask.py]
+        Wrapper -->|HTTP: health + query/stream| Copilot[CoPilot RAG :8002]
+        Copilot -->|answer + citations + metrics| Wrapper
+    end
+
+    subgraph Model[Model path]
+        Launcher[COM launcher] -->|COM: load model, inject library, set port| PS[Plant Simulation 2606]
+        PS --- Socket[SimtalkClaude SocketServer]
+        TcpSkills[ping / syntax / run / read] <-->|TCP: END-framed JSON| Socket
+    end
+
+    Skills --> RagSkill
+    Skills --> Launcher
+    Skills --> TcpSkills
+    Wrapper --> Agent
+    TcpSkills --> Agent
+```
+
+```mermaid
+sequenceDiagram
+    actor User as User
+    participant Agent as Agent
+    participant RAG as CoPilot RAG
+    participant COM as COM launcher
+    participant PS as Plant Simulation + SimtalkClaude
+    participant TCP as TCP Skills
+
+    User->>Agent: Ask a knowledge question and/or request a model task
+    alt Official knowledge is needed
+        Agent->>RAG: rag_ask.py: check /health, then query
+        RAG-->>Agent: answer, citations, metrics
+    else Model operation or inspection only
+        Note over Agent,RAG: RAG is not required for this branch
+    end
+    opt Model access is needed
+        Agent->>COM: Provide .spp, .pslib, and port
+        COM->>PS: Load model, inject bridge library, configure port via COM
+        Agent->>TCP: Ping (required after startup)
+        TCP->>PS: Send END-framed JSON request
+        PS-->>TCP: Return END-framed JSON response
+        opt Perform operations after a successful ping
+            Agent->>TCP: syntax / run / read
+            TCP->>PS: Forward SimTalk or inspection request
+            PS-->>TCP: Return execution result or inspected data
+            TCP-->>Agent: Return response
+        end
+    end
+    Agent-->>User: Distinguish documentation, measured results, and inferences
+```
+
 ## 环境要求 / Requirements
 
 - Windows、Plant Simulation 2606，以及已注册的 COM 接口。 / Windows, Plant Simulation 2606, and a registered COM interface.
@@ -57,6 +119,14 @@ taskkill /IM "Plant Simulation.exe" /F
 
 #### 1.启动 Plant Simulation CoPilot RAG 服务 / Start the Plant Simulation CoPilot RAG service
 
+> **注意 / Note:** CoPilot RAG 首次启动或初始化可能需要几分钟，请耐心等待，不要提前关闭窗口或重复启动。可以运行下面的 `rag_ask.py` 命令检查服务是否就绪；将问题文本替换成你想查询的内容，也可以用它进行实际问答测试。
+>
+> First startup or initialization of CoPilot RAG may take a few minutes. Please wait patiently; do not close the window or launch it again prematurely. Run the `rag_ask.py` command below to check readiness or test it with a real question.
+>
+> ```bash
+> python skills/local-get-rag-knowledge/scripts/rag_ask.py "How do I create a Buffer in SimTalk?"
+> ```
+
 使用 Agent 查询官方 Plant Simulation 文档前，先启动 CoPilot RAG 服务。以下两种方式任选其一：
 
 Start the CoPilot RAG service before asking the Agent to search official Plant Simulation documentation. Choose either method below:
@@ -94,9 +164,6 @@ After the loader reports success, double-click the launcher. If it reports a mis
 然后双击 [`Copilot-using/start_copilot.bat`](Copilot-using/start_copilot.bat) 启动服务。窗口会显示启动日志并等待服务就绪；通常约需 120 秒，初始化较慢时会更久，请耐心等待，不要提前关闭窗口或重复启动。脚本最多等待 480 秒，并在完成时显示 `/health` 结果。
 
 Then double-click [`Copilot-using/start_copilot.bat`](Copilot-using/start_copilot.bat). The window streams startup logs and waits for readiness. Startup usually takes about 120 seconds and may take longer; be patient, and do not close the window or launch it again prematurely. The script waits for up to 480 seconds and displays the `/health` result when finished.
-
-
-
 
 改完直接生效，两条链路都会跟着变：
 
